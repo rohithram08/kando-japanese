@@ -65,13 +65,16 @@
 
 ---
 
-## Phase C: 5 Tappable Mini-Demos (Pending)
-- [ ] Demo 1: Kana Studio (tile spring, audio, SVG stroke animation, +10 XP)
-- [ ] Demo 2: Graded Reader (real graded story data, furigana tooltip, + Add to SRS)
-- [ ] Demo 3: Conversation Dojo (typing dots, 2 natural Japanese chips, gentle retry feedback, celebration)
-- [ ] Demo 4: SRS Flashcards (3D flip, real vocab, 1d-3d-7d-14d-30d intervals)
-- [ ] Demo 5: Hana-Sensei Daily Spark (rotating real sparks, animated flame streak)
-- [ ] Quality gate & browser screenshots
+## Phase C: 5 Tappable Mini-Demos (Completed)
+- [x] Demo 1: Kana Studio (`KanaMiniDemo.jsx` — tile spring for vowel row あいうえお, speech synthesis, animated SVG strokes from real `KANA_STROKES`, floating +10 XP pop)
+- [x] Demo 2: Graded Reader (`ReaderMiniDemo.jsx` — real story data from Kenta's First Train, furigana ruby toggling, interactive word lookup with pitch accent contours, native speech playback, guest and auth `+ Add to SRS` integration)
+- [x] Demo 3: Conversation Dojo (`DojoMiniDemo.jsx` — host prompt, two natural Japanese reply chips, gentle shake + retry explanation on party-size ordering error, celebration + host response + rate-limited confetti on polite reply)
+- [x] Demo 4: SRS Flashcards (`SRSMiniDemo.jsx` — 3D card flip for 食べる, real example sentences, SM-2 memory intervals 1d → 3d → 7d → 14d → 30d Mastered ✨)
+- [x] Demo 5: Hana-Sensei Daily Spark (`SparkMiniDemo.jsx` — rotating canonical sparks from real data, speech pronunciation, animated 7-day flame streak bonus banner)
+- [x] Test coverage added in `src/components/landing/__tests__/miniDemos.test.tsx` (6 unit tests, all green)
+- [x] Quality gates passed: frontend vitest (28 files / 235 tests), Vite build clean, backend tsc clean, backend vitest (8 files / 71 tests)
+- [x] Browser screenshots captured across desktop (1280x800) and mobile (375x812) in light and dark modes (`docs/quality/screenshots/phase_c/`)
+
 
 ---
 

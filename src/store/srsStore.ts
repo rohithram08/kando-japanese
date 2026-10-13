@@ -95,7 +95,18 @@ export const useSRSStore = create<SRSState>((set, get) => ({
 
     const user = typeof useAuthStore?.getState === 'function' ? useAuthStore.getState()?.user : null;
 
-    // Attempt backend persistence first (for logged in users or test mocks)
+    if (!user) {
+      saveGuestCard(cardRefId);
+      const nextIds = new Set(get().cardRefIds);
+      nextIds.add(cardRefId);
+      nextIds.add(cardRefId.toLowerCase());
+      set({ cardRefIds: nextIds });
+      const display = label || cardRefId;
+      toast.success(`Added "${display}" to local review deck! (Sign in to sync across devices)`, { icon: '🗂️' });
+      return true;
+    }
+
+    // Attempt backend persistence for logged in users
     try {
       await addCard({ cardType, cardRefId });
 
@@ -116,8 +127,7 @@ export const useSRSStore = create<SRSState>((set, get) => ({
       toast.success(`Added "${display}" to SRS review deck! 🗂️`);
       return true;
     } catch (err: any) {
-      // If unauthenticated, gracefully save to local guest deck
-      if (!user || err?.status === 401 || err?.code === 'AUTH_REQUIRED') {
+      if (err?.status === 401 || err?.code === 'AUTH_REQUIRED') {
         saveGuestCard(cardRefId);
         const nextIds = new Set(get().cardRefIds);
         nextIds.add(cardRefId);

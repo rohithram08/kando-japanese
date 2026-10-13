@@ -7,6 +7,11 @@ import {
   ArrowRight, Bot, Compass
 } from 'lucide-react'
 import { playPop } from '../../utils/soundEffects'
+import KanaMiniDemo from './demos/KanaMiniDemo'
+import ReaderMiniDemo from './demos/ReaderMiniDemo'
+import DojoMiniDemo from './demos/DojoMiniDemo'
+import SRSMiniDemo from './demos/SRSMiniDemo'
+import SparkMiniDemo from './demos/SparkMiniDemo'
 
 const JOURNEY_STEPS = [
   {
@@ -218,131 +223,11 @@ function JourneyStepCard({ step, idx, prefersReducedMotion }) {
           }`}
         >
           <div className="p-5 sm:p-6 rounded-2xl bg-muted/40 border border-border/80 shadow-inner">
-            {/* Kana Preview */}
-            {step.previewSnippet.type === 'kana' && (
-              <div className="space-y-3">
-                <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider flex items-center justify-between">
-                  <span>Vowel Row Practice</span>
-                  <span className="text-primary font-mono text-[10px]">
-                    5 Sounds
-                  </span>
-                </div>
-                <div className="grid grid-cols-5 gap-2">
-                  {step.previewSnippet.items.map((k) => (
-                    <div
-                      key={k.char}
-                      className="p-3 rounded-xl bg-surface border border-border shadow-sm text-center transform transition-transform hover:-translate-y-1 hover:border-primary"
-                    >
-                      <div className="text-xl sm:text-2xl font-bold font-jp text-foreground">
-                        {k.char}
-                      </div>
-                      <div className="text-[10px] text-muted-foreground font-mono uppercase">
-                        {k.romaji}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-[11px] text-muted-foreground text-center pt-1 font-medium">
-                  Stroke animations · Audio playback · Mnemonic cards
-                </div>
-              </div>
-            )}
-
-            {/* Story Preview */}
-            {step.previewSnippet.type === 'story' && (
-              <div className="space-y-3 text-left">
-                <div className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5" />
-                  <span>{step.previewSnippet.title}</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-surface border border-border shadow-sm">
-                  <p className="text-base font-bold text-foreground font-jp mb-1.5 leading-relaxed">
-                    {step.previewSnippet.japanese}
-                  </p>
-                  <p className="text-xs text-muted-foreground italic">
-                    "{step.previewSnippet.english}"
-                  </p>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1">
-                  <span>✓ Native Audio</span>
-                  <span>✓ Furigana Toggle</span>
-                  <span>✓ 1-Tap SRS Add</span>
-                </div>
-              </div>
-            )}
-
-            {/* Dialogue Preview */}
-            {step.previewSnippet.type === 'dialogue' && (
-              <div className="space-y-2.5 text-left">
-                <div className="p-2.5 rounded-xl bg-surface border border-border shadow-sm flex items-start gap-2">
-                  <span className="text-xs font-bold text-cyan-600 dark:text-cyan-400 shrink-0">
-                    店員:
-                  </span>
-                  <span className="text-xs font-bold text-foreground font-jp">
-                    {step.previewSnippet.sensei}
-                  </span>
-                </div>
-                <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 shadow-sm flex items-start gap-2">
-                  <span className="text-xs font-bold text-primary shrink-0">
-                    あなた:
-                  </span>
-                  <span className="text-xs font-bold text-foreground font-jp">
-                    {step.previewSnippet.user}
-                  </span>
-                </div>
-                <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold text-center pt-1">
-                  {step.previewSnippet.correction}
-                </div>
-              </div>
-            )}
-
-            {/* SRS Interval Preview */}
-            {step.previewSnippet.type === 'srs' && (
-              <div className="space-y-3">
-                <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider text-left">
-                  Memory Scheduling Curve
-                </div>
-                <div className="flex items-center justify-between gap-1 text-center">
-                  {step.previewSnippet.intervals.map((intv, i) => (
-                    <div key={intv} className="flex-1">
-                      <div
-                        className={`py-1.5 rounded-lg text-[10px] font-bold border ${
-                          i === 4
-                            ? 'bg-amber-500/20 text-amber-500 border-amber-500/30 font-black'
-                            : 'bg-surface border-border text-foreground'
-                        }`}
-                      >
-                        {intv}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-[11px] text-muted-foreground text-center pt-1 font-medium">
-                  Automatic spacing guarantees 95%+ long-term recall
-                </div>
-              </div>
-            )}
-
-            {/* Coach Preview */}
-            {step.previewSnippet.type === 'coach' && (
-              <div className="space-y-3 text-left">
-                <div className="flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400">
-                  <Bot className="w-3.5 h-3.5" />
-                  <span>Hana-sensei's Daily Spark</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-surface border border-border shadow-sm">
-                  <p className="text-sm font-bold text-foreground font-jp mb-1">
-                    {step.previewSnippet.message}
-                  </p>
-                  <p className="text-xs text-muted-foreground italic">
-                    "{step.previewSnippet.translation}"
-                  </p>
-                </div>
-                <div className="text-[11px] text-muted-foreground text-center pt-1 font-medium">
-                  Streak tracking · Keigo tuning · Cultural context
-                </div>
-              </div>
-            )}
+            {step.stepNumber === '01' && <KanaMiniDemo />}
+            {step.stepNumber === '02' && <ReaderMiniDemo />}
+            {step.stepNumber === '03' && <DojoMiniDemo />}
+            {step.stepNumber === '04' && <SRSMiniDemo />}
+            {step.stepNumber === '05' && <SparkMiniDemo />}
           </div>
         </div>
       </div>
