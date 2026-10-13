@@ -81,6 +81,9 @@ export default function ReaderMiniDemo() {
         <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
           <BookOpen className="w-3.5 h-3.5" />
           <span>健太の初めての電車 (Kenta's First Train)</span>
+          <span className="text-[9px] font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 px-1.5 py-0.5 rounded border border-emerald-500/20">
+            Preview Excerpt
+          </span>
         </div>
         <div className="flex items-center gap-2">
           {/* Furigana toggle button */}

@@ -40,7 +40,7 @@ const STAT_ITEMS = [
     formatComma: true,
     title: 'Joyo Kanji Benchmarks',
     titleJp: '常用漢字基準',
-    description: 'Systematic radical breakdowns from N5 to N1 mastery',
+    description: 'Official MEXT standard benchmark (940 curated kanji bundled across N5–N1)',
     icon: Languages,
     color: 'from-purple-500 to-indigo-500',
     border: 'border-purple-500/20',
@@ -135,7 +135,7 @@ export default function StatCounters() {
             </h3>
           </div>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-md mt-2 sm:mt-0">
-            Every metric reflects hand-crafted learning materials and structured exercises available today.
+            Metrics reflect structured learning materials, interactive scenarios, and official curriculum benchmarks.
           </p>
         </div>
 

@@ -117,12 +117,12 @@ export default function SparkMiniDemo() {
         <div className="flex items-center gap-2">
           <Flame className="w-4 h-4 text-orange-500 animate-pulse" />
           <span className="font-bold text-foreground">
-            7 Day Streak Bonus
+            Sample Milestone: 7-Day Streak
           </span>
         </div>
         <div className="text-[11px] font-bold text-orange-600 dark:text-orange-400 flex items-center gap-1">
           <Sparkles className="w-3 h-3" />
-          <span>+15 XP Awarded</span>
+          <span>+5 XP Bonus</span>
         </div>
       </div>
 
