@@ -1,0 +1,1025 @@
+{
+  "readingResult": {
+    "label": "/reading (Catalog)",
+    "url": "http://localhost:3000/reading",
+    "totalJsSize": 12438442,
+    "totalCssSize": 189199,
+    "threeJsRequested": true,
+    "jsRequests": [
+      {
+        "url": "http://localhost:3000/src/main.jsx",
+        "status": 200,
+        "size": 9060,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 219,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37035,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f9e7b2de",
+        "status": 200,
+        "size": 360,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@tanstack_react-query.js?v=f9e7b2de",
+        "status": 200,
+        "size": 132915,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/App.jsx",
+        "status": 200,
+        "size": 46257,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-hot-toast.js?v=f9e7b2de",
+        "status": 200,
+        "size": 16786,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-5GLF3XJW.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1049,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/themeStore.js",
+        "status": 200,
+        "size": 20966,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-WOOG5QLI.js?v=f9e7b2de",
+        "status": 200,
+        "size": 2884,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=f9e7b2de",
+        "status": 200,
+        "size": 209661,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/settingsStore.js",
+        "status": 200,
+        "size": 49086,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-QCHXOAYK.js?v=f9e7b2de",
+        "status": 200,
+        "size": 77818,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-KBTYAULA.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37368,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-error-boundary.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3621,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Layout.jsx",
+        "status": 200,
+        "size": 23187,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/RouteErrorBoundary.jsx",
+        "status": 200,
+        "size": 14765,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/auth/AuthGuard.jsx",
+        "status": 200,
+        "size": 6703,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/pages/ReadingPage.jsx",
+        "status": 200,
+        "size": 32855,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand.js?v=f9e7b2de",
+        "status": 200,
+        "size": 414,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand_middleware.js?v=f9e7b2de",
+        "status": 200,
+        "size": 19189,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=f9e7b2de",
+        "status": 200,
+        "size": 928095,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/notificationStore.js",
+        "status": 200,
+        "size": 26011,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Sidebar.jsx",
+        "status": 200,
+        "size": 37830,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/MobileNav.jsx",
+        "status": 200,
+        "size": 10100,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Navbar.jsx",
+        "status": 200,
+        "size": 75619,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/hooks/useNotificationEngine.js",
+        "status": 200,
+        "size": 50445,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/framer-motion.js?v=f9e7b2de",
+        "status": 200,
+        "size": 358309,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/LoadingSpinner.jsx",
+        "status": 200,
+        "size": 5847,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryCard.jsx",
+        "status": 200,
+        "size": 18626,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n5_stories.js",
+        "status": 200,
+        "size": 366527,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-IDUOTVAF.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3840,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-AV5VUN3M.js?v=f9e7b2de",
+        "status": 200,
+        "size": 8362,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryReader.jsx",
+        "status": 200,
+        "size": 125787,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/lucide-react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1074606,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/ThemeToggle.jsx",
+        "status": 200,
+        "size": 11962,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/progressCalculator.js",
+        "status": 200,
+        "size": 67568,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/levels.js",
+        "status": 200,
+        "size": 15536,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/config/sections.js",
+        "status": 200,
+        "size": 57663,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/dailyGoalsStore.js",
+        "status": 200,
+        "size": 11971,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/FuriganaText.jsx",
+        "status": 200,
+        "size": 14182,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n4_stories.js",
+        "status": 200,
+        "size": 245026,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/AudioButton.jsx",
+        "status": 200,
+        "size": 8841,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/pitch/PitchContourVisualizer.jsx",
+        "status": 200,
+        "size": 46067,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/ComprehensionQuiz.jsx",
+        "status": 200,
+        "size": 38192,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryAudioPlayer.jsx",
+        "status": 200,
+        "size": 36355,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/VocabLookupModal.jsx",
+        "status": 200,
+        "size": 40092,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/furiganaUtils.js",
+        "status": 200,
+        "size": 47213,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/axios.js?v=f9e7b2de",
+        "status": 200,
+        "size": 109460,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/services/audioService.js",
+        "status": 200,
+        "size": 36409,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/pitch/pitchData.js",
+        "status": 200,
+        "size": 156914,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@react-three_fiber.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1286,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/three.js?v=f9e7b2de",
+        "status": 200,
+        "size": 16863,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-XJ55E4AL.js?v=f9e7b2de",
+        "status": 200,
+        "size": 776730,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-2LMVBLFU.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1688158,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@react-three_drei.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3899311,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-PWP5DY5A.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1280441,
+        "type": "js"
+      }
+    ]
+  },
+  "storyResult": {
+    "label": "/reading/story_n5_01 (Reader)",
+    "url": "http://localhost:3000/reading/story_n5_01",
+    "totalJsSize": 12438442,
+    "totalCssSize": 189199,
+    "threeJsRequested": true,
+    "jsRequests": [
+      {
+        "url": "http://localhost:3000/src/main.jsx",
+        "status": 200,
+        "size": 9060,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f9e7b2de",
+        "status": 200,
+        "size": 360,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 219,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37035,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/App.jsx",
+        "status": 200,
+        "size": 46257,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-hot-toast.js?v=f9e7b2de",
+        "status": 200,
+        "size": 16786,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@tanstack_react-query.js?v=f9e7b2de",
+        "status": 200,
+        "size": 132915,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/themeStore.js",
+        "status": 200,
+        "size": 20966,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-5GLF3XJW.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1049,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/settingsStore.js",
+        "status": 200,
+        "size": 49086,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=f9e7b2de",
+        "status": 200,
+        "size": 209661,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-QCHXOAYK.js?v=f9e7b2de",
+        "status": 200,
+        "size": 77818,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-WOOG5QLI.js?v=f9e7b2de",
+        "status": 200,
+        "size": 2884,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-error-boundary.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3621,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/RouteErrorBoundary.jsx",
+        "status": 200,
+        "size": 14765,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Layout.jsx",
+        "status": 200,
+        "size": 23187,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/pages/ReadingPage.jsx",
+        "status": 200,
+        "size": 32855,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand.js?v=f9e7b2de",
+        "status": 200,
+        "size": 414,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/auth/AuthGuard.jsx",
+        "status": 200,
+        "size": 6703,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand_middleware.js?v=f9e7b2de",
+        "status": 200,
+        "size": 19189,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-KBTYAULA.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37368,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=f9e7b2de",
+        "status": 200,
+        "size": 928095,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Sidebar.jsx",
+        "status": 200,
+        "size": 37830,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/MobileNav.jsx",
+        "status": 200,
+        "size": 10100,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/hooks/useNotificationEngine.js",
+        "status": 200,
+        "size": 50445,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Navbar.jsx",
+        "status": 200,
+        "size": 75619,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/framer-motion.js?v=f9e7b2de",
+        "status": 200,
+        "size": 358309,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryCard.jsx",
+        "status": 200,
+        "size": 18626,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n5_stories.js",
+        "status": 200,
+        "size": 366527,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/lucide-react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1074606,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryReader.jsx",
+        "status": 200,
+        "size": 125787,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-IDUOTVAF.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3840,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/notificationStore.js",
+        "status": 200,
+        "size": 26011,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-AV5VUN3M.js?v=f9e7b2de",
+        "status": 200,
+        "size": 8362,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/LoadingSpinner.jsx",
+        "status": 200,
+        "size": 5847,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/levels.js",
+        "status": 200,
+        "size": 15536,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/config/sections.js",
+        "status": 200,
+        "size": 57663,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/dailyGoalsStore.js",
+        "status": 200,
+        "size": 11971,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/progressCalculator.js",
+        "status": 200,
+        "size": 67568,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/ThemeToggle.jsx",
+        "status": 200,
+        "size": 11962,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/FuriganaText.jsx",
+        "status": 200,
+        "size": 14182,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n4_stories.js",
+        "status": 200,
+        "size": 245026,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/AudioButton.jsx",
+        "status": 200,
+        "size": 8841,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/pitch/PitchContourVisualizer.jsx",
+        "status": 200,
+        "size": 46067,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryAudioPlayer.jsx",
+        "status": 200,
+        "size": 36355,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/ComprehensionQuiz.jsx",
+        "status": 200,
+        "size": 38192,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/VocabLookupModal.jsx",
+        "status": 200,
+        "size": 40092,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/furiganaUtils.js",
+        "status": 200,
+        "size": 47213,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/services/audioService.js",
+        "status": 200,
+        "size": 36409,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/axios.js?v=f9e7b2de",
+        "status": 200,
+        "size": 109460,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/pitch/pitchData.js",
+        "status": 200,
+        "size": 156914,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@react-three_fiber.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1286,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-XJ55E4AL.js?v=f9e7b2de",
+        "status": 200,
+        "size": 776730,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/three.js?v=f9e7b2de",
+        "status": 200,
+        "size": 16863,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-2LMVBLFU.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1688158,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@react-three_drei.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3899311,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-PWP5DY5A.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1280441,
+        "type": "js"
+      }
+    ]
+  },
+  "senseiResult": {
+    "label": "/sensei (3D Experience)",
+    "url": "http://localhost:3000/sensei",
+    "totalJsSize": 4865159,
+    "totalCssSize": 189199,
+    "threeJsRequested": false,
+    "jsRequests": [
+      {
+        "url": "http://localhost:3000/src/main.jsx",
+        "status": 200,
+        "size": 9060,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-dom_client.js?v=f9e7b2de",
+        "status": 200,
+        "size": 360,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 219,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37035,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/App.jsx",
+        "status": 200,
+        "size": 46257,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-hot-toast.js?v=f9e7b2de",
+        "status": 200,
+        "size": 16786,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-5GLF3XJW.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1049,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/themeStore.js",
+        "status": 200,
+        "size": 20966,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/settingsStore.js",
+        "status": 200,
+        "size": 49086,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-router-dom.js?v=f9e7b2de",
+        "status": 200,
+        "size": 209661,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/@tanstack_react-query.js?v=f9e7b2de",
+        "status": 200,
+        "size": 132915,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-QCHXOAYK.js?v=f9e7b2de",
+        "status": 200,
+        "size": 77818,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-WOOG5QLI.js?v=f9e7b2de",
+        "status": 200,
+        "size": 2884,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/RouteErrorBoundary.jsx",
+        "status": 200,
+        "size": 14765,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Layout.jsx",
+        "status": 200,
+        "size": 23187,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand.js?v=f9e7b2de",
+        "status": 200,
+        "size": 414,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/pages/ReadingPage.jsx",
+        "status": 200,
+        "size": 32855,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/react-error-boundary.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3621,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/zustand_middleware.js?v=f9e7b2de",
+        "status": 200,
+        "size": 19189,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/auth/AuthGuard.jsx",
+        "status": 200,
+        "size": 6703,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-KBTYAULA.js?v=f9e7b2de",
+        "status": 200,
+        "size": 37368,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-RPCDYKBN.js?v=f9e7b2de",
+        "status": 200,
+        "size": 928095,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/MobileNav.jsx",
+        "status": 200,
+        "size": 10100,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Sidebar.jsx",
+        "status": 200,
+        "size": 37830,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-IDUOTVAF.js?v=f9e7b2de",
+        "status": 200,
+        "size": 3840,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/chunk-AV5VUN3M.js?v=f9e7b2de",
+        "status": 200,
+        "size": 8362,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/hooks/useNotificationEngine.js",
+        "status": 200,
+        "size": 50445,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/layout/Navbar.jsx",
+        "status": 200,
+        "size": 75619,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/framer-motion.js?v=f9e7b2de",
+        "status": 200,
+        "size": 358309,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryCard.jsx",
+        "status": 200,
+        "size": 18626,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n5_stories.js",
+        "status": 200,
+        "size": 366527,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/lucide-react.js?v=f9e7b2de",
+        "status": 200,
+        "size": 1074606,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/notificationStore.js",
+        "status": 200,
+        "size": 26011,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryReader.jsx",
+        "status": 200,
+        "size": 125787,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/LoadingSpinner.jsx",
+        "status": 200,
+        "size": 5847,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/config/sections.js",
+        "status": 200,
+        "size": 57663,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/levels.js",
+        "status": 200,
+        "size": 15536,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/store/dailyGoalsStore.js",
+        "status": 200,
+        "size": 11971,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/progressCalculator.js",
+        "status": 200,
+        "size": 67568,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/ui/ThemeToggle.jsx",
+        "status": 200,
+        "size": 11962,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/FuriganaText.jsx",
+        "status": 200,
+        "size": 14182,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/common/AudioButton.jsx",
+        "status": 200,
+        "size": 8841,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/pitch/PitchContourVisualizer.jsx",
+        "status": 200,
+        "size": 46067,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/ComprehensionQuiz.jsx",
+        "status": 200,
+        "size": 38192,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/reading/n4_stories.js",
+        "status": 200,
+        "size": 245026,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/StoryAudioPlayer.jsx",
+        "status": 200,
+        "size": 36355,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/reading/VocabLookupModal.jsx",
+        "status": 200,
+        "size": 40092,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/utils/furiganaUtils.js",
+        "status": 200,
+        "size": 47213,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/services/audioService.js",
+        "status": 200,
+        "size": 36409,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/node_modules/.vite/deps/axios.js?v=f9e7b2de",
+        "status": 200,
+        "size": 109460,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/data/pitch/pitchData.js",
+        "status": 200,
+        "size": 156914,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:3000/src/components/auth/LoginPage.jsx",
+        "status": 200,
+        "size": 89506,
+        "type": "js"
+      }
+    ]
+  }
+}

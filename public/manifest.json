@@ -1,0 +1,16 @@
+{
+  "short_name": "Nihongo Master",
+  "name": "Nihongo Master - Japanese Learning Platform",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ef4444",
+  "background_color": "#030712",
+  "description": "Learn Japanese with interactive lessons, kanji study, SRS reviews, and more."
+}

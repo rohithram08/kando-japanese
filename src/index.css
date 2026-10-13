@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   DESIGN TOKENS
+   A single source of truth for color, consumed by Tailwind via
+   tailwind.config.js (theme.extend.colors -> hsl(var(--token))).
+   This is what makes the UI "adaptable" instead of hardcoded:
+   components can use classes like `bg-surface text-foreground`
+   and get the right color in both themes for free, with no
+   isDark ternaries required.
+
+   Light mode is the default and intentionally a clean, true white
+   — not an off-white/tinted background.
+   ============================================ */
+:root {
+  --background:        0 0% 100%;     /* page background — pure white */
+  --foreground:         222 47% 11%;   /* primary text */
+
+  --surface:            0 0% 100%;     /* card / panel background */
+  --surface-foreground: 222 47% 11%;
+  --surface-muted:      220 20% 97%;   /* subtle recessed panels, hover states */
+
+  --muted:              220 20% 96%;
+  --muted-foreground:   220 9% 46%;
+
+  --border:             220 16% 91%;
+  --input:              220 16% 88%;
+  --ring:               350 78% 45%;
+
+  --primary:            350 78% 40%;   /* brand red — torii-gate red */
+  --primary-foreground: 0 0% 100%;
+
+  --secondary:          240 5% 96%;
+  --secondary-foreground: 222 47% 11%;
+
+  --accent:             243 75% 59%;   /* indigo accent for chat/AI surfaces */
+  --accent-foreground:  0 0% 100%;
+
+  --destructive:        0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success:            142 71% 35%;
+  --warning:            38 92% 50%;
+
+  --radius: 0.9rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background:        222 47% 7%;    /* deep navy-slate, not pure black */
+  --foreground:         210 40% 96%;
+
+  --surface:            222 39% 11%;
+  --surface-foreground: 210 40% 96%;
+  --surface-muted:      222 30% 15%;
+
+  --muted:              222 30% 15%;
+  --muted-foreground:   220 14% 63%;
+
+  --border:             222 25% 20%;
+  --input:              222 25% 22%;
+  --ring:               350 85% 60%;
+
+  --primary:            350 85% 58%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary:          222 30% 17%;
+  --secondary-foreground: 210 40% 96%;
+
+  --accent:             243 80% 68%;
+  --accent-foreground:  0 0% 100%;
+
+  --destructive:        0 75% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success:            142 65% 45%;
+  --warning:            38 92% 55%;
+}
+
+/* ============================================
+   BASE RESET & GLOBALS
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  /* Driven by the design tokens above: white in light mode, deep navy in dark. */
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================
+   SAFE AREA (iOS notch support)
+   ============================================ */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* ============================================
+   FOCUS STYLES
+   ============================================ */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--primary));
+}
+
+/* ============================================
+   TAILWIND COMPONENT LAYER EXTENSIONS
+   ============================================ */
+@layer components {
+  /* Glass morphism card */
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-white/20 dark:border-gray-700/50;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent;
+  }
+
+  /* Input base */
+  .input-base {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700
+           bg-white dark:bg-gray-800 text-gray-900 dark:text-white
+           placeholder-gray-400 dark:placeholder-gray-500
+           focus:outline-none focus:ring-2 focus:ring-red-500/40 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  /* Primary button base */
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           font-semibold text-sm transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Chunky 3D buttons (Duolingo-style tactile feedback with Indigo/Violet brand CTA) */
+  .btn-3d {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    user-select: none;
+    cursor: pointer;
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-3d:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-3d:active {
+    transform: translateY(2px);
+  }
+
+  /* Primary CTA: Indigo / Violet Gradient with Darker Indigo Bottom Bevel */
+  .btn-3d-primary,
+  .btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    user-select: none;
+    cursor: pointer;
+    background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+    color: #ffffff;
+    border: 1px solid #4338ca;
+    box-shadow: 0 4px 0 #3730a3, 0 8px 16px rgba(79, 70, 229, 0.25);
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-3d-primary:hover,
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #3730a3, 0 12px 20px rgba(79, 70, 229, 0.35);
+  }
+
+  .btn-3d-primary:active,
+  .btn-primary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #3730a3, 0 4px 8px rgba(79, 70, 229, 0.2);
+  }
+
+  /* Secondary CTA: Raised Solid Look with Theme Surface & Border Bevel */
+  .btn-3d-secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    user-select: none;
+    cursor: pointer;
+    background: hsl(var(--surface));
+    color: hsl(var(--foreground));
+    border: 2px solid hsl(var(--border));
+    box-shadow: 0 4px 0 hsl(var(--border));
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
+  }
+
+  .btn-3d-secondary:hover {
+    transform: translateY(-2px);
+    background: hsl(var(--muted));
+    box-shadow: 0 6px 0 hsl(var(--border));
+  }
+
+  .btn-3d-secondary:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 hsl(var(--border));
+  }
+
+  /* Page container */
+  .page-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6;
+  }
+
+  /* Section header */
+  .section-header {
+    @apply text-2xl font-bold text-gray-900 dark:text-white mb-1;
+  }
+
+  .section-subtext {
+    @apply text-sm text-gray-500 dark:text-gray-400;
+  }
+
+  /* Generic surface card — the "adaptable" replacement for scattered
+     `isDark ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'` ternaries. */
+  .card-surface {
+    @apply bg-white dark:bg-gray-900/80 border border-gray-100 dark:border-gray-800;
+  }
+
+  /* Standard widget card: the rounded/border/shadow shell used by every
+     dashboard widget and content panel. Driven entirely by the
+     --surface / --border tokens, so it needs zero theme-aware JS. */
+  .card {
+    @apply rounded-2xl border border-border bg-surface shadow-card overflow-hidden;
+  }
+
+  /* Header row inside a .card — icon badge + title/subtitle + optional trailing slot */
+  .card-header {
+    @apply flex items-center gap-3 px-5 py-4 border-b border-border;
+  }
+
+  .card-body {
+    @apply p-5;
+  }
+
+  /* Small square/rounded icon badge. Pair with a TINTS.<color>.iconBg/iconText
+     pair from src/config/sections.js for a section-specific accent. */
+  .icon-badge {
+    @apply w-9 h-9 rounded-xl flex items-center justify-center shrink-0;
+  }
+
+  /* Sidebar / mobile-nav link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+           text-muted-foreground transition-all duration-150
+           hover:bg-muted hover:text-foreground;
+  }
+
+  .nav-link-active {
+    @apply bg-primary/10 text-primary border border-primary/20
+           hover:bg-primary/10 hover:text-primary;
+  }
+}
+
+/* ============================================
+   TAILWIND UTILITIES LAYER EXTENSIONS
+   ============================================ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Japanese font utility */
+  .font-jp {
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  }
+
+  /* Transition preset */
+  .transition-base {
+    transition: all 0.2s ease;
+  }
+}
+
+/* ============================================
+   SETTINGS-DRIVEN GLOBAL OVERRIDES
+   Applied by settingsStore.js via classes/attrs on <html>
+   ============================================ */
+
+/* "Animations" toggle OFF — collapse all motion site-wide,
+   same technique as the standard prefers-reduced-motion query. */
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* "Compact Mode" toggle ON — tighten the standard card/section rhythm. */
+html.compact .card-body {
+  padding: 0.875rem;
+}
+html.compact .card-header {
+  padding: 0.75rem 0.875rem;
+}
+html.compact .nav-link {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* "Font Size" setting — scales the root size; every rem-based Tailwind
+   utility (text-sm, text-base, p-4, etc.) inherits from this. */
+html[data-font-size='small'] {
+  font-size: 14px;
+}
+html[data-font-size='medium'] {
+  font-size: 16px;
+}
+html[data-font-size='large'] {
+  font-size: 18px;
+}
+
+/* ============================================
+   AI SENSEI TARGET HIGHLIGHT EFFECT
+   ============================================ */
+@keyframes sensei-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6), 0 0 15px rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(168, 85, 247, 0.3), 0 0 25px rgba(251, 191, 36, 0.7);
+  }
+}
+
+.sensei-highlighted-target {
+  position: relative;
+  animation: sensei-glow 2s infinite ease-in-out !important;
+  border-color: #a855f7 !important;
+  z-index: 40 !important;
+}

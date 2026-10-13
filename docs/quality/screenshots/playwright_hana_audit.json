@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-13T10:43:58.441Z",
+  "landingPage": {
+    "isCharacterPresent": true,
+    "initialStatus": "Welcoming you\n•\nこんにちは！",
+    "happyStatus": "Welcoming you\n•\nこんにちは！",
+    "canvasCount": 0
+  },
+  "kanaStudio": {
+    "isKanaAvatarVisible": false
+  },
+  "conversationPractice": {
+    "isConvHanaVisible": true
+  },
+  "reducedMotion": {
+    "animationStyle": "none"
+  },
+  "mobileResponsive": {
+    "isMobileHanaVisible": true,
+    "hasHorizontalOverflow": false
+  },
+  "zeroCanvasAudit": {
+    "landing": 0,
+    "reading": 0
+  },
+  "threeJsDeferred": true,
+  "threeJsRequests": []
+}

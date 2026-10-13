@@ -1,0 +1,9 @@
+{
+  "fps": "60.0",
+  "jsHeapMB": "75.9",
+  "glbLoadTimeMs": "376.9",
+  "glbRequests": 0,
+  "supabaseRequests": 0,
+  "consoleErrors": 2,
+  "status": "EXPERIENCE_REFINEMENT_PASS"
+}

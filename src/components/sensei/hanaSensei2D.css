@@ -1,0 +1,224 @@
+/* src/components/sensei/hanaSensei2D.css */
+/* ══════════════════════════════════════════════════════════════════════════════
+   HANA-SENSEI 2D CHARACTER ANIMATION SYSTEM
+   7 Canonical States: idle, greeting, listening, thinking, happy, encouraging, celebrating
+   Hardware-accelerated CSS transforms with graceful reduced-motion fallbacks.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Idle: Gentle, restorative breathing with subtle ambient sway ────────── */
+@keyframes hana-2d-idle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.8deg) scale(1.01);
+  }
+}
+
+/* ── 2. Greeting: Welcoming anticipation, friendly wave tilt ───────────────── */
+@keyframes hana-2d-greeting {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-2deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-4px) rotate(2.5deg) scale(1.02);
+  }
+}
+
+/* ── 3. Listening: Focused, attentive forward lean ─────────────────────────── */
+@keyframes hana-2d-listening {
+  0%, 100% {
+    transform: translateY(0px) rotate(1.2deg) scale(1);
+  }
+  50% {
+    transform: translateY(-3px) rotate(1.8deg) scale(1.015);
+  }
+}
+
+/* ── 4. Thinking: Contemplative, gentle head tilt with slow rhythmic pulse ── */
+@keyframes hana-2d-thinking {
+  0%, 100% {
+    transform: translateY(0px) rotate(-2.5deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-1.5deg);
+  }
+}
+
+/* ── 5. Happy: Upbeat joyful bounce, celebration of success ─────────────────── */
+@keyframes hana-2d-happy {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.04) rotate(1.5deg);
+  }
+  60% {
+    transform: translateY(-3px) scale(1.01) rotate(-1deg);
+  }
+}
+
+/* ── 6. Encouraging: Reassuring nod, gentle warmth ─────────────────────────── */
+@keyframes hana-2d-encouraging {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  40% {
+    transform: translateY(-6px) scale(1.02) rotate(-1deg);
+  }
+  80% {
+    transform: translateY(-2px) scale(1) rotate(0.5deg);
+  }
+}
+
+/* ── 7. Celebrating: Energetic triumph, milestone leap ─────────────────────── */
+@keyframes hana-2d-celebrating {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-14px) scale(1.06) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.03) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(-12px) scale(1.05) rotate(1deg);
+  }
+}
+
+/* ── Auxiliary Micro-Animations ────────────────────────────────────────────── */
+@keyframes thought-bubble-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-4px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes listening-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes confetti-spark {
+  0% {
+    transform: translate(0, 0) scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(var(--tx, 20px), var(--ty, -25px)) scale(1.2) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* ── State Class Assignments ───────────────────────────────────────────────── */
+.hana-state-idle .hana-img {
+  animation: hana-2d-idle 4.8s ease-in-out infinite;
+}
+
+.hana-state-greeting .hana-img {
+  animation: hana-2d-greeting 3.2s ease-in-out infinite;
+}
+
+.hana-state-listening .hana-img {
+  animation: hana-2d-listening 3.6s ease-in-out infinite;
+}
+
+.hana-state-thinking .hana-img {
+  animation: hana-2d-thinking 4s ease-in-out infinite;
+}
+
+.hana-state-happy .hana-img {
+  animation: hana-2d-happy 2.4s ease-in-out infinite;
+}
+
+.hana-state-encouraging .hana-img {
+  animation: hana-2d-encouraging 3s ease-in-out infinite;
+}
+
+.hana-state-celebrating .hana-img {
+  animation: hana-2d-celebrating 2s ease-in-out infinite;
+}
+
+/* ── Aura & Backdrop Lighting by State ─────────────────────────────────────── */
+.hana-aura-idle {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(16, 185, 129, 0) 70%);
+}
+
+.hana-aura-greeting {
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.18) 0%, rgba(244, 63, 94, 0) 70%);
+}
+
+.hana-aura-listening {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+.hana-aura-thinking {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0) 70%);
+}
+
+.hana-aura-happy {
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.22) 0%, rgba(234, 179, 8, 0) 70%);
+}
+
+.hana-aura-encouraging {
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.2) 0%, rgba(244, 63, 94, 0) 70%);
+}
+
+.hana-aura-celebrating {
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.25) 0%, rgba(234, 179, 8, 0.15) 45%, rgba(244, 63, 94, 0) 70%);
+}
+
+/* Interactive hover micro-interaction */
+.hana-interactive:hover .hana-img {
+  filter: drop-shadow(0 14px 28px rgba(244, 63, 94, 0.35));
+}
+
+/* ── Accessibility & Reduced Motion Overrides ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hana-state-idle .hana-img,
+  .hana-state-greeting .hana-img,
+  .hana-state-listening .hana-img,
+  .hana-state-thinking .hana-img,
+  .hana-state-happy .hana-img,
+  .hana-state-encouraging .hana-img,
+  .hana-state-celebrating .hana-img,
+  .hana-confetti-particle,
+  .hana-thought-dot {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+html.reduce-motion .hana-state-idle .hana-img,
+html.reduce-motion .hana-state-greeting .hana-img,
+html.reduce-motion .hana-state-listening .hana-img,
+html.reduce-motion .hana-state-thinking .hana-img,
+html.reduce-motion .hana-state-happy .hana-img,
+html.reduce-motion .hana-state-encouraging .hana-img,
+html.reduce-motion .hana-state-celebrating .hana-img,
+html.reduce-motion .hana-confetti-particle,
+html.reduce-motion .hana-thought-dot {
+  animation: none !important;
+  transform: none !important;
+}

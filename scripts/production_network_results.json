@@ -1,0 +1,137 @@
+{
+  "readingResult": {
+    "label": "/reading (Catalog)",
+    "url": "http://localhost:4173/reading",
+    "totalJsSize": 945794,
+    "totalCssSize": 145915,
+    "threeJsRequested": false,
+    "chartsRequested": false,
+    "jsRequests": [
+      {
+        "url": "http://localhost:4173/assets/zustand-CPN_7JAE.js",
+        "status": 200,
+        "size": 4749,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/query-Dh1Ac5eT.js",
+        "status": 200,
+        "size": 41865,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/router-B3J4oDkH.js",
+        "status": 200,
+        "size": 346785,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/index-B1bT8gN-.js",
+        "status": 200,
+        "size": 510149,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/external-link-BHa2nLza.js",
+        "status": 200,
+        "size": 419,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/send-DOwEOMR5.js",
+        "status": 200,
+        "size": 331,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/minimize-2-DikkuZrQ.js",
+        "status": 200,
+        "size": 884,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/senseiStore-DBkZlWny.js",
+        "status": 200,
+        "size": 7565,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/SenseiCompanion-YABQnXpD.js",
+        "status": 200,
+        "size": 33047,
+        "type": "js"
+      }
+    ]
+  },
+  "storyResult": {
+    "label": "/reading/story_n5_01 (Reader)",
+    "url": "http://localhost:4173/reading/story_n5_01",
+    "totalJsSize": 945794,
+    "totalCssSize": 145915,
+    "threeJsRequested": false,
+    "chartsRequested": false,
+    "jsRequests": [
+      {
+        "url": "http://localhost:4173/assets/zustand-CPN_7JAE.js",
+        "status": 200,
+        "size": 4749,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/query-Dh1Ac5eT.js",
+        "status": 200,
+        "size": 41865,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/router-B3J4oDkH.js",
+        "status": 200,
+        "size": 346785,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/index-B1bT8gN-.js",
+        "status": 200,
+        "size": 510149,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/external-link-BHa2nLza.js",
+        "status": 200,
+        "size": 419,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/minimize-2-DikkuZrQ.js",
+        "status": 200,
+        "size": 884,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/send-DOwEOMR5.js",
+        "status": 200,
+        "size": 331,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/senseiStore-DBkZlWny.js",
+        "status": 200,
+        "size": 7565,
+        "type": "js"
+      },
+      {
+        "url": "http://localhost:4173/assets/SenseiCompanion-YABQnXpD.js",
+        "status": 200,
+        "size": 33047,
+        "type": "js"
+      }
+    ]
+  },
+  "onDemandSensei": {
+    "initialThreeLoaded": false,
+    "afterClickThreeLoaded": true
+  },
+  "authSenseiPage": {
+    "threeOnSenseiPage": true
+  }
+}

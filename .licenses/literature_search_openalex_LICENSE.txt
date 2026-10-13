@@ -1,0 +1,10 @@
+OpenAlex Terms Notification
+===========================
+
+The user was notified to review the OpenAlex terms of use at:
+https://developers.openalex.org/
+
+The user was also informed to always check the license of individual
+papers retrieved by this skill for any restrictions on use.
+
+Notification timestamp: 2026-10-11T12:40:00+05:30

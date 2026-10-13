@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-10-13T09:02:31.110Z",
+  "journeys": {
+    "landing": {
+      "heroTitle": "Master Japanese as a Living Language",
+      "avatar2DVisible": true,
+      "speechBalloonVisible": true,
+      "showcaseLevels": {
+        "N5": "毎朝七時に起きて、学校へ行きます。",
+        "N4": "京都駅に着いた時、少し心配になりました。",
+        "N3": "日本の文化についてもっと深く理解したいです。",
+        "N2": "プロジェクトの進捗に応じて計画を見直す必要があります。",
+        "N1": "言葉の持つ多様な響きを味わいながら対話を深めます。"
+      }
+    },
+    "guestProtection": {
+      "readingAccessible": true,
+      "kanaAccessible": true,
+      "dashboardRedirectedToLogin": true,
+      "conversationRedirectedToLogin": true
+    },
+    "auth": {
+      "registeredUser": "e2e_learner_1791882161376@example.com",
+      "dashboardReached": true,
+      "loginBounced": true,
+      "registerBounced": true
+    },
+    "conversationScenario": {
+      "messageExchangeSuccess": true,
+      "completionTracked": true,
+      "reloadPersistenceWorking": true
+    },
+    "conversationFreeTalk": {
+      "levelSwitchSuccess": true,
+      "grammarCorrectionRendered": true
+    }
+  },
+  "security": {
+    "/api/ai/chat": 401,
+    "/api/progress/xp": 401,
+    "/api/sensei/chat": 401,
+    "/api/reading/progress": 401
+  },
+  "performance": {
+    "threeJsDeferred": true
+  },
+  "accessibility": {
+    "mobileResponsive": {
+      "landingNoOverflow": true,
+      "readingNoOverflow": true
+    }
+  },
+  "failures": []
+}

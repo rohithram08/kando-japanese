@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6366f1" id="theme-color-meta" />
+    <meta
+      name="description"
+      content="NihonGo Master - Learn Japanese from N5 to N1 for free.
+               Kanji, grammar, vocabulary, drama, and AI conversation practice."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="NihonGo Master - Free Japanese Learning" />
+    <meta property="og:description" content="Learn Japanese from N5 to N1 with kanji, grammar, drama and AI chat" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://nihongo-master.app" />
+    <meta property="og:site_name" content="NihonGo Master" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NihonGo Master - Free Japanese Learning" />
+    <meta name="twitter:description" content="Learn Japanese from N5 to N1 with kanji, grammar, drama and AI chat" />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- PWA / Mobile -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="NihonGo Master" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>🎌 NihonGo Master - Learn Japanese Daily</title>
+
+    <!-- ============================================================
+         THEME INIT — Synchronous, zero-flash
+         Reads from Zustand-persisted key, defaults to 'dark'.
+         Uses a CSS class on <html> — never inline styles.
+         ============================================================ -->
+    <script>
+      (function () {
+        var STORAGE_KEY = 'nihongo-theme';
+
+        function getSavedTheme() {
+          try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return 'light';
+            var parsed = JSON.parse(raw);
+            return (parsed && parsed.state && parsed.state.theme) || 'light';
+          } catch (e) {
+            return 'light';
+          }
+        }
+
+        function prefersDark() {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        function applyTheme(theme) {
+          var root = document.documentElement;
+          var isDark = theme === 'dark' || (theme === 'system' && prefersDark());
+          root.classList.toggle('dark', isDark);
+          root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          root.setAttribute('data-theme-setting', theme);
+          var meta = document.getElementById('theme-color-meta');
+          /* Brand-consistent theme color — indigo, not red */
+          if (meta) meta.content = isDark ? '#0f172a' : '#6366f1';
+          root.style.colorScheme = isDark ? 'dark' : 'light';
+        }
+
+        applyTheme(getSavedTheme());
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+          if (getSavedTheme() === 'system') applyTheme('system');
+        });
+
+        /* Expose for app-level theme toggling */
+        window.__applyTheme = applyTheme;
+      })();
+    </script>
+
+    <!-- ============================================================
+         LOADING SCREEN STYLES — Inline for instant render.
+         Uses indigo/purple to match the actual app brand.
+         Light mode and dark mode are visually distinct.
+         ============================================================ -->
+    <style>
+      /* ── CSS Custom Properties — Light mode (default) ── */
+      :root {
+        /* Warm off-white background — clearly distinct from dark mode */
+        --loader-bg-start: #f0f0ff;
+        --loader-bg-end: #faf5ff;
+        --loader-bg-radial: rgba(99, 102, 241, 0.06);
+        --loader-text-primary: #1e1b4b;
+        --loader-text-secondary: #6b7280;
+        --loader-accent: #6366f1;
+        --loader-accent-secondary: #8b5cf6;
+        --loader-accent-gradient-start: #6366f1;
+        --loader-accent-gradient-end: #8b5cf6;
+        --loader-progress-track: #e0e7ff;
+        --loader-tag-bg: #6366f1;
+        --loader-tag-text: #ffffff;
+        --loader-card-bg: rgba(255, 255, 255, 0.75);
+        --loader-card-border: rgba(99, 102, 241, 0.15);
+        --loader-card-shadow: rgba(99, 102, 241, 0.1);
+        --loader-sakura-color: rgba(139, 92, 246, 0.18);
+        --loader-ring-color: rgba(99, 102, 241, 0.12);
+        --loader-hint-color: #9ca3af;
+        --loader-kanji-color: rgba(99, 102, 241, 0.05);
+        --loader-status-dot: #10b981;
+        --loader-glow: rgba(99, 102, 241, 0.25);
+      }
+
+      /* ── Dark mode overrides ── */
+      html.dark {
+        --loader-bg-start: #0f172a;
+        --loader-bg-end: #1e1b4b;
+        --loader-bg-radial: rgba(99, 102, 241, 0.05);
+        --loader-text-primary: #f1f5f9;
+        --loader-text-secondary: #94a3b8;
+        --loader-accent: #818cf8;
+        --loader-accent-secondary: #a78bfa;
+        --loader-accent-gradient-start: #6366f1;
+        --loader-accent-gradient-end: #a855f7;
+        --loader-progress-track: rgba(99, 102, 241, 0.15);
+        --loader-tag-bg: rgba(99, 102, 241, 0.2);
+        --loader-tag-text: #c7d2fe;
+        --loader-card-bg: rgba(30, 27, 75, 0.4);
+        --loader-card-border: rgba(99, 102, 241, 0.15);
+        --loader-card-shadow: rgba(99, 102, 241, 0.1);
+        --loader-sakura-color: rgba(139, 92, 246, 0.12);
+        --loader-ring-color: rgba(99, 102, 241, 0.06);
+        --loader-hint-color: #64748b;
+        --loader-kanji-color: rgba(99, 102, 241, 0.03);
+        --loader-status-dot: #34d399;
+        --loader-glow: rgba(99, 102, 241, 0.3);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Scroll lock lives on a class, not the element itself */
+      body.loading-active {
+        overflow: hidden;
+      }
+
+      /* ── Loading screen ── */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(160deg, var(--loader-bg-start) 0%, var(--loader-bg-end) 100%);
+        overflow: hidden;
+        transition:
+          opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+          visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Radial glow */
+      #loading-screen::before {
+        content: '';
+        position: absolute;
+        width: 150vmax;
+        height: 150vmax;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, var(--loader-bg-radial) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      /* Background kanji */
+      #loading-screen::after {
+        content: '学';
+        position: absolute;
+        font-family: 'Noto Sans JP', serif;
+        font-size: clamp(15rem, 40vw, 30rem);
+        font-weight: 900;
+        color: var(--loader-kanji-color);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-12deg);
+        pointer-events: none;
+        user-select: none;
+        line-height: 1;
+        z-index: 0;
+        animation: kanjiBreath 6s ease-in-out infinite;
+      }
+
+      @keyframes kanjiBreath {
+        0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) rotate(-12deg) scale(1); }
+        50%       { opacity: 1;   transform: translate(-50%, -50%) rotate(-10deg) scale(1.03); }
+      }
+
+      /* ── Phase states ── */
+      #loading-screen.phase-completing .loader-progress-bar {
+        width: 100% !important;
+        animation: none !important;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #loading-screen.phase-completing .loader-status-text {
+        color: var(--loader-status-dot);
+      }
+
+      #loading-screen.phase-exiting {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.03);
+      }
+
+      #loading-screen.phase-exiting .loader-content {
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.4s ease;
+      }
+
+      /* ── Content wrapper ── */
+      .loader-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        animation: loaderFadeIn 0.6s ease-out both;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      @keyframes loaderFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ── Logo container with rings ── */
+      .loader-logo-wrap {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .loader-logo-ring {
+        position: absolute;
+        border-radius: 50%;
+        border: 2px solid var(--loader-ring-color);
+        animation: ringPulse 2.4s ease-in-out infinite;
+      }
+      .loader-logo-ring:nth-child(1) { width: 100%;  height: 100%;  animation-delay: 0s; }
+      .loader-logo-ring:nth-child(2) { width: 130%;  height: 130%;  animation-delay: 0.4s; opacity: 0.6; }
+      .loader-logo-ring:nth-child(3) { width: 160%;  height: 160%;  animation-delay: 0.8s; opacity: 0.3; }
+
+      @keyframes ringPulse {
+        0%, 100% { transform: scale(1);    opacity: 0.6; }
+        50%       { transform: scale(1.08); opacity: 0.2; }
+      }
+
+      /* ── Emoji ── */
+      .loader-emoji {
+        position: relative;
+        font-size: 3.5rem;
+        line-height: 1;
+        user-select: none;
+        animation: emojiFloat 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 20px var(--loader-glow));
+        z-index: 1;
+      }
+
+      @keyframes emojiFloat {
+        0%, 100% { transform: translateY(0)  scale(1); }
+        50%       { transform: translateY(-8px) scale(1.05); }
+      }
+
+      /* ── Title ── */
+      .loader-title {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin: 0 0 0.3rem;
+        background: linear-gradient(135deg, var(--loader-text-primary) 0%, var(--loader-accent) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: staggerIn 0.6s ease-out 0.15s both;
+      }
+
+      /* ── Subtitle ── */
+      .loader-subtitle {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: clamp(0.95rem, 3vw, 1.15rem);
+        font-weight: 500;
+        margin: 0 0 1.2rem;
+        color: var(--loader-accent);
+        opacity: 0.85;
+        letter-spacing: 0.08em;
+        animation: staggerIn 0.6s ease-out 0.3s both;
+      }
+
+      @keyframes staggerIn {
+        from { opacity: 0; transform: translateY(10px); filter: blur(4px); }
+        to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+      }
+
+      /* ── JLPT level badges ── */
+      .loader-levels {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        animation: staggerIn 0.6s ease-out 0.4s both;
+      }
+
+      .loader-level-tag {
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 99px;
+        color: var(--loader-tag-text);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: var(--loader-tag-bg);
+        cursor: default;
+        animation: tagPop 0.4s ease-out both;
+      }
+      .loader-level-tag:nth-child(1) { animation-delay: 0.5s; }
+      .loader-level-tag:nth-child(2) { animation-delay: 0.6s; }
+      .loader-level-tag:nth-child(3) { animation-delay: 0.7s; }
+      .loader-level-tag:nth-child(4) { animation-delay: 0.8s; }
+      .loader-level-tag:nth-child(5) { animation-delay: 0.9s; }
+
+      @keyframes tagPop {
+        from { opacity: 0; transform: translateY(8px) scale(0.8); }
+        to   { opacity: 1; transform: translateY(0)   scale(1);   }
+      }
+
+      /* ── Glass card ── */
+      .loader-progress-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1.2rem 2rem;
+        border-radius: 16px;
+        background: var(--loader-card-bg);
+        border: 1px solid var(--loader-card-border);
+        box-shadow: 0 8px 32px var(--loader-card-shadow);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        animation: staggerIn 0.6s ease-out 0.5s both;
+        min-width: 260px;
+      }
+
+      /* ── Progress bar ── */
+      .loader-progress-wrap {
+        width: 100%;
+        height: 5px;
+        border-radius: 99px;
+        overflow: hidden;
+        background: var(--loader-progress-track);
+        position: relative;
+      }
+
+      .loader-progress-bar {
+        height: 100%;
+        width: 0%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, var(--loader-accent-gradient-start), var(--loader-accent-gradient-end));
+        position: relative;
+        overflow: hidden;
+        transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .loader-progress-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: shimmerBar 1.5s ease-in-out infinite;
+      }
+
+      /* Named separately to avoid conflict with app's shimmer utility */
+      @keyframes shimmerBar {
+        0%   { left: -50%; }
+        100% { left: 150%; }
+      }
+
+      /* ── Status ── */
+      .loader-status {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--loader-text-secondary);
+        min-width: 180px;
+        justify-content: center;
+      }
+
+      .loader-status-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--loader-status-dot);
+        animation: statusPulse 1.2s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes statusPulse {
+        0%, 100% { opacity: 1; transform: scale(1);   }
+        50%       { opacity: 0.4; transform: scale(0.8); }
+      }
+
+      .loader-status-text {
+        font-family: 'Inter', sans-serif;
+        transition: opacity 0.3s ease, color 0.3s ease;
+      }
+
+      .loader-ellipsis::after {
+        content: '';
+        animation: ellipsis 1.5s steps(4, end) infinite;
+      }
+
+      @keyframes ellipsis {
+        0%  { content: '';    }
+        25% { content: '.';   }
+        50% { content: '..';  }
+        75% { content: '...'; }
+      }
+
+      /* ── Feature pills ── */
+      .loader-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        max-width: 320px;
+        animation: staggerIn 0.6s ease-out 0.6s both;
+      }
+
+      .loader-feature-pill {
+        font-size: 0.65rem;
+        font-weight: 500;
+        padding: 3px 10px;
+        border-radius: 99px;
+        color: var(--loader-text-secondary);
+        border: 1px solid var(--loader-card-border);
+        background: var(--loader-card-bg);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .loader-feature-pill-icon {
+        margin-right: 3px;
+      }
+
+      /* ── Tip ── */
+      .loader-tip {
+        font-size: 0.75rem;
+        color: var(--loader-text-secondary);
+        text-align: center;
+        max-width: 280px;
+        margin-top: 1.5rem;
+        font-style: italic;
+        opacity: 0.7;
+        min-height: 2.5em;
+        animation: staggerIn 0.6s ease-out 0.7s both;
+      }
+
+      .loader-tip-label {
+        font-weight: 700;
+        font-style: normal;
+        color: var(--loader-accent);
+        margin-right: 0.25rem;
+      }
+
+      .loader-tip-text {
+        transition: opacity 0.4s ease;
+      }
+
+      /* ── Sakura / particle decoration ── */
+      .sakura-container {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .sakura-petal {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50% 0 50% 50%;
+        background: var(--loader-sakura-color);
+        opacity: 0;
+        animation: sakuraFall linear infinite;
+      }
+
+      .sakura-petal:nth-child(1)  { left: 8%;  width: 8px;  height: 8px;  animation-duration: 8s;    animation-delay: 0s;   }
+      .sakura-petal:nth-child(2)  { left: 20%; width: 12px; height: 12px; animation-duration: 10s;   animation-delay: 1s;   }
+      .sakura-petal:nth-child(3)  { left: 35%; width: 6px;  height: 6px;  animation-duration: 7s;    animation-delay: 2s;   }
+      .sakura-petal:nth-child(4)  { left: 50%; width: 10px; height: 10px; animation-duration: 9s;    animation-delay: 0.5s; }
+      .sakura-petal:nth-child(5)  { left: 65%; width: 7px;  height: 7px;  animation-duration: 11s;   animation-delay: 3s;   }
+      .sakura-petal:nth-child(6)  { left: 78%; width: 9px;  height: 9px;  animation-duration: 8.5s;  animation-delay: 1.5s; }
+      .sakura-petal:nth-child(7)  { left: 5%;  width: 11px; height: 11px; animation-duration: 9.5s;  animation-delay: 4s;   }
+      .sakura-petal:nth-child(8)  { left: 90%; width: 8px;  height: 8px;  animation-duration: 7.5s;  animation-delay: 2.5s; }
+      .sakura-petal:nth-child(9)  { left: 45%; width: 5px;  height: 5px;  animation-duration: 12s;   animation-delay: 0.8s; }
+      .sakura-petal:nth-child(10) { left: 72%; width: 14px; height: 14px; animation-duration: 10.5s; animation-delay: 3.5s; }
+
+      @keyframes sakuraFall {
+        0%   { top: -5%;  opacity: 0;   transform: rotate(0deg)   translateX(0);    }
+        10%  {            opacity: 0.7;                                               }
+        90%  {            opacity: 0.7;                                               }
+        100% { top: 105%; opacity: 0;   transform: rotate(720deg) translateX(80px); }
+      }
+
+      /* ── Footer ── */
+      .loader-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 1.5rem;
+        z-index: 1;
+        animation: staggerIn 0.6s ease-out 1s both;
+      }
+
+      .loader-footer-text {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: var(--loader-hint-color);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .loader-footer-version {
+        font-size: 0.6rem;
+        color: var(--loader-hint-color);
+        opacity: 0.6;
+      }
+
+      /* ── Responsive ── */
+      @media (max-width: 480px) {
+        .loader-logo-wrap    { width: 100px; height: 100px; margin-bottom: 1.2rem; }
+        .loader-emoji        { font-size: 2.8rem; }
+        .loader-progress-card{ min-width: 200px; padding: 1rem 1.5rem; }
+        .loader-features     { max-width: 260px; }
+        .loader-tip          { max-width: 240px; font-size: 0.7rem; }
+      }
+
+      @media (max-height: 600px) {
+        .loader-logo-wrap  { width: 80px; height: 80px; margin-bottom: 0.8rem; }
+        .loader-emoji      { font-size: 2.2rem; }
+        .loader-levels     { margin-bottom: 1.2rem; }
+        .loader-features   { display: none; }
+        .loader-tip        { display: none; }
+      }
+
+      /* ── Reduced motion ── */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .sakura-container { display: none; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- No-JS fallback -->
+    <noscript>
+      <div
+        style="
+          position: fixed;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: #f0f0ff;
+          color: #1e1b4b;
+          font-family: 'Inter', sans-serif;
+          text-align: center;
+          padding: 2rem;
+          z-index: 99999;
+        "
+      >
+        <div style="font-size: 3rem; margin-bottom: 1rem">🎌</div>
+        <h1 style="font-size: 1.5rem; margin: 0 0 0.5rem">NihonGo Master</h1>
+        <p style="opacity: 0.7; max-width: 300px">
+          JavaScript is required. Please enable it and reload.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- ============================================================
+         LOADING SCREEN
+         ============================================================ -->
+    <div id="loading-screen" role="status" aria-label="Loading NihonGo Master">
+      <!-- Sakura particles -->
+      <div class="sakura-container" aria-hidden="true">
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+        <div class="sakura-petal"></div>
+      </div>
+
+      <div class="loader-content">
+        <!-- Logo with rings -->
+        <div class="loader-logo-wrap" aria-hidden="true">
+          <div class="loader-logo-ring"></div>
+          <div class="loader-logo-ring"></div>
+          <div class="loader-logo-ring"></div>
+          <div class="loader-emoji">🎌</div>
+        </div>
+
+        <h1 class="loader-title">NihonGo Master</h1>
+        <p class="loader-subtitle">日本語を学ぼう</p>
+
+        <div class="loader-levels" aria-hidden="true">
+          <span class="loader-level-tag">N5</span>
+          <span class="loader-level-tag">N4</span>
+          <span class="loader-level-tag">N3</span>
+          <span class="loader-level-tag">N2</span>
+          <span class="loader-level-tag">N1</span>
+        </div>
+
+        <div class="loader-progress-card">
+          <div
+            class="loader-progress-wrap"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-label="Loading progress"
+            id="loader-progress"
+          >
+            <div class="loader-progress-bar" id="loader-bar"></div>
+          </div>
+          <div class="loader-status">
+            <div class="loader-status-dot" id="loader-dot"></div>
+            <span class="loader-status-text" id="loader-status-text">
+              <span class="loader-ellipsis">Initializing</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="loader-features" aria-hidden="true">
+          <span class="loader-feature-pill"><span class="loader-feature-pill-icon">📝</span>Kanji</span>
+          <span class="loader-feature-pill"><span class="loader-feature-pill-icon">📖</span>Grammar</span>
+          <span class="loader-feature-pill"><span class="loader-feature-pill-icon">🗣️</span>AI Chat</span>
+          <span class="loader-feature-pill"><span class="loader-feature-pill-icon">🎬</span>Drama</span>
+          <span class="loader-feature-pill"><span class="loader-feature-pill-icon">🧠</span>SRS Review</span>
+        </div>
+
+        <div class="loader-tip" id="loader-tip">
+          <span class="loader-tip-label">💡 Tip:</span>
+          <span class="loader-tip-text" id="loader-tip-text">
+            Practice a little every day for the best results!
+          </span>
+        </div>
+      </div>
+
+      <div class="loader-footer">
+        <span class="loader-footer-text">Free Japanese Learning Platform</span>
+        <span class="loader-footer-version">v2.0.0</span>
+      </div>
+    </div>
+
+    <!-- React mount point -->
+    <div id="root"></div>
+
+    <!-- App entry -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ============================================================
+         LOADING SCREEN STATE MACHINE
+         ============================================================ -->
+    <script>
+      (function () {
+        /* Lock scroll via class — never permanent CSS */
+        document.body.classList.add('loading-active');
+
+        var state = 'loading';
+        var appReady = false;
+        var minimumTimeReached = false;
+
+        /* ── Config ── */
+        var MINIMUM_DISPLAY_MS  = 2200;
+        var COMPLETING_DELAY_MS = 600;
+        var EXIT_DURATION_MS    = 800;
+        var HARD_TIMEOUT_MS     = 10000;
+        var TIP_ROTATE_MS       = 4000;
+
+        /* ── Elements ── */
+        var screenEl   = document.getElementById('loading-screen');
+        var barEl      = document.getElementById('loader-bar');
+        var progressEl = document.getElementById('loader-progress');
+        var statusEl   = document.getElementById('loader-status-text');
+        var tipTextEl  = document.getElementById('loader-tip-text');
+        var dotEl      = document.getElementById('loader-dot');
+
+        /* ── Loading phases ── */
+        var phases = [
+          { time: 0,    width: '5%',  value: 5,  text: 'Initializing'        },
+          { time: 400,  width: '15%', value: 15, text: 'Loading core modules' },
+          { time: 800,  width: '30%', value: 30, text: 'Fetching resources'   },
+          { time: 1200, width: '50%', value: 50, text: 'Preparing lessons'    },
+          { time: 1600, width: '65%', value: 65, text: 'Building components'  },
+          { time: 1900, width: '78%', value: 78, text: 'Almost ready'         },
+        ];
+
+        var phaseTimers = [];
+
+        phases.forEach(function (phase) {
+          var timer = setTimeout(function () {
+            if (state !== 'loading') return;
+            if (barEl)      barEl.style.width = phase.width;
+            if (progressEl) progressEl.setAttribute('aria-valuenow', String(phase.value));
+            if (statusEl)   statusEl.innerHTML = '<span class="loader-ellipsis">' + phase.text + '</span>';
+          }, phase.time);
+          phaseTimers.push(timer);
+        });
+
+        /* ── Tip rotation ── */
+        var tips = [
+          'Practice a little every day for the best results!',
+          'Write kanji by hand — muscle memory locks it in.',
+          'Listening to Japanese music helps with pitch accent.',
+          'Start with N5 vocabulary to build a strong foundation.',
+          'Use AI Chat to practice real conversations without fear.',
+          'Watch drama with Japanese subtitles for natural immersion.',
+          'Review SRS cards before new lessons every session.',
+          'Set a daily streak goal and protect it fiercely.',
+          'Spaced repetition adapts to your personal memory curve.',
+          'Shadow native speakers — repeat right after you hear them!',
+        ];
+        var tipIdx = 0;
+
+        var tipInterval = setInterval(function () {
+          tipIdx = (tipIdx + 1) % tips.length;
+          if (tipTextEl) {
+            tipTextEl.style.opacity = '0';
+            setTimeout(function () {
+              if (tipTextEl) {
+                tipTextEl.textContent = tips[tipIdx];
+                tipTextEl.style.opacity = '1';
+              }
+            }, 350);
+          }
+        }, TIP_ROTATE_MS);
+
+        /* ── Minimum display timer ── */
+        setTimeout(function () {
+          minimumTimeReached = true;
+          tryTransition();
+        }, MINIMUM_DISPLAY_MS);
+
+        /* ── State machine ── */
+        function tryTransition() {
+          if (state !== 'loading') return;
+          if (!appReady || !minimumTimeReached) return;
+          toCompleting();
+        }
+
+        function toCompleting() {
+          state = 'completing';
+          phaseTimers.forEach(clearTimeout);
+          clearInterval(tipInterval);
+
+          if (screenEl)   screenEl.classList.add('phase-completing');
+          if (barEl)      barEl.style.width = '100%';
+          if (progressEl) progressEl.setAttribute('aria-valuenow', '100');
+          if (statusEl)   statusEl.innerHTML = '<span style="color:var(--loader-status-dot)">✓ Ready!</span>';
+          if (dotEl) {
+            dotEl.style.animation  = 'none';
+            dotEl.style.opacity    = '1';
+            dotEl.style.transform  = 'scale(1)';
+            dotEl.style.background = 'var(--loader-status-dot)';
+          }
+
+          setTimeout(toExiting, COMPLETING_DELAY_MS);
+        }
+
+        function toExiting() {
+          state = 'exiting';
+          if (screenEl) screenEl.classList.add('phase-exiting');
+          setTimeout(toDone, EXIT_DURATION_MS);
+        }
+
+        function toDone() {
+          state = 'done';
+          /* Restore scrolling */
+          document.body.classList.remove('loading-active');
+          if (screenEl && screenEl.parentNode) {
+            screenEl.parentNode.removeChild(screenEl);
+          }
+        }
+
+        /* ── Public API for app to call when React is mounted ── */
+        window.__dismissLoader = function () {
+          if (state !== 'loading') return;
+          appReady = true;
+          tryTransition();
+        };
+
+        /* ── Fallback: window.load ── */
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            if (!appReady) {
+              appReady = true;
+              tryTransition();
+            }
+          }, 300);
+        });
+
+        /* ── Hard timeout ── */
+        setTimeout(function () {
+          if (state === 'done') return;
+          phaseTimers.forEach(clearTimeout);
+          clearInterval(tipInterval);
+          if (state === 'loading') {
+            appReady = true;
+            minimumTimeReached = true;
+            toCompleting();
+          } else if (state === 'completing' || state === 'exiting') {
+            toDone();
+          }
+        }, HARD_TIMEOUT_MS);
+      })();
+    </script>
+  </body>
+</html>

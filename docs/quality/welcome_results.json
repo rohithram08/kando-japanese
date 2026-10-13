@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-10-13T09:32:47.553Z",
+  "desktop": {
+    "headline": "Master Japanese as a Living Language\nLearn Japanese. Live the Language.",
+    "hanaImage": {
+      "isHanaVisible": true,
+      "naturalDims": {
+        "naturalWidth": 1024,
+        "naturalHeight": 1024,
+        "currentSrc": "http://localhost:3000/images/hana-sensei-welcome.png"
+      }
+    },
+    "sakuraCount": 10,
+    "initialGreeting": "「こんにちは！一緒に日本語を勉強しましょう！」"
+  },
+  "mobile": {
+    "noOverflow": true,
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "hanaVisible": true
+  },
+  "reducedMotion": {
+    "sakuraHidden": true
+  },
+  "network": {
+    "zeroThreeJs": true,
+    "canvasCount": 0
+  },
+  "interactions": {
+    "greetingCycled": true,
+    "kanaClicked": true,
+    "characterClicked": true,
+    "registerNav": true,
+    "loginNav": true,
+    "readingNav": true
+  },
+  "errors": []
+}

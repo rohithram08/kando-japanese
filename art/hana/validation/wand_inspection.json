@@ -1,0 +1,58 @@
+{
+  "files_found": {
+    ".3ds": {
+      "name": "Staff - Harry Potter.3ds",
+      "size": 33950
+    },
+    ".blend": {
+      "name": "Staff - Harry Potter.blend",
+      "size": 541636
+    },
+    ".dae": {
+      "name": "Staff - Harry Potter.dae",
+      "size": 125031
+    },
+    ".fbx": {
+      "name": "Staff - Harry Potter.fbx",
+      "size": 72012
+    },
+    ".mtl": {
+      "name": "Staff - Harry Potter.mtl",
+      "size": 221
+    },
+    ".obj": {
+      "name": "Staff - Harry Potter.obj",
+      "size": 50348
+    },
+    ".ply": {
+      "name": "Staff - Harry Potter.ply",
+      "size": 79067
+    },
+    ".stl": {
+      "name": "Staff - Harry Potter.stl",
+      "size": 84
+    },
+    ".x3d": {
+      "name": "Staff - Harry Potter.x3d",
+      "size": 54711
+    }
+  },
+  "imported_format": ".blend",
+  "imported_file": "Staff - Harry Potter.blend",
+  "mesh_count": 1,
+  "total_vertices": 1056,
+  "total_polygons": 1026,
+  "total_triangles": 2108,
+  "material_count": 1,
+  "material_names": [
+    "Material1"
+  ],
+  "height_m": 262.9719,
+  "height_cm": 26297.2,
+  "render_paths": [
+    "e:\\Nihongo-testing\\nihongo-master\\art\\hana\\validation\\inspect_wand_front.png",
+    "e:\\Nihongo-testing\\nihongo-master\\art\\hana\\validation\\inspect_wand_three_quarter.png",
+    "e:\\Nihongo-testing\\nihongo-master\\art\\hana\\validation\\inspect_wand_side.png",
+    "e:\\Nihongo-testing\\nihongo-master\\art\\hana\\validation\\inspect_wand_closeup.png"
+  ]
+}
