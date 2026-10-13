@@ -188,7 +188,7 @@ describe('LandingPage Component', () => {
 
     expect(screen.getByText(/A Complete Learning Journey/i)).toBeDefined()
     expect(screen.getByText(/Kana Studio & Pronunciation/i)).toBeDefined()
-    expect(screen.getByText(/健太の初めての電車/i)).toBeDefined()
+    expect(screen.getByText(/学生の一日/i)).toBeDefined()
     expect(screen.getByText(/Unified Conversation Practice/i)).toBeDefined()
     expect(screen.getByText(/Spaced Repetition System \(SRS\)/i)).toBeDefined()
   })
