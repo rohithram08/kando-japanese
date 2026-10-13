@@ -55,9 +55,9 @@ const JOURNEY_STEPS = [
     accentColor: '#10b981',
     previewSnippet: {
       type: 'story',
-      title: "健太の初めての電車 (Kenta's First Train)",
-      japanese: '健太は七歳で、今日初めて一人で電車に乗ります。',
-      english: 'Kenta is seven years old and rides the train alone for the first time today.',
+      title: "学生の一日 (A Student's Day)",
+      japanese: '八時半に電車で学校へ行きます。',
+      english: 'At 8:30, I go to school by train.',
     },
   },
   {

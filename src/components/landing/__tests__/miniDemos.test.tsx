@@ -39,7 +39,7 @@ describe('Phase C: 5 Tappable Mini-Demos', () => {
     it('supports furigana toggling and interactive word lookup', () => {
       render(<ReaderMiniDemo />);
 
-      expect(screen.getByText(/健太の初めての電車/i)).toBeDefined();
+      expect(screen.getByText(/学生の一日/i)).toBeDefined();
 
       // Furigana toggle button
       const toggleBtn = screen.getByRole('button', { name: /Hide Furigana/i });

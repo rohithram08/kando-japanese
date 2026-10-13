@@ -15,23 +15,23 @@ const ANNOTATED_WORDS = {
     pitch: 'Heiban (0) ── Flat contour',
     refId: 'n5_vocab_densha',
   },
-  一人: {
-    surface: '一人',
-    reading: 'ひとり',
-    romaji: 'hitori',
-    meaning: 'one person / by oneself',
-    pos: 'noun / adverb · N5',
-    pitch: 'Atamadaka (①) ── Drop on first mora',
-    refId: 'n5_vocab_hitori',
+  学校: {
+    surface: '学校',
+    reading: 'がっこう',
+    romaji: 'gakkou',
+    meaning: 'school',
+    pos: 'noun · N5',
+    pitch: 'Heiban (0) ── Flat contour',
+    refId: 'n5_vocab_gakkou',
   },
-  初めて: {
-    surface: '初めて',
-    reading: 'はじめて',
-    romaji: 'hajimete',
-    meaning: 'for the first time',
-    pos: 'adverb · N5',
-    pitch: 'Nakadaka (②) ── Middle drop',
-    refId: 'n5_vocab_hajimete',
+  行きます: {
+    surface: '行く',
+    reading: 'いきます',
+    romaji: 'ikimasu',
+    meaning: 'to go (polite present)',
+    pos: 'verb · N5',
+    pitch: 'Heiban (0) ── Flat contour',
+    refId: 'n5_vocab_iku',
   },
 }
 
@@ -80,10 +80,7 @@ export default function ReaderMiniDemo() {
       <div className="flex items-center justify-between text-xs font-bold">
         <div className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
           <BookOpen className="w-3.5 h-3.5" />
-          <span>健太の初めての電車 (Kenta's First Train)</span>
-          <span className="text-[9px] font-semibold uppercase tracking-wider bg-emerald-500/10 text-emerald-500 px-1.5 py-0.5 rounded border border-emerald-500/20">
-            Preview Excerpt
-          </span>
+          <span>学生の一日 (A Student's Day)</span>
         </div>
         <div className="flex items-center gap-2">
           {/* Furigana toggle button */}
@@ -114,40 +111,9 @@ export default function ReaderMiniDemo() {
       {/* Interactive Sentence Passage */}
       <div className="p-4 rounded-2xl bg-surface border border-border shadow-sm">
         <div className="text-base sm:text-lg font-bold text-foreground font-jp leading-loose mb-2">
-          <span>健太は七歳で、今日</span>
+          <span>八時半に</span>
 
-          {/* Interactive Word 1: 初めて */}
-          <span
-            onClick={() => handleWordClick('初めて')}
-            className={`inline-block px-1 mx-0.5 rounded-md cursor-pointer transition-all ${
-              activeWordKey === '初めて'
-                ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 ring-2 ring-emerald-500/40'
-                : 'hover:bg-muted'
-            }`}
-          >
-            <ruby>
-              初[はじ]めて
-              {showFurigana && <rt className="text-[10px] text-muted-foreground">はじめて</rt>}
-            </ruby>
-          </span>
-
-          {/* Interactive Word 2: 一人 */}
-          <span
-            onClick={() => handleWordClick('一人')}
-            className={`inline-block px-1 mx-0.5 rounded-md cursor-pointer transition-all ${
-              activeWordKey === '一人'
-                ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 ring-2 ring-emerald-500/40'
-                : 'hover:bg-muted'
-            }`}
-          >
-            <ruby>
-              一人[ひとり]
-              {showFurigana && <rt className="text-[10px] text-muted-foreground">ひとり</rt>}
-            </ruby>
-          </span>
-          <span>で</span>
-
-          {/* Interactive Word 3: 電車 */}
+          {/* Interactive Word 1: 電車 */}
           <span
             data-testid="word-densha"
             onClick={() => handleWordClick('電車')}
@@ -158,22 +124,54 @@ export default function ReaderMiniDemo() {
             }`}
           >
             <ruby>
-              電車[でんしゃ]
+              電車
               {showFurigana && <rt className="text-[10px] text-muted-foreground">でんしゃ</rt>}
             </ruby>
           </span>
-          <span>に乗ります。</span>
+          <span>で</span>
+
+          {/* Interactive Word 2: 学校 */}
+          <span
+            onClick={() => handleWordClick('学校')}
+            className={`inline-block px-1 mx-0.5 rounded-md cursor-pointer transition-all ${
+              activeWordKey === '学校'
+                ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 ring-2 ring-emerald-500/40'
+                : 'hover:bg-muted'
+            }`}
+          >
+            <ruby>
+              学校
+              {showFurigana && <rt className="text-[10px] text-muted-foreground">がっこう</rt>}
+            </ruby>
+          </span>
+          <span>へ</span>
+
+          {/* Interactive Word 3: 行きます */}
+          <span
+            onClick={() => handleWordClick('行きます')}
+            className={`inline-block px-1 mx-0.5 rounded-md cursor-pointer transition-all ${
+              activeWordKey === '行きます'
+                ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 ring-2 ring-emerald-500/40'
+                : 'hover:bg-muted'
+            }`}
+          >
+            <ruby>
+              行きます
+              {showFurigana && <rt className="text-[10px] text-muted-foreground">いきます</rt>}
+            </ruby>
+          </span>
+          <span>。</span>
         </div>
 
         <p className="text-xs text-muted-foreground italic">
-          "Kenta is seven years old and rides the train alone for the first time today."
+          "At 8:30, I go to school by train."
         </p>
 
         {/* Sentence audio playback button */}
         <div className="mt-3 pt-2.5 border-t border-border/60 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => speak('健太は七歳で、今日初めて一人で電車に乗ります。')}
+            onClick={() => speak('八時半に電車で学校へ行きます。')}
             className="flex items-center gap-1.5 text-xs text-primary font-semibold hover:underline"
           >
             <Volume2 className="w-3.5 h-3.5" />
