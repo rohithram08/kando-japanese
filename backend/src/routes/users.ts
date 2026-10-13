@@ -31,6 +31,7 @@ export const updateProfileSchema = z.object({
     username: z.string().min(2).max(100).optional(),
     nativeLanguage: z.string().max(50).optional(),
     currentLevel: z.enum(['N1', 'N2', 'N3', 'N4', 'N5']).optional(),
+    timezone: z.string().max(100).optional(),
     avatarUrl: z
       .string()
       .max(500)
@@ -111,6 +112,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
       username?: string;
       nativeLanguage?: string;
       currentLevel?: string;
+      timezone?: string;
       avatarUrl?: string | null;
       avatarId?: string | null;
     } = {};
@@ -118,6 +120,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
     if (updates.username !== undefined) dbUpdates.username = updates.username;
     if (updates.nativeLanguage !== undefined) dbUpdates.nativeLanguage = updates.nativeLanguage;
     if (updates.currentLevel !== undefined) dbUpdates.currentLevel = updates.currentLevel;
+    if (updates.timezone !== undefined) dbUpdates.timezone = updates.timezone;
     
     // Handle avatarUrl and avatarId coordination deterministically
     if (updates.avatarUrl !== undefined) {

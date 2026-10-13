@@ -108,6 +108,20 @@ const instance: AxiosInstance = axios.create({
   },
 });
 
+// ─── Request Interceptor ─────────────────────────────────────────────────────
+
+instance.interceptors.request.use((config) => {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && config.headers) {
+      config.headers['X-Timezone'] = tz;
+    }
+  } catch {
+    // Ignore environments where Intl is unavailable
+  }
+  return config;
+});
+
 // ─── Response Interceptor ────────────────────────────────────────────────────
 
 instance.interceptors.response.use(

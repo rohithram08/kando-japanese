@@ -13,6 +13,7 @@ export const users = mysqlTable('users', {
   avatarId: varchar('avatar_id', { length: 100 }),
   xpPoints: int('xp_points').default(0).notNull(),
   streakDays: int('streak_days').default(0).notNull(),
+  timezone: varchar('timezone', { length: 100 }).default('UTC'),
   googleId: varchar('google_id', { length: 255 }),  // For Google OAuth
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().onUpdateNow().notNull(),
@@ -60,7 +61,7 @@ export const userVocabularyProgress = mysqlTable('user_vocabulary_progress', {
 // ─── Streaks ─────────────────────────────────────────────────────────────────
 export const userStreaks = mysqlTable('user_streaks', {
   userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
-  date: date('date').notNull(),
+  date: date('date', { mode: 'string' }).notNull(),
   lessonsCompleted: int('lessons_completed').default(0),
   minutesStudied: int('minutes_studied').default(0),
   xp: int('xp').default(0),

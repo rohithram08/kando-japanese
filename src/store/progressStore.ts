@@ -74,6 +74,14 @@ export interface ProgressState {
   reset: () => void;
 }
 
+function getLocalDayString(): string {
+  try {
+    return new Intl.DateTimeFormat('en-CA').format(new Date());
+  } catch {
+    return new Date().toISOString().split('T')[0];
+  }
+}
+
 export const useProgressStore = create<ProgressState>((set, get) => ({
   // ── State ───────────────────────────────────────────────
   streak: 0,
@@ -102,7 +110,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       // Check daily XP cache
       let dailyXP = 0;
       try {
-        const today = new Date().toISOString().split('T')[0];
+        const today = getLocalDayString();
         const cached = JSON.parse(localStorage.getItem('nihongo_daily_xp') || '{}');
         if (cached.date === today) {
           dailyXP = cached.xp || 0;
@@ -163,7 +171,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
 
     // Cache daily XP
     try {
-      const today = new Date().toISOString().split('T')[0];
+      const today = getLocalDayString();
       localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: today, xp: newDaily }));
     } catch (e) {
       console.debug('progressStore mutation handler caught:', e);

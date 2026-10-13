@@ -74,7 +74,13 @@ readingRouter.post(
       const userId = req.user!.userId;
       const { storyId, lastSentenceIndex, status = 'in_progress', quizScore } = req.body;
       const now = new Date();
-      const todayStr = now.toISOString().split('T')[0];
+      let todayStr = now.toISOString().split('T')[0];
+      try {
+        const tz = (req.headers?.['x-timezone'] as string) || 'UTC';
+        todayStr = new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(now);
+      } catch {
+        todayStr = now.toISOString().split('T')[0];
+      }
 
       // Check existing to see if already completed
       const existing = await db.query.userReadingProgress.findFirst({

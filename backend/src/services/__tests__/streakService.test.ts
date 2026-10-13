@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { calculateStreakFromDates } from '../streakService.js';
+import {
+  calculateStreakFromDates,
+  getLocalDateString,
+  getPreviousDayString,
+  getNextDayString,
+  getDaysBetween,
+  isValidTimezone,
+  resolveTimezone,
+} from '../streakService.js';
 
 describe('Streak Calculation Service', () => {
   const mockNow = new Date('2026-08-23T12:00:00.000Z');
@@ -88,5 +96,49 @@ describe('Streak Calculation Service', () => {
     const result = calculateStreakFromDates(dates, mockNow);
     expect(result.currentStreak).toBe(2);
     expect(result.longestStreak).toBe(5);
+  });
+
+  describe('Timezone & Calendar Day Arithmetic', () => {
+    it('correctly formats local date in Asia/Kolkata across UTC boundary', () => {
+      // 8 PM UTC on Oct 13 is 1:30 AM on Oct 14 in India (UTC+5:30)
+      const lateUtc = new Date('2026-10-13T20:00:00.000Z');
+      expect(getLocalDateString(lateUtc, 'UTC')).toBe('2026-10-13');
+      expect(getLocalDateString(lateUtc, 'Asia/Kolkata')).toBe('2026-10-14');
+    });
+
+    it('correctly formats local date in America/New_York (UTC-4 in summer DST)', () => {
+      // 1 AM UTC on July 4 is 9 PM on July 3 in New York
+      const earlyUtc = new Date('2026-07-04T01:00:00.000Z');
+      expect(getLocalDateString(earlyUtc, 'UTC')).toBe('2026-07-04');
+      expect(getLocalDateString(earlyUtc, 'America/New_York')).toBe('2026-07-03');
+    });
+
+    it('calculates streaks relative to user timezone reference date', () => {
+      // When reference time is 2026-10-13T20:00:00Z:
+      // In Asia/Kolkata, today is 2026-10-14, yesterday is 2026-10-13
+      const refTime = new Date('2026-10-13T20:00:00.000Z');
+      const dates = ['2026-10-13', '2026-10-14'];
+      const result = calculateStreakFromDates(dates, refTime, 'Asia/Kolkata');
+      expect(result.isActiveToday).toBe(true);
+      expect(result.currentStreak).toBe(2);
+    });
+
+    it('handles calendar year and leap year transitions accurately', () => {
+      expect(getPreviousDayString('2024-03-01')).toBe('2024-02-29'); // 2024 was leap year
+      expect(getPreviousDayString('2026-03-01')).toBe('2026-02-28'); // 2026 is common year
+      expect(getPreviousDayString('2026-01-01')).toBe('2025-12-31');
+      expect(getNextDayString('2025-12-31')).toBe('2026-01-01');
+      expect(getDaysBetween('2026-01-01', '2026-01-10')).toBe(9);
+      expect(getDaysBetween('2025-12-30', '2026-01-02')).toBe(3);
+    });
+
+    it('validates timezone strings and falls back to UTC safely', () => {
+      expect(isValidTimezone('Asia/Tokyo')).toBe(true);
+      expect(isValidTimezone('America/Los_Angeles')).toBe(true);
+      expect(isValidTimezone('Invalid/Timezone_Name')).toBe(false);
+      expect(resolveTimezone('Asia/Kolkata', 'UTC')).toBe('Asia/Kolkata');
+      expect(resolveTimezone('Invalid/Zone', 'Asia/Tokyo')).toBe('Asia/Tokyo');
+      expect(resolveTimezone('Invalid/Zone', 'Also/Invalid')).toBe('UTC');
+    });
   });
 });

@@ -87,6 +87,7 @@ export interface GrammarExample {
 export interface UserProgress {
   totalXP: number;
   streakDays: number;
+  longestStreak?: number;
   userLevel: number;
   jlptLevel: JLPTLevel;
   lessonsCompleted: number;

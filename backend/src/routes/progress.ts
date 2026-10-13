@@ -18,6 +18,9 @@ import { AppError } from '../middleware/errorHandler.js';
 import {
   calculateStreak,
   recordActivity,
+  getLocalDateString,
+  getPreviousDayString,
+  resolveTimezone,
 } from '../services/streakService.js';
 import {
   getJLPTLevel,
@@ -93,13 +96,16 @@ async function checkAndAwardUserBadges(
 const getProgressSummary = async (req: any, res: any, next: any) => {
   try {
     const userId = req.user!.userId;
-    const today = new Date().toISOString().split('T')[0];
 
     const user = await db.query.users.findFirst({
       where: eq(users.id, userId),
     });
 
     if (!user) throw new AppError(404, 'User not found');
+
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, user.timezone || undefined);
+    const today = getLocalDateString(new Date(), tz);
+    const streakResult = await calculateStreak(userId, tz);
 
     // Query aggregated counts
     const [completedLessons, kanjiRows, vocabRows, masteredCards, dueCards] = await Promise.all([
@@ -135,7 +141,9 @@ const getProgressSummary = async (req: any, res: any, next: any) => {
     const statsData = {
       totalXP,
       totalXp: totalXP,
-      streakDays: user.streakDays || 0,
+      streakDays: streakResult.currentStreak,
+      longestStreak: streakResult.longestStreak,
+      isActiveToday: streakResult.isActiveToday,
       userLevel,
       jlptLevel: user.currentLevel || jlptInfo.level,
       lessonsCompleted: Number(completedLessons[0]?.count || 0),
@@ -218,7 +226,8 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
   try {
     const userId = req.user!.userId;
     const { lessonId, status, score, timeSpentSeconds } = req.body;
-    const todayStr = new Date().toISOString().split('T')[0];
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
 
     const xpGained = calculateLessonXP(score);
 
@@ -243,11 +252,20 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
       });
 
     // Record activity in streaks
-    await recordActivity(userId, todayStr);
+    const activityRecord = await recordActivity(userId, todayStr, {
+      xp: xpGained,
+      minutesStudied: Math.round((timeSpentSeconds || 0) / 60),
+      isLesson: status === 'completed',
+      timezone: tz,
+    });
 
     // Fetch updated streak
-    const streakResult = await calculateStreak(userId);
-    const streakBonus = calculateStreakBonus(streakResult.currentStreak);
+    const streakResult = await calculateStreak(userId, tz);
+    // Award milestone streak bonus only on the first activity of the day
+    const isFirstActivityToday = activityRecord?.isFirstActivityToday ?? true;
+    const streakBonus = isFirstActivityToday
+      ? calculateStreakBonus(streakResult.currentStreak)
+      : 0;
     const totalXpToAdd = xpGained + streakBonus;
 
     // Atomically increment XP
@@ -368,7 +386,8 @@ progressRouter.post('/kanji', requireAuth, validate(kanjiProgressSchema), async 
   try {
     const userId = req.user!.userId;
     const { kanjiId, recognitionLevel, mastered } = req.body;
-    const todayStr = new Date().toISOString().split('T')[0];
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
 
     // Check if this kanji was already learned
     const existing = await db.query.userKanjiProgress.findFirst({
@@ -410,18 +429,16 @@ progressRouter.post('/kanji', requireAuth, validate(kanjiProgressSchema), async 
     let newBadges: AwardedBadge[] = [];
 
     // If XP gained or first study of the day, record activity
-    await recordActivity(userId, todayStr);
-    const streakResult = await calculateStreak(userId);
+    await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
+    const streakResult = await calculateStreak(userId, tz);
     streakDays = streakResult.currentStreak;
 
-    if (xpGained > 0) {
-      await db.update(users)
-        .set({
-          xpPoints: sql`${users.xpPoints} + ${xpGained}`,
-          streakDays: streakResult.currentStreak,
-        })
-        .where(eq(users.id, userId));
-    }
+    await db.update(users)
+      .set({
+        xpPoints: xpGained > 0 ? sql`${users.xpPoints} + ${xpGained}` : sql`${users.xpPoints}`,
+        streakDays: streakResult.currentStreak,
+      })
+      .where(eq(users.id, userId));
 
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -531,7 +548,8 @@ progressRouter.post('/vocabulary', requireAuth, validate(vocabularyProgressSchem
   try {
     const userId = req.user!.userId;
     const { vocabularyId, masteryLevel, mastered } = req.body;
-    const todayStr = new Date().toISOString().split('T')[0];
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
 
     // Check if this vocabulary was already learned
     const existing = await db.query.userVocabularyProgress.findFirst({
@@ -573,18 +591,16 @@ progressRouter.post('/vocabulary', requireAuth, validate(vocabularyProgressSchem
     let newBadges: AwardedBadge[] = [];
 
     // If XP gained or first study of the day, record activity
-    await recordActivity(userId, todayStr);
-    const streakResult = await calculateStreak(userId);
+    await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
+    const streakResult = await calculateStreak(userId, tz);
     streakDays = streakResult.currentStreak;
 
-    if (xpGained > 0) {
-      await db.update(users)
-        .set({
-          xpPoints: sql`${users.xpPoints} + ${xpGained}`,
-          streakDays: streakResult.currentStreak,
-        })
-        .where(eq(users.id, userId));
-    }
+    await db.update(users)
+      .set({
+        xpPoints: xpGained > 0 ? sql`${users.xpPoints} + ${xpGained}` : sql`${users.xpPoints}`,
+        streakDays: streakResult.currentStreak,
+      })
+      .where(eq(users.id, userId));
 
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -749,7 +765,8 @@ progressRouter.post('/award-xp', requireAuth, validate(xpEventSchema), handleXPI
 progressRouter.get('/streak', requireAuth, async (req, res, next) => {
   try {
     const userId = req.user!.userId;
-    const streakResult = await calculateStreak(userId);
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const streakResult = await calculateStreak(userId, tz);
     res.json({
       streak: streakResult.currentStreak,
       longestStreak: streakResult.longestStreak,
@@ -768,10 +785,11 @@ progressRouter.get('/streak', requireAuth, async (req, res, next) => {
 progressRouter.post('/streak', requireAuth, async (req, res, next) => {
   try {
     const userId = req.user!.userId;
-    const todayStr = new Date().toISOString().split('T')[0];
-    await recordActivity(userId, todayStr);
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
+    await recordActivity(userId, todayStr, { timezone: tz });
 
-    const streakResult = await calculateStreak(userId);
+    const streakResult = await calculateStreak(userId, tz);
     res.json({ streakDays: streakResult.currentStreak });
   } catch (err) {
     next(err);
@@ -785,18 +803,20 @@ progressRouter.post('/streak', requireAuth, async (req, res, next) => {
 progressRouter.get('/streaks', requireAuth, async (req, res, next) => {
   try {
     const userId = req.user!.userId;
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
     const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setUTCDate(thirtyDaysAgo.getUTCDate() - 30);
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+    const thirtyDaysAgoStr = getLocalDateString(thirtyDaysAgo, tz);
 
     const [streaks, streakInfo] = await Promise.all([
       db.query.userStreaks.findMany({
         where: (fields, { and, eq, gte }) => and(
           eq(fields.userId, userId),
-          gte(fields.date, thirtyDaysAgo)
+          gte(fields.date, thirtyDaysAgoStr)
         ),
         orderBy: [desc(userStreaks.date)],
       }),
-      calculateStreak(userId),
+      calculateStreak(userId, tz),
     ]);
 
     const formattedStreaks = streaks.map((s) => ({

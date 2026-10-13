@@ -74,7 +74,7 @@ export function useProgress() {
         totalStudyMinutes: 0,
         totalXP,
         currentStreak: progressData.streakDays,
-        longestStreak: progressData.streakDays,
+        longestStreak: progressData.longestStreak ?? progressData.streakDays,
         jlptLevel: (progressData.jlptLevel || jlptInfo.level) as JLPTLevel,
         userLevel: progressData.userLevel,
         badges: badgesRes.badges || [],
