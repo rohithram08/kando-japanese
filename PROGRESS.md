@@ -44,17 +44,24 @@
 
 ---
 
-## Phase 1: Verify Phase A (Pending)
-- [ ] Audit existing Phase A implementation against specifications
-- [ ] Fix any gaps in hero, 3D buttons, sticky header, reduced motion, or sound synthesizer
+## Phase 1: Verify Phase A (Completed)
+- [x] Audit existing Phase A implementation against specifications (hero, 3D buttons, sticky header, reduced motion, sound synthesizer)
+- [x] Verified Indigo/Violet primary gradient with #3730a3 bottom bevel
+- [x] Verified sticky header hidden CTA aria-hidden and tabIndex -1 accessibility
+- [x] Verified touch device detection disables mouse parallax
+- [x] Verified sound effects opt-in and Web Audio synthesizer
+- [x] All Phase A component tests passing (LandingPage.test.tsx, HanaSenseiCharacter2D.test.tsx, soundEffects.test.ts)
 
 ---
 
-## Phase B: Scroll Storytelling (Pending)
-- [ ] Alternating scroll reveals for Steps 01–05 in `LearningJourneyPath.jsx`
-- [ ] Animated connecting SVG scroll spine (`useScroll`, `useTransform`, pathLength)
-- [ ] Parallax numeral watermarks
-- [ ] Quality gate & browser screenshots (desktop + mobile, light + dark)
+## Phase B: Scroll Storytelling (Completed)
+- [x] Alternating scroll reveals for Steps 01–05 in `LearningJourneyPath.jsx` (`x: -36 / 36`, `y: 24`, spring physics)
+- [x] Animated connecting SVG scroll spine (`useScroll`, `useTransform`, `useSpring`)
+- [x] Parallax numeral watermarks (`01`–`05` with `useTransform` scroll offset)
+- [x] Safeguards for `IntersectionObserver` & `prefers-reduced-motion`
+- [x] Added `src/test/setup.ts` and unit tests in `LearningJourneyPath.test.tsx` (4 tests passing)
+- [x] Quality gate verified (frontend vitest: 27 files / 229 tests, build clean, backend tsc clean, backend vitest: 8 files / 71 tests)
+- [x] Browser screenshots captured across desktop (1280x800) and mobile (375x812) in light and dark modes (`docs/quality/screenshots/phase_b/`)
 
 ---
 
