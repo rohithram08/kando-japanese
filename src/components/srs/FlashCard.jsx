@@ -203,7 +203,30 @@ const SRS_RATINGS = {
 
 const initSRSData = () => {
   try {
-    return JSON.parse(localStorage.getItem('srs_data')) || {};
+    const raw = localStorage.getItem('srs_data');
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) || {};
+    // Sync legacy card IDs to nihongo_guest_srs_deck so the unified SRS store recognises them
+    const legacyIds = Object.keys(parsed);
+    if (legacyIds.length > 0) {
+      try {
+        const guestDeckRaw = localStorage.getItem('nihongo_guest_srs_deck');
+        const guestDeck = guestDeckRaw ? JSON.parse(guestDeckRaw) : [];
+        let updated = false;
+        for (const id of legacyIds) {
+          if (!guestDeck.includes(id)) {
+            guestDeck.push(id);
+            updated = true;
+          }
+        }
+        if (updated) {
+          localStorage.setItem('nihongo_guest_srs_deck', JSON.stringify(guestDeck));
+        }
+      } catch {
+        // Ignore quota failures
+      }
+    }
+    return parsed;
   } catch {
     return {};
   }

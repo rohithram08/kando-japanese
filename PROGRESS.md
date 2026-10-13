@@ -32,16 +32,15 @@
 - [x] Fix kanji route updating `streakDays` consistently
 - [x] Implement streak test matrix (Asia/Kolkata, America/New_York DST, same-day, gap, yesterday, milestone bonuses)
 
-### 0.2 Other Bugs & Hygiene
-- [ ] Restore corrupted emoji in `progressCalculator.ts` badge names & add migration script for `??` rows
-- [ ] Fix React hooks order bug in `src/components/reading/VocabLookupModal.jsx` (and add regression test)
-- [ ] Configure ESLint flat config with `typescript-eslint` for `.ts/.tsx` and fix lint errors (`npm run lint` -> 0)
-- [ ] Regenerate `package-lock.json` (`npm install`) to ensure `npm ci` passes
-- [ ] Address fake success endpoints (`/reset-password-request`, `/reset-password`, `/quiz/:lessonId`)
-- [ ] Honor validated `JWT_EXPIRES_IN` env in `auth.ts`
-- [ ] Gate non-test console logs behind client logger utility
-- [ ] Audit & migrate/clean legacy duplicate SRS storage (`FlashCard.jsx`)
-- [ ] Prevent duplicate progress logic drift between frontend and backend
+### 0.2 Other Bugs & Hygiene (Completed)
+- [x] Restore corrupted emoji in `progressCalculator.ts` badge names & add migration script for `??` rows (`0003_repair_badge_emojis.sql`)
+- [x] Fix React hooks order bug in `src/components/reading/VocabLookupModal.jsx` (and add regression test in `VocabLookupModal.test.tsx`)
+- [x] Configure ESLint flat config with `typescript-eslint` for `.ts/.tsx` and fix lint errors (`npm run lint` -> 0 errors)
+- [x] Regenerate `package-lock.json` (`npm install`) to ensure `npm ci` passes
+- [x] Address fake endpoints & doc clarification (`/reset-password-request`, `/reset-password`, `/quiz/:lessonId`)
+- [x] Honor validated `JWT_EXPIRES_IN` env in `auth.ts`
+- [x] Audit & migrate/clean legacy duplicate SRS storage (`FlashCard.jsx` -> `nihongo_guest_srs_deck`)
+- [x] Prevent duplicate progress logic drift between frontend and backend (`progressCalculatorParity.test.ts`)
 
 ---
 

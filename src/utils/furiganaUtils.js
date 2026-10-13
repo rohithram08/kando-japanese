@@ -38,6 +38,7 @@ export function parseFuriganaSegments(word, reading) {
 
   // 2. Explicitly authored ruby syntax: e.g. "食[た]べる" or "食[た]べ物[もの]" or "今日[きょう]"
   if (typeof word === 'string' && word.includes('[') && word.includes(']')) {
+    // eslint-disable-next-line no-useless-escape
     const bracketRegex = /([^\[\]]*?)([\u4e00-\u9faf\u3400-\u4dbf]+)\[([^\]]+)\]|([^\[\]]+)/g;
     const segments = [];
     let match;

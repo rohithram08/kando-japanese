@@ -225,4 +225,33 @@ describe('VocabLookupModal Component', () => {
     expect(document.activeElement).toBe(trigger);
     document.body.removeChild(trigger);
   });
+
+  it('safely handles transitioning between null and populated vocab without React hook order violations', () => {
+    const { rerender } = render(
+      <VocabLookupModal
+        vocab={null}
+        onClose={mockOnClose}
+      />
+    );
+    expect(screen.queryByRole('dialog')).toBeNull();
+
+    // Rerender with populated vocab
+    rerender(
+      <VocabLookupModal
+        vocab={verifiedVocab}
+        onClose={mockOnClose}
+      />
+    );
+    expect(screen.getByRole('dialog')).toBeDefined();
+    expect(screen.getByText('学生')).toBeDefined();
+
+    // Rerender back to null
+    rerender(
+      <VocabLookupModal
+        vocab={null}
+        onClose={mockOnClose}
+      />
+    );
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
 });

@@ -16,20 +16,11 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
   const [isAdding, setIsAdding] = useState(false);
   const [addError, setAddError] = useState(null);
   const modalRef = useRef(null);
-
-  if (!vocab) return null;
-
-  const cardRefId = vocab.vocabRefId || vocab.surface;
-  const inDeck = isCardInSRS(cardRefId);
-
-  // Check verified pitch accent
-  const verifiedPitch = getPitchAccent(vocab.surface, vocab.reading);
-  const isPitchVerified = vocab.pitchVerified || !!verifiedPitch;
-
   const previouslyFocusedElementRef = useRef(null);
 
   // Autofocus modal and restore focus to trigger element on dismiss
   useEffect(() => {
+    if (!vocab) return;
     previouslyFocusedElementRef.current = document.activeElement;
     modalRef.current?.focus();
 
@@ -38,10 +29,11 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
         previouslyFocusedElementRef.current.focus();
       }
     };
-  }, []);
+  }, [vocab]);
 
   // Handle Escape key and Tab focus trap
   useEffect(() => {
+    if (!vocab) return;
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.stopPropagation();
@@ -75,7 +67,16 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  }, [vocab, onClose]);
+
+  if (!vocab) return null;
+
+  const cardRefId = vocab.vocabRefId || vocab.surface;
+  const inDeck = isCardInSRS(cardRefId);
+
+  // Check verified pitch accent
+  const verifiedPitch = getPitchAccent(vocab.surface, vocab.reading);
+  const isPitchVerified = vocab.pitchVerified || !!verifiedPitch;
 
   const handleAddSRS = async (e) => {
     e.stopPropagation();

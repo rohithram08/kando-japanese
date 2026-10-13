@@ -151,7 +151,11 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
       for (let j = 0; j < coords.length; j += 2) {
         const x = (coords[j]     / 100) * canvasSize
         const y = (coords[j + 1] / 100) * canvasSize
-        j === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+        if (j === 0) {
+          ctx.moveTo(x, y)
+        } else {
+          ctx.lineTo(x, y)
+        }
       }
       ctx.stroke()
     })

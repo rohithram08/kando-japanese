@@ -16,7 +16,7 @@ export interface StorySentence {
   id: string;
   order: number;
   japanese: string;
-  furigana: string; // Authored bracket furigana, e.g. "私[わたし]は　学[がく]生[せい]です。"
+  furigana: string; // Authored bracket furigana, e.g. "私[わたし]は 学[がく]生[せい]です。"
   translation: string;
   audioUrl?: string;
   grammarNotes?: string;

@@ -46,7 +46,11 @@ authRouter.post('/register', authLimiter, validate(registerSchema), async (req, 
       passwordHash,
     });
 
-    const token = jwt.sign({ userId, email }, env.JWT_SECRET, { expiresIn: '7d' as jwt.SignOptions['expiresIn'] });
+    const token = jwt.sign(
+      { userId, email },
+      env.JWT_SECRET,
+      { expiresIn: (env.JWT_EXPIRES_IN || '7d') as jwt.SignOptions['expiresIn'] }
+    );
 
     res.cookie('token', token, {
       httpOnly: true,
@@ -85,7 +89,11 @@ authRouter.post('/login', authLimiter, validate(loginSchema), async (req, res, n
       throw new AppError(401, 'Invalid credentials', 'INVALID_CREDENTIALS');
     }
     
-    const token = jwt.sign({ userId: user.id, email: user.email }, env.JWT_SECRET, { expiresIn: '7d' as jwt.SignOptions['expiresIn'] });
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      env.JWT_SECRET,
+      { expiresIn: (env.JWT_EXPIRES_IN || '7d') as jwt.SignOptions['expiresIn'] }
+    );
 
     res.cookie('token', token, {
       httpOnly: true,
