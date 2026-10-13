@@ -13,6 +13,8 @@ import ThemeToggle from '../components/ui/ThemeToggle'
 import SakuraPetals2D from '../components/landing/SakuraPetals2D'
 import AnimatedCharacterHero from '../components/landing/AnimatedCharacterHero'
 import LearningJourneyPath from '../components/landing/LearningJourneyPath'
+import JLPTLevelPicker, { JLPT_DETAILS } from '../components/landing/JLPTLevelPicker'
+import StatCounters from '../components/landing/StatCounters'
 import {
   HEADLINE_CONTAINER,
   HEADLINE_ITEM,
@@ -21,93 +23,6 @@ import {
 import { isSoundEnabled, toggleSound, playPop } from '../utils/soundEffects'
 import '../components/landing/landingAnimations.css'
 
-const JLPT_DETAILS = [
-  {
-    level: 'N5',
-    title: 'Beginner Foundations',
-    kanji: '~100 Kanji',
-    vocab: '~800 Words',
-    badgeColor: 'from-emerald-500 to-teal-600',
-    borderColor: 'border-emerald-500/30',
-    bgColor: 'bg-emerald-500/10',
-    textColor: 'text-emerald-500',
-    description: 'Master Hiragana, Katakana, basic everyday phrases, and foundational sentence structures.',
-    sampleSentence: {
-      japanese: '毎朝七時に起きて、学校へ行きます。',
-      furigana: '毎朝[まいあさ]七時[しちじ]に起[お]きて、学校[がっこう]へ行[い]きます。',
-      translation: 'I wake up at 7:00 every morning and go to school.',
-    },
-    grammarKey: 'て-form sequencing, time particle に, directional へ',
-  },
-  {
-    level: 'N4',
-    title: 'Elementary Conversational',
-    kanji: '~300 Kanji',
-    vocab: '~1,500 Words',
-    badgeColor: 'from-blue-500 to-cyan-600',
-    borderColor: 'border-blue-500/30',
-    bgColor: 'bg-blue-500/10',
-    textColor: 'text-blue-500',
-    description: 'Handle daily interactions, navigate train stations, shops, and read straightforward graded stories.',
-    sampleSentence: {
-      japanese: '京都駅に着いた時、少し心配になりました。',
-      furigana: '京都駅[きょうとえき]に着[つ]いた時[とき]、少[すこ]し心配[しんぱい]になりました。',
-      translation: 'When I arrived at Kyoto Station, I became a little worried.',
-    },
-    grammarKey: 'Temporal 〜た時, state change 〜になる, trial 〜てみる',
-  },
-  {
-    level: 'N3',
-    title: 'Intermediate Bridging',
-    kanji: '~650 Kanji',
-    vocab: '~3,750 Words',
-    badgeColor: 'from-amber-500 to-orange-600',
-    borderColor: 'border-amber-500/30',
-    bgColor: 'bg-amber-500/10',
-    textColor: 'text-amber-500',
-    description: 'Bridge textbook learning to natural Japanese with conversational fluency and contextual reading.',
-    sampleSentence: {
-      japanese: '日本の文化についてもっと深く理解したいです。',
-      furigana: '日本[にほん]の文化[ぶんか]についてもっと思[おも]う存分[ぞんぶん]理解[りかい]したいです。',
-      translation: 'I want to understand Japanese culture much more deeply.',
-    },
-    grammarKey: '〜について, complex conjunctions, conditional 〜なら',
-  },
-  {
-    level: 'N2',
-    title: 'Advanced Fluency',
-    kanji: '~1,000 Kanji',
-    vocab: '~6,000 Words',
-    badgeColor: 'from-orange-500 to-rose-600',
-    borderColor: 'border-orange-500/30',
-    bgColor: 'bg-orange-500/10',
-    textColor: 'text-orange-500',
-    description: 'Read news articles, understand workplace nuances, and converse comfortably in professional settings.',
-    sampleSentence: {
-      japanese: 'プロジェクトの進捗に応じて計画を見直す必要があります。',
-      furigana: 'プロジェクトの進捗[しんちょく]に応[おう]じて計画[けいかく]を見直[みなお]す必要[ひつよう]があります。',
-      translation: 'It is necessary to review the plan in accordance with project progress.',
-    },
-    grammarKey: '〜に応じて, business keigo, formal conjunctions',
-  },
-  {
-    level: 'N1',
-    title: 'Mastery & Nuance',
-    kanji: '2,000+ Kanji',
-    vocab: '10,000+ Words',
-    badgeColor: 'from-purple-500 to-pink-600',
-    borderColor: 'border-purple-500/30',
-    bgColor: 'bg-purple-500/10',
-    textColor: 'text-purple-500',
-    description: 'Grasp subtle nuances, sophisticated literature, abstract discourse, and high-level debate.',
-    sampleSentence: {
-      japanese: '言葉の持つ多様な響きを味わいながら対話を深めます。',
-      furigana: '言葉[ことば]の持[も]つ多様[たよう]な響[ひび]きを味[あじ]わいながら対話[たいわ]を深[ふか]めます。',
-      translation: 'We deepen dialogue while appreciating the diverse resonances of language.',
-    },
-    grammarKey: 'Nuanced literary forms, idiomatic expressions',
-  },
-]
 
 const FEATURES = [
   {
@@ -200,8 +115,6 @@ export default function LandingPage() {
     setSoundOn(next)
     if (next) playPop()
   }
-
-  const activeLevelData = JLPT_DETAILS.find((d) => d.level === selectedLevel) || JLPT_DETAILS[0]
 
   const speakJapanese = (text) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') return
@@ -447,123 +360,18 @@ export default function LandingPage() {
         </section>
 
         {/* ── JLPT Curriculum & Interactive Showcase ──────────────── */}
-        <section id="curriculum" className="py-16 md:py-24 bg-surface/40 border-y border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3 border border-primary/20">
-                <Compass className="w-3.5 h-3.5" />
-                <span>Structured Progression</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Designed for Every Step of Your Journey
-              </h2>
-              <p className="text-muted-foreground text-sm sm:text-base mt-3">
-                Explore the competencies, vocabulary benchmarks, and authentic sentences across all five JLPT levels.
-              </p>
-            </div>
-
-            {/* Level Selector Tabs */}
-            <div className="flex justify-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-none">
-              {JLPT_DETAILS.map((item) => {
-                const isSelected = item.level === selectedLevel
-                return (
-                  <button
-                    key={item.level}
-                    type="button"
-                    onClick={() => setSelectedLevel(item.level)}
-                    className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
-                      isSelected
-                        ? 'bg-primary text-primary-foreground shadow-md scale-105'
-                        : 'bg-surface border border-border text-muted-foreground hover:text-foreground hover:bg-muted'
-                    }`}
-                  >
-                    <span>{item.level}</span>
-                    <span className="text-xs opacity-75 hidden sm:inline">{item.title.split(' ')[0]}</span>
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Active Level Detail Card */}
-            <div className="card p-6 sm:p-8 rounded-3xl border border-border shadow-lg bg-surface max-w-4xl mx-auto transition-all">
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                
-                {/* Level Summary */}
-                <div className="md:col-span-5 flex flex-col items-start text-left border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 md:pr-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`text-2xl font-black px-3 py-1 rounded-xl bg-gradient-to-r ${activeLevelData.badgeColor} text-white shadow-sm`}>
-                      {activeLevelData.level}
-                    </span>
-                    <div>
-                      <h3 className="font-extrabold text-lg text-foreground">{activeLevelData.title}</h3>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span>{activeLevelData.kanji}</span>
-                        <span>•</span>
-                        <span>{activeLevelData.vocab}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {activeLevelData.description}
-                  </p>
-
-                  <div className="w-full p-3 rounded-xl bg-muted/60 text-xs">
-                    <span className="font-bold text-foreground">Key Focus: </span>
-                    <span className="text-muted-foreground">{activeLevelData.grammarKey}</span>
-                  </div>
-                </div>
-
-                {/* Sample Sentence Card with Pronunciation Audio */}
-                <div className="md:col-span-7 flex flex-col items-start text-left">
-                  <div className="flex items-center justify-between w-full mb-3">
-                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                      Sample Level Sentence
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => speakJapanese(activeLevelData.sampleSentence.japanese)}
-                      disabled={isPlayingAudio}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                      title="Play Japanese pronunciation"
-                      aria-label="Listen to sample sentence"
-                    >
-                      <Volume2 className={`w-3.5 h-3.5 ${isPlayingAudio ? 'animate-bounce' : ''}`} />
-                      <span>{isPlayingAudio ? 'Playing...' : 'Listen Audio'}</span>
-                    </button>
-                  </div>
-
-                  <div className="w-full p-4 rounded-2xl bg-muted/40 border border-border/80">
-                    <div className="text-lg sm:text-xl font-bold text-foreground mb-2 leading-relaxed" data-testid="sample-sentence">
-                      {activeLevelData.sampleSentence.japanese}
-                    </div>
-                    <div className="text-xs sm:text-sm text-muted-foreground italic font-sans mb-3">
-                      {activeLevelData.sampleSentence.translation}
-                    </div>
-                    <div className="text-[11px] text-muted-foreground/75 font-mono pt-2 border-t border-border/50">
-                      Furigana: {activeLevelData.sampleSentence.furigana}
-                    </div>
-                  </div>
-
-                  <div className="mt-4 flex items-center justify-between w-full">
-                    <Link
-                      to="/reading"
-                      className="text-xs font-semibold text-primary hover:underline flex items-center gap-1"
-                    >
-                      <span>Read full graded stories in this level</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </section>
+        <JLPTLevelPicker
+          selectedLevel={selectedLevel}
+          onSelectLevel={setSelectedLevel}
+          speakJapanese={speakJapanese}
+          isPlayingAudio={isPlayingAudio}
+        />
 
         {/* ── Complete Connected Learning Journey Roadmap ─────────── */}
         <LearningJourneyPath />
+
+        {/* ── Authentic Curriculum Benchmarks ─────────────────────── */}
+        <StatCounters />
 
         {/* ── Feature Highlights Grid ──────────────────────────────── */}
         <section id="features" className="py-16 md:py-24">

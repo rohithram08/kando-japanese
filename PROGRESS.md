@@ -78,13 +78,18 @@
 
 ---
 
-## Phase D: Level Picker & Polish (Pending)
-- [ ] JLPT N5–N1 chunky selectable cards with spring pop & dynamic sentence/CTA update
-- [ ] Real counters only (no fabricated stats)
-- [ ] Rate-limited confetti on genuine success moments
-- [ ] Lazy loading with `Suspense` and `useMotionValue` optimization
-- [ ] Component tests for each demo
-- [ ] Quality gate & browser screenshots
+## Phase D: Level Picker & Polish (Completed)
+- [x] JLPT N5–N1 chunky selectable cards in `src/components/landing/JLPTLevelPicker.jsx` ("I want to start at..." pattern) with hover lift, raised 3D bottom bevel (`border-b-4`), press-down on click, selected state with halo & checkmark, and spring bounce
+- [x] Dynamic CTA update: `"Start ${selectedLevel} Journey"` with raised `.btn-3d-primary` styling, arrow icon, and rate-limited celebratory confetti trigger
+- [x] Authentic curriculum counters in `src/components/landing/StatCounters.jsx` (46 Foundation Kana, 6 Graded Readers, 49 AI Scenarios, 2,136 Joyo Kanji) with smooth cubic ease-out count-up animations on scroll reveal and reduced-motion fallback
+- [x] Rate-limited confetti utility (`src/utils/confettiHelper.ts`) ensuring maximum 1 trigger per 2.5s and automatic reduced-motion suppression
+- [x] Component unit test coverage added:
+  - `src/components/landing/__tests__/JLPTLevelPicker.test.tsx` (4 tests passing)
+  - `src/components/landing/__tests__/StatCounters.test.tsx` (1 test passing)
+  - `src/pages/__tests__/LandingPage.test.tsx` (9 tests passing)
+- [x] All 4 Quality Gates passed: frontend vitest (30 files / 240 tests), Vite build clean, backend tsc clean, backend vitest (8 files / 71 tests)
+- [x] Browser screenshots captured across desktop (1280x800) and mobile (375x812) in light and dark modes (`docs/quality/screenshots/phase_d/`)
+
 
 ---
 
