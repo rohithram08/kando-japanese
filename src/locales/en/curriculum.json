@@ -1,0 +1,4998 @@
+{
+  "n5v001": {
+    "meaning": "I / me",
+    "example": "I am a student."
+  },
+  "n5v002": {
+    "meaning": "you",
+    "example": "What is your name?"
+  },
+  "n5v003": {
+    "meaning": "he / him / boyfriend",
+    "example": "He is a doctor."
+  },
+  "n5v004": {
+    "meaning": "she / girlfriend",
+    "example": "She is a teacher."
+  },
+  "n5v005": {
+    "meaning": "to eat",
+    "example": "I eat sushi."
+  },
+  "n5v006": {
+    "meaning": "to drink",
+    "example": "I drink tea."
+  },
+  "n5v007": {
+    "meaning": "to go",
+    "example": "I go to school."
+  },
+  "n5v008": {
+    "meaning": "to come",
+    "example": "My friend is coming."
+  },
+  "n5v009": {
+    "meaning": "to see / watch / look",
+    "example": "I watch movies."
+  },
+  "n5v010": {
+    "meaning": "to listen / to ask / to hear",
+    "example": "I listen to music."
+  },
+  "n5v011": {
+    "meaning": "to speak / to talk",
+    "example": "I speak Japanese."
+  },
+  "n5v012": {
+    "meaning": "to read",
+    "example": "I read books."
+  },
+  "n5v013": {
+    "meaning": "to write",
+    "example": "I write letters."
+  },
+  "n5v014": {
+    "meaning": "to buy",
+    "example": "I buy apples."
+  },
+  "n5v015": {
+    "meaning": "to use",
+    "example": "I use a computer."
+  },
+  "n5v016": {
+    "meaning": "to study",
+    "example": "I study Japanese every day."
+  },
+  "n5v017": {
+    "meaning": "to work",
+    "example": "I work at a company."
+  },
+  "n5v018": {
+    "meaning": "to wake up / get up",
+    "example": "I wake up at 6 o'clock."
+  },
+  "n5v019": {
+    "meaning": "to sleep / go to bed",
+    "example": "I go to sleep at 11 o'clock."
+  },
+  "n5v020": {
+    "meaning": "to return home",
+    "example": "I return home."
+  },
+  "n5v021": {
+    "meaning": "big / large",
+    "example": "There is a big dog."
+  },
+  "n5v022": {
+    "meaning": "small / little",
+    "example": "There is a small cat."
+  },
+  "n5v023": {
+    "meaning": "hot (weather/temperature)",
+    "example": "Today is hot."
+  },
+  "n5v024": {
+    "meaning": "cold (weather)",
+    "example": "Winter is cold."
+  },
+  "n5v025": {
+    "meaning": "delicious / tasty",
+    "example": "This food is delicious."
+  },
+  "n5v026": {
+    "meaning": "interesting / funny",
+    "example": "This book is interesting."
+  },
+  "n5v027": {
+    "meaning": "cute / adorable",
+    "example": "What a cute cat!"
+  },
+  "n5v028": {
+    "meaning": "expensive / tall / high",
+    "example": "This bag is expensive."
+  },
+  "n5v029": {
+    "meaning": "cheap / inexpensive",
+    "example": "This shop is cheap."
+  },
+  "n5v030": {
+    "meaning": "difficult / hard",
+    "example": "Japanese is difficult."
+  },
+  "n5v031": {
+    "meaning": "easy / gentle",
+    "example": "This question is easy."
+  },
+  "n5v032": {
+    "meaning": "cooked rice / meal",
+    "example": "Let's eat!"
+  },
+  "n5v033": {
+    "meaning": "bread",
+    "example": "I eat bread in the morning."
+  },
+  "n5v034": {
+    "meaning": "water",
+    "example": "I drink water."
+  },
+  "n5v035": {
+    "meaning": "tea (Japanese green tea)",
+    "example": "Would you like tea?"
+  },
+  "n5v036": {
+    "meaning": "coffee",
+    "example": "I like coffee."
+  },
+  "n5v037": {
+    "meaning": "school",
+    "example": "I go to school."
+  },
+  "n5v038": {
+    "meaning": "hospital",
+    "example": "I go to the hospital."
+  },
+  "n5v039": {
+    "meaning": "supermarket",
+    "example": "I shop at the supermarket."
+  },
+  "n5v040": {
+    "meaning": "restaurant",
+    "example": "I eat at a restaurant."
+  },
+  "n5v041": {
+    "meaning": "today",
+    "example": "Today is Monday."
+  },
+  "n5v042": {
+    "meaning": "tomorrow",
+    "example": "Let's meet tomorrow."
+  },
+  "n5v043": {
+    "meaning": "yesterday",
+    "example": "What did you do yesterday?"
+  },
+  "n5v044": {
+    "meaning": "now / right now",
+    "example": "What time is it now?"
+  },
+  "n5v045": {
+    "meaning": "every day",
+    "example": "I exercise every day."
+  },
+  "n5v046": {
+    "meaning": "one (general counter)",
+    "example": "One apple please."
+  },
+  "n5v047": {
+    "meaning": "what",
+    "example": "What is this?"
+  },
+  "n5v048": {
+    "meaning": "where",
+    "example": "Where is the bathroom?"
+  },
+  "n5v049": {
+    "meaning": "when",
+    "example": "When is the exam?"
+  },
+  "n5v050": {
+    "meaning": "who",
+    "example": "Who is that person?"
+  },
+  "n5v051": {
+    "meaning": "why",
+    "example": "Why were you late?"
+  },
+  "n5v052": {
+    "meaning": "yes",
+    "example": "Yes, I understand."
+  },
+  "n5v053": {
+    "meaning": "no",
+    "example": "No, that's wrong."
+  },
+  "n5v054": {
+    "meaning": "I understand / Got it",
+    "example": "Understood, thank you."
+  },
+  "n5v055": {
+    "meaning": "excuse me / sorry / thank you (for trouble)",
+    "example": "Excuse me, please wait a moment."
+  },
+  "n5v056": {
+    "meaning": "thank you very much (formal)",
+    "example": "Thank you very much, that helped."
+  },
+  "n5v057": {
+    "meaning": "you're welcome",
+    "example": "Thank you. You're welcome."
+  },
+  "n5v058": {
+    "meaning": "please (request) / I beg you",
+    "example": "Coffee, please."
+  },
+  "n5v059": {
+    "meaning": "train / electric train",
+    "example": "I go to school by train."
+  },
+  "n5v060": {
+    "meaning": "bus",
+    "example": "I came by bus."
+  },
+  "n5v061": {
+    "meaning": "taxi",
+    "example": "I will call a taxi."
+  },
+  "n4_001": {
+    "meaning": "experience",
+    "example": "It became a good experience."
+  },
+  "n4_002": {
+    "meaning": "explanation",
+    "example": "The teacher explained it to me."
+  },
+  "n4_003": {
+    "meaning": "caution / attention / warning",
+    "example": "Please be careful of cars."
+  },
+  "n4_004": {
+    "meaning": "preparation / arrangements",
+    "example": "I am preparing for the trip."
+  },
+  "n4_005": {
+    "meaning": "contact / communication",
+    "example": "I will contact you later."
+  },
+  "n4_006": {
+    "meaning": "to be late / delayed",
+    "example": "The train is delayed."
+  },
+  "n4_007": {
+    "meaning": "to collect / gather",
+    "example": "I collect stamps."
+  },
+  "n4_008": {
+    "meaning": "to decide",
+    "example": "Let's decide on a place."
+  },
+  "n4_009": {
+    "meaning": "to change (something)",
+    "example": "I changed the plan."
+  },
+  "n4_010": {
+    "meaning": "to investigate / look up",
+    "example": "Please look up the meaning."
+  },
+  "n4_011": {
+    "meaning": "to be troubled / in trouble",
+    "example": "I am in trouble because I have no money."
+  },
+  "n4_012": {
+    "meaning": "to hurry",
+    "example": "Please hurry!"
+  },
+  "n4_013": {
+    "meaning": "to continue",
+    "example": "Please continue studying."
+  },
+  "n4_014": {
+    "meaning": "kind / kindness",
+    "example": "He is very kind."
+  },
+  "n4_015": {
+    "meaning": "polite / careful",
+    "example": "Please speak politely."
+  },
+  "n4_016": {
+    "meaning": "normal / ordinary / usually",
+    "example": "An ordinary life is the best."
+  },
+  "n4_017": {
+    "meaning": "special / particular",
+    "example": "Today is a special day."
+  },
+  "n4_018": {
+    "meaning": "safe / safety",
+    "example": "Please be careful about safety."
+  },
+  "n4_019": {
+    "meaning": "danger / dangerous",
+    "example": "It is a dangerous place."
+  },
+  "n4_020": {
+    "meaning": "necessary / needed",
+    "example": "A passport is necessary."
+  },
+  "n4_021": {
+    "meaning": "possible / potential",
+    "example": "Is that possible?"
+  },
+  "n4_022": {
+    "meaning": "unfortunate / regrettable / too bad",
+    "example": "Unfortunately, I cannot go."
+  },
+  "n4_023": {
+    "meaning": "to laugh / smile",
+    "example": "Everyone laughed together."
+  },
+  "n4_024": {
+    "meaning": "to cry",
+    "example": "The child is crying."
+  },
+  "n4_025": {
+    "meaning": "to get angry",
+    "example": "The teacher got angry."
+  },
+  "n4_026": {
+    "meaning": "worry / concern",
+    "example": "Please don't worry."
+  },
+  "n4_027": {
+    "meaning": "to be delighted / pleased",
+    "example": "She was pleased to receive a gift."
+  },
+  "n4_028": {
+    "meaning": "to be surprised / astonished",
+    "example": "I was surprised at the sudden news."
+  },
+  "n4_029": {
+    "meaning": "to gather / come together",
+    "example": "People are gathering in the park."
+  },
+  "n4_030": {
+    "meaning": "to convey / communicate / tell",
+    "example": "I want to convey my feelings."
+  },
+  "n3_001": {
+    "meaning": "influence / effect / impact",
+    "example": "We need to consider the impact on the environment."
+  },
+  "n3_002": {
+    "meaning": "judgment / decision / assessment",
+    "example": "Please judge for yourself."
+  },
+  "n3_003": {
+    "meaning": "resolution / solution / settlement",
+    "example": "We were able to solve the problem."
+  },
+  "n3_004": {
+    "meaning": "relationship / connection / association",
+    "example": "The two incidents are connected."
+  },
+  "n3_005": {
+    "meaning": "situation / circumstances / state of affairs",
+    "example": "It is important to accurately grasp the situation."
+  },
+  "n3_006": {
+    "meaning": "to recognize / acknowledge / admit",
+    "example": "I cannot help but recognize his talent."
+  },
+  "n3_007": {
+    "meaning": "to compare",
+    "example": "Compared to last year, it has changed considerably."
+  },
+  "n3_008": {
+    "meaning": "to refuse / decline / turn down",
+    "example": "I declined his offer."
+  },
+  "n3_009": {
+    "meaning": "to increase / grow",
+    "example": "Foreign tourists are increasing."
+  },
+  "n3_010": {
+    "meaning": "to decrease / diminish",
+    "example": "Recently the number of people who write letters is decreasing."
+  },
+  "n3_011": {
+    "meaning": "complex / complicated",
+    "example": "The problem is more complex."
+  },
+  "n3_012": {
+    "meaning": "happiness / happy / fortunate",
+    "example": "Seeing the happy family made me glad."
+  },
+  "n3_013": {
+    "meaning": "appearance / state / manner / look",
+    "example": "Her manner seems a little strange."
+  },
+  "n3_014": {
+    "meaning": "cause / origin / source",
+    "example": "They are investigating the cause of the accident."
+  },
+  "n3_015": {
+    "meaning": "result / outcome / consequence",
+    "example": "As a result of my efforts, I was able to pass."
+  },
+  "n3_016": {
+    "meaning": "purpose / objective / goal",
+    "example": "What is the purpose of your trip?"
+  },
+  "n3_017": {
+    "meaning": "case / situation / occasion",
+    "example": "In case of emergency, please call 119."
+  },
+  "n3_018": {
+    "meaning": "opinion / view",
+    "example": "Please let me hear your opinion."
+  },
+  "n3_019": {
+    "meaning": "opportunity / chance",
+    "example": "Such an opportunity is rare."
+  },
+  "n3_020": {
+    "meaning": "attitude / manner / behavior",
+    "example": "His attitude bothers me."
+  },
+  "n3_021": {
+    "meaning": "ability / capability / skill",
+    "example": "I want to improve my language ability."
+  },
+  "n3_022": {
+    "meaning": "memory / recollection",
+    "example": "My memories from childhood are vague."
+  },
+  "n3_023": {
+    "meaning": "emotion / feeling / sentiment",
+    "example": "I am not good at expressing emotions."
+  },
+  "n3_024": {
+    "meaning": "success",
+    "example": "The project succeeded."
+  },
+  "n3_025": {
+    "meaning": "failure / mistake",
+    "example": "It is important to learn from failure."
+  },
+  "n2_001": {
+    "meaning": "grasp / understanding / comprehension",
+    "example": "It is important to accurately grasp the current situation."
+  },
+  "n2_002": {
+    "meaning": "consideration / thoughtfulness / care",
+    "example": "Consideration for others is important."
+  },
+  "n2_003": {
+    "meaning": "to urge / prompt / encourage / accelerate",
+    "example": "It is necessary to urge an early resolution."
+  },
+  "n2_004": {
+    "meaning": "to hinder / obstruct / impede",
+    "example": "Eliminate factors that impede growth."
+  },
+  "n2_005": {
+    "meaning": "to tackle / work on / address",
+    "example": "We are actively tackling environmental issues."
+  },
+  "n2_006": {
+    "meaning": "to review / reconsider / reassess",
+    "example": "We need to fundamentally review the plan."
+  },
+  "n2_007": {
+    "meaning": "to hold / carry / have (a problem)",
+    "example": "Many companies are struggling with funding problems."
+  },
+  "n2_008": {
+    "meaning": "vague / ambiguous / unclear",
+    "example": "His reply was vague."
+  },
+  "n2_009": {
+    "meaning": "honest / obedient / straightforward / docile",
+    "example": "She has an honest and straightforward personality."
+  },
+  "n2_010": {
+    "meaning": "troublesome / annoying / cumbersome",
+    "example": "There are many troublesome procedures."
+  },
+  "n2_011": {
+    "meaning": "fear / concern / risk of",
+    "example": "There is a risk of the typhoon making landfall."
+  },
+  "n2_012": {
+    "meaning": "agreement / coincidence / match / unity",
+    "example": "The two people's opinions completely agreed."
+  },
+  "n2_013": {
+    "meaning": "accumulation / buildup",
+    "example": "Many years of experience have been accumulated."
+  },
+  "n2_014": {
+    "meaning": "mutual / each other / one another",
+    "example": "Let's make the most of each other's strengths."
+  },
+  "n2_015": {
+    "meaning": "compromise / concession",
+    "example": "Finding a compromise point is the key to negotiation."
+  },
+  "n2_016": {
+    "meaning": "basis / grounds / foundation",
+    "example": "Criticism without grounds cannot be accepted."
+  },
+  "n2_017": {
+    "meaning": "tendency / trend / inclination",
+    "example": "Recently there is a tendency for young people to read less."
+  },
+  "n2_018": {
+    "meaning": "current situation / present state",
+    "example": "It is difficult to maintain the current situation."
+  },
+  "n2_019": {
+    "meaning": "measure / step / action taken",
+    "example": "Emergency measures are needed."
+  },
+  "n2_020": {
+    "meaning": "countermeasure / counter-plan",
+    "example": "Take measures against environmental problems."
+  },
+  "n2_021": {
+    "meaning": "burden / load / charge / expense",
+    "example": "The economic burden is heavy."
+  },
+  "n2_022": {
+    "meaning": "maintenance / preservation / sustaining",
+    "example": "I exercise to maintain my health."
+  },
+  "n2_023": {
+    "meaning": "promotion / acceleration / facilitation",
+    "example": "Policies to promote economic growth are needed."
+  },
+  "n2_024": {
+    "meaning": "reduction / cutback / curtailment",
+    "example": "Cost reduction is an urgent task."
+  },
+  "n2_025": {
+    "meaning": "expansion / enlargement / magnification",
+    "example": "There is a plan to expand the business overseas."
+  },
+  "n2_026": {
+    "meaning": "reduction / downsizing / scaling down",
+    "example": "The policy to downsize the organization was decided."
+  },
+  "n2_027": {
+    "meaning": "efficiency / productivity",
+    "example": "It is necessary to improve work efficiency."
+  },
+  "n2_028": {
+    "meaning": "profit / earnings / revenue",
+    "example": "Revenue increased this fiscal year."
+  },
+  "n2_029": {
+    "meaning": "loss / damage",
+    "example": "We suffered a large loss."
+  },
+  "n2_030": {
+    "meaning": "evaluation / assessment / valuation / appreciation",
+    "example": "His work is highly evaluated."
+  },
+  "n1_001": {
+    "meaning": "concern / apprehension / worry",
+    "example": "We are concerned about the deterioration of the situation."
+  },
+  "n1_002": {
+    "meaning": "deviation / departure / digression",
+    "example": "Deviation from the norm is not permitted."
+  },
+  "n1_003": {
+    "meaning": "foster / cultivate / brew (an atmosphere)",
+    "example": "It is important to foster an atmosphere of mutual understanding."
+  },
+  "n1_004": {
+    "meaning": "reading the air / inferring/guessing another's intentions",
+    "example": "Act by reading and inferring the supervisor's intentions."
+  },
+  "n1_005": {
+    "meaning": "sweep away / dispel / eradicate",
+    "example": "It takes time to dispel distrust."
+  },
+  "n1_006": {
+    "meaning": "remarkable / conspicuous / striking",
+    "example": "Remarkable signs of economic recovery can be seen."
+  },
+  "n1_007": {
+    "meaning": "excellence / eminence / superiority",
+    "example": "He is a leader with excellent leadership abilities."
+  },
+  "n1_008": {
+    "meaning": "overlook / turn a blind eye / ignore",
+    "example": "This problem cannot be overlooked."
+  },
+  "n1_009": {
+    "meaning": "to surpass / endure / survive / weather",
+    "example": "We were able to weather the difficult period."
+  },
+  "n1_010": {
+    "meaning": "discord / discrepancy / gap / mismatch",
+    "example": "There is a discrepancy in the understanding of both parties."
+  },
+  "n1_011": {
+    "meaning": "bird's eye view / overview / looking down on",
+    "example": "It is important to view the problem from a bird's eye perspective."
+  },
+  "n1_012": {
+    "meaning": "contradiction / inconsistency / paradox",
+    "example": "His statements are contradictory."
+  },
+  "n1_013": {
+    "meaning": "divergence / gap / separation / rift",
+    "example": "The gap between the ideal and reality is large."
+  },
+  "n1_014": {
+    "meaning": "elaborate / precise / meticulous / minute",
+    "example": "Precise analysis is required."
+  },
+  "n1_015": {
+    "meaning": "cold / indifferent / cool / apathetic",
+    "example": "She took a cold attitude toward me."
+  },
+  "n1_016": {
+    "meaning": "arrogance / haughtiness / insolence",
+    "example": "An arrogant attitude destroys human relationships."
+  },
+  "n1_017": {
+    "meaning": "humble / modest / unassuming",
+    "example": "It is important to remain humble even after success."
+  },
+  "n1_018": {
+    "meaning": "concern / worry / fear / apprehension",
+    "example": "Concerns about safety are growing."
+  },
+  "n1_019": {
+    "meaning": "conflict / complication / inner struggle",
+    "example": "There is an inner conflict in my heart."
+  },
+  "n1_020": {
+    "meaning": "hesitation / indecision / vacillation",
+    "example": "It is important to make decisions without hesitation."
+  },
+  "n1_021": {
+    "meaning": "urgent / pressing / imminent",
+    "example": "It is necessary to address urgent challenges."
+  },
+  "n1_022": {
+    "meaning": "gradually / step by step / progressively",
+    "example": "The situation is gradually improving."
+  },
+  "n1_023": {
+    "meaning": "concept / notion / idea",
+    "example": "It is difficult to understand new concepts."
+  },
+  "n1_024": {
+    "meaning": "category / domain / sphere / realm",
+    "example": "This is outside the scope of my expertise."
+  },
+  "n1_025": {
+    "meaning": "correction / rectification / remedy",
+    "example": "It is necessary to correct the unfair system."
+  },
+  "n1_026": {
+    "meaning": "fragile / vulnerable / weak",
+    "example": "It is necessary to strengthen the fragile infrastructure."
+  },
+  "n1_027": {
+    "meaning": "robust / sturdy / hardy / vigorous",
+    "example": "He is robust even as he ages."
+  },
+  "n1_028": {
+    "meaning": "consideration / taking into account / making allowances",
+    "example": "Judge by taking the circumstances into account."
+  },
+  "n1_029": {
+    "meaning": "cause / give rise to / provoke / trigger",
+    "example": "There is a possibility of giving rise to misunderstandings."
+  },
+  "n1_030": {
+    "meaning": "outcome / result / where things end up / trend",
+    "example": "The outcome of the negotiations is still unclear."
+  },
+  "n5k001": {
+    "meaning": "one"
+  },
+  "n5k002": {
+    "meaning": "two"
+  },
+  "n5k003": {
+    "meaning": "three"
+  },
+  "n5k004": {
+    "meaning": "four"
+  },
+  "n5k005": {
+    "meaning": "five"
+  },
+  "n5k006": {
+    "meaning": "six"
+  },
+  "n5k007": {
+    "meaning": "seven"
+  },
+  "n5k008": {
+    "meaning": "eight"
+  },
+  "n5k009": {
+    "meaning": "nine"
+  },
+  "n5k010": {
+    "meaning": "ten"
+  },
+  "n5k011": {
+    "meaning": "hundred"
+  },
+  "n5k012": {
+    "meaning": "thousand"
+  },
+  "n5k013": {
+    "meaning": "ten-thousand"
+  },
+  "n5k014": {
+    "meaning": "year"
+  },
+  "n5k015": {
+    "meaning": "month/moon"
+  },
+  "n5k016": {
+    "meaning": "day/sun"
+  },
+  "n5k017": {
+    "meaning": "time/hour"
+  },
+  "n5k018": {
+    "meaning": "between/interval"
+  },
+  "n5k019": {
+    "meaning": "minute/part"
+  },
+  "n5k020": {
+    "meaning": "week"
+  },
+  "n5k021": {
+    "meaning": "half"
+  },
+  "n5k022": {
+    "meaning": "mountain"
+  },
+  "n5k023": {
+    "meaning": "river"
+  },
+  "n5k024": {
+    "meaning": "tree/wood"
+  },
+  "n5k025": {
+    "meaning": "fire"
+  },
+  "n5k026": {
+    "meaning": "water"
+  },
+  "n5k027": {
+    "meaning": "earth/soil"
+  },
+  "n5k028": {
+    "meaning": "gold/money"
+  },
+  "n5k029": {
+    "meaning": "sky/empty"
+  },
+  "n5k030": {
+    "meaning": "rain"
+  },
+  "n5k031": {
+    "meaning": "flower"
+  },
+  "n5k032": {
+    "meaning": "grass"
+  },
+  "n5k033": {
+    "meaning": "person"
+  },
+  "n5k034": {
+    "meaning": "child"
+  },
+  "n5k035": {
+    "meaning": "woman"
+  },
+  "n5k036": {
+    "meaning": "man"
+  },
+  "n5k037": {
+    "meaning": "father"
+  },
+  "n5k038": {
+    "meaning": "mother"
+  },
+  "n5k039": {
+    "meaning": "eye"
+  },
+  "n5k040": {
+    "meaning": "mouth"
+  },
+  "n5k041": {
+    "meaning": "hand"
+  },
+  "n5k042": {
+    "meaning": "foot/leg"
+  },
+  "n5k043": {
+    "meaning": "ear"
+  },
+  "n5k044": {
+    "meaning": "power/strength"
+  },
+  "n5k045": {
+    "meaning": "up/above"
+  },
+  "n5k046": {
+    "meaning": "down/below"
+  },
+  "n5k047": {
+    "meaning": "middle/inside"
+  },
+  "n5k048": {
+    "meaning": "outside"
+  },
+  "n5k049": {
+    "meaning": "right"
+  },
+  "n5k050": {
+    "meaning": "left"
+  },
+  "n5k051": {
+    "meaning": "front/before"
+  },
+  "n5k052": {
+    "meaning": "back/after"
+  },
+  "n5k053": {
+    "meaning": "study/learn"
+  },
+  "n5k054": {
+    "meaning": "school"
+  },
+  "n5k055": {
+    "meaning": "ahead/teacher"
+  },
+  "n5k056": {
+    "meaning": "life/birth"
+  },
+  "n5k057": {
+    "meaning": "language/word"
+  },
+  "n5k058": {
+    "meaning": "sentence/writing"
+  },
+  "n5k059": {
+    "meaning": "character/letter"
+  },
+  "n5k060": {
+    "meaning": "write"
+  },
+  "n5k061": {
+    "meaning": "read"
+  },
+  "n5k062": {
+    "meaning": "hear/listen"
+  },
+  "n5k063": {
+    "meaning": "speak/talk"
+  },
+  "n5k064": {
+    "meaning": "country"
+  },
+  "n5k065": {
+    "meaning": "shop/store"
+  },
+  "n5k066": {
+    "meaning": "station"
+  },
+  "n5k067": {
+    "meaning": "road/way"
+  },
+  "n5k068": {
+    "meaning": "town"
+  },
+  "n5k069": {
+    "meaning": "gate"
+  },
+  "n5k070": {
+    "meaning": "come"
+  },
+  "n5k071": {
+    "meaning": "go"
+  },
+  "n5k072": {
+    "meaning": "see/look"
+  },
+  "n5k073": {
+    "meaning": "eat/food"
+  },
+  "n5k074": {
+    "meaning": "drink"
+  },
+  "n5k075": {
+    "meaning": "buy"
+  },
+  "n5k076": {
+    "meaning": "enter"
+  },
+  "n5k077": {
+    "meaning": "exit/come out"
+  },
+  "n5k078": {
+    "meaning": "stand"
+  },
+  "n5k079": {
+    "meaning": "rest"
+  },
+  "n5k080": {
+    "meaning": "wake up/rise"
+  },
+  "n5k081": {
+    "meaning": "return home"
+  },
+  "n5k082": {
+    "meaning": "big/large"
+  },
+  "n5k083": {
+    "meaning": "small/little"
+  },
+  "n5k084": {
+    "meaning": "many/much"
+  },
+  "n5k085": {
+    "meaning": "few/little"
+  },
+  "n5k086": {
+    "meaning": "long/chief"
+  },
+  "n5k087": {
+    "meaning": "high/expensive"
+  },
+  "n5k088": {
+    "meaning": "cheap/safe"
+  },
+  "n5k089": {
+    "meaning": "new"
+  },
+  "n5k090": {
+    "meaning": "old"
+  },
+  "n5k091": {
+    "meaning": "like/fond of"
+  },
+  "n5k092": {
+    "meaning": "sky/heaven"
+  },
+  "n5k093": {
+    "meaning": "spirit/air/feeling"
+  },
+  "n5k094": {
+    "meaning": "white"
+  },
+  "n5k095": {
+    "meaning": "black"
+  },
+  "n5k096": {
+    "meaning": "red"
+  },
+  "n5k097": {
+    "meaning": "blue/green"
+  },
+  "n5k098": {
+    "meaning": "car/vehicle"
+  },
+  "n5k099": {
+    "meaning": "electricity"
+  },
+  "n5k100": {
+    "meaning": "book/origin"
+  },
+  "n5k101": {
+    "meaning": "circle/yen"
+  },
+  "n5k102": {
+    "meaning": "fish"
+  },
+  "n5k103": {
+    "meaning": "meat/flesh"
+  },
+  "n5k104": {
+    "meaning": "rice/America"
+  },
+  "n5k105": {
+    "meaning": "tea"
+  },
+  "n5k106": {
+    "meaning": "house/family"
+  },
+  "n5k107": {
+    "meaning": "friend"
+  },
+  "n5k108": {
+    "meaning": "what"
+  },
+  "n5k109": {
+    "meaning": "now"
+  },
+  "n5k110": {
+    "meaning": "noon (noon)"
+  },
+  "n5k111": {
+    "meaning": "correct/right"
+  },
+  "n5k112": {
+    "meaning": "west"
+  },
+  "n5k113": {
+    "meaning": "east"
+  },
+  "n5k114": {
+    "meaning": "south"
+  },
+  "n5k115": {
+    "meaning": "north"
+  },
+  "n5k116": {
+    "meaning": "every"
+  },
+  "n5k117": {
+    "meaning": "early/fast"
+  },
+  "n5k118": {
+    "meaning": "name"
+  },
+  "n5k119": {
+    "meaning": "snow"
+  },
+  "n5k120": {
+    "meaning": "wind"
+  },
+  "n5k121": {
+    "meaning": "sound"
+  },
+  "n5k122": {
+    "meaning": "light"
+  },
+  "n5k123": {
+    "meaning": "cow"
+  },
+  "n5k124": {
+    "meaning": "dog"
+  },
+  "n4k001": {
+    "meaning": "open"
+  },
+  "n4k002": {
+    "meaning": "close/shut"
+  },
+  "n4k003": {
+    "meaning": "use"
+  },
+  "n4k004": {
+    "meaning": "begin/start"
+  },
+  "n4k005": {
+    "meaning": "end/finish"
+  },
+  "n4k006": {
+    "meaning": "hold/have"
+  },
+  "n4k007": {
+    "meaning": "wait"
+  },
+  "n4k008": {
+    "meaning": "know"
+  },
+  "n4k009": {
+    "meaning": "think/feel"
+  },
+  "n4k010": {
+    "meaning": "think/consider"
+  },
+  "n4k011": {
+    "meaning": "teach"
+  },
+  "n4k012": {
+    "meaning": "work"
+  },
+  "n4k013": {
+    "meaning": "hurry/urgent"
+  },
+  "n4k014": {
+    "meaning": "swim"
+  },
+  "n4k015": {
+    "meaning": "run"
+  },
+  "n4k016": {
+    "meaning": "walk"
+  },
+  "n4k017": {
+    "meaning": "ride/board"
+  },
+  "n4k018": {
+    "meaning": "get off/descend"
+  },
+  "n4k019": {
+    "meaning": "arrive/wear"
+  },
+  "n4k020": {
+    "meaning": "send"
+  },
+  "n4k021": {
+    "meaning": "receive"
+  },
+  "n4k022": {
+    "meaning": "lend"
+  },
+  "n4k023": {
+    "meaning": "borrow"
+  },
+  "n4k024": {
+    "meaning": "sell"
+  },
+  "n4k025": {
+    "meaning": "take/get"
+  },
+  "n4k026": {
+    "meaning": "make/create"
+  },
+  "n4k027": {
+    "meaning": "wash"
+  },
+  "n4k028": {
+    "meaning": "cut"
+  },
+  "n4k029": {
+    "meaning": "pull/draw"
+  },
+  "n4k030": {
+    "meaning": "push"
+  },
+  "n4k031": {
+    "meaning": "hot (weather)"
+  },
+  "n4k032": {
+    "meaning": "cold (weather)"
+  },
+  "n4k033": {
+    "meaning": "warm"
+  },
+  "n4k034": {
+    "meaning": "cool/refreshing"
+  },
+  "n4k035": {
+    "meaning": "strong"
+  },
+  "n4k036": {
+    "meaning": "weak"
+  },
+  "n4k037": {
+    "meaning": "heavy/important"
+  },
+  "n4k038": {
+    "meaning": "light (weight)"
+  },
+  "n4k039": {
+    "meaning": "wide/spacious"
+  },
+  "n4k040": {
+    "meaning": "narrow"
+  },
+  "n4k041": {
+    "meaning": "fast/quick"
+  },
+  "n4k042": {
+    "meaning": "slow/late"
+  },
+  "n4k043": {
+    "meaning": "near/close"
+  },
+  "n4k044": {
+    "meaning": "far/distant"
+  },
+  "n4k045": {
+    "meaning": "bright/clear"
+  },
+  "n4k046": {
+    "meaning": "dark"
+  },
+  "n4k047": {
+    "meaning": "fat/thick"
+  },
+  "n4k048": {
+    "meaning": "thin/slender"
+  },
+  "n4k049": {
+    "meaning": "illness/sick"
+  },
+  "n4k050": {
+    "meaning": "institution/hospital"
+  },
+  "n4k051": {
+    "meaning": "medicine/doctor"
+  },
+  "n4k052": {
+    "meaning": "medicine/drug"
+  },
+  "n4k053": {
+    "meaning": "painful/ache"
+  },
+  "n4k054": {
+    "meaning": "head"
+  },
+  "n4k055": {
+    "meaning": "face"
+  },
+  "n4k056": {
+    "meaning": "neck"
+  },
+  "n4k057": {
+    "meaning": "back/height"
+  },
+  "n4k058": {
+    "meaning": "body"
+  },
+  "n4k059": {
+    "meaning": "heart/mind"
+  },
+  "n4k060": {
+    "meaning": "voice/sound"
+  },
+  "n4k061": {
+    "meaning": "blood"
+  },
+  "n4k062": {
+    "meaning": "bone"
+  },
+  "n4k063": {
+    "meaning": "skin/leather"
+  },
+  "n4k064": {
+    "meaning": "place"
+  },
+  "n4k065": {
+    "meaning": "place/site"
+  },
+  "n4k066": {
+    "meaning": "room"
+  },
+  "n4k067": {
+    "meaning": "building/hall"
+  },
+  "n4k068": {
+    "meaning": "bridge"
+  },
+  "n4k069": {
+    "meaning": "harbor/port"
+  },
+  "n4k070": {
+    "meaning": "island"
+  },
+  "n4k071": {
+    "meaning": "pond"
+  },
+  "n4k072": {
+    "meaning": "lake"
+  },
+  "n4k073": {
+    "meaning": "sea/ocean"
+  },
+  "n4k074": {
+    "meaning": "public/park"
+  },
+  "n4k075": {
+    "meaning": "garden/park"
+  },
+  "n4k076": {
+    "meaning": "temple"
+  },
+  "n4k077": {
+    "meaning": "god/spirit"
+  },
+  "n4k078": {
+    "meaning": "company/shrine"
+  },
+  "n4k079": {
+    "meaning": "older brother"
+  },
+  "n4k080": {
+    "meaning": "younger brother"
+  },
+  "n4k081": {
+    "meaning": "older sister"
+  },
+  "n4k082": {
+    "meaning": "younger sister"
+  },
+  "n4k083": {
+    "meaning": "ancestor/grandparent"
+  },
+  "n4k084": {
+    "meaning": "husband"
+  },
+  "n4k085": {
+    "meaning": "wife"
+  },
+  "n4k086": {
+    "meaning": "son/breath"
+  },
+  "n4k087": {
+    "meaning": "daughter"
+  },
+  "n4k088": {
+    "meaning": "meet/society"
+  },
+  "n4k089": {
+    "meaning": "company"
+  },
+  "n4k090": {
+    "meaning": "member/staff"
+  },
+  "n4k091": {
+    "meaning": "chief/long"
+  },
+  "n4k092": {
+    "meaning": "section/part"
+  },
+  "n4k093": {
+    "meaning": "section/lesson"
+  },
+  "n4k094": {
+    "meaning": "business/work"
+  },
+  "n4k095": {
+    "meaning": "serve/work"
+  },
+  "n4k096": {
+    "meaning": "matter/thing"
+  },
+  "n4k097": {
+    "meaning": "use/errand"
+  },
+  "n4k098": {
+    "meaning": "article/goods"
+  },
+  "n4k099": {
+    "meaning": "thing/object"
+  },
+  "n4k100": {
+    "meaning": "money/gold"
+  },
+  "n4k101": {
+    "meaning": "silver"
+  },
+  "n4k102": {
+    "meaning": "fee/material"
+  },
+  "n4k103": {
+    "meaning": "replace/generation"
+  },
+  "n4k104": {
+    "meaning": "number/name"
+  },
+  "n4k105": {
+    "meaning": "number/turn"
+  },
+  "n4k106": {
+    "meaning": "park (vehicle)"
+  },
+  "n4k107": {
+    "meaning": "line/route"
+  },
+  "n4k108": {
+    "meaning": "ground/earth"
+  },
+  "n4k109": {
+    "meaning": "iron/steel"
+  },
+  "n4k110": {
+    "meaning": "fly"
+  },
+  "n4k111": {
+    "meaning": "ship/boat"
+  },
+  "n4k112": {
+    "meaning": "travel/journey"
+  },
+  "n4k113": {
+    "meaning": "stay overnight"
+  },
+  "n4k114": {
+    "meaning": "baggage/load"
+  },
+  "n4k115": {
+    "meaning": "pass through/commute"
+  },
+  "n4k116": {
+    "meaning": "noon/daytime"
+  },
+  "n4k117": {
+    "meaning": "night/evening"
+  },
+  "n4k118": {
+    "meaning": "morning"
+  },
+  "n4k119": {
+    "meaning": "evening/night"
+  },
+  "n4k120": {
+    "meaning": "alcohol/sake"
+  },
+  "n4k121": {
+    "meaning": "field/wild"
+  },
+  "n4k122": {
+    "meaning": "vegetable"
+  },
+  "n4k123": {
+    "meaning": "fruit/result"
+  },
+  "n4k124": {
+    "meaning": "taste/flavor"
+  },
+  "n4k125": {
+    "meaning": "sweet"
+  },
+  "n4k126": {
+    "meaning": "spicy/hot"
+  },
+  "n4k127": {
+    "meaning": "plate/dish"
+  },
+  "n4k128": {
+    "meaning": "tea/brown"
+  },
+  "n4k129": {
+    "meaning": "cooked rice/meal"
+  },
+  "n4k130": {
+    "meaning": "forest"
+  },
+  "n4k131": {
+    "meaning": "woods/grove"
+  },
+  "n4k132": {
+    "meaning": "stone/rock"
+  },
+  "n4k133": {
+    "meaning": "sand"
+  },
+  "n4k134": {
+    "meaning": "rock/boulder"
+  },
+  "n4k135": {
+    "meaning": "mud"
+  },
+  "n4k136": {
+    "meaning": "ice"
+  },
+  "n4k137": {
+    "meaning": "wave"
+  },
+  "n4k138": {
+    "meaning": "star"
+  },
+  "n4k139": {
+    "meaning": "sun/thick"
+  },
+  "n4k140": {
+    "meaning": "warm/temperature"
+  },
+  "n4k141": {
+    "meaning": "degree/time"
+  },
+  "n4k142": {
+    "meaning": "meaning/intention"
+  },
+  "n4k143": {
+    "meaning": "taste/interest"
+  },
+  "n4k144": {
+    "meaning": "color"
+  },
+  "n4k145": {
+    "meaning": "shape/form"
+  },
+  "n4k146": {
+    "meaning": "question/problem"
+  },
+  "n4k147": {
+    "meaning": "answer"
+  },
+  "n4k148": {
+    "meaning": "reason/logic"
+  },
+  "n4k149": {
+    "meaning": "reason/cause"
+  },
+  "n4k150": {
+    "meaning": "by means of/since"
+  },
+  "n4k151": {
+    "meaning": "separate/different"
+  },
+  "n4k152": {
+    "meaning": "special/unique"
+  },
+  "n4k153": {
+    "meaning": "same/together"
+  },
+  "n4k154": {
+    "meaning": "anti/against"
+  },
+  "n4k155": {
+    "meaning": "whole/complete"
+  },
+  "n4k156": {
+    "meaning": "half"
+  },
+  "n4k157": {
+    "meaning": "both"
+  },
+  "n4k158": {
+    "meaning": "each/every"
+  },
+  "n4k159": {
+    "meaning": "next/following"
+  },
+  "n4k160": {
+    "meaning": "number/count"
+  },
+  "n4k161": {
+    "meaning": "quantity/amount"
+  },
+  "n4k162": {
+    "meaning": "measure/plan"
+  },
+  "n4k163": {
+    "meaning": "point/score"
+  },
+  "n4k164": {
+    "meaning": "rank/position"
+  },
+  "n4k165": {
+    "meaning": "clothes"
+  },
+  "n4k166": {
+    "meaning": "wear/arrive"
+  },
+  "n4k167": {
+    "meaning": "hat/cap"
+  },
+  "n4k168": {
+    "meaning": "shoes"
+  },
+  "n4k169": {
+    "meaning": "bag/sack"
+  },
+  "n4k170": {
+    "meaning": "pour/note/caution"
+  },
+  "n4k171": {
+    "meaning": "intention/meaning"
+  },
+  "n4k172": {
+    "meaning": "wish/request"
+  },
+  "n4k173": {
+    "meaning": "rely/request"
+  },
+  "n4k174": {
+    "meaning": "be troubled"
+  },
+  "n4k175": {
+    "meaning": "forget"
+  },
+  "n4k176": {
+    "meaning": "remember/wake"
+  },
+  "n4k177": {
+    "meaning": "learn/practice"
+  },
+  "n4k178": {
+    "meaning": "practice/train"
+  },
+  "n4k179": {
+    "meaning": "test/try"
+  },
+  "n4k180": {
+    "meaning": "test/effect"
+  },
+  "n4k181": {
+    "meaning": "experience/exam"
+  },
+  "n4k182": {
+    "meaning": "combine/fit"
+  },
+  "n4k183": {
+    "meaning": "gather/collect"
+  },
+  "n4k184": {
+    "meaning": "distribute/worry"
+  },
+  "n4k185": {
+    "meaning": "decide"
+  },
+  "n4k186": {
+    "meaning": "fixed/decide"
+  },
+  "n4k187": {
+    "meaning": "promise/approximately"
+  },
+  "n4k188": {
+    "meaning": "connect/take along"
+  },
+  "n4k189": {
+    "meaning": "continue"
+  },
+  "n4k190": {
+    "meaning": "change/strange"
+  },
+  "n3k001": {
+    "meaning": "give/grant"
+  },
+  "n3k002": {
+    "meaning": "reach/extend to"
+  },
+  "n3k003": {
+    "meaning": "attack/investigate"
+  },
+  "n3k004": {
+    "meaning": "argument/discuss"
+  },
+  "n3k005": {
+    "meaning": "mention/state"
+  },
+  "n3k006": {
+    "meaning": "show/indicate"
+  },
+  "n3k007": {
+    "meaning": "appear/present"
+  },
+  "n3k008": {
+    "meaning": "surface/express"
+  },
+  "n3k009": {
+    "meaning": "hope/wish"
+  },
+  "n3k010": {
+    "meaning": "seek/demand"
+  },
+  "n3k011": {
+    "meaning": "obtain/gain"
+  },
+  "n3k012": {
+    "meaning": "lose/mistake"
+  },
+  "n3k013": {
+    "meaning": "lose/carry"
+  },
+  "n3k014": {
+    "meaning": "win/victory"
+  },
+  "n3k015": {
+    "meaning": "compete/dispute"
+  },
+  "n3k016": {
+    "meaning": "war/fight"
+  },
+  "n3k017": {
+    "meaning": "protect/defend"
+  },
+  "n3k018": {
+    "meaning": "help/save"
+  },
+  "n3k019": {
+    "meaning": "rescue/save"
+  },
+  "n3k020": {
+    "meaning": "support/branch"
+  },
+  "n3k021": {
+    "meaning": "pay/clear away"
+  },
+  "n3k022": {
+    "meaning": "divide/proportion"
+  },
+  "n3k023": {
+    "meaning": "increase"
+  },
+  "n3k024": {
+    "meaning": "decrease"
+  },
+  "n3k025": {
+    "meaning": "advance/progress"
+  },
+  "n3k026": {
+    "meaning": "retreat/retire"
+  },
+  "n3k027": {
+    "meaning": "move/transfer"
+  },
+  "n3k028": {
+    "meaning": "roll/change"
+  },
+  "n3k029": {
+    "meaning": "turn/time"
+  },
+  "n3k030": {
+    "meaning": "face/direction"
+  },
+  "n3k031": {
+    "meaning": "believe/trust"
+  },
+  "n3k032": {
+    "meaning": "doubt/suspect"
+  },
+  "n3k033": {
+    "meaning": "certain/confirm"
+  },
+  "n3k034": {
+    "meaning": "judge/distinguish"
+  },
+  "n3k035": {
+    "meaning": "cut off/refuse"
+  },
+  "n3k036": {
+    "meaning": "permit/forgive"
+  },
+  "n3k037": {
+    "meaning": "forbid/prohibit"
+  },
+  "n3k038": {
+    "meaning": "law/method"
+  },
+  "n3k039": {
+    "meaning": "rule/standard"
+  },
+  "n3k040": {
+    "meaning": "rule/regulation"
+  },
+  "n3k041": {
+    "meaning": "righteousness/meaning"
+  },
+  "n3k042": {
+    "meaning": "duty/service"
+  },
+  "n3k043": {
+    "meaning": "responsibility"
+  },
+  "n3k044": {
+    "meaning": "entrust/duty"
+  },
+  "n3k045": {
+    "meaning": "authority/right"
+  },
+  "n3k046": {
+    "meaning": "self/oneself"
+  },
+  "n3k047": {
+    "meaning": "other/another"
+  },
+  "n3k048": {
+    "meaning": "mutual/appearance"
+  },
+  "n3k049": {
+    "meaning": "mutual"
+  },
+  "n3k050": {
+    "meaning": "together/both"
+  },
+  "n3k051": {
+    "meaning": "politics/government"
+  },
+  "n3k052": {
+    "meaning": "govern/cure"
+  },
+  "n3k053": {
+    "meaning": "people/citizens"
+  },
+  "n3k054": {
+    "meaning": "tribe/family"
+  },
+  "n3k055": {
+    "meaning": "history"
+  },
+  "n3k056": {
+    "meaning": "history"
+  },
+  "n3k057": {
+    "meaning": "era/generation"
+  },
+  "n3k058": {
+    "meaning": "boundary/occasion"
+  },
+  "n3k059": {
+    "meaning": "country/nation"
+  },
+  "n3k060": {
+    "meaning": "international"
+  },
+  "n3k061": {
+    "meaning": "capital/city"
+  },
+  "n3k062": {
+    "meaning": "prefecture/government"
+  },
+  "n3k063": {
+    "meaning": "prefecture"
+  },
+  "n3k064": {
+    "meaning": "ward/district"
+  },
+  "n3k065": {
+    "meaning": "city/market"
+  },
+  "n3k066": {
+    "meaning": "department/science"
+  },
+  "n3k067": {
+    "meaning": "skill/technique"
+  },
+  "n3k068": {
+    "meaning": "art/skill/technique"
+  },
+  "n3k069": {
+    "meaning": "machine/opportunity"
+  },
+  "n3k070": {
+    "meaning": "machine/instrument"
+  },
+  "n3k071": {
+    "meaning": "container/instrument"
+  },
+  "n3k072": {
+    "meaning": "produce/birth"
+  },
+  "n3k073": {
+    "meaning": "manufacture"
+  },
+  "n3k074": {
+    "meaning": "change/transform"
+  },
+  "n3k075": {
+    "meaning": "quality/substance"
+  },
+  "n3k076": {
+    "meaning": "element/plain"
+  },
+  "n3k077": {
+    "meaning": "charcoal/carbon"
+  },
+  "n3k078": {
+    "meaning": "acid/sour"
+  },
+  "n3k079": {
+    "meaning": "heat/fever"
+  },
+  "n3k080": {
+    "meaning": "cold/cool"
+  },
+  "n3k081": {
+    "meaning": "hard/solid"
+  },
+  "n3k082": {
+    "meaning": "liquid/fluid"
+  },
+  "n3k083": {
+    "meaning": "oil"
+  },
+  "n3k084": {
+    "meaning": "say/word"
+  },
+  "n3k085": {
+    "meaning": "announce/inform"
+  },
+  "n3k086": {
+    "meaning": "report/reward"
+  },
+  "n3k087": {
+    "meaning": "transmit/legend"
+  },
+  "n3k088": {
+    "meaning": "reach/accomplish"
+  },
+  "n3k089": {
+    "meaning": "express/represent"
+  },
+  "n3k090": {
+    "meaning": "explain/clear"
+  },
+  "n3k091": {
+    "meaning": "record/note"
+  },
+  "n3k092": {
+    "meaning": "know/consciousness"
+  },
+  "n3k093": {
+    "meaning": "acknowledge/recognize"
+  },
+  "n3k094": {
+    "meaning": "feel/emotion"
+  },
+  "n3k095": {
+    "meaning": "emotion/feeling"
+  },
+  "n3k096": {
+    "meaning": "love"
+  },
+  "n3k097": {
+    "meaning": "anger"
+  },
+  "n3k098": {
+    "meaning": "sad/grieve"
+  },
+  "n3k099": {
+    "meaning": "rejoice/joy"
+  },
+  "n3k100": {
+    "meaning": "be surprised"
+  },
+  "n3k101": {
+    "meaning": "fear/dread"
+  },
+  "n3k102": {
+    "meaning": "heart/mind/feeling"
+  },
+  "n3k103": {
+    "meaning": "thought/feeling"
+  },
+  "n3k104": {
+    "meaning": "desire/want"
+  },
+  "n3k105": {
+    "meaning": "suffer/bitter"
+  },
+  "n3k106": {
+    "meaning": "comfort/music/enjoy"
+  },
+  "n3k107": {
+    "meaning": "happiness/luck"
+  },
+  "n3k108": {
+    "meaning": "not/un-"
+  },
+  "n3k109": {
+    "meaning": "income/obtain"
+  },
+  "n3k110": {
+    "meaning": "pay/supply/store"
+  },
+  "n3k111": {
+    "meaning": "expense/spend"
+  },
+  "n3k112": {
+    "meaning": "tax"
+  },
+  "n3k113": {
+    "meaning": "price/value"
+  },
+  "n3k114": {
+    "meaning": "status/rank/price"
+  },
+  "n3k115": {
+    "meaning": "amount/forehead"
+  },
+  "n3k116": {
+    "meaning": "profit/advantage"
+  },
+  "n3k117": {
+    "meaning": "benefit/profit"
+  },
+  "n3k118": {
+    "meaning": "loss/damage"
+  },
+  "n3k119": {
+    "meaning": "offer/accompany"
+  },
+  "n3k120": {
+    "meaning": "attend/visit"
+  },
+  "n3k121": {
+    "meaning": "add/increase"
+  },
+  "n3k122": {
+    "meaning": "remove/exclude"
+  },
+  "n3k123": {
+    "meaning": "include/contain"
+  },
+  "n3k124": {
+    "meaning": "select/choose"
+  },
+  "n3k125": {
+    "meaning": "compare"
+  },
+  "n3k126": {
+    "meaning": "connection/barrier"
+  },
+  "n3k127": {
+    "meaning": "connection/person in charge"
+  },
+  "n3k128": {
+    "meaning": "belong to"
+  },
+  "n3k129": {
+    "meaning": "against/opposite"
+  },
+  "n3k130": {
+    "meaning": "origin/book/main"
+  },
+  "n3k131": {
+    "meaning": "end/tip"
+  },
+  "n3k132": {
+    "meaning": "first/beginning"
+  },
+  "n3k133": {
+    "meaning": "most/utmost"
+  },
+  "n3k134": {
+    "meaning": "low"
+  },
+  "n3k135": {
+    "meaning": "flat/peaceful"
+  },
+  "n3k136": {
+    "meaning": "equal/average"
+  },
+  "n3k137": {
+    "meaning": "difference/gap"
+  },
+  "n3k138": {
+    "meaning": "step/grade"
+  },
+  "n3k139": {
+    "meaning": "floor/staircase"
+  },
+  "n3k140": {
+    "meaning": "number/signal"
+  },
+  "n3k141": {
+    "meaning": "chapter/badge"
+  },
+  "n3k142": {
+    "meaning": "joint/season/section"
+  },
+  "n3k143": {
+    "meaning": "kind/type/similar"
+  },
+  "n3k144": {
+    "meaning": "kind/seed"
+  },
+  "n3k145": {
+    "meaning": "manner/Mr./Ms."
+  },
+  "n3k146": {
+    "meaning": "ceremony/formula"
+  },
+  "n3k147": {
+    "meaning": "example/custom"
+  },
+  "n3k148": {
+    "meaning": "duplicate/compound"
+  },
+  "n3k149": {
+    "meaning": "simple/single"
+  },
+  "n3k150": {
+    "meaning": "pure/innocent"
+  },
+  "n3k151": {
+    "meaning": "degree/extent"
+  },
+  "n3k152": {
+    "meaning": "limit/restrict"
+  },
+  "n3k153": {
+    "meaning": "boundary/border"
+  },
+  "n3k154": {
+    "meaning": "condition/letter"
+  },
+  "n3k155": {
+    "meaning": "attitude/condition"
+  },
+  "n3k156": {
+    "meaning": "condition/situation"
+  },
+  "n3k157": {
+    "meaning": "matter/case"
+  },
+  "n3k158": {
+    "meaning": "plan/idea/proposal"
+  },
+  "n3k159": {
+    "meaning": "plan/policy"
+  },
+  "n3k160": {
+    "meaning": "observe/guess"
+  },
+  "n3k161": {
+    "meaning": "investigate"
+  },
+  "n3k162": {
+    "meaning": "examine/investigate"
+  },
+  "n3k163": {
+    "meaning": "investigate/tune/condition"
+  },
+  "n3k164": {
+    "meaning": "evaluate/comment"
+  },
+  "n3k165": {
+    "meaning": "criticize"
+  },
+  "n3k166": {
+    "meaning": "temporary/suppose"
+  },
+  "n3k167": {
+    "meaning": "reality/truth/fruit"
+  },
+  "n3k168": {
+    "meaning": "proof/evidence"
+  },
+  "n3k169": {
+    "meaning": "theory/argument"
+  },
+  "n3k170": {
+    "meaning": "perform/play"
+  },
+  "n3k171": {
+    "meaning": "drama/play"
+  },
+  "n3k172": {
+    "meaning": "reflect/project"
+  },
+  "n3k173": {
+    "meaning": "picture/plan"
+  },
+  "n3k174": {
+    "meaning": "copy/photograph"
+  },
+  "n3k175": {
+    "meaning": "true/reality"
+  },
+  "n3k176": {
+    "meaning": "suppose/tentative"
+  },
+  "n3k177": {
+    "meaning": "origin/field"
+  },
+  "n3k178": {
+    "meaning": "cause/reason"
+  },
+  "n3k179": {
+    "meaning": "result/fruit"
+  },
+  "n3k180": {
+    "meaning": "effect/benefit"
+  },
+  "n3k181": {
+    "meaning": "ability/skill"
+  },
+  "n3k182": {
+    "meaning": "possible/acceptable"
+  },
+  "n3k183": {
+    "meaning": "not/deny/whether"
+  },
+  "n3k184": {
+    "meaning": "exist/know"
+  },
+  "n3k185": {
+    "meaning": "exist/be present"
+  },
+  "n3k186": {
+    "meaning": "have/exist"
+  },
+  "n3k187": {
+    "meaning": "nothing/without"
+  },
+  "n3k188": {
+    "meaning": "complete/finish"
+  },
+  "n3k189": {
+    "meaning": "become/achieve"
+  },
+  "n3k190": {
+    "meaning": "produce/give birth"
+  },
+  "n3k191": {
+    "meaning": "raise/grow"
+  },
+  "n3k192": {
+    "meaning": "old/aged"
+  },
+  "n3k193": {
+    "meaning": "young"
+  },
+  "n3k194": {
+    "meaning": "healthy/strong"
+  },
+  "n3k195": {
+    "meaning": "health/ease"
+  },
+  "n3k196": {
+    "meaning": "safe/cheap/peaceful"
+  },
+  "n3k197": {
+    "meaning": "dangerous"
+  },
+  "n3k198": {
+    "meaning": "difficult/disaster"
+  },
+  "n3k199": {
+    "meaning": "easy/change"
+  },
+  "n3k200": {
+    "meaning": "quiet/still"
+  },
+  "n3k201": {
+    "meaning": "move/motion"
+  },
+  "n3k202": {
+    "meaning": "lively/activity"
+  },
+  "n3k203": {
+    "meaning": "discuss/debate"
+  },
+  "n3k204": {
+    "meaning": "join/connect"
+  },
+  "n3k205": {
+    "meaning": "section/department"
+  },
+  "n3k206": {
+    "meaning": "match/combine"
+  },
+  "n3k207": {
+    "meaning": "inside/within"
+  },
+  "n3k208": {
+    "meaning": "determine/decide"
+  },
+  "n3k209": {
+    "meaning": "rice/USA"
+  },
+  "n3k210": {
+    "meaning": "decide/determine"
+  },
+  "n3k211": {
+    "meaning": "all/whole"
+  },
+  "n3k212": {
+    "meaning": "pass through/elapse"
+  },
+  "n3k213": {
+    "meaning": "hit/correspond"
+  },
+  "n3k214": {
+    "meaning": "promise/about"
+  },
+  "n3k215": {
+    "meaning": "neck/head"
+  },
+  "n3k216": {
+    "meaning": "nature/gender"
+  },
+  "n3k217": {
+    "meaning": "target/-like"
+  },
+  "n3k218": {
+    "meaning": "need/main point"
+  },
+  "n3k219": {
+    "meaning": "system/control"
+  },
+  "n3k220": {
+    "meaning": "period/term"
+  },
+  "n3k221": {
+    "meaning": "take/fetch"
+  },
+  "n3k222": {
+    "meaning": "harmony/Japanese style"
+  },
+  "n3k223": {
+    "meaning": "receive/accept"
+  },
+  "n3k224": {
+    "meaning": "continue"
+  },
+  "n3k225": {
+    "meaning": "number/count"
+  },
+  "n3k226": {
+    "meaning": "finger/indicate"
+  },
+  "n3k227": {
+    "meaning": "point/dot"
+  },
+  "n3k228": {
+    "meaning": "finish/settle"
+  },
+  "n3k229": {
+    "meaning": "solve/untie"
+  },
+  "n3k230": {
+    "meaning": "cross/interchange"
+  },
+  "n3k231": {
+    "meaning": "resources/capital"
+  },
+  "n3k232": {
+    "meaning": "beforehand/in advance"
+  },
+  "n3k233": {
+    "meaning": "face/surface"
+  },
+  "n3k234": {
+    "meaning": "oppose/reverse"
+  },
+  "n3k235": {
+    "meaning": "throw/cast"
+  },
+  "n3k236": {
+    "meaning": "change/strange"
+  },
+  "n3k237": {
+    "meaning": "hit/strike"
+  },
+  "n3k238": {
+    "meaning": "straight/direct/fix"
+  },
+  "n3k239": {
+    "meaning": "both"
+  },
+  "n2k001": {
+    "meaning": "duplicate / double / compound / multiple"
+  },
+  "n2k002": {
+    "meaning": "build / construct / erect"
+  },
+  "n2k003": {
+    "meaning": "guess / perceive / judge / understand"
+  },
+  "n2k004": {
+    "meaning": "consent / receive / hear / accept"
+  },
+  "n2k005": {
+    "meaning": "accustomed to / get used to / become familiar"
+  },
+  "n2k006": {
+    "meaning": "pick / choose / adopt / gather"
+  },
+  "n2k007": {
+    "meaning": "mistake / error / blunder"
+  },
+  "n2k008": {
+    "meaning": "bequeath / leave behind / lose"
+  },
+  "n2k009": {
+    "meaning": "face / confront / attend / overlook"
+  },
+  "n2k010": {
+    "meaning": "criticism / comment"
+  },
+  "n2k011": {
+    "meaning": "broaden / expand / extend"
+  },
+  "n2k012": {
+    "meaning": "shrink / contract / reduce"
+  },
+  "n2k013": {
+    "meaning": "imitate / copy / pattern / model"
+  },
+  "n2k014": {
+    "meaning": "shouldering / bearing / carrying"
+  },
+  "n2k015": {
+    "meaning": "exchange / change / convert"
+  },
+  "n2k016": {
+    "meaning": "preface / beginning / order / sequence"
+  },
+  "n2k017": {
+    "meaning": "trunk / main part / core / key"
+  },
+  "n2k018": {
+    "meaning": "astray / lose way / perplexed / bewildered"
+  },
+  "n2k019": {
+    "meaning": "run alongside / follow / along"
+  },
+  "n2k020": {
+    "meaning": "desire / want / greed / craving"
+  },
+  "n2k021": {
+    "meaning": "pressure / push / press down"
+  },
+  "n2k022": {
+    "meaning": "shift / move / transfer / migrate"
+  },
+  "n2k023": {
+    "meaning": "stamp / seal / mark / sign"
+  },
+  "n2k024": {
+    "meaning": "manage / run / operate / conduct business"
+  },
+  "n2k025": {
+    "meaning": "benefit / profit / gain / advantage"
+  },
+  "n2k026": {
+    "meaning": "perform / act / play / render"
+  },
+  "n2k027": {
+    "meaning": "respond / answer / comply / apply"
+  },
+  "n2k028": {
+    "meaning": "go / travel to / proceeding"
+  },
+  "n2k029": {
+    "meaning": "grace / favour / kindness / debt of gratitude"
+  },
+  "n2k030": {
+    "meaning": "temporary / false / provisional / hypothesis"
+  },
+  "n2k031": {
+    "meaning": "value / price / worth / evaluate"
+  },
+  "n2k032": {
+    "meaning": "pleasant / cheerful / agreeable / comfortable"
+  },
+  "n2k033": {
+    "meaning": "certain / definite / sure / confirm"
+  },
+  "n2k034": {
+    "meaning": "leather / reform / change / revolution"
+  },
+  "n2k035": {
+    "meaning": "divide / cut / split / proportion"
+  },
+  "n2k036": {
+    "meaning": "perfect / complete / finish / whole"
+  },
+  "n2k037": {
+    "meaning": "feeling / sense / emotion / impression"
+  },
+  "n2k038": {
+    "meaning": "government / official / organ / bureaucrat"
+  },
+  "n2k039": {
+    "meaning": "pipe / tube / control / manage"
+  },
+  "n2k040": {
+    "meaning": "status / standard / rank / character"
+  },
+  "n2k041": {
+    "meaning": "view / outlook / observe / perspective"
+  },
+  "n2k042": {
+    "meaning": "deliberation / debate / discuss / consult"
+  },
+  "n2k043": {
+    "meaning": "righteousness / justice / meaning / significance"
+  },
+  "n2k044": {
+    "meaning": "reverse / contrary / opposite / disobey"
+  },
+  "n2k045": {
+    "meaning": "boundary / border / region / situation"
+  },
+  "n2k046": {
+    "meaning": "permit / allow / forgive / license"
+  },
+  "n2k047": {
+    "meaning": "residence / stay / sit / be located"
+  },
+  "n2k048": {
+    "meaning": "mold / model / type / pattern"
+  },
+  "n2k049": {
+    "meaning": "pass / experience / longitude / manage"
+  },
+  "n2k050": {
+    "meaning": "drama / play / theatre / intense"
+  },
+  "n2k051": {
+    "meaning": "present / current / appear / manifest"
+  },
+  "n2k052": {
+    "meaning": "limit / bound / restrict / maximum"
+  },
+  "n2k053": {
+    "meaning": "decrease / reduce / diminish / subtract"
+  },
+  "n2k054": {
+    "meaning": "individual / counter for small objects"
+  },
+  "n2k055": {
+    "meaning": "effect / efficient / result / benefit"
+  },
+  "n2k056": {
+    "meaning": "structure / build / form / posture"
+  },
+  "n2k057": {
+    "meaning": "interest / excitement / arise / prosper"
+  },
+  "n2k058": {
+    "meaning": "health / ease / peace / well-being"
+  },
+  "n2k059": {
+    "meaning": "mix / mingle / confused / blend"
+  },
+  "n2k060": {
+    "meaning": "investigate / inspect / examine / check"
+  },
+  "n2k061": {
+    "meaning": "settle / finish / economy / aid"
+  },
+  "n2k062": {
+    "meaning": "occasion / time / edge / verge"
+  },
+  "n2k063": {
+    "meaning": "participate / visit / come / go (humble)"
+  },
+  "n2k064": {
+    "meaning": "scatter / disperse / separate / spread"
+  },
+  "n2k065": {
+    "meaning": "production / birth / property / assets"
+  },
+  "n2k066": {
+    "meaning": "praise / agree / support / sponsor"
+  },
+  "n2k067": {
+    "meaning": "remain / leftover / cruel / brutal"
+  },
+  "n2k068": {
+    "meaning": "test / try / attempt / experiment"
+  },
+  "n2k069": {
+    "meaning": "show / indicate / demonstrate / reveal"
+  },
+  "n2k070": {
+    "meaning": "discriminate / know / distinguish / consciousness"
+  },
+  "n2k071": {
+    "meaning": "young / if / or / as if"
+  },
+  "n2k072": {
+    "meaning": "income / collect / obtain / put away"
+  },
+  "n2k073": {
+    "meaning": "demand / need / require / necessitate"
+  },
+  "n2k074": {
+    "meaning": "art / technique / skill / means"
+  },
+  "n2k075": {
+    "meaning": "win / victory / excel / surpass"
+  },
+  "n2k076": {
+    "meaning": "evidence / proof / certificate / certify"
+  },
+  "n2k077": {
+    "meaning": "elephant / image / phenomenon / symbol"
+  },
+  "n2k078": {
+    "meaning": "feeling / emotion / information / situation"
+  },
+  "n2k079": {
+    "meaning": "condition / form / letter / appearance"
+  },
+  "n2k080": {
+    "meaning": "normal / usual / constant / always"
+  },
+  "n2k081": {
+    "meaning": "occupation / job / employment / position"
+  },
+  "n2k082": {
+    "meaning": "trust / believe / faith / confidence"
+  },
+  "n2k083": {
+    "meaning": "state humbly / report / say (humble) / the Monkey"
+  },
+  "n2k084": {
+    "meaning": "system / control / regulate / restrict"
+  },
+  "n2k085": {
+    "meaning": "nature / sex / characteristic / property"
+  },
+  "n2k086": {
+    "meaning": "politics / government / rule / administration"
+  },
+  "n2k087": {
+    "meaning": "manufacture / made by / produce / make"
+  },
+  "n2k088": {
+    "meaning": "refined / pure / spirit / precise / energy"
+  },
+  "n2k089": {
+    "meaning": "blame / responsibility / duty / reproach"
+  },
+  "n2k090": {
+    "meaning": "touch / contact / connect / receive"
+  },
+  "n2k091": {
+    "meaning": "establish / set up / install / found"
+  },
+  "n2k092": {
+    "meaning": "season / occasion / joint / period / moderation"
+  },
+  "n2k093": {
+    "meaning": "discontinue / cease / absolute / exceedingly"
+  },
+  "n2k094": {
+    "meaning": "specialty / exclusive / solely / devoted"
+  },
+  "n2k095": {
+    "meaning": "damage / loss / injury / harm"
+  },
+  "n2k096": {
+    "meaning": "attitude / appearance / condition / aspect"
+  },
+  "n2k097": {
+    "meaning": "retreat / withdraw / resign / retire"
+  },
+  "n2k098": {
+    "meaning": "choose / select / pick / option"
+  },
+  "n2k099": {
+    "meaning": "cut / sever / refuse / judge / decide"
+  },
+  "n2k100": {
+    "meaning": "price / value / cost / be worth"
+  },
+  "n2k101": {
+    "meaning": "author / write / remarkable / notable"
+  },
+  "n2k102": {
+    "meaning": "stretch / spread / put up / assert"
+  },
+  "n2k103": {
+    "meaning": "tune / investigate / regulate / tone / condition"
+  },
+  "n2k104": {
+    "meaning": "peak / top / summit / receive humbly"
+  },
+  "n2k105": {
+    "meaning": "low / humble / base / inferior"
+  },
+  "n2k106": {
+    "meaning": "target / aim / -ical / -al (suffix) / obvious"
+  },
+  "n2k107": {
+    "meaning": "on foot / follower / vain / in vain"
+  },
+  "n2k108": {
+    "meaning": "climb / ascend / register / appear"
+  },
+  "n2k109": {
+    "meaning": "alone / single / independent / Germany"
+  },
+  "n2k110": {
+    "meaning": "difficult / hard / crisis / fault / disaster"
+  },
+  "n2k111": {
+    "meaning": "burn / ignite / kindle / fuel"
+  },
+  "n2k112": {
+    "meaning": "ability / talent / function / Noh theatre"
+  },
+  "n2k113": {
+    "meaning": "distribute / spouse / worry / pair / ratio"
+  },
+  "n2k114": {
+    "meaning": "faction / school / dispatch / style / splendid"
+  },
+  "n2k115": {
+    "meaning": "expense / cost / spend / use up"
+  },
+  "n2k116": {
+    "meaning": "evaluate / criticism / comment / reputation"
+  },
+  "n2k117": {
+    "meaning": "poor / poverty / destitute / needy"
+  },
+  "n2k118": {
+    "meaning": "cloth / spread / distribute / declare"
+  },
+  "n2k119": {
+    "meaning": "Buddha / Buddhism / France / the departed"
+  },
+  "n2k120": {
+    "meaning": "hope / wish / desire / look toward"
+  },
+  "n2k121": {
+    "meaning": "defend / prevent / protect / guard"
+  },
+  "n2k122": {
+    "meaning": "forget / overlook / neglect"
+  },
+  "n2k123": {
+    "meaning": "counter for flat objects / sheet / piece"
+  },
+  "n2k124": {
+    "meaning": "task / duty / serve / work / business"
+  },
+  "n2k125": {
+    "meaning": "exempt / license / escape / avoid / dismiss"
+  },
+  "n2k126": {
+    "meaning": "face / surface / mask / aspect / scene"
+  },
+  "n2k127": {
+    "meaning": "translate / reason / meaning / circumstances"
+  },
+  "n2k128": {
+    "meaning": "role / service / use / duty / battle"
+  },
+  "n2k129": {
+    "meaning": "gentle / superior / actor / excellent / kind"
+  },
+  "n2k130": {
+    "meaning": "profit / benefit / advantage / useful / sharp"
+  },
+  "n2k131": {
+    "meaning": "rate / ratio / percentage / lead / follow"
+  },
+  "n2k132": {
+    "meaning": "law / regulation / rhythm / discipline"
+  },
+  "n2k133": {
+    "meaning": "complete / finish / end / understand"
+  },
+  "n2k134": {
+    "meaning": "theory / discuss / argue / reason / opinion"
+  },
+  "n2k135": {
+    "meaning": "risk / venture / brave / offend / head"
+  },
+  "n2k136": {
+    "meaning": "trade / exchange goods / barter"
+  },
+  "n2k137": {
+    "meaning": "violent / rough / expose / sudden"
+  },
+  "n2k138": {
+    "meaning": "treasure / precious / valuable"
+  },
+  "n2k139": {
+    "meaning": "abundant / rich / fertile / plentiful"
+  },
+  "n2k140": {
+    "meaning": "visit / call on / pay a visit"
+  },
+  "n2k141": {
+    "meaning": "pure / simple / genuine / innocent"
+  },
+  "n2k142": {
+    "meaning": "standard / level / semi- / conform / imitate"
+  },
+  "n2k143": {
+    "meaning": "detailed / full / minute / know well"
+  },
+  "n2k144": {
+    "meaning": "wound / injury / damage / scar"
+  },
+  "n2k145": {
+    "meaning": "obstacle / hinder / harm / block / impede"
+  },
+  "n2k146": {
+    "meaning": "call / name / title / praise / claim"
+  },
+  "n2k147": {
+    "meaning": "steam / heat / sultry / cook by steaming"
+  },
+  "n2k148": {
+    "meaning": "introduce / inherit / help"
+  },
+  "n2k149": {
+    "meaning": "general / leader / soon / about to / commander"
+  },
+  "n2k150": {
+    "meaning": "prize / reward / praise / appreciate / enjoy"
+  },
+  "n2k151": {
+    "meaning": "trade / commerce / merchant / discuss"
+  },
+  "n2k152": {
+    "meaning": "grant / bestow / teach / award / instruct"
+  },
+  "n2k153": {
+    "meaning": "mention / state / speak / relate / describe"
+  },
+  "n2k154": {
+    "meaning": "careful / discreet / cautious / prudent"
+  },
+  "n2k155": {
+    "meaning": "judge / examine carefully / deliberate"
+  },
+  "n2k156": {
+    "meaning": "touch / feel / contact / offend / sense"
+  },
+  "n2k157": {
+    "meaning": "achievement / results / spin / performance"
+  },
+  "n2k158": {
+    "meaning": "decorate / ornament / adorn / dress up"
+  },
+  "n2k159": {
+    "meaning": "judge / decide / stamp / distinguish / size"
+  },
+  "n2k160": {
+    "meaning": "printing block / edition / version / publish"
+  },
+  "n2k161": {
+    "meaning": "grip / grasp / hold / seize"
+  },
+  "n2k162": {
+    "meaning": "warm / mild / genial"
+  },
+  "n2k163": {
+    "meaning": "pain / ache / sore / suffer"
+  },
+  "n2k164": {
+    "meaning": "ceremony / law / reference / canon"
+  },
+  "n2k165": {
+    "meaning": "display / unfold / develop / expand"
+  },
+  "n2k166": {
+    "meaning": "effort / exertion / endeavour / strive"
+  },
+  "n2k167": {
+    "meaning": "anger / rage / fury / be enraged"
+  },
+  "n2k168": {
+    "meaning": "responsibility / duty / entrust / appoint"
+  },
+  "n2k169": {
+    "meaning": "recognize / acknowledge / approve / perceive"
+  },
+  "n2k170": {
+    "meaning": "thought / wish / concern / attention"
+  },
+  "n2k171": {
+    "meaning": "worship / bow / humbly receive / venerate"
+  },
+  "n2k172": {
+    "meaning": "abolish / obsolete / scrap / discard"
+  },
+  "n2k173": {
+    "meaning": "defeat / failure / ruin / lose"
+  },
+  "n2k174": {
+    "meaning": "general / carry / sort / class"
+  },
+  "n2k175": {
+    "meaning": "crime / offend / violate / sin"
+  },
+  "n2k176": {
+    "meaning": "suffer / cover / receive / passive marker"
+  },
+  "n2k177": {
+    "meaning": "secret / mystery / conceal / hide"
+  },
+  "n2k178": {
+    "meaning": "minute / slight / subtle / delicate"
+  },
+  "n2k179": {
+    "meaning": "mark / sign / target / aim / symbol"
+  },
+  "n2k180": {
+    "meaning": "ballot / vote / label / ticket / slip"
+  },
+  "n2k181": {
+    "meaning": "draw / sketch / depict / portray"
+  },
+  "n2k182": {
+    "meaning": "float / rise / be unsteady / emerge"
+  },
+  "n2k183": {
+    "meaning": "general / ordinary / universal / widespread"
+  },
+  "n2k184": {
+    "meaning": "prefecture / government / urban / storehouse"
+  },
+  "n2k185": {
+    "meaning": "fear / dread / frightening / scary"
+  },
+  "n2k186": {
+    "meaning": "dance / flutter / whirl / perform"
+  },
+  "n2k187": {
+    "meaning": "military / warrior / brave / martial"
+  },
+  "n2k188": {
+    "meaning": "be excited / arouse / stir up / be spirited"
+  },
+  "n2k189": {
+    "meaning": "powder / flour / dust / crush into powder"
+  },
+  "n2k190": {
+    "meaning": "partial / lean / one-sided / side radical"
+  },
+  "n2k191": {
+    "meaning": "wall / barrier / obstacle / cliff"
+  },
+  "n2k192": {
+    "meaning": "swell / expand / bulge / inflate"
+  },
+  "n2k193": {
+    "meaning": "rod / stick / pole / bar / club"
+  },
+  "n2k194": {
+    "meaning": "busy / occupied / hurried / hectic"
+  },
+  "n2k195": {
+    "meaning": "sink / die / submerge / be absorbed in"
+  },
+  "n2k196": {
+    "meaning": "translate / flip over / change / flutter"
+  },
+  "n2k197": {
+    "meaning": "dusk / evening / live / end of year"
+  },
+  "n2k198": {
+    "meaning": "recruit / invite / raise / collect"
+  },
+  "n2k199": {
+    "meaning": "obstruct / hinder / interfere / impede"
+  },
+  "n2k200": {
+    "meaning": "polish / grind / improve / brush"
+  },
+  "n2k201": {
+    "meaning": "curtain / act / shogunate / scene"
+  },
+  "n2k202": {
+    "meaning": "pride / boast / arrogance / neglect"
+  },
+  "n2k203": {
+    "meaning": "loose / random / comics / manga / aimless"
+  },
+  "n2k204": {
+    "meaning": "destroy / extinction / disappear / die out"
+  },
+  "n2k205": {
+    "meaning": "smoke / fumes / mist / haze"
+  },
+  "n2k206": {
+    "meaning": "support / aid / assist / rescue"
+  },
+  "n2k207": {
+    "meaning": "fate / connection / edge / verge / affinity"
+  },
+  "n2k208": {
+    "meaning": "dirty / pollute / stain / impure"
+  },
+  "n2k209": {
+    "meaning": "hate / dislike / unpleasant / suspicious"
+  },
+  "n2k210": {
+    "meaning": "shoulder / bear responsibility"
+  },
+  "n2k211": {
+    "meaning": "steep / dangerous / risky /险"
+  },
+  "n2k212": {
+    "meaning": "examine / inspect / investigate / check"
+  },
+  "n2k213": {
+    "meaning": "intense / violent / passion / fierce"
+  },
+  "n2k214": {
+    "meaning": "strict / severe / solemn / stern"
+  },
+  "n2k215": {
+    "meaning": "disaster / calamity / misfortune / catastrophe"
+  },
+  "n2k216": {
+    "meaning": "property / wealth / assets / treasure"
+  },
+  "n2k217": {
+    "meaning": "crime / sin / guilt / offense"
+  },
+  "n2k218": {
+    "meaning": "print / brush / scrub / sweep"
+  },
+  "n2k219": {
+    "meaning": "acid / sour / sharp taste / oxygen"
+  },
+  "n2k220": {
+    "meaning": "temporarily / for a while / a moment"
+  },
+  "n2k221": {
+    "meaning": "occupy / monopolize / fortune-tell / seize"
+  },
+  "n2k222": {
+    "meaning": "operate / manipulate / chastity / morality"
+  },
+  "n2k223": {
+    "meaning": "noisy / uproar / disturbance / commotion"
+  },
+  "n2k224": {
+    "meaning": "gift / present / donate / give"
+  },
+  "n2k225": {
+    "meaning": "urge / prompt / spur / hasten"
+  },
+  "n2k226": {
+    "meaning": "sue / appeal / complain / accuse"
+  },
+  "n2k227": {
+    "meaning": "stagnate / delay / be overdue / linger"
+  },
+  "n2k228": {
+    "meaning": "endure / withstand / resist / bear"
+  },
+  "n2k229": {
+    "meaning": "escape / remove / undress / omit / shed"
+  },
+  "n2k230": {
+    "meaning": "sigh / lament / admire / grieve"
+  },
+  "n2k231": {
+    "meaning": "edge / tip / extreme / end / start"
+  },
+  "n2k232": {
+    "meaning": "soft / flexible / mild / gentle"
+  },
+  "n2k233": {
+    "meaning": "calendar / almanac / chronicle"
+  },
+  "n2k234": {
+    "meaning": "inferior / poor quality / worse / substandard"
+  },
+  "n2k235": {
+    "meaning": "territory / possess / receive / understand / collar"
+  },
+  "n2k236": {
+    "meaning": "treatment / medical care / cure / heal"
+  },
+  "n2k237": {
+    "meaning": "thunder / lightning / thunderbolt"
+  },
+  "n2k238": {
+    "meaning": "dew / expose / reveal / Russia"
+  },
+  "n2k239": {
+    "meaning": "leak / reveal / escape / omit"
+  },
+  "n2k240": {
+    "meaning": "lamp / light / lantern / flame"
+  },
+  "n2k241": {
+    "meaning": "shadow / yin / negative / hidden / shade"
+  },
+  "n2k242": {
+    "meaning": "hide / conceal / retire / cover up"
+  },
+  "n2k243": {
+    "meaning": "trouble / bother / worry / annoy / complicate"
+  },
+  "n2k244": {
+    "meaning": "bubble / foam / froth / suds"
+  },
+  "n2k245": {
+    "meaning": "embrace / hold / cherish / carry in arms"
+  },
+  "n2k246": {
+    "meaning": "crumble / collapse / cave in / fall apart"
+  },
+  "n2k247": {
+    "meaning": "report / news / reward / inform / repay"
+  },
+  "n2k248": {
+    "meaning": "scarce / meager / lacking / deficient"
+  },
+  "n2k249": {
+    "meaning": "proclaim / declare / announce / spread"
+  },
+  "n2k250": {
+    "meaning": "fresh / vivid / Korea / clear / bright"
+  },
+  "n2k251": {
+    "meaning": "spring / fountain / source / wellspring"
+  },
+  "n2k252": {
+    "meaning": "pair / both / twin / couple"
+  },
+  "n2k253": {
+    "meaning": "funeral / bury / inter / lay to rest"
+  },
+  "n2k254": {
+    "meaning": "forge / train / discipline / temper"
+  },
+  "n2k255": {
+    "meaning": "muddy / turbid / voiced consonant / cloudy"
+  },
+  "n2k256": {
+    "meaning": "fat / grease / lipid / resin / tallow"
+  },
+  "n2k257": {
+    "meaning": "resign / word / expression / quit / refuse"
+  },
+  "n2k258": {
+    "meaning": "raise / keep / feed / domesticate (animals)"
+  },
+  "n2k259": {
+    "meaning": "mercy / charity / benevolence / compassion"
+  },
+  "n2k260": {
+    "meaning": "magnet / porcelain / magnetism / ceramic"
+  },
+  "n2k261": {
+    "meaning": "invade / encroach / violate / aggress"
+  },
+  "n2k262": {
+    "meaning": "soak / immerse / permeate / steep / be submerged"
+  },
+  "n2k263": {
+    "meaning": "earthquake / tremble / shiver / quake"
+  },
+  "n2k264": {
+    "meaning": "decline / weaken / fade / wane / deteriorate"
+  },
+  "n2k265": {
+    "meaning": "hang / droop / bequeath / dangle / descend"
+  },
+  "n2k266": {
+    "meaning": "push / infer / recommend / deduce"
+  },
+  "n2k267": {
+    "meaning": "sincerity / fidelity / truth / genuine"
+  },
+  "n2k268": {
+    "meaning": "vow / swear / pledge / oath"
+  },
+  "n2k269": {
+    "meaning": "submerge / lurk / hide / go underwater"
+  },
+  "n2k270": {
+    "meaning": "dress / pretend / load / equip / disguise"
+  },
+  "n2k271": {
+    "meaning": "total / overall / general / all / gross"
+  },
+  "n2k272": {
+    "meaning": "immediately / namely / i.e. / at once"
+  },
+  "n2k273": {
+    "meaning": "rough / crude / coarse / careless / inferior"
+  },
+  "n2k274": {
+    "meaning": "storehouse / warehouse / own / possess / treasury"
+  },
+  "n2k275": {
+    "meaning": "hate / detest / loathe / abhor"
+  },
+  "n2k276": {
+    "meaning": "mourning / lose / be bereaved / period of mourning"
+  },
+  "n2k277": {
+    "meaning": "wage / rent / fee / fare / hire"
+  },
+  "n2k278": {
+    "meaning": "stop / park / be stationed / reside"
+  },
+  "n2k279": {
+    "meaning": "government office / agency / authority"
+  },
+  "n2k280": {
+    "meaning": "exceed / surpass / ultra- / transcend / super-"
+  },
+  "n2k281": {
+    "meaning": "collect / recruit / symptom / sign / characteristic"
+  },
+  "n2k282": {
+    "meaning": "loyalty / fidelity / faithfulness / devotion"
+  },
+  "n2k283": {
+    "meaning": "savings / store / stock / reserve / accumulate"
+  },
+  "n2k284": {
+    "meaning": "trillion / omen / sign / portent"
+  },
+  "n2k285": {
+    "meaning": "precious / noble / valuable / exalted / dear"
+  },
+  "n2k286": {
+    "meaning": "fake / false / counterfeit / deceive / pretend"
+  },
+  "n2k287": {
+    "meaning": "shine / radiance / glitter / brilliant / sparkle"
+  },
+  "n2k288": {
+    "meaning": "doubt / suspect / question / be uncertain"
+  },
+  "n2k289": {
+    "meaning": "empty / void / false / hollow / unreal"
+  },
+  "n2k290": {
+    "meaning": "threaten / coerce / intimidate / menace"
+  },
+  "n2k291": {
+    "meaning": "germ / bacteria / fungus / mold / microbe"
+  },
+  "n2k292": {
+    "meaning": "tense / tight / urgent / critical"
+  },
+  "n2k293": {
+    "meaning": "level / equal / uniform / average / even"
+  },
+  "n2k294": {
+    "meaning": "grain / cereals / crops / harvest"
+  },
+  "n2k295": {
+    "meaning": "engrave / moment / time / carve / cut"
+  },
+  "n2k296": {
+    "meaning": "suburbs / outskirts / countryside / rural area"
+  },
+  "n2k297": {
+    "meaning": "waist / lower back / hips / small of back"
+  },
+  "n2k298": {
+    "meaning": "employ / hire / engage / take on staff"
+  },
+  "n2k299": {
+    "meaning": "boast / pride / be proud / brag / vaunt"
+  },
+  "n2k300": {
+    "meaning": "announce / inform / tell / notify / accuse"
+  },
+  "n2k301": {
+    "meaning": "overcome / subdue / win / excel"
+  },
+  "n2k302": {
+    "meaning": "isolated / alone / orphan / lonely"
+  },
+  "n2k303": {
+    "meaning": "arrogant / proud / haughty / insolent"
+  },
+  "n2k304": {
+    "meaning": "rope / cord / outline / guiding principle"
+  },
+  "n2k305": {
+    "meaning": "draft / manuscript / straw / rough copy"
+  },
+  "n2k306": {
+    "meaning": "blessing / grace / favour / kindness / benefit"
+  },
+  "n2k307": {
+    "meaning": "put up / display / hoist / publish / post"
+  },
+  "n2k308": {
+    "meaning": "lack / absence / deficiency / miss / be wanting"
+  },
+  "n2k309": {
+    "meaning": "transition / move / change / transfer / exile"
+  },
+  "n2k310": {
+    "meaning": "gradually / steadily / step by step"
+  },
+  "n2k311": {
+    "meaning": "twist / investigate / correct / condemn"
+  },
+  "n2k312": {
+    "meaning": "cruel / atrocities / tyranny / oppress"
+  },
+  "n2k313": {
+    "meaning": "refuse / resist / reject / deny / repel"
+  },
+  "n2k314": {
+    "meaning": "dig / excavate / unearth / hollow out"
+  },
+  "n2k315": {
+    "meaning": "reel / spin / wind / turn / advance"
+  },
+  "n2k316": {
+    "meaning": "gun / pistol / rifle / firearm"
+  },
+  "n2k317": {
+    "meaning": "pick / pluck / point out / gather / expose"
+  },
+  "n2k318": {
+    "meaning": "trace / mark / scar / footprint / remains"
+  },
+  "n2k319": {
+    "meaning": "congeal / freeze / coagulate / be absorbed in"
+  },
+  "n2k320": {
+    "meaning": "fierce / ferocious / brave / violent / raging"
+  },
+  "n2k321": {
+    "meaning": "arrest / be particular about / be concerned with"
+  },
+  "n2k322": {
+    "meaning": "rub / scrape / chafe / grind / friction"
+  },
+  "n2k323": {
+    "meaning": "snatch / plunder / seize / rob / take away"
+  },
+  "n2k324": {
+    "meaning": "wither / dry up / parch / die (plants)"
+  },
+  "n2k325": {
+    "meaning": "damp / moist / humid / wet / moisture"
+  },
+  "n2k326": {
+    "meaning": "rot / decay / spoil / corrode / putrefy"
+  },
+  "n2k327": {
+    "meaning": "sink / submerge / calm down / be depressed"
+  },
+  "n2k328": {
+    "meaning": "carve / engrave / chisel / sculpt"
+  },
+  "n2k329": {
+    "meaning": "go to / proceed to / move toward / be bound for"
+  },
+  "n2k330": {
+    "meaning": "consolation / comfort / relieve / soothe"
+  },
+  "n2k331": {
+    "meaning": "offering / dedicate / present / contribute"
+  },
+  "n2k332": {
+    "meaning": "mirror / model / appreciate / consider"
+  },
+  "n2k333": {
+    "meaning": "slide / slip / glide / smooth / slippery"
+  },
+  "n2k334": {
+    "meaning": "dawn / daybreak / time of / if and when"
+  },
+  "n2k335": {
+    "meaning": "remove / withdraw / evacuate / pull out"
+  },
+  "n2k336": {
+    "meaning": "broaden / expand / extend / widen"
+  },
+  "n2k337": {
+    "meaning": "abandon / throw away / discard / give up"
+  },
+  "n2k338": {
+    "meaning": "dry / parch / become dry / northwest"
+  },
+  "n2k339": {
+    "meaning": "rock / boulder / crag / cliff"
+  },
+  "n2k340": {
+    "meaning": "rice plant / paddy / rice (uncooked)"
+  },
+  "n2k341": {
+    "meaning": "seal / envelope / close / block / confer"
+  },
+  "n2k342": {
+    "meaning": "ocean-going ship / large vessel / steamship"
+  },
+  "n2k343": {
+    "meaning": "flourish / busy / prosperous / many / frequent"
+  },
+  "n2k344": {
+    "meaning": "resist / touch / reach / collateral / be worth"
+  },
+  "n2k345": {
+    "meaning": "imitate / follow / emulate / model after"
+  },
+  "n2k346": {
+    "meaning": "palm / control / manage / be in charge of"
+  },
+  "n2k347": {
+    "meaning": "fragile / brittle / weak / frail / vulnerable"
+  },
+  "n2k348": {
+    "meaning": "cross / go over / hand over / pass through"
+  },
+  "n2k349": {
+    "meaning": "bind / tie / fasten / restrict / confine"
+  },
+  "n2k350": {
+    "meaning": "corridor / hall / gallery / passageway"
+  },
+  "n2k351": {
+    "meaning": "ordinary / common / mediocre / generally"
+  },
+  "n2k352": {
+    "meaning": "gentle / yielding / appropriate / suitable"
+  },
+  "n2k353": {
+    "meaning": "light / faint / thin / dilute / pale"
+  },
+  "n2k354": {
+    "meaning": "invite / tempt / entice / lure / induce"
+  },
+  "n2k355": {
+    "meaning": "see / peruse / observe / look at / view"
+  },
+  "n2k356": {
+    "meaning": "liver / heart / vital / guts / courage"
+  },
+  "n2k357": {
+    "meaning": "chant / recite / compose verse / groan"
+  },
+  "n2k358": {
+    "meaning": "cheap / inexpensive / honest / upright"
+  },
+  "n2k359": {
+    "meaning": "the next (day) / following / the morrow"
+  },
+  "n2k360": {
+    "meaning": "surplus / remainder / excess / moreover"
+  },
+  "n2k361": {
+    "meaning": "strange / odd / curious / wonderful / rare"
+  },
+  "n2k362": {
+    "meaning": "swamp / marsh / glossy / many / grace"
+  },
+  "n2k363": {
+    "meaning": "soul / spirit / ghost / divine power"
+  },
+  "n2k364": {
+    "meaning": "arc / bow (shape) / curved line"
+  },
+  "n2k365": {
+    "meaning": "vomit / spew / breathe out / say / emit"
+  },
+  "n2k366": {
+    "meaning": "run / dash / rush / hurry / flee"
+  },
+  "n2k367": {
+    "meaning": "dormitory / hostel / villa / government office"
+  },
+  "n1k001": {
+    "meaning": "melancholy / grief / sorrow / gloom"
+  },
+  "n1k002": {
+    "meaning": "supremacy / domination / hegemony"
+  },
+  "n1k003": {
+    "meaning": "humble / modest / condescend"
+  },
+  "n1k004": {
+    "meaning": "clear / obvious / plain"
+  },
+  "n1k005": {
+    "meaning": "mirror / model / pattern / reflect"
+  },
+  "n1k006": {
+    "meaning": "soar / jump / leap / rising (prices)"
+  },
+  "n1k007": {
+    "meaning": "hang / suspend / depend on / risk"
+  },
+  "n1k008": {
+    "meaning": "appear / become visible / remarkable"
+  },
+  "n1k009": {
+    "meaning": "fine / delicate / dense / meticulous"
+  },
+  "n1k010": {
+    "meaning": "proud / haughty / arrogant"
+  },
+  "n1k011": {
+    "meaning": "vague / obscure / desert / wide"
+  },
+  "n1k012": {
+    "meaning": "decay / rot / die / decompose"
+  },
+  "n1k013": {
+    "meaning": "rectify / correct / straighten"
+  },
+  "n1k014": {
+    "meaning": "despise / look down upon / scorn"
+  },
+  "n1k015": {
+    "meaning": "deceive / cheat / delude"
+  },
+  "n1k016": {
+    "meaning": "shudder / tremble with fear"
+  },
+  "n1k017": {
+    "meaning": "arrowroot / kudzu vine / conflict"
+  },
+  "n1k018": {
+    "meaning": "atone / redeem / buy back"
+  },
+  "n1k019": {
+    "meaning": "indignation / anger / resentment"
+  },
+  "n1k020": {
+    "meaning": "solemn / quietly / stern / purge"
+  },
+  "n5_g001": {
+    "meaning": "Topic marker + copula (is/am/are)",
+    "explanation": "Used to state facts about the topic. は (wa) marks the topic of the sentence. です (desu) is a polite sentence-ending that means 'is/am/are'.",
+    "notes": "Don't confuse は (topic marker, pronounced 'wa') with は (the hiragana character 'ha'). In topic position, always read it as 'wa'.",
+    "examples": [
+      "I am a student.",
+      "This is a book.",
+      "Mr. Tanaka is a teacher."
+    ]
+  },
+  "n5_g002": {
+    "meaning": "Negative form of です (is not)",
+    "explanation": "The negative of 〜です. In casual speech, じゃないです or じゃありません can also be used.",
+    "notes": "じゃありません is slightly less formal than ではありません but both are acceptable in polite speech.",
+    "examples": [
+      "I am not a teacher.",
+      "This is not a pen.",
+      "Mr. Tanaka is not a student."
+    ]
+  },
+  "n5_g003": {
+    "meaning": "Subject marker が — marks the subject performing the action",
+    "explanation": "が marks the grammatical subject. Unlike は which marks the topic, が focuses on who/what performs the action or has the quality.",
+    "notes": "が is used when introducing new information or when emphasising who/what. は is used for known topics.",
+    "examples": [
+      "I like cats. (Cats are what I like.)",
+      "It is raining.",
+      "Mr. Yamada came."
+    ]
+  },
+  "n5_g004": {
+    "meaning": "Object marker を — marks the direct object of a transitive verb",
+    "explanation": "を (pronounced 'o') marks the direct object — the thing that receives the action of a transitive verb.",
+    "notes": "を only appears with transitive verbs (verbs that take a direct object). Intransitive verbs do not use を.",
+    "examples": [
+      "I eat rice/a meal.",
+      "I read a book.",
+      "I study Japanese."
+    ]
+  },
+  "n5_g005": {
+    "meaning": "Existence: there is/are (あります for inanimate, います for animate)",
+    "explanation": "Use あります for non-living things and います for living things (people, animals). The location is marked with に.",
+    "notes": "Robots and dolls are tricky — some speakers use います for robots since they 'move'. When in doubt, use あります for objects.",
+    "examples": [
+      "There is a book on the desk.",
+      "There are children in the park.",
+      "There is juice in the refrigerator."
+    ]
+  },
+  "n5_g006": {
+    "meaning": "で marks location of action OR means/method",
+    "explanation": "で has two key uses: (1) marks where an action takes place, (2) marks the means or tool used to do something.",
+    "notes": "Don't confuse で (action location) with に (existence location). 図書館にいます = I am at the library. 図書館で勉強します = I study at the library.",
+    "examples": [
+      "I study at the library.",
+      "I came by bus.",
+      "Please speak in Japanese."
+    ]
+  },
+  "n5_g007": {
+    "meaning": "Direction marker に with movement verbs (go/come/return to)",
+    "explanation": "に marks the destination with verbs of movement like 行く (go), 来る (come), 帰る (return). The particle へ can also be used interchangeably in most cases.",
+    "notes": "に indicates the destination (endpoint). を is used when passing through: 公園を歩きます (walk through the park).",
+    "examples": [
+      "I go to school.",
+      "I return home.",
+      "I came to Japan."
+    ]
+  },
+  "n5_g008": {
+    "meaning": "Want to do ~ (expressing desire)",
+    "explanation": "Attach たい to the verb stem (remove ます from masu-form). The result is treated like an い-adjective. Negative: たくないです. Past: たかったです.",
+    "notes": "たい expresses the speaker's own desire. To ask about others' desires, use たいですか or 〜たがっています.",
+    "examples": [
+      "I want to go to Japan.",
+      "I want to eat sushi.",
+      "I want to speak Japanese."
+    ]
+  },
+  "n5_g009": {
+    "meaning": "Let's do ~ (making a suggestion or invitation)",
+    "explanation": "ましょう is the volitional/hortative form. It suggests doing something together. ましょうか is softer: 'Shall we?'",
+    "notes": "ましょうか can also be used to offer help: 手伝いましょうか (Shall I help you?)",
+    "examples": [
+      "Let's eat together.",
+      "Let's watch a movie.",
+      "Shall we rest?"
+    ]
+  },
+  "n5_g010": {
+    "meaning": "Please do ~ (polite request)",
+    "explanation": "Form the て-form of the verb and add ください. This is a standard polite way to make requests.",
+    "notes": "For even more polite requests, use 〜ていただけますか. For casual requests, just use て-form alone: 書いて (Write it).",
+    "examples": [
+      "Please sit here.",
+      "Please speak slowly.",
+      "Please write your name."
+    ]
+  },
+  "n5_g011": {
+    "meaning": "Currently doing ~ OR state resulting from action",
+    "explanation": "Two main uses: (1) ongoing action — I am doing something right now; (2) resultant state — a state that results from a completed action (married, know, wearing).",
+    "notes": "知っています (I know) vs 知りません (I don't know). Never say 知っていません — use 知りません for the negative.",
+    "examples": [
+      "I am reading a book now.",
+      "Mr. Tanaka is married.",
+      "He/She is wearing a red shirt."
+    ]
+  },
+  "n5_g012": {
+    "meaning": "Past tense of verbs",
+    "explanation": "The た-form indicates completed actions. For polite speech, use ました. For plain/casual speech, use た directly.",
+    "notes": "The た-form conjugation follows the same sound changes as the て-form. Learning one helps the other.",
+    "examples": [
+      "Yesterday, I watched a movie.",
+      "I ate a meal. (casual)",
+      "It rained yesterday."
+    ]
+  },
+  "n5_g013": {
+    "meaning": "Please don't do ~",
+    "explanation": "Attach ないで to the nai-form (negative plain form) of a verb, then add ください. Used to politely ask someone not to do something.",
+    "notes": "For stronger prohibitions (signs, rules), use 〜てはいけません or 〜べからず (classical).",
+    "examples": [
+      "Please don't take photos here.",
+      "Please don't be late.",
+      "Please don't worry."
+    ]
+  },
+  "n5_g014": {
+    "meaning": "From ~ to ~ (time or place range)",
+    "explanation": "から marks the starting point and まで marks the end point. Can be used with time (9 o'clock to 5) or place (Tokyo to Osaka).",
+    "notes": "から and まで can be used separately: 9時から働きます (I work from 9) / 5時まで働きます (I work until 5).",
+    "examples": [
+      "I work from 9 to 5.",
+      "I go from Tokyo to Osaka by Shinkansen.",
+      "School is from Monday to Friday."
+    ]
+  },
+  "n5_g015": {
+    "meaning": "Also/too ~ (inclusive particle)",
+    "explanation": "も replaces は, が, or を to mean 'also' or 'too'. When used with negatives it means 'neither/either': 〜もありません.",
+    "notes": "〜も〜も with two nouns means 'both ~ and ~'. With negatives: 〜も〜もありません means 'neither ~ nor ~'.",
+    "examples": [
+      "I am also a student.",
+      "I also drink coffee.",
+      "I like both cats and dogs."
+    ]
+  },
+  "n5_g016": {
+    "meaning": "Possessive/descriptive connector",
+    "explanation": "の connects two nouns, showing possession (my book), origin (Japanese music), or description (coffee shop). The modifier always comes before の.",
+    "notes": "の can also nominalise verbs and adjectives: 食べるのが好き (I like eating). This is a higher-level usage.",
+    "examples": [
+      "It is my book.",
+      "I like Japanese music.",
+      "This is Mr. Tanaka's umbrella."
+    ]
+  },
+  "n5_g017": {
+    "meaning": "And ~ and ~ etc. (non-exhaustive list)",
+    "explanation": "や lists examples from a larger group (implying 'and things like these'). など adds 'etc.' or 'and so on'. Contrast with と which lists everything exhaustively.",
+    "notes": "など can be used alone without や: 本などを読みます (I read books and things like that).",
+    "examples": [
+      "I bought fruits, vegetables, and so on.",
+      "I am studying Japanese, English, and so on.",
+      "I want to go to Tokyo, Osaka, and places like that."
+    ]
+  },
+  "n5_g018": {
+    "meaning": "And ~ (exhaustive listing) / With ~ / Quotation と",
+    "explanation": "と has three uses: (1) lists nouns exhaustively (A and B, nothing else), (2) marks a companion (with someone), (3) marks a quotation or thought before 言う/思う.",
+    "notes": "Use と for complete lists (only A and B) and や for partial lists (A and B and others).",
+    "examples": [
+      "I ate an apple and a mandarin orange.",
+      "I watched a movie with my friend.",
+      "He said 'Good morning'."
+    ]
+  },
+  "n5_g019": {
+    "meaning": "ね = seeking agreement / よ = asserting information",
+    "explanation": "ね is used when you expect the listener to agree or share the same feeling. よ asserts information the listener may not know. よね combines both.",
+    "notes": "よ with a rising intonation can sound pushy. Use it carefully with superiors. ね is generally softer and safer.",
+    "examples": [
+      "It's hot today, isn't it?",
+      "This is delicious, I tell you!",
+      "There's a test tomorrow, right?"
+    ]
+  },
+  "n5_g020": {
+    "meaning": "Question marker (turns statement into question)",
+    "explanation": "か at the end of a sentence makes it a question. In polite speech (〜ますか、〜ですか) the intonation stays flat. In casual speech, just raise the intonation.",
+    "notes": "In casual speech, か alone can sound harsh (masculine/abrupt). Women often use の instead: 行くの？ (Are you going?)",
+    "examples": [
+      "What is this?",
+      "Are you Japanese?",
+      "Will you come to school tomorrow?"
+    ]
+  },
+  "n5_g021": {
+    "meaning": "After doing ~ (sequential actions)",
+    "explanation": "Indicates that one action is completed before the next begins. The て-form + から emphasises that the first action is fully done before the second starts.",
+    "notes": "Different from 〜た後で (after having done): てから emphasises sequence; た後で is more neutral about time elapsed.",
+    "examples": [
+      "After washing my hands, I eat.",
+      "After doing homework, I play.",
+      "After taking a shower, I sleep."
+    ]
+  },
+  "n5_g022": {
+    "meaning": "Do things like ~ and ~ (non-exhaustive list of actions)",
+    "explanation": "Lists representative activities without implying it's a complete list. Form: change verb to た-form, add り, repeat for other verbs, end with します.",
+    "notes": "Always end with します or しました. Using only one たり is possible but sounds incomplete; two or more is standard.",
+    "examples": [
+      "On weekends I do things like watch movies and listen to music.",
+      "I do things like read and write Japanese.",
+      "On the trip I did things like take photos and eat food."
+    ]
+  },
+  "n5_g023": {
+    "meaning": "Can do ~ / be able to do ~ (ability or possibility)",
+    "explanation": "Expresses ability or possibility. The simpler alternative is the potential verb form (食べられる). ことができる is slightly more formal.",
+    "notes": "The potential form (食べられる、読める) is more common in spoken Japanese. ことができる is preferred in formal writing.",
+    "examples": [
+      "I can speak Japanese.",
+      "Can we swim here?",
+      "I cannot read kanji."
+    ]
+  },
+  "n5_g024": {
+    "meaning": "Before doing ~ (prior action)",
+    "explanation": "前に with a verb (dictionary form) means 'before doing'. With a noun, use の前に. The action in 前に clause is not yet completed.",
+    "notes": "The verb before 前に is always in dictionary (plain non-past) form, even when talking about the past.",
+    "examples": [
+      "I brush my teeth before sleeping.",
+      "I wash my hands before meals.",
+      "Before coming to Japan, I studied Japanese."
+    ]
+  },
+  "n5_g025": {
+    "meaning": "After doing ~ (subsequent action)",
+    "explanation": "後で indicates an action happens after another. With verbs, use the た-form. With nouns, use の後で.",
+    "notes": "Compare with てから: 後で is more flexible about time gap; てから implies the second action follows directly.",
+    "examples": [
+      "After class ends, I will go to the library.",
+      "After work, let's go for a drink.",
+      "After eating lunch, I took a walk."
+    ]
+  },
+  "n5_g026": {
+    "meaning": "い-adjective: negative, past, and negative past forms",
+    "explanation": "い-adjectives conjugate by changing the final い: drop い and add くない (neg), かった (past), くなかった (neg past). Exception: いい → よい → よくない / よかった.",
+    "notes": "いい (good) is irregular. Always change to よ first: よくない (not good), よかった (was good), よくなかった (was not good).",
+    "examples": [
+      "This movie is not interesting.",
+      "It was cold yesterday.",
+      "That dish was not delicious."
+    ]
+  },
+  "n5_g027": {
+    "meaning": "な-adjective: negative, past, and negative past forms",
+    "explanation": "な-adjectives conjugate like nouns + です. Negative: じゃありません/ではありません. Past: でした. Neg past: じゃありませんでした.",
+    "notes": "When な-adjectives modify nouns, add な: 静かな部屋 (a quiet room). Don't add な before です.",
+    "examples": [
+      "This room is not quiet.",
+      "She was very energetic.",
+      "That park was not very famous."
+    ]
+  },
+  "n5_g028": {
+    "meaning": "B is more ~ than A (comparison)",
+    "explanation": "より marks the standard of comparison (A). のほうが marks what is being compared favourably (B). The adjective follows.",
+    "notes": "To ask 'which is more ~?' use どちらのほうが: 犬と猫、どちらのほうが好きですか。",
+    "examples": [
+      "I like cats more than dogs.",
+      "The bus is cheaper than the train.",
+      "I like winter more than summer."
+    ]
+  },
+  "n5_g029": {
+    "meaning": "~ is the most / ~ is number one (superlative)",
+    "explanation": "一番 (いちばん) means 'number one' or 'most'. Place it before the adjective. To specify the group, use 〜の中で〜が一番.",
+    "notes": "一番 can also mean 'first' in a sequence (一番目), so context matters.",
+    "examples": [
+      "Japanese is the most difficult.",
+      "In the class, Mr. Yamada is the tallest.",
+      "Among seasons, I like spring the most."
+    ]
+  },
+  "n5_g030": {
+    "meaning": "Because ~ / Since ~ (stating a reason)",
+    "explanation": "から after a clause gives the reason for what follows. In polite speech, both clauses use polite forms. In casual speech, plain forms are used.",
+    "notes": "ので is a softer, more indirect way to give a reason. から is more direct and can sound blunt in formal situations.",
+    "examples": [
+      "Because I am sleepy, I will sleep early.",
+      "Because it is raining, please take an umbrella.",
+      "Because I like Japanese, I study every day."
+    ]
+  },
+  "n5_g031": {
+    "meaning": "Because ~ / Since ~ (softer, objective reason)",
+    "explanation": "ので gives a reason like から but sounds more objective and polite. Better for formal situations. な-adjectives and nouns use なので before ので.",
+    "notes": "In polite speech, prefer ので over から. In casual speech, から is more natural.",
+    "examples": [
+      "Since I am tired, I will rest.",
+      "Since I was sick, I was absent from school.",
+      "Since there is an exam tomorrow, I will sleep early today."
+    ]
+  },
+  "n5_g032": {
+    "meaning": "~ but ~ (contrast between two clauses)",
+    "explanation": "が as a conjunction connects two contrasting clauses like 'but' or 'however'. It can also soften a statement without strong contrast.",
+    "notes": "が at the end of a sentence (〜ですが) softens the sentence, like trailing off politely: よろしいですが… (It would be fine, but…)",
+    "examples": [
+      "Japanese is interesting but difficult.",
+      "It's expensive but delicious.",
+      "I want to go but I don't have time."
+    ]
+  },
+  "n5_g033": {
+    "meaning": "What kind of ~ (asking about characteristics)",
+    "explanation": "どんな asks about the type or quality of something. Similar to 'what kind of' in English.",
+    "notes": "Compare with どの (which specific one from a group) and なに/なん (what thing).",
+    "examples": [
+      "What kind of music do you like?",
+      "What kind of person do you like?",
+      "What kind of country is Japan?"
+    ]
+  },
+  "n5_g034": {
+    "meaning": "To become ~ (change of state)",
+    "explanation": "なる means 'to become'. い-adjectives change い to くなる. な-adjectives and nouns use になる.",
+    "notes": "〜くする (to make something ~) is the transitive counterpart: 部屋を綺麗にする (to make the room clean).",
+    "examples": [
+      "When spring comes, it becomes warm.",
+      "I want to become good at Japanese.",
+      "When I grow up, I want to become a doctor."
+    ]
+  },
+  "n5_g035": {
+    "meaning": "It is okay to ~ / You may ~ (giving or asking permission)",
+    "explanation": "〜てもいいです gives permission. 〜てもいいですか asks for permission. To deny: 〜てはいけません or 〜てはだめです.",
+    "notes": "〜てもかまいません is a more formal/polite version. 〜てもいい (without です) is casual.",
+    "examples": [
+      "May I eat here?",
+      "You may open the window.",
+      "May I borrow this book?"
+    ]
+  },
+  "n5_g036": {
+    "meaning": "Must not ~ / It is not allowed to ~ (prohibition)",
+    "explanation": "〜てはいけません prohibits an action. More forceful than 〜ないでください. Common in rules and regulations.",
+    "notes": "Casual form: 〜てはだめ or 〜ちゃだめ (contraction of てはだめ).",
+    "examples": [
+      "You must not smoke here.",
+      "You must not use your phone during class.",
+      "You must not lie."
+    ]
+  },
+  "n5_g037": {
+    "meaning": "Must ~ / Have to ~ (obligation)",
+    "explanation": "Expresses obligation. Formed by changing ない to なければ and adding なりません. Casual: 〜なきゃ or 〜なければ.",
+    "notes": "Common contractions: なければ → なきゃ (casual), なければならない → ないといけない (slightly softer).",
+    "examples": [
+      "I must wake up early tomorrow.",
+      "I have to do my homework.",
+      "I must take the medicine."
+    ]
+  },
+  "n5_g038": {
+    "meaning": "Probably ~ / I think ~ (conjecture)",
+    "explanation": "Expresses probability or supposition. でしょう is polite; だろう is plain/casual. Often used with たぶん (probably).",
+    "notes": "Rising intonation on でしょう turns it into a tag question: 寒いでしょう? (It's cold, right?)",
+    "examples": [
+      "It will probably rain tomorrow.",
+      "He probably won't come.",
+      "It will probably be fine."
+    ]
+  },
+  "n5_g039": {
+    "meaning": "I think that ~ (expressing opinion or belief)",
+    "explanation": "Used to express the speaker's opinion or belief. The clause before と is always in plain form. と思っています implies ongoing thinking.",
+    "notes": "To express strong belief, use と思っています. For tentative opinion, just と思います.",
+    "examples": [
+      "I think Japanese is interesting.",
+      "I think it will be sunny tomorrow.",
+      "I think she will not come."
+    ]
+  },
+  "n5_g040": {
+    "meaning": "I heard that ~ / They say that ~ (hearsay)",
+    "explanation": "Reports information heard from others. Always in plain form before そうです. Different from そうです (appearance) which uses verb stem/adj stem.",
+    "notes": "Don't confuse with 〜そうです (appearance): 美味しそうです (looks delicious) vs 美味しいそうです (I heard it's delicious).",
+    "examples": [
+      "I heard that Mr. Tanaka will get married next month.",
+      "I heard that tomorrow is a holiday.",
+      "I heard that restaurant is delicious."
+    ]
+  },
+  "n5_g041": {
+    "meaning": "When ~ / At the time of ~",
+    "explanation": "時 (とき) means 'time' or 'when'. Use verb dictionary form for future/habitual events, た-form for completed events.",
+    "notes": "Dictionary form + 時 = when (action not yet done). た form + 時 = when (after action is done).",
+    "examples": [
+      "When I was a child, I often played in the park.",
+      "When I came to Japan, I saw Mt. Fuji.",
+      "When I have free time, I watch movies."
+    ]
+  },
+  "n5_g042": {
+    "meaning": "Every ~ (daily, weekly, monthly etc.)",
+    "explanation": "毎 (まい) means 'every'. Common forms: 毎日 (every day), 毎週 (every week), 毎月 (every month), 毎年 (every year), 毎朝 (every morning), 毎晩 (every evening).",
+    "notes": "毎年 can be read まいねん (formal) or まいとし (common).",
+    "examples": [
+      "I study Japanese every day.",
+      "I watch a movie every week.",
+      "I drink coffee every morning."
+    ]
+  },
+  "n5_g043": {
+    "meaning": "Around ~ / About ~ (approximate time or quantity)",
+    "explanation": "ごろ is used for approximate points in time. ぐらい/くらい is used for approximate amounts or durations.",
+    "notes": "ごろ cannot be used with durations (wrong: 一時間ごろ). ぐらい can be used with both points and durations.",
+    "examples": [
+      "I wake up around 7 o'clock.",
+      "I studied for about one hour.",
+      "I will reply around next week."
+    ]
+  },
+  "n5_g044": {
+    "meaning": "~th / ~st / ~nd / ~rd (ordinal numbers)",
+    "explanation": "番目 makes ordinal numbers. 一番目 (first), 二番目 (second). In some contexts, 番目 is dropped: 一番 (number one/most).",
+    "notes": "For floors of a building, use 階 (かい): 三階 (third floor). For months, use 月 (がつ): 三月 (March, third month).",
+    "examples": [
+      "I arrived third.",
+      "The second person from the left is Mr. Tanaka.",
+      "This is the first question."
+    ]
+  },
+  "n5_g045": {
+    "meaning": "About ~ / To the extent of ~ (degree or comparison)",
+    "explanation": "Both express degree or extent. ほど is more formal and also used in comparisons: 〜ほど〜ない (not as ~ as).",
+    "notes": "〜ほど〜ない is a key N4/N3 pattern: 英語ほど難しくない (not as difficult as English).",
+    "examples": [
+      "I was so tired I could die.",
+      "There is no one as kind as her.",
+      "I waited for about an hour."
+    ]
+  },
+  "n5_g046": {
+    "meaning": "Giving and receiving actions (directional verbs)",
+    "explanation": "あげる = give (to others), もらう = receive (from others), くれる = give (to me/my group). These determine the direction of giving.",
+    "notes": "The て-form versions (てあげる, てもらう, てくれる) describe doing an action as a favor. Direction is always key.",
+    "examples": [
+      "I gave a present to my friend.",
+      "I received a book from my teacher.",
+      "My mother wrote a letter for me."
+    ]
+  },
+  "n5_g047": {
+    "meaning": "Say that ~ / be called ~ (quoting or naming)",
+    "explanation": "と言います quotes direct or indirect speech. Also used to say what something is called: 〜と言います means 'is called ~'.",
+    "notes": "と言っています (is saying/has said) vs と言いました (said): tense matters for the time of saying.",
+    "examples": [
+      "My name is Tanaka (lit: I am called Tanaka).",
+      "He said 'I will come tomorrow'.",
+      "How do you say this in Japanese?"
+    ]
+  },
+  "n5_g048": {
+    "meaning": "The way of doing ~ / How to do ~",
+    "explanation": "方 (かた) attached to a verb stem means 'the way of doing' or 'how to do'. 食べ方 = the way of eating, 書き方 = how to write.",
+    "notes": "方 can also mean 'person' (honorific) or 'direction' depending on context and reading (かた vs ほう).",
+    "examples": [
+      "Please teach me how to write this kanji.",
+      "I don't know how to eat natto.",
+      "Could you tell me how to use this phone?"
+    ]
+  },
+  "n5_g049": {
+    "meaning": "Too ~ / Excessively ~ (excess)",
+    "explanation": "すぎる means 'too much' or 'excessively'. Attach to い-adj stem (remove い), な-adj stem, or verb stem (remove ます).",
+    "notes": "すぎる conjugates like a regular る-verb: すぎます、すぎた、すぎて、etc.",
+    "examples": [
+      "This dish is too spicy.",
+      "I ate too much yesterday.",
+      "These clothes are too big for me."
+    ]
+  },
+  "n5_g050": {
+    "meaning": "Easy to do ~ / Hard to do ~ (ease or difficulty)",
+    "explanation": "やすい means 'easy to do'. にくい means 'hard/difficult to do'. Both attach to the verb stem and conjugate like い-adjectives.",
+    "notes": "Compare with 〜づらい (emotionally difficult/reluctant to do) which is slightly different from にくい (physically/practically hard).",
+    "examples": [
+      "This book is easy to read.",
+      "Kanji are hard to write.",
+      "This road is easy to walk on."
+    ]
+  },
+  "n5_g051": {
+    "meaning": "It seems that ~ / It looks like ~ (appearance/inference)",
+    "explanation": "Both express inference based on observation. ようです is more formal; みたいです is casual. Different from そうです (direct appearance).",
+    "notes": "ようだ/みたいだ is inference from evidence you can see. そうだ (appearance) is from direct visual impression: 美味しそう (looks delicious).",
+    "examples": [
+      "She seems to be tired.",
+      "It looks like it's cold outside.",
+      "It seems the train is delayed."
+    ]
+  },
+  "n5_g052": {
+    "meaning": "Might ~ / Maybe ~ / Perhaps ~ (possibility)",
+    "explanation": "Expresses uncertainty and possibility — lower probability than でしょう. Plain form precedes it; な-adj and nouns drop だ before かもしれません.",
+    "notes": "Uncertainty scale: かもしれない (maybe 50%) < でしょう (probably 70-80%) < はずです (should be, strong expectation).",
+    "examples": [
+      "It might rain tomorrow.",
+      "She might not know.",
+      "This might be difficult, but I'll do my best."
+    ]
+  },
+  "n5_g053": {
+    "meaning": "While doing ~ (simultaneous actions)",
+    "explanation": "Indicates two actions happening at the same time by the same subject. The main action comes after ながら.",
+    "notes": "ながら can also express concession: 知りながら言わなかった (knowing it, I didn't say anything). This is a higher-level usage.",
+    "examples": [
+      "I study while listening to music.",
+      "Let's talk while walking.",
+      "I ate while watching TV."
+    ]
+  },
+  "n5_g054": {
+    "meaning": "Even ~ / Any ~ (inclusive: even this, any at all)",
+    "explanation": "でも after a noun means 'even'. After question words (なん、どこ、だれ etc.) it means 'any': なんでも (anything), どこでも (anywhere), だれでも (anyone).",
+    "notes": "Noun + でも at the end of a sentence (お茶でもどうですか) softens the suggestion, like 'or something'.",
+    "examples": [
+      "It is a book even a child can understand.",
+      "I eat anything.",
+      "How about some tea (or something)?"
+    ]
+  },
+  "n5_g055": {
+    "meaning": "In order to ~ / For the sake of ~ (purpose or benefit)",
+    "explanation": "ために expresses purpose (in order to do something) or benefit (for someone's sake). Verb form is always dictionary form.",
+    "notes": "Compare with 〜のに (which expresses 'in spite of' or 'for the purpose of' in different contexts at higher levels).",
+    "examples": [
+      "In order to study Japanese, I practice every day.",
+      "I am working for my family.",
+      "I exercise for my health."
+    ]
+  },
+  "n5_g056": {
+    "meaning": "And ~ and ~ (listing multiple reasons or qualities)",
+    "explanation": "し lists multiple reasons or qualities, implying 'and also'. Softer than から for giving reasons. Often implies 'among other reasons'.",
+    "notes": "し implies there are other reasons not stated. When all reasons are explicitly listed, から or ので is more natural.",
+    "examples": [
+      "This town is safe, it's clean, and it's easy to live in.",
+      "He's smart, he's kind — I like him.",
+      "I'm hungry and tired, so let's go home."
+    ]
+  },
+  "n5_g057": {
+    "meaning": "If ~ / When ~ (conditional: once a condition is met)",
+    "explanation": "たら expresses a conditional: once A happens, B follows. More natural than と for hypothetical situations. Also used for 'when' in the past: 着いたら電話した (When I arrived, I called).",
+    "notes": "Four main conditionals: と (automatic), ば (general condition), たら (once condition met), なら (based on information). たら is the most versatile.",
+    "examples": [
+      "When you finish your homework, let's play.",
+      "When spring comes, let's go flower-viewing.",
+      "If you're in trouble, please don't hesitate to say so."
+    ]
+  },
+  "n5_g058": {
+    "meaning": "The more ~ the more ~ (proportional increase)",
+    "explanation": "Expresses that as one thing increases, another increases proportionally. ば-form + same verb/adj + ほど + result.",
+    "notes": "This pattern is technically N4 but appears in N5 textbooks. The ば-form (conditional) is key: 行く → 行けば, 食べる → 食べれば.",
+    "examples": [
+      "The more you practice, the better you become.",
+      "The more expensive it is, the better the quality.",
+      "The more you know, the more interesting Japanese becomes."
+    ]
+  },
+  "n5_g059": {
+    "meaning": "Only ~ / Just ~ (limit or restriction)",
+    "explanation": "だけ limits to only the stated amount or thing. Similar to しか + negative, but だけ has a neutral tone while しか is more emphatic/restrictive.",
+    "notes": "しか requires a negative verb: 水しか飲みません (I drink nothing but water). だけ works with both positive and negative.",
+    "examples": [
+      "I only drink water.",
+      "Please wait just a little.",
+      "Please show me just once."
+    ]
+  },
+  "n5_g060": {
+    "meaning": "Nothing but ~ / Only ~ (with emphasis on insufficiency)",
+    "explanation": "しか must be followed by a negative verb. Implies the speaker feels the amount is insufficient or surprising. Stronger/more emotional than だけ.",
+    "notes": "Key difference: 水だけ飲む = I drink only water (neutral). 水しか飲まない = I drink nothing but water (implies dissatisfaction or surprise).",
+    "examples": [
+      "I only have 100 yen (and that's not enough).",
+      "I can only speak Japanese (nothing else).",
+      "Only three people came (fewer than expected)."
+    ]
+  },
+  "n4_g001": {
+    "meaning": "Giving/receiving actions (I do for you / you do for me / I receive the favor of)",
+    "explanation": "あげる: I/someone gives action TO another. くれる: someone gives action TO me. もらう: I receive the action FROM someone.",
+    "notes": "",
+    "examples": [
+      "I carried the luggage (for them).",
+      "The teacher taught me.",
+      "I had my friend help me."
+    ]
+  },
+  "n4_g002": {
+    "meaning": "If only ~ / I wish ~ (expressing regret)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I wish I had studied more."
+    ]
+  },
+  "n4_g003": {
+    "meaning": "Looks like ~ / seems ~ (appearance-based conjecture)",
+    "explanation": "Used when you can visually observe that something seems a certain way. Different from the hearsay そうです.",
+    "notes": "",
+    "examples": [
+      "This cake looks delicious.",
+      "It looks like it will rain."
+    ]
+  },
+  "n4_g004": {
+    "meaning": "Apparently ~ / It seems ~ (hearsay/inference from evidence)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "It seems Tanaka is not coming."
+    ]
+  },
+  "n4_g005": {
+    "meaning": "It appears that ~ (inference based on observation)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "He appears to be tired."
+    ]
+  },
+  "n4_g006": {
+    "meaning": "Probably ~ / I wonder if ~ (conjecture/uncertainty)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "It will probably rain tomorrow.",
+      "He will probably come."
+    ]
+  },
+  "n4_g007": {
+    "meaning": "Maybe ~ / might ~ (possibility, less certain than でしょう)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "It might snow tomorrow.",
+      "She might not know."
+    ]
+  },
+  "n4_g008": {
+    "meaning": "Must do ~ / have to do ~",
+    "explanation": "Expresses obligation or necessity. Casual forms: なきゃ、なくちゃ. Negative: なくてもいい (don't have to).",
+    "notes": "",
+    "examples": [
+      "I must take medicine every day.",
+      "I have to wake up early. (casual)"
+    ]
+  },
+  "n4_g009": {
+    "meaning": "It's okay to ~ / May I ~ (permission)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "May I sit here?",
+      "You may take photos."
+    ]
+  },
+  "n4_g010": {
+    "meaning": "Must not ~ / Not allowed to ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "You must not smoke here.",
+      "Don't talk during the exam."
+    ]
+  },
+  "n4_g011": {
+    "meaning": "Have done ~ before (past experience)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I have climbed Mt. Fuji before.",
+      "Have you ever eaten sushi?"
+    ]
+  },
+  "n4_g012": {
+    "meaning": "While doing ~ (two simultaneous actions by same person)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I study while listening to music.",
+      "Looking at your phone while walking is dangerous."
+    ]
+  },
+  "n4_g013": {
+    "meaning": "I think that ~ (expressing opinion)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I think he is right.",
+      "I think it will be sunny tomorrow."
+    ]
+  },
+  "n4_g014": {
+    "meaning": "In order to ~ / for the purpose of ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I came to Japan in order to learn Japanese.",
+      "I exercise for my health."
+    ]
+  },
+  "n4_g015": {
+    "meaning": "So that ~ / in order to ~ (goal/purpose for intransitive verbs)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I practice every day so that my Japanese improves.",
+      "I left early so as not to be late."
+    ]
+  },
+  "n3_g001": {
+    "meaning": "It doesn't mean that ~ / It's not that ~",
+    "explanation": "Used to deny or partially deny an implication. Clarifies a misunderstanding or nuances a statement.",
+    "notes": "",
+    "examples": [
+      "It's not that I dislike it, I just don't eat much of it.",
+      "It's not that it's difficult, it just takes time."
+    ]
+  },
+  "n3_g002": {
+    "meaning": "Despite ~ / In spite of ~ / Nevertheless",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "Despite the rain, the match continued."
+    ]
+  },
+  "n3_g003": {
+    "meaning": "Towards ~ / Against ~ / In contrast to ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I answered the teacher's question.",
+      "In contrast to him being in favor, I am opposed."
+    ]
+  },
+  "n3_g004": {
+    "meaning": "By means of ~ / Depending on ~ / Due to ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "This painting was drawn by Picasso.",
+      "Results change depending on effort."
+    ]
+  },
+  "n3_g005": {
+    "meaning": "As ~ / In the role/capacity of ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I work as a doctor.",
+      "I want to help her as a friend."
+    ]
+  },
+  "n3_g006": {
+    "meaning": "Just did ~ (recently) / Only ~ / Nothing but ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I just arrived.",
+      "He does nothing but play games."
+    ]
+  },
+  "n3_g007": {
+    "meaning": "If only ~ / As long as ~ (minimum condition)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "If only I had money, I could buy anything.",
+      "As long as I'm healthy, I'm happy."
+    ]
+  },
+  "n3_g008": {
+    "meaning": "Although ~ / Even though ~ (but the result is unexpected)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "Although I studied Japanese, I still can't speak it."
+    ]
+  },
+  "n3_g009": {
+    "meaning": "Not only ~ but also ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "She can speak not only English but also Japanese."
+    ]
+  },
+  "n3_g010": {
+    "meaning": "Completely finish / Accidentally do / Regrettably do",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "I finished my homework (completely).",
+      "I accidentally forgot my wallet!"
+    ]
+  },
+  "n3_g011": {
+    "meaning": "It has been decided that ~ / It is expected that ~ (rule/schedule)",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "There is supposed to be a meeting tomorrow.",
+      "The rule here is that you take off your shoes."
+    ]
+  },
+  "n3_g012": {
+    "meaning": "There is no way that ~ / Cannot possibly ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "There is no way he would say such a thing."
+    ]
+  },
+  "n3_g013": {
+    "meaning": "Just about to ~ / In the middle of ~ / Just finished ~",
+    "explanation": "Dictionary form + ところ = about to do. ている + ところ = in the middle of doing. た + ところ = just finished doing.",
+    "notes": "",
+    "examples": [
+      "I am about to go out now.",
+      "I am in the middle of eating.",
+      "I just arrived."
+    ]
+  },
+  "n3_g014": {
+    "meaning": "Together with ~ / As ~ / Along with ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "Along with the changes of the era, technology also advanced."
+    ]
+  },
+  "n3_g015": {
+    "meaning": "In addition to ~ / On top of ~",
+    "explanation": "",
+    "notes": "",
+    "examples": [
+      "In addition to rain, the wind was also strong."
+    ]
+  },
+  "n2g001": {
+    "meaning": "Despite / in spite of / regardless of",
+    "explanation": "Used to express that something happened contrary to what was expected. Similar to のに but more formal.",
+    "notes": "More formal than のに. Often used in written language and formal speech.",
+    "examples": [
+      "Despite the rain, the game was held.",
+      "Despite making efforts, I failed the exam.",
+      "Despite being busy, they came."
+    ]
+  },
+  "n2g002": {
+    "meaning": "Starting with / beginning with / including",
+    "explanation": "Used to give an example as a representative of a larger group.",
+    "notes": "The noun after をはじめ is the most prominent example of the group.",
+    "examples": [
+      "It will be sold in many cities including Tokyo, Osaka, and Nagoya.",
+      "Starting with the president, all employees participated."
+    ]
+  },
+  "n2g003": {
+    "meaning": "In addition to / besides",
+    "explanation": "Adds something extra on top of what was already mentioned.",
+    "notes": "Similar to〜だけでなく but more formal.",
+    "examples": [
+      "In addition to English, I can also speak Japanese.",
+      "In addition to the cold, the wind was also strong."
+    ]
+  },
+  "n2g004": {
+    "meaning": "Might possibly (undesirable result); cannot be ruled out",
+    "explanation": "Expresses concern that something undesirable might happen.",
+    "notes": "",
+    "examples": [
+      "If left like this, it could possibly lead to a serious accident.",
+      "He is the kind of person who might lie."
+    ]
+  },
+  "n2g005": {
+    "meaning": "Surrounding / concerning / over (a controversial topic)",
+    "explanation": "Used when multiple parties have differing views or conflicts about a topic.",
+    "notes": "Often used with words like 議論, 問題, 争い, 対立.",
+    "examples": [
+      "A heated debate took place over the budget.",
+      "The issue surrounding the territory is complex."
+    ]
+  },
+  "n2g006": {
+    "meaning": "At the time of / on the occasion of / when doing",
+    "explanation": "Used for important, formal, or special occasions. More formal than〜とき.",
+    "notes": "Used in formal/written contexts. Not for everyday casual situations.",
+    "examples": [
+      "At the time of enrollment, parental consent is required.",
+      "When signing a contract, please confirm the contents carefully."
+    ]
+  },
+  "n2g007": {
+    "meaning": "Contrary to / against / in opposition to",
+    "explanation": "Indicates that something goes against an expectation, rule, or wish.",
+    "notes": "Often used with 予想, 期待, 意志, 規則.",
+    "examples": [
+      "Contrary to expectations, the exam was easy.",
+      "Going against his parents' wishes, he became an artist."
+    ]
+  },
+  "n2g008": {
+    "meaning": "Through / throughout / by means of",
+    "explanation": "Expresses a medium or method by which something is done, or indicates throughout a period.",
+    "notes": "を通して emphasizes a process; を通じて can mean throughout a period.",
+    "examples": [
+      "Gather information through the internet.",
+      "It has a warm climate throughout the year."
+    ]
+  },
+  "n2g009": {
+    "meaning": "After (a long process) / at the end of",
+    "explanation": "Used to express something that occurred after a long period of effort or deliberation.",
+    "notes": "Usually implies a significant effort or process beforehand. Often has a conclusive nuance.",
+    "examples": [
+      "After a long discussion, a conclusion was reached.",
+      "After much deliberation, I decided to quit the company."
+    ]
+  },
+  "n2g010": {
+    "meaning": "Spanning / covering / throughout (range or period)",
+    "explanation": "Describes something that extends across a range of time, distance, or area.",
+    "notes": "Often used with numbers + time/space words.",
+    "examples": [
+      "The conference continued for three days.",
+      "An investigation spanning a wide area was conducted."
+    ]
+  },
+  "n2g011": {
+    "meaning": "Toward / against / in contrast to / regarding",
+    "explanation": "Can express direction of action/feeling, contrast, or response toward something.",
+    "notes": "Has multiple uses: direction, contrast, and response.",
+    "examples": [
+      "He took a rude attitude toward the teacher.",
+      "In contrast to his tall older brother, the younger one is short."
+    ]
+  },
+  "n2g012": {
+    "meaning": "Rather than saying ~ / more ~ than ~",
+    "explanation": "Used to correct or refine a description, suggesting B is more accurate than A.",
+    "notes": "Used to give a more precise or nuanced description.",
+    "examples": [
+      "Rather than angry, he is sad.",
+      "This is more of a job than a hobby."
+    ]
+  },
+  "n2g013": {
+    "meaning": "In order to / after doing / in terms of / when it comes to",
+    "explanation": "Used to express a prerequisite action or a consideration in a certain context.",
+    "notes": "Dictionary form + 上で = prerequisite; た form + 上で = after doing.",
+    "examples": [
+      "There are points to be careful of when signing a contract.",
+      "We will decide after discussing."
+    ]
+  },
+  "n2g014": {
+    "meaning": "Taking ~ as a trigger / using ~ as a chance",
+    "explanation": "Describes an event that became the trigger or turning point for a change.",
+    "notes": "Similar to〜を機に but more casual.",
+    "examples": [
+      "Using this accident as a trigger, safety measures were strengthened.",
+      "Studying abroad triggered my love for English."
+    ]
+  },
+  "n2g015": {
+    "meaning": "Just because ~ (doesn't mean)",
+    "explanation": "Used to say that even though reason A exists, conclusion B doesn't necessarily follow.",
+    "notes": "Often followed by a negative conclusion or warning.",
+    "examples": [
+      "Just because you have money doesn't mean you're happy.",
+      "Just because you're busy, you shouldn't skip meals."
+    ]
+  },
+  "n2g016": {
+    "meaning": "As soon as / depending on / up to",
+    "explanation": "Verb stem + 次第 means \"as soon as done.\" Noun + 次第 means \"depending on.\"",
+    "notes": "Two different usages based on whether attached to verb stem or noun.",
+    "examples": [
+      "We will depart as soon as preparations are complete.",
+      "The result depends on your effort."
+    ]
+  },
+  "n2g017": {
+    "meaning": "Although / even though (but the result is contrary)",
+    "explanation": "Concedes a fact in the first clause but introduces a contrasting or disappointing reality.",
+    "notes": "The second clause usually shows an unsatisfactory or unexpected result.",
+    "examples": [
+      "Although I studied, I failed the exam.",
+      "Although I applied, I have not received a reply yet."
+    ]
+  },
+  "n2g018": {
+    "meaning": "Along with / as ~ increases / accompanying",
+    "explanation": "Expresses that as one thing changes, another thing changes proportionally alongside it.",
+    "notes": "Both changes are parallel and related. Used in formal writing.",
+    "examples": [
+      "Along with economic growth, the standard of living rose.",
+      "Accompanying the population increase, housing shortages are becoming serious."
+    ]
+  },
+  "n2g019": {
+    "meaning": "In / at / regarding (formal location/context)",
+    "explanation": "Formal equivalent of で when indicating a place, situation, or field of activity.",
+    "notes": "Very formal. Commonly used in academic, legal, and official writing.",
+    "examples": [
+      "In modern society, information is extremely important.",
+      "Discuss problems in education."
+    ]
+  },
+  "n2g020": {
+    "meaning": "For / from the perspective of",
+    "explanation": "Expresses a standpoint or perspective from which something is evaluated.",
+    "notes": "Focus is on whose perspective is being expressed.",
+    "examples": [
+      "For children, play is important learning.",
+      "For me, family is the most important."
+    ]
+  },
+  "n1g001": {
+    "meaning": "Regardless of ~ / irrespective of ~",
+    "explanation": "Very formal expression meaning regardless of the nature or content of something.",
+    "notes": "Extremely formal. Found in legal documents, official announcements.",
+    "examples": [
+      "Regardless of the result, I will do my best.",
+      "Regardless of the reason, lateness will not be tolerated."
+    ]
+  },
+  "n1g002": {
+    "meaning": "With / by means of / as of (a time)",
+    "explanation": "Has two meanings: (1) by means of something, (2) as of a certain point in time (formal announcement).",
+    "notes": "The \"as of\" meaning is very formal and used in announcements.",
+    "examples": [
+      "As of today, this store will close.",
+      "Resolved the problem by means of ability."
+    ]
+  },
+  "n1g003": {
+    "meaning": "Unique to / only possible with / characteristic of",
+    "explanation": "Expresses that something is exclusively characteristic of or only possible because of a particular subject.",
+    "notes": "Always positive nuance. Cannot be used for negative characteristics.",
+    "examples": [
+      "There is a culture unique to Japan.",
+      "That is a technique only a professional could have."
+    ]
+  },
+  "n1g004": {
+    "meaning": "Worthy of / sufficient for / deserving",
+    "explanation": "Expresses that something meets the required standard or is worthy of a certain treatment.",
+    "notes": "Formal and literary expression.",
+    "examples": [
+      "He is a person worthy of trust.",
+      "I think it is a work worthy of evaluation."
+    ]
+  },
+  "n1g005": {
+    "meaning": "Because of the special circumstance that ~ / given that ~",
+    "explanation": "Used when a special or unusual circumstance causes a particular result. The situation is noteworthy.",
+    "notes": "The circumstance in the first clause is presented as a special, notable reason.",
+    "examples": [
+      "Given that it was a three-day weekend, tourist spots were very crowded.",
+      "Because of the popular idol's visit to Japan, fans flocked."
+    ]
+  },
+  "n1g006": {
+    "meaning": "Starting with ~ / beginning with ~ (as the first of many)",
+    "explanation": "Describes the first event in a series that triggers subsequent similar events.",
+    "notes": "Implies a series of events following the first trigger.",
+    "examples": [
+      "Starting with the Tokyo performance, the nationwide tour began.",
+      "Starting with Company A, many companies entered the market."
+    ]
+  },
+  "n1g007": {
+    "meaning": "When it comes to ~ / once you become ~ (implying high expectations)",
+    "explanation": "Expresses that at a certain high level or in a certain special position, certain things naturally follow.",
+    "notes": "Implies that the subject has reached a significant level or status.",
+    "examples": [
+      "When you become a company president, responsibility also becomes great.",
+      "Once you become a celebrity, there is no privacy."
+    ]
+  },
+  "n1g008": {
+    "meaning": "Even though / even if ~ (concessive, formal)",
+    "explanation": "Even though a certain condition exists, the result is contrary to expectation. Very formal.",
+    "notes": "Classical/formal concessive form. Similar to〜でも but much more formal.",
+    "examples": [
+      "Even a professional can fail sometimes.",
+      "Even the law is not perfect."
+    ]
+  },
+  "n1g009": {
+    "meaning": "Cannot help but / will definitely cause / will inevitably do",
+    "explanation": "Has two meanings: (1) something inevitably causes a reaction, (2) the speaker will definitely do something.",
+    "notes": "する becomes せず in this pattern.",
+    "examples": [
+      "This movie cannot help but move its viewers.",
+      "I will definitely arrest the criminal."
+    ]
+  },
+  "n1g010": {
+    "meaning": "Is nothing but / is precisely / is exactly",
+    "explanation": "Asserts that something is precisely and nothing other than what is stated. Strong affirmation.",
+    "notes": "Used for strong emphasis and assertion. Formal.",
+    "examples": [
+      "This success is nothing other than the team's effort.",
+      "The reason he did not come is nothing but laziness."
+    ]
+  },
+  "n1g011": {
+    "meaning": "Once ~ happens (there's no going back) / if ~ then it's all over",
+    "explanation": "Once a certain action takes place, an irreversible or extreme consequence follows.",
+    "notes": "The consequence is always negative or extreme.",
+    "examples": [
+      "Once you start talking to her, she won't stop for an hour.",
+      "Once you take on debt, you will suffer repaying it."
+    ]
+  },
+  "n1g012": {
+    "meaning": "Must not / should not (prohibition, classical)",
+    "explanation": "Classical prohibition form. Seen on signs and formal written rules.",
+    "notes": "Found on signs, notices, and classical texts. Not used in casual conversation.",
+    "examples": [
+      "Do not enter the lawn.",
+      "One must not break the rules."
+    ]
+  },
+  "n1g013": {
+    "meaning": "Cannot stop ~ing / sincerely / from the bottom of one's heart",
+    "explanation": "Expresses a deep, unceasing feeling such as hope, love, or admiration.",
+    "notes": "Used with emotional verbs like 願う, 愛する, 尊敬する. Formal and literary.",
+    "examples": [
+      "I sincerely hope for your continued success.",
+      "I cannot stop admiring his talent."
+    ]
+  },
+  "n1g014": {
+    "meaning": "Even if not ~ at least / if not fully then at least partially",
+    "explanation": "Suggests settling for a lesser alternative when the ideal is not possible.",
+    "notes": "Sets a minimum expectation or alternative.",
+    "examples": [
+      "If not every day, at least you should exercise once a week.",
+      "If not perfect, at least I did my best."
+    ]
+  },
+  "n1g015": {
+    "meaning": "Undaunted by / in spite of (adversity) / without being deterred by",
+    "explanation": "Expresses that someone faced difficulties without being deterred — showing bravery or resilience.",
+    "notes": "Always implies overcoming adversity with bravery.",
+    "examples": [
+      "Undaunted by the storm, the ship moved forward.",
+      "Undeterred by criticism, he continued the reforms."
+    ]
+  },
+  "n1g016": {
+    "meaning": "Not only ~ but also (formal)",
+    "explanation": "Formal equivalent of〜だけでなく. Used in written Japanese and formal speech.",
+    "notes": "More formal than〜だけでなく or〜ばかりでなく.",
+    "examples": [
+      "They are active not only domestically but also abroad.",
+      "Not only economically but also culturally, it developed."
+    ]
+  },
+  "n1g017": {
+    "meaning": "In accordance with / based on / in line with",
+    "explanation": "Indicates acting or thinking in direct accordance with rules, facts, or reality.",
+    "notes": "Formal. Different from に従って which implies following orders.",
+    "examples": [
+      "Deal with it in accordance with the law.",
+      "Create a plan based on reality."
+    ]
+  },
+  "n1g018": {
+    "meaning": "As soon as / no sooner than (frustrating repetition)",
+    "explanation": "Expresses frustration that as soon as one thing is done, the opposite immediately happens again.",
+    "notes": "Always has a frustrated or exasperated nuance.",
+    "examples": [
+      "No sooner do I tidy up than the children make a mess again.",
+      "As soon as I memorize it, I forget it."
+    ]
+  },
+  "n1g019": {
+    "meaning": "When it comes to ~ (expressing exasperation/complaint)",
+    "explanation": "Used to introduce a topic about someone or something that the speaker is exasperated or dissatisfied with.",
+    "notes": "Always carries a negative or complaining tone.",
+    "examples": [
+      "When it comes to my son, he doesn't study at all.",
+      "When it comes to young people these days, they have no manners."
+    ]
+  },
+  "n1g020": {
+    "meaning": "Because of / therefore / due to (formal/literary)",
+    "explanation": "Classical and formal expression of cause and reason. Literary equivalent of から or ので.",
+    "notes": "Found in literary works, formal essays, and classical texts.",
+    "examples": [
+      "Due to youth, mistakes were made.",
+      "Because of ignorance, I ended up hurting someone."
+    ]
+  },
+  "n5l001": {
+    "title": "Greetings & Self-Introduction",
+    "description": "Learn essential Japanese greetings and how to introduce yourself.",
+    "dialogue": [
+      "Hello! Nice to meet you. I am Tanaka.",
+      "Nice to meet you. I am Yamada. Please treat me well.",
+      "Likewise, please treat me well."
+    ],
+    "culturalNote": "In Japan, bowing while greeting is customary. The depth of the bow reflects the level of respect."
+  },
+  "n5l002": {
+    "title": "Numbers & Counting",
+    "description": "Learn Japanese numbers from 1 to 10,000 and basic counters.",
+    "dialogue": [
+      "How many apples will you buy?",
+      "I will buy three."
+    ],
+    "culturalNote": "Japanese has multiple counter systems depending on what is being counted."
+  },
+  "n5l003": {
+    "title": "Family Members",
+    "description": "Learn vocabulary for family members in Japanese, including humble and honorific forms.",
+    "dialogue": [
+      "How many people are in your family?",
+      "There are four of us. I have a father, mother, and younger sister.",
+      "That's nice. I am an only child."
+    ],
+    "culturalNote": "Japanese uses different words for your own family (humble) vs. someone else's family (honorific). ちち = my father; おとうさん = your/someone's father."
+  },
+  "n5l004": {
+    "title": "Daily Routine & Time",
+    "description": "Learn to talk about daily activities and express time in Japanese.",
+    "dialogue": [
+      "What time do you wake up every morning?",
+      "I wake up at six. Then I take a shower and eat breakfast.",
+      "What time is school from and until?",
+      "It is from 8:30 until 3:00."
+    ],
+    "culturalNote": "Japan uses both the 12-hour and 24-hour clock. Train schedules and official times often use the 24-hour format."
+  },
+  "n5l005": {
+    "title": "Food & Ordering at a Restaurant",
+    "description": "Learn food vocabulary and how to order food at a Japanese restaurant.",
+    "dialogue": [
+      "Welcome. What will you have?",
+      "One ramen and two gyoza please.",
+      "What would you like to drink?",
+      "Green tea please."
+    ],
+    "culturalNote": "いただきます is said before eating, expressing gratitude. ごちそうさまでした is said after eating, thanking the cook or host."
+  },
+  "n4l001": {
+    "title": "Giving & Receiving (てあげる / てもらう / てくれる)",
+    "description": "Master the complex system of giving and receiving in Japanese.",
+    "dialogue": [
+      "Tanaka carried my bags for me.",
+      "That's kind. Did you have the teacher teach you?",
+      "Yes, I had the teacher teach me. It was very helpful."
+    ],
+    "culturalNote": "The direction of giving/receiving is crucial in Japanese. Using the wrong form can sound unnatural or even rude."
+  },
+  "n4l002": {
+    "title": "Causative & Passive Forms",
+    "description": "Learn how to make someone do something, and how to express being acted upon.",
+    "dialogue": [
+      "I was made to work overtime by the manager.",
+      "That must have been tough. I made my child eat vegetables."
+    ],
+    "culturalNote": "The causative-passive form (させられる) often carries a nuance of being forced to do something against one's will."
+  },
+  "n4l003": {
+    "title": "Expressing Conditions (〜ば / 〜たら / 〜と / 〜なら)",
+    "description": "Master the four conditional forms in Japanese and when to use each one.",
+    "dialogue": [
+      "If you have time, shall we go see a movie?",
+      "When work finishes, I'll contact you.",
+      "If you're going to Tokyo, you should go to Sky Tree."
+    ],
+    "culturalNote": "と is for natural/automatic consequences. たら is most versatile. ば is often for hypotheticals. なら is for advice based on new information."
+  },
+  "n4l004": {
+    "title": "Expressing Hearsay & Appearance (〜そう / 〜らしい / 〜ようだ)",
+    "description": "Learn how to express what things seem like and what you've heard.",
+    "dialogue": [
+      "According to the news, it seems it will snow tomorrow.",
+      "Really? Looking at the sky, it certainly does seem cloudy.",
+      "It seems like Tanaka caught a cold."
+    ],
+    "culturalNote": "〜そうだ has two completely different meanings depending on conjugation: verb-stem + そうだ = looks like; plain form + そうだ = hearsay."
+  },
+  "n4l005": {
+    "title": "Making Requests & Giving Permission",
+    "description": "Learn polite ways to make requests and ask for or give permission.",
+    "dialogue": [
+      "Excuse me, is it alright if I open the window?",
+      "Yes, please go ahead. But since the air conditioning is on, please just a little.",
+      "Understood. Could you help me a bit?"
+    ],
+    "culturalNote": "Politeness levels matter greatly in Japanese. Using too casual a form with a superior can be seen as disrespectful."
+  },
+  "n3l001": {
+    "title": "Expressing Reason & Cause (〜ため / 〜せいで / 〜おかげで)",
+    "description": "Learn nuanced ways to express reasons and causes, including blame and gratitude.",
+    "dialogue": [
+      "It is thanks to the teacher that I passed the exam.",
+      "On the contrary, because of my poor health, I couldn't concentrate on the exam.",
+      "For next year too, let's prepare more."
+    ],
+    "culturalNote": "おかげで implies positive outcome; せいで implies negative outcome. Using them incorrectly can seem sarcastic."
+  },
+  "n3l002": {
+    "title": "Expressing Contrast (〜のに / 〜くせに / 〜一方)",
+    "description": "Express contrast and unexpected results using various conjunctions.",
+    "dialogue": [
+      "Even though I studied so much, I ended up failing the exam.",
+      "Despite knowing, he is pretending not to know.",
+      "While cities are convenient, on the other hand they lack nature."
+    ],
+    "culturalNote": "くせに is stronger and more critical than のに. It implies the speaker thinks the subject should know better."
+  },
+  "n3l003": {
+    "title": "Potential, Desire & Necessity",
+    "description": "Express ability, desires, and necessity using various grammatical forms.",
+    "dialogue": [
+      "He is always wanting new games.",
+      "For your health, you should eat more vegetables.",
+      "You're right. We need to exercise every day."
+    ],
+    "culturalNote": "べきだ expresses a moral obligation or advice; なければならない is a stronger, more external obligation."
+  },
+  "n3l004": {
+    "title": "Quotation & Reported Speech",
+    "description": "Learn how to report what others said, thought, or heard.",
+    "dialogue": [
+      "According to Tanaka, it seems a new cafe opened near the station.",
+      "Yamada said they are going on a trip next week.",
+      "I heard from the manager that the meeting has been postponed."
+    ],
+    "culturalNote": "Japanese reported speech does not always change tense like English does. Context and time expressions carry tense information."
+  },
+  "n3l005": {
+    "title": "Expressing Change & Transformation",
+    "description": "Learn how to express gradual or sudden changes in state.",
+    "dialogue": [
+      "After studying Japanese, I became able to understand the news.",
+      "Recently, the number of people who write letters has decreased.",
+      "Technology will continue to develop from here on."
+    ],
+    "culturalNote": "てくる implies a change coming toward the present from the past; ていく implies a change going away into the future."
+  },
+  "n2l001": {
+    "title": "Formal Written Japanese",
+    "description": "Learn the key differences between spoken and written Japanese and formal expression patterns.",
+    "dialogue": [
+      "Dear Sir/Madam, I hope this letter finds you in good health and spirits.",
+      "Regarding this matter, we kindly request your confirmation."
+    ],
+    "culturalNote": "Business Japanese (ビジネス日本語) has its own set of expressions and formulas. Keigo (敬語) — honorific language — is essential in professional settings."
+  },
+  "n2l002": {
+    "title": "Keigo — Honorific Language Deep Dive",
+    "description": "Master sonkeigo (respectful), kenjougo (humble), and teineigo (polite) forms.",
+    "dialogue": [
+      "The manager is currently out.",
+      "Is Tanaka-sama available?",
+      "Could you please wait a moment?"
+    ],
+    "culturalNote": "Keigo is fundamental to Japanese professional life. Mistakes in keigo can cause significant social friction in formal settings."
+  },
+  "n2l003": {
+    "title": "Complex Sentence Structures",
+    "description": "Build complex, multi-clause sentences using advanced connectives.",
+    "dialogue": [
+      "Now that you have decided to do it, you must persevere until the end.",
+      "Although I want to study abroad, there is also the matter of money.",
+      "Although I applied, I have not yet been able to confirm the details."
+    ],
+    "culturalNote": "〜以上は and 〜からには both mean \"now that / since\" but 以上は is slightly more formal."
+  },
+  "n2l004": {
+    "title": "Reading News & Media Japanese",
+    "description": "Learn vocabulary and structures commonly used in Japanese news and media.",
+    "dialogue": [
+      "According to the government's announcement, new economic measures are expected to be implemented from next month.",
+      "Along with the rise in prices, concerns are growing about the impact on household budgets."
+    ],
+    "culturalNote": "News Japanese often uses passive voice and nominalizations. The style is dense and omits particles more frequently than conversational Japanese."
+  },
+  "n2l005": {
+    "title": "Expressing Degree & Extent",
+    "description": "Express degree, extent, and limits using advanced grammatical patterns.",
+    "dialogue": [
+      "As expected of someone who works hard, her grades are very good.",
+      "As long as you are healthy, you can do anything else.",
+      "There is nobody who works as hard as him."
+    ],
+    "culturalNote": "〜だけあって acknowledges that a result is natural given a person's background or effort. It always has a positive or expected nuance."
+  },
+  "n1l001": {
+    "title": "Classical Japanese Elements in Modern Japanese",
+    "description": "Understand classical Japanese grammar patterns that survive in formal modern Japanese.",
+    "dialogue": [
+      "If you try, you will succeed; if you do not try, nothing will be achieved.",
+      "More haste, less speed. (lit. If in a hurry, take the roundabout way.)",
+      "No entry for unauthorized persons."
+    ],
+    "culturalNote": "Classical Japanese (文語/古文) appears in proverbs, set phrases, legal texts, formal literature, and signage. N1 candidates must recognize these patterns."
+  },
+  "n1l002": {
+    "title": "Nuanced Expressions of Emotion & Psychology",
+    "description": "Express subtle emotions and psychological states with precision.",
+    "dialogue": [
+      "I could not help but be surprised at his reckless behavior.",
+      "I sincerely and endlessly hope for your health and development.",
+      "Knowing it, I couldn't help but say it."
+    ],
+    "culturalNote": "These expressions appear frequently in formal speeches, literary works, essays, and business correspondence. They convey deep sincerity."
+  },
+  "n1l003": {
+    "title": "Logical & Academic Discourse",
+    "description": "Master the language of academic papers, debates, and logical argumentation.",
+    "dialogue": [
+      "Based on these research results, I propose a new hypothesis.",
+      "The opponent's argument is not based on the facts.",
+      "This phenomenon can be considered to originate from economic disparities."
+    ],
+    "culturalNote": "Japanese academic writing heavily uses noun-heavy structures, passive voice, and hedging expressions. Direct assertions are often softened."
+  },
+  "n1l004": {
+    "title": "Four-Character Idioms (四字熟語)",
+    "description": "Learn essential four-character compound words derived from Chinese classics.",
+    "dialogue": [
+      "Her ability to adapt to situations is truly wonderful.",
+      "After repeating trial and error, a solution was finally found.",
+      "That's exactly killing two birds with one stone!"
+    ],
+    "culturalNote": "四字熟語 are an important part of Japanese literary and formal culture. Many originate from Chinese classics (漢文) and Buddhist teachings."
+  },
+  "n1l005": {
+    "title": "Political, Legal & Economic Vocabulary",
+    "description": "Build vocabulary for understanding Japanese news, law, and economic discourse.",
+    "dialogue": [
+      "Based on the provisions of the constitution, a new law was enacted.",
+      "Against the backdrop of a declining birthrate, a review of immigration policy is being called for.",
+      "From an economic perspective, this policy is considered effective."
+    ],
+    "culturalNote": "The ability to understand NHK news broadcasts and read newspaper articles is a practical benchmark for N1 level Japanese."
+  }
+}

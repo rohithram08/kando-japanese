@@ -5,26 +5,53 @@ import { Target, Check, Zap, Sparkles, TrendingUp } from 'lucide-react'
 import { useDailyGoalsStore, GOAL_THRESHOLDS } from '../../store/dailyGoalsStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useSettingsStore } from '../../store/settingsStore'
-
-const DAILY_GOALS = [
-  { id: 'lesson', label: 'Complete a lesson', emoji: '📚', xp: 15, category: 'Lessons' },
-  { id: 'review', label: `SRS Review (${GOAL_THRESHOLDS.review} cards)`, emoji: '🔄', xp: 20, category: 'Review' },
-  { id: 'kanji', label: `Study ${GOAL_THRESHOLDS.kanji} Kanji`, emoji: '漢', xp: 8, category: 'Kanji' },
-  { id: 'chat', label: 'Practice conversation', emoji: '💬', xp: 10, category: 'Speaking' },
-]
+import { useI18n } from '../../i18n'
 
 export default function DailyGoal() {
+  const { t } = useI18n()
   const progress = useDailyGoalsStore()
   const dailyXP = useProgressStore((s) => s.dailyXP)
   const xpGoal = useSettingsStore((s) => s.dailyGoal)
-  const completed = DAILY_GOALS
+
+  const dailyGoals = [
+    {
+      id: 'lesson',
+      label: t('dashboard.goal_lesson', 'Complete a lesson'),
+      emoji: '📚',
+      xp: 15,
+      category: t('nav.lessons', 'Lessons'),
+    },
+    {
+      id: 'review',
+      label: t('dashboard.goal_review', { count: GOAL_THRESHOLDS.review }, `SRS Review (${GOAL_THRESHOLDS.review} cards)`),
+      emoji: '🔄',
+      xp: 20,
+      category: t('nav.srs', 'Review'),
+    },
+    {
+      id: 'kanji',
+      label: t('dashboard.goal_kanji', { count: GOAL_THRESHOLDS.kanji }, `Study ${GOAL_THRESHOLDS.kanji} Kanji`),
+      emoji: '漢',
+      xp: 8,
+      category: t('nav.kanji', 'Kanji'),
+    },
+    {
+      id: 'chat',
+      label: t('dashboard.goal_chat', 'Practice conversation'),
+      emoji: '💬',
+      xp: 10,
+      category: t('nav.conversation', 'Speaking'),
+    },
+  ]
+
+  const completed = dailyGoals
     .map((g) => g.id)
     .filter((id) => progress[id] >= GOAL_THRESHOLDS[id])
 
-  const totalXP = DAILY_GOALS.reduce((sum, g) => sum + g.xp, 0)
-  const earnedXP = DAILY_GOALS.filter((g) => completed.includes(g.id)).reduce((sum, g) => sum + g.xp, 0)
-  const pct = (completed.length / DAILY_GOALS.length) * 100
-  const allDone = completed.length === DAILY_GOALS.length
+  const totalXP = dailyGoals.reduce((sum, g) => sum + g.xp, 0)
+  const earnedXP = dailyGoals.filter((g) => completed.includes(g.id)).reduce((sum, g) => sum + g.xp, 0)
+  const pct = (completed.length / dailyGoals.length) * 100
+  const allDone = completed.length === dailyGoals.length
   const xpGoalPct = Math.min(100, Math.round((dailyXP / Math.max(1, xpGoal)) * 100))
   const xpGoalHit = dailyXP >= xpGoal
 
@@ -43,8 +70,12 @@ export default function DailyGoal() {
           <Target className="w-4 h-4 text-amber-600 dark:text-amber-400" />
         </div>
         <div className="flex-1">
-          <h3 className="font-bold text-sm text-foreground">Daily Goals</h3>
-          <p className="text-xs mt-0.5 text-muted-foreground">Complete tasks to earn XP</p>
+          <h3 className="font-bold text-sm text-foreground">
+            {t('dashboard.daily_goals_title', 'Daily Goals')}
+          </h3>
+          <p className="text-xs mt-0.5 text-muted-foreground">
+            {t('dashboard.daily_goals_desc', 'Complete tasks to earn XP')}
+          </p>
         </div>
         <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-500/20">
           <Zap className="w-3 h-3" />
@@ -106,7 +137,7 @@ export default function DailyGoal() {
                   <Sparkles className="w-5 h-5 text-green-500 dark:text-green-400" />
                 </motion.div>
               ) : (
-                <span className="text-sm font-bold text-foreground">{completed.length}/{DAILY_GOALS.length}</span>
+                <span className="text-sm font-bold text-foreground">{completed.length}/{dailyGoals.length}</span>
               )}
             </div>
           </div>
@@ -114,13 +145,13 @@ export default function DailyGoal() {
           <div className="flex-1">
             <p className="font-semibold text-sm text-foreground">
               {completed.length === 0 && "Let's start today! 💪"}
-              {completed.length > 0 && completed.length < DAILY_GOALS.length && "Keep going! You're doing great!"}
-              {allDone && 'All goals completed! 🎉'}
+              {completed.length > 0 && completed.length < dailyGoals.length && "Keep going! You're doing great!"}
+              {allDone && t('dashboard.all_goals_done', 'All goals completed! 🎉')}
             </p>
             <p className="text-xs mt-1 text-muted-foreground">
               {allDone
                 ? 'Come back tomorrow for new goals'
-                : `${DAILY_GOALS.length - completed.length} goal${DAILY_GOALS.length - completed.length !== 1 ? 's' : ''} remaining today`}
+                : `${dailyGoals.length - completed.length} remaining today`}
             </p>
 
             <div className="mt-2.5 h-1.5 rounded-full overflow-hidden bg-muted">
@@ -136,7 +167,7 @@ export default function DailyGoal() {
 
         {/* Goals List */}
         <div className="space-y-2">
-          {DAILY_GOALS.map((goal, i) => {
+          {dailyGoals.map((goal, i) => {
             const isDone = completed.includes(goal.id)
             return (
               <motion.div
@@ -172,7 +203,7 @@ export default function DailyGoal() {
                 <div className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold flex-shrink-0 ${
                   isDone ? 'bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-muted text-muted-foreground'
                 }`}>
-                  {isDone ? <><Check className="w-3 h-3" />Done</> : <>+{goal.xp} XP</>}
+                  {isDone ? <><Check className="w-3 h-3" />{t('common.complete', 'Done')}</> : <>+{goal.xp} XP</>}
                 </div>
               </motion.div>
             )

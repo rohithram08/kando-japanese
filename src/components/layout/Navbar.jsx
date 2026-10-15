@@ -6,7 +6,10 @@ import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useNotificationStore } from '../../store/notificationStore'
 import ThemeToggle from '../ui/ThemeToggle'
+import LanguageSelector from '../common/LanguageSelector'
 import { getSectionByPath, DEFAULT_PAGE_META, TINTS } from '../../config/sections'
+import { useSettingsStore } from '../../store/settingsStore'
+import { t } from '../../i18n'
 import toast from 'react-hot-toast'
 
 // ── Avatar data (same as ProfilePage) ───────────────────────
@@ -53,6 +56,7 @@ function timeAgo(isoString) {
 const Navbar = ({ onMobileMenuToggle }) => {
   const location = useLocation()
   const navigate = useNavigate()
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const { streak = 0, totalXP = 0, userLevel = 1 } = useProgressStore()
   const { user, profile, logout } = useAuthStore()
 
@@ -143,7 +147,9 @@ const Navbar = ({ onMobileMenuToggle }) => {
             <div className={`hidden sm:flex icon-badge w-8 h-8 ${pageTint.iconBg} flex-shrink-0`}>
               <PageIcon className={`w-4 h-4 ${pageTint.iconText}`} />
             </div>
-            <h1 className="text-lg font-bold truncate text-foreground">{meta.label}</h1>
+            <h1 className="text-lg font-bold truncate text-foreground">
+              {meta.id ? t('nav.' + meta.id, displayLanguage, meta.label) : meta.label}
+            </h1>
           </div>
         </div>
 
@@ -184,6 +190,11 @@ const Navbar = ({ onMobileMenuToggle }) => {
             <span className="text-white font-bold text-xs">Lv.{userLevel}</span>
           </motion.div>
 
+          {/* Language */}
+          <div className="flex items-center">
+            <LanguageSelector compact />
+          </div>
+
           {/* Theme */}
           <div className="hidden md:block">
             <ThemeToggle variant="cycle" />
@@ -217,13 +228,15 @@ const Navbar = ({ onMobileMenuToggle }) => {
                   className="absolute right-0 mt-2 w-80 rounded-2xl shadow-2xl overflow-hidden border border-border bg-surface z-50"
                 >
                   <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-                    <span className="font-semibold text-sm text-foreground">Notifications</span>
+                    <span className="font-semibold text-sm text-foreground">
+                      {t('nav.notifications', displayLanguage, 'Notifications')}
+                    </span>
                     {unreadCount > 0 && (
                       <button
                         onClick={markAllRead}
                         className="text-primary hover:opacity-80 text-xs font-medium transition-opacity"
                       >
-                        Mark all read
+                        {t('nav.mark_all_read', displayLanguage, 'Mark all read')}
                       </button>
                     )}
                   </div>
@@ -232,7 +245,9 @@ const Navbar = ({ onMobileMenuToggle }) => {
                     {notifications.length === 0 ? (
                       <div className="px-4 py-10 text-center">
                         <Bell className="w-7 h-7 mx-auto mb-2 text-muted-foreground/40" />
-                        <p className="text-sm text-muted-foreground">No notifications yet</p>
+                        <p className="text-sm text-muted-foreground">
+                          {t('nav.no_notifications', displayLanguage, 'No notifications yet')}
+                        </p>
                         <p className="text-xs text-muted-foreground/70 mt-0.5">
                           We'll let you know about reviews, streaks, and badges here
                         </p>
@@ -335,10 +350,10 @@ const Navbar = ({ onMobileMenuToggle }) => {
 
                   <div className="p-2">
                     {[
-                      { label: 'My Profile', emoji: '👤', path: '/profile' },
-                      { label: 'Progress', emoji: '📈', path: '/progress' },
-                      { label: 'Achievements', emoji: '🏆', path: '/achievements' },
-                      { label: 'Settings', emoji: '⚙️', path: '/settings' },
+                      { label: t('nav.my_profile', displayLanguage, 'My Profile'), emoji: '👤', path: '/profile' },
+                      { label: t('nav.progress', displayLanguage, 'Progress'), emoji: '📈', path: '/progress' },
+                      { label: t('nav.achievements', displayLanguage, 'Achievements'), emoji: '🏆', path: '/achievements' },
+                      { label: t('nav.settings', displayLanguage, 'Settings'), emoji: '⚙️', path: '/settings' },
                     ].map((item) => (
                       <button
                         key={item.path}
@@ -364,7 +379,7 @@ const Navbar = ({ onMobileMenuToggle }) => {
                       className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
                     >
                       <LogOut className="w-4 h-4" />
-                      Log Out
+                      {t('nav.logout', displayLanguage, 'Log Out')}
                     </button>
                   </div>
                 </motion.div>

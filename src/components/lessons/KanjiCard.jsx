@@ -4,6 +4,7 @@ import { Volume2, Star, BookOpen, Zap, Eye, RotateCcw, ChevronDown } from 'lucid
 import { useAudio } from '../../hooks/useAudio'
 import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
+import { useI18n, getCurriculumMeaning } from '../../i18n'
 
 const KanjiCard = ({
   kanji = {},
@@ -20,6 +21,7 @@ const KanjiCard = ({
   const { addXP } = useProgressStore()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
+  const { t, locale } = useI18n()
 
   const {
     character = '漢', meaning = 'Chinese characters',
@@ -38,7 +40,7 @@ const KanjiCard = ({
   } = kanji
 
   // Normalize field names (DB might use snake_case)
-  const displayMeaning = meaning_en || meaning
+  const displayMeaning = getCurriculumMeaning(kanji, locale) || meaning_en || meaning
   const displayOnyomi = Array.isArray(onyomi) && onyomi.length > 0
     ? onyomi
     : on_readings

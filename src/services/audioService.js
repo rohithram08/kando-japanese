@@ -1,4 +1,5 @@
 import { useSettingsStore } from '../store/settingsStore'
+import { t } from '../i18n'
 
 class AudioService {
   constructor() {
@@ -124,7 +125,8 @@ class AudioService {
         this.currentUtterance = null
         // Don't reject or trigger error callback on 'interrupted' errors as they are intentional cancels
         if (event.error !== 'interrupted' && event.error !== 'canceled') {
-          options.onError?.(event)
+          const safeMessage = this.getErrorMessage(event.error)
+          options.onError?.(event, safeMessage)
           reject(event)
         } else {
           resolve()
@@ -209,12 +211,23 @@ class AudioService {
     return Array.isArray(this.voices) ? this.voices.filter(v => v.lang && v.lang.startsWith('ja')) : []
   }
 
+  // Returns user-friendly localized error message for speech issues
+  getErrorMessage(_errorCode = '') {
+    if (!this.isSupported()) {
+      return t('audio.not_supported', 'Speech synthesis is not supported in this browser')
+    }
+    if (!this.hasJapaneseVoice()) {
+      return t('audio.voice_unavailable', 'No Japanese voice available on this device')
+    }
+    return t('audio.playback_failed', 'Audio playback failed')
+  }
+
   getVoiceInfo() {
     return {
       total: Array.isArray(this.voices) ? this.voices.length : 0,
       japanese: this.getJapaneseVoices().length,
       hasJapaneseVoice: this.hasJapaneseVoice(),
-      selectedVoice: this.japaneseVoice?.name || 'Default',
+      selectedVoice: this.japaneseVoice?.name || t('audio.default_voice', 'Default Voice'),
       supported: this.isSupported()
     }
   }

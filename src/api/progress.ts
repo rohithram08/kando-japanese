@@ -12,6 +12,9 @@ import type {
   VocabularyProgressListResponse,
   RecordVocabularyProgressRequest,
   RecordVocabularyProgressResponse,
+  GrammarProgressListResponse,
+  RecordGrammarProgressRequest,
+  RecordGrammarProgressResponse,
   XPEventRequest,
   XPEventResponse,
   StreakHistoryResponse,
@@ -68,6 +71,20 @@ export function getVocabularyProgress(): Promise<VocabularyProgressListResponse>
  */
 export function recordVocabularyProgress(data: RecordVocabularyProgressRequest): Promise<RecordVocabularyProgressResponse> {
   return post<RecordVocabularyProgressResponse>('/progress/vocabulary', data);
+}
+
+/**
+ * Get all grammar progress for the authenticated user.
+ */
+export function getGrammarProgress(): Promise<GrammarProgressListResponse> {
+  return get<GrammarProgressListResponse>('/progress/grammar');
+}
+
+/**
+ * Record or update grammar learning progress. Backend calculates XP and updates streaks.
+ */
+export function recordGrammarProgress(data: RecordGrammarProgressRequest): Promise<RecordGrammarProgressResponse> {
+  return post<RecordGrammarProgressResponse>('/progress/grammar', data);
 }
 
 /**

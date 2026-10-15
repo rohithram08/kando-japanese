@@ -20,6 +20,7 @@ export const XP_REWARDS = {
 
   KANJI_LEARNED: 8,
   VOCAB_LEARNED: 4,
+  KANA_LEARNED: 4,
   GRAMMAR_LEARNED: 6,
 
   QUIZ_PERFECT: 12,
@@ -103,6 +104,7 @@ export interface BadgeDefinition {
     lessonsCompleted: number;
     kanjiLearned: number;
     vocabLearned: number;
+    grammarLearned?: number;
     streak: number;
     totalXP: number;
     cardsReviewed?: number;

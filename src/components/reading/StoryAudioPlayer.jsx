@@ -16,6 +16,7 @@ import {
   AlertCircle,
   Radio,
 } from 'lucide-react';
+import { t } from '../../i18n';
 
 const SPEED_OPTIONS = [0.8, 1.0, 1.2];
 
@@ -95,12 +96,12 @@ export default function StoryAudioPlayer({
           {isPlaying ? (
             <>
               <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
-              <span>Pause</span>
+              <span>{t('reading.audio_pause', 'Pause')}</span>
             </>
           ) : (
             <>
               <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
-              <span>Listen</span>
+              <span>{t('reading.audio_listen', 'Listen')}</span>
             </>
           )}
         </button>
@@ -158,8 +159,8 @@ export default function StoryAudioPlayer({
           title={autoPlayNext ? 'Autoplay next sentence enabled' : 'Autoplay next sentence disabled'}
         >
           <FastForward className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Autoplay Next</span>
-          <span className="sm:hidden">Auto</span>
+          <span className="hidden sm:inline">{t('reading.autoplay_next', 'Autoplay Next')}</span>
+          <span className="sm:hidden">{t('reading.autoplay_auto', 'Auto')}</span>
           <span
             className={`w-1.5 h-1.5 rounded-full ${
               autoPlayNext ? 'bg-teal-500' : 'bg-gray-300 dark:bg-gray-600'

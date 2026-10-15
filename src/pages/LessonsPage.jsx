@@ -9,9 +9,11 @@ import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { LESSONS, LEVEL_META, LEVELS, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
+import { useI18n } from '../i18n'
 
 // ── Single lesson card ────────────────────────────────────────
 const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen, onToggle }, ref) {
+  const { t } = useI18n()
   const meta = LEVEL_META[lesson.level]
 
   const speak = (text) => {
@@ -98,7 +100,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
               {lesson.grammar?.length > 0 && (
                 <div className="mt-4">
                   <p className={`text-xs font-semibold uppercase tracking-wide mb-2 flex items-center gap-1.5 text-muted-foreground`}>
-                    <BookOpen className="w-3.5 h-3.5" /> Grammar Patterns
+                    <BookOpen className="w-3.5 h-3.5" /> {t('nav.grammar', 'Grammar')} {t('common.pattern', 'Patterns')}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {lesson.grammar.map((g, i) => (
@@ -121,7 +123,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
               {lesson.vocabulary?.length > 0 && (
                 <div>
                   <p className={`text-xs font-semibold uppercase tracking-wide mb-2 text-muted-foreground`}>
-                    Key Vocabulary
+                    {t('nav.vocabulary', 'Key Vocabulary')}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {lesson.vocabulary.map((v, i) => (
@@ -142,7 +144,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
               {lesson.dialogue?.length > 0 && (
                 <div>
                   <p className={`text-xs font-semibold uppercase tracking-wide mb-2 flex items-center gap-1.5 text-muted-foreground`}>
-                    <MessageSquare className="w-3.5 h-3.5" /> Sample Dialogue
+                    <MessageSquare className="w-3.5 h-3.5" /> {t('nav.conversation', 'Sample Dialogue')}
                   </p>
                   <div className="space-y-2">
                     {lesson.dialogue.map((line, i) => (
@@ -179,7 +181,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
               {lesson.exercises?.length > 0 && (
                 <div>
                   <p className={`text-xs font-semibold uppercase tracking-wide mb-2 text-muted-foreground`}>
-                    Exercises ({lesson.exercises.length})
+                    {t('common.practice', 'Exercises')} ({lesson.exercises.length})
                   </p>
                   <div className="space-y-2">
                     {lesson.exercises.slice(0, 2).map((ex, i) => (
@@ -197,7 +199,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
                     ))}
                     {lesson.exercises.length > 2 && (
                       <p className={`text-xs text-center text-muted-foreground`}>
-                        +{lesson.exercises.length - 2} more exercises
+                        +{lesson.exercises.length - 2} {t('common.practice', 'more exercises')}
                       </p>
                     )}
                   </div>
@@ -221,6 +223,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
 
 // ── Page ──────────────────────────────────────────────────────
 export default function LessonsPage() {
+  const { t } = useI18n()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
   const targetLevel = useSettingsStore((s) => s.jlptLevel)
@@ -264,16 +267,16 @@ export default function LessonsPage() {
         <div className="relative">
           <div className="flex items-center gap-2 mb-1">
             <BookOpen className="w-5 h-5 opacity-90" />
-            <span className="text-sm font-medium opacity-90">Structured Lessons</span>
+            <span className="text-sm font-medium opacity-90">{t('nav.lessons', 'Structured Lessons')}</span>
           </div>
           <h1 className="text-2xl font-bold">{meta.label}</h1>
           <p className="text-sm opacity-80 mt-1">{meta.description}</p>
           <div className="flex gap-4 mt-3 text-sm">
             <span className="opacity-90">
-              <strong>{DATA_COUNTS.lessons[level]}</strong> lessons
+              <strong>{DATA_COUNTS.lessons[level]}</strong> {t('nav.lessons', 'lessons')}
             </span>
             {filtered.length !== DATA_COUNTS.lessons[level] && (
-              <span className="opacity-70">{filtered.length} shown</span>
+              <span className="opacity-70">{filtered.length} {t('common.complete', 'shown')}</span>
             )}
           </div>
         </div>
@@ -291,21 +294,21 @@ export default function LessonsPage() {
           <Search className={`w-4 h-4 shrink-0 text-muted-foreground`} />
           <input
             type="text"
-            placeholder="Search lessons, grammar, or vocabulary…"
+            placeholder={t('common.search', 'Search lessons, grammar, or vocabulary…')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className={`flex-1 bg-transparent outline-none text-sm text-gray-800 placeholder-gray-400 dark:text-white dark:placeholder-gray-600`}
           />
           {search && (
             <button onClick={() => setSearch('')} className={`text-xs text-muted-foreground`}>
-              Clear
+              {t('kana.clear', 'Clear')}
             </button>
           )}
         </div>
       </div>
 
       <p className={`text-sm text-muted-foreground`}>
-        {filtered.length} lesson{filtered.length !== 1 ? 's' : ''}
+        {filtered.length} {t('nav.lessons', 'lessons')}
       </p>
 
       {/* Cards */}
@@ -329,8 +332,8 @@ export default function LessonsPage() {
             className={`text-center py-16 rounded-2xl border border-border text-muted-foreground`}
           >
             <BookOpen className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-medium">No lessons found</p>
-            <p className="text-sm mt-1">Try adjusting your search</p>
+            <p className="font-medium">{t('common.error', 'No lessons found')}</p>
+            <p className="text-sm mt-1">{t('common.retry', 'Try adjusting your search')}</p>
           </motion.div>
         )}
       </motion.div>

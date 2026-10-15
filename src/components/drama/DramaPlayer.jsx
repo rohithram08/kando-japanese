@@ -16,10 +16,12 @@ import {
 import { DRAMA_RESOURCES } from '../../data/dramaResources';
 import { useThemeStore } from '../../store/themeStore';
 import ListeningVideoModal from './ListeningVideoModal';
+import { useI18n } from '../../i18n';
 
 const LEVEL_TABS = ['All', 'N5', 'N4', 'N3', 'N2', 'N1'];
 
 export default function DramaPlayer() {
+  const { t } = useI18n();
   const { resolvedTheme } = useThemeStore();
   const isDark = resolvedTheme === 'dark';
 
@@ -78,7 +80,7 @@ export default function DramaPlayer() {
             <span>Immersion & Listening Hub</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-            🎙️ Japanese Podcasts & Listening
+            🎙️ {t('nav.drama', 'Japanese Podcasts & Listening')}
           </h1>
           <p className="text-red-100 text-sm sm:text-base leading-relaxed">
             Curated, high-yield Japanese audio immersion resources. From absolute beginner comprehensible input to advanced cultural podcasts and native conversational breakdowns.
@@ -100,7 +102,7 @@ export default function DramaPlayer() {
               }`}
             >
               <Layers className="w-4 h-4" />
-              All Resources ({DRAMA_RESOURCES.length})
+              {t('common.all', 'All Resources')} ({DRAMA_RESOURCES.length})
             </button>
             <button
               onClick={() => setActiveCategory('podcast')}
@@ -133,7 +135,7 @@ export default function DramaPlayer() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by topic, host, or keyword..."
+              placeholder={t('common.search', 'Search by topic, host, or keyword...')}
               className="w-full pl-9 pr-8 py-2 bg-muted/60 border border-input rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all text-foreground"
             />
             {searchQuery && (

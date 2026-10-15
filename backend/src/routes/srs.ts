@@ -6,7 +6,9 @@ import { requireAuth } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { db } from '../db/index.js';
-import { srsCards } from '../db/schema.js';
+import { srsCards, users, userKanjiProgress, userVocabularyProgress } from '../db/schema.js';
+import { calculateSRSReviewXP, getUserLevel } from '../services/progressCalculator.js';
+import { calculateStreak, recordActivity, getLocalDateString, resolveTimezone } from '../services/streakService.js';
 
 export const srsRouter = Router();
 
@@ -148,6 +150,15 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
       throw new AppError(404, 'SRS card not found', 'CARD_NOT_FOUND');
     }
 
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
+    const lastReviewStr = card.lastReviewDate
+      ? (card.lastReviewDate instanceof Date
+          ? card.lastReviewDate.toISOString().split('T')[0]
+          : String(card.lastReviewDate).split('T')[0])
+      : null;
+    const isAlreadyReviewedToday = lastReviewStr === todayStr;
+
     let { easeFactor, intervalDays, repetitions } = card;
 
     if (quality >= 3) {
@@ -171,7 +182,7 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
 
     const nextReview = new Date();
     nextReview.setDate(nextReview.getDate() + intervalDays);
-    const today = new Date(new Date().toISOString().split('T')[0]);
+    const today = new Date(todayStr);
     const isMastered = repetitions >= 8 && easeFactor >= 2.0;
 
     await db.update(srsCards)
@@ -189,7 +200,101 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
       where: eq(srsCards.id, id),
     });
 
-    res.json({ card: updated });
+    // Increment review count in userKanjiProgress or userVocabularyProgress
+    if (card.cardType === 'kanji') {
+      try {
+        await db.insert(userKanjiProgress)
+          .values({
+            userId,
+            kanjiId: card.cardRefId,
+            recognitionLevel: quality >= 3 ? 1 : 0,
+            mastered: isMastered,
+            reviewCount: 1,
+            lastReviewedAt: new Date(),
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              reviewCount: sql`${userKanjiProgress.reviewCount} + 1`,
+              lastReviewedAt: new Date(),
+              mastered: isMastered ? true : sql`${userKanjiProgress.mastered}`,
+            },
+          });
+      } catch (e) {
+        console.debug('Error updating kanji reviewCount in reviewCard:', e);
+      }
+    } else if (card.cardType === 'vocabulary') {
+      try {
+        await db.insert(userVocabularyProgress)
+          .values({
+            userId,
+            vocabularyId: card.cardRefId,
+            masteryLevel: quality >= 3 ? 1 : 0,
+            mastered: isMastered,
+            reviewCount: 1,
+            lastReviewedAt: new Date(),
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              reviewCount: sql`${userVocabularyProgress.reviewCount} + 1`,
+              lastReviewedAt: new Date(),
+              mastered: isMastered ? true : sql`${userVocabularyProgress.mastered}`,
+            },
+          });
+      } catch (e) {
+        console.debug('Error updating vocabulary reviewCount in reviewCard:', e);
+      }
+    }
+
+    // Duplicate review protection: only award XP on the first review of the card today
+    let xpGained = 0;
+    if (!isAlreadyReviewedToday) {
+      xpGained = calculateSRSReviewXP(quality, isMastered);
+    }
+
+    if (xpGained > 0) {
+      try {
+        await db.update(users)
+          .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
+          .where(eq(users.id, userId));
+
+        await recordActivity(userId, todayStr, {
+          xp: xpGained,
+          minutesStudied: 1,
+          timezone: tz,
+        });
+      } catch (e) {
+        console.debug('Error updating user XP in reviewCard:', e);
+      }
+    }
+
+    let xpResult: any = {
+      xpGained,
+      totalXP: 0,
+      newLevel: 1,
+      streakDays: 0,
+      badgesAwarded: [],
+    };
+
+    try {
+      if (db.query.users?.findFirst) {
+        const updatedUser = await db.query.users.findFirst({
+          where: eq(users.id, userId),
+        });
+        const streakResult = await calculateStreak(userId, tz);
+        const totalXP = updatedUser?.xpPoints ?? 0;
+        xpResult = {
+          xpGained,
+          totalXP,
+          newLevel: getUserLevel(totalXP),
+          streakDays: streakResult?.currentStreak ?? 0,
+          badgesAwarded: [],
+        };
+      }
+    } catch (e) {
+      console.debug('Error building xpResult in reviewCard:', e);
+    }
+
+    res.json({ card: updated, xpResult });
   } catch (err) {
     next(err);
   }

@@ -93,6 +93,7 @@ export interface UserProgress {
   lessonsCompleted: number;
   kanjiLearned: number;
   vocabLearned: number;
+  grammarLearned?: number;
   cardsReviewed: number;
   cardsMastered: number;
   srsReviewsDue: number;
@@ -127,6 +128,16 @@ export interface VocabularyProgress {
   createdAt: string;
 }
 
+export interface GrammarProgress {
+  userId: string;
+  grammarId: string;
+  status: 'not_started' | 'studied' | 'mastered';
+  mastered: boolean;
+  studyCount: number;
+  lastStudiedAt: string | null;
+  createdAt: string;
+}
+
 export interface StreakEntry {
   date: string;
   lessonsCompleted: number;
@@ -155,6 +166,7 @@ export type XPEventType =
   | 'srs_review'
   | 'kanji_learned'
   | 'vocab_learned'
+  | 'kana_learned'
   | 'grammar_studied'
   | 'daily_goal_complete';
 

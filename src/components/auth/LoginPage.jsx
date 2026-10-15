@@ -5,6 +5,7 @@ import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
 import { authApi }       from '../../api'
+import { useI18n }         from '../../i18n'
 import toast from 'react-hot-toast'
 
 export default function LoginPage() {
@@ -24,16 +25,17 @@ export default function LoginPage() {
 
   const { signIn, signInWithGoogle } = useAuthStore()
   const { resolvedTheme }            = useThemeStore()
+  const { t }                        = useI18n()
   const navigate                     = useNavigate()
   const isDark                       = resolvedTheme === 'dark'
 
   // ── Validation ────────────────────────────────────────────
   const validate = () => {
     const e = {}
-    if (!email)                            e.email    = 'Email is required'
-    else if (!/\S+@\S+\.\S+/.test(email)) e.email    = 'Enter a valid email'
-    if (!password)                         e.password = 'Password is required'
-    else if (password.length < 6)          e.password = 'Minimum 6 characters'
+    if (!email)                            e.email    = t('auth.email_required', 'Email is required')
+    else if (!/\S+@\S+\.\S+/.test(email)) e.email    = t('auth.email_invalid', 'Enter a valid email')
+    if (!password)                         e.password = t('auth.password_required', 'Password is required')
+    else if (password.length < 6)          e.password = t('auth.password_min_length', 'Minimum 6 characters')
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -45,14 +47,14 @@ export default function LoginPage() {
     setLoading(true)
     try {
       await signIn({ email, password })
-      toast.success('Welcome back! 🎌')
+      toast.success(t('auth.welcome_back', 'Welcome back! 🎌'))
       navigate('/dashboard')
     } catch (err) {
       const msg = err?.message || 'Login failed'
       if (msg.toLowerCase().includes('invalid')) {
-        setErrors({ form: 'Invalid email or password' })
+        setErrors({ form: t('auth.invalid_credentials', 'Invalid email or password') })
       } else {
-        toast.error(msg)
+        toast.error(t('auth.login_failed', msg))
       }
     } finally {
       setLoading(false)
@@ -65,7 +67,7 @@ export default function LoginPage() {
     try {
       await signInWithGoogle()
     } catch (err) {
-      toast.error(err?.message || 'Google sign-in failed')
+      toast.error(err?.message || t('auth.google_login_failed', 'Google sign-in failed'))
       setGoogleLoading(false)
     }
   }
@@ -73,8 +75,8 @@ export default function LoginPage() {
   // ── Forgot Password: Send Reset Link ─────────────────────
   const handleSendResetLink = async () => {
     const e = {}
-    if (!forgotEmail) e.forgotEmail = 'Email is required'
-    else if (!/\S+@\S+\.\S+/.test(forgotEmail)) e.forgotEmail = 'Enter a valid email'
+    if (!forgotEmail) e.forgotEmail = t('auth.email_required', 'Email is required')
+    else if (!/\S+@\S+\.\S+/.test(forgotEmail)) e.forgotEmail = t('auth.email_invalid', 'Enter a valid email')
     setForgotErrors(e)
     if (Object.keys(e).length > 0) return
 
@@ -82,10 +84,10 @@ export default function LoginPage() {
     try {
       await authApi.requestPasswordReset({ email: forgotEmail })
 
-      toast.success('Reset link sent! Check your email 📧')
+      toast.success(t('auth.reset_link_sent', 'Reset link sent! Check your email 📧'))
       setForgotStep(2)
     } catch (err) {
-      setForgotErrors({ forgotEmail: err?.message || 'Failed to send reset email' })
+      setForgotErrors({ forgotEmail: err?.message || t('auth.reset_link_failed', 'Failed to send reset email') })
     } finally {
       setForgotLoading(false)
     }
@@ -454,17 +456,6 @@ export default function LoginPage() {
           </AnimatePresence>
         </div>
 
-        {/* Demo hint */}
-        {!forgotMode && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className={`text-center text-xs mt-4 text-muted-foreground`}
-          >
-            Demo: any email + password (6+ chars)
-          </motion.p>
-        )}
       </motion.div>
     </div>
   )

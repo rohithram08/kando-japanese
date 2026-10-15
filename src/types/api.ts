@@ -11,6 +11,7 @@ import type {
   LessonProgress,
   KanjiProgress,
   VocabularyProgress,
+  GrammarProgress,
   UserProgress,
   StreakEntry,
   Badge,
@@ -148,13 +149,32 @@ export interface RecordVocabularyProgressResponse {
   xpResult: XPAwardResult;
 }
 
+export interface GrammarProgressListResponse {
+  grammar: GrammarProgress[];
+}
+
+export interface RecordGrammarProgressRequest {
+  grammarId: string;
+  status?: 'not_started' | 'studied' | 'mastered';
+  mastered?: boolean;
+}
+
+export interface RecordGrammarProgressResponse {
+  progress: GrammarProgress;
+  xpResult: XPAwardResult;
+}
+
 export interface XPEventRequest {
   event: XPEventType;
   lessonId?: string;
+  quizId?: string;
+  cardId?: string;
+  grammarId?: string;
   score?: number;
   timeSpentSeconds?: number;
   totalQuestions?: number;
   quality?: SRSQuality;
+  isMastered?: boolean;
 }
 
 export interface XPEventResponse extends XPAwardResult {}

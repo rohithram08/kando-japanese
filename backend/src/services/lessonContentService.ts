@@ -18,6 +18,20 @@ export interface LessonDetail extends RawLesson {
 
 const VALID_LEVELS = new Set(['N1', 'N2', 'N3', 'N4', 'N5']);
 
+const ALL_LESSON_IDS = new Set<string>();
+for (const levelLessons of Object.values(LESSONS_DATA)) {
+  for (const l of levelLessons) {
+    if (l.id) {
+      ALL_LESSON_IDS.add(l.id.toLowerCase());
+    }
+  }
+}
+
+export function isValidLessonId(lessonId: string): boolean {
+  if (!lessonId || typeof lessonId !== 'string') return false;
+  return ALL_LESSON_IDS.has(lessonId.toLowerCase());
+}
+
 export function isValidJLPTLevel(level: string): boolean {
   return VALID_LEVELS.has(level.toUpperCase());
 }

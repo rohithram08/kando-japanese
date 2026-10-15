@@ -10,9 +10,26 @@ vi.mock('../../db/index.js', () => ({
         findMany: vi.fn(),
         findFirst: vi.fn(),
       },
+      users: {
+        findFirst: vi.fn().mockResolvedValue({ id: 'user-123', xpPoints: 100, streakDays: 2 }),
+      },
+      userStreaks: {
+        findFirst: vi.fn().mockResolvedValue(null),
+        findMany: vi.fn().mockResolvedValue([]),
+      },
+      userKanjiProgress: {
+        findFirst: vi.fn().mockResolvedValue(null),
+        findMany: vi.fn().mockResolvedValue([]),
+      },
+      userVocabularyProgress: {
+        findFirst: vi.fn().mockResolvedValue(null),
+        findMany: vi.fn().mockResolvedValue([]),
+      },
     },
     insert: vi.fn(() => ({
-      values: vi.fn().mockResolvedValue([{}]),
+      values: vi.fn(() => ({
+        onDuplicateKeyUpdate: vi.fn().mockResolvedValue([{}]),
+      })),
     })),
     update: vi.fn(() => ({
       set: vi.fn(() => ({
@@ -253,6 +270,93 @@ describe('SRS Routes — Backend API', () => {
       expect(next).not.toHaveBeenCalled();
       expect(result.card.repetitions).toBe(0);
       expect(result.card.intervalDays).toBe(1);
+    });
+
+    it('awards XP and returns xpResult on eligible review', async () => {
+      const handler = getRouteHandler('/cards/:id/review', 'put');
+      const req: any = {
+        user: { userId: 'user-123' },
+        params: { id: 'card-1' },
+        body: { quality: 4, intervalMode: 'balanced' },
+        headers: {},
+      };
+
+      (db.query.srsCards.findFirst as any)
+        .mockResolvedValueOnce({
+          id: 'card-1',
+          userId: 'user-123',
+          cardType: 'vocabulary',
+          cardRefId: 'v1',
+          easeFactor: 2.5,
+          intervalDays: 1,
+          repetitions: 1,
+          lastReviewDate: '2026-08-20', // past date
+          isMastered: false,
+        })
+        .mockResolvedValueOnce({
+          id: 'card-1',
+          userId: 'user-123',
+          cardType: 'vocabulary',
+          cardRefId: 'v1',
+          easeFactor: 2.5,
+          intervalDays: 6,
+          repetitions: 2,
+          isMastered: false,
+        });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result.xpResult).toBeDefined();
+      expect(result.xpResult.xpGained).toBeGreaterThan(0);
+    });
+
+    it('protects against duplicate same-day reviews by returning xpGained: 0', async () => {
+      const handler = getRouteHandler('/cards/:id/review', 'put');
+      const todayStr = new Date().toISOString().split('T')[0];
+      const req: any = {
+        user: { userId: 'user-123' },
+        params: { id: 'card-1' },
+        body: { quality: 5, intervalMode: 'balanced' },
+        headers: {},
+      };
+
+      (db.query.srsCards.findFirst as any)
+        .mockResolvedValueOnce({
+          id: 'card-1',
+          userId: 'user-123',
+          cardType: 'vocabulary',
+          cardRefId: 'v1',
+          easeFactor: 2.5,
+          intervalDays: 1,
+          repetitions: 1,
+          lastReviewDate: todayStr, // ALREADY reviewed today
+          isMastered: false,
+        })
+        .mockResolvedValueOnce({
+          id: 'card-1',
+          userId: 'user-123',
+          cardType: 'vocabulary',
+          cardRefId: 'v1',
+          easeFactor: 2.6,
+          intervalDays: 6,
+          repetitions: 2,
+          isMastered: false,
+        });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result.xpResult).toBeDefined();
+      expect(result.xpResult.xpGained).toBe(0); // 0 XP on duplicate same-day review
     });
   });
 });

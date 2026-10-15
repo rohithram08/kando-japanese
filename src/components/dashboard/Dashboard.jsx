@@ -8,17 +8,12 @@ import {
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useProgressStore } from '../../store/progressStore'
+import { useSettingsStore } from '../../store/settingsStore'
+import { t } from '../../i18n'
 import { sectionsByGroup, TINTS } from '../../config/sections'
 import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
-
-const STAT_DEFS = [
-  { label: 'Lessons Done', key: 'lessonsCompleted', icon: BookOpen, tint: 'blue' },
-  { label: 'Kanji Learned', key: 'kanjiLearned', icon: Languages, tint: 'red' },
-  { label: 'Vocabulary', key: 'vocabLearned', icon: Layers, tint: 'emerald' },
-  { label: 'Reviews Due', key: 'srsReviewsDue', icon: RefreshCw, tint: 'orange' },
-]
 
 function StatValue({ value, loading }) {
   if (loading && value === 0) {
@@ -36,12 +31,13 @@ function StatValue({ value, loading }) {
   )
 }
 
-function SectionTile({ section, index, stats }) {
+function SectionTile({ section, index, stats, displayLanguage }) {
   const navigate = useNavigate()
   const tint = TINTS[section.tint]
   const Icon = section.icon
   const statValue = section.statKey ? stats[section.statKey] : undefined
   const isUrgent = section.urgent && statValue > 0
+  const label = t('nav.' + section.id, displayLanguage, section.label)
 
   return (
     <motion.button
@@ -60,7 +56,7 @@ function SectionTile({ section, index, stats }) {
         <ChevronRight className="w-4 h-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
       </div>
       <div>
-        <p className="text-sm font-semibold text-foreground">{section.label}</p>
+        <p className="text-sm font-semibold text-foreground">{label}</p>
         <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{section.description}</p>
       </div>
       {statValue !== undefined && (
@@ -78,6 +74,7 @@ function SectionTile({ section, index, stats }) {
 export default function Dashboard() {
   const { profile, user } = useAuthStore()
   const navigate = useNavigate()
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const { lessonsCompleted, kanjiLearned, vocabLearned, srsReviewsDue, loadSRSDue } = useProgressStore()
 
   const [loading, setLoading] = useState(true)
@@ -97,13 +94,36 @@ export default function Dashboard() {
 
   const getTimeGreeting = () => {
     const hour = new Date().getHours()
-    if (hour < 12) return { text: 'おはようございます', sub: 'Good Morning', emoji: '🌅' }
-    if (hour < 18) return { text: 'こんにちは', sub: 'Good Afternoon', emoji: '☀️' }
-    return { text: 'こんばんは', sub: 'Good Evening', emoji: '🌙' }
+    if (hour < 12) {
+      return {
+        text: 'おはようございます',
+        sub: t('dashboard.greeting_morning', displayLanguage, 'Good Morning'),
+        emoji: '🌅',
+      }
+    }
+    if (hour < 18) {
+      return {
+        text: 'こんにちは',
+        sub: t('dashboard.greeting_afternoon', displayLanguage, 'Good Afternoon'),
+        emoji: '☀️',
+      }
+    }
+    return {
+      text: 'こんばんは',
+      sub: t('dashboard.greeting_evening', displayLanguage, 'Good Evening'),
+      emoji: '🌙',
+    }
   }
 
   const greeting = getTimeGreeting()
   const stats = { lessonsCompleted, kanjiLearned, vocabLearned, srsReviewsDue }
+
+  const statDefs = [
+    { label: t('dashboard.lessons_done', displayLanguage, 'Lessons Done'), key: 'lessonsCompleted', icon: BookOpen, tint: 'blue' },
+    { label: t('dashboard.kanji_learned', displayLanguage, 'Kanji Learned'), key: 'kanjiLearned', icon: Languages, tint: 'red' },
+    { label: t('dashboard.vocab_learned', displayLanguage, 'Vocabulary'), key: 'vocabLearned', icon: Layers, tint: 'emerald' },
+    { label: t('dashboard.reviews_waiting', displayLanguage, 'Reviews Due'), key: 'srsReviewsDue', icon: RefreshCw, tint: 'orange' },
+  ]
 
   const learnSections = sectionsByGroup('learn')
   const practiceSections = sectionsByGroup('practice')
@@ -144,11 +164,12 @@ export default function Dashboard() {
               {profile?.current_level || 'N5'}
             </span>
             <span className="bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
-              <Flame className="w-3 h-3" /> {profile?.streak_days || 0} Day Streak
+              <Flame className="w-3 h-3" />
+              {t('common.streak', displayLanguage, { count: profile?.streak_days || 0 }, `${profile?.streak_days || 0} Day Streak`)}
             </span>
             <span className="bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
               <Star className="w-3 h-3" />
-              {(profile?.xp_points || 0).toLocaleString()} XP
+              {t('common.xp', displayLanguage, { count: (profile?.xp_points || 0).toLocaleString() }, `${(profile?.xp_points || 0).toLocaleString()} XP`)}
             </span>
           </div>
 
@@ -160,7 +181,7 @@ export default function Dashboard() {
                          hover:bg-red-50 transition-all text-sm flex items-center gap-2 shadow-lg"
             >
               <BookOpen className="w-4 h-4" />
-              Continue Lesson
+              {t('dashboard.continue_lesson', displayLanguage, 'Continue Lesson')}
               <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-50" />
             </motion.button>
 
@@ -172,7 +193,7 @@ export default function Dashboard() {
                            hover:bg-white/25 transition-all text-sm flex items-center gap-2 border border-white/10"
               >
                 <RefreshCw className="w-4 h-4" />
-                {srsReviewsDue} Reviews Due
+                {t('dashboard.reviews_due', displayLanguage, { count: srsReviewsDue }, `${srsReviewsDue} Reviews Due`)}
                 <Sparkles className="w-3.5 h-3.5 ml-auto opacity-50" />
               </motion.button>
             ) : (
@@ -183,7 +204,7 @@ export default function Dashboard() {
                            hover:bg-white/25 transition-all text-sm flex items-center gap-2 border border-white/10"
               >
                 <BookMarked className="w-4 h-4" />
-                Study Grammar
+                {t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}
                 <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-50" />
               </motion.button>
             )}
@@ -193,7 +214,7 @@ export default function Dashboard() {
 
       {/* ── Stats Grid ── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        {STAT_DEFS.map((stat, i) => {
+        {statDefs.map((stat, i) => {
           const tint = TINTS[stat.tint]
           const value = stats[stat.key]
           return (
@@ -232,12 +253,12 @@ export default function Dashboard() {
       {/* ── Explore: Learn ── */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
         <div className="flex items-center justify-between mb-3">
-          <h3 className="font-bold text-sm text-foreground">Learn</h3>
-          <span className="text-xs text-muted-foreground">Core study material</span>
+          <h3 className="font-bold text-sm text-foreground">{t('nav.learn', displayLanguage, 'Learn')}</h3>
+          <span className="text-xs text-muted-foreground">{t('dashboard.core_materials', displayLanguage, 'Core study material')}</span>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {learnSections.map((section, i) => (
-            <SectionTile key={section.id} section={section} index={i} stats={stats} />
+            <SectionTile key={section.id} section={section} index={i} stats={stats} displayLanguage={displayLanguage} />
           ))}
         </div>
       </motion.div>
@@ -245,12 +266,12 @@ export default function Dashboard() {
       {/* ── Explore: Practice ── */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
         <div className="flex items-center justify-between mb-3">
-          <h3 className="font-bold text-sm text-foreground">Practice &amp; Review</h3>
-          <span className="text-xs text-muted-foreground">Put it to use</span>
+          <h3 className="font-bold text-sm text-foreground">{t('nav.practice', displayLanguage, 'Practice & Review')}</h3>
+          <span className="text-xs text-muted-foreground">{t('dashboard.put_to_use', displayLanguage, 'Put it to use')}</span>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {practiceSections.map((section, i) => (
-            <SectionTile key={section.id} section={section} index={i} stats={stats} />
+            <SectionTile key={section.id} section={section} index={i} stats={stats} displayLanguage={displayLanguage} />
           ))}
         </div>
       </motion.div>

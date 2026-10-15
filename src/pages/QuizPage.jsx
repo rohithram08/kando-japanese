@@ -2,24 +2,8 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useThemeStore } from '../store/themeStore'
+import { useI18n } from '../i18n'
 import MatchingGame from '../components/quiz/MatchingGame'
-
-const QUIZ_MODES = [
-  {
-    id: 'matching',
-    label: 'Matching Game',
-    emoji: '🔗',
-    description: 'Match kanji with their meanings',
-    color: 'blue',
-  },
-  {
-    id: 'lesson',
-    label: 'Lesson Quiz',
-    emoji: '📝',
-    description: 'Take a quiz from a specific lesson',
-    color: 'red',
-  },
-]
 
 const COLOR_MAP_LIGHT = {
   blue: 'border-blue-200 bg-blue-50 hover:border-blue-400',
@@ -34,11 +18,29 @@ const COLOR_MAP_DARK = {
 export default function QuizPage() {
   const navigate = useNavigate()
   const { resolvedTheme } = useThemeStore()
+  const { t } = useI18n()
   const isDark = resolvedTheme === 'dark'
 
   const [activeMode, setActiveMode] = useState(null)
 
   const colorMap = isDark ? COLOR_MAP_DARK : COLOR_MAP_LIGHT
+
+  const quizModes = [
+    {
+      id: 'matching',
+      label: t('quiz.matching_game', 'Matching Game'),
+      emoji: '🔗',
+      description: t('quiz.matching_desc', 'Match kanji with their meanings'),
+      color: 'blue',
+    },
+    {
+      id: 'lesson',
+      label: t('quiz.lesson_quiz', 'Lesson Quiz'),
+      emoji: '📝',
+      description: t('quiz.lesson_desc', 'Take a quiz from a specific lesson'),
+      color: 'red',
+    },
+  ]
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
@@ -48,14 +50,14 @@ export default function QuizPage() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl p-6 text-white"
       >
-        <h1 className="text-2xl font-bold mb-1">🧠 Quiz Center</h1>
-        <p className="text-red-100 text-sm">Test your Japanese knowledge</p>
+        <h1 className="text-2xl font-bold mb-1">🧠 {t('quiz.title', 'Quiz Center')}</h1>
+        <p className="text-red-100 text-sm">{t('quiz.subtitle', 'Test your Japanese knowledge')}</p>
       </motion.div>
 
       {/* Mode Selector */}
       {!activeMode && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {QUIZ_MODES.map((mode, i) => (
+          {quizModes.map((mode, i) => (
             <motion.button
               key={mode.id}
               initial={{ opacity: 0, y: 20 }}
@@ -73,15 +75,15 @@ export default function QuizPage() {
               className={`p-6 rounded-2xl border-2 text-left transition-all shadow-sm ${colorMap[mode.color]}`}
             >
               <div className="text-4xl mb-3">{mode.emoji}</div>
-              <h3 className={`font-bold text-lg text-foreground`}>
+              <h3 className="font-bold text-lg text-foreground">
                 {mode.label}
               </h3>
-              <p className={`text-sm mt-1 text-muted-foreground`}>
+              <p className="text-sm mt-1 text-muted-foreground">
                 {mode.description}
               </p>
               {mode.id === 'lesson' && (
                 <span
-                  className={`inline-block mt-2 text-xs px-2 py-0.5 rounded-full border bg-white border-gray-200 text-gray-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400`}
+                  className="inline-block mt-2 text-xs px-2 py-0.5 rounded-full border bg-white border-gray-200 text-gray-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                 >
                   Select a lesson first →
                 </span>
@@ -96,9 +98,9 @@ export default function QuizPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <button
             onClick={() => setActiveMode(null)}
-            className={`flex items-center gap-2 text-sm mb-4 transition-colors text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white`}
+            className="flex items-center gap-2 text-sm mb-4 transition-colors text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
           >
-            ← Back to Quiz Center
+            ← {t('common.back', 'Back')}
           </button>
           <MatchingGame />
         </motion.div>

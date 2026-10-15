@@ -82,43 +82,10 @@ function cacheKey(text, langCode) {
  * data for a field (e.g. word meanings for english/tamil/hindi) should
  * prefer that over calling this at all — see isCurated().
  */
-export async function translateText(text, langCode) {
-  const mtCode = MT_LANG_CODES[langCode]
-  if (!text || !mtCode) return text
-
-  const key = cacheKey(text, langCode)
-  if (memoryCache[key]) return memoryCache[key]
-
-  if (inFlight.has(key)) return inFlight.get(key)
-
-  const promise = (async () => {
-    try {
-      const params = new URLSearchParams({ q: text, langpair: `en|${mtCode}` })
-      const res = await fetch(`https://api.mymemory.translated.net/get?${params.toString()}`)
-      if (!res.ok) throw new Error(`Translation request failed: ${res.status}`)
-      const data = await res.json()
-      const translated = data?.responseData?.translatedText
-
-      // MyMemory returns plain English-looking error strings (instead of
-      // an HTTP error) when quota is exhausted or the query is malformed —
-      // detect that and fall back rather than display it as a "translation".
-      if (!translated || /NO QUERY SPECIFIED|INVALID LANGUAGE|QUOTA/i.test(translated)) {
-        return text
-      }
-
-      memoryCache[key] = translated
-      saveCache(memoryCache)
-      return translated
-    } catch (err) {
-      console.warn('Translation failed, showing English instead:', err)
-      return text
-    } finally {
-      inFlight.delete(key)
-    }
-  })()
-
-  inFlight.set(key, promise)
-  return promise
+export async function translateText(text, _langCode) {
+  // Browser-direct third-party MT calls are disabled in favor of curated localization.
+  // Returns original text safely without leaking user data or failing silently.
+  return text || ''
 }
 
 export function isCurated(langCode) {

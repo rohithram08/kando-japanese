@@ -11,8 +11,10 @@ import { useReadingStore } from '../store/readingStore';
 import { allStories, n5Stories, n4Stories, getStoryById } from '../data/reading/n5_stories';
 import StoryCard from '../components/reading/StoryCard';
 import StoryReader from '../components/reading/StoryReader';
+import { useI18n } from '../i18n';
 
 export default function ReadingPage() {
+  const { t } = useI18n();
   const { storyId } = useParams();
   const navigate = useNavigate();
 
@@ -44,7 +46,7 @@ export default function ReadingPage() {
             <AlertCircle className="w-8 h-8" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-            Story Not Found
+            {t('common.error', 'Story Not Found')}
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
             The requested reading text could not be located in the catalog.
@@ -53,7 +55,7 @@ export default function ReadingPage() {
             onClick={() => navigate('/reading')}
             className="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-colors"
           >
-            Back to Library
+            {t('common.back', 'Back to Library')}
           </button>
         </div>
       );
@@ -63,7 +65,7 @@ export default function ReadingPage() {
       return (
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
           <div className="w-8 h-8 border-3 border-teal-500/30 border-t-teal-600 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Loading reading progress...</p>
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{t('common.loading', 'Loading reading progress...')}</p>
         </div>
       );
     }
@@ -102,28 +104,28 @@ export default function ReadingPage() {
           <span>Extensive Reading • 多読 (Tadoku)</span>
         </div>
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
-          Graded Readers
+          {t('reading.title', 'Graded Readers')}
         </h1>
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 max-w-2xl leading-relaxed">
-          Read level-appropriate Japanese stories with adaptive furigana assistance, verified pitch accent contours, and comprehension checks designed to build natural reading fluency.
+          {t('reading.subtitle', 'Read level-appropriate Japanese stories with adaptive furigana assistance, verified pitch accent contours, and comprehension checks designed to build natural reading fluency.')}
         </p>
 
         {/* Stats Strip */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
-            <span className="text-xs text-gray-500 dark:text-gray-400">Available Stories</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{t('reading.all_stories', 'Available Stories')}</span>
             <div className="text-xl font-bold text-gray-900 dark:text-gray-100 mt-1">
               {allStories.length} (N5 & N4)
             </div>
           </div>
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
-            <span className="text-xs text-gray-500 dark:text-gray-400">Mastered Stories</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.mastered', 'Mastered Stories')}</span>
             <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
               {completedCount}
             </div>
           </div>
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs col-span-2 sm:col-span-1">
-            <span className="text-xs text-gray-500 dark:text-gray-400">Current Catalog</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.level', 'Current Catalog')}</span>
             <div className="text-xl font-bold text-teal-600 dark:text-teal-400 mt-1">
               JLPT N5 & N4
             </div>

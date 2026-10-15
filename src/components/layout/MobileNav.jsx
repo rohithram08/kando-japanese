@@ -7,15 +7,23 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { LayoutDashboard, Menu } from 'lucide-react'
 import { getSection } from '../../config/sections'
+import { useSettingsStore } from '../../store/settingsStore'
+import { t } from '../../i18n'
 
 const PINNED_IDS = ['lessons', 'review', 'kanji', 'conversation']
 
 export default function MobileNav({ onMoreClick }) {
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage)
+
   const tabs = [
-    { to: '/dashboard', label: 'Home', Icon: LayoutDashboard },
+    { to: '/dashboard', label: t('nav.dashboard', displayLanguage, 'Home'), Icon: LayoutDashboard },
     ...PINNED_IDS.map((id) => {
       const s = getSection(id)
-      return { to: s.path, label: s.shortLabel || s.label, Icon: s.icon }
+      return {
+        to: s.path,
+        label: t('nav.' + s.id, displayLanguage, s.shortLabel || s.label),
+        Icon: s.icon,
+      }
     }),
   ]
 
@@ -41,10 +49,10 @@ export default function MobileNav({ onMoreClick }) {
         type="button"
         onClick={onMoreClick}
         className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-medium text-muted-foreground"
-        aria-label="More sections"
+        aria-label={t('nav.more', displayLanguage, 'More')}
       >
         <Menu className="w-5 h-5" />
-        <span>More</span>
+        <span>{t('nav.more', displayLanguage, 'More')}</span>
       </button>
     </nav>
   )

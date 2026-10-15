@@ -10,9 +10,11 @@ import FuriganaText from '../common/FuriganaText';
 import AudioButton from '../common/AudioButton';
 import PitchContourVisualizer from '../pitch/PitchContourVisualizer';
 import { getPitchAccent } from '../../data/pitch/pitchData';
+import { useI18n, getCurriculumMeaning } from '../../i18n';
 
 export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }) {
   const { isCardInSRS, addCardToSRS } = useSRSStore();
+  const { t, locale } = useI18n();
   const [isAdding, setIsAdding] = useState(false);
   const [addError, setAddError] = useState(null);
   const modalRef = useRef(null);
@@ -153,13 +155,13 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
           <AudioButton text={vocab.surface} size="md" />
         </div>
 
-        {/* English Meaning */}
+        {/* Meaning */}
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 mb-5">
           <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 block mb-1">
-            English Meaning
+            {t('common.meaning', 'Meaning')}
           </span>
           <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">
-            {vocab.meaning}
+            {getCurriculumMeaning(vocab, locale) || vocab.meaning}
           </p>
         </div>
 
@@ -206,17 +208,17 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
             {inDeck ? (
               <>
                 <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>In SRS Review Deck (追加済み)</span>
+                <span>{t('common.in_srs_deck', 'In SRS Review Deck (追加済み)')}</span>
               </>
             ) : isAdding ? (
               <>
                 <RefreshCw className="w-4 h-4 animate-spin" />
-                <span>Adding to SRS Deck...</span>
+                <span>{t('common.loading', 'Adding to SRS Deck...')}</span>
               </>
             ) : (
               <>
                 <BookmarkPlus className="w-4 h-4" />
-                <span>Add to SRS Deck (+ 復習に追加)</span>
+                <span>{t('common.add_to_srs_deck', 'Add to SRS Deck (+ 復習に追加)')}</span>
               </>
             )}
           </button>

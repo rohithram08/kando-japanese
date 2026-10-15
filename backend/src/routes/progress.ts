@@ -9,6 +9,7 @@ import {
   userLessonProgress,
   userKanjiProgress,
   userVocabularyProgress,
+  userGrammarProgress,
   srsCards,
   userStreaks,
   userBadges,
@@ -32,6 +33,8 @@ import {
   ALL_BADGES,
   XP_REWARDS,
 } from '../services/progressCalculator.js';
+import { isValidLessonId } from '../services/lessonContentService.js';
+import { isValidGrammarId } from '../services/grammarContentService.js';
 
 export const progressRouter = Router();
 
@@ -108,7 +111,7 @@ const getProgressSummary = async (req: any, res: any, next: any) => {
     const streakResult = await calculateStreak(userId, tz);
 
     // Query aggregated counts
-    const [completedLessons, kanjiRows, vocabRows, masteredCards, dueCards] = await Promise.all([
+    const [completedLessons, kanjiRows, vocabRows, grammarRows, masteredCards, dueCards, kanjiReviews, vocabReviews] = await Promise.all([
       db.select({ count: sql<number>`count(*)` })
         .from(userLessonProgress)
         .where(and(eq(userLessonProgress.userId, userId), eq(userLessonProgress.status, 'completed'))),
@@ -122,6 +125,10 @@ const getProgressSummary = async (req: any, res: any, next: any) => {
         .where(and(eq(userVocabularyProgress.userId, userId), gte(userVocabularyProgress.masteryLevel, 1))),
 
       db.select({ count: sql<number>`count(*)` })
+        .from(userGrammarProgress)
+        .where(and(eq(userGrammarProgress.userId, userId), sql`${userGrammarProgress.status} != 'not_started'`)),
+
+      db.select({ count: sql<number>`count(*)` })
         .from(srsCards)
         .where(and(eq(srsCards.userId, userId), eq(srsCards.isMastered, true))),
 
@@ -132,11 +139,35 @@ const getProgressSummary = async (req: any, res: any, next: any) => {
           lte(srsCards.nextReviewDate, new Date(today)),
           eq(srsCards.isMastered, false)
         )),
+
+      db.select({ total: sql<number>`coalesce(sum(${userKanjiProgress.reviewCount}), 0)` })
+        .from(userKanjiProgress)
+        .where(eq(userKanjiProgress.userId, userId)),
+
+      db.select({ total: sql<number>`coalesce(sum(${userVocabularyProgress.reviewCount}), 0)` })
+        .from(userVocabularyProgress)
+        .where(eq(userVocabularyProgress.userId, userId)),
     ]);
+
+    const cardsReviewed = Number(kanjiReviews?.[0]?.total ?? (kanjiReviews?.[0] as any)?.count ?? 0) +
+                          Number(vocabReviews?.[0]?.total ?? (vocabReviews?.[0] as any)?.count ?? 0);
+    const cardsMastered = Number(masteredCards[0]?.count || 0);
+    const grammarLearned = Number(grammarRows[0]?.count || 0);
 
     const totalXP = user.xpPoints || 0;
     const jlptInfo = getJLPTLevel(totalXP);
     const userLevel = getUserLevel(totalXP);
+
+    // Evaluate badges including SRS review badges
+    await checkAndAwardUserBadges(userId, {
+      lessonsCompleted: Number(completedLessons[0]?.count || 0),
+      kanjiLearned: Number(kanjiRows[0]?.count || 0),
+      vocabLearned: Number(vocabRows[0]?.count || 0),
+      streak: streakResult.currentStreak,
+      totalXP,
+      cardsReviewed,
+      cardsMastered,
+    });
 
     const statsData = {
       totalXP,
@@ -149,8 +180,9 @@ const getProgressSummary = async (req: any, res: any, next: any) => {
       lessonsCompleted: Number(completedLessons[0]?.count || 0),
       kanjiLearned: Number(kanjiRows[0]?.count || 0),
       vocabLearned: Number(vocabRows[0]?.count || 0),
-      cardsReviewed: 0,
-      cardsMastered: Number(masteredCards[0]?.count || 0),
+      grammarLearned,
+      cardsReviewed,
+      cardsMastered,
       srsReviewsDue: Number(dueCards[0]?.count || 0),
     };
 
@@ -229,7 +261,20 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
     const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
     const todayStr = getLocalDateString(new Date(), tz);
 
-    const xpGained = calculateLessonXP(score);
+    if (!isValidLessonId(lessonId)) {
+      throw new AppError(400, `Invalid lesson ID: ${lessonId}`, 'INVALID_LESSON_ID');
+    }
+
+    // Check if lesson was already completed by this user
+    const existing = await db.query.userLessonProgress.findFirst({
+      where: and(
+        eq(userLessonProgress.userId, userId),
+        eq(userLessonProgress.lessonId, lessonId)
+      ),
+    });
+
+    const isNewlyCompleted = status === 'completed' && (!existing || existing.status !== 'completed');
+    const xpGained = isNewlyCompleted ? calculateLessonXP(score) : 0;
 
     // Upsert lesson progress
     await db.insert(userLessonProgress)
@@ -247,7 +292,9 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
           score,
           timeSpentSeconds: sql`${userLessonProgress.timeSpentSeconds} + ${timeSpentSeconds}`,
           lastAccessedAt: new Date(),
-          completedAt: status === 'completed' ? new Date() : sql`${userLessonProgress.completedAt}`,
+          completedAt: status === 'completed'
+            ? sql`coalesce(${userLessonProgress.completedAt}, ${new Date()})`
+            : sql`${userLessonProgress.completedAt}`,
         },
       });
 
@@ -255,26 +302,34 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
     const activityRecord = await recordActivity(userId, todayStr, {
       xp: xpGained,
       minutesStudied: Math.round((timeSpentSeconds || 0) / 60),
-      isLesson: status === 'completed',
+      isLesson: isNewlyCompleted,
       timezone: tz,
     });
 
     // Fetch updated streak
     const streakResult = await calculateStreak(userId, tz);
-    // Award milestone streak bonus only on the first activity of the day
+    // Award milestone streak bonus only on the first activity of the day AND only if new learning occurred (xpGained > 0)
     const isFirstActivityToday = activityRecord?.isFirstActivityToday ?? true;
-    const streakBonus = isFirstActivityToday
+    const streakBonus = (isFirstActivityToday && xpGained > 0)
       ? calculateStreakBonus(streakResult.currentStreak)
       : 0;
     const totalXpToAdd = xpGained + streakBonus;
 
-    // Atomically increment XP
-    await db.update(users)
-      .set({
-        xpPoints: sql`${users.xpPoints} + ${totalXpToAdd}`,
-        streakDays: streakResult.currentStreak,
-      })
-      .where(eq(users.id, userId));
+    // Atomically increment XP only if positive XP was earned
+    if (totalXpToAdd > 0) {
+      await db.update(users)
+        .set({
+          xpPoints: sql`${users.xpPoints} + ${totalXpToAdd}`,
+          streakDays: streakResult.currentStreak,
+        })
+        .where(eq(users.id, userId));
+    } else {
+      await db.update(users)
+        .set({
+          streakDays: streakResult.currentStreak,
+        })
+        .where(eq(users.id, userId));
+    }
 
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -292,7 +347,7 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
     }
 
     // Evaluate badges
-    const [lessonCount, kanjiCount, vocabCount] = await Promise.all([
+    const [lessonCount, kanjiCount, vocabCount, kanjiReviews, vocabReviews, masteredCards] = await Promise.all([
       db.select({ count: sql<number>`count(*)` })
         .from(userLessonProgress)
         .where(and(eq(userLessonProgress.userId, userId), eq(userLessonProgress.status, 'completed'))),
@@ -302,7 +357,20 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
       db.select({ count: sql<number>`count(*)` })
         .from(userVocabularyProgress)
         .where(eq(userVocabularyProgress.userId, userId)),
+      db.select({ total: sql<number>`coalesce(sum(${userKanjiProgress.reviewCount}), 0)` })
+        .from(userKanjiProgress)
+        .where(eq(userKanjiProgress.userId, userId)),
+      db.select({ total: sql<number>`coalesce(sum(${userVocabularyProgress.reviewCount}), 0)` })
+        .from(userVocabularyProgress)
+        .where(eq(userVocabularyProgress.userId, userId)),
+      db.select({ count: sql<number>`count(*)` })
+        .from(srsCards)
+        .where(and(eq(srsCards.userId, userId), eq(srsCards.isMastered, true))),
     ]);
+
+    const cardsReviewed = Number(kanjiReviews?.[0]?.total ?? (kanjiReviews?.[0] as any)?.count ?? 0) +
+                          Number(vocabReviews?.[0]?.total ?? (vocabReviews?.[0] as any)?.count ?? 0);
+    const cardsMastered = Number(masteredCards[0]?.count || 0);
 
     const newBadges = await checkAndAwardUserBadges(userId, {
       lessonsCompleted: Number(lessonCount[0]?.count || 0),
@@ -310,6 +378,8 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
       vocabLearned: Number(vocabCount[0]?.count || 0),
       streak: streakResult.currentStreak,
       totalXP: newTotalXP,
+      cardsReviewed,
+      cardsMastered,
     });
 
     res.json({
@@ -319,7 +389,7 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
         score,
         timeSpentSeconds,
         lastAccessedAt: new Date().toISOString(),
-        completedAt: new Date().toISOString(),
+        completedAt: existing?.completedAt ? (typeof existing.completedAt === 'string' ? existing.completedAt : existing.completedAt.toISOString()) : (status === 'completed' ? new Date().toISOString() : null),
       },
       xpResult: {
         xpGained: totalXpToAdd,
@@ -667,6 +737,137 @@ progressRouter.post('/vocabulary', requireAuth, validate(vocabularyProgressSchem
   }
 });
 
+const grammarProgressSchema = z.object({
+  body: z.object({
+    grammarId: z.string().min(1, 'grammarId is required'),
+    status: z.enum(['not_started', 'studied', 'mastered']).default('studied'),
+    mastered: z.boolean().optional(),
+  }),
+});
+
+/**
+ * GET /api/progress/grammar
+ * Get grammar progress list for authenticated user.
+ */
+progressRouter.get('/grammar', requireAuth, async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const grammarList = await db.query.userGrammarProgress.findMany({
+      where: eq(userGrammarProgress.userId, userId),
+    });
+
+    res.json({
+      grammar: grammarList.map((g) => ({
+        userId: g.userId,
+        grammarId: g.grammarId,
+        status: g.status,
+        mastered: Boolean(g.mastered),
+        studyCount: g.studyCount ?? 1,
+        lastStudiedAt: g.lastStudiedAt ? (typeof g.lastStudiedAt === 'string' ? g.lastStudiedAt : (g.lastStudiedAt as Date).toISOString()) : null,
+        createdAt: typeof g.createdAt === 'string' ? g.createdAt : (g.createdAt as Date).toISOString(),
+      })),
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST /api/progress/grammar
+ * Record or update grammar progress, calculate XP idempotently, and return updated state.
+ */
+progressRouter.post('/grammar', requireAuth, validate(grammarProgressSchema), async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const { grammarId, status, mastered } = req.body;
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
+
+    if (!isValidGrammarId(grammarId)) {
+      throw new AppError(400, `Invalid grammar pattern ID: ${grammarId}`, 'INVALID_GRAMMAR_ID');
+    }
+
+    const existing = await db.query.userGrammarProgress.findFirst({
+      where: and(
+        eq(userGrammarProgress.userId, userId),
+        eq(userGrammarProgress.grammarId, grammarId)
+      ),
+    });
+
+    const isNewlyStudied = (!existing || existing.status === 'not_started') && status !== 'not_started';
+    const isMasteredVal = mastered !== undefined ? mastered : (status === 'mastered' ? true : (existing ? Boolean(existing.mastered) : false));
+    const effectiveStatus = isMasteredVal ? 'mastered' : status;
+
+    // Idempotency: award XP only when transitioning from not_started to studied/mastered
+    const xpGained = isNewlyStudied ? XP_REWARDS.GRAMMAR_LEARNED : 0;
+
+    await db.insert(userGrammarProgress)
+      .values({
+        userId,
+        grammarId,
+        status: effectiveStatus,
+        mastered: isMasteredVal,
+        studyCount: 1,
+        lastStudiedAt: new Date(),
+      })
+      .onDuplicateKeyUpdate({
+        set: {
+          status: effectiveStatus,
+          mastered: isMasteredVal,
+          studyCount: sql`${userGrammarProgress.studyCount} + 1`,
+          lastStudiedAt: new Date(),
+        },
+      });
+
+    if (xpGained > 0) {
+      await db.update(users)
+        .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
+        .where(eq(users.id, userId));
+
+      await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
+    }
+
+    const streakResult = await calculateStreak(userId, tz);
+    const updatedUser = await db.query.users.findFirst({
+      where: eq(users.id, userId),
+    });
+
+    const newTotalXP = updatedUser?.xpPoints || 0;
+    const jlptInfo = getJLPTLevel(newTotalXP);
+    const newUserLevel = getUserLevel(newTotalXP);
+
+    if (updatedUser && updatedUser.currentLevel !== jlptInfo.level) {
+      await db.update(users)
+        .set({ currentLevel: jlptInfo.level })
+        .where(eq(users.id, userId));
+    }
+
+    const currentStudyCount = existing ? (existing.studyCount ?? 1) + 1 : 1;
+
+    res.json({
+      progress: {
+        userId,
+        grammarId,
+        status: effectiveStatus,
+        mastered: isMasteredVal,
+        studyCount: currentStudyCount,
+        lastStudiedAt: new Date().toISOString(),
+        createdAt: existing?.createdAt
+          ? (typeof existing.createdAt === 'string' ? existing.createdAt : (existing.createdAt as Date).toISOString())
+          : new Date().toISOString(),
+      },
+      xpResult: {
+        xpGained,
+        totalXP: newTotalXP,
+        newLevel: newUserLevel,
+        streakDays: streakResult.currentStreak,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 const xpEventSchema = z.object({
   body: z.object({
     event: z.enum([
@@ -675,10 +876,15 @@ const xpEventSchema = z.object({
       'srs_review',
       'kanji_learned',
       'vocab_learned',
+      'kana_learned',
       'grammar_studied',
       'daily_goal_complete',
-    ]).optional(),
-    amount: z.number().int().positive().optional(),
+    ]),
+    amount: z.never({ message: 'Client-supplied amount is not permitted. XP calculation is strictly server-side.' }).optional(),
+    lessonId: z.string().optional(),
+    quizId: z.string().optional(),
+    cardId: z.string().optional(),
+    grammarId: z.string().optional(),
     score: z.number().min(0).max(100).optional(),
     quality: z.number().min(0).max(5).optional(),
     isMastered: z.boolean().optional(),
@@ -688,23 +894,174 @@ const xpEventSchema = z.object({
 const handleXPIncrement = async (req: any, res: any, next: any) => {
   try {
     const userId = req.user!.userId;
-    const { event, amount, score, quality, isMastered } = req.body;
+    const { event, lessonId, quizId, cardId, score, quality, isMastered } = req.body;
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const todayStr = getLocalDateString(new Date(), tz);
 
     let xpGained = 0;
-    if (amount) {
-      xpGained = amount;
-    } else if (event === 'lesson_completed') {
-      xpGained = calculateLessonXP(score ?? 100);
+
+    if (event === 'lesson_completed') {
+      const targetLessonId = lessonId;
+      if (!targetLessonId) {
+        throw new AppError(400, 'lessonId is required for lesson_completed', 'LESSON_ID_REQUIRED');
+      }
+      if (!isValidLessonId(targetLessonId)) {
+        throw new AppError(400, `Invalid lesson ID: ${targetLessonId}`, 'INVALID_LESSON_ID');
+      }
+
+      const existing = await db.query.userLessonProgress.findFirst({
+        where: and(
+          eq(userLessonProgress.userId, userId),
+          eq(userLessonProgress.lessonId, targetLessonId)
+        ),
+      });
+
+      const isNewlyCompleted = !existing || existing.status !== 'completed';
+      if (!isNewlyCompleted) {
+        xpGained = 0;
+      } else {
+        xpGained = calculateLessonXP(score ?? 100);
+        await db.insert(userLessonProgress)
+          .values({
+            userId,
+            lessonId: targetLessonId,
+            status: 'completed',
+            score: score ?? 100,
+            completedAt: new Date(),
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              status: 'completed',
+              score: score ?? 100,
+              completedAt: sql`coalesce(${userLessonProgress.completedAt}, ${new Date()})`,
+            },
+          });
+      }
     } else if (event === 'quiz_completed') {
-      xpGained = calculateQuizXP(score ?? 100);
+      const targetQuizId = quizId || lessonId;
+      if (!targetQuizId) {
+        throw new AppError(400, 'quizId or lessonId is required for quiz_completed', 'QUIZ_ID_REQUIRED');
+      }
+
+      const existing = await db.query.userLessonProgress.findFirst({
+        where: and(
+          eq(userLessonProgress.userId, userId),
+          eq(userLessonProgress.lessonId, targetQuizId)
+        ),
+      });
+
+      const currentScore = score ?? 100;
+      const prevScore = existing?.score ?? 0;
+      // Idempotency: only award XP if user hasn't already passed with score >= 70 and achieved <= previous score
+      if (existing && prevScore >= 70 && currentScore <= prevScore) {
+        xpGained = 0;
+      } else {
+        xpGained = calculateQuizXP(currentScore);
+        await db.insert(userLessonProgress)
+          .values({
+            userId,
+            lessonId: targetQuizId,
+            status: currentScore >= 70 ? 'completed' : (existing?.status || 'in_progress'),
+            score: currentScore,
+            completedAt: currentScore >= 70 ? new Date() : null,
+          })
+          .onDuplicateKeyUpdate({
+            set: {
+              score: sql`greatest(coalesce(${userLessonProgress.score}, 0), ${currentScore})`,
+              status: currentScore >= 70 ? 'completed' : sql`${userLessonProgress.status}`,
+              completedAt: currentScore >= 70
+                ? sql`coalesce(${userLessonProgress.completedAt}, ${new Date()})`
+                : sql`${userLessonProgress.completedAt}`,
+            },
+          });
+      }
     } else if (event === 'srs_review') {
-      xpGained = calculateSRSReviewXP(quality ?? 4, isMastered ?? false);
+      if (cardId) {
+        const card = await db.query.srsCards.findFirst({
+          where: and(eq(srsCards.id, cardId), eq(srsCards.userId, userId)),
+        });
+        if (!card) {
+          throw new AppError(404, 'Card not found', 'CARD_NOT_FOUND');
+        }
+        const lastReviewStr = card.lastReviewDate
+          ? (card.lastReviewDate instanceof Date
+              ? card.lastReviewDate.toISOString().split('T')[0]
+              : String(card.lastReviewDate).split('T')[0])
+          : null;
+        if (lastReviewStr === todayStr) {
+          xpGained = 0;
+        } else {
+          xpGained = calculateSRSReviewXP(quality ?? 4, isMastered ?? false);
+        }
+      } else {
+        xpGained = calculateSRSReviewXP(quality ?? 4, isMastered ?? false);
+      }
     } else if (event === 'kanji_learned') {
-      xpGained = XP_REWARDS.KANJI_LEARNED;
+      if (cardId) {
+        const existing = await db.query.userKanjiProgress.findFirst({
+          where: and(eq(userKanjiProgress.userId, userId), eq(userKanjiProgress.kanjiId, cardId)),
+        });
+        if (existing && existing.recognitionLevel > 0) {
+          xpGained = 0;
+        } else {
+          xpGained = XP_REWARDS.KANJI_LEARNED;
+        }
+      } else {
+        xpGained = XP_REWARDS.KANJI_LEARNED;
+      }
     } else if (event === 'vocab_learned') {
-      xpGained = XP_REWARDS.VOCAB_LEARNED;
+      if (cardId) {
+        const existing = await db.query.userVocabularyProgress.findFirst({
+          where: and(eq(userVocabularyProgress.userId, userId), eq(userVocabularyProgress.vocabularyId, cardId)),
+        });
+        if (existing && existing.masteryLevel > 0) {
+          xpGained = 0;
+        } else {
+          xpGained = XP_REWARDS.VOCAB_LEARNED;
+        }
+      } else {
+        xpGained = XP_REWARDS.VOCAB_LEARNED;
+      }
+    } else if (event === 'kana_learned') {
+      // Dedicated Kana learned event - 4 XP, does NOT touch kanji tables
+      xpGained = XP_REWARDS.KANA_LEARNED;
     } else if (event === 'grammar_studied') {
-      xpGained = XP_REWARDS.GRAMMAR_LEARNED;
+      const targetGrammarId = (req.body as any).grammarId || cardId;
+      if (targetGrammarId) {
+        if (!isValidGrammarId(targetGrammarId)) {
+          throw new AppError(400, `Invalid grammar ID: ${targetGrammarId}`, 'INVALID_GRAMMAR_ID');
+        }
+        const existing = await db.query.userGrammarProgress.findFirst({
+          where: and(
+            eq(userGrammarProgress.userId, userId),
+            eq(userGrammarProgress.grammarId, targetGrammarId)
+          ),
+        });
+        if (existing && existing.status !== 'not_started') {
+          xpGained = 0;
+        } else {
+          xpGained = XP_REWARDS.GRAMMAR_LEARNED;
+          await db.insert(userGrammarProgress)
+            .values({
+              userId,
+              grammarId: targetGrammarId,
+              status: isMastered ? 'mastered' : 'studied',
+              mastered: Boolean(isMastered),
+              studyCount: 1,
+              lastStudiedAt: new Date(),
+            })
+            .onDuplicateKeyUpdate({
+              set: {
+                status: isMastered ? 'mastered' : sql`${userGrammarProgress.status}`,
+                mastered: isMastered ? true : sql`${userGrammarProgress.mastered}`,
+                studyCount: sql`${userGrammarProgress.studyCount} + 1`,
+                lastStudiedAt: new Date(),
+              },
+            });
+        }
+      } else {
+        xpGained = XP_REWARDS.GRAMMAR_LEARNED;
+      }
     } else if (event === 'daily_goal_complete') {
       xpGained = XP_REWARDS.DAILY_GOAL_COMPLETE;
     }
@@ -713,6 +1070,8 @@ const handleXPIncrement = async (req: any, res: any, next: any) => {
       await db.update(users)
         .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
         .where(eq(users.id, userId));
+
+      await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
     }
 
     const updatedUser = await db.query.users.findFirst({
@@ -729,12 +1088,39 @@ const handleXPIncrement = async (req: any, res: any, next: any) => {
         .where(eq(users.id, userId));
     }
 
+    const [lessonCount, kanjiCount, vocabCount, kanjiReviews, vocabReviews, masteredCards] = await Promise.all([
+      db.select({ count: sql<number>`count(*)` })
+        .from(userLessonProgress)
+        .where(and(eq(userLessonProgress.userId, userId), eq(userLessonProgress.status, 'completed'))),
+      db.select({ count: sql<number>`count(*)` })
+        .from(userKanjiProgress)
+        .where(eq(userKanjiProgress.userId, userId)),
+      db.select({ count: sql<number>`count(*)` })
+        .from(userVocabularyProgress)
+        .where(eq(userVocabularyProgress.userId, userId)),
+      db.select({ total: sql<number>`coalesce(sum(${userKanjiProgress.reviewCount}), 0)` })
+        .from(userKanjiProgress)
+        .where(eq(userKanjiProgress.userId, userId)),
+      db.select({ total: sql<number>`coalesce(sum(${userVocabularyProgress.reviewCount}), 0)` })
+        .from(userVocabularyProgress)
+        .where(eq(userVocabularyProgress.userId, userId)),
+      db.select({ count: sql<number>`count(*)` })
+        .from(srsCards)
+        .where(and(eq(srsCards.userId, userId), eq(srsCards.isMastered, true))),
+    ]);
+
+    const cardsReviewed = Number(kanjiReviews?.[0]?.total ?? (kanjiReviews?.[0] as any)?.count ?? 0) +
+                          Number(vocabReviews?.[0]?.total ?? (vocabReviews?.[0] as any)?.count ?? 0);
+    const cardsMastered = Number(masteredCards[0]?.count || 0);
+
     const newBadges = await checkAndAwardUserBadges(userId, {
-      lessonsCompleted: 0,
-      kanjiLearned: 0,
-      vocabLearned: 0,
+      lessonsCompleted: Number(lessonCount[0]?.count || 0),
+      kanjiLearned: Number(kanjiCount[0]?.count || 0),
+      vocabLearned: Number(vocabCount[0]?.count || 0),
       streak: updatedUser?.streakDays || 0,
       totalXP,
+      cardsReviewed,
+      cardsMastered,
     });
 
     res.json({
@@ -929,6 +1315,7 @@ progressRouter.delete('/reset', requireAuth, async (req, res, next) => {
       await tx.delete(userLessonProgress).where(eq(userLessonProgress.userId, userId));
       await tx.delete(userKanjiProgress).where(eq(userKanjiProgress.userId, userId));
       await tx.delete(userVocabularyProgress).where(eq(userVocabularyProgress.userId, userId));
+      await tx.delete(userGrammarProgress).where(eq(userGrammarProgress.userId, userId));
       await tx.delete(srsCards).where(eq(srsCards.userId, userId));
       await tx.delete(userStreaks).where(eq(userStreaks.userId, userId));
       await tx.delete(userBadges).where(eq(userBadges.userId, userId));

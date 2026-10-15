@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import { Volume2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { audioService } from '../../services/audioService'
+import { useI18n } from '../../i18n'
 
 export default function AudioButton({ text, lang = 'ja-JP', size = 'md', variant = 'default' }) {
   const [playing, setPlaying] = useState(false)
+  const { t } = useI18n()
 
   const speak = (e) => {
     e.stopPropagation()
@@ -23,9 +25,9 @@ export default function AudioButton({ text, lang = 'ja-JP', size = 'md', variant
 
   if (variant === 'ghost') {
     return (
-      <button onClick={speak} className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm">
+      <button onClick={speak} aria-label={t('reading.audio_listen', 'Listen')} className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors text-sm">
         <Volume2 size={14} />
-        <span>Listen</span>
+        <span>{t('reading.audio_listen', 'Listen')}</span>
       </button>
     )
   }
@@ -35,6 +37,7 @@ export default function AudioButton({ text, lang = 'ja-JP', size = 'md', variant
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={speak}
+      aria-label={t('reading.audio_listen', 'Listen')}
       className={`${sizeClasses[size]} rounded-full flex items-center justify-center
                   transition-colors flex-shrink-0 ${
         playing

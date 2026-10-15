@@ -8,6 +8,7 @@ import { LESSONS, VOCABULARY, KANJI, GRAMMAR } from '../../data/index'
 import { calculateQuizXP, XP_REWARDS } from '../../utils/progressCalculator'
 import MultipleChoice from './MultipleChoice'
 import FillBlank from './FillBlank'
+import { useI18n, getCurriculumMeaning } from '../../i18n'
 import confetti from 'canvas-confetti'
 import toast from 'react-hot-toast'
 
@@ -15,6 +16,7 @@ export default function QuizEngine() {
   const { lessonId } = useParams()
   const { user, profile, updateProfile } = useAuthStore()
   const { resolvedTheme } = useThemeStore()
+  const { t, locale } = useI18n()
   const isDark = resolvedTheme === 'dark'
   const { awardQuizXP } = useProgressStore()
   const navigate = useNavigate()
@@ -108,8 +110,8 @@ export default function QuizEngine() {
       })
     }
 
-    const allVocabMeanings = (VOCABULARY[lesson?.level || 'N5'] || []).map(v => v.meaning_en || v.meaning).filter(Boolean)
-    const allKanjiMeanings = (KANJI[lesson?.level || 'N5'] || []).map(k => k.meaning_en || k.meaning).filter(Boolean)
+    const allVocabMeanings = (VOCABULARY[lesson?.level || 'N5'] || []).map(v => getCurriculumMeaning(v, locale) || v.meaning_en || v.meaning).filter(Boolean)
+    const allKanjiMeanings = (KANJI[lesson?.level || 'N5'] || []).map(k => getCurriculumMeaning(k, locale) || k.meaning_en || k.meaning).filter(Boolean)
 
     const getWrongAnswers = (correct, pool, count = 3) => {
       const wrong = pool.filter(m => m !== correct)
@@ -123,14 +125,14 @@ export default function QuizEngine() {
     }
 
     vocab.slice(0, 3).forEach(v => {
-      const meaning = v?.meaning_en || v?.meaning
+      const meaning = getCurriculumMeaning(v, locale) || v?.meaning_en || v?.meaning
       if (!meaning || !v?.word) return
       const wrongAnswers = getWrongAnswers(meaning, allVocabMeanings)
       const allOptions = [meaning, ...wrongAnswers]
       const shuffled = allOptions.sort(() => Math.random() - 0.5)
       questions.push({
         type: 'multiple_choice',
-        question: `What does "${v.word}" mean?`,
+        question: t('quiz.what_does_mean', { word: v.word }, `What does "${v.word}" mean?`),
         question_jp: v.word,
         options: shuffled,
         correct: shuffled.indexOf(meaning),
@@ -139,31 +141,32 @@ export default function QuizEngine() {
     })
 
     kanji.slice(0, 2).forEach(k => {
-      const meaning = k?.meaning_en || k?.meaning
-      if (!meaning || !k?.character) return
+      const char = k?.character || k?.kanji
+      const meaning = getCurriculumMeaning(k, locale) || k?.meaning_en || k?.meaning
+      if (!meaning || !char) return
       const wrongAnswers = getWrongAnswers(meaning, allKanjiMeanings)
       const allOptions = [meaning, ...wrongAnswers]
       const shuffled = allOptions.sort(() => Math.random() - 0.5)
       questions.push({
         type: 'multiple_choice',
-        question: `What is the meaning of 「${k.character}」?`,
-        question_jp: k.character,
+        question: t('quiz.what_is_kanji_meaning', { kanji: char }, `What is the meaning of 「${char}」?`),
+        question_jp: char,
         options: shuffled,
         correct: shuffled.indexOf(meaning),
-        explanation: `${k.character} means "${meaning}"`,
+        explanation: `${char} means "${meaning}"`,
       })
     })
 
     grammar.slice(0, 2).forEach(g => {
-      const meaning = g?.meaning_en || g?.meaning
+      const meaning = getCurriculumMeaning(g, locale) || g?.meaning_en || g?.meaning
       if (!meaning || !g?.pattern) return
-      const allGrammarMeanings = (GRAMMAR[lesson?.level || 'N5'] || []).map(gp => gp.meaning_en || gp.meaning).filter(Boolean)
+      const allGrammarMeanings = (GRAMMAR[lesson?.level || 'N5'] || []).map(gp => getCurriculumMeaning(gp, locale) || gp.meaning_en || gp.meaning).filter(Boolean)
       const wrongAnswers = getWrongAnswers(meaning, allGrammarMeanings)
       const allOptions = [meaning, ...wrongAnswers]
       const shuffled = allOptions.sort(() => Math.random() - 0.5)
       questions.push({
         type: 'multiple_choice',
-        question: `What does the grammar pattern "${g.pattern}" mean?`,
+        question: `What does "${g.pattern}" mean?`,
         options: shuffled,
         correct: shuffled.indexOf(meaning),
         explanation: g.explanation_en || g.explanation || `${g.pattern} means "${meaning}"`,
@@ -216,23 +219,41 @@ export default function QuizEngine() {
       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } })
     }
 
-    try {
-      // Award XP using the new unified system
-      const result = await awardQuizXP(user.id, finalScore)
+    if (!user?.id) {
+      // Guest mode - no server XP submission, show score toast without error
+      if (passed) {
+        toast.success(`Quiz passed! ${finalScore}% 🎉 (Sign in to save progress)`)
+      } else {
+        toast(`${finalScore}% - Keep practicing! 💪 (Sign in to save progress)`)
+      }
+      return
+    }
 
-      if (result) {
+    try {
+      // Award XP using the unified system with lessonId
+      const result = await awardQuizXP(user.id, finalScore, lessonId)
+
+      if (result && updateProfile) {
         updateProfile({
           xp_points: result.newTotal,
           current_level: result.jlptLevel || profile?.current_level,
         })
       }
 
-      const xpGained = result?.xpGained || calculateQuizXP(finalScore)
+      const xpGained = result?.xpGained !== undefined ? result.xpGained : calculateQuizXP(finalScore)
 
-      if (passed) {
-        toast.success(`Quiz passed! +${xpGained} XP! 🎉`)
+      if (xpGained === 0) {
+        if (passed) {
+          toast.success(`Quiz passed! ${finalScore}% (Already completed)`)
+        } else {
+          toast(`Quiz completed! ${finalScore}% (Already completed)`)
+        }
       } else {
-        toast(`+${xpGained} XP for trying! Keep practicing 💪`)
+        if (passed) {
+          toast.success(`Quiz passed! +${xpGained} XP! 🎉`)
+        } else {
+          toast(`+${xpGained} XP for trying! Keep practicing 💪`)
+        }
       }
     } catch (err) {
       console.error('Error awarding quiz XP:', err)
@@ -299,14 +320,9 @@ export default function QuizEngine() {
           <div className="text-7xl mb-4">
             {finalScore >= 90 ? '🏆' : finalScore >= 70 ? '🎉' : '💪'}
           </div>
-          <h2 className={`text-2xl font-bold mb-1 text-foreground`}>
-            {passed ? 'Quiz Passed!' : 'Keep Practicing!'}
+          <h2 className="text-2xl font-bold mb-1 text-foreground">
+            {passed ? t('quiz.passed', 'Quiz Passed! Outstanding work! 🌸') : t('quiz.failed', 'Keep practicing and try again! 💪')}
           </h2>
-          <p className={`text-sm mb-6 text-muted-foreground`}>
-            {passed
-              ? "Excellent work! You've mastered this lesson."
-              : "Don't give up! Review the lesson and try again."}
-          </p>
 
           {/* Score Ring */}
           <div className="relative w-32 h-32 mx-auto mb-6">
@@ -328,7 +344,7 @@ export default function QuizEngine() {
               <span className={`text-3xl font-bold text-foreground`}>
                 {finalScore}%
               </span>
-              <span className={`text-xs text-muted-foreground`}>Score</span>
+              <span className={`text-xs text-muted-foreground`}>{t('quiz.score_label', 'Score')}</span>
             </div>
           </div>
 
@@ -342,21 +358,21 @@ export default function QuizEngine() {
           <div className="grid grid-cols-3 gap-3 mb-6">
             <div className={`rounded-xl p-3 bg-green-50 dark:bg-green-500/10`}>
               <div className={`text-2xl font-bold text-green-600 dark:text-green-400`}>{score}</div>
-              <div className={`text-xs text-green-400 dark:text-green-500`}>Correct</div>
+              <div className={`text-xs text-green-400 dark:text-green-500`}>{t('quiz.correct_label', 'Correct')}</div>
             </div>
             <div className={`rounded-xl p-3 bg-red-50 dark:bg-red-500/10`}>
               <div className={`text-2xl font-bold text-red-600 dark:text-red-400`}>{questions.length - score}</div>
-              <div className={`text-xs text-red-400 dark:text-red-500`}>Wrong</div>
+              <div className={`text-xs text-red-400 dark:text-red-500`}>{t('quiz.incorrect_label', 'Wrong')}</div>
             </div>
             <div className={`rounded-xl p-3 bg-blue-50 dark:bg-blue-500/10`}>
               <div className={`text-2xl font-bold text-blue-600 dark:text-blue-400`}>{questions.length}</div>
-              <div className={`text-xs text-blue-400 dark:text-blue-500`}>Total</div>
+              <div className={`text-xs text-blue-400 dark:text-blue-500`}>{t('quiz.total_label', 'Total')}</div>
             </div>
           </div>
 
           {/* Question Review */}
           <div className="text-left mb-6 space-y-2">
-            <h3 className={`font-bold text-sm mb-3 text-foreground/80`}>Review:</h3>
+            <h3 className={`font-bold text-sm mb-3 text-foreground/80`}>{t('quiz.review_label', 'Review:')}</h3>
             {questions.map((q, i) => {
               const answer = answers[i]
               return (
@@ -390,7 +406,7 @@ export default function QuizEngine() {
               onClick={() => navigate('/lessons')}
               className="w-full py-3 bg-red-500 text-white rounded-xl font-semibold hover:bg-red-600 transition-colors"
             >
-              {passed ? '→ Next Lesson' : '← Back to Lesson'}
+              {passed ? `→ ${t('common.next', 'Next Lesson')}` : `← ${t('common.back', 'Back to Lesson')}`}
             </button>
             {!passed && (
               <button
@@ -405,7 +421,7 @@ export default function QuizEngine() {
                 }}
                 className={`w-full py-3 border-2 rounded-xl font-semibold transition-colors border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800`}
               >
-                🔄 Try Again
+                🔄 {t('common.retry', 'Try Again')}
               </button>
             )}
           </div>

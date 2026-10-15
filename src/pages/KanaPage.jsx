@@ -29,10 +29,12 @@ import KanaQuiz from '../components/kana/KanaQuiz';
 import KanaTracingCanvas from '../components/kana/KanaTracingCanvas';
 import KanaSenseiGuide from '../components/kana/KanaSenseiGuide';
 import toast from 'react-hot-toast';
+import { useI18n } from '../i18n';
 
 const STORAGE_KEY_PREFIX = 'nihongo_kana_mastery_';
 
 export default function KanaPage() {
+  const { t } = useI18n();
   const { resolvedTheme } = useThemeStore();
   const isDark = resolvedTheme === 'dark';
   const user = useAuthStore((s) => s.user);
@@ -200,11 +202,10 @@ export default function KanaPage() {
             Beginner Japanese Foundations
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-foreground tracking-tight">
-            Kana Foundations Studio
+            {t('kana.title', 'Kana Foundations Studio')}
           </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-2xl leading-relaxed">
-            Master the core Japanese writing system. Learn Hiragana and Katakana through active
-            recognition, pronunciation, stroke order, and spaced repetition.
+            {t('kana.subtitle', 'Master the core Japanese writing system. Learn Hiragana and Katakana through active recognition, pronunciation, stroke order, and spaced repetition.')}
           </p>
         </div>
 
@@ -299,10 +300,10 @@ export default function KanaPage() {
       {/* ── Studio Navigation Tabs ───────────────────────────── */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 border-b border-border">
         {[
-          { id: 'explorer', label: 'Character Explorer', icon: Layers },
-          { id: 'quiz', label: 'Recognition Quiz', icon: Swords },
-          { id: 'tracing', label: 'Stroke Tracing', icon: PenTool },
-          { id: 'guide', label: "Hana's Guide & Mnemonics", icon: Sparkles },
+          { id: 'explorer', label: t('kana.tab_explorer', 'Character Explorer'), icon: Layers },
+          { id: 'quiz', label: t('kana.tab_quiz', 'Recognition Quiz'), icon: Swords },
+          { id: 'tracing', label: t('kana.tab_tracing', 'Stroke Tracing'), icon: PenTool },
+          { id: 'guide', label: t('kana.tab_guide', "Hana's Guide & Mnemonics"), icon: Sparkles },
         ].map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -339,13 +340,13 @@ export default function KanaPage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
                 {[
-                  { id: 'all', label: 'All' },
-                  { id: 'gojuon', label: 'Gojūon (46)' },
-                  { id: 'dakuon', label: 'Dakuon (20)' },
-                  { id: 'handakuon', label: 'Handakuon (5)' },
-                  { id: 'yoon', label: 'Yōon (36)' },
-                  { id: 'mastered', label: 'Mastered ⭐' },
-                  { id: 'srs', label: 'In SRS 🗂️' },
+                  { id: 'all', label: t('kana.filter_all', 'All') },
+                  { id: 'gojuon', label: t('kana.filter_gojuon', 'Gojūon (46)') },
+                  { id: 'dakuon', label: t('kana.filter_dakuten', 'Dakuon (20)') },
+                  { id: 'handakuon', label: t('kana.filter_handakuten', 'Handakuon (5)') },
+                  { id: 'yoon', label: t('kana.filter_combo', 'Yōon (36)') },
+                  { id: 'mastered', label: `${t('common.mastered', 'Mastered')} ⭐` },
+                  { id: 'srs', label: `${t('common.in_srs', 'In SRS')} 🗂️` },
                 ].map((pill) => (
                   <button
                     key={pill.id}
@@ -366,7 +367,7 @@ export default function KanaPage() {
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="text"
-                  placeholder="Search kana, romaji, word..."
+                  placeholder={t('common.search', 'Search kana, romaji, word...')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-9 pr-3 py-1.5 rounded-xl text-xs bg-muted/40 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-purple-500"

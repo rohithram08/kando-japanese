@@ -382,7 +382,7 @@ export default function LandingPage() {
                 <span>Modern Japanese Learning Stack</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Everything You Need to Reach True Fluency
+                Tools to Help You Build Japanese Fluency
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base mt-3">
                 Built from the ground up combining linguistic science, spaced repetition, and modern web performance.

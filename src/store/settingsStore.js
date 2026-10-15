@@ -14,6 +14,7 @@
 
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { normalizeLocale, applyLocaleDirection } from '../i18n/languageUtils'
 
 export const VALID_READER_SPEEDS = [0.8, 1.0, 1.2]
 
@@ -22,10 +23,17 @@ export function sanitizeReaderSpeed(speed) {
   return VALID_READER_SPEEDS.includes(num) ? num : 1.0
 }
 
+export function sanitizeLanguage(lang) {
+  if (!lang || typeof lang !== 'string') return 'en'
+  return normalizeLocale(lang)
+}
+
 const DEFAULT_SETTINGS = {
   // General
   jlptLevel: 'N5',           // personal target level — used to default Lessons/Grammar/Vocab/Kanji to the right level
-  nativeLanguage: 'english',  // preferred translation language (english, tamil, hindi, etc.)
+  displayLanguage: 'en',     // UI interface language code: 'en' | 'ta' | 'hi' | 'es', etc.
+  explanationLanguage: 'en', // Learning support & explanation language for curriculum and AI Sensei
+  nativeLanguage: 'en',      // User's mother tongue (demographic & profile)
   // Appearance
   fontSize: 'medium',        // 'small' | 'medium' | 'large'
   compactMode: false,
@@ -61,6 +69,9 @@ const DEFAULT_SETTINGS = {
 function applySideEffects(settings) {
   if (typeof document === 'undefined') return
   const root = document.documentElement
+
+  // Text direction and language attribute for internationalization
+  applyLocaleDirection(settings.displayLanguage || 'en')
 
   // Animations off → collapses all CSS transitions/animations site-wide,
   // reusing the same mechanism as prefers-reduced-motion in index.css.
@@ -131,6 +142,22 @@ export function migrateSettingsStorage(storage = (typeof window !== 'undefined' 
       if (finalState.readerAutoPlayNext !== undefined) {
         finalState.readerAutoPlayNext = Boolean(finalState.readerAutoPlayNext)
       }
+      if (finalState.displayLanguage !== undefined) {
+        finalState.displayLanguage = sanitizeLanguage(finalState.displayLanguage)
+      }
+      if (finalState.explanationLanguage !== undefined) {
+        finalState.explanationLanguage = sanitizeLanguage(finalState.explanationLanguage)
+      }
+      if (finalState.nativeLanguage !== undefined) {
+        finalState.nativeLanguage = sanitizeLanguage(finalState.nativeLanguage)
+      }
+      // Backward compatibility: if only nativeLanguage was persisted in legacy state
+      if (!finalState.displayLanguage && finalState.nativeLanguage) {
+        finalState.displayLanguage = finalState.nativeLanguage
+      }
+      if (!finalState.explanationLanguage) {
+        finalState.explanationLanguage = finalState.displayLanguage || finalState.nativeLanguage || 'en'
+      }
 
       storage.setItem('nihongo_settings', JSON.stringify({ state: finalState, version: 0 }))
       return finalState
@@ -162,12 +189,31 @@ export const useSettingsStore = create(
         if (sanitizedPatch.readerAutoPlayNext !== undefined) {
           sanitizedPatch.readerAutoPlayNext = Boolean(sanitizedPatch.readerAutoPlayNext)
         }
+        if (sanitizedPatch.displayLanguage !== undefined) {
+          sanitizedPatch.displayLanguage = sanitizeLanguage(sanitizedPatch.displayLanguage)
+        }
+        if (sanitizedPatch.explanationLanguage !== undefined) {
+          sanitizedPatch.explanationLanguage = sanitizeLanguage(sanitizedPatch.explanationLanguage)
+        }
+        if (sanitizedPatch.nativeLanguage !== undefined) {
+          sanitizedPatch.nativeLanguage = sanitizeLanguage(sanitizedPatch.nativeLanguage)
+        }
         const next = { ...get(), ...sanitizedPatch }
         set(sanitizedPatch)
         applySideEffects(next)
       },
 
-      /** Convenience helper for changing native language */
+      /** Convenience helper for changing display & interface language */
+      setDisplayLanguage: (lang) => {
+        get().updateSettings({ displayLanguage: lang })
+      },
+
+      /** Convenience helper for changing learning explanation language */
+      setExplanationLanguage: (lang) => {
+        get().updateSettings({ explanationLanguage: lang })
+      },
+
+      /** Convenience helper for changing native language (mother tongue) */
       setNativeLanguage: (lang) => {
         get().updateSettings({ nativeLanguage: lang })
       },
@@ -211,17 +257,18 @@ export const useSettingsStore = create(
     {
       name: 'nihongo_settings',
       // Don't persist the transient hydration flag or actions — destructured
-      // here only to exclude them from `rest`, not because they're unused.
-      // eslint-disable-next-line no-unused-vars
+      // here only to exclude them from `rest`.
       partialize: (state) => {
         const {
-          hydrated,
-          updateSettings,
-          setNativeLanguage,
-          setReaderSpeed,
-          setReaderAutoPlayNext,
-          init,
-          resetToDefaults,
+          hydrated: _hydrated,
+          updateSettings: _updateSettings,
+          setDisplayLanguage: _setDisplayLanguage,
+          setExplanationLanguage: _setExplanationLanguage,
+          setNativeLanguage: _setNativeLanguage,
+          setReaderSpeed: _setReaderSpeed,
+          setReaderAutoPlayNext: _setReaderAutoPlayNext,
+          init: _init,
+          resetToDefaults: _resetToDefaults,
           ...rest
         } = state
         return rest
@@ -233,6 +280,21 @@ export const useSettingsStore = create(
         const merged = { ...currentState, ...persistedState }
         merged.readerSpeed = sanitizeReaderSpeed(merged.readerSpeed)
         merged.readerAutoPlayNext = Boolean(merged.readerAutoPlayNext)
+        if (merged.displayLanguage !== undefined) {
+          merged.displayLanguage = sanitizeLanguage(merged.displayLanguage)
+        }
+        if (merged.explanationLanguage !== undefined) {
+          merged.explanationLanguage = sanitizeLanguage(merged.explanationLanguage)
+        }
+        if (merged.nativeLanguage !== undefined) {
+          merged.nativeLanguage = sanitizeLanguage(merged.nativeLanguage)
+        }
+        if (!merged.displayLanguage && merged.nativeLanguage) {
+          merged.displayLanguage = merged.nativeLanguage
+        }
+        if (!merged.explanationLanguage) {
+          merged.explanationLanguage = merged.displayLanguage || merged.nativeLanguage || 'en'
+        }
         return merged
       },
     }

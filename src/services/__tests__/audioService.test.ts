@@ -148,4 +148,27 @@ describe('audioService — Web Speech API wrapper', () => {
     expect(audioService.isPlaying).toBe(false);
     expect(audioService.currentUtterance).toBeNull();
   });
+
+  it('provides localized error messages for audio failure modes', () => {
+    // Normal supported state error message
+    expect(audioService.getErrorMessage('audio-error')).toBe('Audio playback failed');
+
+    // Unsupported browser state error message
+    const origSupported = audioService.isSupported;
+    audioService.isSupported = () => false;
+    expect(audioService.getErrorMessage()).toBe('Speech synthesis is not supported in this browser');
+    audioService.isSupported = origSupported;
+
+    // No Japanese voice state error message
+    const origVoice = audioService.japaneseVoice;
+    const origVoices = audioService.voices;
+    audioService.japaneseVoice = null;
+    audioService.voices = [{ name: 'Alex', lang: 'en-US' }] as any;
+    expect(audioService.getErrorMessage()).toBe('No Japanese voice available on this device');
+    expect(audioService.getVoiceInfo().selectedVoice).toBe('Default Voice');
+
+    // Restore
+    audioService.japaneseVoice = origVoice;
+    audioService.voices = origVoices;
+  });
 });

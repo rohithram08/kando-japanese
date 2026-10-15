@@ -4,18 +4,19 @@ import { ChevronDown, Globe, BookmarkPlus, Check } from 'lucide-react'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useSRSStore } from '../../store/srsStore'
 import { audioService } from '../../services/audioService'
-import { useTranslatedText } from '../../hooks/useTranslatedText'
-import TranslatedText from '../common/TranslatedText'
 import AudioButton from '../common/AudioButton'
 import FuriganaText from '../common/FuriganaText'
 import PitchContourVisualizer from '../pitch/PitchContourVisualizer'
 import { getPitchAccent } from '../../data/pitch/pitchData'
+import { getCurriculumMeaning, getCurriculumTranslation, normalizeLocale } from '../../i18n'
 
 
 export default function VocabCard({ vocab, lang, index }) {
   const [expanded, setExpanded] = useState(false)
   const showTranslation = useSettingsStore((s) => s.showTranslation)
   const autoPlay = useSettingsStore((s) => s.autoPlay)
+  const storeLang = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(lang || storeLang)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
   const inDeck = isCardInSRS(vocab?.id || vocab?.word)
 
@@ -28,28 +29,19 @@ export default function VocabCard({ vocab, lang, index }) {
     }
   }, [vocab?.word, autoPlay])
 
-  // Curated, human-written meaning for english/tamil/hindi — always
-  // available (falls back to English within the chain itself).
-  const curatedMeaning = vocab
-    ? { english: vocab.meaning_en, tamil: vocab.meaning_ta || vocab.meaning_en, hindi: vocab.meaning_hi || vocab.meaning_en }[lang]
-    : undefined
-
-  // Live translation, only actually used when there's no curated meaning
-  // for this language (the hook itself is cheap/no-op for english).
-  const { text: liveMeaning, loading: meaningLoading, isMachineTranslated } =
-    useTranslatedText(vocab?.meaning_en, curatedMeaning ? 'english' : lang)
-
   const pitchInfo = getPitchAccent(vocab?.word, vocab?.reading)
 
   if (!vocab) return null
 
-  const displayMeaning = curatedMeaning || liveMeaning
+  const displayMeaning = getCurriculumMeaning(vocab, activeLang)
+  const translationEntry = getCurriculumTranslation(vocab.id, activeLang)
+  const exampleTranslation = translationEntry?.example || vocab.example?.en || vocab.example_sentence_en || ''
 
   const translations = [
-    { label: '🇬🇧 English', value: vocab.meaning_en },
-    { label: '🇮🇳 Tamil', value: vocab.meaning_ta },
-    { label: '🇮🇳 Hindi', value: vocab.meaning_hi },
-  ].filter(m => m.value)
+    { label: '🇬🇧 English', value: getCurriculumMeaning(vocab, 'en') },
+    { label: '🇮🇳 Tamil', value: getCurriculumTranslation(vocab.id, 'ta')?.meaning || vocab.meaning_ta },
+    { label: '🇮🇳 Hindi', value: getCurriculumTranslation(vocab.id, 'hi')?.meaning || vocab.meaning_hi },
+  ].filter(m => Boolean(m.value))
 
   return (
     <motion.div
@@ -85,21 +77,7 @@ export default function VocabCard({ vocab, lang, index }) {
           </div>
           <p className="text-sm mt-0.5 text-muted-foreground">
             {showTranslation ? (
-              meaningLoading ? (
-                <span className="inline-block h-[1em] w-32 rounded bg-muted animate-pulse align-middle" />
-              ) : (
-                <>
-                  {displayMeaning}
-                  {isMachineTranslated && (
-                    <span
-                      title="Translated live via machine translation, not hand-written"
-                      className="ml-1.5 text-[9px] font-bold px-1 py-0.5 rounded bg-blue-100 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400 align-middle"
-                    >
-                      live
-                    </span>
-                  )}
-                </>
-              )
+              <span>{displayMeaning}</span>
             ) : (
               <button
                 onClick={(e) => { e.stopPropagation(); setExpanded(true) }}
@@ -190,9 +168,11 @@ export default function VocabCard({ vocab, lang, index }) {
                           {vocab.example_sentence_reading}
                         </p>
                       )}
-                      <p className="text-xs mt-1.5 pt-1.5 border-t text-muted-foreground border-border">
-                        <TranslatedText text={vocab.example_sentence_en} lang={lang} />
-                      </p>
+                      {(exampleTranslation || vocab.example_sentence_en) && (
+                        <p className="text-xs mt-1.5 pt-1.5 border-t text-muted-foreground border-border">
+                          {exampleTranslation || vocab.example_sentence_en}
+                        </p>
+                      )}
                     </div>
                     <AudioButton
                       text={vocab.example_sentence_jp}

@@ -12,7 +12,7 @@ const GREETINGS = [
   {
     japanese: '「今日も一歩ずつ、楽しく学びましょう！」',
     romaji: 'Kyou mo ippo zutsu, tanoshiku manabimashou!',
-    english: "Step by step, let's enjoy learning today too! Consistency creates true fluency.",
+    english: "Step by step, let's enjoy learning today too! Consistent practice helps you progress toward fluency.",
   },
   {
     japanese: '「分からないことがあれば、何でも聞いてね！」',

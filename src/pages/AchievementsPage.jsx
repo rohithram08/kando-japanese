@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useProgressStore } from '../store/progressStore'
 import { useThemeStore } from '../store/themeStore'
 import { Search } from 'lucide-react'
+import { useI18n } from '../i18n'
 
 // ─── Rarity config ──────────────────────────────────────────────────────────
 // All Tailwind classes are written in full so the compiler never purges them.
@@ -238,6 +239,7 @@ function AchievementCard({ achievement, isUnlocked, isDark, progress, unlockedCo
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function AchievementsPage() {
+  const { t } = useI18n()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
 
@@ -309,7 +311,7 @@ export default function AchievementsPage() {
 
         <div className="relative space-y-3">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight">Achievements</h1>
+            <h1 className="text-2xl font-bold tracking-tight">{t('nav.achievements', 'Achievements')}</h1>
             <p className="text-sm text-amber-100 mt-0.5">
               {unlockedCount} of {totalCount} unlocked · {Math.round(completionPct)}% complete
             </p>
@@ -387,7 +389,7 @@ export default function AchievementsPage() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search achievements…"
+            placeholder={t('common.search', 'Search achievements…')}
             className={[
               'w-full rounded-xl border py-2.5 pl-9 pr-4 text-sm transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-amber-500',
@@ -398,9 +400,9 @@ export default function AchievementsPage() {
 
         <div className="flex gap-1.5">
           {[
-            { value: 'all',      label: 'All',                       count: null },
-            { value: 'unlocked', label: '✅ Unlocked',               count: unlockedCount },
-            { value: 'locked',   label: '🔒 Locked',                 count: totalCount - unlockedCount },
+            { value: 'all',      label: t('common.all', 'All'), count: null },
+            { value: 'unlocked', label: `✅ ${t('common.complete', 'Unlocked')}`, count: unlockedCount },
+            { value: 'locked',   label: `🔒 ${t('common.pattern', 'Locked')}`, count: totalCount - unlockedCount },
           ].map(({ value, label, count }) => (
             <button
               key={value}

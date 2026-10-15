@@ -82,6 +82,7 @@ export const XP_REWARDS = {
   // Learning New Items
   KANJI_LEARNED:       8,   // First time learning a kanji
   VOCAB_LEARNED:       4,   // First time learning vocabulary
+  KANA_LEARNED:        4,   // First time learning kana character
   GRAMMAR_LEARNED:     6,   // First time learning grammar point
 
   // Quizzes

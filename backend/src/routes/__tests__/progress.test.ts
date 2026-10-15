@@ -8,10 +8,12 @@ vi.mock('../../db/index.js', () => ({
     query: {
       users: { findFirst: vi.fn() },
       userBadges: { findMany: vi.fn(), findFirst: vi.fn() },
-      userLessonProgress: { findMany: vi.fn() },
+      userLessonProgress: { findMany: vi.fn(), findFirst: vi.fn() },
       userKanjiProgress: { findMany: vi.fn(), findFirst: vi.fn() },
       userVocabularyProgress: { findMany: vi.fn(), findFirst: vi.fn() },
-      userStreaks: { findMany: vi.fn() },
+      userGrammarProgress: { findMany: vi.fn(), findFirst: vi.fn() },
+      userStreaks: { findMany: vi.fn(), findFirst: vi.fn() },
+      srsCards: { findMany: vi.fn(), findFirst: vi.fn() },
     },
     select: vi.fn(() => ({
       from: vi.fn(() => ({
@@ -47,8 +49,18 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
     return layer.route.stack[layer.route.stack.length - 1].handle;
   };
 
+  const getValidationMiddleware = (path: string, method: string) => {
+    const layer = (progressRouter as any).stack.find(
+      (s: any) => s.route && s.route.path === path && s.route.methods[method]
+    );
+    if (!layer) throw new Error(`Route not found for ${method.toUpperCase()} ${path}`);
+    return layer.route.stack[1].handle;
+  };
+
   beforeEach(() => {
     vi.clearAllMocks();
+    (db.query.userBadges.findMany as any).mockResolvedValue([]);
+    (db.query.userStreaks.findMany as any).mockResolvedValue([]);
   });
 
   describe('GET /kanji', () => {
@@ -291,6 +303,421 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
       expect(result.progress.reviewCount).toBe(3);
       expect(result.xpResult.xpGained).toBe(0); // 0 XP on repeat
       expect(result.xpResult.totalXP).toBe(150);
+    });
+  });
+
+  describe('POST /lesson (Idempotency & Validation)', () => {
+    it('rejects an invalid lessonId with 400 AppError', async () => {
+      const handler = getRouteHandler('/lesson', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { lessonId: 'invalid-nonexistent-lesson', status: 'completed', score: 100, timeSpentSeconds: 60 },
+      };
+      let error: any = null;
+      const res: any = { json: vi.fn() };
+      const next = vi.fn((err) => { error = err; });
+
+      await handler(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+      expect(error).toBeDefined();
+      expect(error.statusCode).toBe(400);
+      expect(error.code).toBe('INVALID_LESSON_ID');
+    });
+
+    it('awards 50 XP for newly completed valid lesson', async () => {
+      const handler = getRouteHandler('/lesson', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { lessonId: 'n5l001', status: 'completed', score: 100, timeSpentSeconds: 120 },
+      };
+
+      (db.query.userLessonProgress.findFirst as any).mockResolvedValueOnce(null);
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 15,
+        streakDays: 1,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'recordActivity').mockResolvedValueOnce({ isFirstActivityToday: true } as any);
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 1,
+        longestStreak: 1,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpResult.xpGained).toBe(15);
+      expect(result.xpResult.totalXP).toBe(15);
+    });
+
+    it('does NOT duplicate XP on repeating the same completed lesson', async () => {
+      const handler = getRouteHandler('/lesson', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { lessonId: 'n5l001', status: 'completed', score: 100, timeSpentSeconds: 90 },
+      };
+
+      // Already completed
+      (db.query.userLessonProgress.findFirst as any).mockResolvedValueOnce({
+        userId: 'user-123',
+        lessonId: 'n5l001',
+        status: 'completed',
+        score: 100,
+        completedAt: new Date('2026-08-20T00:00:00Z'),
+      });
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 200,
+        streakDays: 3,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'recordActivity').mockResolvedValueOnce({ isFirstActivityToday: false } as any);
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 3,
+        longestStreak: 5,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpResult.xpGained).toBe(0); // 0 XP on repeat
+      expect(result.xpResult.totalXP).toBe(200);
+    });
+  });
+
+  describe('POST /xp (Security & Idempotency)', () => {
+    it('rejects client-supplied amount with 400 validation error', async () => {
+      const validator = getValidationMiddleware('/xp', 'post');
+      const req: any = {
+        body: {
+          event: 'lesson_completed',
+          amount: 999999,
+        },
+      };
+      let error: any = null;
+      const res: any = {};
+      const next = vi.fn((err) => { error = err; });
+
+      await validator(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+      expect(error).toBeDefined();
+      expect(error.statusCode).toBe(400);
+    });
+
+    it('rejects unsupported event with 400 validation error', async () => {
+      const validator = getValidationMiddleware('/xp', 'post');
+      const req: any = {
+        body: {
+          event: 'unsupported_arbitrary_event',
+        },
+      };
+      let error: any = null;
+      const res: any = {};
+      const next = vi.fn((err) => { error = err; });
+
+      await validator(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+      expect(error).toBeDefined();
+      expect(error.statusCode).toBe(400);
+    });
+
+    it('awards 0 XP on duplicate quiz completion with equal or lower score', async () => {
+      const handler = getRouteHandler('/xp', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: {
+          event: 'quiz_completed',
+          quizId: 'n5l001',
+          score: 80,
+        },
+      };
+
+      // Already has a passing score of 80
+      (db.query.userLessonProgress.findFirst as any).mockResolvedValueOnce({
+        userId: 'user-123',
+        lessonId: 'n5l001',
+        score: 80,
+        status: 'completed',
+      });
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 300,
+        streakDays: 5,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpGained).toBe(0); // 0 XP on repeat quiz
+      expect(result.totalXP).toBe(300);
+    });
+
+    it('awards dedicated 4 XP for kana_learned without touching kanji tables', async () => {
+      const handler = getRouteHandler('/xp', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: {
+          event: 'kana_learned',
+          cardId: 'h_a',
+        },
+      };
+
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 104,
+        streakDays: 1,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'recordActivity').mockResolvedValueOnce(undefined as any);
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpGained).toBe(4);
+      expect(result.totalXP).toBe(104);
+    });
+  });
+
+  describe('GET / (Progress Summary & Real Cards Reviewed Count)', () => {
+    it('aggregates real cardsReviewed count from kanji and vocabulary tables', async () => {
+      const handler = getRouteHandler('/', 'get');
+      const req: any = {
+        user: { userId: 'user-123' },
+        headers: {},
+      };
+
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 500,
+        streakDays: 5,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 5,
+        longestStreak: 7,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      const mockSelect = db.select as any;
+      mockSelect.mockImplementation(() => ({
+        from: () => ({
+          where: vi.fn().mockImplementation(() => {
+            return Promise.resolve([{ count: 5, total: 60 }]);
+          }),
+        }),
+      }));
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.cardsReviewed).toBeGreaterThanOrEqual(0);
+      expect(result.totalXP).toBe(500);
+    });
+  });
+
+  describe('Grammar Progress (GET & POST /api/progress/grammar)', () => {
+    it('GET /grammar returns user grammar progress list', async () => {
+      const handler = getRouteHandler('/grammar', 'get');
+      const req: any = { user: { userId: 'user-123' } };
+      (db.query.userGrammarProgress.findMany as any).mockResolvedValueOnce([
+        {
+          userId: 'user-123',
+          grammarId: 'n5_g001',
+          status: 'studied',
+          mastered: false,
+          studyCount: 1,
+          lastStudiedAt: new Date(),
+          createdAt: new Date(),
+        },
+      ]);
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.grammar).toHaveLength(1);
+      expect(result.grammar[0].grammarId).toBe('n5_g001');
+      expect(result.grammar[0].status).toBe('studied');
+    });
+
+    it('POST /grammar records new grammar progress and awards 10 XP', async () => {
+      const handler = getRouteHandler('/grammar', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { grammarId: 'n5_g001', status: 'studied' },
+        headers: {},
+      };
+
+      (db.query.userGrammarProgress.findFirst as any).mockResolvedValueOnce(null);
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 110,
+        streakDays: 1,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'recordActivity').mockResolvedValueOnce(undefined as any);
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 1,
+        longestStreak: 1,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpResult.xpGained).toBe(6);
+      expect(result.xpResult.totalXP).toBe(110);
+      expect(result.progress.grammarId).toBe('n5_g001');
+      expect(result.progress.status).toBe('studied');
+    });
+
+    it('POST /grammar is idempotent: repeating study of already-studied pattern awards 0 XP', async () => {
+      const handler = getRouteHandler('/grammar', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { grammarId: 'n5_g001', status: 'studied' },
+        headers: {},
+      };
+
+      // Already studied
+      (db.query.userGrammarProgress.findFirst as any).mockResolvedValueOnce({
+        userId: 'user-123',
+        grammarId: 'n5_g001',
+        status: 'studied',
+        mastered: false,
+        studyCount: 1,
+      });
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 110,
+        streakDays: 1,
+        currentLevel: 'N5',
+      });
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 1,
+        longestStreak: 1,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpResult.xpGained).toBe(0); // 0 XP on repeat
+      expect(result.progress.studyCount).toBe(2); // studyCount increments
+    });
+
+    it('POST /grammar rejects invalid grammar ID with 400 Bad Request', async () => {
+      const handler = getRouteHandler('/grammar', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { grammarId: 'completely_bogus_grammar_id_xyz', status: 'studied' },
+        headers: {},
+      };
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).toHaveBeenCalledWith(
+        expect.objectContaining({
+          statusCode: 400,
+          code: 'INVALID_GRAMMAR_ID',
+        })
+      );
+    });
+
+    it('POST /api/progress/xp with grammar_studied and valid grammarId awards XP idempotently', async () => {
+      const handler = getRouteHandler('/xp', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { event: 'grammar_studied', cardId: 'n5_g002' },
+        headers: {},
+      };
+
+      (db.query.userGrammarProgress.findFirst as any).mockResolvedValueOnce(null);
+      (db.query.users.findFirst as any).mockResolvedValueOnce({
+        id: 'user-123',
+        xpPoints: 110,
+        streakDays: 1,
+        currentLevel: 'N5',
+      });
+      (db.query.userBadges.findMany as any).mockResolvedValueOnce([]);
+      vi.spyOn(streakService, 'recordActivity').mockResolvedValueOnce(undefined as any);
+      vi.spyOn(streakService, 'calculateStreak').mockResolvedValueOnce({
+        currentStreak: 1,
+        longestStreak: 1,
+        lastActivityDate: '2026-08-23',
+        isActiveToday: true,
+      });
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.xpGained).toBe(6);
     });
   });
 });

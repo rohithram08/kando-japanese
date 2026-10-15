@@ -73,13 +73,14 @@ export class SenseiService {
       console.warn('[SenseiService] Could not fetch user context:', ctxErr);
     }
 
-    const safeContext = uContext || {
-      jlptLevel: 'N5',
-      nativeLanguage: 'English',
-      streak: 0,
-      totalXP: 0,
-      recentLessonIds: [],
-      recentVocabIds: [],
+    const safeContext = {
+      jlptLevel: uContext?.jlptLevel || 'N5',
+      nativeLanguage: uContext?.nativeLanguage || 'English',
+      explanationLanguage: requestContext?.explanationLanguage || requestContext?.displayLanguage || uContext?.nativeLanguage || 'English',
+      streak: uContext?.streak || 0,
+      totalXP: uContext?.totalXP || 0,
+      recentLessonIds: uContext?.recentLessonIds || [],
+      recentVocabIds: uContext?.recentVocabIds || [],
     };
 
     // 4. Platform Knowledge RAG

@@ -4,14 +4,13 @@ import { Search, Volume2, ChevronDown, ChevronUp, Layers, BookmarkPlus, Check } 
 import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { useSRSStore } from '../store/srsStore'
-import { useAuthStore } from '../store/authStore'
-import { useProgressStore } from '../store/progressStore'
 import { audioService } from '../services/audioService'
 import { VOCABULARY, LEVEL_META, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
 import FuriganaText from '../components/common/FuriganaText'
 import PitchContourVisualizer from '../components/pitch/PitchContourVisualizer'
 import { getPitchAccent } from '../data/pitch/pitchData'
+import { getCurriculumMeaning, getCurriculumTranslation, normalizeLocale, t } from '../i18n'
 
 // ── Single vocab card ─────────────────────────────────────────
 // (LEVEL_META carries precomputed light/dark class pairs, so this one
@@ -19,11 +18,12 @@ import { getPitchAccent } from '../data/pitch/pitchData'
 const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
-  const showFurigana = useSettingsStore((s) => s.furigana)
   const showRomaji = useSettingsStore((s) => s.romaji)
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
+  const displayMeaning = getCurriculumMeaning(item, activeLang)
+  const translationEntry = getCurriculumTranslation(item.id, activeLang)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
-  const user = useAuthStore((s) => s.user)
-  const awardVocabXP = useProgressStore((s) => s.awardVocabXP)
   const [expanded, setExpanded] = useState(false)
   const meta = LEVEL_META[item.level] || LEVEL_META['N5']
   const pitchInfo = getPitchAccent(item.word, item.reading)
@@ -36,9 +36,6 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
   const handleAddToSRS = (e) => {
     e.stopPropagation()
     addCardToSRS('vocabulary', item.id || item.word, item.word)
-    if (user?.id) {
-      awardVocabXP(user.id, item.id || item.word, 1, false)
-    }
   }
 
   return (
@@ -60,12 +57,9 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
             </span>
             {item.partOfSpeech && <span className="text-xs italic text-muted-foreground">{item.partOfSpeech}</span>}
           </div>
-          <p className="mt-1 text-sm font-medium text-muted-foreground">{item.meaning}</p>
-          {(item.meaning_ta || item.meaning_hi) && (
-            <div className="flex gap-3 mt-0.5 flex-wrap">
-              {item.meaning_ta && <span className="text-xs text-muted-foreground/70">🇮🇳 {item.meaning_ta}</span>}
-              {item.meaning_hi && <span className="text-xs text-muted-foreground/70">{item.meaning_hi}</span>}
-            </div>
+          <p className="mt-1 text-sm font-medium text-muted-foreground">{displayMeaning}</p>
+          {activeLang !== 'en' && item.meaning && item.meaning !== displayMeaning && (
+            <p className="text-xs text-muted-foreground/60">{item.meaning}</p>
           )}
         </div>
 
@@ -82,7 +76,7 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
             {inDeck ? (
               <>
                 <Check className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">In SRS</span>
+                <span className="hidden sm:inline">{t('common.in_srs', activeLang, 'In SRS')}</span>
               </>
             ) : (
               <>
@@ -112,7 +106,7 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
                 </button>
                 <div>
                   <p className="text-sm font-medium text-foreground">{item.example.jp}</p>
-                  <p className="text-xs mt-0.5 text-muted-foreground">{item.example.en}</p>
+                  <p className="text-xs mt-0.5 text-muted-foreground">{translationEntry?.example_trans || item.example.en}</p>
                 </div>
               </div>
             )}
@@ -135,23 +129,29 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
 // ── Page ──────────────────────────────────────────────────────
 export default function VocabularyPage() {
   const targetLevel = useSettingsStore((s) => s.jlptLevel)
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
   const [selectedLevel, setSelectedLevel] = useState(targetLevel || 'N5')
   const [search, setSearch] = useState('')
 
   const meta = LEVEL_META[selectedLevel]
-  const vocab = VOCABULARY[selectedLevel] || []
+  const vocab = useMemo(() => VOCABULARY[selectedLevel] || [], [selectedLevel])
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     if (!q) return vocab
-    return vocab.filter((v) =>
-      v.word.includes(search) ||
-      v.reading.includes(search) ||
-      v.meaning.toLowerCase().includes(q) ||
-      (v.meaning_ta || '').includes(search) ||
-      (v.meaning_hi || '').includes(search)
-    )
-  }, [vocab, search])
+    return vocab.filter((v) => {
+      const locMeaning = getCurriculumMeaning(v, activeLang).toLowerCase()
+      return (
+        v.word.includes(search) ||
+        v.reading.includes(search) ||
+        v.meaning.toLowerCase().includes(q) ||
+        locMeaning.includes(q) ||
+        (v.meaning_ta || '').includes(search) ||
+        (v.meaning_hi || '').includes(search)
+      )
+    })
+  }, [vocab, search, activeLang])
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
@@ -164,12 +164,12 @@ export default function VocabularyPage() {
         <div className="relative">
           <div className="flex items-center gap-2 mb-1">
             <Layers className="w-5 h-5 opacity-90" />
-            <span className="text-sm font-medium opacity-90">Vocabulary</span>
+            <span className="text-sm font-medium opacity-90">{t('nav.vocabulary', 'Vocabulary')}</span>
           </div>
           <h1 className="text-2xl font-bold">{meta.label}</h1>
           <p className="text-sm opacity-80 mt-1">{meta.description}</p>
           <div className="flex gap-4 mt-3 text-sm">
-            <span className="opacity-90"><strong>{DATA_COUNTS.vocabulary[selectedLevel]}</strong> words</span>
+            <span className="opacity-90"><strong>{DATA_COUNTS.vocabulary[selectedLevel]}</strong> {t('nav.vocabulary', 'words')}</span>
             {filtered.length !== DATA_COUNTS.vocabulary[selectedLevel] && <span className="opacity-70">{filtered.length} shown</span>}
           </div>
         </div>
@@ -182,16 +182,16 @@ export default function VocabularyPage() {
           <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search word, reading, or meaning…"
+            placeholder={t('common.search', 'Search word, reading, or meaning…')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
           />
-          {search && <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">Clear</button>}
+          {search && <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">{t('common.clear', 'Clear')}</button>}
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground">{filtered.length} word{filtered.length !== 1 ? 's' : ''}</p>
+      <p className="text-sm text-muted-foreground">{filtered.length} {t('nav.vocabulary', 'words')}</p>
 
       <div className="space-y-3">
         <AnimatePresence mode="popLayout">
@@ -201,8 +201,8 @@ export default function VocabularyPage() {
         {filtered.length === 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
             <Layers className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-medium">No words found</p>
-            <p className="text-sm mt-1">Try a different search term</p>
+            <p className="font-medium">{t('common.no_results', 'No words found')}</p>
+            <p className="text-sm mt-1">{t('common.try_different_search', 'Try a different search term')}</p>
           </motion.div>
         )}
       </div>

@@ -157,7 +157,7 @@ export default function SRSMiniDemo() {
         </div>
 
         <div className="text-[11px] text-muted-foreground text-center pt-1 font-medium">
-          Automatic spacing guarantees 95%+ long-term recall
+          Spaced repetition helps reinforce memory over time.
         </div>
       </div>
     </div>

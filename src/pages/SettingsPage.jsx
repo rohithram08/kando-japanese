@@ -15,6 +15,8 @@ import { useSettingsStore } from '../store/settingsStore'
 import { updateProfile, deleteAccount } from '../api/users'
 import { uploadAvatar } from '../api/upload'
 import { resetAllProgress } from '../api/progress'
+import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
+import LanguageSelector from '../components/common/LanguageSelector'
 import toast from 'react-hot-toast'
 
 // ── Avatar Collection ──────────────────────────────────────
@@ -65,22 +67,6 @@ const SECTION_TINT = {
 // sign-up flow (RegisterPage.jsx) and the lesson card lookups that key
 // off profile.native_language — keep these three in sync if you add a
 // fourth language's translated content to the data set.
-// English, Tamil and Hindi have curated, human-written translations in
-// the lesson data. Everything else is translated live via a free
-// translation service (see src/services/translationService.js) — marked
-// "(live)" in the label so the distinction is honest, not hidden.
-const LANGUAGES = [
-  { code: 'english',    label: 'English' },
-  { code: 'tamil',      label: 'தமிழ் (Tamil)' },
-  { code: 'hindi',      label: 'हिंदी (Hindi)' },
-  { code: 'portuguese', label: 'Português (live)' },
-  { code: 'chinese',    label: '中文 (live)' },
-  { code: 'korean',     label: '한국어 (live)' },
-  { code: 'russian',    label: 'Русский (live)' },
-  { code: 'spanish',    label: 'Español (live)' },
-  { code: 'arabic',     label: 'العربية (live)' },
-  { code: 'french',     label: 'Français (live)' },
-]
 
 const JLPT_LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
 const FONT_SIZES  = [{ value: 'small', label: 'Small' }, { value: 'medium', label: 'Medium' }, { value: 'large', label: 'Large' }]
@@ -187,6 +173,7 @@ export default function SettingsPage() {
   const { theme, setTheme } = useThemeStore()
   const settings = useSettingsStore()
   const { updateSettings, resetToDefaults } = settings
+  const { t, setLocale: setDisplayLanguage } = useI18n()
 
   const [activeSection, setActiveSection]         = useState('profile')
   const [settingsQuery, setSettingsQuery]          = useState('')
@@ -196,7 +183,7 @@ export default function SettingsPage() {
 
   // ── Profile state (saved via backend API / authStore) ──
   const [username, setUsername]             = useState(profile?.username || user?.username || 'Learner')
-  const [nativeLanguage, setNativeLanguage]  = useState(profile?.nativeLanguage || profile?.native_language || settings.nativeLanguage || 'english')
+  const [nativeLanguage, setNativeLanguage]  = useState(normalizeLocale(profile?.nativeLanguage || profile?.native_language || settings.nativeLanguage || 'en'))
   const [profileSaving, setProfileSaving]    = useState(false)
 
   // ── Avatar state ───────────────────────────────────────
@@ -211,7 +198,7 @@ export default function SettingsPage() {
   useEffect(() => {
     if (profile) {
       setUsername(profile.username || '')
-      setNativeLanguage(profile.nativeLanguage || profile.native_language || settings.nativeLanguage || 'english')
+      setNativeLanguage(normalizeLocale(profile.nativeLanguage || profile.native_language || settings.nativeLanguage || 'en'))
       setSelectedAvatar(profile.avatarId || profile.avatar_id || null)
       setAvatarUrl(profile.avatarUrl || profile.avatar_url || null)
     }
@@ -232,8 +219,8 @@ export default function SettingsPage() {
   const handleFileSelect = async (e) => {
     const file = e.target.files?.[0]
     if (!file) return
-    if (!file.type.startsWith('image/')) { toast.error('Please select an image file'); return }
-    if (file.size > 5 * 1024 * 1024)    { toast.error('Image must be less than 5MB'); return }
+    if (!file.type.startsWith('image/')) { toast.error(t('toast.select_image_error', 'Please select an image file')); return }
+    if (file.size > 5 * 1024 * 1024)    { toast.error(t('toast.image_size_error', 'Image must be less than 5MB')); return }
 
     const reader = new FileReader()
     reader.onload = (ev) => setPreviewUrl(ev.target.result)
@@ -254,10 +241,10 @@ export default function SettingsPage() {
       setSelectedAvatar(null)
       setPreviewUrl(null)
       setShowAvatarPicker(false)
-      toast.success('Profile photo updated! 📸')
+      toast.success(t('toast.photo_updated', 'Profile photo updated! 📸'))
     } catch (err) {
       console.error(err)
-      toast.error('Failed to upload photo')
+      toast.error(t('toast.photo_upload_failed', 'Failed to upload photo'))
       setPreviewUrl(null)
     } finally {
       setUploadLoading(false)
@@ -277,10 +264,10 @@ export default function SettingsPage() {
       setAvatarUrl(null)
       setPreviewUrl(null)
       setShowAvatarPicker(false)
-      toast.success(`Avatar set to ${avatar.label}! ${avatar.emoji}`)
+      toast.success(t('toast.avatar_updated', { name: avatar.label, emoji: avatar.emoji }, `Avatar set to ${avatar.label}! ${avatar.emoji}`))
     } catch (err) {
       console.error(err)
-      toast.error('Failed to update avatar')
+      toast.error(t('toast.avatar_update_failed', 'Failed to update avatar'))
     } finally {
       setUploadLoading(false)
     }
@@ -298,17 +285,17 @@ export default function SettingsPage() {
       setSelectedAvatar(null)
       setAvatarUrl(null)
       setPreviewUrl(null)
-      toast.success('Avatar removed')
+      toast.success(t('toast.avatar_removed', 'Avatar removed'))
     } catch (err) {
       console.error('Remove avatar failed:', err)
-      toast.error('Failed to remove avatar')
+      toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar'))
     } finally {
       setUploadLoading(false)
     }
   }
 
   const handleSaveProfile = async () => {
-    if (!username.trim()) { toast.error('Display name cannot be empty'); return }
+    if (!username.trim()) { toast.error(t('toast.name_required', 'Display name cannot be empty')); return }
     setProfileSaving(true)
     try {
       if (user) {
@@ -317,11 +304,11 @@ export default function SettingsPage() {
       } else {
         await authUpdateProfile({ username: username.trim(), nativeLanguage: nativeLanguage })
       }
-      updateSettings({ nativeLanguage })
-      toast.success('Profile updated! ✅')
+      updateSettings({ nativeLanguage: nativeLanguage })
+      toast.success(t('toast.profile_updated', 'Profile updated! ✅'))
     } catch (err) {
       console.error(err)
-      toast.error('Failed to save profile')
+      toast.error(t('toast.profile_save_failed', 'Failed to save profile'))
     } finally {
       setProfileSaving(false)
     }
@@ -337,10 +324,10 @@ export default function SettingsPage() {
       a.download = `nihongo-master-data-${new Date().toISOString().split('T')[0]}.json`
       a.click()
       URL.revokeObjectURL(url)
-      toast.success('Data exported successfully!')
+      toast.success(t('toast.data_exported', 'Data exported successfully!'))
     } catch (err) {
       console.error('Export failed:', err)
-      toast.error('Failed to export data')
+      toast.error(t('toast.data_export_failed', 'Failed to export data'))
     }
   }
 
@@ -350,10 +337,10 @@ export default function SettingsPage() {
         await resetAllProgress()
       }
       setShowResetConfirm(false)
-      toast.success('Progress has been reset')
+      toast.success(t('toast.progress_reset', 'Progress has been reset'))
     } catch (err) {
       console.error('Reset progress failed:', err)
-      toast.error('Failed to reset progress')
+      toast.error(t('toast.progress_reset_failed', 'Failed to reset progress'))
     }
   }
 
@@ -364,12 +351,12 @@ export default function SettingsPage() {
       await deleteAccount()
 
       setShowDeleteConfirm(false)
-      toast.success('Your data has been deleted')
+      toast.success(t('toast.account_deleted', 'Your data has been deleted'))
       await logout()
       navigate('/login')
     } catch (err) {
       console.error('Delete account failed:', err)
-      toast.error('Failed to delete account data')
+      toast.error(t('toast.account_delete_failed', 'Failed to delete account data'))
     }
   }
 
@@ -463,13 +450,11 @@ export default function SettingsPage() {
               </div>
             </SectionCard>
 
-            <SectionCard title="Native Language" emoji="🌐">
+            <SectionCard title={t('settings.display_lang_title', 'Display & Interface Language')} emoji="🌐">
               <p className="text-xs text-muted-foreground mb-3 -mt-2">
-                Used to show word and grammar meanings in your language throughout Lessons and Vocabulary.
-                English, Tamil and Hindi are hand-written by us; languages marked <span className="font-semibold">(live)</span> are
-                translated automatically and may occasionally be imperfect.
+                {t('settings.display_lang_desc', 'Language used for platform interface labels and menus.')}
               </p>
-              <SelectField value={nativeLanguage} onChange={setNativeLanguage} options={LANGUAGES} />
+              <LanguageSelector onLanguageChange={(code) => setDisplayLanguage(code)} />
             </SectionCard>
 
             <div className="flex items-center gap-2">
@@ -483,7 +468,7 @@ export default function SettingsPage() {
                 ) : (
                   <Save className="w-4 h-4" />
                 )}
-                Save Profile
+                {t('settings.save_profile', 'Save Profile')}
               </button>
               <p className="text-xs text-muted-foreground">{user?.email}</p>
             </div>
@@ -495,9 +480,8 @@ export default function SettingsPage() {
         return (
           <SectionCard>
             <SettingRow
-              label="JLPT Target Level"
+              label={t('settings.jlpt_target', 'JLPT Target Level')}
               description="Lessons, Grammar, Vocabulary & Kanji will open to this level by default"
-              noBorder
             >
               <div className="flex gap-1.5 flex-wrap justify-end">
                 {JLPT_LEVELS.map((lvl) => (
@@ -506,6 +490,32 @@ export default function SettingsPage() {
                   </ChoicePill>
                 ))}
               </div>
+            </SettingRow>
+
+            <SettingRow
+              label={t('settings.explanation_lang_title', 'Learning Support & Explanation Language')}
+              description={t('settings.explanation_lang_desc', 'Language Hana-sensei and lesson cards use to explain Japanese.')}
+            >
+              <SelectField
+                value={settings.explanationLanguage || 'en'}
+                onChange={(v) => updateSettings({ explanationLanguage: v })}
+                options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
+              />
+            </SettingRow>
+
+            <SettingRow
+              label={t('settings.native_lang_title', 'Native Language (Mother Tongue)')}
+              description="Your mother tongue for demographic and profile records"
+              noBorder
+            >
+              <SelectField
+                value={nativeLanguage}
+                onChange={(v) => {
+                  setNativeLanguage(v)
+                  updateSettings({ nativeLanguage: v })
+                }}
+                options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
+              />
             </SettingRow>
           </SectionCard>
         )
@@ -838,7 +848,7 @@ export default function SettingsPage() {
       <ConfirmModal
         show={showResetSettingsConfirm}
         onClose={() => setShowResetSettingsConfirm(false)}
-        onConfirm={() => { resetToDefaults(); setShowResetSettingsConfirm(false); toast.success('Settings restored to defaults') }}
+        onConfirm={() => { resetToDefaults(); setShowResetSettingsConfirm(false); toast.success(t('toast.settings_reset', 'Settings restored to defaults')) }}
         title="Reset Settings?"
         message="This restores every preference on this page to its default value. Your progress and account are not affected."
         confirmLabel="Reset Settings"

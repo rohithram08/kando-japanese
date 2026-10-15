@@ -6,6 +6,8 @@ import { ChevronRight, X, Flame } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
+import { useSettingsStore } from '../../store/settingsStore'
+import { t } from '../../i18n'
 import { LEVEL_META } from '../../data/levels'
 import { SECTIONS, TINTS, sectionsByGroup } from '../../config/sections'
 
@@ -16,8 +18,10 @@ const GROUPS = [
 ]
 
 function NavItem({ section, collapsed }) {
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const tint = TINTS[section.tint]
   const Icon = section.icon
+  const label = t('nav.' + section.id, displayLanguage, section.label)
   return (
     <NavLink
       to={section.path}
@@ -36,7 +40,7 @@ function NavItem({ section, collapsed }) {
                 exit={{ opacity: 0, width: 0 }}
                 className="overflow-hidden whitespace-nowrap"
               >
-                {section.label}
+                {label}
               </motion.span>
             )}
           </AnimatePresence>
@@ -48,7 +52,7 @@ function NavItem({ section, collapsed }) {
             <div className="absolute left-full ml-2 px-2 py-1 rounded-lg text-xs font-medium
                              pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity
                              whitespace-nowrap z-50 shadow-lg bg-gray-900 text-white dark:bg-gray-700">
-              {section.label}
+              {label}
             </div>
           )}
         </>
@@ -65,6 +69,7 @@ function NavItem({ section, collapsed }) {
 export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileDrawer = false, onClose }) {
   const { profile } = useAuthStore()
   const { resolvedTheme } = useThemeStore()
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const isDark = resolvedTheme === 'dark'
   const { totalXP, jlptLevel, streak, userLevel } = useProgressStore()
 
@@ -162,7 +167,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                     exit={{ opacity: 0 }}
                     className="text-xs font-semibold uppercase tracking-wider px-3 mb-1 text-muted-foreground/70"
                   >
-                    {group.label}
+                    {t('nav.' + group.key, displayLanguage, group.label)}
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -180,8 +185,12 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
       {!effectiveCollapsed && (
         <div className="px-4 py-3 border-t border-border">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs text-muted-foreground">Level {userLevel}</span>
-            <span className="text-xs font-medium text-foreground">{totalXP.toLocaleString()} XP</span>
+            <span className="text-xs text-muted-foreground">
+              {t('common.level', displayLanguage, 'Level')} {userLevel}
+            </span>
+            <span className="text-xs font-medium text-foreground">
+              {t('common.xp', displayLanguage, { count: totalXP.toLocaleString() }, `${totalXP.toLocaleString()} XP`)}
+            </span>
           </div>
           <div className="h-1.5 rounded-full bg-muted overflow-hidden">
             <motion.div

@@ -2,19 +2,44 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Flame } from 'lucide-react'
+import { useI18n } from '../../i18n'
 
 const WEEK_DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const MOTIVATION = (streak) => {
-  if (streak === 0) return { text: 'Start your streak today!', emoji: '💪', color: 'text-muted-foreground' }
-  if (streak < 7) return { text: `${7 - streak} more day${7 - streak !== 1 ? 's' : ''} to a week streak!`, emoji: '🌟', color: 'text-blue-600 dark:text-blue-400' }
-  if (streak < 30) return { text: `${30 - streak} days to monthly badge!`, emoji: '🏅', color: 'text-purple-600 dark:text-purple-400' }
-  return { text: "Incredible dedication! You're a legend!", emoji: '🏆', color: 'text-yellow-600 dark:text-yellow-400' }
-}
-
 export default function StreakCard({ streak = 0 }) {
+  const { t } = useI18n()
   const today = new Date().getDay()
-  const motivation = MOTIVATION(streak)
+
+  const getMotivation = (val) => {
+    if (val === 0) {
+      return {
+        text: t('dashboard.start_streak', 'Start your streak today!'),
+        emoji: '💪',
+        color: 'text-muted-foreground',
+      }
+    }
+    if (val < 7) {
+      return {
+        text: t('dashboard.week_streak_target', { count: 7 - val }, `${7 - val} more days to a week streak!`),
+        emoji: '🌟',
+        color: 'text-blue-600 dark:text-blue-400',
+      }
+    }
+    if (val < 30) {
+      return {
+        text: t('dashboard.month_streak_target', { count: 30 - val }, `${30 - val} days to monthly badge!`),
+        emoji: '🏅',
+        color: 'text-purple-600 dark:text-purple-400',
+      }
+    }
+    return {
+      text: t('dashboard.legend_streak', "Incredible dedication! You're a legend!"),
+      emoji: '🏆',
+      color: 'text-yellow-600 dark:text-yellow-400',
+    }
+  }
+
+  const motivation = getMotivation(streak)
 
   return (
     <motion.div
@@ -27,8 +52,12 @@ export default function StreakCard({ streak = 0 }) {
           <Flame className="w-4 h-4 text-orange-600 dark:text-orange-400" />
         </div>
         <div className="flex-1">
-          <h3 className="font-bold text-sm text-foreground">Study Streak</h3>
-          <p className="text-xs mt-0.5 text-muted-foreground">Stay consistent every day</p>
+          <h3 className="font-bold text-sm text-foreground">
+            {t('dashboard.streak_title', 'Study Streak')}
+          </h3>
+          <p className="text-xs mt-0.5 text-muted-foreground">
+            {t('dashboard.streak_desc', 'Stay consistent every day')}
+          </p>
         </div>
         <div className="flex items-center gap-1.5">
           <motion.span key={`emoji-${streak}`} initial={{ scale: 1.3, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-2xl">
@@ -43,7 +72,9 @@ export default function StreakCard({ streak = 0 }) {
             >
               {streak}
             </motion.span>
-            <span className="text-[10px] text-muted-foreground">days</span>
+            <span className="text-[10px] text-muted-foreground">
+              {t('dashboard.streak_days', 'days')}
+            </span>
           </div>
         </div>
       </div>

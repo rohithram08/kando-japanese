@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mic, MicOff, Volume2, RefreshCw } from 'lucide-react'
 import { useThemeStore } from '../store/themeStore'
+import { useI18n } from '../i18n'
 
 const PRACTICE_SENTENCES = [
   { jp: 'おはようございます', en: 'Good morning', romaji: 'Ohayou gozaimasu' },
@@ -15,6 +16,7 @@ const PRACTICE_SENTENCES = [
 ]
 
 export default function SpeechPage() {
+  const { t } = useI18n()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
 
@@ -116,7 +118,7 @@ export default function SpeechPage() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-6 text-white"
       >
-        <h1 className="text-2xl font-bold mb-1">🎤 Speech Practice</h1>
+        <h1 className="text-2xl font-bold mb-1">🎤 {t('nav.speech', 'Speech Practice')}</h1>
         <p className="text-pink-100 text-sm">Practice your Japanese pronunciation</p>
       </motion.div>
 
@@ -170,7 +172,7 @@ export default function SpeechPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors bg-blue-50 text-blue-600 hover:bg-blue-100 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20`}
             >
               <Volume2 className="w-4 h-4" />
-              Listen
+              {t('reading.audio_listen', 'Listen')}
             </button>
           </div>
 
@@ -268,7 +270,7 @@ export default function SpeechPage() {
         className={`w-full flex items-center justify-center gap-2 py-3 rounded-2xl font-medium shadow-sm transition-colors border bg-white border-gray-200 text-gray-600 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-700/60 dark:text-gray-300 dark:hover:bg-gray-800`}
       >
         <RefreshCw className="w-4 h-4" />
-        Next Sentence
+        {t('reading.next_sentence', 'Next Sentence')}
       </button>
     </div>
   )

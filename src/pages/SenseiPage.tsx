@@ -31,6 +31,7 @@ import { useSenseiStore } from '../store/senseiStore';
 import { useSenseiDailyGuidance } from '../hooks/useSenseiDailyGuidance';
 import { SenseiAnimationState } from '../components/sensei/controllers/SenseiAnimationController';
 import { SenseiEmotion } from '../components/sensei/controllers/SenseiExpressionController';
+import { useI18n } from '../i18n';
 
 const ANIMATION_CLIPS: { key: SenseiAnimationState; label: string; icon: string }[] = [
   { key: 'idle', label: 'Idle', icon: '🌸' },
@@ -72,6 +73,7 @@ const QUICK_PROMPTS = [
 ];
 
 export default function SenseiPage() {
+  const { t } = useI18n();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { guidance } = useSenseiDailyGuidance();
@@ -640,7 +642,7 @@ export default function SenseiPage() {
                 onBlur={() => {
                   if (animationState === 'listening') setAnimationState('idle');
                 }}
-                placeholder="Ask Hana-sensei anything about Japanese..."
+                placeholder={t('sensei.ask_placeholder', 'Ask Hana-sensei anything about Japanese...')}
                 disabled={isTyping}
                 className="flex-1 bg-muted/60 border border-border rounded-full py-2.5 px-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background transition-all text-foreground placeholder:text-muted-foreground disabled:opacity-50"
               />

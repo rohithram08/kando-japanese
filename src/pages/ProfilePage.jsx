@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom'
 import { getProgress } from '../api/progress'
 import { updateProfile } from '../api/users'
 import { uploadAvatar } from '../api/upload'
+import { useI18n } from '../i18n'
 import toast from 'react-hot-toast'
 
 // ── Avatar Collection ──────────────────────────────────────
@@ -267,6 +268,7 @@ function UserListItem({ u, isDark, isFollowing, onToggleFollow, onViewProfile })
 export default function ProfilePage() {
   const { user, profile, refreshProfile } = useAuthStore()
   const { resolvedTheme } = useThemeStore()
+  const { t } = useI18n()
   const isDark = resolvedTheme === 'dark'
   const fileInputRef = useRef(null)
   const navigate = useNavigate()
@@ -345,8 +347,8 @@ export default function ProfilePage() {
   const handleFileSelect = async (e) => {
     const file = e.target.files?.[0]
     if (!file) return
-    if (!file.type.startsWith('image/')) { toast.error('Please select an image file'); return }
-    if (file.size > 5 * 1024 * 1024)    { toast.error('Image must be less than 5MB'); return }
+    if (!file.type.startsWith('image/')) { toast.error(t('toast.select_image_error', 'Please select an image file')); return }
+    if (file.size > 5 * 1024 * 1024)    { toast.error(t('toast.image_size_error', 'Image must be less than 5MB')); return }
     const reader = new FileReader()
     reader.onload = (ev) => setPreviewUrl(ev.target.result)
     reader.readAsDataURL(file)
@@ -357,9 +359,9 @@ export default function ProfilePage() {
       await updateProfile({ avatarUrl: publicUrl, avatarId: null })
       setAvatarUrl(publicUrl); setSelectedAvatar(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
-      toast.success('Profile photo updated! 📸')
+      toast.success(t('toast.photo_updated', 'Profile photo updated! 📸'))
     } catch (err) {
-      console.error(err); toast.error('Failed to upload photo'); setPreviewUrl(null)
+      console.error(err); toast.error(t('toast.photo_upload_failed', 'Failed to upload photo')); setPreviewUrl(null)
     } finally { setUploadLoading(false) }
   }
 
@@ -369,8 +371,8 @@ export default function ProfilePage() {
       await updateProfile({ avatarId: avatar.id, avatarUrl: null })
       setSelectedAvatar(avatar.id); setAvatarUrl(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
-      toast.success(`Avatar set to ${avatar.label}! ${avatar.emoji}`)
-    } catch (err) { console.error(err); toast.error('Failed to update avatar') }
+      toast.success(t('toast.avatar_updated', { name: avatar.label, emoji: avatar.emoji }, `Avatar set to ${avatar.label}! ${avatar.emoji}`))
+    } catch (err) { console.error(err); toast.error(t('toast.avatar_update_failed', 'Failed to update avatar')) }
     finally { setUploadLoading(false) }
   }
 
@@ -380,8 +382,8 @@ export default function ProfilePage() {
       await updateProfile({ avatarId: null, avatarUrl: null })
       setSelectedAvatar(null); setAvatarUrl(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
-      toast.success('Avatar removed')
-    } catch (err) { toast.error('Failed to remove avatar') }
+      toast.success(t('toast.avatar_removed', 'Avatar removed'))
+    } catch (err) { toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar')) }
     finally { setUploadLoading(false) }
   }
 

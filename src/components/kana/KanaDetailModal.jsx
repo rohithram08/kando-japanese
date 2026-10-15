@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { audioService } from '../../services/audioService';
 import { useSRSStore } from '../../store/srsStore';
+import { useI18n } from '../../i18n';
 import { getKanaStrokeData } from '../../data/kana/kanaStrokes';
 import { CONFUSABLE_PAIRS } from '../../data/kana/kanaData';
 
@@ -24,6 +25,7 @@ export default function KanaDetailModal({
   masteryStats = { correct: 0, mastered: false },
   onToggleMastery,
 }) {
+  const { t } = useI18n();
   const { isCardInSRS, addCardToSRS } = useSRSStore();
 
   if (!kana) return null;
@@ -107,7 +109,7 @@ export default function KanaDetailModal({
                     }`}
                   >
                     {inSRS ? <Check className="w-3.5 h-3.5" /> : <BookmarkPlus className="w-3.5 h-3.5" />}
-                    {inSRS ? 'In SRS Deck' : '+ Add to SRS'}
+                    {inSRS ? t('common.in_srs', 'In SRS Deck') : `+ ${t('common.add_to_srs', 'Add to SRS')}`}
                   </button>
 
                   <button
@@ -244,7 +246,7 @@ export default function KanaDetailModal({
               onClick={onClose}
               className="px-5 py-2 rounded-xl text-sm font-semibold bg-muted hover:bg-muted/80 text-foreground transition-colors"
             >
-              Done
+              {t('lessons.done', 'Done')}
             </button>
           </div>
         </motion.div>

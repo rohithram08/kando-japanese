@@ -5,6 +5,7 @@ import { useAuthStore } from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useDailyGoalsStore } from '../../store/dailyGoalsStore'
+import { normalizeLocale, useI18n } from '../../i18n'
 import { getLesson } from '../../api/lessons'
 import { completeLesson as apiCompleteLesson } from '../../api/progress'
 import { XP_REWARDS } from '../../utils/progressCalculator'
@@ -26,6 +27,7 @@ export default function LessonViewer() {
   const { incrementLessons } = useProgressStore()
   const addLessonGoal = useDailyGoalsStore((s) => s.addLesson)
   const navigate = useNavigate()
+  const { t, locale } = useI18n()
 
   const [lesson, setLesson] = useState(null)
   const [currentSection, setCurrentSection] = useState(0)
@@ -68,7 +70,7 @@ export default function LessonViewer() {
 
     sections.push({
       type: 'intro',
-      title: `Day ${day}: ${lesson.title || lesson.title_en || ''}`,
+      title: `${t('common.day', 'Day')} ${day}: ${lesson.title || lesson.title_en || ''}`,
       content: lesson.description,
     })
 
@@ -76,7 +78,7 @@ export default function LessonViewer() {
     if (vocabList.length > 0) {
       sections.push({
         type: 'vocabulary',
-        title: 'Vocabulary',
+        title: t('nav.vocabulary', 'Vocabulary'),
         icon: '📝',
         items: vocabList.map((v, i) => typeof v === 'string' ? { id: `v-${i}`, word: v, reading: v, meaning: v } : v),
         count: vocabList.length,
@@ -87,7 +89,7 @@ export default function LessonViewer() {
     if (kanjiList.length > 0) {
       sections.push({
         type: 'kanji',
-        title: 'Kanji',
+        title: t('nav.kanji', 'Kanji'),
         icon: '漢',
         items: kanjiList.map((k, i) => typeof k === 'string' ? { id: `k-${i}`, character: k, meaning: k } : k),
         count: kanjiList.length,
@@ -98,21 +100,21 @@ export default function LessonViewer() {
     if (grammarList.length > 0) {
       sections.push({
         type: 'grammar',
-        title: 'Grammar',
+        title: t('nav.grammar', 'Grammar'),
         icon: '📖',
         items: grammarList.map((g, i) => typeof g === 'string' ? { id: `g-${i}`, pattern: g, meaning: g, explanation: g } : g),
         count: grammarList.length,
       })
     }
 
-    sections.push({ type: 'complete', title: 'Lesson Complete!' })
+    sections.push({ type: 'complete', title: t('lessons.complete_title', 'Lesson Complete!') })
     return sections
   }
 
   const sections = buildSections()
   const currentSec = sections[currentSection]
   const progress = ((currentSection + 1) / sections.length) * 100
-  const lang = profile?.nativeLanguage || profile?.native_language || 'english'
+  const lang = locale
   const timeElapsed = Math.floor((Date.now() - startTime) / 1000)
 
   const goBack = useCallback(() => {
@@ -157,8 +159,12 @@ export default function LessonViewer() {
         }
       }
 
-      const xpGained = xpResult?.xpGained || XP_REWARDS.LESSON_GREAT
-      toast.success(`+${xpGained} XP! Lesson Complete! 🎉`)
+      const xpGained = xpResult?.xpGained !== undefined ? xpResult.xpGained : XP_REWARDS.LESSON_GREAT
+      if (xpGained > 0) {
+        toast.success(`+${xpGained} XP! Lesson Complete! 🎉`)
+      } else {
+        toast.success('Lesson Complete! (Already earned XP) 👍')
+      }
       navigate(`/quiz/${lesson.id}`)
     } catch (err) {
       console.error('Failed to complete lesson via API:', err)
@@ -257,7 +263,7 @@ export default function LessonViewer() {
             >
               {i < currentSection && <CheckCircle className="w-3 h-3" />}
               {sec.icon && <span className="text-xs">{sec.icon}</span>}
-              <span>{sec.type === 'intro' ? 'Intro' : sec.type === 'complete' ? 'Done' : sec.title}</span>
+              <span>{sec.type === 'intro' ? t('lessons.intro', 'Intro') : sec.type === 'complete' ? t('lessons.done', 'Done') : sec.title}</span>
               {sec.count && (
                 <span className={`text-[10px] text-muted-foreground`}>
                   ({sec.count})
@@ -319,21 +325,21 @@ export default function LessonViewer() {
                   <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm 
                                    font-medium transition-colors bg-red-50 text-red-600 border border-red-100 dark:bg-red-500/10 dark:text-red-400 dark:border dark:border-red-500/20`}>
                     <span>📝</span>
-                    <span>{sections.find(s => s.type === 'vocabulary')?.items?.length} Vocabulary</span>
+                    <span>{sections.find(s => s.type === 'vocabulary')?.items?.length} {t('nav.vocabulary', 'Vocabulary')}</span>
                   </div>
                 )}
                 {sections.find(s => s.type === 'kanji')?.items?.length > 0 && (
                   <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm 
                                    font-medium transition-colors bg-blue-50 text-blue-600 border border-blue-100 dark:bg-blue-500/10 dark:text-blue-400 dark:border dark:border-blue-500/20`}>
                     <span className="font-bold">漢</span>
-                    <span>{sections.find(s => s.type === 'kanji')?.items?.length} Kanji</span>
+                    <span>{sections.find(s => s.type === 'kanji')?.items?.length} {t('nav.kanji', 'Kanji')}</span>
                   </div>
                 )}
                 {sections.find(s => s.type === 'grammar')?.items?.length > 0 && (
                   <div className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm 
                                    font-medium transition-colors bg-green-50 text-green-600 border border-green-100 dark:bg-green-500/10 dark:text-green-400 dark:border dark:border-green-500/20`}>
                     <span>📖</span>
-                    <span>{sections.find(s => s.type === 'grammar')?.items?.length} Grammar</span>
+                    <span>{sections.find(s => s.type === 'grammar')?.items?.length} {t('nav.grammar', 'Grammar')}</span>
                   </div>
                 )}
               </motion.div>
@@ -455,7 +461,7 @@ export default function LessonViewer() {
                 transition={{ delay: 0.3 }}
                 className={`text-2xl sm:text-3xl font-extrabold mb-2 text-foreground`}
               >
-                Great Work!
+                {t('quiz.passed', 'Great Work!')}
               </motion.h2>
 
               <motion.p
@@ -510,7 +516,7 @@ export default function LessonViewer() {
                 ) : (
                   <>
                     <Target className="w-5 h-5" />
-                    Take Quiz
+                    {t('quiz.take_quiz', 'Take Quiz')}
                   </>
                 )}
               </motion.button>
@@ -529,7 +535,7 @@ export default function LessonViewer() {
                       justify-center gap-2 transition-all disabled:opacity-30 border-2 border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:border-gray-600`}
         >
           <ArrowLeft className="w-4 h-4" />
-          Previous
+          {t('common.previous', 'Previous')}
         </motion.button>
 
         {currentSec?.type !== 'complete' && (
@@ -540,7 +546,7 @@ export default function LessonViewer() {
                        rounded-2xl font-semibold text-sm hover:shadow-lg hover:shadow-red-500/20 
                        transition-all flex items-center justify-center gap-2"
           >
-            Next
+            {t('common.next', 'Next')}
             <ArrowRight className="w-4 h-4" />
           </motion.button>
         )}

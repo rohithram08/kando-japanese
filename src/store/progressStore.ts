@@ -5,10 +5,12 @@
 import { create } from 'zustand';
 import {
   getProgress,
+  getGrammarProgress,
   submitXPEvent,
   recordStreakActivity,
   recordKanjiProgress as apiRecordKanjiProgress,
   recordVocabularyProgress as apiRecordVocabularyProgress,
+  recordGrammarProgress as apiRecordGrammarProgress,
 } from '../api/progress';
 import {
   getJLPTLevel,
@@ -19,7 +21,7 @@ import {
   calculateSRSReviewXP,
   calculateStreakBonus,
 } from '../utils/progressCalculator';
-import type { JLPTLevel, XPEventType, SRSQuality, User } from '../types/models';
+import type { JLPTLevel, XPEventType, SRSQuality, User, GrammarProgress } from '../types/models';
 
 export interface ProgressState {
   streak: number;
@@ -31,18 +33,36 @@ export interface ProgressState {
   kanjiLearned: number;
   vocabLearned: number;
   kanaLearned: number;
+  grammarLearned: number;
+  grammarProgress: Record<string, GrammarProgress>;
   cardsReviewed: number;
   cardsMastered: number;
   srsReviewsDue: number;
   loading: boolean;
   initialized: boolean;
+  syncStatus: 'idle' | 'saving' | 'saved' | 'error';
 
   initializeProgress: (userId?: string, profile?: Partial<User> | null) => Promise<void>;
+  loadGrammarProgress: (userId?: string) => Promise<void>;
+  recordGrammarProgress: (
+    userId: string | undefined,
+    grammarId: string,
+    status?: 'not_started' | 'studied' | 'mastered',
+    mastered?: boolean
+  ) => Promise<{
+    xpGained: number;
+    newTotal?: number;
+    isGuest?: boolean;
+    progress?: GrammarProgress;
+  }>;
   addXP: (
     amount: number,
     userId?: string,
     eventData?: {
       event?: XPEventType;
+      lessonId?: string;
+      quizId?: string;
+      cardId?: string;
       score?: number;
       quality?: SRSQuality;
       isMastered?: boolean;
@@ -54,13 +74,13 @@ export interface ProgressState {
     userLevel: number;
     leveledUp: boolean;
   } | undefined>;
-  awardLessonXP: (userId: string | undefined, scorePercent: number) => Promise<any>;
-  awardQuizXP: (userId: string | undefined, scorePercent: number) => Promise<any>;
-  awardSRSReviewXP: (userId: string | undefined, quality: SRSQuality, isMastered?: boolean) => Promise<any>;
+  awardLessonXP: (userId: string | undefined, scorePercent: number, lessonId?: string) => Promise<any>;
+  awardQuizXP: (userId: string | undefined, scorePercent: number, quizId?: string) => Promise<any>;
+  awardSRSReviewXP: (userId: string | undefined, quality: SRSQuality, isMastered?: boolean, cardId?: string) => Promise<any>;
   awardKanjiXP: (userId?: string, kanjiId?: string, recognitionLevel?: number, mastered?: boolean) => Promise<any>;
   awardVocabXP: (userId?: string, vocabularyId?: string, masteryLevel?: number, mastered?: boolean) => Promise<any>;
   awardKanaXP: (userId?: string, kanaId?: string, mastered?: boolean) => Promise<any>;
-  awardGrammarXP: (userId?: string) => Promise<any>;
+  awardGrammarXP: (userId?: string, grammarId?: string, status?: 'not_started' | 'studied' | 'mastered', mastered?: boolean) => Promise<any>;
   awardDailyGoalXP: (userId?: string) => Promise<any>;
   updateStreak: (userId?: string) => Promise<number>;
   loadSRSDue: (userId?: string) => Promise<number>;
@@ -68,6 +88,7 @@ export interface ProgressState {
   incrementKanji: () => void;
   incrementVocab: () => void;
   incrementKana: () => void;
+  incrementGrammar: () => void;
   incrementCards: () => void;
   incrementMastered: () => void;
   resetDailyXP: () => void;
@@ -93,11 +114,14 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   kanjiLearned: 0,
   vocabLearned: 0,
   kanaLearned: 0,
+  grammarLearned: 0,
+  grammarProgress: {},
   cardsReviewed: 0,
   cardsMastered: 0,
   srsReviewsDue: 0,
   loading: false,
   initialized: false,
+  syncStatus: 'idle',
 
   // ── Initialize from Backend API ─────────────────────────
   initializeProgress: async (userId, profile) => {
@@ -119,6 +143,19 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         console.debug('progressStore sync check caught:', e);
       }
 
+      // Fetch grammar progress
+      const grammarProgressMap: Record<string, GrammarProgress> = {};
+      try {
+        const gRes = await getGrammarProgress();
+        if (gRes?.grammar) {
+          gRes.grammar.forEach((g) => {
+            grammarProgressMap[g.grammarId] = g;
+          });
+        }
+      } catch (e) {
+        console.debug('progressStore grammar load caught:', e);
+      }
+
       set({
         totalXP: data.totalXP,
         streak: data.streakDays,
@@ -128,6 +165,8 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         lessonsCompleted: data.lessonsCompleted,
         kanjiLearned: data.kanjiLearned,
         vocabLearned: data.vocabLearned,
+        grammarLearned: (data as any).grammarLearned ?? Object.values(grammarProgressMap).filter((g) => g.status !== 'not_started').length,
+        grammarProgress: grammarProgressMap,
         cardsMastered: data.cardsMastered,
         srsReviewsDue: data.srsReviewsDue,
         loading: false,
@@ -144,6 +183,8 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         streak: profileStreak,
         jlptLevel: (profile?.currentLevel || getJLPTLevel(profileXP).level) as JLPTLevel,
         userLevel: getUserLevel(profileXP),
+        grammarLearned: 0,
+        grammarProgress: {},
         loading: false,
         initialized: true,
       });
@@ -154,9 +195,21 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   addXP: async (amount, userId, eventData) => {
     if (amount <= 0 && !eventData?.event) return;
 
-    const { totalXP, dailyXP } = get();
-    const newTotal = totalXP + amount;
-    const newDaily = dailyXP + amount;
+    const previousState = {
+      totalXP: get().totalXP,
+      dailyXP: get().dailyXP,
+      jlptLevel: get().jlptLevel,
+      userLevel: get().userLevel,
+      streak: get().streak,
+    };
+
+    let previousDailyCache: string | null = null;
+    try {
+      previousDailyCache = localStorage.getItem('nihongo_daily_xp');
+    } catch {}
+
+    const newTotal = previousState.totalXP + amount;
+    const newDaily = previousState.dailyXP + amount;
 
     const jlptInfo = getJLPTLevel(newTotal);
     const newUserLevel = getUserLevel(newTotal);
@@ -167,6 +220,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       dailyXP: newDaily,
       jlptLevel: jlptInfo.level as JLPTLevel,
       userLevel: newUserLevel,
+      syncStatus: userId ? 'saving' : 'idle',
     });
 
     // Cache daily XP
@@ -183,34 +237,56 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         if (eventData?.event) {
           const res = await submitXPEvent({
             event: eventData.event,
+            lessonId: eventData.lessonId,
+            quizId: (eventData as any).quizId,
+            cardId: (eventData as any).cardId,
             score: eventData.score,
             quality: eventData.quality,
             isMastered: eventData.isMastered,
           });
-          if (res?.totalXP) {
+          if (res?.totalXP !== undefined) {
+            const actualXpGained = res.xpGained ?? amount;
+            const correctedDaily = previousState.dailyXP + actualXpGained;
+            try {
+              const today = getLocalDayString();
+              localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: today, xp: correctedDaily }));
+            } catch {}
             set({
               totalXP: res.totalXP,
+              dailyXP: correctedDaily,
               userLevel: res.newLevel,
               streak: res.streakDays ?? get().streak,
               jlptLevel: getJLPTLevel(res.totalXP).level as JLPTLevel,
+              syncStatus: 'saved',
             });
-          }
-        } else {
-          const res = await submitXPEvent({
-            event: 'lesson_completed',
-            amount,
-          } as any);
-          if (res?.totalXP) {
-            set({
-              totalXP: res.totalXP,
-              userLevel: res.newLevel,
-              streak: res.streakDays ?? get().streak,
+            return {
+              xpGained: actualXpGained,
+              newTotal: res.totalXP,
               jlptLevel: getJLPTLevel(res.totalXP).level as JLPTLevel,
-            });
+              userLevel: res.newLevel,
+              leveledUp: getJLPTLevel(res.totalXP).level !== oldJlpt,
+            };
           }
         }
+        set({ syncStatus: 'saved' });
       } catch (err) {
-        console.error('Failed to submit XP to backend:', err);
+        console.error('Failed to submit XP to backend, rolling back optimistic state:', err);
+        set({
+          totalXP: previousState.totalXP,
+          dailyXP: previousState.dailyXP,
+          jlptLevel: previousState.jlptLevel,
+          userLevel: previousState.userLevel,
+          streak: previousState.streak,
+          syncStatus: 'error',
+        });
+        try {
+          if (previousDailyCache !== null) {
+            localStorage.setItem('nihongo_daily_xp', previousDailyCache);
+          } else {
+            localStorage.removeItem('nihongo_daily_xp');
+          }
+        } catch {}
+        throw err;
       }
     }
 
@@ -224,20 +300,29 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   },
 
   // ── Activity-Specific XP Helpers ────────────────────────
-  awardLessonXP: async (userId, scorePercent) => {
+  awardLessonXP: async (userId, scorePercent, lessonId?: string) => {
     const xp = calculateLessonXP(scorePercent);
-    return get().addXP(xp, userId, { event: 'lesson_completed', score: scorePercent });
+    return get().addXP(xp, userId, { event: 'lesson_completed', score: scorePercent, lessonId } as any);
   },
 
-  awardQuizXP: async (userId, scorePercent) => {
+  awardQuizXP: async (userId, scorePercent, quizId?: string) => {
     const xp = calculateQuizXP(scorePercent);
-    return get().addXP(xp, userId, { event: 'quiz_completed', score: scorePercent });
+    if (!userId) {
+      return {
+        xpGained: xp,
+        newTotal: get().totalXP + xp,
+        jlptLevel: get().jlptLevel,
+        userLevel: get().userLevel,
+        leveledUp: false,
+      };
+    }
+    return get().addXP(xp, userId, { event: 'quiz_completed', score: scorePercent, quizId } as any);
   },
 
-  awardSRSReviewXP: async (userId, quality, isMastered = false) => {
+  awardSRSReviewXP: async (userId, quality, isMastered = false, cardId?: string) => {
     const xp = calculateSRSReviewXP(quality, isMastered);
-    if (xp > 0) {
-      return get().addXP(xp, userId, { event: 'srs_review', quality, isMastered });
+    if (xp > 0 || cardId) {
+      return get().addXP(xp, userId, { event: 'srs_review', quality, isMastered, cardId } as any);
     }
   },
 
@@ -269,7 +354,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         console.error('Failed to record kanji progress to API:', err);
       }
     }
-    return get().addXP(XP_REWARDS.KANJI_LEARNED, userId, { event: 'kanji_learned' });
+    return get().addXP(XP_REWARDS.KANJI_LEARNED, userId, { event: 'kanji_learned', cardId: kanjiId } as any);
   },
 
   awardVocabXP: async (userId, vocabularyId, masteryLevel = 1, mastered = false) => {
@@ -300,16 +385,148 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         console.error('Failed to record vocab progress to API:', err);
       }
     }
-    return get().addXP(XP_REWARDS.VOCAB_LEARNED, userId, { event: 'vocab_learned' });
+    return get().addXP(XP_REWARDS.VOCAB_LEARNED, userId, { event: 'vocab_learned', cardId: vocabularyId } as any);
   },
 
   awardKanaXP: async (userId, kanaId, mastered = false) => {
     get().incrementKana();
-    return get().addXP(10, userId, { event: 'kanji_learned' });
+    return get().addXP(XP_REWARDS.KANA_LEARNED, userId, { event: 'kana_learned', cardId: kanaId, isMastered: mastered } as any);
   },
 
-  awardGrammarXP: async (userId) => {
+  awardGrammarXP: async (userId, grammarId, status = 'studied', mastered) => {
+    get().incrementGrammar();
+    if (grammarId) {
+      return get().recordGrammarProgress(userId, grammarId, status, mastered);
+    }
     return get().addXP(XP_REWARDS.GRAMMAR_LEARNED, userId, { event: 'grammar_studied' });
+  },
+
+  loadGrammarProgress: async (userId) => {
+    if (!userId) {
+      try {
+        const local = JSON.parse(localStorage.getItem('nihongo_guest_grammar_progress') || '{}');
+        set({ grammarProgress: local, grammarLearned: Object.values(local).filter((g: any) => g.status !== 'not_started').length });
+      } catch {}
+      return;
+    }
+    try {
+      const res = await getGrammarProgress();
+      if (res?.grammar) {
+        const map: Record<string, GrammarProgress> = {};
+        res.grammar.forEach((g) => {
+          map[g.grammarId] = g;
+        });
+        set({
+          grammarProgress: map,
+          grammarLearned: res.grammar.filter((g) => g.status !== 'not_started').length,
+        });
+      }
+    } catch (err) {
+      console.error('Failed to load grammar progress:', err);
+    }
+  },
+
+  recordGrammarProgress: async (userId, grammarId, status = 'studied', mastered) => {
+    const isMasteredVal = mastered !== undefined ? mastered : status === 'mastered';
+    const effectiveStatus = isMasteredVal ? 'mastered' : status;
+
+    // Guest mode
+    if (!userId) {
+      const prev = get().grammarProgress[grammarId];
+      const isNew = !prev || prev.status === 'not_started';
+      const updated: GrammarProgress = {
+        userId: 'guest',
+        grammarId,
+        status: effectiveStatus,
+        mastered: isMasteredVal,
+        studyCount: (prev?.studyCount || 0) + 1,
+        lastStudiedAt: new Date().toISOString(),
+        createdAt: prev?.createdAt || new Date().toISOString(),
+      };
+      const newMap = { ...get().grammarProgress, [grammarId]: updated };
+      const newCount = Object.values(newMap).filter((g) => g.status !== 'not_started').length;
+      set({ grammarProgress: newMap, grammarLearned: newCount });
+      try {
+        localStorage.setItem('nihongo_guest_grammar_progress', JSON.stringify(newMap));
+      } catch {}
+
+      return {
+        xpGained: isNew ? XP_REWARDS.GRAMMAR_LEARNED : 0,
+        isGuest: true,
+        progress: updated,
+      };
+    }
+
+    // Authenticated mode: optimistic update with rollback
+    const previousMap = get().grammarProgress;
+    const prev = previousMap[grammarId];
+    const isNew = !prev || prev.status === 'not_started';
+
+    const optimisticItem: GrammarProgress = {
+      userId,
+      grammarId,
+      status: effectiveStatus,
+      mastered: isMasteredVal,
+      studyCount: (prev?.studyCount || 0) + 1,
+      lastStudiedAt: new Date().toISOString(),
+      createdAt: prev?.createdAt || new Date().toISOString(),
+    };
+    const optimisticMap = { ...previousMap, [grammarId]: optimisticItem };
+    const optimisticCount = Object.values(optimisticMap).filter((g) => g.status !== 'not_started').length;
+
+    set({
+      grammarProgress: optimisticMap,
+      grammarLearned: optimisticCount,
+      syncStatus: 'saving',
+    });
+
+    try {
+      const res = await apiRecordGrammarProgress({
+        grammarId,
+        status: effectiveStatus,
+        mastered: isMasteredVal,
+      });
+
+      if (res?.progress) {
+        const finalMap = { ...get().grammarProgress, [grammarId]: res.progress };
+        set({
+          grammarProgress: finalMap,
+          grammarLearned: Object.values(finalMap).filter((g) => g.status !== 'not_started').length,
+          syncStatus: 'saved',
+        });
+      }
+
+      if (res?.xpResult) {
+        const { totalXP, newLevel, streakDays, xpGained } = res.xpResult;
+        const currentTotal = get().totalXP;
+        const updatedTotal = totalXP ?? (currentTotal + (xpGained || 0));
+        set({
+          totalXP: updatedTotal,
+          userLevel: newLevel ?? get().userLevel,
+          streak: streakDays ?? get().streak,
+          jlptLevel: getJLPTLevel(updatedTotal).level as JLPTLevel,
+        });
+        return {
+          xpGained: res.xpResult.xpGained,
+          newTotal: updatedTotal,
+          progress: res.progress,
+        };
+      }
+
+      return {
+        xpGained: isNew ? XP_REWARDS.GRAMMAR_LEARNED : 0,
+        progress: res.progress,
+      };
+    } catch (err) {
+      console.error('Failed to record grammar progress to API:', err);
+      // Rollback
+      set({
+        grammarProgress: previousMap,
+        grammarLearned: Object.values(previousMap).filter((g) => g.status !== 'not_started').length,
+        syncStatus: 'error',
+      });
+      throw err;
+    }
   },
 
   awardDailyGoalXP: async (userId) => {
@@ -362,6 +579,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   incrementKanji: () => set((s) => ({ kanjiLearned: s.kanjiLearned + 1 })),
   incrementVocab: () => set((s) => ({ vocabLearned: s.vocabLearned + 1 })),
   incrementKana: () => set((s) => ({ kanaLearned: s.kanaLearned + 1 })),
+  incrementGrammar: () => set((s) => ({ grammarLearned: s.grammarLearned + 1 })),
   incrementCards: () => set((s) => ({ cardsReviewed: s.cardsReviewed + 1 })),
   incrementMastered: () => set((s) => ({ cardsMastered: s.cardsMastered + 1 })),
 
@@ -391,6 +609,8 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       kanjiLearned: 0,
       vocabLearned: 0,
       kanaLearned: 0,
+      grammarLearned: 0,
+      grammarProgress: {},
       cardsReviewed: 0,
       cardsMastered: 0,
       srsReviewsDue: 0,

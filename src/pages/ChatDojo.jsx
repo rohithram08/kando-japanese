@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { useThemeStore } from '../store/themeStore'
 import { useDailyGoalsStore } from '../store/dailyGoalsStore'
+import { useI18n } from '../i18n'
 
 const SCENARIOS = [
   { id: 'free',       label: 'Free Talk',      Icon: Coffee,          color: 'from-blue-500 to-cyan-500',     desc: 'Open conversation on any topic' },
@@ -98,6 +99,7 @@ const formatDuration = (seconds) => {
 }
 
 const ChatDojo = () => {
+  const { t } = useI18n()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
   const navigate = useNavigate()
@@ -349,7 +351,7 @@ const ChatDojo = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-            <p className={`text-sm font-semibold mb-3 text-muted-foreground`}>Choose a scenario</p>
+            <p className={`text-sm font-semibold mb-3 text-muted-foreground`}>{t('sensei.scenario_mode', 'Choose a scenario')}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {SCENARIOS.map(({ id, label, Icon, color, desc }, idx) => (
                 <motion.button
@@ -729,7 +731,7 @@ const ChatDojo = () => {
               value={input}
               onChange={(e) => { setInput(e.target.value); e.target.style.height = 'auto'; e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px' }}
               onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend() } }}
-              placeholder="Type in Japanese or English…"
+              placeholder={t('sensei.ask_placeholder', 'Type in Japanese or English…')}
               rows={1}
               className={`flex-1 bg-transparent text-sm resize-none outline-none min-h-[24px] max-h-[120px] text-gray-900 placeholder-gray-400 dark:text-white dark:placeholder-gray-500`}
             />

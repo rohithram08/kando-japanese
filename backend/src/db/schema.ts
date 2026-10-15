@@ -58,6 +58,20 @@ export const userVocabularyProgress = mysqlTable('user_vocabulary_progress', {
   pk: primaryKey({ columns: [table.userId, table.vocabularyId] }),
 }));
 
+// ─── Grammar Progress ────────────────────────────────────────────────────────
+export const userGrammarProgress = mysqlTable('user_grammar_progress', {
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  grammarId: varchar('grammar_id', { length: 100 }).notNull(),
+  status: varchar('status', { length: 20 }).default('studied').notNull(),
+  mastered: boolean('mastered').default(false).notNull(),
+  studyCount: int('study_count').default(1).notNull(),
+  lastStudiedAt: timestamp('last_studied_at').defaultNow(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  pk: primaryKey({ columns: [table.userId, table.grammarId] }),
+  userGrammarStatusIdx: index('user_grammar_status_idx').on(table.userId, table.status),
+}));
+
 // ─── Streaks ─────────────────────────────────────────────────────────────────
 export const userStreaks = mysqlTable('user_streaks', {
   userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
@@ -148,6 +162,11 @@ export const usersRelations = relations(users, ({ many }) => ({
   senseiConversations: many(senseiConversations),
   senseiTourProgress: many(senseiTourProgress),
   readingProgress: many(userReadingProgress),
+  grammarProgress: many(userGrammarProgress),
+}));
+
+export const userGrammarProgressRelations = relations(userGrammarProgress, ({ one }) => ({
+  user: one(users, { fields: [userGrammarProgress.userId], references: [users.id] }),
 }));
 
 export const userReadingProgressRelations = relations(userReadingProgress, ({ one }) => ({

@@ -19,6 +19,7 @@ import { useProgressStore } from '../store/progressStore'
 import { audioService } from '../services/audioService'
 import { KANJI, LEVEL_META, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
+import { getCurriculumMeaning, normalizeLocale, useI18n } from '../i18n'
 import toast from 'react-hot-toast'
 
 
@@ -54,10 +55,12 @@ function ReadingBadge({ label, readings, type, isDark }) {
 //  BROWSE — Enhanced Detail Panel (sticky bottom, tabbed)
 // ─────────────────────────────────────────────────────────────────────
 function DetailPanel({ item, isDark, onClose, meta }) {
+  const { t } = useI18n()
   const [activeTab, setActiveTab] = useState('overview')
   const { isCardInSRS, addCardToSRS } = useSRSStore()
-  const user = useAuthStore((s) => s.user)
-  const awardKanjiXP = useProgressStore((s) => s.awardKanjiXP)
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
+  const displayMeaning = getCurriculumMeaning(item, activeLang)
   if (!item) return null
 
   const inDeck = isCardInSRS(item.id || item.kanji)
@@ -65,18 +68,15 @@ function DetailPanel({ item, isDark, onClose, meta }) {
   const handleAddToSRS = (e) => {
     e?.stopPropagation()
     addCardToSRS('kanji', item.id || item.kanji, item.kanji)
-    if (user?.id) {
-      awardKanjiXP(user.id, item.id || item.kanji, 1, false)
-    }
   }
 
   const onR  = item.readings?.on?.filter(Boolean) || []
   const kunR = item.readings?.kun?.filter(r => r && r !== '-') || []
 
   const TABS = [
-    { id: 'overview', label: 'Overview',   icon: BookOpen  },
-    { id: 'examples', label: 'Examples',   icon: Layers    },
-    { id: 'study',    label: 'Study Tips', icon: Lightbulb },
+    { id: 'overview', label: t('common.explanation', 'Overview'),   icon: BookOpen  },
+    { id: 'examples', label: t('common.examples', 'Examples'),   icon: Layers    },
+    { id: 'study',    label: t('common.studyTips', 'Study Tips'), icon: Lightbulb },
   ]
 
   return (
@@ -103,7 +103,7 @@ function DetailPanel({ item, isDark, onClose, meta }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <h2 className={`text-xl font-bold text-foreground`}>
-              {item.meaning}
+              {displayMeaning}
             </h2>
             <button onClick={() => speak(item.kanji)}
               className={`p-1.5 rounded-lg transition-colors hover:bg-red-50 hover:text-red-500 text-gray-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:text-gray-500`}>
@@ -124,21 +124,20 @@ function DetailPanel({ item, isDark, onClose, meta }) {
               {inDeck ? (
                 <>
                   <Check className="w-3.5 h-3.5" />
-                  <span>In SRS</span>
+                  <span>{t('common.inSrs', 'In SRS')}</span>
                 </>
               ) : (
                 <>
                   <BookmarkPlus className="w-3.5 h-3.5" />
-                  <span>+ SRS</span>
+                  <span>{t('common.addToSrs', '+ SRS')}</span>
                 </>
               )}
             </button>
           </div>
 
-
-          {item.meaning_ta && (
+          {activeLang !== 'en' && item.meaning && item.meaning !== displayMeaning && (
             <p className={`text-sm mt-0.5 font-medium text-muted-foreground`}>
-              {item.meaning_ta}
+              {item.meaning}
             </p>
           )}
 
@@ -348,6 +347,9 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
   const meta = LEVEL_META[item.level]
   const onR  = item.readings?.on?.filter(Boolean) || []
   const kunR = item.readings?.kun?.filter(r => r && r !== '-') || []
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
+  const displayMeaning = getCurriculumMeaning(item, activeLang)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
   const inDeck = isCardInSRS(item.id || item.kanji)
 
@@ -363,9 +365,9 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
         </div>
         <div className="flex-1 min-w-0">
           <p className={`font-semibold text-sm text-foreground`}>
-            {item.meaning}
-            {item.meaning_ta && (
-              <span className={`ml-2 font-normal text-xs text-muted-foreground`}>{item.meaning_ta}</span>
+            {displayMeaning}
+            {activeLang !== 'en' && item.meaning && item.meaning !== displayMeaning && (
+              <span className={`ml-2 font-normal text-xs text-muted-foreground`}>{item.meaning}</span>
             )}
           </p>
           <div className="flex gap-3 mt-1 flex-wrap">
@@ -489,6 +491,8 @@ function FlashcardTab({ kanji, isDark, meta }) {
   const user = useAuthStore((s) => s.user)
   const awardKanjiXP = useProgressStore((s) => s.awardKanjiXP)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
 
   const card     = deck[index]
   const onR      = card?.readings?.on?.filter(Boolean) || []
@@ -645,10 +649,10 @@ function FlashcardTab({ kanji, isDark, meta }) {
                 {card.kanji}
               </span>
               <h3 className={`text-2xl font-bold text-center text-foreground`}>
-                {card.meaning}
+                {getCurriculumMeaning(card, activeLang)}
               </h3>
-              {card.meaning_ta && (
-                <p className={`text-sm mt-1 text-muted-foreground`}>{card.meaning_ta}</p>
+              {activeLang !== 'en' && card.meaning && card.meaning !== getCurriculumMeaning(card, activeLang) && (
+                <p className={`text-sm mt-1 text-muted-foreground`}>{card.meaning}</p>
               )}
               <div className="flex flex-wrap gap-2 mt-3 justify-center">
                 <ReadingBadge label="音" readings={onR}  type="on"  isDark={isDark} />
@@ -709,6 +713,8 @@ function PracticeTab({ kanji, isDark, meta }) {
   const [cardIndex,    setCardIndex]    = useState(0)
   const [strokeCount,  setStrokeCount]  = useState(0)
   const [showGuide,    setShowGuide]    = useState(true)
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
 
   const card = kanji[cardIndex]
   const onR  = card?.readings?.on?.filter(Boolean) || []
@@ -850,8 +856,10 @@ function PracticeTab({ kanji, isDark, meta }) {
             </motion.div>
 
             <div>
-              <h3 className={`text-xl font-bold text-foreground`}>{card?.meaning}</h3>
-              {card?.meaning_ta && <p className={`text-sm text-muted-foreground`}>{card?.meaning_ta}</p>}
+              <h3 className={`text-xl font-bold text-foreground`}>{getCurriculumMeaning(card, activeLang)}</h3>
+              {activeLang !== 'en' && card?.meaning && card?.meaning !== getCurriculumMeaning(card, activeLang) && (
+                <p className={`text-sm text-muted-foreground`}>{card?.meaning}</p>
+              )}
             </div>
 
             <div className="flex flex-wrap gap-2 justify-center">
@@ -1200,6 +1208,8 @@ function QuizTab({ kanji, isDark, meta }) {
 function StrokeTab({ kanji, isDark, meta }) {
   const [index, setIndex] = useState(0)
   const [done, setDone] = useState(new Set())
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
 
   const card = kanji[index]
 
@@ -1211,6 +1221,8 @@ function StrokeTab({ kanji, isDark, meta }) {
   }, [card])
 
   if (!card) return null
+
+  const displayMeaning = getCurriculumMeaning(card, activeLang)
 
   return (
     <div className="space-y-4">
@@ -1263,7 +1275,7 @@ function StrokeTab({ kanji, isDark, meta }) {
       />
 
       <div className="text-center">
-        <p className="text-sm font-medium text-foreground">{card.meaning}</p>
+        <p className="text-sm font-medium text-foreground">{displayMeaning}</p>
         {(card.readings?.on?.length > 0 || card.readings?.kun?.length > 0) && (
           <p className="text-xs text-muted-foreground mt-0.5">
             {[...(card.readings?.on || []), ...(card.readings?.kun || [])].filter(Boolean).join('　')}
@@ -1281,6 +1293,8 @@ export default function KanjiPage() {
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
   const targetLevel = useSettingsStore((s) => s.jlptLevel)
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
+  const activeLang = normalizeLocale(displayLanguage)
 
   const [level,      setLevel]      = useState(targetLevel || 'N5')
   const [search,     setSearch]     = useState('')
@@ -1296,16 +1310,19 @@ export default function KanjiPage() {
     const q = search.trim().toLowerCase()
     if (!q) return allKanji
     return allKanji.filter(k => {
+      const locMeaning = getCurriculumMeaning(k, activeLang).toLowerCase()
       const onR  = (k.readings?.on  || []).join(' ').toLowerCase()
       const kunR = (k.readings?.kun || []).join(' ').toLowerCase()
       return (
         k.kanji.includes(search) ||
         k.meaning.toLowerCase().includes(q) ||
+        locMeaning.includes(q) ||
         onR.includes(q) || kunR.includes(q) ||
-        (k.meaning_ta || '').includes(search)
+        (k.meaning_ta || '').includes(search) ||
+        (k.meaning_hi || '').includes(search)
       )
     })
-  }, [level, search, allKanji])
+  }, [search, allKanji, activeLang])
 
   const selectedItem = useMemo(
     () => filtered.find(k => k.id === selectedId) || null,

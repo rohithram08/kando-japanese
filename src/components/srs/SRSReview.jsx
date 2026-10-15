@@ -14,21 +14,16 @@ import { calculateSRSReviewXP, XP_REWARDS } from '../../utils/progressCalculator
 import { useDailyGoalsStore } from '../../store/dailyGoalsStore';
 import { resolveCardContent } from '../../utils/srsCardResolver';
 import SRSReviewCard from './SRSReviewCard';
+import { useI18n, getCurriculumMeaning } from '../../i18n';
 import { BookOpen, Sparkles, Compass, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-
-const QUALITY_BUTTONS = [
-  { quality: 0, keyNumber: '1', label: 'Forgot', color: 'bg-red-500 hover:bg-red-600', emoji: '😰' },
-  { quality: 2, keyNumber: '2', label: 'Hard', color: 'bg-orange-500 hover:bg-orange-600', emoji: '😓' },
-  { quality: 4, keyNumber: '3', label: 'Good', color: 'bg-blue-500 hover:bg-blue-600', emoji: '😊' },
-  { quality: 5, keyNumber: '4', label: 'Easy', color: 'bg-green-500 hover:bg-green-600', emoji: '😄' },
-];
 
 export default function SRSReview() {
   const navigate = useNavigate();
   const { user, profile, updateProfile } = useAuthStore();
   const { awardSRSReviewXP, incrementCards, incrementMastered } = useProgressStore();
   const addReview = useDailyGoalsStore((s) => s.addReview);
+  const { t, locale } = useI18n();
 
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,8 +70,11 @@ export default function SRSReview() {
         const result = await reviewCard(card.id, { quality, intervalMode: srsIntervalMode });
         const isMastered = result?.card?.isMastered || false;
 
-        const xpResult = await awardSRSReviewXP(user?.id, quality, isMastered);
-        const xpGained = calculateSRSReviewXP(quality) + (isMastered ? XP_REWARDS.SRS_CARD_MASTERED : 0);
+        // Consume xpResult directly from reviewCard response to prevent duplicate XP awards
+        const xpResult = result?.xpResult || (user?.id ? await awardSRSReviewXP(user.id, quality, isMastered, card.id) : null);
+        const xpGained = xpResult?.xpGained !== undefined
+          ? xpResult.xpGained
+          : (calculateSRSReviewXP(quality) + (isMastered ? XP_REWARDS.SRS_CARD_MASTERED : 0));
 
         setSessionXP((prev) => prev + xpGained);
         incrementCards();
@@ -90,9 +88,9 @@ export default function SRSReview() {
           wrong: quality < 3 ? prev.wrong + 1 : prev.wrong,
         }));
 
-        if (xpResult) {
+        if (xpResult && updateProfile) {
           updateProfile({
-            xp_points: xpResult.newTotal,
+            xp_points: xpResult.totalXP ?? xpResult.newTotal,
             current_level: xpResult.jlptLevel || profile?.current_level,
           });
         }
@@ -135,17 +133,7 @@ export default function SRSReview() {
   }, [revealed, sessionComplete, cards.length, handleQuality]);
 
   const getLangMeaning = (item) => {
-    const lang = (profile?.native_language || 'english').toLowerCase();
-    const map = {
-      english: item.meaning,
-      tamil: item.meaning_ta || item.meaning,
-      hindi: item.meaning_hi || item.meaning,
-      portuguese: item.meaning_pt || item.meaning,
-      chinese: item.meaning_zh || item.meaning,
-      korean: item.meaning_ko || item.meaning,
-      russian: item.meaning_ru || item.meaning,
-    };
-    return map[lang] || item.meaning;
+    return getCurriculumMeaning(item, locale) || item.meaning || '';
   };
 
   if (loading) {
@@ -158,7 +146,7 @@ export default function SRSReview() {
         >
           🔄
         </motion.div>
-        <p className="text-sm text-muted-foreground">Loading your SRS cards...</p>
+        <p className="text-sm text-muted-foreground">{t('common.loading', 'Loading your SRS cards...')}</p>
       </div>
     );
   }
@@ -171,9 +159,11 @@ export default function SRSReview() {
           🎉
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">All caught up!</h2>
+          <h2 className="text-2xl font-bold text-foreground">
+            {t('srs.no_cards_due', 'All caught up!')}
+          </h2>
           <p className="text-sm mt-1.5 text-muted-foreground">
-            No reviews due right now. New cards appear as intervals mature.
+            {t('srs.no_cards_due', 'No reviews due right now. New cards appear as intervals mature.')}
           </p>
         </div>
 
@@ -235,15 +225,15 @@ export default function SRSReview() {
         <div className="text-6xl mb-4">
           {accuracy >= 80 ? '🏆' : accuracy >= 60 ? '👍' : '💪'}
         </div>
-        <h2 className="text-2xl font-bold mb-1 text-foreground">Session Complete!</h2>
+        <h2 className="text-2xl font-bold mb-1 text-foreground">{t('srs.session_complete', 'Session Complete!')}</h2>
         <p className="text-sm text-muted-foreground mb-6">
-          Reviewed {sessionStats.completed} cards today
+          {t('srs.cards_reviewed', { count: sessionStats.completed }, `Reviewed ${sessionStats.completed} cards today`)}
         </p>
 
         {/* XP Earned */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-yellow-50 text-yellow-600 dark:bg-yellow-500/10 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-500/20 shadow-sm">
           <span>⭐</span>
-          <span className="font-bold text-sm">+{sessionXP} XP earned</span>
+          <span className="font-bold text-sm">+{sessionXP} XP</span>
         </div>
 
         <div className="grid grid-cols-3 gap-3 mb-6">
@@ -251,19 +241,19 @@ export default function SRSReview() {
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">
               {sessionStats.correct}
             </div>
-            <div className="text-xs text-green-500">Correct</div>
+            <div className="text-xs text-green-500">{t('quiz.correct_label', 'Correct')}</div>
           </div>
           <div className="rounded-2xl p-3 bg-red-50 dark:bg-red-500/10">
             <div className="text-2xl font-bold text-red-600 dark:text-red-400">
               {sessionStats.wrong}
             </div>
-            <div className="text-xs text-red-500">Wrong</div>
+            <div className="text-xs text-red-500">{t('quiz.incorrect_label', 'Wrong')}</div>
           </div>
           <div className="rounded-2xl p-3 bg-blue-50 dark:bg-blue-500/10">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {accuracy}%
             </div>
-            <div className="text-xs text-blue-500">Accuracy</div>
+            <div className="text-xs text-blue-500">{t('srs.accuracy_label', 'Accuracy')}</div>
           </div>
         </div>
 
@@ -279,13 +269,13 @@ export default function SRSReview() {
             }}
             className="px-6 py-2.5 bg-red-500 text-white rounded-xl font-semibold hover:bg-red-600 transition-colors"
           >
-            Review Again
+            {t('common.retry', 'Review Again')}
           </button>
           <button
             onClick={() => navigate('/dashboard')}
             className="px-6 py-2.5 bg-muted text-foreground rounded-xl font-semibold hover:bg-muted/80 transition-colors"
           >
-            Dashboard
+            {t('srs.return_dashboard', 'Dashboard')}
           </button>
         </div>
       </motion.div>
@@ -346,7 +336,12 @@ export default function SRSReview() {
             animate={{ opacity: 1, y: 0 }}
             className="grid grid-cols-4 gap-2 mt-4"
           >
-            {QUALITY_BUTTONS.map(({ quality, keyNumber, label, color, emoji }) => {
+            {[
+              { quality: 0, keyNumber: '1', label: t('srs.quality_forgot', 'Forgot'), color: 'bg-red-500 hover:bg-red-600', emoji: '😰' },
+              { quality: 2, keyNumber: '2', label: t('srs.quality_hard', 'Hard'), color: 'bg-orange-500 hover:bg-orange-600', emoji: '😓' },
+              { quality: 4, keyNumber: '3', label: t('srs.quality_good', 'Good'), color: 'bg-blue-500 hover:bg-blue-600', emoji: '😊' },
+              { quality: 5, keyNumber: '4', label: t('srs.quality_easy', 'Easy'), color: 'bg-green-500 hover:bg-green-600', emoji: '😄' },
+            ].map(({ quality, keyNumber, label, color, emoji }) => {
               const xpForThis = calculateSRSReviewXP(quality);
               return (
                 <button
@@ -369,7 +364,7 @@ export default function SRSReview() {
       {/* Keyboard navigation hint */}
       {!revealed && (
         <p className="text-center text-xs mt-4 text-muted-foreground">
-          Tip: Press <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border text-[10px]">Space</kbd> or tap card to reveal
+          {t('srs.tap_to_reveal', 'Tip: Press Space or tap card to reveal')}
         </p>
       )}
     </div>

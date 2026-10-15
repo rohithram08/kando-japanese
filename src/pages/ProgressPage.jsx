@@ -14,6 +14,7 @@ import {
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
 import { getProgress } from '../api/progress'
+import { useI18n } from '../i18n'
 
 // ── Constants ────────────────────────────────────────────
 const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
@@ -125,6 +126,7 @@ const ProgressBar = ({ value, max, color = 'indigo', height = 'h-2', showLabel =
 // ── MAIN COMPONENT ───────────────────────────────────────
 // ══════════════════════════════════════════════════════════
 export default function ProgressPage() {
+  const { t } = useI18n()
   const { user, profile } = useAuthStore()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
@@ -378,9 +380,9 @@ export default function ProgressPage() {
                   bg-muted
                 `}>
                   {[
-                    { label: 'Kanji',      current: stats?.kanji || 0,   total: levelDetails.kanji,   color: 'red' },
-                    { label: 'Vocabulary',  current: stats?.vocab || 0,   total: levelDetails.vocab,   color: 'blue' },
-                    { label: 'Grammar',     current: stats?.lessons || 0, total: levelDetails.grammar, color: 'green' },
+                    { label: t('nav.kanji', 'Kanji'),      current: stats?.kanji || 0,   total: levelDetails.kanji,   color: 'red' },
+                    { label: t('nav.vocabulary', 'Vocabulary'),  current: stats?.vocab || 0,   total: levelDetails.vocab,   color: 'blue' },
+                    { label: t('nav.grammar', 'Grammar'),     current: stats?.lessons || 0, total: levelDetails.grammar, color: 'green' },
                   ].map(({ label, current, total, color }) => (
                     <div key={label} className="text-center">
                       <p className={`text-xs font-semibold mb-2 text-muted-foreground`}>
@@ -398,10 +400,10 @@ export default function ProgressPage() {
               {/* ── Stats Grid ─────────────────────────── */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { label: 'Lessons Done',    value: stats?.lessons || 0,  icon: BookOpen,   color: 'blue',   change: 3,  path: '/lessons' },
-                  { label: 'Kanji Studied',   value: stats?.kanji || 0,   icon: Pen,        color: 'red',    change: 5,  path: '/kanji' },
-                  { label: 'Words Learned',   value: stats?.vocab || 0,   icon: BookMarked, color: 'green',  change: 12, path: '/vocabulary' },
-                  { label: 'Cards Mastered',  value: stats?.mastered || 0, icon: Brain,     color: 'purple', change: 8,  path: '/srs-review' },
+                  { label: t('dashboard.lessons_done', 'Lessons Done'),    value: stats?.lessons || 0,  icon: BookOpen,   color: 'blue',   change: 3,  path: '/lessons' },
+                  { label: t('dashboard.kanji_learned', 'Kanji Studied'),   value: stats?.kanji || 0,   icon: Pen,        color: 'red',    change: 5,  path: '/kanji' },
+                  { label: t('dashboard.vocab_learned', 'Words Learned'),   value: stats?.vocab || 0,   icon: BookMarked, color: 'green',  change: 12, path: '/vocabulary' },
+                  { label: t('common.mastered', 'Cards Mastered'),  value: stats?.mastered || 0, icon: Brain,     color: 'purple', change: 8,  path: '/srs-review' },
                 ].map(({ label, value, icon: Icon, color, change, path }, i) => {
                   const changeInfo = getChangeIndicator(change)
                   const colorStyles = {
