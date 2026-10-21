@@ -48,7 +48,7 @@ describe('LandingPage Component', () => {
     cleanup()
   })
 
-  it('renders hero title, Japanese brand subtitle, and 2D Hana-sensei presentation', () => {
+  it('renders hero title, Japanese brand subtitle, and 2D Kando Slime presentation', () => {
     render(
       <MemoryRouter>
         <LandingPage />
@@ -56,15 +56,15 @@ describe('LandingPage Component', () => {
     )
 
     // Brand and headline
-    const brands = screen.getAllByText('Nihongo Master')
+    const brands = screen.getAllByText('Kando Japanese')
     expect(brands.length).toBeGreaterThan(0)
-    expect(screen.getByText('日本語マスター')).toBeDefined()
+    expect(screen.getByText('感動 — 日本語学習')).toBeDefined()
     expect(screen.getByText(/Master Japanese as a/i)).toBeDefined()
     expect(screen.getByText(/Learn Japanese\./i)).toBeDefined()
     expect(screen.getByText(/Live the Language\./i)).toBeDefined()
 
-    // 2D Hana-sensei character presentation
-    expect(screen.getByAltText(/Hana-sensei anime tutor character/i)).toBeDefined()
+    // 2D Kando Slime mascot presentation
+    expect(screen.getByLabelText(/Interactive Kando Slime Mascot/i)).toBeDefined()
     expect(screen.getByText(/「こんにちは！一緒に日本語を勉強しましょう！」/i)).toBeDefined()
 
     // Ensure no WebGL Canvas is embedded on the landing page
@@ -141,7 +141,7 @@ describe('LandingPage Component', () => {
     expect(window.speechSynthesis.speak).toHaveBeenCalled()
   })
 
-  it('cycles through Hana-sensei Japanese greetings and plays speech', () => {
+  it('cycles through Kando Slime Japanese greetings and plays speech', () => {
     render(
       <MemoryRouter>
         <LandingPage />
@@ -159,7 +159,7 @@ describe('LandingPage Component', () => {
     expect(screen.getByText(/「今日も一歩ずつ、楽しく学びましょう！」/i)).toBeDefined()
 
     // Click listen button on speech bubble
-    const listenBubbleBtn = screen.getByRole('button', { name: /Listen to Hana-sensei greeting/i })
+    const listenBubbleBtn = screen.getByRole('button', { name: /Listen to (Hana-sensei|Kando Slime) greeting/i })
     fireEvent.click(listenBubbleBtn)
 
     expect(window.speechSynthesis.speak).toHaveBeenCalled()

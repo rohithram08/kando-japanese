@@ -24,6 +24,7 @@ import { useSettingsStore } from '../../store/settingsStore';
 import { useAuthStore } from '../../store/authStore';
 import { useReadingStore } from '../../store/readingStore';
 import { useSRSStore } from '../../store/srsStore';
+import { useProgressStore } from '../../store/progressStore';
 import { useI18n, getCurriculumMeaning } from '../../i18n';
 import FuriganaText from '../common/FuriganaText';
 import AudioButton from '../common/AudioButton';
@@ -34,17 +35,46 @@ import StoryAudioPlayer from './StoryAudioPlayer';
 import { useStoryAudio } from '../../hooks/useStoryAudio';
 import { getSentenceTokens } from '../../utils/readingTokenizer';
 
-function InteractiveSentenceText({ sentence, vocabularyList, furiganaOverride, onSelectWord }) {
+function InteractiveSentenceText({
+  sentence,
+  vocabularyList,
+  learningElements = [],
+  furiganaOverride,
+  onSelectWord,
+  activeFilter = 'all',
+}) {
   const tokens = getSentenceTokens(sentence, vocabularyList);
 
   return (
     <span className="inline-flex items-baseline flex-wrap leading-relaxed select-text">
       {tokens.map((token, idx) => {
+        const cleanSurface = token.surface ? token.surface.trim() : '';
+
+        // Check if token matches a curated learning element
+        const matchedElement = learningElements.find((el) => {
+          if (!el) return false;
+          if (activeFilter !== 'all' && el.type !== activeFilter) return false;
+          return el.text === cleanSurface || el.surface === cleanSurface || el.id === token.vocabKey;
+        });
+
+        // Or fallback to standard vocab
         const vocab = token.isWord && token.vocabKey
           ? vocabularyList.find((v) => v.surface === token.vocabKey || v.vocabRefId === token.vocabKey)
           : null;
 
-        if (vocab) {
+        const targetItem = matchedElement || vocab;
+
+        if (targetItem) {
+          const type = targetItem.type || 'vocabulary';
+          let borderClass = 'border-b border-dashed border-teal-500/50 hover:bg-teal-50 dark:hover:bg-teal-950/40 text-teal-800 dark:text-teal-200';
+          if (type === 'grammar') {
+            borderClass = 'border-b-2 border-purple-500/80 hover:bg-purple-50 dark:hover:bg-purple-950/40 text-purple-800 dark:text-purple-300 font-medium';
+          } else if (type === 'particle') {
+            borderClass = 'border-b-2 border-sky-500/80 hover:bg-sky-50 dark:hover:bg-sky-950/40 text-sky-800 dark:text-sky-300 font-bold';
+          } else if (type === 'kanji') {
+            borderClass = 'border-b-2 border-amber-500/80 hover:bg-amber-50 dark:hover:bg-amber-950/40 text-amber-800 dark:text-amber-300 font-bold';
+          }
+
           return (
             <button
               key={`tok-${idx}`}
@@ -52,19 +82,19 @@ function InteractiveSentenceText({ sentence, vocabularyList, furiganaOverride, o
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                onSelectWord(vocab);
+                onSelectWord(targetItem);
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.stopPropagation();
                   e.preventDefault();
-                  onSelectWord(vocab);
+                  onSelectWord(targetItem);
                 }
               }}
-              className="inline-flex items-baseline rounded px-1 py-0.5 mx-0.5 cursor-pointer text-inherit transition-all duration-150 hover:bg-teal-50 dark:hover:bg-teal-950/40 hover:text-teal-700 dark:hover:text-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-500/70 focus:bg-teal-50/80 dark:focus:bg-teal-950/60 border-b border-dashed border-teal-500/40 hover:border-teal-600 select-text"
+              className={`inline-flex items-baseline rounded px-1 py-0.5 mx-0.5 cursor-pointer text-inherit transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/60 select-text ${borderClass}`}
               aria-haspopup="dialog"
-              aria-label={`Look up ${vocab.surface} (${vocab.reading}): ${vocab.meaning}`}
-              title={`Click to look up "${vocab.surface}"`}
+              aria-label={`Look up ${targetItem.surface || targetItem.text} (${targetItem.reading || ''}): ${targetItem.meaning}`}
+              title={`Click to explore ${targetItem.surface || targetItem.text}`}
             >
               <FuriganaText text={token.text} forceMode={furiganaOverride} />
             </button>
@@ -83,14 +113,15 @@ function InteractiveSentenceText({ sentence, vocabularyList, furiganaOverride, o
   );
 }
 
-export default function StoryReader({ story, initialProgress, onBack }) {
+export default function StoryReader({ story, initialProgress, onBack, initialShowQuiz = false }) {
   const { user } = useAuthStore();
   const isAuthenticated = !!user;
   const { saveProgress } = useReadingStore();
   const { initSRSDeck } = useSRSStore();
   const { t, locale } = useI18n();
 
-  const totalSentences = story.sentences.length;
+  const sentences = Array.isArray(story?.sentences) ? story.sentences : [];
+  const totalSentences = sentences.length;
 
   const initialIndex = (
     typeof initialProgress?.lastSentenceIndex === 'number' &&
@@ -105,10 +136,11 @@ export default function StoryReader({ story, initialProgress, onBack }) {
   const [showTranslations, setShowTranslations] = useState(true);
   const [furiganaOverride, setFuriganaOverride] = useState(null); // null (use settings) | 'always' | 'adaptive' | 'off'
   const [showVocabDrawer, setShowVocabDrawer] = useState(false);
-  const [showQuiz, setShowQuiz] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(Boolean(initialShowQuiz));
   const [selectedLookupVocab, setSelectedLookupVocab] = useState(null);
   const [completed, setCompleted] = useState(initialProgress?.status === 'completed');
   const [quizScore, setQuizScore] = useState(initialProgress?.quizScore ?? null);
+  const [elementFilter, setElementFilter] = useState('all');
 
   // Refs to guard against initial progress overwrite race condition
   const userHasNavigatedRef = useRef(false);
@@ -139,7 +171,7 @@ export default function StoryReader({ story, initialProgress, onBack }) {
     setActiveSentenceIndex(newIdx);
   };
 
-  const currentSentence = story.sentences[activeSentenceIndex];
+  const currentSentence = sentences[activeSentenceIndex] || sentences[0] || null;
 
   // Initialize SRS deck membership on mount
   useEffect(() => {
@@ -148,7 +180,7 @@ export default function StoryReader({ story, initialProgress, onBack }) {
 
   // Auto-save sentence position only when user navigates and position has changed
   useEffect(() => {
-    if (userHasNavigatedRef.current && lastSavedIndexRef.current !== activeSentenceIndex && !completed) {
+    if (userHasNavigatedRef.current && lastSavedIndexRef.current !== activeSentenceIndex && !completed && story?.id) {
       lastSavedIndexRef.current = activeSentenceIndex;
       saveProgress(
         {
@@ -159,10 +191,10 @@ export default function StoryReader({ story, initialProgress, onBack }) {
         isAuthenticated
       );
     }
-  }, [activeSentenceIndex, story.id, completed, isAuthenticated, saveProgress]);
+  }, [activeSentenceIndex, story?.id, completed, isAuthenticated, saveProgress]);
 
   const storyAudio = useStoryAudio({
-    sentences: story.sentences,
+    sentences,
     activeSentenceIndex,
     onSentenceChange: (newIndex) => {
       navigateToSentence(newIndex);
@@ -225,6 +257,15 @@ export default function StoryReader({ story, initialProgress, onBack }) {
       },
       isAuthenticated
     );
+
+    // Award Wave XP and daily Jelly Streak
+    try {
+      const progressStore = useProgressStore.getState();
+      await progressStore.awardStoryCompletionXP(story.id, user?.id);
+      await progressStore.awardStoryQuizXP(story.id, score, user?.id);
+    } catch (e) {
+      console.warn('Could not record story quiz completion XP:', e);
+    }
   };
 
   // If in quiz mode, show the quiz component
@@ -403,27 +444,91 @@ export default function StoryReader({ story, initialProgress, onBack }) {
                 </div>
 
                 {/* Large Japanese Sentence with Interactive Word Tokens */}
-                <div className="text-2xl sm:text-3xl leading-relaxed sm:leading-loose font-medium text-gray-900 dark:text-gray-100 mb-6 py-4">
+                <div className="text-2xl sm:text-3xl leading-relaxed sm:leading-loose font-medium text-foreground mb-6 py-4 font-jp">
                   <InteractiveSentenceText
                     sentence={currentSentence}
                     vocabularyList={story.vocabulary}
+                    learningElements={story.learningElements || []}
                     furiganaOverride={furiganaOverride}
                     onSelectWord={handleSelectWord}
+                    activeFilter={elementFilter}
                   />
                 </div>
 
                 {/* English Translation */}
                 {showTranslations && (
-                  <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/40 text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                  <div className="p-4 rounded-2xl bg-muted/60 text-sm text-foreground leading-relaxed mb-4">
                     <p className="font-medium">{currentSentence.translation}</p>
                   </div>
                 )}
 
                 {/* Grammar Notes */}
                 {currentSentence.grammarNotes && (
-                  <div className="flex items-start space-x-2 text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    <Sparkles className="w-3.5 h-3.5 text-teal-500 mt-0.5 shrink-0" />
+                  <div className="flex items-start space-x-2 text-xs text-muted-foreground mt-2 mb-4">
+                    <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
                     <span>{currentSentence.grammarNotes}</span>
+                  </div>
+                )}
+
+                {/* ── In-Story Interactive Learning Elements Dock ── */}
+                {story.learningElements && story.learningElements.length > 0 && (
+                  <div className="mt-4 pt-4 border-t border-border/60">
+                    <div className="flex items-center justify-between gap-2 mb-3 flex-wrap">
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-primary" />
+                        <span>Learning Elements (単語・文法・助詞・漢字)</span>
+                      </span>
+                      {/* Category Filter Pills */}
+                      <div className="flex items-center gap-1 text-[11px] font-bold">
+                        {[
+                          { id: 'all', label: 'All' },
+                          { id: 'vocabulary', label: '🟢 Vocab' },
+                          { id: 'grammar', label: '🟣 Grammar' },
+                          { id: 'particle', label: '🔵 Particle' },
+                          { id: 'kanji', label: '🔴 Kanji' },
+                        ].map((f) => (
+                          <button
+                            key={f.id}
+                            onClick={() => setElementFilter(f.id)}
+                            className={`px-2.5 py-0.5 rounded-full border transition-all cursor-pointer ${
+                              elementFilter === f.id
+                                ? 'bg-primary text-white border-primary shadow-xs'
+                                : 'bg-muted/60 text-muted-foreground border-border hover:text-foreground'
+                            }`}
+                          >
+                            {f.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Filtered Element Cards */}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {story.learningElements
+                        .filter((el) => elementFilter === 'all' || el.type === elementFilter)
+                        .map((el) => {
+                          const typeColors = {
+                            vocabulary: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/20',
+                            grammar: 'bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30 hover:bg-purple-500/20',
+                            particle: 'bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/30 hover:bg-sky-500/20',
+                            kanji: 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/30 hover:bg-amber-500/20',
+                          }[el.type] || 'bg-muted text-muted-foreground border-border';
+
+                          return (
+                            <button
+                              key={el.id}
+                              onClick={() => handleSelectWord(el)}
+                              className={`px-3 py-1.5 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer ${typeColors}`}
+                              title={el.roleInStory || el.meaning}
+                            >
+                              <span className="font-bold font-jp">{el.text || el.surface}</span>
+                              <span className="text-[10px] opacity-80 font-normal">
+                                {el.reading || el.meaning}
+                              </span>
+                            </button>
+                          );
+                        })}
+                    </div>
                   </div>
                 )}
               </div>
@@ -527,8 +632,10 @@ export default function StoryReader({ story, initialProgress, onBack }) {
                             <InteractiveSentenceText
                               sentence={sentence}
                               vocabularyList={story.vocabulary}
+                              learningElements={story.learningElements || []}
                               furiganaOverride={furiganaOverride}
                               onSelectWord={handleSelectWord}
+                              activeFilter={elementFilter}
                             />
                           </div>
                         </div>

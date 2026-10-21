@@ -10,6 +10,8 @@ import {
   Star,
 } from "lucide-react";
 import { useProgressStore } from "../../store/progressStore";
+import { useAuthStore } from "../../store/authStore";
+import { playMatch, playError, playPop, playFanfare } from "../../utils/soundEffects";
 
 // ─── All Level Data ───────────────────────────────────────────────
 const LEVELS = [
@@ -194,6 +196,7 @@ const LevelSelector = ({ completedLevels, currentLevel, onSelect }) => (
 // ─── Main Component ───────────────────────────────────────────────
 const MatchingGame = ({ onComplete }) => {
   const { incrementXP } = useProgressStore();
+  const user = useAuthStore((s) => s.user);
 
   // Level progression state
   const [view, setView] = useState("selector"); // "selector" | "game"
@@ -258,24 +261,26 @@ const MatchingGame = ({ onComplete }) => {
     setAttempts((prev) => prev + 1);
 
     if (selectedLeft.id === selectedRight.id) {
+      playMatch();
       const newMatched = new Set([...matched, selectedLeft.id]);
       setMatched(newMatched);
       setSelectedLeft(null);
       setSelectedRight(null);
 
       const xpGain = 5;
-      incrementXP(xpGain);
+      incrementXP(xpGain, user?.id);
       setSessionXP((prev) => prev + xpGain);
 
       if (newMatched.size === activeLevel.pairs.length) {
         setTimeout(() => {
+          playFanfare();
           setCompleted(true);
           setShowCompletionModal(true);
           const bonusXP = Math.max(
             50,
             100 - attempts * 2 - Math.floor(elapsedTime / 5)
           );
-          incrementXP(bonusXP);
+          incrementXP(bonusXP, user?.id);
           setSessionXP((prev) => prev + bonusXP);
 
           // Unlock next level
@@ -294,6 +299,7 @@ const MatchingGame = ({ onComplete }) => {
         }, 400);
       }
     } else {
+      playError();
       setWrongPair({ left: selectedLeft.id, right: selectedRight.id });
       setTimeout(() => {
         setSelectedLeft(null);
@@ -305,11 +311,13 @@ const MatchingGame = ({ onComplete }) => {
 
   const handleLeftClick = (item) => {
     if (matched.has(item.id) || wrongPair) return;
+    playPop();
     setSelectedLeft(selectedLeft?.id === item.id ? null : item);
   };
 
   const handleRightClick = (item) => {
     if (matched.has(item.id) || wrongPair) return;
+    playPop();
     setSelectedRight(selectedRight?.id === item.id ? null : item);
   };
 

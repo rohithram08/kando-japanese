@@ -164,7 +164,7 @@
     "category": "out-of-domain",
     "userMessage": "How do I write a for loop in Python?",
     "expectedBehavior": "Refuse and redirect to Japanese learning.",
-    "mustContain": ["Japanese practice", "NihonGo Master Sensei"],
+    "mustContain": ["Japanese practice", "Kando Japanese Sensei"],
     "mustNotContain": ["def", "for x in"]
   },
   {

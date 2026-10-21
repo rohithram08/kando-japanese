@@ -8,9 +8,9 @@ import { senseiKnowledge } from './sensei/senseiKnowledge.js';
 import { buildSenseiSystemPrompt } from './sensei/senseiPrompts.js';
 
 const AVAILABLE_MODELS = [
-  'qwen/qwen3.8-27b',
-  'openai/gpt-oss-120b',
-  'openai/gpt-oss-20b'
+  'llama-3.3-70b-versatile',
+  'llama-3.1-8b-instant',
+  'mixtral-8x7b-32768'
 ];
 
 export class SenseiService {
@@ -94,7 +94,7 @@ export class SenseiService {
         type: "function",
         function: {
           name: "navigate_to",
-          description: "Navigate the user to a specific page in the NihonGo Master app.",
+          description: "Navigate the user to a specific page in the Kando Japanese app.",
           parameters: {
             type: "object",
             properties: {
@@ -467,7 +467,6 @@ export class SenseiService {
         where: (cards, { eq, and, lte }) =>
           and(
             eq(cards.userId, userId),
-            eq(cards.isMastered, false),
             lte(cards.nextReviewDate, now)
           ),
       });

@@ -8,8 +8,7 @@ import {
   getCurriculumMeaning,
   getCurriculumExplanation,
 } from '../index'
-import { CANONICAL_INDEX } from '../../data/canonical'
-import canonicalCurriculum from '../../data/canonical/canonicalCurriculum.json'
+import { CANONICAL_INDEX, CANONICAL_CURRICULUM as canonicalCurriculum } from '../../data/canonical'
 import enCurriculum from '../../locales/en/curriculum.json'
 import taCurriculum from '../../locales/ta/curriculum.json'
 import hiCurriculum from '../../locales/hi/curriculum.json'
@@ -68,9 +67,9 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         })
       })
 
-      expect(vocabCount).toBe(176)
-      expect(tamilMatches).toBe(61)
-      expect(hindiMatches).toBe(61)
+      expect(vocabCount).toBe(2382)
+      expect(tamilMatches).toBe(114)
+      expect(hindiMatches).toBe(114)
     })
 
     it('preserves 100% of legacy Kanji English, Tamil, and Hindi translations', () => {
@@ -102,9 +101,9 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         })
       })
 
-      expect(kanjiCount).toBe(940)
-      expect(tamilMatches).toBe(516)
-      expect(hindiMatches).toBe(516)
+      expect(kanjiCount).toBe(960)
+      expect(tamilMatches).toBe(536)
+      expect(hindiMatches).toBe(536)
     })
 
     it('preserves 100% of legacy Grammar English, Tamil, and Hindi translations', () => {
@@ -145,9 +144,9 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         })
       })
 
-      expect(grammarCount).toBe(130)
-      expect(tamilMatches).toBe(90)
-      expect(hindiMatches).toBe(90)
+      expect(grammarCount).toBe(464)
+      expect(tamilMatches).toBe(125)
+      expect(hindiMatches).toBe(125)
     })
 
     it('preserves 100% of legacy Lesson titles and descriptions', () => {
@@ -159,7 +158,7 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         expect(enTrans.title).toBe(lesson.title)
         expect(enTrans.description).toBe(lesson.description)
       })
-      expect(lessonCount).toBe(25)
+      expect(lessonCount).toBe(250)
     })
   })
 
@@ -167,19 +166,19 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
   // 2. Canonical curriculum integrity & reference validation
   // ─────────────────────────────────────────────────────────────
   describe('2. Canonical Curriculum Integrity & Reference Validation', () => {
-    it('contains exactly 1,271 canonical entries with valid schema', () => {
+    it('contains exactly 4,056 canonical entries with valid schema', () => {
       const totalItems =
         canonicalCurriculum.vocabulary.length +
         canonicalCurriculum.kanji.length +
         canonicalCurriculum.grammar.length +
         canonicalCurriculum.lessons.length
 
-      expect(totalItems).toBe(1271)
-      expect(canonicalCurriculum.vocabulary.length).toBe(176)
-      expect(canonicalCurriculum.kanji.length).toBe(940)
-      expect(canonicalCurriculum.grammar.length).toBe(130)
-      expect(canonicalCurriculum.lessons.length).toBe(25)
-      expect(CANONICAL_INDEX.size).toBe(1271)
+      expect(totalItems).toBe(4056)
+      expect(canonicalCurriculum.vocabulary.length).toBe(2382)
+      expect(canonicalCurriculum.kanji.length).toBe(960)
+      expect(canonicalCurriculum.grammar.length).toBe(464)
+      expect(canonicalCurriculum.lessons.length).toBe(250)
+      expect(CANONICAL_INDEX.size).toBe(4056)
     })
 
     it('verifies every localized curriculum entry maps to a valid canonical ID', () => {

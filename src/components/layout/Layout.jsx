@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import MobileNav from './MobileNav'
+import CelebrationPortal from '../celebration/CelebrationPortal'
 import { useNotificationEngine } from '../../hooks/useNotificationEngine'
 const SenseiCompanion = React.lazy(() => import('../sensei/SenseiCompanion'))
 
@@ -60,30 +61,33 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
-      {/* ── Fixed Navbar spans full width at top ── */}
-      <div className="fixed top-0 left-0 right-0 z-50">
+      {/* ── Desktop sidebar: Full height on desktop, starting from top-0 ── */}
+      {!isMobile && (
+        <div
+          className="fixed top-0 left-0 bottom-0 z-40 overflow-hidden transition-all duration-300"
+          style={{ width: sidebarWidth }}
+        >
+          <Sidebar collapsed={collapsed} onToggleCollapse={toggleCollapsed} />
+        </div>
+      )}
+
+      {/* ── Fixed Navbar: on desktop sits right of sidebar, on mobile spans full width ── */}
+      <div
+        className="fixed top-0 right-0 z-30 transition-all duration-300"
+        style={{ left: isMobile ? 0 : sidebarWidth }}
+      >
         <Navbar onMobileMenuToggle={isMobile ? () => setMobileDrawerOpen((prev) => !prev) : undefined} />
       </div>
 
-      {/* ── Body row: sidebar + main content ── */}
+      {/* ── Body row: main content ── */}
       <div className="flex flex-1 pt-16">
-        {/* Desktop sidebar — fixed, sits below navbar */}
-        {!isMobile && (
-          <div
-            className="fixed top-16 left-0 bottom-0 z-40 overflow-hidden transition-all duration-300 border-r border-border"
-            style={{ width: sidebarWidth }}
-          >
-            <Sidebar collapsed={collapsed} onToggleCollapse={toggleCollapsed} />
-          </div>
-        )}
-
         {/* Main scrollable content — push right by sidebar width */}
         <motion.main
           animate={{ marginLeft: isMobile ? 0 : sidebarWidth }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="flex-1 min-h-[calc(100vh-4rem)] pb-20 md:pb-6 w-full"
         >
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-2.5 sm:py-4">
             <AnimatePresence mode="wait">
               {isReady && (
                 <motion.div
@@ -135,6 +139,9 @@ const Layout = () => {
       <React.Suspense fallback={null}>
         <SenseiCompanion />
       </React.Suspense>
+
+      {/* ── Global 2D Celebration Portal (Level Up, XP Gain, Streak Step) ── */}
+      <CelebrationPortal />
     </div>
   )
 }

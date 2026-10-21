@@ -4,12 +4,7 @@ import { ChevronDown, Check, Globe } from 'lucide-react'
 import { useSettingsStore } from '../../store/settingsStore'
 import { SUPPORTED_LOCALES, normalizeLocale } from '../../i18n'
 
-const LANGUAGES = [
-  ...SUPPORTED_LOCALES.map((l) => ({
-    ...l,
-    curated: true,
-  })),
-]
+const LANGUAGES = SUPPORTED_LOCALES
 
 const LanguageSelector = ({ compact = false, onLanguageChange }) => {
   const displayLanguage = useSettingsStore(
@@ -87,38 +82,34 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -8, scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 mt-2 w-64 bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden z-50 p-1"
+              className="absolute right-0 mt-2 w-56 bg-surface border border-border rounded-xl shadow-xl overflow-hidden z-50 p-1"
             >
-              <div className="px-3 py-2 border-b border-border/60">
-                <p className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5 text-primary" />
-                  Display & Translation Language
+              <div className="px-3 py-1.5 border-b border-border/60 flex items-center justify-between">
+                <p className="text-[11px] font-semibold text-muted-foreground flex items-center gap-1.5">
+                  <Globe className="w-3 h-3 text-primary" />
+                  Language
                 </p>
+                <span className="text-[10px] text-muted-foreground/70">Scroll for all</span>
               </div>
 
-              <div className="py-1">
+              <div className="max-h-56 overflow-y-auto py-1 space-y-0.5">
                 {filtered.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => handleSelect(lang)}
-                    className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-xl transition-colors ${
+                    className={`w-full flex items-center gap-2.5 px-2.5 py-1.5 text-left rounded-lg transition-colors ${
                       selected.code === lang.code
                         ? 'bg-primary/10 text-primary font-medium'
                         : 'hover:bg-muted text-foreground'
                     }`}
                   >
-                    <span className="text-base leading-none">{lang.flag}</span>
+                    <span className="text-sm leading-none shrink-0">{lang.flag}</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-semibold truncate">{lang.label}</p>
-                      <p className="text-[11px] text-muted-foreground truncate">{lang.nativeLabel}</p>
+                      <p className="text-xs font-medium truncate leading-tight">{lang.label}</p>
+                      <p className="text-[10px] text-muted-foreground truncate leading-none">{lang.nativeLabel}</p>
                     </div>
-                    {lang.curated && (
-                      <span className="text-[9px] font-medium px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                        Curated
-                      </span>
-                    )}
                     {selected.code === lang.code && (
-                      <Check className="w-4 h-4 text-primary shrink-0 ml-1" />
+                      <Check className="w-3.5 h-3.5 text-primary shrink-0 ml-1" />
                     )}
                   </button>
                 ))}
@@ -172,12 +163,12 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
               />
             </div>
 
-            <div className="max-h-72 overflow-y-auto py-1">
+            <div className="max-h-60 overflow-y-auto py-1">
               {filtered.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => handleSelect(lang)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 text-left rounded-xl transition-colors ${
+                  className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-xl transition-colors ${
                     selected.code === lang.code
                       ? 'bg-primary/10 text-primary font-medium'
                       : 'hover:bg-muted text-foreground'
@@ -188,11 +179,6 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
                     <p className="text-sm font-semibold">{lang.label}</p>
                     <p className="text-xs text-muted-foreground">{lang.nativeLabel}</p>
                   </div>
-                  {lang.curated && (
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                      Verified
-                    </span>
-                  )}
                   {selected.code === lang.code && (
                     <Check className="w-4 h-4 text-primary shrink-0 ml-1" />
                   )}

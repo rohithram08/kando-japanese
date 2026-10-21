@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs/promises';
+import path from 'path';
 import { requireAuth } from '../middleware/auth.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { db } from '../db/index.js';
@@ -8,6 +10,8 @@ import { users } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
 export const uploadRouter = Router();
+
+const UPLOAD_ROOT = path.resolve(process.cwd(), 'uploads');
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
@@ -58,7 +62,23 @@ uploadRouter.post('/avatar', requireAuth, upload.single('avatar'), async (req, r
     }
 
     const ext = req.file.mimetype.split('/')[1] || 'jpg';
-    const safeKey = `avatars/${userId}/${uuidv4()}.${ext}`;
+    const filename = `${uuidv4()}.${ext}`;
+    const safeKey = `avatars/${userId}/${filename}`;
+    const filePath = path.join(UPLOAD_ROOT, 'avatars', userId, filename);
+
+    // Ensure directory exists and write file
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, req.file.buffer);
+
+    // Delete previous avatar file if exists
+    const existingUser = await db.query.users.findFirst({
+      where: eq(users.id, userId),
+      columns: { avatarId: true },
+    });
+    if (existingUser?.avatarId) {
+      const oldFilePath = path.join(UPLOAD_ROOT, existingUser.avatarId);
+      await fs.unlink(oldFilePath).catch(() => {});
+    }
 
     const avatarUrl = `/storage/${safeKey}`;
 
@@ -82,7 +102,8 @@ uploadRouter.delete('/avatar', requireAuth, async (req, res, next) => {
     });
 
     if (user?.avatarId) {
-      // await storageClient.delete(user.avatarId);
+      const oldFilePath = path.join(UPLOAD_ROOT, user.avatarId);
+      await fs.unlink(oldFilePath).catch(() => {});
     }
 
     await db.update(users)

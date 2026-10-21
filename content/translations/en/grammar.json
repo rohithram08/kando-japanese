@@ -1,0 +1,2322 @@
+{
+  "n5_g001": {
+    "meaning": "Topic marker + copula (is/am/are)",
+    "explanation": "Used to state facts about the topic. は (wa) marks the topic of the sentence. です (desu) is a polite sentence-ending that means 'is/am/are'.",
+    "example": "I am a student."
+  },
+  "n5_g002": {
+    "meaning": "Negative form of です (is not)",
+    "explanation": "The negative of 〜です. In casual speech, じゃないです or じゃありません can also be used.",
+    "example": "I am not a teacher."
+  },
+  "n5_g003": {
+    "meaning": "Subject marker が — marks the subject performing the action",
+    "explanation": "が marks the grammatical subject. Unlike は which marks the topic, が focuses on who/what performs the action or has the quality.",
+    "example": "I like cats. (Cats are what I like.)"
+  },
+  "n5_g004": {
+    "meaning": "Object marker を — marks the direct object of a transitive verb",
+    "explanation": "を (pronounced 'o') marks the direct object — the thing that receives the action of a transitive verb.",
+    "example": "I eat rice/a meal."
+  },
+  "n5_g005": {
+    "meaning": "Existence: there is/are (あります for inanimate, います for animate)",
+    "explanation": "Use あります for non-living things and います for living things (people, animals). The location is marked with に.",
+    "example": "There is a book on the desk."
+  },
+  "n5_g006": {
+    "meaning": "で marks location of action OR means/method",
+    "explanation": "で has two key uses: (1) marks where an action takes place, (2) marks the means or tool used to do something.",
+    "example": "I study at the library."
+  },
+  "n5_g007": {
+    "meaning": "Direction marker に with movement verbs (go/come/return to)",
+    "explanation": "に marks the destination with verbs of movement like 行く (go), 来る (come), 帰る (return). The particle へ can also be used interchangeably in most cases.",
+    "example": "I go to school."
+  },
+  "n5_g008": {
+    "meaning": "Want to do ~ (expressing desire)",
+    "explanation": "Attach たい to the verb stem (remove ます from masu-form). The result is treated like an い-adjective. Negative: たくないです. Past: たかったです.",
+    "example": "I want to go to Japan."
+  },
+  "n5_g009": {
+    "meaning": "Let's do ~ (making a suggestion or invitation)",
+    "explanation": "ましょう is the volitional/hortative form. It suggests doing something together. ましょうか is softer: 'Shall we?'",
+    "example": "Let's eat together."
+  },
+  "n5_g010": {
+    "meaning": "Please do ~ (polite request)",
+    "explanation": "Form the て-form of the verb and add ください. This is a standard polite way to make requests.",
+    "example": "Please sit here."
+  },
+  "n5_g011": {
+    "meaning": "Currently doing ~ OR state resulting from action",
+    "explanation": "Two main uses: (1) ongoing action — I am doing something right now; (2) resultant state — a state that results from a completed action (married, know, wearing).",
+    "example": "I am reading a book now."
+  },
+  "n5_g012": {
+    "meaning": "Past tense of verbs",
+    "explanation": "The た-form indicates completed actions. For polite speech, use ました. For plain/casual speech, use た directly.",
+    "example": "Yesterday, I watched a movie."
+  },
+  "n5_g013": {
+    "meaning": "Please don't do ~",
+    "explanation": "Attach ないで to the nai-form (negative plain form) of a verb, then add ください. Used to politely ask someone not to do something.",
+    "example": "Please don't take photos here."
+  },
+  "n5_g014": {
+    "meaning": "From ~ to ~ (time or place range)",
+    "explanation": "から marks the starting point and まで marks the end point. Can be used with time (9 o'clock to 5) or place (Tokyo to Osaka).",
+    "example": "I work from 9 to 5."
+  },
+  "n5_g015": {
+    "meaning": "Also/too ~ (inclusive particle)",
+    "explanation": "も replaces は, が, or を to mean 'also' or 'too'. When used with negatives it means 'neither/either': 〜もありません.",
+    "example": "I am also a student."
+  },
+  "n5_g016": {
+    "meaning": "Possessive/descriptive connector",
+    "explanation": "の connects two nouns, showing possession (my book), origin (Japanese music), or description (coffee shop). The modifier always comes before の.",
+    "example": "It is my book."
+  },
+  "n5_g017": {
+    "meaning": "And ~ and ~ etc. (non-exhaustive list)",
+    "explanation": "や lists examples from a larger group (implying 'and things like these'). など adds 'etc.' or 'and so on'. Contrast with と which lists everything exhaustively.",
+    "example": "I bought fruits, vegetables, and so on."
+  },
+  "n5_g018": {
+    "meaning": "And ~ (exhaustive listing) / With ~ / Quotation と",
+    "explanation": "と has three uses: (1) lists nouns exhaustively (A and B, nothing else), (2) marks a companion (with someone), (3) marks a quotation or thought before 言う/思う.",
+    "example": "I ate an apple and a mandarin orange."
+  },
+  "n5_g019": {
+    "meaning": "ね = seeking agreement / よ = asserting information",
+    "explanation": "ね is used when you expect the listener to agree or share the same feeling. よ asserts information the listener may not know. よね combines both.",
+    "example": "It's hot today, isn't it?"
+  },
+  "n5_g020": {
+    "meaning": "Question marker (turns statement into question)",
+    "explanation": "か at the end of a sentence makes it a question. In polite speech (〜ますか、〜ですか) the intonation stays flat. In casual speech, just raise the intonation.",
+    "example": "What is this?"
+  },
+  "n5_g021": {
+    "meaning": "After doing ~ (sequential actions)",
+    "explanation": "Indicates that one action is completed before the next begins. The て-form + から emphasises that the first action is fully done before the second starts.",
+    "example": "After washing my hands, I eat."
+  },
+  "n5_g022": {
+    "meaning": "Do things like ~ and ~ (non-exhaustive list of actions)",
+    "explanation": "Lists representative activities without implying it's a complete list. Form: change verb to た-form, add り, repeat for other verbs, end with します.",
+    "example": "On weekends I do things like watch movies and listen to music."
+  },
+  "n5_g023": {
+    "meaning": "Can do ~ / be able to do ~ (ability or possibility)",
+    "explanation": "Expresses ability or possibility. The simpler alternative is the potential verb form (食べられる). ことができる is slightly more formal.",
+    "example": "I can speak Japanese."
+  },
+  "n5_g024": {
+    "meaning": "Before doing ~ (prior action)",
+    "explanation": "前に with a verb (dictionary form) means 'before doing'. With a noun, use の前に. The action in 前に clause is not yet completed.",
+    "example": "I brush my teeth before sleeping."
+  },
+  "n5_g025": {
+    "meaning": "After doing ~ (subsequent action)",
+    "explanation": "後で indicates an action happens after another. With verbs, use the た-form. With nouns, use の後で.",
+    "example": "After class ends, I will go to the library."
+  },
+  "n5_g026": {
+    "meaning": "い-adjective: negative, past, and negative past forms",
+    "explanation": "い-adjectives conjugate by changing the final い: drop い and add くない (neg), かった (past), くなかった (neg past). Exception: いい → よい → よくない / よかった.",
+    "example": "This movie is not interesting."
+  },
+  "n5_g027": {
+    "meaning": "な-adjective: negative, past, and negative past forms",
+    "explanation": "な-adjectives conjugate like nouns + です. Negative: じゃありません/ではありません. Past: でした. Neg past: じゃありませんでした.",
+    "example": "This room is not quiet."
+  },
+  "n5_g028": {
+    "meaning": "B is more ~ than A (comparison)",
+    "explanation": "より marks the standard of comparison (A). のほうが marks what is being compared favourably (B). The adjective follows.",
+    "example": "I like cats more than dogs."
+  },
+  "n5_g029": {
+    "meaning": "~ is the most / ~ is number one (superlative)",
+    "explanation": "一番 (いちばん) means 'number one' or 'most'. Place it before the adjective. To specify the group, use 〜の中で〜が一番.",
+    "example": "Japanese is the most difficult."
+  },
+  "n5_g030": {
+    "meaning": "Because ~ / Since ~ (stating a reason)",
+    "explanation": "から after a clause gives the reason for what follows. In polite speech, both clauses use polite forms. In casual speech, plain forms are used.",
+    "example": "Because I am sleepy, I will sleep early."
+  },
+  "n5_g031": {
+    "meaning": "Because ~ / Since ~ (softer, objective reason)",
+    "explanation": "ので gives a reason like から but sounds more objective and polite. Better for formal situations. な-adjectives and nouns use なので before ので.",
+    "example": "Since I am tired, I will rest."
+  },
+  "n5_g032": {
+    "meaning": "~ but ~ (contrast between two clauses)",
+    "explanation": "が as a conjunction connects two contrasting clauses like 'but' or 'however'. It can also soften a statement without strong contrast.",
+    "example": "Japanese is interesting but difficult."
+  },
+  "n5_g033": {
+    "meaning": "What kind of ~ (asking about characteristics)",
+    "explanation": "どんな asks about the type or quality of something. Similar to 'what kind of' in English.",
+    "example": "What kind of music do you like?"
+  },
+  "n5_g034": {
+    "meaning": "To become ~ (change of state)",
+    "explanation": "なる means 'to become'. い-adjectives change い to くなる. な-adjectives and nouns use になる.",
+    "example": "When spring comes, it becomes warm."
+  },
+  "n5_g035": {
+    "meaning": "It is okay to ~ / You may ~ (giving or asking permission)",
+    "explanation": "〜てもいいです gives permission. 〜てもいいですか asks for permission. To deny: 〜てはいけません or 〜てはだめです.",
+    "example": "May I eat here?"
+  },
+  "n5_g036": {
+    "meaning": "Must not ~ / It is not allowed to ~ (prohibition)",
+    "explanation": "〜てはいけません prohibits an action. More forceful than 〜ないでください. Common in rules and regulations.",
+    "example": "You must not smoke here."
+  },
+  "n5_g037": {
+    "meaning": "Must ~ / Have to ~ (obligation)",
+    "explanation": "Expresses obligation. Formed by changing ない to なければ and adding なりません. Casual: 〜なきゃ or 〜なければ.",
+    "example": "I must wake up early tomorrow."
+  },
+  "n5_g038": {
+    "meaning": "Probably ~ / I think ~ (conjecture)",
+    "explanation": "Expresses probability or supposition. でしょう is polite; だろう is plain/casual. Often used with たぶん (probably).",
+    "example": "It will probably rain tomorrow."
+  },
+  "n5_g039": {
+    "meaning": "I think that ~ (expressing opinion or belief)",
+    "explanation": "Used to express the speaker's opinion or belief. The clause before と is always in plain form. と思っています implies ongoing thinking.",
+    "example": "I think Japanese is interesting."
+  },
+  "n5_g040": {
+    "meaning": "I heard that ~ / They say that ~ (hearsay)",
+    "explanation": "Reports information heard from others. Always in plain form before そうです. Different from そうです (appearance) which uses verb stem/adj stem.",
+    "example": "I heard that Mr. Tanaka will get married next month."
+  },
+  "n5_g041": {
+    "meaning": "When ~ / At the time of ~",
+    "explanation": "時 (とき) means 'time' or 'when'. Use verb dictionary form for future/habitual events, た-form for completed events.",
+    "example": "When I was a child, I often played in the park."
+  },
+  "n5_g042": {
+    "meaning": "Every ~ (daily, weekly, monthly etc.)",
+    "explanation": "毎 (まい) means 'every'. Common forms: 毎日 (every day), 毎週 (every week), 毎月 (every month), 毎年 (every year), 毎朝 (every morning), 毎晩 (every evening).",
+    "example": "I study Japanese every day."
+  },
+  "n5_g043": {
+    "meaning": "Around ~ / About ~ (approximate time or quantity)",
+    "explanation": "ごろ is used for approximate points in time. ぐらい/くらい is used for approximate amounts or durations.",
+    "example": "I wake up around 7 o'clock."
+  },
+  "n5_g044": {
+    "meaning": "~th / ~st / ~nd / ~rd (ordinal numbers)",
+    "explanation": "番目 makes ordinal numbers. 一番目 (first), 二番目 (second). In some contexts, 番目 is dropped: 一番 (number one/most).",
+    "example": "I arrived third."
+  },
+  "n5_g045": {
+    "meaning": "About ~ / To the extent of ~ (degree or comparison)",
+    "explanation": "Both express degree or extent. ほど is more formal and also used in comparisons: 〜ほど〜ない (not as ~ as).",
+    "example": "I was so tired I could die."
+  },
+  "n5_g046": {
+    "meaning": "Giving and receiving actions (directional verbs)",
+    "explanation": "あげる = give (to others), もらう = receive (from others), くれる = give (to me/my group). These determine the direction of giving.",
+    "example": "I gave a present to my friend."
+  },
+  "n5_g047": {
+    "meaning": "Say that ~ / be called ~ (quoting or naming)",
+    "explanation": "と言います quotes direct or indirect speech. Also used to say what something is called: 〜と言います means 'is called ~'.",
+    "example": "My name is Tanaka (lit: I am called Tanaka)."
+  },
+  "n5_g048": {
+    "meaning": "The way of doing ~ / How to do ~",
+    "explanation": "方 (かた) attached to a verb stem means 'the way of doing' or 'how to do'. 食べ方 = the way of eating, 書き方 = how to write.",
+    "example": "Please teach me how to write this kanji."
+  },
+  "n5_g049": {
+    "meaning": "Too ~ / Excessively ~ (excess)",
+    "explanation": "すぎる means 'too much' or 'excessively'. Attach to い-adj stem (remove い), な-adj stem, or verb stem (remove ます).",
+    "example": "This dish is too spicy."
+  },
+  "n5_g050": {
+    "meaning": "Easy to do ~ / Hard to do ~ (ease or difficulty)",
+    "explanation": "やすい means 'easy to do'. にくい means 'hard/difficult to do'. Both attach to the verb stem and conjugate like い-adjectives.",
+    "example": "This book is easy to read."
+  },
+  "n5_g051": {
+    "meaning": "It seems that ~ / It looks like ~ (appearance/inference)",
+    "explanation": "Both express inference based on observation. ようです is more formal; みたいです is casual. Different from そうです (direct appearance).",
+    "example": "She seems to be tired."
+  },
+  "n5_g052": {
+    "meaning": "Might ~ / Maybe ~ / Perhaps ~ (possibility)",
+    "explanation": "Expresses uncertainty and possibility — lower probability than でしょう. Plain form precedes it; な-adj and nouns drop だ before かもしれません.",
+    "example": "It might rain tomorrow."
+  },
+  "n5_g053": {
+    "meaning": "While doing ~ (simultaneous actions)",
+    "explanation": "Indicates two actions happening at the same time by the same subject. The main action comes after ながら.",
+    "example": "I study while listening to music."
+  },
+  "n5_g054": {
+    "meaning": "Even ~ / Any ~ (inclusive: even this, any at all)",
+    "explanation": "でも after a noun means 'even'. After question words (なん、どこ、だれ etc.) it means 'any': なんでも (anything), どこでも (anywhere), だれでも (anyone).",
+    "example": "It is a book even a child can understand."
+  },
+  "n5_g055": {
+    "meaning": "In order to ~ / For the sake of ~ (purpose or benefit)",
+    "explanation": "ために expresses purpose (in order to do something) or benefit (for someone's sake). Verb form is always dictionary form.",
+    "example": "In order to study Japanese, I practice every day."
+  },
+  "n5_g056": {
+    "meaning": "And ~ and ~ (listing multiple reasons or qualities)",
+    "explanation": "し lists multiple reasons or qualities, implying 'and also'. Softer than から for giving reasons. Often implies 'among other reasons'.",
+    "example": "This town is safe, it's clean, and it's easy to live in."
+  },
+  "n5_g057": {
+    "meaning": "If ~ / When ~ (conditional: once a condition is met)",
+    "explanation": "たら expresses a conditional: once A happens, B follows. More natural than と for hypothetical situations. Also used for 'when' in the past: 着いたら電話した (When I arrived, I called).",
+    "example": "When you finish your homework, let's play."
+  },
+  "n5_g058": {
+    "meaning": "The more ~ the more ~ (proportional increase)",
+    "explanation": "Expresses that as one thing increases, another increases proportionally. ば-form + same verb/adj + ほど + result.",
+    "example": "The more you practice, the better you become."
+  },
+  "n5_g059": {
+    "meaning": "Only ~ / Just ~ (limit or restriction)",
+    "explanation": "だけ limits to only the stated amount or thing. Similar to しか + negative, but だけ has a neutral tone while しか is more emphatic/restrictive.",
+    "example": "I only drink water."
+  },
+  "n5_g060": {
+    "meaning": "Nothing but ~ / Only ~ (with emphasis on insufficiency)",
+    "explanation": "しか must be followed by a negative verb. Implies the speaker feels the amount is insufficient or surprising. Stronger/more emotional than だけ.",
+    "example": "I only have 100 yen (and that's not enough)."
+  },
+  "n4_g001": {
+    "meaning": "Giving/receiving actions (I do for you / you do for me / I receive the favor of)",
+    "explanation": "あげる: I/someone gives action TO another. くれる: someone gives action TO me. もらう: I receive the action FROM someone.",
+    "example": "I carried the luggage (for them)."
+  },
+  "n4_g002": {
+    "meaning": "If only ~ / I wish ~ (expressing regret)",
+    "explanation": "",
+    "example": "I wish I had studied more."
+  },
+  "n4_g003": {
+    "meaning": "Looks like ~ / seems ~ (appearance-based conjecture)",
+    "explanation": "Used when you can visually observe that something seems a certain way. Different from the hearsay そうです.",
+    "example": "This cake looks delicious."
+  },
+  "n4_g004": {
+    "meaning": "Apparently ~ / It seems ~ (hearsay/inference from evidence)",
+    "explanation": "",
+    "example": "It seems Tanaka is not coming."
+  },
+  "n4_g005": {
+    "meaning": "It appears that ~ (inference based on observation)",
+    "explanation": "",
+    "example": "He appears to be tired."
+  },
+  "n4_g006": {
+    "meaning": "Probably ~ / I wonder if ~ (conjecture/uncertainty)",
+    "explanation": "",
+    "example": "It will probably rain tomorrow."
+  },
+  "n4_g007": {
+    "meaning": "Maybe ~ / might ~ (possibility, less certain than でしょう)",
+    "explanation": "",
+    "example": "It might snow tomorrow."
+  },
+  "n4_g008": {
+    "meaning": "Must do ~ / have to do ~",
+    "explanation": "Expresses obligation or necessity. Casual forms: なきゃ、なくちゃ. Negative: なくてもいい (don't have to).",
+    "example": "I must take medicine every day."
+  },
+  "n4_g009": {
+    "meaning": "It's okay to ~ / May I ~ (permission)",
+    "explanation": "",
+    "example": "May I sit here?"
+  },
+  "n4_g010": {
+    "meaning": "Must not ~ / Not allowed to ~",
+    "explanation": "",
+    "example": "You must not smoke here."
+  },
+  "n4_g011": {
+    "meaning": "Have done ~ before (past experience)",
+    "explanation": "",
+    "example": "I have climbed Mt. Fuji before."
+  },
+  "n4_g012": {
+    "meaning": "While doing ~ (two simultaneous actions by same person)",
+    "explanation": "",
+    "example": "I study while listening to music."
+  },
+  "n4_g013": {
+    "meaning": "I think that ~ (expressing opinion)",
+    "explanation": "",
+    "example": "I think he is right."
+  },
+  "n4_g014": {
+    "meaning": "In order to ~ / for the purpose of ~",
+    "explanation": "",
+    "example": "I came to Japan in order to learn Japanese."
+  },
+  "n4_g015": {
+    "meaning": "So that ~ / in order to ~ (goal/purpose for intransitive verbs)",
+    "explanation": "",
+    "example": "I practice every day so that my Japanese improves."
+  },
+  "n4_g016": {
+    "meaning": "Passive voice (be done by someone / suffer from action)",
+    "explanation": "Used when the subject receives an action from another person. In Japanese, 'suffering passive' (迷惑の受身) is often used when an action negatively affects the speaker.",
+    "example": "I got rained on."
+  },
+  "n4_g017": {
+    "meaning": "Causative voice (make / let someone do)",
+    "explanation": "Expresses making someone do something (force) or letting someone do something (permission).",
+    "example": "Mother made my little brother eat vegetables."
+  },
+  "n4_g018": {
+    "meaning": "Causative-Passive (be forced / made to do against one's will)",
+    "explanation": "Combines causative and passive to express being coerced or forced into doing something you did not want to do.",
+    "example": "I was forced to drink alcohol."
+  },
+  "n4_g019": {
+    "meaning": "To finish completely / to do regretfully or accidentally",
+    "explanation": "Has two distinct nuances: 1) Complete completion of an action, and 2) Regret or dismay over an unintended result.",
+    "example": "I finished all of my homework completely."
+  },
+  "n4_g020": {
+    "meaning": "Do something in advance / prepare ahead / leave as is",
+    "explanation": "Indicates doing an action beforehand in preparation for the future, or leaving a current state undisturbed.",
+    "example": "I will book the hotel in advance before the trip."
+  },
+  "n4_g021": {
+    "meaning": "Try doing something to see what it's like",
+    "explanation": "Used when attempting an action to test or experience the result.",
+    "example": "I want to try eating Japanese natto."
+  },
+  "n4_g022": {
+    "meaning": "Has been done intentionally (and the state remains)",
+    "explanation": "Used with transitive verbs to show that someone intentionally performed an action and its result currently persists.",
+    "example": "Names are written on the blackboard."
+  },
+  "n4_g023": {
+    "meaning": "Easy to do / hard to do",
+    "explanation": "Attached to the verb stem (masu-stem). Turns the verb into an i-adjective describing ease or difficulty.",
+    "example": "This pen is very easy to write with."
+  },
+  "n4_g024": {
+    "meaning": "Too much / excessively",
+    "explanation": "Indicates doing an action or having a quality beyond a desirable or normal limit.",
+    "example": "I ate too much yesterday."
+  },
+  "n4_g025": {
+    "meaning": "Might / may / possibly (50% or less certainty)",
+    "explanation": "Expresses conjecture with lower probability than でしょう/だろう. In casual speech, contracted to かも.",
+    "example": "It might rain tomorrow."
+  },
+  "n4_g026": {
+    "meaning": "Should be / supposed to be (strong expectation based on facts)",
+    "explanation": "Expresses a high degree of confidence that something should happen based on logical reasoning or reliable facts.",
+    "example": "Mr. Tanaka should have arrived already."
+  },
+  "n4_g027": {
+    "meaning": "Plan to / intend to (personal intention)",
+    "explanation": "Used to declare one's own intention or decision. Not usually used to ask superiors about their plans.",
+    "example": "I plan to go to Japan next year."
+  },
+  "n4_g028": {
+    "meaning": "I heard that ~ / they say that ~ (hearsay)",
+    "explanation": "Conveys information heard from another source without personal conjecture.",
+    "example": "I heard it will snow tomorrow."
+  },
+  "n4_g029": {
+    "meaning": "Not only... but also... / and what's more (listing reasons)",
+    "explanation": "Lists two or more reasons or states that lead to a conclusion.",
+    "example": "This restaurant is cheap, delicious, and always crowded."
+  },
+  "n4_g030": {
+    "meaning": "If / when (conditional with sequential emphasis)",
+    "explanation": "The most flexible conditional in Japanese. Expresses 'if X happens' or 'when X is finished, then Y'.",
+    "example": "When you arrive at the station, please call me."
+  },
+  "n3_g001": {
+    "meaning": "It doesn't mean that ~ / It's not that ~",
+    "explanation": "Used to deny or partially deny an implication. Clarifies a misunderstanding or nuances a statement.",
+    "example": "It's not that I dislike it, I just don't eat much of it."
+  },
+  "n3_g002": {
+    "meaning": "Despite ~ / In spite of ~ / Nevertheless",
+    "explanation": "",
+    "example": "Despite the rain, the match continued."
+  },
+  "n3_g003": {
+    "meaning": "Towards ~ / Against ~ / In contrast to ~",
+    "explanation": "",
+    "example": "I answered the teacher's question."
+  },
+  "n3_g004": {
+    "meaning": "By means of ~ / Depending on ~ / Due to ~",
+    "explanation": "",
+    "example": "This painting was drawn by Picasso."
+  },
+  "n3_g005": {
+    "meaning": "As ~ / In the role/capacity of ~",
+    "explanation": "",
+    "example": "I work as a doctor."
+  },
+  "n3_g006": {
+    "meaning": "Just did ~ (recently) / Only ~ / Nothing but ~",
+    "explanation": "",
+    "example": "I just arrived."
+  },
+  "n3_g007": {
+    "meaning": "If only ~ / As long as ~ (minimum condition)",
+    "explanation": "",
+    "example": "If only I had money, I could buy anything."
+  },
+  "n3_g008": {
+    "meaning": "Although ~ / Even though ~ (but the result is unexpected)",
+    "explanation": "",
+    "example": "Although I studied Japanese, I still can't speak it."
+  },
+  "n3_g009": {
+    "meaning": "Not only ~ but also ~",
+    "explanation": "",
+    "example": "She can speak not only English but also Japanese."
+  },
+  "n3_g010": {
+    "meaning": "Completely finish / Accidentally do / Regrettably do",
+    "explanation": "",
+    "example": "I finished my homework (completely)."
+  },
+  "n3_g011": {
+    "meaning": "It has been decided that ~ / It is expected that ~ (rule/schedule)",
+    "explanation": "",
+    "example": "There is supposed to be a meeting tomorrow."
+  },
+  "n3_g012": {
+    "meaning": "There is no way that ~ / Cannot possibly ~",
+    "explanation": "",
+    "example": "There is no way he would say such a thing."
+  },
+  "n3_g013": {
+    "meaning": "Just about to ~ / In the middle of ~ / Just finished ~",
+    "explanation": "Dictionary form + ところ = about to do. ている + ところ = in the middle of doing. た + ところ = just finished doing.",
+    "example": "I am about to go out now."
+  },
+  "n3_g014": {
+    "meaning": "Together with ~ / As ~ / Along with ~",
+    "explanation": "",
+    "example": "Along with the changes of the era, technology also advanced."
+  },
+  "n3_g015": {
+    "meaning": "In addition to ~ / On top of ~",
+    "explanation": "",
+    "example": "In addition to rain, the wind was also strong."
+  },
+  "n3_g016": {
+    "meaning": "There is no way that ~ / It is impossible that ~",
+    "explanation": "Expresses a strong conviction that something is completely impossible based on reason or evidence.",
+    "example": "There is no way he would tell a lie."
+  },
+  "n3_g017": {
+    "meaning": "Cannot afford to / must not / cannot bring oneself to do",
+    "explanation": "Expresses that one cannot do an action due to moral, social, or psychological reasons, even if one wants to.",
+    "example": "Since there is an important meeting tomorrow, I cannot afford to take a day off."
+  },
+  "n3_g018": {
+    "meaning": "Must be / bound to be / definitely is",
+    "explanation": "Expresses strong, intuitive certainty without doubt.",
+    "example": "The culprit must definitely be him."
+  },
+  "n3_g019": {
+    "meaning": "Considering that ~ / for a ~ (unexpected proportion)",
+    "explanation": "Expresses that the outcome is surprising given the premise or standard.",
+    "example": "Considering its price, this dish is very delicious."
+  },
+  "n3_g020": {
+    "meaning": "Even though / despite the fact that (expressing blame/criticism)",
+    "explanation": "Used like のに, but carries a strong tone of criticism, irritation, or contempt. Subject of both clauses must be the same.",
+    "example": "Even though he doesn't say anything himself, he does nothing but complain."
+  },
+  "n3_g021": {
+    "meaning": "Each time ~ / whenever ~",
+    "explanation": "Expresses that whenever event A occurs, event B always follows.",
+    "example": "Every time I hear this song, I remember my student days."
+  },
+  "n3_g022": {
+    "meaning": "While doing A, take the opportunity to also do B",
+    "explanation": "Indicates doing a secondary action B while in the middle of performing primary action A.",
+    "example": "While out for a walk, I mailed the letter."
+  },
+  "n3_g023": {
+    "meaning": "Right in the middle of (an action unexpectedly interrupted)",
+    "explanation": "Emphasizes that something unexpected happened exactly while an ongoing action was taking place.",
+    "example": "Right in the middle of a meal, the phone rang."
+  },
+  "n3_g024": {
+    "meaning": "Just as soon as ~ / the moment that ~ (instant surprise)",
+    "explanation": "Expresses that immediately after action A occurred, an unexpected situation B took place.",
+    "example": "The moment I opened the window, a strong wind rushed in."
+  },
+  "n3_g025": {
+    "meaning": "Thanks to ~ / owing to ~ (positive outcome)",
+    "explanation": "Expresses gratitude for a positive result brought about by someone or something.",
+    "example": "Thanks to the teacher, I was able to pass the exam."
+  },
+  "n2g001": {
+    "meaning": "Despite / in spite of / regardless of",
+    "explanation": "Used to express that something happened contrary to what was expected. Similar to のに but more formal.",
+    "example": "Despite the rain, the game was held."
+  },
+  "n2g002": {
+    "meaning": "Starting with / beginning with / including",
+    "explanation": "Used to give an example as a representative of a larger group.",
+    "example": "It will be sold in many cities including Tokyo, Osaka, and Nagoya."
+  },
+  "n2g003": {
+    "meaning": "In addition to / besides",
+    "explanation": "Adds something extra on top of what was already mentioned.",
+    "example": "In addition to English, I can also speak Japanese."
+  },
+  "n2g004": {
+    "meaning": "Might possibly (undesirable result); cannot be ruled out",
+    "explanation": "Expresses concern that something undesirable might happen.",
+    "example": "If left like this, it could possibly lead to a serious accident."
+  },
+  "n2g005": {
+    "meaning": "Surrounding / concerning / over (a controversial topic)",
+    "explanation": "Used when multiple parties have differing views or conflicts about a topic.",
+    "example": "A heated debate took place over the budget."
+  },
+  "n2g006": {
+    "meaning": "At the time of / on the occasion of / when doing",
+    "explanation": "Used for important, formal, or special occasions. More formal than〜とき.",
+    "example": "At the time of enrollment, parental consent is required."
+  },
+  "n2g007": {
+    "meaning": "Contrary to / against / in opposition to",
+    "explanation": "Indicates that something goes against an expectation, rule, or wish.",
+    "example": "Contrary to expectations, the exam was easy."
+  },
+  "n2g008": {
+    "meaning": "Through / throughout / by means of",
+    "explanation": "Expresses a medium or method by which something is done, or indicates throughout a period.",
+    "example": "Gather information through the internet."
+  },
+  "n2g009": {
+    "meaning": "After (a long process) / at the end of",
+    "explanation": "Used to express something that occurred after a long period of effort or deliberation.",
+    "example": "After a long discussion, a conclusion was reached."
+  },
+  "n2g010": {
+    "meaning": "Spanning / covering / throughout (range or period)",
+    "explanation": "Describes something that extends across a range of time, distance, or area.",
+    "example": "The conference continued for three days."
+  },
+  "n2g011": {
+    "meaning": "Toward / against / in contrast to / regarding",
+    "explanation": "Can express direction of action/feeling, contrast, or response toward something.",
+    "example": "He took a rude attitude toward the teacher."
+  },
+  "n2g012": {
+    "meaning": "Rather than saying ~ / more ~ than ~",
+    "explanation": "Used to correct or refine a description, suggesting B is more accurate than A.",
+    "example": "Rather than angry, he is sad."
+  },
+  "n2g013": {
+    "meaning": "In order to / after doing / in terms of / when it comes to",
+    "explanation": "Used to express a prerequisite action or a consideration in a certain context.",
+    "example": "There are points to be careful of when signing a contract."
+  },
+  "n2g014": {
+    "meaning": "Taking ~ as a trigger / using ~ as a chance",
+    "explanation": "Describes an event that became the trigger or turning point for a change.",
+    "example": "Using this accident as a trigger, safety measures were strengthened."
+  },
+  "n2g015": {
+    "meaning": "Just because ~ (doesn't mean)",
+    "explanation": "Used to say that even though reason A exists, conclusion B doesn't necessarily follow.",
+    "example": "Just because you have money doesn't mean you're happy."
+  },
+  "n2g016": {
+    "meaning": "As soon as / depending on / up to",
+    "explanation": "Verb stem + 次第 means \"as soon as done.\" Noun + 次第 means \"depending on.\"",
+    "example": "We will depart as soon as preparations are complete."
+  },
+  "n2g017": {
+    "meaning": "Although / even though (but the result is contrary)",
+    "explanation": "Concedes a fact in the first clause but introduces a contrasting or disappointing reality.",
+    "example": "Although I studied, I failed the exam."
+  },
+  "n2g018": {
+    "meaning": "Along with / as ~ increases / accompanying",
+    "explanation": "Expresses that as one thing changes, another thing changes proportionally alongside it.",
+    "example": "Along with economic growth, the standard of living rose."
+  },
+  "n2g019": {
+    "meaning": "In / at / regarding (formal location/context)",
+    "explanation": "Formal equivalent of で when indicating a place, situation, or field of activity.",
+    "example": "In modern society, information is extremely important."
+  },
+  "n2g020": {
+    "meaning": "For / from the perspective of",
+    "explanation": "Expresses a standpoint or perspective from which something is evaluated.",
+    "example": "For children, play is important learning."
+  },
+  "n2g021": {
+    "meaning": "On the occasion of / prior to / when doing (formal)",
+    "explanation": "Formal expression used when beginning an important, official, or special event.",
+    "example": "On the occasion of launching the new enterprise, we made meticulous plans."
+  },
+  "n2g022": {
+    "meaning": "Taking the opportunity of / as a turning point / prompted by",
+    "explanation": "Indicates that an event served as the catalyst or turning point for a significant positive or historical change.",
+    "example": "With the Olympics as a catalyst, redevelopment of the city progressed."
+  },
+  "n2g023": {
+    "meaning": "Regardless of / irrespective of / without distinction of",
+    "explanation": "Indicates that a condition applies universally, irrespective of differences such as age, gender, or nationality.",
+    "example": "Anyone can apply, regardless of whether they have experience."
+  },
+  "n2g024": {
+    "meaning": "Cannot help but do / have no choice but to do",
+    "explanation": "Expresses having no alternative other than doing something, despite not wanting to.",
+    "example": "With this much evidence, one cannot help but admit the facts."
+  },
+  "n2g025": {
+    "meaning": "Cannot do / difficult to do (polite professional refusal)",
+    "explanation": "Used in business and professional contexts to politely decline requests or state inability to comply.",
+    "example": "We are unfortunately unable to comply with your request."
+  },
+  "n1g001": {
+    "meaning": "Regardless of ~ / irrespective of ~",
+    "explanation": "Very formal expression meaning regardless of the nature or content of something.",
+    "example": "Regardless of the result, I will do my best."
+  },
+  "n1g002": {
+    "meaning": "With / by means of / as of (a time)",
+    "explanation": "Has two meanings: (1) by means of something, (2) as of a certain point in time (formal announcement).",
+    "example": "As of today, this store will close."
+  },
+  "n1g003": {
+    "meaning": "Unique to / only possible with / characteristic of",
+    "explanation": "Expresses that something is exclusively characteristic of or only possible because of a particular subject.",
+    "example": "There is a culture unique to Japan."
+  },
+  "n1g004": {
+    "meaning": "Worthy of / sufficient for / deserving",
+    "explanation": "Expresses that something meets the required standard or is worthy of a certain treatment.",
+    "example": "He is a person worthy of trust."
+  },
+  "n1g005": {
+    "meaning": "Because of the special circumstance that ~ / given that ~",
+    "explanation": "Used when a special or unusual circumstance causes a particular result. The situation is noteworthy.",
+    "example": "Given that it was a three-day weekend, tourist spots were very crowded."
+  },
+  "n1g006": {
+    "meaning": "Starting with ~ / beginning with ~ (as the first of many)",
+    "explanation": "Describes the first event in a series that triggers subsequent similar events.",
+    "example": "Starting with the Tokyo performance, the nationwide tour began."
+  },
+  "n1g007": {
+    "meaning": "When it comes to ~ / once you become ~ (implying high expectations)",
+    "explanation": "Expresses that at a certain high level or in a certain special position, certain things naturally follow.",
+    "example": "When you become a company president, responsibility also becomes great."
+  },
+  "n1g008": {
+    "meaning": "Even though / even if ~ (concessive, formal)",
+    "explanation": "Even though a certain condition exists, the result is contrary to expectation. Very formal.",
+    "example": "Even a professional can fail sometimes."
+  },
+  "n1g009": {
+    "meaning": "Cannot help but / will definitely cause / will inevitably do",
+    "explanation": "Has two meanings: (1) something inevitably causes a reaction, (2) the speaker will definitely do something.",
+    "example": "This movie cannot help but move its viewers."
+  },
+  "n1g010": {
+    "meaning": "Is nothing but / is precisely / is exactly",
+    "explanation": "Asserts that something is precisely and nothing other than what is stated. Strong affirmation.",
+    "example": "This success is nothing other than the team's effort."
+  },
+  "n1g011": {
+    "meaning": "Once ~ happens (there's no going back) / if ~ then it's all over",
+    "explanation": "Once a certain action takes place, an irreversible or extreme consequence follows.",
+    "example": "Once you start talking to her, she won't stop for an hour."
+  },
+  "n1g012": {
+    "meaning": "Must not / should not (prohibition, classical)",
+    "explanation": "Classical prohibition form. Seen on signs and formal written rules.",
+    "example": "Do not enter the lawn."
+  },
+  "n1g013": {
+    "meaning": "Cannot stop ~ing / sincerely / from the bottom of one's heart",
+    "explanation": "Expresses a deep, unceasing feeling such as hope, love, or admiration.",
+    "example": "I sincerely hope for your continued success."
+  },
+  "n1g014": {
+    "meaning": "Even if not ~ at least / if not fully then at least partially",
+    "explanation": "Suggests settling for a lesser alternative when the ideal is not possible.",
+    "example": "If not every day, at least you should exercise once a week."
+  },
+  "n1g015": {
+    "meaning": "Undaunted by / in spite of (adversity) / without being deterred by",
+    "explanation": "Expresses that someone faced difficulties without being deterred — showing bravery or resilience.",
+    "example": "Undaunted by the storm, the ship moved forward."
+  },
+  "n1g016": {
+    "meaning": "Not only ~ but also (formal)",
+    "explanation": "Formal equivalent of〜だけでなく. Used in written Japanese and formal speech.",
+    "example": "They are active not only domestically but also abroad."
+  },
+  "n1g017": {
+    "meaning": "In accordance with / based on / in line with",
+    "explanation": "Indicates acting or thinking in direct accordance with rules, facts, or reality.",
+    "example": "Deal with it in accordance with the law."
+  },
+  "n1g018": {
+    "meaning": "As soon as / no sooner than (frustrating repetition)",
+    "explanation": "Expresses frustration that as soon as one thing is done, the opposite immediately happens again.",
+    "example": "No sooner do I tidy up than the children make a mess again."
+  },
+  "n1g019": {
+    "meaning": "When it comes to ~ (expressing exasperation/complaint)",
+    "explanation": "Used to introduce a topic about someone or something that the speaker is exasperated or dissatisfied with.",
+    "example": "When it comes to my son, he doesn't study at all."
+  },
+  "n1g020": {
+    "meaning": "Because of / therefore / due to (formal/literary)",
+    "explanation": "Classical and formal expression of cause and reason. Literary equivalent of から or ので.",
+    "example": "Due to youth, mistakes were made."
+  },
+  "n1g021": {
+    "meaning": "Even if / no matter who/what it may be",
+    "explanation": "Expresses that under no circumstances or conditions does the following statement change.",
+    "example": "No matter what the reason may be, violence is never permitted."
+  },
+  "n1g022": {
+    "meaning": "As someone who is / in the position of (ideal duty)",
+    "explanation": "Describes the moral duty, dignity, or behavior expected of someone in a high, professional, or responsible role.",
+    "example": "A true leader must always keep the bigger picture in perspective."
+  },
+  "n1g023": {
+    "meaning": "Be forced to / have no choice but to (due to unavoidable external circumstances)",
+    "explanation": "Expresses that an undesirable change or cessation of action was compelled by circumstances completely beyond one's control.",
+    "example": "Due to the typhoon, we were forced to cancel the event."
+  },
+  "n1g024": {
+    "meaning": "Coupled with / combined with / together with",
+    "explanation": "Expresses that two factors mutually interact or combine to produce a heightened effect.",
+    "example": "Talent coupled with relentless effort won him the world championship."
+  },
+  "n1g025": {
+    "meaning": "Extremely / knows no bounds / peak of",
+    "explanation": "Conveys an extreme degree of emotion or state, often regarding dangerous, rude, or regrettable matters.",
+    "example": "Such an irresponsible attitude is regrettable in the extreme."
+  },
+  "n4_g031": {
+    "meaning": "while; during; between",
+    "explanation": "Used to express while; during; between.",
+    "example": "Expresses while; during; between in context."
+  },
+  "n4_g032": {
+    "meaning": "ni while/during~ something happened",
+    "explanation": "Used to express ni while/during~ something happened.",
+    "example": "Expresses ni while/during~ something happened in context."
+  },
+  "n4_g033": {
+    "meaning": "not very, not much",
+    "explanation": "Used to express not very, not much.",
+    "example": "Expresses not very, not much in context."
+  },
+  "n4_g034": {
+    "meaning": "de after ~; later",
+    "explanation": "Used to express de after ~; later.",
+    "example": "Expresses de after ~; later in context."
+  },
+  "n4_g035": {
+    "meaning": "conditional form; If [A] then [B]",
+    "explanation": "Used to express conditional form; If [A] then [B].",
+    "example": "Expresses conditional form; If [A] then [B] in context."
+  },
+  "n4_g036": {
+    "meaning": "wa in the event of; in the case that",
+    "explanation": "Used to express wa in the event of; in the case that.",
+    "example": "Expresses wa in the event of; in the case that in context."
+  },
+  "n4_g037": {
+    "meaning": "only; nothing but",
+    "explanation": "Used to express only; nothing but.",
+    "example": "Expresses only; nothing but in context."
+  },
+  "n4_g038": {
+    "meaning": "de just by; just by doing",
+    "explanation": "Used to express de just by; just by doing.",
+    "example": "Expresses de just by; just by doing in context."
+  },
+  "n4_g039": {
+    "meaning": "to suddenly begin; to suddenly appear",
+    "explanation": "Used to express to suddenly begin; to suddenly appear.",
+    "example": "Expresses to suddenly begin; to suddenly appear in context."
+  },
+  "n4_g040": {
+    "meaning": "gozaimasu to be (honorific)",
+    "explanation": "Used to express gozaimasu to be (honorific).",
+    "example": "Expresses gozaimasu to be (honorific) in context."
+  },
+  "n4_g041": {
+    "meaning": "... or something",
+    "explanation": "Used to express ... or something.",
+    "example": "Expresses ... or something in context."
+  },
+  "n4_g042": {
+    "meaning": "nai ka right?; isn't it?",
+    "explanation": "Used to express nai ka right?; isn't it?.",
+    "example": "Expresses nai ka right?; isn't it? in context."
+  },
+  "n4_g043": {
+    "meaning": "hitsuyou need; necessary",
+    "explanation": "Used to express hitsuyou need; necessary.",
+    "example": "Expresses hitsuyou need; necessary in context."
+  },
+  "n4_g044": {
+    "meaning": "suru to smell; hear; taste",
+    "explanation": "Used to express suru to smell; hear; taste.",
+    "example": "Expresses suru to smell; hear; taste in context."
+  },
+  "n4_g045": {
+    "meaning": "personality; tend to~; sensitivity towards~",
+    "explanation": "Used to express personality; tend to~; sensitivity towards~.",
+    "example": "Expresses personality; tend to~; sensitivity towards~ in context."
+  },
+  "n4_g046": {
+    "meaning": "to be, to exist (polite form of いる/ある)",
+    "explanation": "Used to express to be, to exist (polite form of いる/ある).",
+    "example": "Expresses to be, to exist (polite form of いる/ある) in context."
+  },
+  "n4_g047": {
+    "meaning": "to start; to begin to ~",
+    "explanation": "Used to express to start; to begin to ~.",
+    "example": "Expresses to start; to begin to ~ in context."
+  },
+  "n4_g048": {
+    "meaning": "da it must be; it should be (expectation)",
+    "explanation": "Used to express da it must be; it should be (expectation).",
+    "example": "Expresses da it must be; it should be (expectation) in context."
+  },
+  "n4_g049": {
+    "meaning": "ga nai cannot be (impossible)",
+    "explanation": "Used to express ga nai cannot be (impossible).",
+    "example": "Expresses ga nai cannot be (impossible) in context."
+  },
+  "n4_g050": {
+    "meaning": "ga aru need to; it is necessary to",
+    "explanation": "Used to express ga aru need to; it is necessary to.",
+    "example": "Expresses ga aru need to; it is necessary to in context."
+  },
+  "n4_g051": {
+    "meaning": "kei volitional form​; let's do ~",
+    "explanation": "Used to express kei volitional form​; let's do ~.",
+    "example": "Expresses kei volitional form​; let's do ~ in context."
+  },
+  "n4_g052": {
+    "meaning": "to be; to come; to go (polite version)",
+    "explanation": "Used to express to be; to come; to go (polite version).",
+    "example": "Expresses to be; to come; to go (polite version) in context."
+  },
+  "n4_g053": {
+    "meaning": "to do (polite form of する)",
+    "explanation": "Used to express to do (polite form of する).",
+    "example": "Expresses to do (polite form of する) in context."
+  },
+  "n4_g054": {
+    "meaning": "ka right? isn't it? let's~; confirmation",
+    "explanation": "Used to express ka right? isn't it? let's~; confirmation.",
+    "example": "Expresses ka right? isn't it? let's~; confirmation in context."
+  },
+  "n4_g055": {
+    "meaning": "dou ka whether or not",
+    "explanation": "Used to express dou ka whether or not.",
+    "example": "Expresses dou ka whether or not in context."
+  },
+  "n4_g056": {
+    "meaning": "shira I wonder",
+    "explanation": "Used to express shira I wonder.",
+    "example": "Expresses shira I wonder in context."
+  },
+  "n4_g057": {
+    "meaning": "turns a sentence into a yes/no question",
+    "explanation": "Used to express turns a sentence into a yes/no question.",
+    "example": "Expresses turns a sentence into a yes/no question in context."
+  },
+  "n4_g058": {
+    "meaning": "shirenai might; perhaps; indicates possibility",
+    "explanation": "Used to express shirenai might; perhaps; indicates possibility.",
+    "example": "Expresses shirenai might; perhaps; indicates possibility in context."
+  },
+  "n4_g059": {
+    "meaning": "I wonder; should I?",
+    "explanation": "Used to express I wonder; should I?.",
+    "example": "Expresses I wonder; should I? in context."
+  },
+  "n4_g060": {
+    "meaning": "tsukuru made from; made with",
+    "explanation": "Used to express tsukuru made from; made with.",
+    "example": "Expresses tsukuru made from; made with in context."
+  },
+  "n4_g061": {
+    "meaning": "surely; undoubtedly; certainly; likely",
+    "explanation": "Used to express surely; undoubtedly; certainly; likely.",
+    "example": "Expresses surely; undoubtedly; certainly; likely in context."
+  },
+  "n4_g062": {
+    "meaning": "/ goro around; about; when",
+    "explanation": "Used to express / goro around; about; when.",
+    "example": "Expresses / goro around; about; when in context."
+  },
+  "n4_g063": {
+    "meaning": "Verb nominalizer",
+    "explanation": "Used to express Verb nominalizer.",
+    "example": "Expresses Verb nominalizer in context."
+  },
+  "n4_g064": {
+    "meaning": "ga aru there are times when",
+    "explanation": "Used to express ga aru there are times when.",
+    "example": "Expresses ga aru there are times when in context."
+  },
+  "n4_g065": {
+    "meaning": "ga dekiru can; able to",
+    "explanation": "Used to express ga dekiru can; able to.",
+    "example": "Expresses ga dekiru can; able to in context."
+  },
+  "n4_g066": {
+    "meaning": "ni naru It has been decided that..; it turns out ~",
+    "explanation": "Used to express ni naru It has been decided that..; it turns out ~.",
+    "example": "Expresses ni naru It has been decided that..; it turns out ~ in context."
+  },
+  "n4_g067": {
+    "meaning": "ni suru to decide on",
+    "explanation": "Used to express ni suru to decide on.",
+    "example": "Expresses ni suru to decide on in context."
+  },
+  "n4_g068": {
+    "meaning": "suru to make something ~",
+    "explanation": "Used to express suru to make something ~.",
+    "example": "Expresses suru to make something ~ in context."
+  },
+  "n4_g069": {
+    "meaning": "ni suddenly",
+    "explanation": "Used to express ni suddenly.",
+    "example": "Expresses ni suddenly in context."
+  },
+  "n4_g070": {
+    "meaning": "ni by; by the time; indicates time limit",
+    "explanation": "Used to express ni by; by the time; indicates time limit.",
+    "example": "Expresses ni by; by the time; indicates time limit in context."
+  },
+  "n4_g071": {
+    "meaning": "as it is; current state; without changing",
+    "explanation": "Used to express as it is; current state; without changing.",
+    "example": "Expresses as it is; current state; without changing in context."
+  },
+  "n4_g072": {
+    "meaning": "both; or; otherwise​; choice of [A] or [B]",
+    "explanation": "Used to express both; or; otherwise​; choice of [A] or [B].",
+    "example": "Expresses both; or; otherwise​; choice of [A] or [B] in context."
+  },
+  "n4_g073": {
+    "meaning": "da like, similar to, resembling",
+    "explanation": "Used to express da like, similar to, resembling.",
+    "example": "Expresses da like, similar to, resembling in context."
+  },
+  "n4_g074": {
+    "meaning": "na like, similar to",
+    "explanation": "Used to express na like, similar to.",
+    "example": "Expresses na like, similar to in context."
+  },
+  "n4_g075": {
+    "meaning": "ni like, similar to",
+    "explanation": "Used to express ni like, similar to.",
+    "example": "Expresses ni like, similar to in context."
+  },
+  "n4_g076": {
+    "meaning": "as many as; as much as; up to; nearly",
+    "explanation": "Used to express as many as; as much as; up to; nearly.",
+    "example": "Expresses as many as; as much as; up to; nearly in context."
+  },
+  "n4_g077": {
+    "meaning": "don’t ~ (order somebody to not do ~)",
+    "explanation": "Used to express don’t ~ (order somebody to not do ~).",
+    "example": "Expresses don’t ~ (order somebody to not do ~) in context."
+  },
+  "n4_g078": {
+    "meaning": "such as, things like",
+    "explanation": "Used to express such as, things like.",
+    "example": "Expresses such as, things like in context."
+  },
+  "n4_g079": {
+    "meaning": "while; during; as; simultaneously",
+    "explanation": "Used to express while; during; as; simultaneously.",
+    "example": "Expresses while; during; as; simultaneously in context."
+  },
+  "n4_g080": {
+    "meaning": "not easy to; struggling to; not able to~",
+    "explanation": "Used to express not easy to; struggling to; not able to~.",
+    "example": "Expresses not easy to; struggling to; not able to~ in context."
+  },
+  "n4_g081": {
+    "meaning": "ikenai must do something; have to do something",
+    "explanation": "Used to express ikenai must do something; have to do something.",
+    "example": "Expresses ikenai must do something; have to do something in context."
+  },
+  "n4_g082": {
+    "meaning": "naranai must do something; have to do something",
+    "explanation": "Used to express naranai must do something; have to do something.",
+    "example": "Expresses naranai must do something; have to do something in context."
+  },
+  "n4_g083": {
+    "meaning": "if; in the case that ~",
+    "explanation": "Used to express if; in the case that ~.",
+    "example": "Expresses if; in the case that ~ in context."
+  },
+  "n4_g084": {
+    "meaning": "do this (soft/firm command)",
+    "explanation": "Used to express do this (soft/firm command).",
+    "example": "Expresses do this (soft/firm command) in context."
+  },
+  "n4_g085": {
+    "meaning": "to do (honorific)",
+    "explanation": "Used to express to do (honorific).",
+    "example": "Expresses to do (honorific) in context."
+  },
+  "n4_g086": {
+    "meaning": "ki ga tsuku to notice; to realize",
+    "explanation": "Used to express ki ga tsuku to notice; to realize.",
+    "example": "Expresses ki ga tsuku to notice; to realize in context."
+  },
+  "n4_g087": {
+    "meaning": "mieru to look; to seem; to appear",
+    "explanation": "Used to express mieru to look; to seem; to appear.",
+    "example": "Expresses mieru to look; to seem; to appear in context."
+  },
+  "n4_g088": {
+    "meaning": "suru to make something ~",
+    "explanation": "Used to express suru to make something ~.",
+    "example": "Expresses suru to make something ~ in context."
+  },
+  "n4_g089": {
+    "meaning": "difficult to do",
+    "explanation": "Used to express difficult to do.",
+    "example": "Expresses difficult to do in context."
+  },
+  "n4_g090": {
+    "meaning": "naka de in, among",
+    "explanation": "Used to express naka de in, among.",
+    "example": "Expresses naka de in, among in context."
+  },
+  "n4_g091": {
+    "meaning": "although, in spite of, even though",
+    "explanation": "Used to express although, in spite of, even though.",
+    "example": "Expresses although, in spite of, even though in context."
+  },
+  "n4_g092": {
+    "meaning": "[A] is [B]; the reason for [A] is [B]",
+    "explanation": "Used to express [A] is [B]; the reason for [A] is [B].",
+    "example": "Expresses [A] is [B]; the reason for [A] is [B] in context."
+  },
+  "n4_g093": {
+    "meaning": "please do (honorific)",
+    "explanation": "Used to express please do (honorific).",
+    "example": "Expresses please do (honorific) in context."
+  },
+  "n4_g094": {
+    "meaning": "naru to do (honorific)",
+    "explanation": "Used to express naru to do (honorific).",
+    "example": "Expresses naru to do (honorific) in context."
+  },
+  "n4_g095": {
+    "meaning": "ni repeated at intervals, every",
+    "explanation": "Used to express ni repeated at intervals, every.",
+    "example": "Expresses ni repeated at intervals, every in context."
+  },
+  "n4_g096": {
+    "meaning": "to finish; to end",
+    "explanation": "Used to express to finish; to end.",
+    "example": "Expresses to finish; to end in context."
+  },
+  "n4_g097": {
+    "meaning": "potential form; ability/inability to do ~",
+    "explanation": "Used to express potential form; ability/inability to do ~.",
+    "example": "Expresses potential form; ability/inability to do ~ in context."
+  },
+  "n4_g098": {
+    "meaning": "it seems like; I heard; apparently~",
+    "explanation": "Used to express it seems like; I heard; apparently~.",
+    "example": "Expresses it seems like; I heard; apparently~ in context."
+  },
+  "n4_g099": {
+    "meaning": "-ness​ ; nominalizer for adjective",
+    "explanation": "Used to express -ness​ ; nominalizer for adjective.",
+    "example": "Expresses -ness​ ; nominalizer for adjective in context."
+  },
+  "n4_g100": {
+    "meaning": "some time ago; just now",
+    "explanation": "Used to express some time ago; just now.",
+    "example": "Expresses some time ago; just now in context."
+  },
+  "n4_g101": {
+    "meaning": "causative-passive; to be made to do ~",
+    "explanation": "Used to express causative-passive; to be made to do ~.",
+    "example": "Expresses causative-passive; to be made to do ~ in context."
+  },
+  "n4_g102": {
+    "meaning": "causative form; to make/let somebody do",
+    "explanation": "Used to express causative form; to make/let somebody do.",
+    "example": "Expresses causative form; to make/let somebody do in context."
+  },
+  "n4_g103": {
+    "meaning": "kudasai please let me do",
+    "explanation": "Used to express kudasai please let me do.",
+    "example": "Expresses kudasai please let me do in context."
+  },
+  "n4_g104": {
+    "meaning": "as one would expect; as is to be expected",
+    "explanation": "Used to express as one would expect; as is to be expected.",
+    "example": "Expresses as one would expect; as is to be expected in context."
+  },
+  "n4_g105": {
+    "meaning": "and; and what’s more; emphasis",
+    "explanation": "Used to express and; and what’s more; emphasis.",
+    "example": "Expresses and; and what’s more; emphasis in context."
+  },
+  "n4_g106": {
+    "meaning": "ni so much; so; like that",
+    "explanation": "Used to express ni so much; so; like that.",
+    "example": "Expresses ni so much; so; like that in context."
+  },
+  "n4_g107": {
+    "meaning": "demo but still; and yet; even so",
+    "explanation": "Used to express demo but still; and yet; even so.",
+    "example": "Expresses demo but still; and yet; even so in context."
+  },
+  "n4_g108": {
+    "meaning": "da [1] I heard that; it is said that",
+    "explanation": "Used to express da [1] I heard that; it is said that.",
+    "example": "Expresses da [1] I heard that; it is said that in context."
+  },
+  "n4_g109": {
+    "meaning": "ni / sou na seems like; looks like",
+    "explanation": "Used to express ni / sou na seems like; looks like.",
+    "example": "Expresses ni / sou na seems like; looks like in context."
+  },
+  "n4_g110": {
+    "meaning": "bakari just finished; something just occurred",
+    "explanation": "Used to express bakari just finished; something just occurred.",
+    "example": "Expresses bakari just finished; something just occurred in context."
+  },
+  "n4_g111": {
+    "meaning": "tokoro just finished doing, was just doing",
+    "explanation": "Used to express tokoro just finished doing, was just doing.",
+    "example": "Expresses tokoro just finished doing, was just doing in context."
+  },
+  "n4_g112": {
+    "meaning": "wants to do~ (third person)",
+    "explanation": "Used to express wants to do~ (third person).",
+    "example": "Expresses wants to do~ (third person) in context."
+  },
+  "n4_g113": {
+    "meaning": "if, after, when",
+    "explanation": "Used to express if, after, when.",
+    "example": "Expresses if, after, when in context."
+  },
+  "n4_g114": {
+    "meaning": "dou why don't you",
+    "explanation": "Used to express dou why don't you.",
+    "example": "Expresses dou why don't you in context."
+  },
+  "n4_g115": {
+    "meaning": "ii desu ka what should I do?; seeking instruction",
+    "explanation": "Used to express ii desu ka what should I do?; seeking instruction.",
+    "example": "Expresses ii desu ka what should I do?; seeking instruction in context."
+  },
+  "n4_g116": {
+    "meaning": "で te / de conjunctive; so; because of [A], [B]...",
+    "explanation": "Used to express で te / de conjunctive; so; because of [A], [B]....",
+    "example": "Expresses で te / de conjunctive; so; because of [A], [B]... in context."
+  },
+  "n4_g117": {
+    "meaning": "ageru to do for; to do a favor",
+    "explanation": "Used to express ageru to do for; to do a favor.",
+    "example": "Expresses ageru to do for; to do a favor in context."
+  },
+  "n4_g118": {
+    "meaning": "hoshii I want you to; need you to~",
+    "explanation": "Used to express hoshii I want you to; need you to~.",
+    "example": "Expresses hoshii I want you to; need you to~ in context."
+  },
+  "n4_g119": {
+    "meaning": "iku to start; to continue; to go on",
+    "explanation": "Used to express iku to start; to continue; to go on.",
+    "example": "Expresses iku to start; to continue; to go on in context."
+  },
+  "n4_g120": {
+    "meaning": "ita was doing something (past continuous)",
+    "explanation": "Used to express ita was doing something (past continuous).",
+    "example": "Expresses ita was doing something (past continuous) in context."
+  },
+  "n4_g121": {
+    "meaning": "itadakemasen ka could you please",
+    "explanation": "Used to express itadakemasen ka could you please.",
+    "example": "Expresses itadakemasen ka could you please in context."
+  },
+  "n4_g122": {
+    "meaning": "kureru to do a favor; do something for someone",
+    "explanation": "Used to express kureru to do a favor; do something for someone.",
+    "example": "Expresses kureru to do a favor; do something for someone in context."
+  },
+  "n4_g123": {
+    "meaning": "kuru to do… and come back; to continue",
+    "explanation": "Used to express kuru to do… and come back; to continue.",
+    "example": "Expresses kuru to do… and come back; to continue in context."
+  },
+  "n4_g124": {
+    "meaning": "miru try doing",
+    "explanation": "Used to express miru try doing.",
+    "example": "Expresses miru try doing in context."
+  },
+  "n4_g125": {
+    "meaning": "morau to get somebody to do something",
+    "explanation": "Used to express morau to get somebody to do something.",
+    "example": "Expresses morau to get somebody to do something in context."
+  },
+  "n4_g126": {
+    "meaning": "oku to do something in advance",
+    "explanation": "Used to express oku to do something in advance.",
+    "example": "Expresses oku to do something in advance in context."
+  },
+  "n4_g127": {
+    "meaning": "ちゃう te shimau / chau to do something by accident, to finish",
+    "explanation": "Used to express ちゃう te shimau / chau to do something by accident, to finish.",
+    "example": "Expresses ちゃう te shimau / chau to do something by accident, to finish in context."
+  },
+  "n4_g128": {
+    "meaning": "sumimasen I’m sorry for",
+    "explanation": "Used to express sumimasen I’m sorry for.",
+    "example": "Expresses sumimasen I’m sorry for in context."
+  },
+  "n4_g129": {
+    "meaning": "yaru to do for; to do a favor (casual)",
+    "explanation": "Used to express yaru to do for; to do a favor (casual).",
+    "example": "Expresses yaru to do for; to do a favor (casual) in context."
+  },
+  "n4_g130": {
+    "meaning": "yokatta I’m glad that..",
+    "explanation": "Used to express yokatta I’m glad that...",
+    "example": "Expresses yokatta I’m glad that.. in context."
+  },
+  "n4_g131": {
+    "meaning": "tokoro in the process of doing",
+    "explanation": "Used to express tokoro in the process of doing.",
+    "example": "Expresses tokoro in the process of doing in context."
+  },
+  "n4_g132": {
+    "meaning": "even; even if; even though",
+    "explanation": "Used to express even; even if; even though.",
+    "example": "Expresses even; even if; even though in context."
+  },
+  "n4_g133": {
+    "meaning": "whenever [A] happens, [B] also happens",
+    "explanation": "Used to express whenever [A] happens, [B] also happens.",
+    "example": "Expresses whenever [A] happens, [B] also happens in context."
+  },
+  "n4_g134": {
+    "meaning": "ittemo ii you could say; one might say; I'd say",
+    "explanation": "Used to express ittemo ii you could say; one might say; I'd say.",
+    "example": "Expresses ittemo ii you could say; one might say; I'd say in context."
+  },
+  "n4_g135": {
+    "meaning": "iu called; named; that",
+    "explanation": "Used to express iu called; named; that.",
+    "example": "Expresses iu called; named; that in context."
+  },
+  "n4_g136": {
+    "meaning": "iu koto convert phrase into noun",
+    "explanation": "Used to express iu koto convert phrase into noun.",
+    "example": "Expresses iu koto convert phrase into noun in context."
+  },
+  "n4_g137": {
+    "meaning": "iwarete iru it is said that...",
+    "explanation": "Used to express iwarete iru it is said that....",
+    "example": "Expresses iwarete iru it is said that... in context."
+  },
+  "n4_g138": {
+    "meaning": "kiita I heard...",
+    "explanation": "Used to express kiita I heard....",
+    "example": "Expresses kiita I heard... in context."
+  },
+  "n4_g139": {
+    "meaning": "omou to think…; I think…; you think…",
+    "explanation": "Used to express omou to think…; I think…; you think….",
+    "example": "Expresses omou to think…; I think…; you think… in context."
+  },
+  "n4_g140": {
+    "meaning": "among other things; such as; like",
+    "explanation": "Used to express among other things; such as; like.",
+    "example": "Expresses among other things; such as; like in context."
+  },
+  "n4_g141": {
+    "meaning": "just about to; on the verge of doing ~",
+    "explanation": "Used to express just about to; on the verge of doing ~.",
+    "example": "Expresses just about to; on the verge of doing ~ in context."
+  },
+  "n4_g142": {
+    "meaning": "continue to; keen on",
+    "explanation": "Used to express continue to; keen on.",
+    "example": "Expresses continue to; keen on in context."
+  },
+  "n4_g143": {
+    "meaning": "named; called",
+    "explanation": "Used to express named; called.",
+    "example": "Expresses named; called in context."
+  },
+  "n4_g144": {
+    "meaning": "kei passive form; passive voice",
+    "explanation": "Used to express kei passive form; passive voice.",
+    "example": "Expresses kei passive form; passive voice in context."
+  },
+  "n4_g145": {
+    "meaning": "easy to; likely to; prone to; a tendency to~",
+    "explanation": "Used to express easy to; likely to; prone to; a tendency to~.",
+    "example": "Expresses easy to; likely to; prone to; a tendency to~ in context."
+  },
+  "n4_g146": {
+    "meaning": "at last; finally; barely; narrowly",
+    "explanation": "Used to express at last; finally; barely; narrowly.",
+    "example": "Expresses at last; finally; barely; narrowly in context."
+  },
+  "n4_g147": {
+    "meaning": "than; rather than; more than",
+    "explanation": "Used to express than; rather than; more than.",
+    "example": "Expresses than; rather than; more than in context."
+  },
+  "n4_g148": {
+    "meaning": "da plan to, intend to",
+    "explanation": "Used to express da plan to, intend to.",
+    "example": "Expresses da plan to, intend to in context."
+  },
+  "n4_g149": {
+    "meaning": "da appears; seems; looks as if",
+    "explanation": "Used to express da appears; seems; looks as if.",
+    "example": "Expresses da appears; seems; looks as if in context."
+  },
+  "n4_g150": {
+    "meaning": "ような you ni / you na like; as; similar to",
+    "explanation": "Used to express ような you ni / you na like; as; similar to.",
+    "example": "Expresses ような you ni / you na like; as; similar to in context."
+  },
+  "n4_g151": {
+    "meaning": "ni naru to reach the point that; to turn into",
+    "explanation": "Used to express ni naru to reach the point that; to turn into.",
+    "example": "Expresses ni naru to reach the point that; to turn into in context."
+  },
+  "n4_g152": {
+    "meaning": "ni suru to try to; to make sure that",
+    "explanation": "Used to express ni suru to try to; to make sure that.",
+    "example": "Expresses ni suru to try to; to make sure that in context."
+  },
+  "n4_g153": {
+    "meaning": "to omou thinking of doing; planning to",
+    "explanation": "Used to express to omou thinking of doing; planning to.",
+    "example": "Expresses to omou thinking of doing; planning to in context."
+  },
+  "n4_g154": {
+    "meaning": "by all means; certainly; definitely",
+    "explanation": "Used to express by all means; certainly; definitely.",
+    "example": "Expresses by all means; certainly; definitely in context."
+  },
+  "n4_g155": {
+    "meaning": "(not) at all",
+    "explanation": "Used to express (not) at all.",
+    "example": "Expresses (not) at all in context."
+  },
+  "n4_g156": {
+    "meaning": "difficult to do",
+    "explanation": "Used to express difficult to do.",
+    "example": "Expresses difficult to do in context."
+  },
+  "n3_g026": {
+    "meaning": "to finish doing~",
+    "explanation": "Used to express to finish doing~.",
+    "example": "Expresses to finish doing~ in context."
+  },
+  "n3_g027": {
+    "meaning": "so much… that",
+    "explanation": "Used to express so much… that.",
+    "example": "Expresses so much… that in context."
+  },
+  "n3_g028": {
+    "meaning": "too…; so much… that; excessively~",
+    "explanation": "Used to express too…; so much… that; excessively~.",
+    "example": "Expresses too…; so much… that; excessively~ in context."
+  },
+  "n3_g029": {
+    "meaning": "do something together",
+    "explanation": "Used to express do something together.",
+    "example": "Expresses do something together in context."
+  },
+  "n3_g030": {
+    "meaning": "should, can, it’d be good if",
+    "explanation": "Used to express should, can, it’d be good if.",
+    "example": "Expresses should, can, it’d be good if in context."
+  },
+  "n3_g031": {
+    "meaning": "should have, would have been better if~",
+    "explanation": "Used to express should have, would have been better if~.",
+    "example": "Expresses should have, would have been better if~ in context."
+  },
+  "n3_g032": {
+    "meaning": "the more… the more",
+    "explanation": "Used to express the more… the more.",
+    "example": "Expresses the more… the more in context."
+  },
+  "n3_g033": {
+    "meaning": "would have; should have; if only~",
+    "explanation": "Used to express would have; should have; if only~.",
+    "example": "Expresses would have; should have; if only~ in context."
+  },
+  "n3_g034": {
+    "meaning": "only; just (negative description)",
+    "explanation": "Used to express only; just (negative description).",
+    "example": "Expresses only; just (negative description) in context."
+  },
+  "n3_g035": {
+    "meaning": "not only.. but also; as well as",
+    "explanation": "Used to express not only.. but also; as well as.",
+    "example": "Expresses not only.. but also; as well as in context."
+  },
+  "n3_g036": {
+    "meaning": "should do~; must do~",
+    "explanation": "Used to express should do~; must do~.",
+    "example": "Expresses should do~; must do~ in context."
+  },
+  "n3_g037": {
+    "meaning": "should not do~; must not do~",
+    "explanation": "Used to express should not do~; must not do~.",
+    "example": "Expresses should not do~; must not do~ in context."
+  },
+  "n3_g038": {
+    "meaning": "not really, not particularly",
+    "explanation": "Used to express not really, not particularly.",
+    "example": "Expresses not really, not particularly in context."
+  },
+  "n3_g039": {
+    "meaning": "for the first time in (period of time)",
+    "explanation": "Used to express for the first time in (period of time).",
+    "example": "Expresses for the first time in (period of time) in context."
+  },
+  "n3_g040": {
+    "meaning": "currently; during; throughout",
+    "explanation": "Used to express currently; during; throughout.",
+    "example": "Expresses currently; during; throughout in context."
+  },
+  "n3_g041": {
+    "meaning": "as much as~",
+    "explanation": "Used to express as much as~.",
+    "example": "Expresses as much as~ in context."
+  },
+  "n3_g042": {
+    "meaning": "not only… but also",
+    "explanation": "Used to express not only… but also.",
+    "example": "Expresses not only… but also in context."
+  },
+  "n3_g043": {
+    "meaning": "however; but",
+    "explanation": "Used to express however; but.",
+    "example": "Expresses however; but in context."
+  },
+  "n3_g044": {
+    "meaning": "full of; covered with; a lot of~",
+    "explanation": "Used to express full of; covered with; a lot of~.",
+    "example": "Expresses full of; covered with; a lot of~ in context."
+  },
+  "n3_g045": {
+    "meaning": "no matter how (much)",
+    "explanation": "Used to express no matter how (much).",
+    "example": "Expresses no matter how (much) in context."
+  },
+  "n3_g046": {
+    "meaning": "no matter what; at any cost; after all",
+    "explanation": "Used to express no matter what; at any cost; after all.",
+    "example": "Expresses no matter what; at any cost; after all in context."
+  },
+  "n3_g047": {
+    "meaning": "to pretend; to act as if~",
+    "explanation": "Used to express to pretend; to act as if~.",
+    "example": "Expresses to pretend; to act as if~ in context."
+  },
+  "n3_g048": {
+    "meaning": "suddenly; accidentally; unexpectedly",
+    "explanation": "Used to express suddenly; accidentally; unexpectedly.",
+    "example": "Expresses suddenly; accidentally; unexpectedly in context."
+  },
+  "n3_g049": {
+    "meaning": "tend to; tendency to; frequently; often~",
+    "explanation": "Used to express tend to; tendency to; frequently; often~.",
+    "example": "Expresses tend to; tendency to; frequently; often~ in context."
+  },
+  "n3_g050": {
+    "meaning": "very difficult to; impossible to",
+    "explanation": "Used to express very difficult to; impossible to.",
+    "example": "Expresses very difficult to; impossible to in context."
+  },
+  "n3_g051": {
+    "meaning": "-like; -looking; -looked; tending to",
+    "explanation": "Used to express -like; -looking; -looked; tending to.",
+    "example": "Expresses -like; -looking; -looked; tending to in context."
+  },
+  "n3_g052": {
+    "meaning": "each; every; at intervals of",
+    "explanation": "Used to express each; every; at intervals of.",
+    "example": "Expresses each; every; at intervals of in context."
+  },
+  "n3_g053": {
+    "meaning": "degree; extent; bounds; upper limit",
+    "explanation": "Used to express degree; extent; bounds; upper limit.",
+    "example": "Expresses degree; extent; bounds; upper limit in context."
+  },
+  "n3_g054": {
+    "meaning": "is not as… as",
+    "explanation": "Used to express is not as… as.",
+    "example": "Expresses is not as… as in context."
+  },
+  "n3_g055": {
+    "meaning": "all at once",
+    "explanation": "Used to express all at once.",
+    "example": "Expresses all at once in context."
+  },
+  "n3_g056": {
+    "meaning": "no matter how~",
+    "explanation": "Used to express no matter how~.",
+    "example": "Expresses no matter how~ in context."
+  },
+  "n3_g057": {
+    "meaning": "more and more; continue to",
+    "explanation": "Used to express more and more; continue to.",
+    "example": "Expresses more and more; continue to in context."
+  },
+  "n3_g058": {
+    "meaning": "emphasis; what on earth?",
+    "explanation": "Used to express emphasis; what on earth?.",
+    "example": "Expresses emphasis; what on earth? in context."
+  },
+  "n3_g059": {
+    "meaning": "maybe; most likely; confirmation",
+    "explanation": "Used to express maybe; most likely; confirmation.",
+    "example": "Expresses maybe; most likely; confirmation in context."
+  },
+  "n3_g060": {
+    "meaning": "or something",
+    "explanation": "Used to express or something.",
+    "example": "Expresses or something in context."
+  },
+  "n3_g061": {
+    "meaning": "half-; not yet finished; in the middle of~",
+    "explanation": "Used to express half-; not yet finished; in the middle of~.",
+    "example": "Expresses half-; not yet finished; in the middle of~ in context."
+  },
+  "n3_g062": {
+    "meaning": "through; from [A] to [B]",
+    "explanation": "Used to express through; from [A] to [B].",
+    "example": "Expresses through; from [A] to [B] in context."
+  },
+  "n3_g063": {
+    "meaning": "instead of; in exchange for~",
+    "explanation": "Used to express instead of; in exchange for~.",
+    "example": "Expresses instead of; in exchange for~ in context."
+  },
+  "n3_g064": {
+    "meaning": "as a result of; after",
+    "explanation": "Used to express as a result of; after.",
+    "example": "Expresses as a result of; after in context."
+  },
+  "n3_g065": {
+    "meaning": "after all; eventually; in the end",
+    "explanation": "Used to express after all; eventually; in the end.",
+    "example": "Expresses after all; eventually; in the end in context."
+  },
+  "n3_g066": {
+    "meaning": "never; by no means",
+    "explanation": "Used to express never; by no means.",
+    "example": "Expresses never; by no means in context."
+  },
+  "n3_g067": {
+    "meaning": "unable to do; too much to finish",
+    "explanation": "Used to express unable to do; too much to finish.",
+    "example": "Expresses unable to do; too much to finish in context."
+  },
+  "n3_g068": {
+    "meaning": "only; just; since; after",
+    "explanation": "Used to express only; just; since; after.",
+    "example": "Expresses only; just; since; after in context."
+  },
+  "n3_g069": {
+    "meaning": "to do something completely to the end",
+    "explanation": "Used to express to do something completely to the end.",
+    "example": "Expresses to do something completely to the end in context."
+  },
+  "n3_g070": {
+    "meaning": "casual suffix to confirm something",
+    "explanation": "Used to express casual suffix to confirm something.",
+    "example": "Expresses casual suffix to confirm something in context."
+  },
+  "n3_g071": {
+    "meaning": "Move inside; do a long time",
+    "explanation": "Used to express Move inside; do a long time.",
+    "example": "Expresses Move inside; do a long time in context."
+  },
+  "n3_g072": {
+    "meaning": "for sure; precisely; definitely",
+    "explanation": "Used to express for sure; precisely; definitely.",
+    "example": "Expresses for sure; precisely; definitely in context."
+  },
+  "n3_g073": {
+    "meaning": "(must) do",
+    "explanation": "Used to express (must) do.",
+    "example": "Expresses (must) do in context."
+  },
+  "n3_g074": {
+    "meaning": "from the fact that~",
+    "explanation": "Used to express from the fact that~.",
+    "example": "Expresses from the fact that~ in context."
+  },
+  "n3_g075": {
+    "meaning": "to be expected to; it has been decided~",
+    "explanation": "Used to express to be expected to; it has been decided~.",
+    "example": "Expresses to be expected to; it has been decided~ in context."
+  },
+  "n3_g076": {
+    "meaning": "there is no need to; no possibility that~",
+    "explanation": "Used to express there is no need to; no possibility that~.",
+    "example": "Expresses there is no need to; no possibility that~ in context."
+  },
+  "n3_g077": {
+    "meaning": "although; but",
+    "explanation": "Used to express although; but.",
+    "example": "Expresses although; but in context."
+  },
+  "n3_g078": {
+    "meaning": "approximately; about; to the extent",
+    "explanation": "Used to express approximately; about; to the extent.",
+    "example": "Expresses approximately; about; to the extent in context."
+  },
+  "n3_g079": {
+    "meaning": "although~; despite the fact that~",
+    "explanation": "Used to express although~; despite the fact that~.",
+    "example": "Expresses although~; despite the fact that~ in context."
+  },
+  "n3_g080": {
+    "meaning": "as if; as though; just like",
+    "explanation": "Used to express as if; as though; just like.",
+    "example": "Expresses as if; as though; just like in context."
+  },
+  "n3_g081": {
+    "meaning": "there's no way; that's impossible",
+    "explanation": "Used to express there's no way; that's impossible.",
+    "example": "Expresses there's no way; that's impossible in context."
+  },
+  "n3_g082": {
+    "meaning": "hardly; rarely; seldom",
+    "explanation": "Used to express hardly; rarely; seldom.",
+    "example": "Expresses hardly; rarely; seldom in context."
+  },
+  "n3_g083": {
+    "meaning": "and; also; as well; either/or; neither",
+    "explanation": "Used to express and; also; as well; either/or; neither.",
+    "example": "Expresses and; also; as well; either/or; neither in context."
+  },
+  "n3_g084": {
+    "meaning": "perhaps; maybe; perchance; by chance",
+    "explanation": "Used to express perhaps; maybe; perchance; by chance.",
+    "example": "Expresses perhaps; maybe; perchance; by chance in context."
+  },
+  "n3_g085": {
+    "meaning": "if; in the case; supposing~",
+    "explanation": "Used to express if; in the case; supposing~.",
+    "example": "Expresses if; in the case; supposing~ in context."
+  },
+  "n3_g086": {
+    "meaning": "intended for; aimed at~",
+    "explanation": "Used to express intended for; aimed at~.",
+    "example": "Expresses intended for; aimed at~ in context."
+  },
+  "n3_g087": {
+    "meaning": "suitable for~",
+    "explanation": "Used to express suitable for~.",
+    "example": "Expresses suitable for~ in context."
+  },
+  "n3_g088": {
+    "meaning": "rather; instead; better",
+    "explanation": "Used to express rather; instead; better.",
+    "example": "Expresses rather; instead; better in context."
+  },
+  "n3_g089": {
+    "meaning": "but; although; despite",
+    "explanation": "Used to express but; although; despite.",
+    "example": "Expresses but; although; despite in context."
+  },
+  "n3_g090": {
+    "meaning": "can do~; is not impossible to~",
+    "explanation": "Used to express can do~; is not impossible to~.",
+    "example": "Expresses can do~; is not impossible to~ in context."
+  },
+  "n3_g091": {
+    "meaning": "must do; unless/if you don't~",
+    "explanation": "Used to express must do; unless/if you don't~.",
+    "example": "Expresses must do; unless/if you don't~ in context."
+  },
+  "n3_g092": {
+    "meaning": "quite~; pretty~; rather~; just not ~",
+    "explanation": "Used to express quite~; pretty~; rather~; just not ~.",
+    "example": "Expresses quite~; pretty~; rather~; just not ~ in context."
+  },
+  "n3_g093": {
+    "meaning": "to do something again; to do over",
+    "explanation": "Used to express to do something again; to do over.",
+    "example": "Expresses to do something again; to do over in context."
+  },
+  "n3_g094": {
+    "meaning": "as much as possible",
+    "explanation": "Used to express as much as possible.",
+    "example": "Expresses as much as possible in context."
+  },
+  "n3_g095": {
+    "meaning": "because; the reason is",
+    "explanation": "Used to express because; the reason is.",
+    "example": "Expresses because; the reason is in context."
+  },
+  "n3_g096": {
+    "meaning": "I hear that; heard that~",
+    "explanation": "Used to express I hear that; heard that~.",
+    "example": "Expresses I hear that; heard that~ in context."
+  },
+  "n3_g097": {
+    "meaning": "I’m sure/ certain; no doubt that",
+    "explanation": "Used to express I’m sure/ certain; no doubt that.",
+    "example": "Expresses I’m sure/ certain; no doubt that in context."
+  },
+  "n3_g098": {
+    "meaning": "against; contrary to; in contrast to",
+    "explanation": "Used to express against; contrary to; in contrast to.",
+    "example": "Expresses against; contrary to; in contrast to in context."
+  },
+  "n3_g099": {
+    "meaning": "over (a period); concerning; regarding~",
+    "explanation": "Used to express over (a period); concerning; regarding~.",
+    "example": "Expresses over (a period); concerning; regarding~ in context."
+  },
+  "n3_g100": {
+    "meaning": "about; regarding; related to",
+    "explanation": "Used to express about; regarding; related to.",
+    "example": "Expresses about; regarding; related to in context."
+  },
+  "n3_g101": {
+    "meaning": "instead of~; replacing~; on behalf of~",
+    "explanation": "Used to express instead of~; replacing~; on behalf of~.",
+    "example": "Expresses instead of~; replacing~; on behalf of~ in context."
+  },
+  "n3_g102": {
+    "meaning": "compared to~; in comparison to~",
+    "explanation": "Used to express compared to~; in comparison to~.",
+    "example": "Expresses compared to~; in comparison to~ in context."
+  },
+  "n3_g103": {
+    "meaning": "to be used to something",
+    "explanation": "Used to express to be used to something.",
+    "example": "Expresses to be used to something in context."
+  },
+  "n3_g104": {
+    "meaning": "in; at (place); regarding~; as for~",
+    "explanation": "Used to express in; at (place); regarding~; as for~.",
+    "example": "Expresses in; at (place); regarding~; as for~ in context."
+  },
+  "n3_g105": {
+    "meaning": "as; therefore; in accordance with",
+    "explanation": "Used to express as; therefore; in accordance with.",
+    "example": "Expresses as; therefore; in accordance with in context."
+  },
+  "n3_g106": {
+    "meaning": "even if; even though; regardless of",
+    "explanation": "Used to express even if; even though; regardless of.",
+    "example": "Expresses even if; even though; regardless of in context."
+  },
+  "n3_g107": {
+    "meaning": "for; considering it’s",
+    "explanation": "Used to express for; considering it’s.",
+    "example": "Expresses for; considering it’s in context."
+  },
+  "n3_g108": {
+    "meaning": "towards; against; regarding~",
+    "explanation": "Used to express towards; against; regarding~.",
+    "example": "Expresses towards; against; regarding~ in context."
+  },
+  "n3_g109": {
+    "meaning": "to; for; concerning; regarding~",
+    "explanation": "Used to express to; for; concerning; regarding~.",
+    "example": "Expresses to; for; concerning; regarding~ in context."
+  },
+  "n3_g110": {
+    "meaning": "concerning; regarding; about; on",
+    "explanation": "Used to express concerning; regarding; about; on.",
+    "example": "Expresses concerning; regarding; about; on in context."
+  },
+  "n3_g111": {
+    "meaning": "as; in proportion to; with; as… then…",
+    "explanation": "Used to express as; in proportion to; with; as… then….",
+    "example": "Expresses as; in proportion to; with; as… then… in context."
+  },
+  "n3_g112": {
+    "meaning": "for the purpose of; in order to~",
+    "explanation": "Used to express for the purpose of; in order to~.",
+    "example": "Expresses for the purpose of; in order to~ in context."
+  },
+  "n3_g113": {
+    "meaning": "ask a question in a polite way",
+    "explanation": "Used to express ask a question in a polite way.",
+    "example": "Expresses ask a question in a polite way in context."
+  },
+  "n3_g114": {
+    "meaning": "focused on; centered on",
+    "explanation": "Used to express focused on; centered on.",
+    "example": "Expresses focused on; centered on in context."
+  },
+  "n3_g115": {
+    "meaning": "for example; starting with",
+    "explanation": "Used to express for example; starting with.",
+    "example": "Expresses for example; starting with in context."
+  },
+  "n3_g116": {
+    "meaning": "filled with; full of",
+    "explanation": "Used to express filled with; full of.",
+    "example": "Expresses filled with; full of in context."
+  },
+  "n3_g117": {
+    "meaning": "seems; somewhat; -ish; easily does~;",
+    "explanation": "Used to express seems; somewhat; -ish; easily does~;.",
+    "example": "Expresses seems; somewhat; -ish; easily does~; in context."
+  },
+  "n3_g118": {
+    "meaning": "even; so much as; not even",
+    "explanation": "Used to express even; so much as; not even.",
+    "example": "Expresses even; so much as; not even in context."
+  },
+  "n3_g119": {
+    "meaning": "if only; as long as",
+    "explanation": "Used to express if only; as long as.",
+    "example": "Expresses if only; as long as in context."
+  },
+  "n3_g120": {
+    "meaning": "when; at the time of; in the case of",
+    "explanation": "Used to express when; at the time of; in the case of.",
+    "example": "Expresses when; at the time of; in the case of in context."
+  },
+  "n3_g121": {
+    "meaning": "while; during; in the middle of",
+    "explanation": "Used to express while; during; in the middle of.",
+    "example": "Expresses while; during; in the middle of in context."
+  },
+  "n3_g122": {
+    "meaning": "furthermore; again; more and more",
+    "explanation": "Used to express furthermore; again; more and more.",
+    "example": "Expresses furthermore; again; more and more in context."
+  },
+  "n3_g123": {
+    "meaning": "conjunction: well; now; then",
+    "explanation": "Used to express conjunction: well; now; then.",
+    "example": "Expresses conjunction: well; now; then in context."
+  },
+  "n3_g124": {
+    "meaning": "because of; due to; as a result of~",
+    "explanation": "Used to express because of; due to; as a result of~.",
+    "example": "Expresses because of; due to; as a result of~ in context."
+  },
+  "n3_g125": {
+    "meaning": "at the most; at best; to the utmost",
+    "explanation": "Used to express at the most; at best; to the utmost.",
+    "example": "Expresses at the most; at best; to the utmost in context."
+  },
+  "n3_g126": {
+    "meaning": "for a moment; for a while",
+    "explanation": "Used to express for a moment; for a while.",
+    "example": "Expresses for a moment; for a while in context."
+  },
+  "n3_g127": {
+    "meaning": "have no choice but~",
+    "explanation": "Used to express have no choice but~.",
+    "example": "Expresses have no choice but~ in context."
+  },
+  "n3_g128": {
+    "meaning": "hence; for that reason; because of~",
+    "explanation": "Used to express hence; for that reason; because of~.",
+    "example": "Expresses hence; for that reason; because of~ in context."
+  },
+  "n3_g129": {
+    "meaning": "or; or else",
+    "explanation": "Used to express or; or else.",
+    "example": "Expresses or; or else in context."
+  },
+  "n3_g130": {
+    "meaning": "very unlikely to~; showing no signs of~",
+    "explanation": "Used to express very unlikely to~; showing no signs of~.",
+    "example": "Expresses very unlikely to~; showing no signs of~ in context."
+  },
+  "n3_g131": {
+    "meaning": "something has already been done",
+    "explanation": "Used to express something has already been done.",
+    "example": "Expresses something has already been done in context."
+  },
+  "n3_g132": {
+    "meaning": "in other words; namely",
+    "explanation": "Used to express in other words; namely.",
+    "example": "Expresses in other words; namely in context."
+  },
+  "n3_g133": {
+    "meaning": "used to do; would often do",
+    "explanation": "Used to express used to do; would often do.",
+    "example": "Expresses used to do; would often do in context."
+  },
+  "n3_g134": {
+    "meaning": "as soon as; just as",
+    "explanation": "Used to express as soon as; just as.",
+    "example": "Expresses as soon as; just as in context."
+  },
+  "n3_g135": {
+    "meaning": "whenever; every time",
+    "explanation": "Used to express whenever; every time.",
+    "example": "Expresses whenever; every time in context."
+  },
+  "n3_g136": {
+    "meaning": "for; in order to; for the benefit of",
+    "explanation": "Used to express for; in order to; for the benefit of.",
+    "example": "Expresses for; in order to; for the benefit of in context."
+  },
+  "n3_g137": {
+    "meaning": "surely, certainly",
+    "explanation": "Used to express surely, certainly.",
+    "example": "Expresses surely, certainly in context."
+  },
+  "n3_g138": {
+    "meaning": "just done; freshly done; newly done",
+    "explanation": "Used to express just done; freshly done; newly done.",
+    "example": "Expresses just done; freshly done; newly done in context."
+  },
+  "n3_g139": {
+    "meaning": "even if… is the case",
+    "explanation": "Used to express even if… is the case.",
+    "example": "Expresses even if… is the case in context."
+  },
+  "n3_g140": {
+    "meaning": "for example",
+    "explanation": "Used to express for example.",
+    "example": "Expresses for example in context."
+  },
+  "n3_g141": {
+    "meaning": "even if; even though; no matter how",
+    "explanation": "Used to express even if; even though; no matter how.",
+    "example": "Expresses even if; even though; no matter how in context."
+  },
+  "n3_g142": {
+    "meaning": "only; nothing but~",
+    "explanation": "Used to express only; nothing but~.",
+    "example": "Expresses only; nothing but~ in context."
+  },
+  "n3_g143": {
+    "meaning": "(please) try to; (please) look",
+    "explanation": "Used to express (please) try to; (please) look.",
+    "example": "Expresses (please) try to; (please) look in context."
+  },
+  "n3_g144": {
+    "meaning": "not until; only after [x] did I",
+    "explanation": "Used to express not until; only after [x] did I.",
+    "example": "Expresses not until; only after [x] did I in context."
+  },
+  "n3_g145": {
+    "meaning": "must first do; cannot do without~",
+    "explanation": "Used to express must first do; cannot do without~.",
+    "example": "Expresses must first do; cannot do without~ in context."
+  },
+  "n3_g146": {
+    "meaning": "can't help but~; very; extremely",
+    "explanation": "Used to express can't help but~; very; extremely.",
+    "example": "Expresses can't help but~; very; extremely in context."
+  },
+  "n3_g147": {
+    "meaning": "sufficient by; resolve by~",
+    "explanation": "Used to express sufficient by; resolve by~.",
+    "example": "Expresses sufficient by; resolve by~ in context."
+  },
+  "n3_g148": {
+    "meaning": "in order to not~",
+    "explanation": "Used to express in order to not~.",
+    "example": "Expresses in order to not~ in context."
+  },
+  "n3_g149": {
+    "meaning": "this is no time to be doing~",
+    "explanation": "Used to express this is no time to be doing~.",
+    "example": "Expresses this is no time to be doing~ in context."
+  },
+  "n3_g150": {
+    "meaning": "change noun into na-adjective",
+    "explanation": "Used to express change noun into na-adjective.",
+    "example": "Expresses change noun into na-adjective in context."
+  },
+  "n3_g151": {
+    "meaning": "even if you... it’s no use;",
+    "explanation": "Used to express even if you... it’s no use;.",
+    "example": "Expresses even if you... it’s no use; in context."
+  },
+  "n3_g152": {
+    "meaning": "it doesn't matter if ~",
+    "explanation": "Used to express it doesn't matter if ~.",
+    "example": "Expresses it doesn't matter if ~ in context."
+  },
+  "n3_g153": {
+    "meaning": "there's no point to~; it's no use to~",
+    "explanation": "Used to express there's no point to~; it's no use to~.",
+    "example": "Expresses there's no point to~; it's no use to~ in context."
+  },
+  "n3_g154": {
+    "meaning": "speaking of; when you talk of~",
+    "explanation": "Used to express speaking of; when you talk of~.",
+    "example": "Expresses speaking of; when you talk of~ in context."
+  },
+  "n3_g155": {
+    "meaning": "although I say; although one might say~",
+    "explanation": "Used to express although I say; although one might say~.",
+    "example": "Expresses although I say; although one might say~ in context."
+  },
+  "n3_g156": {
+    "meaning": "I heard; it means~; in other words~",
+    "explanation": "Used to express I heard; it means~; in other words~.",
+    "example": "Expresses I heard; it means~; in other words~ in context."
+  },
+  "n3_g157": {
+    "meaning": "this means~; because~; that is to say",
+    "explanation": "Used to express this means~; because~; that is to say.",
+    "example": "Expresses this means~; because~; that is to say in context."
+  },
+  "n3_g158": {
+    "meaning": "speaking of; when you say~",
+    "explanation": "Used to express speaking of; when you say~.",
+    "example": "Expresses speaking of; when you say~ in context."
+  },
+  "n3_g159": {
+    "meaning": "rather than~",
+    "explanation": "Used to express rather than~.",
+    "example": "Expresses rather than~ in context."
+  },
+  "n3_g160": {
+    "meaning": "in the case of~; assuming~; if A then B",
+    "explanation": "Used to express in the case of~; assuming~; if A then B.",
+    "example": "Expresses in the case of~; assuming~; if A then B in context."
+  },
+  "n3_g161": {
+    "meaning": "together with; at the same time as",
+    "explanation": "Used to express together with; at the same time as.",
+    "example": "Expresses together with; at the same time as in context."
+  },
+  "n3_g162": {
+    "meaning": "on the way; in the middle of~",
+    "explanation": "Used to express on the way; in the middle of~.",
+    "example": "Expresses on the way; in the middle of~ in context."
+  },
+  "n3_g163": {
+    "meaning": "by the way~",
+    "explanation": "Used to express by the way~.",
+    "example": "Expresses by the way~ in context."
+  },
+  "n3_g164": {
+    "meaning": "even so; however; even though~",
+    "explanation": "Used to express even so; however; even though~.",
+    "example": "Expresses even so; however; even though~ in context."
+  },
+  "n3_g165": {
+    "meaning": "in the same way as; in the way; as~",
+    "explanation": "Used to express in the same way as; in the way; as~.",
+    "example": "Expresses in the same way as; in the way; as~ in context."
+  },
+  "n3_g166": {
+    "meaning": "to do until the end; to continually do",
+    "explanation": "Used to express to do until the end; to continually do.",
+    "example": "Expresses to do until the end; to continually do in context."
+  },
+  "n3_g167": {
+    "meaning": "as~; in the role of~",
+    "explanation": "Used to express as~; in the role of~.",
+    "example": "Expresses as~; in the role of~ in context."
+  },
+  "n3_g168": {
+    "meaning": "cannot possibly be; hardly~",
+    "explanation": "Used to express cannot possibly be; hardly~.",
+    "example": "Expresses cannot possibly be; hardly~ in context."
+  },
+  "n3_g169": {
+    "meaning": "not necessarily so; is not always true",
+    "explanation": "Used to express not necessarily so; is not always true.",
+    "example": "Expresses not necessarily so; is not always true in context."
+  },
+  "n3_g170": {
+    "meaning": "accidentally; unintentionally",
+    "explanation": "Used to express accidentally; unintentionally.",
+    "example": "Expresses accidentally; unintentionally in context."
+  },
+  "n3_g171": {
+    "meaning": "finally ~; at last ~; in the end",
+    "explanation": "Used to express finally ~; at last ~; in the end.",
+    "example": "Expresses finally ~; at last ~; in the end in context."
+  },
+  "n3_g172": {
+    "meaning": "while, incidentally, at the same time",
+    "explanation": "Used to express while, incidentally, at the same time.",
+    "example": "Expresses while, incidentally, at the same time in context."
+  },
+  "n3_g173": {
+    "meaning": "in other words; in summary; in short",
+    "explanation": "Used to express in other words; in summary; in short.",
+    "example": "Expresses in other words; in summary; in short in context."
+  },
+  "n3_g174": {
+    "meaning": "I thought I~; I believe I did~",
+    "explanation": "Used to express I thought I~; I believe I did~.",
+    "example": "Expresses I thought I~; I believe I did~ in context."
+  },
+  "n3_g175": {
+    "meaning": "with the intention of doing~",
+    "explanation": "Used to express with the intention of doing~.",
+    "example": "Expresses with the intention of doing~ in context."
+  },
+  "n3_g176": {
+    "meaning": "while; before~",
+    "explanation": "Used to express while; before~.",
+    "example": "Expresses while; before~ in context."
+  },
+  "n3_g177": {
+    "meaning": "upon; after; when; for; in order to",
+    "explanation": "Used to express upon; after; when; for; in order to.",
+    "example": "Expresses upon; after; when; for; in order to in context."
+  },
+  "n3_g178": {
+    "meaning": "as well; not only… but also",
+    "explanation": "Used to express as well; not only… but also.",
+    "example": "Expresses as well; not only… but also in context."
+  },
+  "n3_g179": {
+    "meaning": "aside from; whether or not~",
+    "explanation": "Used to express aside from; whether or not~.",
+    "example": "Expresses aside from; whether or not~ in context."
+  },
+  "n3_g180": {
+    "meaning": "not to mention; not only; but also~",
+    "explanation": "Used to express not to mention; not only; but also~.",
+    "example": "Expresses not to mention; not only; but also~ in context."
+  },
+  "n3_g181": {
+    "meaning": "famous for~",
+    "explanation": "Used to express famous for~.",
+    "example": "Expresses famous for~ in context."
+  },
+  "n3_g182": {
+    "meaning": "for that reason; no wonder",
+    "explanation": "Used to express for that reason; no wonder.",
+    "example": "Expresses for that reason; no wonder in context."
+  },
+  "n3_g183": {
+    "meaning": "it doesn’t mean that~",
+    "explanation": "Used to express it doesn’t mean that~.",
+    "example": "Expresses it doesn’t mean that~ in context."
+  },
+  "n3_g184": {
+    "meaning": "there is no way that~",
+    "explanation": "Used to express there is no way that~.",
+    "example": "Expresses there is no way that~ in context."
+  },
+  "n3_g185": {
+    "meaning": "must not; cannot afford to; must~",
+    "explanation": "Used to express must not; cannot afford to; must~.",
+    "example": "Expresses must not; cannot afford to; must~ in context."
+  },
+  "n3_g186": {
+    "meaning": "considering; relatively; unexpectedly",
+    "explanation": "Used to express considering; relatively; unexpectedly.",
+    "example": "Expresses considering; relatively; unexpectedly in context."
+  },
+  "n3_g187": {
+    "meaning": "on purpose; intentionally~",
+    "explanation": "Used to express on purpose; intentionally~.",
+    "example": "Expresses on purpose; intentionally~ in context."
+  },
+  "n3_g188": {
+    "meaning": "to go to the trouble of",
+    "explanation": "Used to express to go to the trouble of.",
+    "example": "Expresses to go to the trouble of in context."
+  },
+  "n3_g189": {
+    "meaning": "rather than~; more than~",
+    "explanation": "Used to express rather than~; more than~.",
+    "example": "Expresses rather than~; more than~ in context."
+  },
+  "n3_g190": {
+    "meaning": "there is no way to; it’s impossible to~",
+    "explanation": "Used to express there is no way to; it’s impossible to~.",
+    "example": "Expresses there is no way to; it’s impossible to~ in context."
+  },
+  "n3_g191": {
+    "meaning": "have a feeling that; feels like; seems like",
+    "explanation": "Used to express have a feeling that; feels like; seems like.",
+    "example": "Expresses have a feeling that; feels like; seems like in context."
+  },
+  "n3_g192": {
+    "meaning": "in order to, so that~",
+    "explanation": "Used to express in order to, so that~.",
+    "example": "Expresses in order to, so that~ in context."
+  },
+  "n3_g193": {
+    "meaning": "to look; to seem; to appear~",
+    "explanation": "Used to express to look; to seem; to appear~.",
+    "example": "Expresses to look; to seem; to appear~ in context."
+  },
+  "n3_g194": {
+    "meaning": "not try to; not make an effort to~",
+    "explanation": "Used to express not try to; not make an effort to~.",
+    "example": "Expresses not try to; not make an effort to~ in context."
+  },
+  "n3_g195": {
+    "meaning": "try to; attempt to; be about to~",
+    "explanation": "Used to express try to; attempt to; be about to~.",
+    "example": "Expresses try to; attempt to; be about to~ in context."
+  },
+  "n3_g196": {
+    "meaning": "without doing~",
+    "explanation": "Used to express without doing~.",
+    "example": "Expresses without doing~ in context."
+  },
+  "n3_g197": {
+    "meaning": "can’t help but feel; can’t help but do",
+    "explanation": "Used to express can’t help but feel; can’t help but do.",
+    "example": "Expresses can’t help but feel; can’t help but do in context."
+  },
+  "n3_g198": {
+    "meaning": "apiece; each; at a time",
+    "explanation": "Used to express apiece; each; at a time.",
+    "example": "Expresses apiece; each; at a time in context."
+  }
+}

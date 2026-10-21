@@ -1,0 +1,1606 @@
+[
+  {
+    "id": "n5_g001",
+    "pattern": "〜は〜です",
+    "romaji": "",
+    "formation": "Noun は Noun/Adjective です",
+    "level": "N5",
+    "tags": [
+      "copula",
+      "topic-marker",
+      "beginner",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私は学生です。",
+        "reading": ""
+      },
+      {
+        "jp": "これは本です。",
+        "reading": ""
+      },
+      {
+        "jp": "田中さんは先生です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g002",
+    "pattern": "〜は〜ではありません",
+    "romaji": "",
+    "formation": "Noun は Noun ではありません",
+    "level": "N5",
+    "tags": [
+      "negative",
+      "copula",
+      "beginner",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私は先生ではありません。",
+        "reading": ""
+      },
+      {
+        "jp": "これはペンじゃないです。",
+        "reading": ""
+      },
+      {
+        "jp": "田中さんは学生ではありません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g003",
+    "pattern": "〜が〜です",
+    "romaji": "",
+    "formation": "Noun が Adjective/Verb",
+    "level": "N5",
+    "tags": [
+      "subject-marker",
+      "particle",
+      "beginner",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "猫が好きです。",
+        "reading": ""
+      },
+      {
+        "jp": "雨が降っています。",
+        "reading": ""
+      },
+      {
+        "jp": "山田さんが来ました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g004",
+    "pattern": "〜を〜します",
+    "romaji": "",
+    "formation": "Noun を Verb",
+    "level": "N5",
+    "tags": [
+      "object-marker",
+      "particle",
+      "beginner",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ご飯を食べます。",
+        "reading": ""
+      },
+      {
+        "jp": "本を読みます。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語を勉強します。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g005",
+    "pattern": "〜に〜があります／います",
+    "romaji": "",
+    "formation": "Place に Thing/Person が あります／います",
+    "level": "N5",
+    "tags": [
+      "existence",
+      "location",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "机の上に本があります。",
+        "reading": ""
+      },
+      {
+        "jp": "公園に子供がいます。",
+        "reading": ""
+      },
+      {
+        "jp": "冷蔵庫にジュースがあります。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g006",
+    "pattern": "〜で〜します",
+    "romaji": "",
+    "formation": "Place で Verb / Means で Verb",
+    "level": "N5",
+    "tags": [
+      "location",
+      "means",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "図書館で勉強します。",
+        "reading": ""
+      },
+      {
+        "jp": "バスで来ました。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語で話してください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g007",
+    "pattern": "〜に行きます／来ます／帰ります",
+    "romaji": "",
+    "formation": "Place に Verb of movement",
+    "level": "N5",
+    "tags": [
+      "direction",
+      "movement",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "学校に行きます。",
+        "reading": ""
+      },
+      {
+        "jp": "家に帰ります。",
+        "reading": ""
+      },
+      {
+        "jp": "日本に来ました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g008",
+    "pattern": "〜たいです",
+    "romaji": "",
+    "formation": "Verb stem + たいです",
+    "level": "N5",
+    "tags": [
+      "desire",
+      "want",
+      "auxiliary",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本に行きたいです。",
+        "reading": ""
+      },
+      {
+        "jp": "寿司を食べたいです。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語を話したいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g009",
+    "pattern": "〜ましょう",
+    "romaji": "",
+    "formation": "Verb stem + ましょう",
+    "level": "N5",
+    "tags": [
+      "volitional",
+      "suggestion",
+      "invitation",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "一緒に食べましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "映画を見ましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "休みましょうか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g010",
+    "pattern": "〜てください",
+    "romaji": "",
+    "formation": "Verb て-form + ください",
+    "level": "N5",
+    "tags": [
+      "request",
+      "polite",
+      "te-form",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ここに座ってください。",
+        "reading": ""
+      },
+      {
+        "jp": "ゆっくり話してください。",
+        "reading": ""
+      },
+      {
+        "jp": "名前を書いてください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g011",
+    "pattern": "〜ている",
+    "romaji": "",
+    "formation": "Verb て-form + いる／います",
+    "level": "N5",
+    "tags": [
+      "progressive",
+      "state",
+      "te-form",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "今、本を読んでいます。",
+        "reading": ""
+      },
+      {
+        "jp": "田中さんは結婚しています。",
+        "reading": ""
+      },
+      {
+        "jp": "赤いシャツを着ています。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g012",
+    "pattern": "〜た形 (Past tense)",
+    "romaji": "",
+    "formation": "Verb た-form",
+    "level": "N5",
+    "tags": [
+      "past-tense",
+      "conjugation",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "昨日、映画を見ました。",
+        "reading": ""
+      },
+      {
+        "jp": "ご飯を食べた。",
+        "reading": ""
+      },
+      {
+        "jp": "昨日は雨が降りました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g013",
+    "pattern": "〜ないでください",
+    "romaji": "",
+    "formation": "Verb negative stem + ないでください",
+    "level": "N5",
+    "tags": [
+      "prohibition",
+      "negative-request",
+      "polite",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ここで写真を撮らないでください。",
+        "reading": ""
+      },
+      {
+        "jp": "遅刻しないでください。",
+        "reading": ""
+      },
+      {
+        "jp": "心配しないでください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g014",
+    "pattern": "〜から〜まで",
+    "romaji": "",
+    "formation": "Start から End まで",
+    "level": "N5",
+    "tags": [
+      "range",
+      "time",
+      "place",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "9時から5時まで働きます。",
+        "reading": ""
+      },
+      {
+        "jp": "東京から大阪まで新幹線で行きます。",
+        "reading": ""
+      },
+      {
+        "jp": "月曜日から金曜日まで学校があります。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g015",
+    "pattern": "〜も",
+    "romaji": "",
+    "formation": "Noun も",
+    "level": "N5",
+    "tags": [
+      "inclusive",
+      "also",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私も学生です。",
+        "reading": ""
+      },
+      {
+        "jp": "コーヒーも飲みます。",
+        "reading": ""
+      },
+      {
+        "jp": "猫も犬も好きです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g016",
+    "pattern": "〜の",
+    "romaji": "",
+    "formation": "Noun の Noun",
+    "level": "N5",
+    "tags": [
+      "possessive",
+      "connector",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私の本です。",
+        "reading": ""
+      },
+      {
+        "jp": "日本の音楽が好きです。",
+        "reading": ""
+      },
+      {
+        "jp": "これは田中さんの傘です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g017",
+    "pattern": "〜や〜など",
+    "romaji": "",
+    "formation": "Noun や Noun など",
+    "level": "N5",
+    "tags": [
+      "listing",
+      "non-exhaustive",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "果物や野菜などを買いました。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語や英語などを勉強しています。",
+        "reading": ""
+      },
+      {
+        "jp": "東京や大阪などに行きたいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g018",
+    "pattern": "〜と〜",
+    "romaji": "",
+    "formation": "Noun と Noun / Verb plain form + と",
+    "level": "N5",
+    "tags": [
+      "listing",
+      "companion",
+      "quotation",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "りんごとみかんを食べました。",
+        "reading": ""
+      },
+      {
+        "jp": "友達と映画を見ました。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は「おはよう」と言いました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g019",
+    "pattern": "〜ね／〜よ",
+    "romaji": "",
+    "formation": "Sentence + ね / よ",
+    "level": "N5",
+    "tags": [
+      "sentence-ending",
+      "nuance",
+      "particles",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "今日は暑いですね。",
+        "reading": ""
+      },
+      {
+        "jp": "これは美味しいですよ。",
+        "reading": ""
+      },
+      {
+        "jp": "明日、テストがありますよね。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g020",
+    "pattern": "〜か",
+    "romaji": "",
+    "formation": "Sentence + か",
+    "level": "N5",
+    "tags": [
+      "question",
+      "particle",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "これは何ですか。",
+        "reading": ""
+      },
+      {
+        "jp": "日本人ですか。",
+        "reading": ""
+      },
+      {
+        "jp": "明日、学校に来ますか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g021",
+    "pattern": "〜てから",
+    "romaji": "",
+    "formation": "Verb て-form + から",
+    "level": "N5",
+    "tags": [
+      "sequence",
+      "te-form",
+      "time",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "手を洗ってから、ご飯を食べます。",
+        "reading": ""
+      },
+      {
+        "jp": "宿題をしてから、遊びます。",
+        "reading": ""
+      },
+      {
+        "jp": "シャワーを浴びてから、寝ます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g022",
+    "pattern": "〜たり〜たりします",
+    "romaji": "",
+    "formation": "Verb た-form + り … Verb た-form + りします",
+    "level": "N5",
+    "tags": [
+      "listing-actions",
+      "non-exhaustive",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "週末は映画を見たり、音楽を聴いたりします。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語を読んだり、書いたりします。",
+        "reading": ""
+      },
+      {
+        "jp": "旅行では写真を撮ったり、食べ物を食べたりしました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g023",
+    "pattern": "〜ことができる",
+    "romaji": "",
+    "formation": "Verb dictionary form + ことができる",
+    "level": "N5",
+    "tags": [
+      "ability",
+      "potential",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本語を話すことができます。",
+        "reading": ""
+      },
+      {
+        "jp": "ここで泳ぐことができますか。",
+        "reading": ""
+      },
+      {
+        "jp": "漢字を読むことができません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g024",
+    "pattern": "〜前に",
+    "romaji": "",
+    "formation": "Verb dictionary form / Noun + の + 前に",
+    "level": "N5",
+    "tags": [
+      "time",
+      "before",
+      "sequence",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "寝る前に歯を磨きます。",
+        "reading": ""
+      },
+      {
+        "jp": "食事の前に手を洗います。",
+        "reading": ""
+      },
+      {
+        "jp": "日本に来る前に、日本語を勉強しました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g025",
+    "pattern": "〜後で",
+    "romaji": "",
+    "formation": "Verb た-form / Noun + の + 後で",
+    "level": "N5",
+    "tags": [
+      "time",
+      "after",
+      "sequence",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "授業が終わった後で、図書館に行きます。",
+        "reading": ""
+      },
+      {
+        "jp": "仕事の後で、飲みに行きましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "昼ご飯を食べた後で、散歩しました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g026",
+    "pattern": "い-adjective conjugation",
+    "romaji": "",
+    "formation": "い-adj (〜い) → 〜くない / 〜かった / 〜くなかった",
+    "level": "N5",
+    "tags": [
+      "adjective",
+      "conjugation",
+      "い-adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この映画は面白くないです。",
+        "reading": ""
+      },
+      {
+        "jp": "昨日は寒かったです。",
+        "reading": ""
+      },
+      {
+        "jp": "その料理は美味しくなかったです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g027",
+    "pattern": "な-adjective conjugation",
+    "romaji": "",
+    "formation": "な-adj + です → じゃない / でした / じゃなかった",
+    "level": "N5",
+    "tags": [
+      "adjective",
+      "conjugation",
+      "な-adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この部屋は静かじゃないです。",
+        "reading": ""
+      },
+      {
+        "jp": "彼女はとても元気でした。",
+        "reading": ""
+      },
+      {
+        "jp": "その公園はあまり有名じゃなかったです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g028",
+    "pattern": "〜より〜のほうが",
+    "romaji": "",
+    "formation": "A より B のほうが Adjective",
+    "level": "N5",
+    "tags": [
+      "comparison",
+      "adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "犬より猫のほうが好きです。",
+        "reading": ""
+      },
+      {
+        "jp": "電車よりバスのほうが安いです。",
+        "reading": ""
+      },
+      {
+        "jp": "夏より冬のほうが好きです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g029",
+    "pattern": "〜が一番",
+    "romaji": "",
+    "formation": "Noun が 一番 Adjective",
+    "level": "N5",
+    "tags": [
+      "superlative",
+      "comparison",
+      "adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本語が一番難しいです。",
+        "reading": ""
+      },
+      {
+        "jp": "クラスの中で山田さんが一番背が高いです。",
+        "reading": ""
+      },
+      {
+        "jp": "季節の中で、春が一番好きです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g030",
+    "pattern": "〜から (reason)",
+    "romaji": "",
+    "formation": "Plain form / Polite form + から",
+    "level": "N5",
+    "tags": [
+      "reason",
+      "cause",
+      "conjunction",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "眠いから、早く寝ます。",
+        "reading": ""
+      },
+      {
+        "jp": "雨が降っているから、傘を持ってください。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語が好きだから、毎日勉強します。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g031",
+    "pattern": "〜ので",
+    "romaji": "",
+    "formation": "Plain form (な-adj/Noun + な) + ので",
+    "level": "N5",
+    "tags": [
+      "reason",
+      "cause",
+      "conjunction",
+      "polite",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "疲れたので、休みます。",
+        "reading": ""
+      },
+      {
+        "jp": "病気なので、学校を休みました。",
+        "reading": ""
+      },
+      {
+        "jp": "明日試験があるので、今日は早く寝ます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g032",
+    "pattern": "〜が、〜 (contrast)",
+    "romaji": "",
+    "formation": "Clause 1 + が、Clause 2",
+    "level": "N5",
+    "tags": [
+      "contrast",
+      "conjunction",
+      "but",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本語は面白いですが、難しいです。",
+        "reading": ""
+      },
+      {
+        "jp": "高いですが、美味しいです。",
+        "reading": ""
+      },
+      {
+        "jp": "行きたいですが、時間がありません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g033",
+    "pattern": "どんな〜",
+    "romaji": "",
+    "formation": "どんな + Noun",
+    "level": "N5",
+    "tags": [
+      "question-word",
+      "descriptor",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "どんな音楽が好きですか。",
+        "reading": ""
+      },
+      {
+        "jp": "どんな人が好きですか。",
+        "reading": ""
+      },
+      {
+        "jp": "日本はどんな国ですか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g034",
+    "pattern": "〜くなる / 〜になる",
+    "romaji": "",
+    "formation": "い-adj stem + くなる / な-adj or Noun + になる",
+    "level": "N5",
+    "tags": [
+      "change",
+      "become",
+      "state",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "春になると、暖かくなります。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語が上手になりたいです。",
+        "reading": ""
+      },
+      {
+        "jp": "大人になったら、医者になりたい。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g035",
+    "pattern": "〜てもいいです",
+    "romaji": "",
+    "formation": "Verb て-form + もいいです",
+    "level": "N5",
+    "tags": [
+      "permission",
+      "te-form",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ここで食べてもいいですか。",
+        "reading": ""
+      },
+      {
+        "jp": "窓を開けてもいいです。",
+        "reading": ""
+      },
+      {
+        "jp": "この本を借りてもいいですか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g036",
+    "pattern": "〜てはいけません",
+    "romaji": "",
+    "formation": "Verb て-form + はいけません",
+    "level": "N5",
+    "tags": [
+      "prohibition",
+      "must-not",
+      "rules",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ここでタバコを吸ってはいけません。",
+        "reading": ""
+      },
+      {
+        "jp": "授業中に携帯を使ってはいけません。",
+        "reading": ""
+      },
+      {
+        "jp": "嘘をついてはいけません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g037",
+    "pattern": "〜なければなりません",
+    "romaji": "",
+    "formation": "Verb nai-stem + なければなりません",
+    "level": "N5",
+    "tags": [
+      "obligation",
+      "must",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "明日、早く起きなければなりません。",
+        "reading": ""
+      },
+      {
+        "jp": "宿題をしなければなりません。",
+        "reading": ""
+      },
+      {
+        "jp": "薬を飲まなければなりません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g038",
+    "pattern": "〜でしょう / 〜だろう",
+    "romaji": "",
+    "formation": "Plain form + でしょう / だろう",
+    "level": "N5",
+    "tags": [
+      "conjecture",
+      "probability",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "明日は雨が降るでしょう。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は来ないだろう。",
+        "reading": ""
+      },
+      {
+        "jp": "たぶん大丈夫でしょう。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g039",
+    "pattern": "〜と思います",
+    "romaji": "",
+    "formation": "Plain form + と思います",
+    "level": "N5",
+    "tags": [
+      "opinion",
+      "belief",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本語は面白いと思います。",
+        "reading": ""
+      },
+      {
+        "jp": "明日は晴れると思います。",
+        "reading": ""
+      },
+      {
+        "jp": "彼女は来ないと思います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g040",
+    "pattern": "〜そうです (hearsay)",
+    "romaji": "",
+    "formation": "Plain form + そうです",
+    "level": "N5",
+    "tags": [
+      "hearsay",
+      "reported-speech",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "田中さんは来月結婚するそうです。",
+        "reading": ""
+      },
+      {
+        "jp": "明日は休みだそうです。",
+        "reading": ""
+      },
+      {
+        "jp": "あのレストランは美味しいそうです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g041",
+    "pattern": "〜時",
+    "romaji": "",
+    "formation": "Verb / Adjective plain form + 時 / Noun + の + 時",
+    "level": "N5",
+    "tags": [
+      "time",
+      "when",
+      "conjunction",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "子供の時、よく公園で遊びました。",
+        "reading": ""
+      },
+      {
+        "jp": "日本に来た時、富士山を見ました。",
+        "reading": ""
+      },
+      {
+        "jp": "暇な時、映画を見ます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g042",
+    "pattern": "毎〜 (frequency words)",
+    "romaji": "",
+    "formation": "毎 + time noun",
+    "level": "N5",
+    "tags": [
+      "frequency",
+      "time",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "毎日日本語を勉強します。",
+        "reading": ""
+      },
+      {
+        "jp": "毎週映画を見ます。",
+        "reading": ""
+      },
+      {
+        "jp": "毎朝コーヒーを飲みます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g043",
+    "pattern": "〜ごろ / 〜ぐらい",
+    "romaji": "",
+    "formation": "Time/Number + ごろ / ぐらい (くらい)",
+    "level": "N5",
+    "tags": [
+      "approximation",
+      "time",
+      "quantity",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "7時ごろ起きます。",
+        "reading": ""
+      },
+      {
+        "jp": "一時間ぐらい勉強しました。",
+        "reading": ""
+      },
+      {
+        "jp": "来週ごろ、返事をします。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g044",
+    "pattern": "〜番目 (ordinal numbers)",
+    "romaji": "",
+    "formation": "Number + 番目",
+    "level": "N5",
+    "tags": [
+      "numbers",
+      "ordinal",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私は三番目に到着しました。",
+        "reading": ""
+      },
+      {
+        "jp": "左から二番目の人が田中さんです。",
+        "reading": ""
+      },
+      {
+        "jp": "これが一番目の質問です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g045",
+    "pattern": "〜くらい / 〜ほど (degree)",
+    "romaji": "",
+    "formation": "Noun / Amount + くらい / ほど",
+    "level": "N5",
+    "tags": [
+      "degree",
+      "extent",
+      "comparison",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "死ぬほど疲れました。",
+        "reading": ""
+      },
+      {
+        "jp": "彼女ほど優しい人はいません。",
+        "reading": ""
+      },
+      {
+        "jp": "一時間くらい待ちました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g046",
+    "pattern": "あげる / もらう / くれる",
+    "romaji": "",
+    "formation": "Verb て-form + あげる / もらう / くれる",
+    "level": "N5",
+    "tags": [
+      "giving",
+      "receiving",
+      "directional",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "友達にプレゼントをあげました。",
+        "reading": ""
+      },
+      {
+        "jp": "先生に本をもらいました。",
+        "reading": ""
+      },
+      {
+        "jp": "母が手紙を書いてくれました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g047",
+    "pattern": "〜と言います",
+    "romaji": "",
+    "formation": "Quoted speech + と言います / と言いました",
+    "level": "N5",
+    "tags": [
+      "quotation",
+      "speech",
+      "naming",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私の名前は田中と言います。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は「明日来ます」と言いました。",
+        "reading": ""
+      },
+      {
+        "jp": "これは日本語で何と言いますか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g048",
+    "pattern": "〜方 (〜かた)",
+    "romaji": "",
+    "formation": "Verb stem + 方",
+    "level": "N5",
+    "tags": [
+      "method",
+      "how-to",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この漢字の書き方を教えてください。",
+        "reading": ""
+      },
+      {
+        "jp": "納豆の食べ方が分かりません。",
+        "reading": ""
+      },
+      {
+        "jp": "この電話の使い方を教えてもらえますか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g049",
+    "pattern": "〜すぎる",
+    "romaji": "",
+    "formation": "い-adj stem / な-adj stem / Verb stem + すぎる",
+    "level": "N5",
+    "tags": [
+      "excess",
+      "too-much",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この料理は辛すぎます。",
+        "reading": ""
+      },
+      {
+        "jp": "昨日、食べすぎました。",
+        "reading": ""
+      },
+      {
+        "jp": "この服は私には大きすぎます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g050",
+    "pattern": "〜やすい / 〜にくい",
+    "romaji": "",
+    "formation": "Verb stem + やすい / にくい",
+    "level": "N5",
+    "tags": [
+      "ease",
+      "difficulty",
+      "adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この本は読みやすいです。",
+        "reading": ""
+      },
+      {
+        "jp": "漢字は書きにくいです。",
+        "reading": ""
+      },
+      {
+        "jp": "この道は歩きやすいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g051",
+    "pattern": "〜ようです / 〜みたいです",
+    "romaji": "",
+    "formation": "Plain form + ようです / みたいです",
+    "level": "N5",
+    "tags": [
+      "inference",
+      "appearance",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "彼女は疲れているようです。",
+        "reading": ""
+      },
+      {
+        "jp": "外は寒いみたいです。",
+        "reading": ""
+      },
+      {
+        "jp": "電車が遅れているようです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g052",
+    "pattern": "〜かもしれません",
+    "romaji": "",
+    "formation": "Plain form + かもしれません / かもしれない",
+    "level": "N5",
+    "tags": [
+      "possibility",
+      "uncertainty",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "明日は雨が降るかもしれません。",
+        "reading": ""
+      },
+      {
+        "jp": "彼女は知らないかもしれない。",
+        "reading": ""
+      },
+      {
+        "jp": "これは難しいかもしれませんが、頑張ります。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g053",
+    "pattern": "〜ながら",
+    "romaji": "",
+    "formation": "Verb stem + ながら",
+    "level": "N5",
+    "tags": [
+      "simultaneous",
+      "while",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "音楽を聴きながら勉強します。",
+        "reading": ""
+      },
+      {
+        "jp": "歩きながら話しましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "テレビを見ながらご飯を食べました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g054",
+    "pattern": "〜でも",
+    "romaji": "",
+    "formation": "Noun + でも / Question word + でも",
+    "level": "N5",
+    "tags": [
+      "inclusive",
+      "even",
+      "any",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "子供でも分かる本です。",
+        "reading": ""
+      },
+      {
+        "jp": "なんでも食べます。",
+        "reading": ""
+      },
+      {
+        "jp": "お茶でもどうですか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g055",
+    "pattern": "〜ために / 〜のために",
+    "romaji": "",
+    "formation": "Verb dictionary form + ために / Noun + のために",
+    "level": "N5",
+    "tags": [
+      "purpose",
+      "benefit",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本語を勉強するために、毎日練習します。",
+        "reading": ""
+      },
+      {
+        "jp": "家族のために働いています。",
+        "reading": ""
+      },
+      {
+        "jp": "健康のために運動します。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g056",
+    "pattern": "〜し〜し",
+    "romaji": "",
+    "formation": "Clause 1 + し、Clause 2 + し (〜し)",
+    "level": "N5",
+    "tags": [
+      "reason",
+      "listing",
+      "conjunction",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "この街は安全だし、きれいだし、住みやすいです。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は頭がいいし、優しいし、好きです。",
+        "reading": ""
+      },
+      {
+        "jp": "お腹も空いたし、疲れたし、帰りましょう。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g057",
+    "pattern": "〜たら",
+    "romaji": "",
+    "formation": "Verb / Adj た-form + ら",
+    "level": "N5",
+    "tags": [
+      "conditional",
+      "if-when",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "宿題が終わったら、遊びましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "春になったら、お花見をしましょう。",
+        "reading": ""
+      },
+      {
+        "jp": "困ったら、遠慮なく言ってください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g058",
+    "pattern": "〜ば〜ほど",
+    "romaji": "",
+    "formation": "Verb ば-form / い-adj ければ + Verb/Adj + ほど",
+    "level": "N5",
+    "tags": [
+      "proportional",
+      "conditional",
+      "comparison",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "練習すればするほど、上手になります。",
+        "reading": ""
+      },
+      {
+        "jp": "高ければ高いほど、品質がいいです。",
+        "reading": ""
+      },
+      {
+        "jp": "知れば知るほど、日本語が面白くなります。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g059",
+    "pattern": "〜だけ",
+    "romaji": "",
+    "formation": "Noun / Verb plain form + だけ",
+    "level": "N5",
+    "tags": [
+      "limit",
+      "only",
+      "restriction",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "水だけ飲みます。",
+        "reading": ""
+      },
+      {
+        "jp": "少しだけ待ってください。",
+        "reading": ""
+      },
+      {
+        "jp": "一回だけ見せてください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n5_g060",
+    "pattern": "〜しか〜ない",
+    "romaji": "",
+    "formation": "Noun / Amount + しか + Negative verb",
+    "level": "N5",
+    "tags": [
+      "limit",
+      "only",
+      "negative",
+      "insufficiency",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "百円しかありません。",
+        "reading": ""
+      },
+      {
+        "jp": "日本語しか話せません。",
+        "reading": ""
+      },
+      {
+        "jp": "三人しか来ませんでした。",
+        "reading": ""
+      }
+    ]
+  }
+]

@@ -3,17 +3,22 @@ import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import {
-  RefreshCw, GraduationCap, Flame, Star, ChevronRight,
+  RefreshCw, GraduationCap, ChevronRight,
   Sparkles, ArrowRight, BookOpen, Languages, Layers, BookMarked,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useProgressStore } from '../../store/progressStore'
+import { useReadingStore } from '../../store/readingStore'
 import { useSettingsStore } from '../../store/settingsStore'
-import { t } from '../../i18n'
+import { useI18n, t } from '../../i18n'
+import { getUserLevelProgress } from '../../utils/progressCalculator'
 import { sectionsByGroup, TINTS } from '../../config/sections'
 import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
+import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
+import JellyStreakBadge from '../streak/JellyStreakBadge'
+import WaveXPBadge from '../common/WaveXPBadge'
 
 function StatValue({ value, loading }) {
   if (loading && value === 0) {
@@ -74,12 +79,35 @@ function SectionTile({ section, index, stats, displayLanguage }) {
 export default function Dashboard() {
   const { profile, user } = useAuthStore()
   const navigate = useNavigate()
+  const { t } = useI18n()
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
-  const { lessonsCompleted, kanjiLearned, vocabLearned, srsReviewsDue, loadSRSDue } = useProgressStore()
+  const {
+    totalXP,
+    streak,
+    jlptLevel,
+    userLevel,
+    lessonsCompleted,
+    kanjiLearned,
+    vocabLearned,
+    srsReviewsDue,
+    loadSRSDue,
+    isStreakFrozen,
+    checkAndMaintainStreak,
+  } = useProgressStore()
+
+  const progressMap = useReadingStore((s) => s.progressMap) || {}
+  const completedStories = Object.values(progressMap).filter((p) => p?.status === 'completed').length
 
   const [loading, setLoading] = useState(true)
 
+  const currentLevel = jlptLevel || profile?.currentLevel || profile?.current_level || 'N5'
+  const currentStreak = streak ?? profile?.streakDays ?? profile?.streak_days ?? 0
+  const currentXP = totalXP ?? profile?.xpPoints ?? profile?.xp_points ?? 0
+  const displayName = profile?.displayName || profile?.display_name || profile?.username || 'Learner'
+  const levelProgress = getUserLevelProgress(currentXP)
+
   useEffect(() => {
+    checkAndMaintainStreak?.()
     if (!user) return
     // Hard timeout — never show skeletons for more than 3 seconds
     const timeout = setTimeout(() => setLoading(false), 3000)
@@ -116,11 +144,12 @@ export default function Dashboard() {
   }
 
   const greeting = getTimeGreeting()
-  const stats = { lessonsCompleted, kanjiLearned, vocabLearned, srsReviewsDue }
+  const effectiveLessons = completedStories > 0 ? completedStories : lessonsCompleted
+  const stats = { lessonsCompleted: effectiveLessons, kanjiLearned, vocabLearned, srsReviewsDue }
 
   const statDefs = [
-    { label: t('dashboard.lessons_done', displayLanguage, 'Lessons Done'), key: 'lessonsCompleted', icon: BookOpen, tint: 'blue' },
-    { label: t('dashboard.kanji_learned', displayLanguage, 'Kanji Learned'), key: 'kanjiLearned', icon: Languages, tint: 'red' },
+    { label: t('dashboard.lessons_done', displayLanguage, 'Stories Completed'), key: 'lessonsCompleted', icon: BookOpen, tint: 'blue' },
+    { label: t('dashboard.kanji_learned', displayLanguage, 'Kanji Learned'), key: 'kanjiLearned', icon: Languages, tint: 'cyan' },
     { label: t('dashboard.vocab_learned', displayLanguage, 'Vocabulary'), key: 'vocabLearned', icon: Layers, tint: 'emerald' },
     { label: t('dashboard.reviews_waiting', displayLanguage, 'Reviews Due'), key: 'srsReviewsDue', icon: RefreshCw, tint: 'orange' },
   ]
@@ -130,82 +159,91 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      {/* ── Greeting Hero ── */}
+      {/* ── Greeting Hero (100% Kando Slime Liquid Concept) ── */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-6 text-white"
+        className="relative overflow-hidden bg-gradient-to-r from-sky-500 via-cyan-600 to-blue-700 rounded-3xl p-6 text-white shadow-xl shadow-cyan-500/15 border border-cyan-400/30"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-16 -right-16 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
-          <div className="absolute -bottom-8 -left-8 w-36 h-36 bg-red-400/10 rounded-full blur-2xl" />
+          <div className="absolute -top-16 -right-16 w-56 h-56 bg-cyan-300/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-blue-400/20 rounded-full blur-2xl" />
           <motion.div
             animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-4 right-8 text-5xl opacity-20 select-none"
-          >🎌</motion.div>
+            className="absolute top-3 right-6 opacity-70 select-none drop-shadow-lg"
+          >
+            <KandoSlimeLogo size={68} showBlossom animated />
+          </motion.div>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-            className="absolute bottom-4 right-28 text-3xl opacity-10 select-none"
+            className="absolute bottom-4 right-28 text-3xl opacity-15 select-none"
           >⛩️</motion.div>
         </div>
 
         <div className="relative">
-          <p className="text-red-100 text-sm mb-0.5">{greeting.emoji} {greeting.text}</p>
-          <p className="text-red-200/60 text-xs mb-1">{greeting.sub}</p>
-          <h1 className="text-2xl font-bold">
-            {profile?.display_name || profile?.username || 'Learner'}!
+          <p className="text-cyan-100 text-sm mb-0.5">{greeting.emoji} {greeting.text}</p>
+          <p className="text-cyan-200/80 text-xs mb-1 font-medium">{greeting.sub}</p>
+          <h1 className="text-2xl font-bold tracking-tight">
+            {displayName}!
           </h1>
 
           <div className="flex items-center gap-2 mt-3 flex-wrap">
-            <span className="bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
-              <GraduationCap className="w-3 h-3" />
-              {profile?.current_level || 'N5'}
+            <span className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/20 text-white shadow-xs">
+              <GraduationCap className="w-3.5 h-3.5 text-white" />
+              {currentLevel} · Lv.{userLevel}
             </span>
-            <span className="bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
-              <Flame className="w-3 h-3" />
-              {t('common.streak', displayLanguage, { count: profile?.streak_days || 0 }, `${profile?.streak_days || 0} Day Streak`)}
-            </span>
-            <span className="bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5">
-              <Star className="w-3 h-3" />
-              {t('common.xp', displayLanguage, { count: (profile?.xp_points || 0).toLocaleString() }, `${(profile?.xp_points || 0).toLocaleString()} XP`)}
-            </span>
+
+            {/* Jelly Streak (2D Animated Slime) */}
+            <JellyStreakBadge
+              streak={currentStreak}
+              isFrozen={isStreakFrozen}
+              size="sm"
+              variant="glass"
+            />
+
+            {/* Wave XP (2D Animated Liquid Wave) */}
+            <WaveXPBadge
+              xp={currentXP}
+              size="sm"
+              variant="glass"
+            />
           </div>
 
           <div className="grid grid-cols-2 gap-3 mt-5">
             <motion.button
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/lessons')}
-              className="bg-white text-red-600 rounded-xl py-3 px-4 font-semibold
-                         hover:bg-red-50 transition-all text-sm flex items-center gap-2 shadow-lg"
+              onClick={() => navigate('/reading')}
+              className="bg-white text-cyan-700 hover:bg-cyan-50 rounded-xl py-3 px-4 font-bold
+                         transition-all text-sm flex items-center gap-2 shadow-lg shadow-cyan-950/20"
             >
-              <BookOpen className="w-4 h-4" />
-              {t('dashboard.continue_lesson', displayLanguage, 'Continue Lesson')}
-              <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-50" />
+              <BookOpen className="w-4 h-4 text-cyan-600" />
+              {t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}
+              <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
             </motion.button>
 
             {srsReviewsDue > 0 ? (
               <motion.button
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/review')}
-                className="bg-white/15 backdrop-blur-sm text-white rounded-xl py-3 px-4 font-semibold
-                           hover:bg-white/25 transition-all text-sm flex items-center gap-2 border border-white/10"
+                className="bg-white/20 backdrop-blur-md text-white rounded-xl py-3 px-4 font-semibold
+                           hover:bg-white/30 transition-all text-sm flex items-center gap-2 border border-white/20"
               >
                 <RefreshCw className="w-4 h-4" />
                 {t('dashboard.reviews_due', displayLanguage, { count: srsReviewsDue }, `${srsReviewsDue} Reviews Due`)}
-                <Sparkles className="w-3.5 h-3.5 ml-auto opacity-50" />
+                <Sparkles className="w-3.5 h-3.5 ml-auto opacity-60" />
               </motion.button>
             ) : (
               <motion.button
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/grammar')}
-                className="bg-white/15 backdrop-blur-sm text-white rounded-xl py-3 px-4 font-semibold
-                           hover:bg-white/25 transition-all text-sm flex items-center gap-2 border border-white/10"
+                className="bg-white/20 backdrop-blur-md text-white rounded-xl py-3 px-4 font-semibold
+                           hover:bg-white/30 transition-all text-sm flex items-center gap-2 border border-white/20"
               >
                 <BookMarked className="w-4 h-4" />
                 {t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}
-                <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-50" />
+                <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
               </motion.button>
             )}
           </div>
@@ -243,12 +281,12 @@ export default function Dashboard() {
 
       {/* ── Streak + Daily Goal ── */}
       <div className="grid lg:grid-cols-2 gap-4">
-        <StreakCard streak={profile?.streak_days || 0} />
+        <StreakCard streak={currentStreak} />
         <DailyGoal />
       </div>
 
       {/* ── Level Progress Chart ── */}
-      <ProgressChart level={profile?.current_level || 'N5'} />
+      <ProgressChart level={currentLevel} />
 
       {/* ── Explore: Learn ── */}
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>

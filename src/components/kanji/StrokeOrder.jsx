@@ -12,6 +12,7 @@ import {
   ChevronRight,
   CheckCircle,
 } from "lucide-react";
+import { fetchKanjiStrokes } from "../../services/kanjiStrokeService";
 
 // ── Stroke Data ───────────────────────────────────────────────────
 const KANJI_STROKES = {
@@ -70,7 +71,7 @@ const KANJI_STROKES = {
 
 const FALLBACK_STROKES = {
   strokes: ["M 20 50 L 80 50"],
-  tips: ["Horizontal stroke — detailed stroke data coming soon for this kanji"],
+  tips: ["Horizontal stroke — trace following stroke order guide"],
 }
 
 const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
@@ -80,9 +81,14 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
   const isDrawingRef  = useRef(false)
   const lastPosRef    = useRef({ x: 0, y: 0 })
 
-  const strokeData   = KANJI_STROKES[character] || FALLBACK_STROKES
+  const [activeStrokeData, setActiveStrokeData] = useState(() => KANJI_STROKES[character] || FALLBACK_STROKES)
+  const [loadingKanji, setLoadingKanji] = useState(false)
+
+  const strokeData   = activeStrokeData
   const totalStrokes = strokeData.strokes.length
   const canvasSize   = 240
+  const isKvg        = strokeData.viewBox === '0 0 109 109' || strokeData.numbers?.length > 0
+  const scale        = canvasSize / (isKvg ? 109 : 100)
 
   const [currentStroke,  setCurrentStroke]  = useState(0)
   const [isAnimating,    setIsAnimating]    = useState(false)
@@ -92,33 +98,75 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
   const [showGuide,      setShowGuide]      = useState(true)
   const [completed,      setCompleted]      = useState(false)
   const [strokeProgress, setStrokeProgress] = useState(0)
-  const [practiceResult, setPracticeResult] = useState(null) // ✅ NEW
+  const [practiceResult, setPracticeResult] = useState(null)
+
+  // ── Dynamically load authentic KanjiVG stroke data for any Joyo Kanji ──
+  useEffect(() => {
+    let isMounted = true
+    if (KANJI_STROKES[character]) {
+      setActiveStrokeData(KANJI_STROKES[character])
+      return
+    }
+
+    setLoadingKanji(true)
+    fetchKanjiStrokes(character).then((data) => {
+      if (!isMounted) return
+      if (data && data.strokes && data.strokes.length > 0) {
+        setActiveStrokeData(data)
+      } else {
+        setActiveStrokeData(FALLBACK_STROKES)
+      }
+    }).catch(() => {
+      if (isMounted) setActiveStrokeData(FALLBACK_STROKES)
+    }).finally(() => {
+      if (isMounted) setLoadingKanji(false)
+    })
+
+    return () => { isMounted = false }
+  }, [character])
 
   // ── Draw guide numbers ────────────────────────────────────────
   const drawGuideNumbers = useCallback((ctx) => {
     if (!showGuide) return
+
+    if (strokeData.numbers && strokeData.numbers.length > 0) {
+      strokeData.numbers.forEach((n, i) => {
+        const x = n.x * scale
+        const y = n.y * scale
+        ctx.fillStyle =
+          i < currentStroke   ? "rgba(239,68,68,0.9)"  :
+          i === currentStroke ? "rgba(59,130,246,0.9)"  :
+                                "rgba(100,116,139,0.5)"
+        ctx.beginPath()
+        ctx.arc(x, y, 9, 0, Math.PI * 2)
+        ctx.fill()
+        ctx.fillStyle = "white"
+        ctx.font = "bold 9px sans-serif"
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.fillText(String(n.num), x, y)
+      })
+      return
+    }
+
     strokeData.strokes.forEach((stroke, i) => {
-      const coords = stroke.match(/\d+/g).map(Number)
-      const x = coords[0]
-      const y = coords[1]
+      const coords = stroke.match(/\d+/g)?.map(Number) || [50, 50]
+      const x = (coords[0] / 100) * canvasSize
+      const y = (coords[1] / 100) * canvasSize
       ctx.fillStyle =
         i < currentStroke   ? "rgba(239,68,68,0.9)"  :
         i === currentStroke ? "rgba(59,130,246,0.9)"  :
                               "rgba(100,116,139,0.5)"
       ctx.beginPath()
-      ctx.arc(
-        (x / 100) * canvasSize,
-        (y / 100) * canvasSize,
-        10, 0, Math.PI * 2
-      )
+      ctx.arc(x, y, 10, 0, Math.PI * 2)
       ctx.fill()
       ctx.fillStyle = "white"
       ctx.font = "bold 9px sans-serif"
       ctx.textAlign = "center"
       ctx.textBaseline = "middle"
-      ctx.fillText(i + 1, (x / 100) * canvasSize, (y / 100) * canvasSize)
+      ctx.fillText(String(i + 1), x, y)
     })
-  }, [currentStroke, showGuide, strokeData.strokes, canvasSize])
+  }, [currentStroke, showGuide, strokeData, canvasSize, scale])
 
   // ── Render strokes ────────────────────────────────────────────
   const renderStrokes = useCallback(() => {
@@ -135,82 +183,98 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
     ctx.moveTo(canvasSize / 2, 0)
     ctx.lineTo(canvasSize / 2, canvasSize)
     ctx.moveTo(0, canvasSize / 2)
-    ctx.lineTo(canvasSize / 2, canvasSize / 2)
+    ctx.lineTo(canvasSize, canvasSize / 2)
     ctx.stroke()
     ctx.setLineDash([])
 
     // Completed strokes
+    ctx.save()
+    ctx.scale(scale, scale)
     strokeData.strokes.forEach((stroke, i) => {
       if (i >= currentStroke) return
-      const coords = stroke.match(/\d+/g).map(Number)
       ctx.beginPath()
       ctx.strokeStyle = "rgba(239,68,68,0.9)"
-      ctx.lineWidth = 4
+      ctx.lineWidth = 4 / scale
       ctx.lineCap = "round"
       ctx.lineJoin = "round"
+      try {
+        if (typeof Path2D !== 'undefined') {
+          ctx.stroke(new Path2D(stroke))
+          return
+        }
+      } catch {
+        // fallback
+      }
+      const coords = stroke.match(/\d+/g)?.map(Number) || []
       for (let j = 0; j < coords.length; j += 2) {
-        const x = (coords[j]     / 100) * canvasSize
-        const y = (coords[j + 1] / 100) * canvasSize
         if (j === 0) {
-          ctx.moveTo(x, y)
+          ctx.moveTo(coords[j], coords[j + 1])
         } else {
-          ctx.lineTo(x, y)
+          ctx.lineTo(coords[j], coords[j + 1])
         }
       }
       ctx.stroke()
     })
+    ctx.restore()
 
     // Animated current stroke
     if (isAnimating && currentStroke < totalStrokes) {
-      const coords = strokeData.strokes[currentStroke].match(/\d+/g).map(Number)
-      const pairs = []
-      for (let i = 0; i < coords.length; i += 2) {
-        pairs.push([
-          (coords[i]     / 100) * canvasSize,
-          (coords[i + 1] / 100) * canvasSize,
-        ])
+      const stroke = strokeData.strokes[currentStroke]
+      ctx.save()
+      ctx.scale(scale, scale)
+      ctx.strokeStyle = "rgba(59,130,246,0.95)"
+      ctx.lineWidth = 5 / scale
+      ctx.lineCap = "round"
+      ctx.lineJoin = "round"
+
+      let drawn = false
+      try {
+        if (typeof Path2D !== 'undefined') {
+          const p = new Path2D(stroke)
+          const approxLen = 140
+          ctx.setLineDash([approxLen * strokeProgress, approxLen])
+          ctx.stroke(p)
+          drawn = true
+        }
+      } catch {
+        drawn = false
       }
 
-      const totalPairs  = pairs.length - 1
-      const progressIdx = strokeProgress * totalPairs
-      const pairIdx     = Math.floor(progressIdx)
-      const t           = progressIdx - pairIdx
+      if (!drawn) {
+        const coords = stroke.match(/\d+/g)?.map(Number) || []
+        const pairs = []
+        for (let i = 0; i < coords.length; i += 2) {
+          pairs.push([coords[i], coords[i + 1]])
+        }
 
-      ctx.beginPath()
-      ctx.strokeStyle = "rgba(59,130,246,0.9)"
-      ctx.lineWidth = 5
-      ctx.lineCap = "round"
-      ctx.moveTo(pairs[0][0], pairs[0][1])
+        if (pairs.length > 0) {
+          const totalPairs  = Math.max(pairs.length - 1, 1)
+          const progressIdx = strokeProgress * totalPairs
+          const pairIdx     = Math.floor(progressIdx)
+          const t           = progressIdx - pairIdx
 
-      for (let i = 1; i <= Math.min(pairIdx + 1, totalPairs); i++) {
-        if (i <= pairIdx) {
-          ctx.lineTo(pairs[i][0], pairs[i][1])
-        } else {
-          const x = pairs[i-1][0] + (pairs[i][0] - pairs[i-1][0]) * t
-          const y = pairs[i-1][1] + (pairs[i][1] - pairs[i-1][1]) * t
-          ctx.lineTo(x, y)
+          ctx.beginPath()
+          ctx.moveTo(pairs[0][0], pairs[0][1])
+
+          for (let i = 1; i <= Math.min(pairIdx + 1, totalPairs); i++) {
+            if (i <= pairIdx) {
+              ctx.lineTo(pairs[i][0], pairs[i][1])
+            } else {
+              const x = pairs[i-1][0] + (pairs[i][0] - pairs[i-1][0]) * t
+              const y = pairs[i-1][1] + (pairs[i][1] - pairs[i-1][1]) * t
+              ctx.lineTo(x, y)
+            }
+          }
+          ctx.stroke()
         }
       }
-      ctx.stroke()
-
-      if (pairs.length > 1) {
-        const dotX = pairIdx < totalPairs
-          ? pairs[pairIdx][0] + (pairs[pairIdx+1][0] - pairs[pairIdx][0]) * t
-          : pairs[totalPairs][0]
-        const dotY = pairIdx < totalPairs
-          ? pairs[pairIdx][1] + (pairs[pairIdx+1][1] - pairs[pairIdx][1]) * t
-          : pairs[totalPairs][1]
-        ctx.beginPath()
-        ctx.fillStyle = "rgba(96,165,250,0.9)"
-        ctx.arc(dotX, dotY, 6, 0, Math.PI * 2)
-        ctx.fill()
-      }
+      ctx.restore()
     }
 
     drawGuideNumbers(ctx)
   }, [
     currentStroke, isAnimating, strokeProgress,
-    totalStrokes, strokeData.strokes, drawGuideNumbers, canvasSize, isDark,
+    totalStrokes, strokeData, drawGuideNumbers, canvasSize, isDark, scale
   ])
 
   useEffect(() => { renderStrokes() }, [renderStrokes])
@@ -376,6 +440,13 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
       {/* Canvas area */}
       <div className="relative w-60 h-60 mx-auto">
+
+        {/* Loading overlay */}
+        {loadingKanji && (
+          <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded-xl backdrop-blur-xs z-10">
+            <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
 
         {/* Ghost character */}
         {showGuide && (

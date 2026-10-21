@@ -74,10 +74,10 @@ export class SenseiGuardrails {
 
   public getRejectionMessage(intent: SenseiIntent): string {
     if (intent === SenseiIntent.PROMPT_INJECTION) {
-      return "I'm your NihonGo Master Sensei 🌸 I cannot share my internal instructions or system configuration! Let's get back to studying Japanese.";
+      return "I'm your Kando Japanese Sensei 🌸 I cannot share my internal instructions or system configuration! Let's get back to studying Japanese.";
     }
     if (intent === SenseiIntent.OUT_OF_DOMAIN) {
-      return "I'm your NihonGo Master Sensei 🌸 I'm here to help you learn Japanese. Let's get back to your Japanese practice!";
+      return "I'm your Kando Japanese Sensei 🌸 I'm here to help you learn Japanese. Let's get back to your Japanese practice!";
     }
     return "I'm sorry, I cannot process that right now.";
   }

@@ -1,0 +1,458 @@
+{
+  "n5v001": {
+    "meaning": "मैं",
+    "example": "मैं एक छात्र हूँ।"
+  },
+  "n5v002": {
+    "meaning": "आप/तुम",
+    "example": "आपका नाम क्या है?"
+  },
+  "n5v003": {
+    "meaning": "वह (पुरुष)",
+    "example": "वह डॉक्टर है।"
+  },
+  "n5v004": {
+    "meaning": "वह (स्त्री)/प्रेमिका",
+    "example": "वह शिक्षिका है।"
+  },
+  "n5v005": {
+    "meaning": "खाना",
+    "example": "मैं सुशी खाता हूँ।"
+  },
+  "n5v006": {
+    "meaning": "पीना",
+    "example": "मैं चाय पीता हूँ।"
+  },
+  "n5v007": {
+    "meaning": "जाना",
+    "example": "मैं स्कूल जाता हूँ।"
+  },
+  "n5v008": {
+    "meaning": "आना",
+    "example": "मेरा दोस्त आ रहा है।"
+  },
+  "n5v009": {
+    "meaning": "देखना",
+    "example": "मैं फिल्म देखता हूँ।"
+  },
+  "n5v010": {
+    "meaning": "सुनना/पूछना",
+    "example": "मैं संगीत सुनता हूँ।"
+  },
+  "n5v011": {
+    "meaning": "बोलना",
+    "example": "मैं जापानी बोलता हूँ।"
+  },
+  "n5v012": {
+    "meaning": "पढ़ना",
+    "example": "मैं किताब पढ़ता हूँ।"
+  },
+  "n5v013": {
+    "meaning": "लिखना",
+    "example": "मैं पत्र लिखता हूँ।"
+  },
+  "n5v014": {
+    "meaning": "खरीदना",
+    "example": "मैं सेब खरीदता हूँ।"
+  },
+  "n5v015": {
+    "meaning": "उपयोग करना",
+    "example": "मैं कंप्यूटर उपयोग करता हूँ।"
+  },
+  "n5v016": {
+    "meaning": "पढ़ाई करना",
+    "example": "मैं रोज़ जापानी पढ़ता हूँ।"
+  },
+  "n5v017": {
+    "meaning": "काम करना",
+    "example": "मैं कंपनी में काम करता हूँ।"
+  },
+  "n5v018": {
+    "meaning": "उठना",
+    "example": "6 बजे उठता हूँ।"
+  },
+  "n5v019": {
+    "meaning": "सोना",
+    "example": "11 बजे सोता हूँ।"
+  },
+  "n5v020": {
+    "meaning": "घर लौटना",
+    "example": "मैं घर लौटता हूँ।"
+  },
+  "n5v021": {
+    "meaning": "बड़ा",
+    "example": "एक बड़ा कुत्ता है।"
+  },
+  "n5v022": {
+    "meaning": "छोटा",
+    "example": "एक छोटी बिल्ली है।"
+  },
+  "n5v023": {
+    "meaning": "गर्म",
+    "example": "आज गर्मी है।"
+  },
+  "n5v024": {
+    "meaning": "ठंडा",
+    "example": "सर्दियों में ठंड होती है।"
+  },
+  "n5v025": {
+    "meaning": "स्वादिष्ट",
+    "example": "यह खाना स्वादिष्ट है।"
+  },
+  "n5v026": {
+    "meaning": "दिलचस्प/मजेदार",
+    "example": "यह किताब दिलचस्प है।"
+  },
+  "n5v027": {
+    "meaning": "प्यारा/क्यूट",
+    "example": "कितनी प्यारी बिल्ली!"
+  },
+  "n5v028": {
+    "meaning": "महँगा/ऊँचा",
+    "example": "यह बैग महँगा है।"
+  },
+  "n5v029": {
+    "meaning": "सस्ता",
+    "example": "यह दुकान सस्ती है।"
+  },
+  "n5v030": {
+    "meaning": "मुश्किल",
+    "example": "जापानी मुश्किल है।"
+  },
+  "n5v031": {
+    "meaning": "आसान/सौम्य",
+    "example": "यह सवाल आसान है।"
+  },
+  "n5v032": {
+    "meaning": "चावल/खाना",
+    "example": "खाना खाते हैं!"
+  },
+  "n5v033": {
+    "meaning": "रोटी/ब्रेड",
+    "example": "सुबह रोटी खाता हूँ।"
+  },
+  "n5v034": {
+    "meaning": "पानी",
+    "example": "मैं पानी पीता हूँ।"
+  },
+  "n5v035": {
+    "meaning": "चाय",
+    "example": "क्या चाय चाहिए?"
+  },
+  "n5v036": {
+    "meaning": "कॉफी",
+    "example": "मुझे कॉफी पसंद है।"
+  },
+  "n5v037": {
+    "meaning": "स्कूल",
+    "example": "मैं स्कूल जाता हूँ।"
+  },
+  "n5v038": {
+    "meaning": "अस्पताल",
+    "example": "मैं अस्पताल जाता हूँ।"
+  },
+  "n5v039": {
+    "meaning": "सुपरमार्केट",
+    "example": "मैं सुपरमार्केट में खरीदारी करता हूँ।"
+  },
+  "n5v040": {
+    "meaning": "रेस्तराँ",
+    "example": "मैं रेस्तराँ में खाता हूँ।"
+  },
+  "n5v041": {
+    "meaning": "आज",
+    "example": "आज सोमवार है।"
+  },
+  "n5v042": {
+    "meaning": "कल (आने वाला)",
+    "example": "कल मिलते हैं।"
+  },
+  "n5v043": {
+    "meaning": "कल (बीता हुआ)",
+    "example": "कल क्या किया?"
+  },
+  "n5v044": {
+    "meaning": "अभी",
+    "example": "अभी क्या समय है?"
+  },
+  "n5v045": {
+    "meaning": "हर दिन/रोज़",
+    "example": "मैं रोज़ व्यायाम करता हूँ।"
+  },
+  "n5v046": {
+    "meaning": "एक (सामान्य)",
+    "example": "एक सेब दीजिए।"
+  },
+  "n5v047": {
+    "meaning": "क्या",
+    "example": "यह क्या है?"
+  },
+  "n5v048": {
+    "meaning": "कहाँ",
+    "example": "शौचालय कहाँ है?"
+  },
+  "n5v049": {
+    "meaning": "कब",
+    "example": "परीक्षा कब है?"
+  },
+  "n5v050": {
+    "meaning": "कौन",
+    "example": "वह व्यक्ति कौन है?"
+  },
+  "n5v051": {
+    "meaning": "क्यों",
+    "example": "देर क्यों हुई?"
+  },
+  "n5v052": {
+    "meaning": "हाँ",
+    "example": "हाँ, समझ गया।"
+  },
+  "n5v053": {
+    "meaning": "नहीं",
+    "example": "नहीं, यह गलत है।"
+  },
+  "n5v054": {
+    "meaning": "समझ गया",
+    "example": "समझ गया, धन्यवाद।"
+  },
+  "n5v055": {
+    "meaning": "माफ़ कीजिए/क्षमा करें",
+    "example": "माफ़ कीजिए, थोड़ा रुकिए।"
+  },
+  "n5v056": {
+    "meaning": "बहुत धन्यवाद",
+    "example": "बहुत धन्यवाद, मदद हुई।"
+  },
+  "n5v057": {
+    "meaning": "कोई बात नहीं",
+    "example": "धन्यवाद। कोई बात नहीं।"
+  },
+  "n5v058": {
+    "meaning": "कृपया/मेहरबानी करके",
+    "example": "कॉफी, कृपया।"
+  },
+  "n5v059": {
+    "meaning": "ट्रेन/रेलगाड़ी",
+    "example": "मैं ट्रेन से स्कूल जाता हूँ।"
+  },
+  "n5v060": {
+    "meaning": "बस",
+    "example": "मैं बस से आया।"
+  },
+  "n5v061": {
+    "meaning": "टैक्सी",
+    "example": "मैं टैक्सी बुलाता हूँ।"
+  },
+  "n5v062": {
+    "meaning": "नाश्ता",
+    "example": "मैं रोज़ सुबह सात बजे नाश्ता करता हूँ।"
+  },
+  "n5v063": {
+    "meaning": "दोपहर का भोजन",
+    "example": "दोस्त के साथ दोपहर का खाना खाने गया।"
+  },
+  "n5v064": {
+    "meaning": "रात का खाना",
+    "example": "आज रात के खाने में करी है।"
+  },
+  "n5v065": {
+    "meaning": "स्टेशन",
+    "example": "स्टेशन के सामने मिलते हैं।"
+  },
+  "n5v066": {
+    "meaning": "दवा",
+    "example": "खाने के बाद दवा लेता हूँ।"
+  },
+  "n5v067": {
+    "meaning": "पत्र / चिट्ठी",
+    "example": "माँ को पत्र लिखा।"
+  },
+  "n5v068": {
+    "meaning": "बटुआ",
+    "example": "बटुआ घर पर भूल गया।"
+  },
+  "n5v069": {
+    "meaning": "घड़ी",
+    "example": "यह घड़ी बिल्कुल सही समय दिखाती है।"
+  },
+  "n5v070": {
+    "meaning": "छाता",
+    "example": "बारिश हो रही है इसलिए छाता ले जा रहा हूँ।"
+  },
+  "n5v071": {
+    "meaning": "जूते",
+    "example": "प्रवेश द्वार पर जूते उतारें।"
+  },
+  "n5v072": {
+    "meaning": "कपड़े",
+    "example": "नए कपड़े खरीदे।"
+  },
+  "n5v073": {
+    "meaning": "आँख",
+    "example": "मेरी आँख में दर्द है।"
+  },
+  "n5v074": {
+    "meaning": "कान",
+    "example": "ध्यान से कान लगाकर सुनता हूँ।"
+  },
+  "n5v075": {
+    "meaning": "हाथ",
+    "example": "खाने से पहले हाथ धोता हूँ।"
+  },
+  "n5v076": {
+    "meaning": "पैर",
+    "example": "बहुत चलने से पैर थक गए।"
+  },
+  "n5v077": {
+    "meaning": "मुँह",
+    "example": "कृपया मुँह पूरा खोलें।"
+  },
+  "n5v078": {
+    "meaning": "कुत्ता",
+    "example": "मेरे पास एक सफेद कुत्ता है।"
+  },
+  "n5v079": {
+    "meaning": "बिल्ली",
+    "example": "बगीचे में एक बिल्ली है।"
+  },
+  "n4_031": {
+    "meaning": "guide / information",
+    "example": "I will guide you around town."
+  },
+  "n4_032": {
+    "meaning": "contact / inform",
+    "example": "Please contact me when you arrive."
+  },
+  "n4_033": {
+    "meaning": "promise / appointment",
+    "example": "I have an appointment with a friend."
+  },
+  "n4_034": {
+    "meaning": "restraint / hesitation",
+    "example": "Please eat without hesitation."
+  },
+  "n4_035": {
+    "meaning": "complex / complicated",
+    "example": "This grammar is a bit complicated."
+  },
+  "n4_036": {
+    "meaning": "simple / easy",
+    "example": "This problem is very easy."
+  },
+  "n4_037": {
+    "meaning": "convenience / circumstances",
+    "example": "How is your availability tomorrow?"
+  },
+  "n4_038": {
+    "meaning": "scenery / landscape",
+    "example": "The scenery from the mountain is beautiful."
+  },
+  "n4_039": {
+    "meaning": "habit / custom",
+    "example": "Waking up early is a good habit."
+  },
+  "n4_040": {
+    "meaning": "technology / skill",
+    "example": "Japanese technology is advanced."
+  },
+  "n4_041": {
+    "meaning": "interest (in something)",
+    "example": "I am interested in Japanese culture."
+  },
+  "n4_042": {
+    "meaning": "opinion / view",
+    "example": "Please let me hear your opinion."
+  },
+  "n4_043": {
+    "meaning": "consultation / discussion",
+    "example": "I consulted the teacher about my future."
+  },
+  "n4_044": {
+    "meaning": "convenience",
+    "example": "Something inconvenient came up."
+  },
+  "n4_045": {
+    "meaning": "breakdown / malfunction",
+    "example": "The elevator is out of order."
+  },
+  "n3_026": {
+    "meaning": "improvement / reform",
+    "example": "We are striving to improve our services."
+  },
+  "n3_027": {
+    "meaning": "influence / effect",
+    "example": "The weather affected the harvest."
+  },
+  "n3_028": {
+    "meaning": "environment / surroundings",
+    "example": "Let us protect the natural environment."
+  },
+  "n3_029": {
+    "meaning": "responsibility / duty",
+    "example": "Fulfill one's responsibility as a leader."
+  },
+  "n3_030": {
+    "meaning": "development / growth",
+    "example": "The city is developing rapidly."
+  },
+  "n3_031": {
+    "meaning": "economy / economics",
+    "example": "Recovery of the global economy is expected."
+  },
+  "n3_032": {
+    "meaning": "effect / efficacy",
+    "example": "This medicine takes effect quickly."
+  },
+  "n3_033": {
+    "meaning": "gratitude / appreciation",
+    "example": "We appreciate everyone's support."
+  },
+  "n3_034": {
+    "meaning": "goal / target / objective",
+    "example": "We achieved our target for this term."
+  },
+  "n3_035": {
+    "meaning": "trust / confidence",
+    "example": "He is trusted by his peers."
+  },
+  "n2_031": {
+    "meaning": "policy / course of action",
+    "example": "The government's new policy was announced."
+  },
+  "n2_032": {
+    "meaning": "grasp / comprehension",
+    "example": "Accurately grasp the current situation."
+  },
+  "n2_033": {
+    "meaning": "consideration / thoughtfulness",
+    "example": "Do not forget consideration for those around you."
+  },
+  "n2_034": {
+    "meaning": "consultation / deliberation",
+    "example": "Both nations held repeated consultations."
+  },
+  "n2_035": {
+    "meaning": "quick / prompt / rapid",
+    "example": "A prompt response is required."
+  },
+  "n1_031": {
+    "meaning": "excellence / preeminence",
+    "example": "His preeminent ability was highly evaluated."
+  },
+  "n1_032": {
+    "meaning": "fragile / vulnerable",
+    "example": "Fix vulnerabilities in the system."
+  },
+  "n1_033": {
+    "meaning": "consultation / inquiry to committee",
+    "example": "Submit an inquiry to the expert committee."
+  },
+  "n1_034": {
+    "meaning": "divergence / alienation",
+    "example": "Acutely feel the divergence between ideal and reality."
+  },
+  "n1_035": {
+    "meaning": "compliance / adherence to rules",
+    "example": "Thoroughly enforce legal compliance."
+  }
+}

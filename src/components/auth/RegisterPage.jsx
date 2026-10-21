@@ -5,6 +5,7 @@ import { User, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide
 import { useAuthStore }  from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
 import toast from 'react-hot-toast'
+import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 
 // ── Data ─────────────────────────────────────────────────────
 // English, Tamil and Hindi have curated, human-written translations baked
@@ -98,7 +99,7 @@ export default function RegisterPage() {
     setLoading(true)
     try {
       await signUp(formData)
-      toast.success('Welcome to NihonGo Master! 🎌')
+      toast.success('Welcome to Kando Japanese! 🎌')
       navigate('/dashboard')
     } catch (err) {
       toast.error(err?.message || 'Registration failed')
@@ -132,9 +133,18 @@ export default function RegisterPage() {
       >
         {/* Logo */}
         <div className="text-center mb-7">
-          <div className="text-5xl mb-2">🎌</div>
+          <motion.div
+            animate={{
+              scale: [1, 1.08, 0.96, 1],
+              y: [0, -6, 1, 0],
+            }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="mb-2 inline-block"
+          >
+            <KandoSlimeLogo size={68} animated showBlossom />
+          </motion.div>
           <h1 className={`text-3xl font-bold text-foreground`}>
-            NihonGo Master
+            Kando Japanese
           </h1>
           <p className={`text-sm mt-1 font-jp text-muted-foreground`}>
             日本語を学ぼう
@@ -216,7 +226,7 @@ export default function RegisterPage() {
                       value={formData.username}
                       onChange={(e) => update('username', e.target.value)}
                       className={`${fieldBase} pl-10 ${errors.username ? 'border-red-400' : ''}`}
-                      placeholder="nihongo_master"
+                      placeholder="kando_learner"
                       autoComplete="username"
                     />
                   </div>

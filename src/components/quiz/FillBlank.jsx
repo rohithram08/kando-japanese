@@ -16,40 +16,40 @@ export default function FillBlank({ question, onAnswer, showFeedback }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+    <div className="card p-6 bg-surface border border-border shadow-card">
       {/* Question with blank */}
       <div className="text-center mb-6">
-        <p className="text-xl text-gray-800 leading-relaxed">
+        <p className="text-xl text-foreground font-jp leading-relaxed">
           {question.question.split('___').map((part, i, arr) => (
             <span key={i}>
               {part}
               {i < arr.length - 1 && (
-                <span className="inline-block border-b-2 border-red-400 min-w-[80px]
-                                 mx-1 text-red-500 font-bold">
-                  {submitted ? question.correct_answer : '　'}
+                <span className="inline-block border-b-2 border-red-500 min-w-[80px]
+                                 mx-1 text-red-600 dark:text-red-400 font-bold">
+                  {submitted ? question.correct_answer : '____'}
                 </span>
               )}
             </span>
           ))}
         </p>
         {question.hint && (
-          <p className="text-sm text-gray-400 mt-2 italic">
+          <p className="text-sm text-muted-foreground mt-2 italic">
             Hint: {question.hint}
           </p>
         )}
       </div>
 
       {/* Input */}
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
           value={input}
           onChange={e => setInput(e.target.value)}
           disabled={submitted}
           placeholder="Type your answer in Japanese..."
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl text-lg
-                     text-center focus:outline-none focus:border-red-400 transition-colors
-                     disabled:opacity-60 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 border-2 border-border bg-surface text-foreground font-jp rounded-xl text-lg
+                     text-center focus:outline-none focus:border-red-500 transition-colors
+                     disabled:opacity-60 disabled:cursor-not-allowed placeholder:text-muted-foreground"
           autoFocus
         />
 
@@ -57,8 +57,8 @@ export default function FillBlank({ question, onAnswer, showFeedback }) {
           <button
             type="submit"
             disabled={!input.trim()}
-            className="w-full py-3 bg-red-500 text-white rounded-xl font-semibold
-                       hover:bg-red-600 transition-colors disabled:opacity-40"
+            className="w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold
+                       transition-colors disabled:opacity-40 shadow-sm"
           >
             Submit Answer
           </button>
@@ -72,21 +72,21 @@ export default function FillBlank({ question, onAnswer, showFeedback }) {
           animate={{ opacity: 1, y: 0 }}
           className={`mt-4 p-4 rounded-xl text-sm ${
             input.trim() === question.correct_answer
-              ? 'bg-green-50 border border-green-200'
-              : 'bg-red-50 border border-red-200'
+              ? 'bg-green-50 dark:bg-green-950/40 border border-green-200 dark:border-green-800/60'
+              : 'bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/60'
           }`}
         >
           <p className={`font-bold mb-1 ${
             input.trim() === question.correct_answer
-              ? 'text-green-700'
-              : 'text-red-700'
+              ? 'text-green-700 dark:text-green-300'
+              : 'text-red-700 dark:text-red-300'
           }`}>
             {input.trim() === question.correct_answer
               ? '✓ Correct!'
               : `✗ The answer is: ${question.correct_answer}`}
           </p>
           {question.explanation && (
-            <p className="text-gray-600">{question.explanation}</p>
+            <p className="text-muted-foreground">{question.explanation}</p>
           )}
         </motion.div>
       )}

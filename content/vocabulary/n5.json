@@ -1,0 +1,8777 @@
+[
+  {
+    "id": "n5v001",
+    "word": "私",
+    "reading": "わたし",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "私は学生です。"
+    }
+  },
+  {
+    "id": "n5v002",
+    "word": "あなた",
+    "reading": "あなた",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "あなたの名前は何ですか。"
+    }
+  },
+  {
+    "id": "n5v003",
+    "word": "彼",
+    "reading": "かれ",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "彼は医者です。"
+    }
+  },
+  {
+    "id": "n5v004",
+    "word": "彼女",
+    "reading": "かのじょ",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "彼女は先生です。"
+    }
+  },
+  {
+    "id": "n5v005",
+    "word": "食べる",
+    "reading": "たべる",
+    "romaji": "",
+    "pos": "verb (ichidan)",
+    "level": "N5",
+    "tags": [
+      "verb (ichidan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "寿司を食べます。"
+    }
+  },
+  {
+    "id": "n5v006",
+    "word": "飲む",
+    "reading": "のむ",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "お茶を飲みます。"
+    }
+  },
+  {
+    "id": "n5v007",
+    "word": "行く",
+    "reading": "いく",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "学校に行きます。"
+    }
+  },
+  {
+    "id": "n5v008",
+    "word": "来る",
+    "reading": "くる",
+    "romaji": "",
+    "pos": "verb (irregular)",
+    "level": "N5",
+    "tags": [
+      "verb (irregular)",
+      "N5"
+    ],
+    "example": {
+      "jp": "友達が来ます。"
+    }
+  },
+  {
+    "id": "n5v009",
+    "word": "見る",
+    "reading": "みる",
+    "romaji": "",
+    "pos": "verb (ichidan)",
+    "level": "N5",
+    "tags": [
+      "verb (ichidan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "映画を見ます。"
+    }
+  },
+  {
+    "id": "n5v010",
+    "word": "聞く",
+    "reading": "きく",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "音楽を聞きます。"
+    }
+  },
+  {
+    "id": "n5v011",
+    "word": "話す",
+    "reading": "はなす",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "日本語を話します。"
+    }
+  },
+  {
+    "id": "n5v012",
+    "word": "読む",
+    "reading": "よむ",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "本を読みます。"
+    }
+  },
+  {
+    "id": "n5v013",
+    "word": "書く",
+    "reading": "かく",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "手紙を書きます。"
+    }
+  },
+  {
+    "id": "n5v014",
+    "word": "買う",
+    "reading": "かう",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "りんごを買います。"
+    }
+  },
+  {
+    "id": "n5v015",
+    "word": "使う",
+    "reading": "つかう",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "パソコンを使います。"
+    }
+  },
+  {
+    "id": "n5v016",
+    "word": "勉強する",
+    "reading": "べんきょうする",
+    "romaji": "",
+    "pos": "verb (suru)",
+    "level": "N5",
+    "tags": [
+      "verb (suru)",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎日日本語を勉強します。"
+    }
+  },
+  {
+    "id": "n5v017",
+    "word": "仕事する",
+    "reading": "しごとする",
+    "romaji": "",
+    "pos": "verb (suru)",
+    "level": "N5",
+    "tags": [
+      "verb (suru)",
+      "N5"
+    ],
+    "example": {
+      "jp": "会社で仕事します。"
+    }
+  },
+  {
+    "id": "n5v018",
+    "word": "起きる",
+    "reading": "おきる",
+    "romaji": "",
+    "pos": "verb (ichidan)",
+    "level": "N5",
+    "tags": [
+      "verb (ichidan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "６時に起きます。"
+    }
+  },
+  {
+    "id": "n5v019",
+    "word": "寝る",
+    "reading": "ねる",
+    "romaji": "",
+    "pos": "verb (ichidan)",
+    "level": "N5",
+    "tags": [
+      "verb (ichidan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "11時に寝ます。"
+    }
+  },
+  {
+    "id": "n5v020",
+    "word": "帰る",
+    "reading": "かえる",
+    "romaji": "",
+    "pos": "verb (godan)",
+    "level": "N5",
+    "tags": [
+      "verb (godan)",
+      "N5"
+    ],
+    "example": {
+      "jp": "家に帰ります。"
+    }
+  },
+  {
+    "id": "n5v021",
+    "word": "大きい",
+    "reading": "おおきい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "大きい犬がいます。"
+    }
+  },
+  {
+    "id": "n5v022",
+    "word": "小さい",
+    "reading": "ちいさい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "小さい猫がいます。"
+    }
+  },
+  {
+    "id": "n5v023",
+    "word": "暑い",
+    "reading": "あつい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "今日は暑いです。"
+    }
+  },
+  {
+    "id": "n5v024",
+    "word": "寒い",
+    "reading": "さむい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "冬は寒いです。"
+    }
+  },
+  {
+    "id": "n5v025",
+    "word": "美味しい",
+    "reading": "おいしい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "この料理は美味しいです。"
+    }
+  },
+  {
+    "id": "n5v026",
+    "word": "面白い",
+    "reading": "おもしろい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "この本は面白いです。"
+    }
+  },
+  {
+    "id": "n5v027",
+    "word": "かわいい",
+    "reading": "かわいい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "かわいい猫ですね。"
+    }
+  },
+  {
+    "id": "n5v028",
+    "word": "高い",
+    "reading": "たかい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "このバッグは高いです。"
+    }
+  },
+  {
+    "id": "n5v029",
+    "word": "安い",
+    "reading": "やすい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "このお店は安いです。"
+    }
+  },
+  {
+    "id": "n5v030",
+    "word": "難しい",
+    "reading": "むずかしい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "日本語は難しいです。"
+    }
+  },
+  {
+    "id": "n5v031",
+    "word": "易しい",
+    "reading": "やさしい",
+    "romaji": "",
+    "pos": "i-adjective",
+    "level": "N5",
+    "tags": [
+      "i-adjective",
+      "N5"
+    ],
+    "example": {
+      "jp": "この問題は易しいです。"
+    }
+  },
+  {
+    "id": "n5v032",
+    "word": "ご飯",
+    "reading": "ごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "ご飯を食べましょう。"
+    }
+  },
+  {
+    "id": "n5v033",
+    "word": "パン",
+    "reading": "パン",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "朝パンを食べます。"
+    }
+  },
+  {
+    "id": "n5v034",
+    "word": "水",
+    "reading": "みず",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "水を飲みます。"
+    }
+  },
+  {
+    "id": "n5v035",
+    "word": "お茶",
+    "reading": "おちゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "お茶を飲みますか。"
+    }
+  },
+  {
+    "id": "n5v036",
+    "word": "コーヒー",
+    "reading": "コーヒー",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "コーヒーが好きです。"
+    }
+  },
+  {
+    "id": "n5v037",
+    "word": "学校",
+    "reading": "がっこう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "学校に行きます。"
+    }
+  },
+  {
+    "id": "n5v038",
+    "word": "病院",
+    "reading": "びょういん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "病院に行きます。"
+    }
+  },
+  {
+    "id": "n5v039",
+    "word": "スーパー",
+    "reading": "スーパー",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "スーパーで買い物します。"
+    }
+  },
+  {
+    "id": "n5v040",
+    "word": "レストラン",
+    "reading": "レストラン",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "レストランで食べます。"
+    }
+  },
+  {
+    "id": "n5v041",
+    "word": "今日",
+    "reading": "きょう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "今日は月曜日です。"
+    }
+  },
+  {
+    "id": "n5v042",
+    "word": "明日",
+    "reading": "あした",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "明日会いましょう。"
+    }
+  },
+  {
+    "id": "n5v043",
+    "word": "昨日",
+    "reading": "きのう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "昨日何をしましたか。"
+    }
+  },
+  {
+    "id": "n5v044",
+    "word": "今",
+    "reading": "いま",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "今何時ですか。"
+    }
+  },
+  {
+    "id": "n5v045",
+    "word": "毎日",
+    "reading": "まいにち",
+    "romaji": "",
+    "pos": "noun/adverb",
+    "level": "N5",
+    "tags": [
+      "noun/adverb",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎日運動します。"
+    }
+  },
+  {
+    "id": "n5v046",
+    "word": "一つ",
+    "reading": "ひとつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "りんごを一つください。"
+    }
+  },
+  {
+    "id": "n5v047",
+    "word": "何",
+    "reading": "なに/なん",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "これは何ですか。"
+    }
+  },
+  {
+    "id": "n5v048",
+    "word": "どこ",
+    "reading": "どこ",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "トイレはどこですか。"
+    }
+  },
+  {
+    "id": "n5v049",
+    "word": "いつ",
+    "reading": "いつ",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "試験はいつですか。"
+    }
+  },
+  {
+    "id": "n5v050",
+    "word": "だれ",
+    "reading": "だれ",
+    "romaji": "",
+    "pos": "pronoun",
+    "level": "N5",
+    "tags": [
+      "pronoun",
+      "N5"
+    ],
+    "example": {
+      "jp": "あの人はだれですか。"
+    }
+  },
+  {
+    "id": "n5v051",
+    "word": "どうして",
+    "reading": "どうして",
+    "romaji": "",
+    "pos": "adverb",
+    "level": "N5",
+    "tags": [
+      "adverb",
+      "N5"
+    ],
+    "example": {
+      "jp": "どうして遅れましたか。"
+    }
+  },
+  {
+    "id": "n5v052",
+    "word": "はい",
+    "reading": "はい",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "はい、わかりました。"
+    }
+  },
+  {
+    "id": "n5v053",
+    "word": "いいえ",
+    "reading": "いいえ",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "いいえ、違います。"
+    }
+  },
+  {
+    "id": "n5v054",
+    "word": "わかりました",
+    "reading": "わかりました",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "わかりました、ありがとう。"
+    }
+  },
+  {
+    "id": "n5v055",
+    "word": "すみません",
+    "reading": "すみません",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "すみません、ちょっと待ってください。"
+    }
+  },
+  {
+    "id": "n5v056",
+    "word": "ありがとうございます",
+    "reading": "ありがとうございます",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "ありがとうございます、助かりました。"
+    }
+  },
+  {
+    "id": "n5v057",
+    "word": "どういたしまして",
+    "reading": "どういたしまして",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "ありがとう。どういたしまして。"
+    }
+  },
+  {
+    "id": "n5v058",
+    "word": "おねがいします",
+    "reading": "おねがいします",
+    "romaji": "",
+    "pos": "expression",
+    "level": "N5",
+    "tags": [
+      "expression",
+      "N5"
+    ],
+    "example": {
+      "jp": "コーヒーをおねがいします。"
+    }
+  },
+  {
+    "id": "n5v059",
+    "word": "電車",
+    "reading": "でんしゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "電車で学校に行きます。"
+    }
+  },
+  {
+    "id": "n5v060",
+    "word": "バス",
+    "reading": "バス",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "バスで来ました。"
+    }
+  },
+  {
+    "id": "n5v061",
+    "word": "タクシー",
+    "reading": "タクシー",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "タクシーを呼びます。"
+    }
+  },
+  {
+    "id": "n5v062",
+    "word": "朝ご飯",
+    "reading": "あさごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎朝、七時に朝ご飯を食べます。"
+    }
+  },
+  {
+    "id": "n5v063",
+    "word": "昼ご飯",
+    "reading": "ひるごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "友達と昼ご飯を食べに行きました。"
+    }
+  },
+  {
+    "id": "n5v064",
+    "word": "晩ご飯",
+    "reading": "ばんごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "今夜の晩ご飯はカレーです。"
+    }
+  },
+  {
+    "id": "n5v065",
+    "word": "駅",
+    "reading": "えき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "駅の前で会いましょう。"
+    }
+  },
+  {
+    "id": "n5v066",
+    "word": "薬",
+    "reading": "くすり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "食後に薬を飲みます。"
+    }
+  },
+  {
+    "id": "n5v067",
+    "word": "手紙",
+    "reading": "てがみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "母に手紙を書きました。"
+    }
+  },
+  {
+    "id": "n5v068",
+    "word": "財布",
+    "reading": "さいふ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "財布を家に忘れました。"
+    }
+  },
+  {
+    "id": "n5v069",
+    "word": "時計",
+    "reading": "とけい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "この時計は正確です。"
+    }
+  },
+  {
+    "id": "n5v070",
+    "word": "傘",
+    "reading": "かさ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "雨が降っているから傘を持って行きます。"
+    }
+  },
+  {
+    "id": "n5v071",
+    "word": "靴",
+    "reading": "くつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "玄関で靴を脱いでください。"
+    }
+  },
+  {
+    "id": "n5v072",
+    "word": "服",
+    "reading": "ふく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "新しい服を買いました。"
+    }
+  },
+  {
+    "id": "n5v073",
+    "word": "目",
+    "reading": "め",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "目が痛いです。"
+    }
+  },
+  {
+    "id": "n5v074",
+    "word": "耳",
+    "reading": "みみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "耳を澄まして聞きます。"
+    }
+  },
+  {
+    "id": "n5v075",
+    "word": "手",
+    "reading": "て",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "食事の前に手を洗います。"
+    }
+  },
+  {
+    "id": "n5v076",
+    "word": "足",
+    "reading": "あし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "たくさん歩いて足が疲れました。"
+    }
+  },
+  {
+    "id": "n5v077",
+    "word": "口",
+    "reading": "くち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "口を大きく開けてください。"
+    }
+  },
+  {
+    "id": "n5v078",
+    "word": "犬",
+    "reading": "いぬ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "白い犬を飼っています。"
+    }
+  },
+  {
+    "id": "n5v079",
+    "word": "猫",
+    "reading": "ねこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "noun",
+      "N5"
+    ],
+    "example": {
+      "jp": "庭に猫がいます。"
+    }
+  },
+  {
+    "id": "n5v080",
+    "word": "JLPT",
+    "reading": "Resources",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "JLPTがあります。"
+    }
+  },
+  {
+    "id": "n5v081",
+    "word": "会う",
+    "reading": "あう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "会うがあります。"
+    }
+  },
+  {
+    "id": "n5v082",
+    "word": "青",
+    "reading": "あお",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "青があります。"
+    }
+  },
+  {
+    "id": "n5v083",
+    "word": "青い",
+    "reading": "あおい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "青いがあります。"
+    }
+  },
+  {
+    "id": "n5v084",
+    "word": "赤",
+    "reading": "あか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "赤があります。"
+    }
+  },
+  {
+    "id": "n5v085",
+    "word": "赤い",
+    "reading": "あかい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "赤いがあります。"
+    }
+  },
+  {
+    "id": "n5v086",
+    "word": "明い",
+    "reading": "あかるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "明いがあります。"
+    }
+  },
+  {
+    "id": "n5v087",
+    "word": "秋",
+    "reading": "あき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "秋があります。"
+    }
+  },
+  {
+    "id": "n5v088",
+    "word": "開く",
+    "reading": "あく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "開くがあります。"
+    }
+  },
+  {
+    "id": "n5v089",
+    "word": "開ける",
+    "reading": "あける",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "開けるがあります。"
+    }
+  },
+  {
+    "id": "n5v090",
+    "word": "上げる",
+    "reading": "あげる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "上げるがあります。"
+    }
+  },
+  {
+    "id": "n5v091",
+    "word": "朝",
+    "reading": "あさ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "朝があります。"
+    }
+  },
+  {
+    "id": "n5v092",
+    "word": "朝御飯",
+    "reading": "あさごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "朝御飯があります。"
+    }
+  },
+  {
+    "id": "n5v093",
+    "word": "あさって",
+    "reading": "day",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あさってがあります。"
+    }
+  },
+  {
+    "id": "n5v094",
+    "word": "あそこ",
+    "reading": "over",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あそこがあります。"
+    }
+  },
+  {
+    "id": "n5v095",
+    "word": "遊ぶ",
+    "reading": "あそぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "遊ぶがあります。"
+    }
+  },
+  {
+    "id": "n5v096",
+    "word": "暖かい",
+    "reading": "あたたかい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "暖かいがあります。"
+    }
+  },
+  {
+    "id": "n5v097",
+    "word": "頭",
+    "reading": "あたま",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "頭があります。"
+    }
+  },
+  {
+    "id": "n5v098",
+    "word": "新しい",
+    "reading": "あたらしい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "新しいがあります。"
+    }
+  },
+  {
+    "id": "n5v099",
+    "word": "熱い",
+    "reading": "あつい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "熱いがあります。"
+    }
+  },
+  {
+    "id": "n5v100",
+    "word": "厚い",
+    "reading": "あつい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "厚いがあります。"
+    }
+  },
+  {
+    "id": "n5v101",
+    "word": "あっち",
+    "reading": "over",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あっちがあります。"
+    }
+  },
+  {
+    "id": "n5v102",
+    "word": "後",
+    "reading": "あと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "後があります。"
+    }
+  },
+  {
+    "id": "n5v103",
+    "word": "兄",
+    "reading": "あに",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "兄があります。"
+    }
+  },
+  {
+    "id": "n5v104",
+    "word": "姉",
+    "reading": "あね",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "姉があります。"
+    }
+  },
+  {
+    "id": "n5v105",
+    "word": "あの",
+    "reading": "that",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あのがあります。"
+    }
+  },
+  {
+    "id": "n5v106",
+    "word": "あびる",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あびるがあります。"
+    }
+  },
+  {
+    "id": "n5v107",
+    "word": "危ない",
+    "reading": "あぶない",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "危ないがあります。"
+    }
+  },
+  {
+    "id": "n5v108",
+    "word": "甘い",
+    "reading": "あまい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "甘いがあります。"
+    }
+  },
+  {
+    "id": "n5v109",
+    "word": "あまり",
+    "reading": "not",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あまりがあります。"
+    }
+  },
+  {
+    "id": "n5v110",
+    "word": "雨",
+    "reading": "あめ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "雨があります。"
+    }
+  },
+  {
+    "id": "n5v111",
+    "word": "飴",
+    "reading": "あめ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "飴があります。"
+    }
+  },
+  {
+    "id": "n5v112",
+    "word": "洗う",
+    "reading": "あらう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "洗うがあります。"
+    }
+  },
+  {
+    "id": "n5v113",
+    "word": "ある",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "あるがあります。"
+    }
+  },
+  {
+    "id": "n5v114",
+    "word": "歩く",
+    "reading": "あるく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "歩くがあります。"
+    }
+  },
+  {
+    "id": "n5v115",
+    "word": "言う",
+    "reading": "いう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "言うがあります。"
+    }
+  },
+  {
+    "id": "n5v116",
+    "word": "家",
+    "reading": "いえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "家があります。"
+    }
+  },
+  {
+    "id": "n5v117",
+    "word": "いくつ",
+    "reading": "how",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "いくつがあります。"
+    }
+  },
+  {
+    "id": "n5v118",
+    "word": "いくら",
+    "reading": "how",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "いくらがあります。"
+    }
+  },
+  {
+    "id": "n5v119",
+    "word": "池",
+    "reading": "いけ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "池があります。"
+    }
+  },
+  {
+    "id": "n5v120",
+    "word": "医者",
+    "reading": "いしゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "医者があります。"
+    }
+  },
+  {
+    "id": "n5v121",
+    "word": "忙しい",
+    "reading": "いそがしい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "忙しいがあります。"
+    }
+  },
+  {
+    "id": "n5v122",
+    "word": "痛い",
+    "reading": "いたい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "痛いがあります。"
+    }
+  },
+  {
+    "id": "n5v123",
+    "word": "一",
+    "reading": "いち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一があります。"
+    }
+  },
+  {
+    "id": "n5v124",
+    "word": "一日",
+    "reading": "いちにち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一日があります。"
+    }
+  },
+  {
+    "id": "n5v125",
+    "word": "いちばん",
+    "reading": "best,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "いちばんがあります。"
+    }
+  },
+  {
+    "id": "n5v126",
+    "word": "五日",
+    "reading": "いつか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "五日があります。"
+    }
+  },
+  {
+    "id": "n5v127",
+    "word": "一緒",
+    "reading": "いっしょ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一緒があります。"
+    }
+  },
+  {
+    "id": "n5v128",
+    "word": "五つ",
+    "reading": "いつつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "五つがあります。"
+    }
+  },
+  {
+    "id": "n5v129",
+    "word": "意味",
+    "reading": "いみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "意味があります。"
+    }
+  },
+  {
+    "id": "n5v130",
+    "word": "妹",
+    "reading": "いもうと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "妹があります。"
+    }
+  },
+  {
+    "id": "n5v131",
+    "word": "嫌",
+    "reading": "いや",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "嫌があります。"
+    }
+  },
+  {
+    "id": "n5v132",
+    "word": "入口",
+    "reading": "いりぐち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "入口があります。"
+    }
+  },
+  {
+    "id": "n5v133",
+    "word": "居る",
+    "reading": "いる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "居るがあります。"
+    }
+  },
+  {
+    "id": "n5v134",
+    "word": "要る",
+    "reading": "いる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "要るがあります。"
+    }
+  },
+  {
+    "id": "n5v135",
+    "word": "入れる",
+    "reading": "いれる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "入れるがあります。"
+    }
+  },
+  {
+    "id": "n5v136",
+    "word": "色",
+    "reading": "いろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "色があります。"
+    }
+  },
+  {
+    "id": "n5v137",
+    "word": "上",
+    "reading": "うえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "上があります。"
+    }
+  },
+  {
+    "id": "n5v138",
+    "word": "後ろ",
+    "reading": "うしろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "後ろがあります。"
+    }
+  },
+  {
+    "id": "n5v139",
+    "word": "薄い",
+    "reading": "うすい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "薄いがあります。"
+    }
+  },
+  {
+    "id": "n5v140",
+    "word": "歌",
+    "reading": "うた",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "歌があります。"
+    }
+  },
+  {
+    "id": "n5v141",
+    "word": "歌う",
+    "reading": "うたう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "歌うがあります。"
+    }
+  },
+  {
+    "id": "n5v142",
+    "word": "生まれる",
+    "reading": "うまれる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "生まれるがあります。"
+    }
+  },
+  {
+    "id": "n5v143",
+    "word": "海",
+    "reading": "うみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "海があります。"
+    }
+  },
+  {
+    "id": "n5v144",
+    "word": "売る",
+    "reading": "うる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "売るがあります。"
+    }
+  },
+  {
+    "id": "n5v145",
+    "word": "煩い",
+    "reading": "うるさい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "煩いがあります。"
+    }
+  },
+  {
+    "id": "n5v146",
+    "word": "上着",
+    "reading": "うわぎ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "上着があります。"
+    }
+  },
+  {
+    "id": "n5v147",
+    "word": "絵",
+    "reading": "え",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "絵があります。"
+    }
+  },
+  {
+    "id": "n5v148",
+    "word": "映画",
+    "reading": "えいが",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "映画があります。"
+    }
+  },
+  {
+    "id": "n5v149",
+    "word": "映画館",
+    "reading": "えいがかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "映画館があります。"
+    }
+  },
+  {
+    "id": "n5v150",
+    "word": "英語",
+    "reading": "えいご",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "英語があります。"
+    }
+  },
+  {
+    "id": "n5v151",
+    "word": "鉛筆",
+    "reading": "えんぴつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "鉛筆があります。"
+    }
+  },
+  {
+    "id": "n5v152",
+    "word": "多い",
+    "reading": "おおい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "多いがあります。"
+    }
+  },
+  {
+    "id": "n5v153",
+    "word": "大きな",
+    "reading": "おおきな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大きながあります。"
+    }
+  },
+  {
+    "id": "n5v154",
+    "word": "大勢",
+    "reading": "おおぜい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大勢があります。"
+    }
+  },
+  {
+    "id": "n5v155",
+    "word": "お母さん",
+    "reading": "おかあさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お母さんがあります。"
+    }
+  },
+  {
+    "id": "n5v156",
+    "word": "お菓子",
+    "reading": "おかし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お菓子があります。"
+    }
+  },
+  {
+    "id": "n5v157",
+    "word": "お金",
+    "reading": "おかね",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お金があります。"
+    }
+  },
+  {
+    "id": "n5v158",
+    "word": "置く",
+    "reading": "おく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "置くがあります。"
+    }
+  },
+  {
+    "id": "n5v159",
+    "word": "奥さん",
+    "reading": "おくさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "奥さんがあります。"
+    }
+  },
+  {
+    "id": "n5v160",
+    "word": "お酒",
+    "reading": "おさけ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お酒があります。"
+    }
+  },
+  {
+    "id": "n5v161",
+    "word": "お皿",
+    "reading": "おさら",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お皿があります。"
+    }
+  },
+  {
+    "id": "n5v162",
+    "word": "伯父/叔父",
+    "reading": "おじいさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "伯父/叔父があります。"
+    }
+  },
+  {
+    "id": "n5v163",
+    "word": "教える",
+    "reading": "おしえる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "教えるがあります。"
+    }
+  },
+  {
+    "id": "n5v164",
+    "word": "押す",
+    "reading": "おす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "押すがあります。"
+    }
+  },
+  {
+    "id": "n5v165",
+    "word": "遅い",
+    "reading": "おそい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "遅いがあります。"
+    }
+  },
+  {
+    "id": "n5v166",
+    "word": "お手洗い",
+    "reading": "おてあらい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お手洗いがあります。"
+    }
+  },
+  {
+    "id": "n5v167",
+    "word": "お父さん",
+    "reading": "おとうさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お父さんがあります。"
+    }
+  },
+  {
+    "id": "n5v168",
+    "word": "弟",
+    "reading": "おとうと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "弟があります。"
+    }
+  },
+  {
+    "id": "n5v169",
+    "word": "男",
+    "reading": "おとこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "男があります。"
+    }
+  },
+  {
+    "id": "n5v170",
+    "word": "男の子",
+    "reading": "おとこのこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "男の子があります。"
+    }
+  },
+  {
+    "id": "n5v171",
+    "word": "一昨日",
+    "reading": "おととい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一昨日があります。"
+    }
+  },
+  {
+    "id": "n5v172",
+    "word": "一昨年",
+    "reading": "おととし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一昨年があります。"
+    }
+  },
+  {
+    "id": "n5v173",
+    "word": "大人",
+    "reading": "おとな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大人があります。"
+    }
+  },
+  {
+    "id": "n5v174",
+    "word": "同じ",
+    "reading": "おなじ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "同じがあります。"
+    }
+  },
+  {
+    "id": "n5v175",
+    "word": "お兄さん",
+    "reading": "おにいさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お兄さんがあります。"
+    }
+  },
+  {
+    "id": "n5v176",
+    "word": "お姉さん",
+    "reading": "おねえさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お姉さんがあります。"
+    }
+  },
+  {
+    "id": "n5v177",
+    "word": "おばあさん",
+    "reading": "grandmother,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "おばあさんがあります。"
+    }
+  },
+  {
+    "id": "n5v178",
+    "word": "伯母さん/叔母さん",
+    "reading": "おばさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "伯母さん/叔母さんがあります。"
+    }
+  },
+  {
+    "id": "n5v179",
+    "word": "お風呂",
+    "reading": "おふろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お風呂があります。"
+    }
+  },
+  {
+    "id": "n5v180",
+    "word": "お弁当",
+    "reading": "おべんとう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "お弁当があります。"
+    }
+  },
+  {
+    "id": "n5v181",
+    "word": "覚える",
+    "reading": "おぼえる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "覚えるがあります。"
+    }
+  },
+  {
+    "id": "n5v182",
+    "word": "おまわりさん",
+    "reading": "friendly",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "おまわりさんがあります。"
+    }
+  },
+  {
+    "id": "n5v183",
+    "word": "重い",
+    "reading": "おもい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "重いがあります。"
+    }
+  },
+  {
+    "id": "n5v184",
+    "word": "泳ぐ",
+    "reading": "およぐ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "泳ぐがあります。"
+    }
+  },
+  {
+    "id": "n5v185",
+    "word": "降りる",
+    "reading": "おりる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "降りるがあります。"
+    }
+  },
+  {
+    "id": "n5v186",
+    "word": "終る",
+    "reading": "おわる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "終るがあります。"
+    }
+  },
+  {
+    "id": "n5v187",
+    "word": "音楽",
+    "reading": "おんがく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "音楽があります。"
+    }
+  },
+  {
+    "id": "n5v188",
+    "word": "女",
+    "reading": "おんな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "女があります。"
+    }
+  },
+  {
+    "id": "n5v189",
+    "word": "女の子",
+    "reading": "おんなのこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "女の子があります。"
+    }
+  },
+  {
+    "id": "n5v190",
+    "word": "外国",
+    "reading": "がいこく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "外国があります。"
+    }
+  },
+  {
+    "id": "n5v191",
+    "word": "外国人",
+    "reading": "がいこくじん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "外国人があります。"
+    }
+  },
+  {
+    "id": "n5v192",
+    "word": "会社",
+    "reading": "かいしゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "会社があります。"
+    }
+  },
+  {
+    "id": "n5v193",
+    "word": "階段",
+    "reading": "かいだん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "階段があります。"
+    }
+  },
+  {
+    "id": "n5v194",
+    "word": "買い物",
+    "reading": "かいもの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "買い物があります。"
+    }
+  },
+  {
+    "id": "n5v195",
+    "word": "返す",
+    "reading": "かえす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "返すがあります。"
+    }
+  },
+  {
+    "id": "n5v196",
+    "word": "かかる",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "かかるがあります。"
+    }
+  },
+  {
+    "id": "n5v197",
+    "word": "学生",
+    "reading": "がくせい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "学生があります。"
+    }
+  },
+  {
+    "id": "n5v198",
+    "word": "かける",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "かけるがあります。"
+    }
+  },
+  {
+    "id": "n5v199",
+    "word": "貸す",
+    "reading": "かす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "貸すがあります。"
+    }
+  },
+  {
+    "id": "n5v200",
+    "word": "風",
+    "reading": "かぜ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "風があります。"
+    }
+  },
+  {
+    "id": "n5v201",
+    "word": "風邪",
+    "reading": "かぜ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "風邪があります。"
+    }
+  },
+  {
+    "id": "n5v202",
+    "word": "家族",
+    "reading": "かぞく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "家族があります。"
+    }
+  },
+  {
+    "id": "n5v203",
+    "word": "方",
+    "reading": "かた",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "方があります。"
+    }
+  },
+  {
+    "id": "n5v204",
+    "word": "家庭",
+    "reading": "かてい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "家庭があります。"
+    }
+  },
+  {
+    "id": "n5v205",
+    "word": "角",
+    "reading": "かど",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "角があります。"
+    }
+  },
+  {
+    "id": "n5v206",
+    "word": "かばん",
+    "reading": "bag,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "かばんがあります。"
+    }
+  },
+  {
+    "id": "n5v207",
+    "word": "花瓶",
+    "reading": "かびん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "花瓶があります。"
+    }
+  },
+  {
+    "id": "n5v208",
+    "word": "紙",
+    "reading": "かみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "紙があります。"
+    }
+  },
+  {
+    "id": "n5v209",
+    "word": "火曜日",
+    "reading": "かようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "火曜日があります。"
+    }
+  },
+  {
+    "id": "n5v210",
+    "word": "辛い",
+    "reading": "からい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "辛いがあります。"
+    }
+  },
+  {
+    "id": "n5v211",
+    "word": "体",
+    "reading": "からだ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "体があります。"
+    }
+  },
+  {
+    "id": "n5v212",
+    "word": "借りる",
+    "reading": "かりる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "借りるがあります。"
+    }
+  },
+  {
+    "id": "n5v213",
+    "word": "軽い",
+    "reading": "かるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "軽いがあります。"
+    }
+  },
+  {
+    "id": "n5v214",
+    "word": "川/河",
+    "reading": "かわ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "川/河があります。"
+    }
+  },
+  {
+    "id": "n5v215",
+    "word": "漢字",
+    "reading": "かんじ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "漢字があります。"
+    }
+  },
+  {
+    "id": "n5v216",
+    "word": "木",
+    "reading": "き",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "木があります。"
+    }
+  },
+  {
+    "id": "n5v217",
+    "word": "黄色",
+    "reading": "きいろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "黄色があります。"
+    }
+  },
+  {
+    "id": "n5v218",
+    "word": "黄色い",
+    "reading": "きいろい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "黄色いがあります。"
+    }
+  },
+  {
+    "id": "n5v219",
+    "word": "消える",
+    "reading": "きえる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "消えるがあります。"
+    }
+  },
+  {
+    "id": "n5v220",
+    "word": "北",
+    "reading": "きた",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "北があります。"
+    }
+  },
+  {
+    "id": "n5v221",
+    "word": "汚い",
+    "reading": "きたない",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "汚いがあります。"
+    }
+  },
+  {
+    "id": "n5v222",
+    "word": "喫茶店",
+    "reading": "きっさてん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "喫茶店があります。"
+    }
+  },
+  {
+    "id": "n5v223",
+    "word": "切手",
+    "reading": "きって",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "切手があります。"
+    }
+  },
+  {
+    "id": "n5v224",
+    "word": "切符",
+    "reading": "きっぷ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "切符があります。"
+    }
+  },
+  {
+    "id": "n5v225",
+    "word": "九",
+    "reading": "きゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "九があります。"
+    }
+  },
+  {
+    "id": "n5v226",
+    "word": "牛肉",
+    "reading": "ぎゅうにく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "牛肉があります。"
+    }
+  },
+  {
+    "id": "n5v227",
+    "word": "牛乳",
+    "reading": "ぎゅうにゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "牛乳があります。"
+    }
+  },
+  {
+    "id": "n5v228",
+    "word": "教室",
+    "reading": "きょうしつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "教室があります。"
+    }
+  },
+  {
+    "id": "n5v229",
+    "word": "兄弟",
+    "reading": "きょうだい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "兄弟があります。"
+    }
+  },
+  {
+    "id": "n5v230",
+    "word": "去年",
+    "reading": "きょねん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "去年があります。"
+    }
+  },
+  {
+    "id": "n5v231",
+    "word": "嫌い",
+    "reading": "きらい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "嫌いがあります。"
+    }
+  },
+  {
+    "id": "n5v232",
+    "word": "切る",
+    "reading": "きる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "切るがあります。"
+    }
+  },
+  {
+    "id": "n5v233",
+    "word": "着る",
+    "reading": "きる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "着るがあります。"
+    }
+  },
+  {
+    "id": "n5v234",
+    "word": "きれい",
+    "reading": "pretty,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "きれいがあります。"
+    }
+  },
+  {
+    "id": "n5v235",
+    "word": "銀行",
+    "reading": "ぎんこう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "銀行があります。"
+    }
+  },
+  {
+    "id": "n5v236",
+    "word": "金曜日",
+    "reading": "きんようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "金曜日があります。"
+    }
+  },
+  {
+    "id": "n5v237",
+    "word": "果物",
+    "reading": "くだもの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "果物があります。"
+    }
+  },
+  {
+    "id": "n5v238",
+    "word": "靴下",
+    "reading": "くつした",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "靴下があります。"
+    }
+  },
+  {
+    "id": "n5v239",
+    "word": "国",
+    "reading": "くに",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "国があります。"
+    }
+  },
+  {
+    "id": "n5v240",
+    "word": "曇り",
+    "reading": "くもり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "曇りがあります。"
+    }
+  },
+  {
+    "id": "n5v241",
+    "word": "曇る",
+    "reading": "くもる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "曇るがあります。"
+    }
+  },
+  {
+    "id": "n5v242",
+    "word": "暗い",
+    "reading": "くらい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "暗いがあります。"
+    }
+  },
+  {
+    "id": "n5v243",
+    "word": "車",
+    "reading": "くるま",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "車があります。"
+    }
+  },
+  {
+    "id": "n5v244",
+    "word": "黒",
+    "reading": "くろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "黒があります。"
+    }
+  },
+  {
+    "id": "n5v245",
+    "word": "黒い",
+    "reading": "くろい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "黒いがあります。"
+    }
+  },
+  {
+    "id": "n5v246",
+    "word": "警官",
+    "reading": "けいかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "警官があります。"
+    }
+  },
+  {
+    "id": "n5v247",
+    "word": "今朝",
+    "reading": "けさ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "今朝があります。"
+    }
+  },
+  {
+    "id": "n5v248",
+    "word": "消す",
+    "reading": "けす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "消すがあります。"
+    }
+  },
+  {
+    "id": "n5v249",
+    "word": "結構",
+    "reading": "けっこう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "結構があります。"
+    }
+  },
+  {
+    "id": "n5v250",
+    "word": "結婚",
+    "reading": "けっこん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "結婚があります。"
+    }
+  },
+  {
+    "id": "n5v251",
+    "word": "月曜日",
+    "reading": "げつようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "月曜日があります。"
+    }
+  },
+  {
+    "id": "n5v252",
+    "word": "玄関",
+    "reading": "げんかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "玄関があります。"
+    }
+  },
+  {
+    "id": "n5v253",
+    "word": "元気",
+    "reading": "げんき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "元気があります。"
+    }
+  },
+  {
+    "id": "n5v254",
+    "word": "五",
+    "reading": "ご",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "五があります。"
+    }
+  },
+  {
+    "id": "n5v255",
+    "word": "公園",
+    "reading": "こうえん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "公園があります。"
+    }
+  },
+  {
+    "id": "n5v256",
+    "word": "交差点",
+    "reading": "こうさてん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "交差点があります。"
+    }
+  },
+  {
+    "id": "n5v257",
+    "word": "紅茶",
+    "reading": "こうちゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "紅茶があります。"
+    }
+  },
+  {
+    "id": "n5v258",
+    "word": "交番",
+    "reading": "こうばん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "交番があります。"
+    }
+  },
+  {
+    "id": "n5v259",
+    "word": "声",
+    "reading": "こえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "声があります。"
+    }
+  },
+  {
+    "id": "n5v260",
+    "word": "コート",
+    "reading": "coat,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "コートがあります。"
+    }
+  },
+  {
+    "id": "n5v261",
+    "word": "午後",
+    "reading": "ごご",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "午後があります。"
+    }
+  },
+  {
+    "id": "n5v262",
+    "word": "九日",
+    "reading": "ここのか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "九日があります。"
+    }
+  },
+  {
+    "id": "n5v263",
+    "word": "九つ",
+    "reading": "ここのつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "九つがあります。"
+    }
+  },
+  {
+    "id": "n5v264",
+    "word": "午前",
+    "reading": "ごぜん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "午前があります。"
+    }
+  },
+  {
+    "id": "n5v265",
+    "word": "答える",
+    "reading": "こたえる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "答えるがあります。"
+    }
+  },
+  {
+    "id": "n5v266",
+    "word": "こちら",
+    "reading": "this",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "こちらがあります。"
+    }
+  },
+  {
+    "id": "n5v267",
+    "word": "こっち",
+    "reading": "this",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "こっちがあります。"
+    }
+  },
+  {
+    "id": "n5v268",
+    "word": "コップ",
+    "reading": "a",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "コップがあります。"
+    }
+  },
+  {
+    "id": "n5v269",
+    "word": "今年",
+    "reading": "ことし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "今年があります。"
+    }
+  },
+  {
+    "id": "n5v270",
+    "word": "言葉",
+    "reading": "ことば",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "言葉があります。"
+    }
+  },
+  {
+    "id": "n5v271",
+    "word": "子供",
+    "reading": "こども",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "子供があります。"
+    }
+  },
+  {
+    "id": "n5v272",
+    "word": "御飯",
+    "reading": "ごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "御飯があります。"
+    }
+  },
+  {
+    "id": "n5v273",
+    "word": "コピーする",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "コピーするがあります。"
+    }
+  },
+  {
+    "id": "n5v274",
+    "word": "困る",
+    "reading": "こまる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "困るがあります。"
+    }
+  },
+  {
+    "id": "n5v275",
+    "word": "今月",
+    "reading": "こんげつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "今月があります。"
+    }
+  },
+  {
+    "id": "n5v276",
+    "word": "今週",
+    "reading": "こんしゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "今週があります。"
+    }
+  },
+  {
+    "id": "n5v277",
+    "word": "今晩",
+    "reading": "こんばん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "今晩があります。"
+    }
+  },
+  {
+    "id": "n5v278",
+    "word": "魚",
+    "reading": "さかな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "魚があります。"
+    }
+  },
+  {
+    "id": "n5v279",
+    "word": "先",
+    "reading": "さき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "先があります。"
+    }
+  },
+  {
+    "id": "n5v280",
+    "word": "咲く",
+    "reading": "さく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "咲くがあります。"
+    }
+  },
+  {
+    "id": "n5v281",
+    "word": "作文",
+    "reading": "さくぶん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "作文があります。"
+    }
+  },
+  {
+    "id": "n5v282",
+    "word": "差す",
+    "reading": "さす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "差すがあります。"
+    }
+  },
+  {
+    "id": "n5v283",
+    "word": "雑誌",
+    "reading": "ざっし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "雑誌があります。"
+    }
+  },
+  {
+    "id": "n5v284",
+    "word": "砂糖",
+    "reading": "さとう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "砂糖があります。"
+    }
+  },
+  {
+    "id": "n5v285",
+    "word": "さ来年",
+    "reading": "さらいねん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "さ来年があります。"
+    }
+  },
+  {
+    "id": "n5v286",
+    "word": "三",
+    "reading": "さん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "三があります。"
+    }
+  },
+  {
+    "id": "n5v287",
+    "word": "散歩",
+    "reading": "さんぽする",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "散歩があります。"
+    }
+  },
+  {
+    "id": "n5v288",
+    "word": "四",
+    "reading": "し",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "四があります。"
+    }
+  },
+  {
+    "id": "n5v289",
+    "word": "塩",
+    "reading": "しお",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "塩があります。"
+    }
+  },
+  {
+    "id": "n5v290",
+    "word": "時間",
+    "reading": "じかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "時間があります。"
+    }
+  },
+  {
+    "id": "n5v291",
+    "word": "仕事",
+    "reading": "しごと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "仕事があります。"
+    }
+  },
+  {
+    "id": "n5v292",
+    "word": "辞書",
+    "reading": "じしょ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "辞書があります。"
+    }
+  },
+  {
+    "id": "n5v293",
+    "word": "静か",
+    "reading": "しずか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "静かがあります。"
+    }
+  },
+  {
+    "id": "n5v294",
+    "word": "下",
+    "reading": "した",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "下があります。"
+    }
+  },
+  {
+    "id": "n5v295",
+    "word": "七",
+    "reading": "しち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "七があります。"
+    }
+  },
+  {
+    "id": "n5v296",
+    "word": "質問",
+    "reading": "しつもん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "質問があります。"
+    }
+  },
+  {
+    "id": "n5v297",
+    "word": "自転車",
+    "reading": "じてんしゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "自転車があります。"
+    }
+  },
+  {
+    "id": "n5v298",
+    "word": "自動車",
+    "reading": "じどうしゃ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "自動車があります。"
+    }
+  },
+  {
+    "id": "n5v299",
+    "word": "死ぬ",
+    "reading": "しぬ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "死ぬがあります。"
+    }
+  },
+  {
+    "id": "n5v300",
+    "word": "字引",
+    "reading": "じびき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "字引があります。"
+    }
+  },
+  {
+    "id": "n5v301",
+    "word": "自分",
+    "reading": "じぶん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "自分があります。"
+    }
+  },
+  {
+    "id": "n5v302",
+    "word": "閉まる",
+    "reading": "しまる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "閉まるがあります。"
+    }
+  },
+  {
+    "id": "n5v303",
+    "word": "閉める",
+    "reading": "しめる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "閉めるがあります。"
+    }
+  },
+  {
+    "id": "n5v304",
+    "word": "締める",
+    "reading": "しめる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "締めるがあります。"
+    }
+  },
+  {
+    "id": "n5v305",
+    "word": "じゃ/じゃあ",
+    "reading": "well",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "じゃ/じゃあがあります。"
+    }
+  },
+  {
+    "id": "n5v306",
+    "word": "写真",
+    "reading": "しゃしん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "写真があります。"
+    }
+  },
+  {
+    "id": "n5v307",
+    "word": "十",
+    "reading": "じゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "十があります。"
+    }
+  },
+  {
+    "id": "n5v308",
+    "word": "授業",
+    "reading": "じゅぎょう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "授業があります。"
+    }
+  },
+  {
+    "id": "n5v309",
+    "word": "宿題",
+    "reading": "しゅくだい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "宿題があります。"
+    }
+  },
+  {
+    "id": "n5v310",
+    "word": "上手",
+    "reading": "じょうず",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "上手があります。"
+    }
+  },
+  {
+    "id": "n5v311",
+    "word": "丈夫",
+    "reading": "じょうぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "丈夫があります。"
+    }
+  },
+  {
+    "id": "n5v312",
+    "word": "しょうゆ",
+    "reading": "soy",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "しょうゆがあります。"
+    }
+  },
+  {
+    "id": "n5v313",
+    "word": "食堂",
+    "reading": "しょくどう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "食堂があります。"
+    }
+  },
+  {
+    "id": "n5v314",
+    "word": "知る",
+    "reading": "しる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "知るがあります。"
+    }
+  },
+  {
+    "id": "n5v315",
+    "word": "白",
+    "reading": "しろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "白があります。"
+    }
+  },
+  {
+    "id": "n5v316",
+    "word": "白い",
+    "reading": "しろい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "白いがあります。"
+    }
+  },
+  {
+    "id": "n5v317",
+    "word": "新聞",
+    "reading": "しんぶん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "新聞があります。"
+    }
+  },
+  {
+    "id": "n5v318",
+    "word": "水曜日",
+    "reading": "すいようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "水曜日があります。"
+    }
+  },
+  {
+    "id": "n5v319",
+    "word": "吸う",
+    "reading": "すう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "吸うがあります。"
+    }
+  },
+  {
+    "id": "n5v320",
+    "word": "好き",
+    "reading": "すき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "好きがあります。"
+    }
+  },
+  {
+    "id": "n5v321",
+    "word": "少ない",
+    "reading": "すくない",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "少ないがあります。"
+    }
+  },
+  {
+    "id": "n5v322",
+    "word": "少し",
+    "reading": "すこし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "少しがあります。"
+    }
+  },
+  {
+    "id": "n5v323",
+    "word": "涼しい",
+    "reading": "すずしい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "涼しいがあります。"
+    }
+  },
+  {
+    "id": "n5v324",
+    "word": "住む",
+    "reading": "すむ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "住むがあります。"
+    }
+  },
+  {
+    "id": "n5v325",
+    "word": "する",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "するがあります。"
+    }
+  },
+  {
+    "id": "n5v326",
+    "word": "座る",
+    "reading": "すわる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "座るがあります。"
+    }
+  },
+  {
+    "id": "n5v327",
+    "word": "背",
+    "reading": "せ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "背があります。"
+    }
+  },
+  {
+    "id": "n5v328",
+    "word": "生徒",
+    "reading": "せいと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "生徒があります。"
+    }
+  },
+  {
+    "id": "n5v329",
+    "word": "セーター",
+    "reading": "sweater,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "セーターがあります。"
+    }
+  },
+  {
+    "id": "n5v330",
+    "word": "背広",
+    "reading": "せびろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "背広があります。"
+    }
+  },
+  {
+    "id": "n5v331",
+    "word": "狭い",
+    "reading": "せまい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "狭いがあります。"
+    }
+  },
+  {
+    "id": "n5v332",
+    "word": "千",
+    "reading": "せん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "千があります。"
+    }
+  },
+  {
+    "id": "n5v333",
+    "word": "先月",
+    "reading": "せんげつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "先月があります。"
+    }
+  },
+  {
+    "id": "n5v334",
+    "word": "先週",
+    "reading": "せんしゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "先週があります。"
+    }
+  },
+  {
+    "id": "n5v335",
+    "word": "先生",
+    "reading": "せんせい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "先生があります。"
+    }
+  },
+  {
+    "id": "n5v336",
+    "word": "洗濯",
+    "reading": "せんたく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "洗濯があります。"
+    }
+  },
+  {
+    "id": "n5v337",
+    "word": "全部",
+    "reading": "ぜんぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "全部があります。"
+    }
+  },
+  {
+    "id": "n5v338",
+    "word": "掃除",
+    "reading": "そうじする",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "掃除があります。"
+    }
+  },
+  {
+    "id": "n5v339",
+    "word": "そこ",
+    "reading": "that",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "そこがあります。"
+    }
+  },
+  {
+    "id": "n5v340",
+    "word": "そちら",
+    "reading": "over",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "そちらがあります。"
+    }
+  },
+  {
+    "id": "n5v341",
+    "word": "そっち",
+    "reading": "over",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "そっちがあります。"
+    }
+  },
+  {
+    "id": "n5v342",
+    "word": "外",
+    "reading": "そと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "外があります。"
+    }
+  },
+  {
+    "id": "n5v343",
+    "word": "そば",
+    "reading": "near,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "そばがあります。"
+    }
+  },
+  {
+    "id": "n5v344",
+    "word": "空",
+    "reading": "そら",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "空があります。"
+    }
+  },
+  {
+    "id": "n5v345",
+    "word": "それから",
+    "reading": "after",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "それからがあります。"
+    }
+  },
+  {
+    "id": "n5v346",
+    "word": "それでは",
+    "reading": "in",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "それではがあります。"
+    }
+  },
+  {
+    "id": "n5v347",
+    "word": "大学",
+    "reading": "だいがく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大学があります。"
+    }
+  },
+  {
+    "id": "n5v348",
+    "word": "大使館",
+    "reading": "たいしかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大使館があります。"
+    }
+  },
+  {
+    "id": "n5v349",
+    "word": "大丈夫",
+    "reading": "だいじょうぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大丈夫があります。"
+    }
+  },
+  {
+    "id": "n5v350",
+    "word": "大好き",
+    "reading": "だいすき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大好きがあります。"
+    }
+  },
+  {
+    "id": "n5v351",
+    "word": "大切",
+    "reading": "たいせつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "大切があります。"
+    }
+  },
+  {
+    "id": "n5v352",
+    "word": "台所",
+    "reading": "だいどころ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "台所があります。"
+    }
+  },
+  {
+    "id": "n5v353",
+    "word": "たいへん",
+    "reading": "difficult",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "たいへんがあります。"
+    }
+  },
+  {
+    "id": "n5v354",
+    "word": "出す",
+    "reading": "だす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "出すがあります。"
+    }
+  },
+  {
+    "id": "n5v355",
+    "word": "立つ",
+    "reading": "たつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "立つがあります。"
+    }
+  },
+  {
+    "id": "n5v356",
+    "word": "建物",
+    "reading": "たてもの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "建物があります。"
+    }
+  },
+  {
+    "id": "n5v357",
+    "word": "楽しい",
+    "reading": "たのしい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "楽しいがあります。"
+    }
+  },
+  {
+    "id": "n5v358",
+    "word": "頼む",
+    "reading": "たのむ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "頼むがあります。"
+    }
+  },
+  {
+    "id": "n5v359",
+    "word": "食べ物",
+    "reading": "たべもの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "食べ物があります。"
+    }
+  },
+  {
+    "id": "n5v360",
+    "word": "卵",
+    "reading": "たまご",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "卵があります。"
+    }
+  },
+  {
+    "id": "n5v361",
+    "word": "誰",
+    "reading": "だれ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "誰があります。"
+    }
+  },
+  {
+    "id": "n5v362",
+    "word": "誕生日",
+    "reading": "たんじょうび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "誕生日があります。"
+    }
+  },
+  {
+    "id": "n5v363",
+    "word": "小さな",
+    "reading": "ちいさな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "小さながあります。"
+    }
+  },
+  {
+    "id": "n5v364",
+    "word": "近い",
+    "reading": "ちかい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "近いがあります。"
+    }
+  },
+  {
+    "id": "n5v365",
+    "word": "違う",
+    "reading": "ちがう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "違うがあります。"
+    }
+  },
+  {
+    "id": "n5v366",
+    "word": "近く",
+    "reading": "ちかく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "近くがあります。"
+    }
+  },
+  {
+    "id": "n5v367",
+    "word": "地下鉄",
+    "reading": "ちかてつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "地下鉄があります。"
+    }
+  },
+  {
+    "id": "n5v368",
+    "word": "地図",
+    "reading": "ちず",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "地図があります。"
+    }
+  },
+  {
+    "id": "n5v369",
+    "word": "茶色",
+    "reading": "ちゃいろ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "茶色があります。"
+    }
+  },
+  {
+    "id": "n5v370",
+    "word": "ちゃわん",
+    "reading": "rice",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ちゃわんがあります。"
+    }
+  },
+  {
+    "id": "n5v371",
+    "word": "疲れる",
+    "reading": "つかれる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "疲れるがあります。"
+    }
+  },
+  {
+    "id": "n5v372",
+    "word": "次",
+    "reading": "つぎ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "次があります。"
+    }
+  },
+  {
+    "id": "n5v373",
+    "word": "着く",
+    "reading": "つく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "着くがあります。"
+    }
+  },
+  {
+    "id": "n5v374",
+    "word": "机",
+    "reading": "つくえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "机があります。"
+    }
+  },
+  {
+    "id": "n5v375",
+    "word": "作る",
+    "reading": "つくる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "作るがあります。"
+    }
+  },
+  {
+    "id": "n5v376",
+    "word": "つける",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "つけるがあります。"
+    }
+  },
+  {
+    "id": "n5v377",
+    "word": "勤める",
+    "reading": "つとめる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "勤めるがあります。"
+    }
+  },
+  {
+    "id": "n5v378",
+    "word": "冷たい",
+    "reading": "つめたい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "冷たいがあります。"
+    }
+  },
+  {
+    "id": "n5v379",
+    "word": "強い",
+    "reading": "つよい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "強いがあります。"
+    }
+  },
+  {
+    "id": "n5v380",
+    "word": "テープレコーダー",
+    "reading": "tape",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "テープレコーダーがあります。"
+    }
+  },
+  {
+    "id": "n5v381",
+    "word": "出かける",
+    "reading": "でかける",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "出かけるがあります。"
+    }
+  },
+  {
+    "id": "n5v382",
+    "word": "できる",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "できるがあります。"
+    }
+  },
+  {
+    "id": "n5v383",
+    "word": "出口",
+    "reading": "でぐち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "出口があります。"
+    }
+  },
+  {
+    "id": "n5v384",
+    "word": "では",
+    "reading": "with",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ではがあります。"
+    }
+  },
+  {
+    "id": "n5v385",
+    "word": "デパート",
+    "reading": "department",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "デパートがあります。"
+    }
+  },
+  {
+    "id": "n5v386",
+    "word": "出る",
+    "reading": "でる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "出るがあります。"
+    }
+  },
+  {
+    "id": "n5v387",
+    "word": "天気",
+    "reading": "てんき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "天気があります。"
+    }
+  },
+  {
+    "id": "n5v388",
+    "word": "電気",
+    "reading": "でんき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "電気があります。"
+    }
+  },
+  {
+    "id": "n5v389",
+    "word": "電話",
+    "reading": "でんわ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "電話があります。"
+    }
+  },
+  {
+    "id": "n5v390",
+    "word": "戸",
+    "reading": "と",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "戸があります。"
+    }
+  },
+  {
+    "id": "n5v391",
+    "word": "ドア",
+    "reading": "Western",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ドアがあります。"
+    }
+  },
+  {
+    "id": "n5v392",
+    "word": "どう",
+    "reading": "how,in",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "どうがあります。"
+    }
+  },
+  {
+    "id": "n5v393",
+    "word": "動物",
+    "reading": "どうぶつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "動物があります。"
+    }
+  },
+  {
+    "id": "n5v394",
+    "word": "遠い",
+    "reading": "とおい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "遠いがあります。"
+    }
+  },
+  {
+    "id": "n5v395",
+    "word": "十日",
+    "reading": "とおか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "十日があります。"
+    }
+  },
+  {
+    "id": "n5v396",
+    "word": "時々",
+    "reading": "ときどき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "時々があります。"
+    }
+  },
+  {
+    "id": "n5v397",
+    "word": "所",
+    "reading": "ところ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "所があります。"
+    }
+  },
+  {
+    "id": "n5v398",
+    "word": "年",
+    "reading": "とし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "年があります。"
+    }
+  },
+  {
+    "id": "n5v399",
+    "word": "図書館",
+    "reading": "としょかん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "図書館があります。"
+    }
+  },
+  {
+    "id": "n5v400",
+    "word": "どちら",
+    "reading": "which",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "どちらがあります。"
+    }
+  },
+  {
+    "id": "n5v401",
+    "word": "隣",
+    "reading": "となり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "隣があります。"
+    }
+  },
+  {
+    "id": "n5v402",
+    "word": "飛ぶ",
+    "reading": "とぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "飛ぶがあります。"
+    }
+  },
+  {
+    "id": "n5v403",
+    "word": "止まる",
+    "reading": "とまる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "止まるがあります。"
+    }
+  },
+  {
+    "id": "n5v404",
+    "word": "友達",
+    "reading": "ともだち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "友達があります。"
+    }
+  },
+  {
+    "id": "n5v405",
+    "word": "土曜日",
+    "reading": "どようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "土曜日があります。"
+    }
+  },
+  {
+    "id": "n5v406",
+    "word": "鳥",
+    "reading": "とり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "鳥があります。"
+    }
+  },
+  {
+    "id": "n5v407",
+    "word": "とり肉",
+    "reading": "とりにく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "とり肉があります。"
+    }
+  },
+  {
+    "id": "n5v408",
+    "word": "取る",
+    "reading": "とる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "取るがあります。"
+    }
+  },
+  {
+    "id": "n5v409",
+    "word": "撮る",
+    "reading": "とる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "撮るがあります。"
+    }
+  },
+  {
+    "id": "n5v410",
+    "word": "どれ",
+    "reading": "which",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "どれがあります。"
+    }
+  },
+  {
+    "id": "n5v411",
+    "word": "中",
+    "reading": "なか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "中があります。"
+    }
+  },
+  {
+    "id": "n5v412",
+    "word": "長い",
+    "reading": "ながい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "長いがあります。"
+    }
+  },
+  {
+    "id": "n5v413",
+    "word": "鳴く",
+    "reading": "なく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "鳴くがあります。"
+    }
+  },
+  {
+    "id": "n5v414",
+    "word": "無くす",
+    "reading": "なくす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "無くすがあります。"
+    }
+  },
+  {
+    "id": "n5v415",
+    "word": "夏",
+    "reading": "なつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "夏があります。"
+    }
+  },
+  {
+    "id": "n5v416",
+    "word": "夏休み",
+    "reading": "なつやすみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "夏休みがあります。"
+    }
+  },
+  {
+    "id": "n5v417",
+    "word": "など",
+    "reading": "et",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "などがあります。"
+    }
+  },
+  {
+    "id": "n5v418",
+    "word": "七つ",
+    "reading": "ななつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "七つがあります。"
+    }
+  },
+  {
+    "id": "n5v419",
+    "word": "七日",
+    "reading": "なのか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "七日があります。"
+    }
+  },
+  {
+    "id": "n5v420",
+    "word": "名前",
+    "reading": "なまえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "名前があります。"
+    }
+  },
+  {
+    "id": "n5v421",
+    "word": "習う",
+    "reading": "ならう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "習うがあります。"
+    }
+  },
+  {
+    "id": "n5v422",
+    "word": "並ぶ",
+    "reading": "ならぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "並ぶがあります。"
+    }
+  },
+  {
+    "id": "n5v423",
+    "word": "並べる",
+    "reading": "ならべる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "並べるがあります。"
+    }
+  },
+  {
+    "id": "n5v424",
+    "word": "なる",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "なるがあります。"
+    }
+  },
+  {
+    "id": "n5v425",
+    "word": "二",
+    "reading": "に",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二があります。"
+    }
+  },
+  {
+    "id": "n5v426",
+    "word": "賑やか",
+    "reading": "にぎやか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "賑やかがあります。"
+    }
+  },
+  {
+    "id": "n5v427",
+    "word": "肉",
+    "reading": "にく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "肉があります。"
+    }
+  },
+  {
+    "id": "n5v428",
+    "word": "西",
+    "reading": "にし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "西があります。"
+    }
+  },
+  {
+    "id": "n5v429",
+    "word": "日曜日",
+    "reading": "にちようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "日曜日があります。"
+    }
+  },
+  {
+    "id": "n5v430",
+    "word": "荷物",
+    "reading": "にもつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "荷物があります。"
+    }
+  },
+  {
+    "id": "n5v431",
+    "word": "庭",
+    "reading": "にわ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "庭があります。"
+    }
+  },
+  {
+    "id": "n5v432",
+    "word": "脱ぐ",
+    "reading": "ぬぐ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "脱ぐがあります。"
+    }
+  },
+  {
+    "id": "n5v433",
+    "word": "温い",
+    "reading": "ぬるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "温いがあります。"
+    }
+  },
+  {
+    "id": "n5v434",
+    "word": "ノート",
+    "reading": "notebook,exercise",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ノートがあります。"
+    }
+  },
+  {
+    "id": "n5v435",
+    "word": "登る",
+    "reading": "のぼる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "登るがあります。"
+    }
+  },
+  {
+    "id": "n5v436",
+    "word": "飲み物",
+    "reading": "のみもの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "飲み物があります。"
+    }
+  },
+  {
+    "id": "n5v437",
+    "word": "乗る",
+    "reading": "のる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "乗るがあります。"
+    }
+  },
+  {
+    "id": "n5v438",
+    "word": "歯",
+    "reading": "は",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "歯があります。"
+    }
+  },
+  {
+    "id": "n5v439",
+    "word": "灰皿",
+    "reading": "はいざら",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "灰皿があります。"
+    }
+  },
+  {
+    "id": "n5v440",
+    "word": "入る",
+    "reading": "はいる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "入るがあります。"
+    }
+  },
+  {
+    "id": "n5v441",
+    "word": "葉書",
+    "reading": "はがき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "葉書があります。"
+    }
+  },
+  {
+    "id": "n5v442",
+    "word": "はく",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "はくがあります。"
+    }
+  },
+  {
+    "id": "n5v443",
+    "word": "箱",
+    "reading": "はこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "箱があります。"
+    }
+  },
+  {
+    "id": "n5v444",
+    "word": "橋",
+    "reading": "はし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "橋があります。"
+    }
+  },
+  {
+    "id": "n5v445",
+    "word": "始まる",
+    "reading": "はじまる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "始まるがあります。"
+    }
+  },
+  {
+    "id": "n5v446",
+    "word": "初め/始め",
+    "reading": "はじめ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "初め/始めがあります。"
+    }
+  },
+  {
+    "id": "n5v447",
+    "word": "初めて",
+    "reading": "はじめて",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "初めてがあります。"
+    }
+  },
+  {
+    "id": "n5v448",
+    "word": "走る",
+    "reading": "はしる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "走るがあります。"
+    }
+  },
+  {
+    "id": "n5v449",
+    "word": "二十歳",
+    "reading": "はたち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二十歳があります。"
+    }
+  },
+  {
+    "id": "n5v450",
+    "word": "働く",
+    "reading": "はたらく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "働くがあります。"
+    }
+  },
+  {
+    "id": "n5v451",
+    "word": "八",
+    "reading": "はち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "八があります。"
+    }
+  },
+  {
+    "id": "n5v452",
+    "word": "二十日",
+    "reading": "はつか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二十日があります。"
+    }
+  },
+  {
+    "id": "n5v453",
+    "word": "花",
+    "reading": "はな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "花があります。"
+    }
+  },
+  {
+    "id": "n5v454",
+    "word": "鼻",
+    "reading": "はな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "鼻があります。"
+    }
+  },
+  {
+    "id": "n5v455",
+    "word": "話",
+    "reading": "はなし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "話があります。"
+    }
+  },
+  {
+    "id": "n5v456",
+    "word": "早い",
+    "reading": "はやい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "早いがあります。"
+    }
+  },
+  {
+    "id": "n5v457",
+    "word": "速い",
+    "reading": "はやい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "速いがあります。"
+    }
+  },
+  {
+    "id": "n5v458",
+    "word": "春",
+    "reading": "はる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "春があります。"
+    }
+  },
+  {
+    "id": "n5v459",
+    "word": "貼る",
+    "reading": "はる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "貼るがあります。"
+    }
+  },
+  {
+    "id": "n5v460",
+    "word": "晴れ",
+    "reading": "はれ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "晴れがあります。"
+    }
+  },
+  {
+    "id": "n5v461",
+    "word": "晴れる",
+    "reading": "はれる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "晴れるがあります。"
+    }
+  },
+  {
+    "id": "n5v462",
+    "word": "半",
+    "reading": "はん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "半があります。"
+    }
+  },
+  {
+    "id": "n5v463",
+    "word": "晩",
+    "reading": "ばん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "晩があります。"
+    }
+  },
+  {
+    "id": "n5v464",
+    "word": "番号",
+    "reading": "ばんごう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "番号があります。"
+    }
+  },
+  {
+    "id": "n5v465",
+    "word": "晩御飯",
+    "reading": "ばんごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "晩御飯があります。"
+    }
+  },
+  {
+    "id": "n5v466",
+    "word": "半分",
+    "reading": "はんぶん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "半分があります。"
+    }
+  },
+  {
+    "id": "n5v467",
+    "word": "東",
+    "reading": "ひがし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "東があります。"
+    }
+  },
+  {
+    "id": "n5v468",
+    "word": "引く",
+    "reading": "ひく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "引くがあります。"
+    }
+  },
+  {
+    "id": "n5v469",
+    "word": "弾く",
+    "reading": "ひく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "弾くがあります。"
+    }
+  },
+  {
+    "id": "n5v470",
+    "word": "低い",
+    "reading": "ひくい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "低いがあります。"
+    }
+  },
+  {
+    "id": "n5v471",
+    "word": "飛行機",
+    "reading": "ひこうき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "飛行機があります。"
+    }
+  },
+  {
+    "id": "n5v472",
+    "word": "左",
+    "reading": "ひだり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "左があります。"
+    }
+  },
+  {
+    "id": "n5v473",
+    "word": "人",
+    "reading": "ひと",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "人があります。"
+    }
+  },
+  {
+    "id": "n5v474",
+    "word": "一月",
+    "reading": "ひとつき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一月があります。"
+    }
+  },
+  {
+    "id": "n5v475",
+    "word": "一人",
+    "reading": "ひとり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "一人があります。"
+    }
+  },
+  {
+    "id": "n5v476",
+    "word": "暇",
+    "reading": "ひま",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "暇があります。"
+    }
+  },
+  {
+    "id": "n5v477",
+    "word": "百",
+    "reading": "ひゃく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "百があります。"
+    }
+  },
+  {
+    "id": "n5v478",
+    "word": "病気",
+    "reading": "びょうき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "病気があります。"
+    }
+  },
+  {
+    "id": "n5v479",
+    "word": "昼",
+    "reading": "ひる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "昼があります。"
+    }
+  },
+  {
+    "id": "n5v480",
+    "word": "昼御飯",
+    "reading": "ひるごはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "昼御飯があります。"
+    }
+  },
+  {
+    "id": "n5v481",
+    "word": "広い",
+    "reading": "ひろい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "広いがあります。"
+    }
+  },
+  {
+    "id": "n5v482",
+    "word": "フィルム",
+    "reading": "roll",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "フィルムがあります。"
+    }
+  },
+  {
+    "id": "n5v483",
+    "word": "封筒",
+    "reading": "ふうとう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "封筒があります。"
+    }
+  },
+  {
+    "id": "n5v484",
+    "word": "プール",
+    "reading": "swimming",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "プールがあります。"
+    }
+  },
+  {
+    "id": "n5v485",
+    "word": "吹く",
+    "reading": "ふく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "吹くがあります。"
+    }
+  },
+  {
+    "id": "n5v486",
+    "word": "二つ",
+    "reading": "ふたつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二つがあります。"
+    }
+  },
+  {
+    "id": "n5v487",
+    "word": "豚肉",
+    "reading": "ぶたにく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "豚肉があります。"
+    }
+  },
+  {
+    "id": "n5v488",
+    "word": "二人",
+    "reading": "ふたり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二人があります。"
+    }
+  },
+  {
+    "id": "n5v489",
+    "word": "二日",
+    "reading": "ふつか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "二日があります。"
+    }
+  },
+  {
+    "id": "n5v490",
+    "word": "太い",
+    "reading": "ふとい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "太いがあります。"
+    }
+  },
+  {
+    "id": "n5v491",
+    "word": "冬",
+    "reading": "ふゆ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "冬があります。"
+    }
+  },
+  {
+    "id": "n5v492",
+    "word": "降る",
+    "reading": "ふる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "降るがあります。"
+    }
+  },
+  {
+    "id": "n5v493",
+    "word": "古い",
+    "reading": "ふるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "古いがあります。"
+    }
+  },
+  {
+    "id": "n5v494",
+    "word": "文章",
+    "reading": "ぶんしょう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "文章があります。"
+    }
+  },
+  {
+    "id": "n5v495",
+    "word": "下手",
+    "reading": "へた",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "下手があります。"
+    }
+  },
+  {
+    "id": "n5v496",
+    "word": "部屋",
+    "reading": "へや",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "部屋があります。"
+    }
+  },
+  {
+    "id": "n5v497",
+    "word": "辺",
+    "reading": "へん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "辺があります。"
+    }
+  },
+  {
+    "id": "n5v498",
+    "word": "勉強",
+    "reading": "べんきょうする",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "勉強があります。"
+    }
+  },
+  {
+    "id": "n5v499",
+    "word": "便利",
+    "reading": "べんり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "便利があります。"
+    }
+  },
+  {
+    "id": "n5v500",
+    "word": "帽子",
+    "reading": "ぼうし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "帽子があります。"
+    }
+  },
+  {
+    "id": "n5v501",
+    "word": "ボールペン",
+    "reading": "ball-point",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ボールペンがあります。"
+    }
+  },
+  {
+    "id": "n5v502",
+    "word": "ほか",
+    "reading": "other,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ほかがあります。"
+    }
+  },
+  {
+    "id": "n5v503",
+    "word": "欲しい",
+    "reading": "ほしい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "欲しいがあります。"
+    }
+  },
+  {
+    "id": "n5v504",
+    "word": "細い",
+    "reading": "ほそい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "細いがあります。"
+    }
+  },
+  {
+    "id": "n5v505",
+    "word": "本",
+    "reading": "ほん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "本があります。"
+    }
+  },
+  {
+    "id": "n5v506",
+    "word": "本棚",
+    "reading": "ほんだな",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "本棚があります。"
+    }
+  },
+  {
+    "id": "n5v507",
+    "word": "毎朝",
+    "reading": "まいあさ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎朝があります。"
+    }
+  },
+  {
+    "id": "n5v508",
+    "word": "毎月",
+    "reading": "まいげつ/まいつき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎月があります。"
+    }
+  },
+  {
+    "id": "n5v509",
+    "word": "毎週",
+    "reading": "まいしゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎週があります。"
+    }
+  },
+  {
+    "id": "n5v510",
+    "word": "毎年",
+    "reading": "まいねん/まいとし",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎年があります。"
+    }
+  },
+  {
+    "id": "n5v511",
+    "word": "毎晩",
+    "reading": "まいばん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "毎晩があります。"
+    }
+  },
+  {
+    "id": "n5v512",
+    "word": "前",
+    "reading": "まえ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "前があります。"
+    }
+  },
+  {
+    "id": "n5v513",
+    "word": "曲る",
+    "reading": "まがる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "曲るがあります。"
+    }
+  },
+  {
+    "id": "n5v514",
+    "word": "町",
+    "reading": "まち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "町があります。"
+    }
+  },
+  {
+    "id": "n5v515",
+    "word": "待つ",
+    "reading": "まつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "待つがあります。"
+    }
+  },
+  {
+    "id": "n5v516",
+    "word": "まっすぐ",
+    "reading": "straight",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "まっすぐがあります。"
+    }
+  },
+  {
+    "id": "n5v517",
+    "word": "窓",
+    "reading": "まど",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "窓があります。"
+    }
+  },
+  {
+    "id": "n5v518",
+    "word": "丸い/円い",
+    "reading": "まるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "丸い/円いがあります。"
+    }
+  },
+  {
+    "id": "n5v519",
+    "word": "万",
+    "reading": "まん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "万があります。"
+    }
+  },
+  {
+    "id": "n5v520",
+    "word": "万年筆",
+    "reading": "まんねんひつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "万年筆があります。"
+    }
+  },
+  {
+    "id": "n5v521",
+    "word": "磨く",
+    "reading": "みがく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "磨くがあります。"
+    }
+  },
+  {
+    "id": "n5v522",
+    "word": "右",
+    "reading": "みぎ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "右があります。"
+    }
+  },
+  {
+    "id": "n5v523",
+    "word": "短い",
+    "reading": "みじかい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "短いがあります。"
+    }
+  },
+  {
+    "id": "n5v524",
+    "word": "店",
+    "reading": "みせ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "店があります。"
+    }
+  },
+  {
+    "id": "n5v525",
+    "word": "見せる",
+    "reading": "みせる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "見せるがあります。"
+    }
+  },
+  {
+    "id": "n5v526",
+    "word": "道",
+    "reading": "みち",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "道があります。"
+    }
+  },
+  {
+    "id": "n5v527",
+    "word": "三日",
+    "reading": "みっか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "三日があります。"
+    }
+  },
+  {
+    "id": "n5v528",
+    "word": "三つ",
+    "reading": "みっつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "三つがあります。"
+    }
+  },
+  {
+    "id": "n5v529",
+    "word": "緑",
+    "reading": "みどり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "緑があります。"
+    }
+  },
+  {
+    "id": "n5v530",
+    "word": "皆さん",
+    "reading": "みなさん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "皆さんがあります。"
+    }
+  },
+  {
+    "id": "n5v531",
+    "word": "南",
+    "reading": "みなみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "南があります。"
+    }
+  },
+  {
+    "id": "n5v532",
+    "word": "六日",
+    "reading": "むいか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "六日があります。"
+    }
+  },
+  {
+    "id": "n5v533",
+    "word": "向こう",
+    "reading": "むこう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "向こうがあります。"
+    }
+  },
+  {
+    "id": "n5v534",
+    "word": "六つ",
+    "reading": "むっつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "六つがあります。"
+    }
+  },
+  {
+    "id": "n5v535",
+    "word": "村",
+    "reading": "むら",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "村があります。"
+    }
+  },
+  {
+    "id": "n5v536",
+    "word": "眼鏡",
+    "reading": "めがね",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "眼鏡があります。"
+    }
+  },
+  {
+    "id": "n5v537",
+    "word": "もう一度",
+    "reading": "もういちど",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "もう一度があります。"
+    }
+  },
+  {
+    "id": "n5v538",
+    "word": "木曜日",
+    "reading": "もくようび",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "木曜日があります。"
+    }
+  },
+  {
+    "id": "n5v539",
+    "word": "持つ",
+    "reading": "もつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "持つがあります。"
+    }
+  },
+  {
+    "id": "n5v540",
+    "word": "物",
+    "reading": "もの",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "物があります。"
+    }
+  },
+  {
+    "id": "n5v541",
+    "word": "門",
+    "reading": "もん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "門があります。"
+    }
+  },
+  {
+    "id": "n5v542",
+    "word": "問題",
+    "reading": "もんだい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "問題があります。"
+    }
+  },
+  {
+    "id": "n5v543",
+    "word": "八百屋",
+    "reading": "やおや",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "八百屋があります。"
+    }
+  },
+  {
+    "id": "n5v544",
+    "word": "野菜",
+    "reading": "やさい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "野菜があります。"
+    }
+  },
+  {
+    "id": "n5v545",
+    "word": "休み",
+    "reading": "やすみ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "休みがあります。"
+    }
+  },
+  {
+    "id": "n5v546",
+    "word": "休む",
+    "reading": "やすむ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "休むがあります。"
+    }
+  },
+  {
+    "id": "n5v547",
+    "word": "八つ",
+    "reading": "やっつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "八つがあります。"
+    }
+  },
+  {
+    "id": "n5v548",
+    "word": "山",
+    "reading": "やま",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "山があります。"
+    }
+  },
+  {
+    "id": "n5v549",
+    "word": "やる",
+    "reading": "to",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "やるがあります。"
+    }
+  },
+  {
+    "id": "n5v550",
+    "word": "夕方",
+    "reading": "ゆうがた",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "夕方があります。"
+    }
+  },
+  {
+    "id": "n5v551",
+    "word": "夕飯",
+    "reading": "ゆうはん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "夕飯があります。"
+    }
+  },
+  {
+    "id": "n5v552",
+    "word": "郵便局",
+    "reading": "ゆうびんきょく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "郵便局があります。"
+    }
+  },
+  {
+    "id": "n5v553",
+    "word": "昨夜",
+    "reading": "ゆうべ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "昨夜があります。"
+    }
+  },
+  {
+    "id": "n5v554",
+    "word": "有名",
+    "reading": "ゆうめい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "有名があります。"
+    }
+  },
+  {
+    "id": "n5v555",
+    "word": "雪",
+    "reading": "ゆき",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "雪があります。"
+    }
+  },
+  {
+    "id": "n5v556",
+    "word": "八日",
+    "reading": "ようか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "八日があります。"
+    }
+  },
+  {
+    "id": "n5v557",
+    "word": "洋服",
+    "reading": "ようふく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "洋服があります。"
+    }
+  },
+  {
+    "id": "n5v558",
+    "word": "よく",
+    "reading": "often,",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "よくがあります。"
+    }
+  },
+  {
+    "id": "n5v559",
+    "word": "横",
+    "reading": "よこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "横があります。"
+    }
+  },
+  {
+    "id": "n5v560",
+    "word": "四日",
+    "reading": "よっか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "四日があります。"
+    }
+  },
+  {
+    "id": "n5v561",
+    "word": "四つ",
+    "reading": "よっつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "四つがあります。"
+    }
+  },
+  {
+    "id": "n5v562",
+    "word": "呼ぶ",
+    "reading": "よぶ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "呼ぶがあります。"
+    }
+  },
+  {
+    "id": "n5v563",
+    "word": "夜",
+    "reading": "よる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "夜があります。"
+    }
+  },
+  {
+    "id": "n5v564",
+    "word": "弱い",
+    "reading": "よわい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "弱いがあります。"
+    }
+  },
+  {
+    "id": "n5v565",
+    "word": "来月",
+    "reading": "らいげつ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "来月があります。"
+    }
+  },
+  {
+    "id": "n5v566",
+    "word": "来週",
+    "reading": "らいしゅう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "来週があります。"
+    }
+  },
+  {
+    "id": "n5v567",
+    "word": "来年",
+    "reading": "らいねん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "来年があります。"
+    }
+  },
+  {
+    "id": "n5v568",
+    "word": "ラジオカセット",
+    "reading": "radio",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ラジオカセットがあります。"
+    }
+  },
+  {
+    "id": "n5v569",
+    "word": "留学生",
+    "reading": "りゅうがくせい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "留学生があります。"
+    }
+  },
+  {
+    "id": "n5v570",
+    "word": "両親",
+    "reading": "りょうしん",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "両親があります。"
+    }
+  },
+  {
+    "id": "n5v571",
+    "word": "料理",
+    "reading": "りょうり",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "料理があります。"
+    }
+  },
+  {
+    "id": "n5v572",
+    "word": "旅行",
+    "reading": "りょこう",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "旅行があります。"
+    }
+  },
+  {
+    "id": "n5v573",
+    "word": "零",
+    "reading": "れい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "零があります。"
+    }
+  },
+  {
+    "id": "n5v574",
+    "word": "冷蔵庫",
+    "reading": "れいぞうこ",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "冷蔵庫があります。"
+    }
+  },
+  {
+    "id": "n5v575",
+    "word": "練習",
+    "reading": "れんしゅうする",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "練習があります。"
+    }
+  },
+  {
+    "id": "n5v576",
+    "word": "廊下",
+    "reading": "ろうか",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "廊下があります。"
+    }
+  },
+  {
+    "id": "n5v577",
+    "word": "六",
+    "reading": "ろく",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "六があります。"
+    }
+  },
+  {
+    "id": "n5v578",
+    "word": "ワイシャツ",
+    "reading": "business",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "ワイシャツがあります。"
+    }
+  },
+  {
+    "id": "n5v579",
+    "word": "若い",
+    "reading": "わかい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "若いがあります。"
+    }
+  },
+  {
+    "id": "n5v580",
+    "word": "分かる",
+    "reading": "わかる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "分かるがあります。"
+    }
+  },
+  {
+    "id": "n5v581",
+    "word": "忘れる",
+    "reading": "わすれる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "忘れるがあります。"
+    }
+  },
+  {
+    "id": "n5v582",
+    "word": "渡す",
+    "reading": "わたす",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "渡すがあります。"
+    }
+  },
+  {
+    "id": "n5v583",
+    "word": "渡る",
+    "reading": "わたる",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "渡るがあります。"
+    }
+  },
+  {
+    "id": "n5v584",
+    "word": "悪い",
+    "reading": "わるい",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "悪いがあります。"
+    }
+  },
+  {
+    "id": "n5v585",
+    "word": "より、ほう",
+    "reading": "Used",
+    "romaji": "",
+    "pos": "noun",
+    "level": "N5",
+    "tags": [
+      "vocabulary",
+      "N5"
+    ],
+    "example": {
+      "jp": "より、ほうがあります。"
+    }
+  }
+]

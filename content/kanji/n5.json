@@ -1,0 +1,3420 @@
+[
+  {
+    "id": "n5k001",
+    "kanji": "一",
+    "readings": {
+      "on": [
+        "イチ"
+      ],
+      "kun": [
+        "ひと"
+      ]
+    },
+    "strokeCount": 1,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "一つ(ひとつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "一日(いちにち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k002",
+    "kanji": "二",
+    "readings": {
+      "on": [
+        "ニ"
+      ],
+      "kun": [
+        "ふた"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "二つ(ふたつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "二日(ふつか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k003",
+    "kanji": "三",
+    "readings": {
+      "on": [
+        "サン"
+      ],
+      "kun": [
+        "み"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "三つ(みっつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "三日(みっか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k004",
+    "kanji": "四",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "よ",
+        "よっ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "四つ(よっつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "四日(よっか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k005",
+    "kanji": "五",
+    "readings": {
+      "on": [
+        "ゴ"
+      ],
+      "kun": [
+        "いつ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "五つ(いつつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "五日(いつか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k006",
+    "kanji": "六",
+    "readings": {
+      "on": [
+        "ロク"
+      ],
+      "kun": [
+        "む"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "六つ(むっつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "六日(むいか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k007",
+    "kanji": "七",
+    "readings": {
+      "on": [
+        "シチ"
+      ],
+      "kun": [
+        "なな"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "七つ(ななつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "七日(なのか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k008",
+    "kanji": "八",
+    "readings": {
+      "on": [
+        "ハチ"
+      ],
+      "kun": [
+        "や"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "八つ(やっつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "八日(ようか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k009",
+    "kanji": "九",
+    "readings": {
+      "on": [
+        "ク",
+        "キュウ"
+      ],
+      "kun": [
+        "ここの"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "九つ(ここのつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "九日(ここのか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k010",
+    "kanji": "十",
+    "readings": {
+      "on": [
+        "ジュウ"
+      ],
+      "kun": [
+        "とお"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "十(じゅう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "十日(とおか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k011",
+    "kanji": "百",
+    "readings": {
+      "on": [
+        "ヒャク"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "百円(ひゃくえん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "三百(さんびゃく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k012",
+    "kanji": "千",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "ち"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "千円(せんえん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "二千(にせん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k013",
+    "kanji": "万",
+    "readings": {
+      "on": [
+        "マン",
+        "バン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "一万(いちまん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "万年(まんねん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k014",
+    "kanji": "年",
+    "readings": {
+      "on": [
+        "ネン"
+      ],
+      "kun": [
+        "とし"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "今年(ことし)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "来年(らいねん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k015",
+    "kanji": "月",
+    "readings": {
+      "on": [
+        "ゲツ",
+        "ガツ"
+      ],
+      "kun": [
+        "つき"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "今月(こんげつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "月曜日(げつようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k016",
+    "kanji": "日",
+    "readings": {
+      "on": [
+        "ニチ",
+        "ジツ"
+      ],
+      "kun": [
+        "ひ",
+        "か"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "今日(きょう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "日本(にほん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k017",
+    "kanji": "時",
+    "readings": {
+      "on": [
+        "ジ"
+      ],
+      "kun": [
+        "とき"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "何時(なんじ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "時間(じかん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k018",
+    "kanji": "間",
+    "readings": {
+      "on": [
+        "カン",
+        "ケン"
+      ],
+      "kun": [
+        "あいだ",
+        "ま"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "時間(じかん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "人間(にんげん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k019",
+    "kanji": "分",
+    "readings": {
+      "on": [
+        "フン",
+        "プン"
+      ],
+      "kun": [
+        "わ-ける"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "五分(ごふん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "自分(じぶん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k020",
+    "kanji": "週",
+    "readings": {
+      "on": [
+        "シュウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "今週(こんしゅう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "来週(らいしゅう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k021",
+    "kanji": "半",
+    "readings": {
+      "on": [
+        "ハン"
+      ],
+      "kun": [
+        "なか-ば"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "半分(はんぶん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "一時半(いちじはん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k022",
+    "kanji": "山",
+    "readings": {
+      "on": [
+        "サン"
+      ],
+      "kun": [
+        "やま"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "山(やま)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "富士山(ふじさん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k023",
+    "kanji": "川",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "かわ"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "川(かわ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "川口(かわぐち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k024",
+    "kanji": "木",
+    "readings": {
+      "on": [
+        "モク",
+        "ボク"
+      ],
+      "kun": [
+        "き"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "木(き)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "木曜日(もくようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k025",
+    "kanji": "火",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "ひ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "火(ひ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "火曜日(かようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k026",
+    "kanji": "水",
+    "readings": {
+      "on": [
+        "スイ"
+      ],
+      "kun": [
+        "みず"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "水(みず)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "水曜日(すいようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k027",
+    "kanji": "土",
+    "readings": {
+      "on": [
+        "ド",
+        "ト"
+      ],
+      "kun": [
+        "つち"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "土(つち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "土曜日(どようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k028",
+    "kanji": "金",
+    "readings": {
+      "on": [
+        "キン",
+        "コン"
+      ],
+      "kun": [
+        "かね"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "お金(おかね)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "金曜日(きんようび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k029",
+    "kanji": "空",
+    "readings": {
+      "on": [
+        "クウ"
+      ],
+      "kun": [
+        "そら",
+        "から"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "空(そら)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "空港(くうこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k030",
+    "kanji": "雨",
+    "readings": {
+      "on": [
+        "ウ"
+      ],
+      "kun": [
+        "あめ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "雨(あめ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "大雨(おおあめ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k031",
+    "kanji": "花",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "はな"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "花(はな)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "花火(はなび)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k032",
+    "kanji": "草",
+    "readings": {
+      "on": [
+        "ソウ"
+      ],
+      "kun": [
+        "くさ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "草(くさ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "草花(くさばな)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k033",
+    "kanji": "人",
+    "readings": {
+      "on": [
+        "ジン",
+        "ニン"
+      ],
+      "kun": [
+        "ひと"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "人(ひと)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "日本人(にほんじん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k034",
+    "kanji": "子",
+    "readings": {
+      "on": [
+        "シ",
+        "ス"
+      ],
+      "kun": [
+        "こ"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "子供(こども)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "女子(じょし)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k035",
+    "kanji": "女",
+    "readings": {
+      "on": [
+        "ジョ",
+        "ニョ"
+      ],
+      "kun": [
+        "おんな"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "女(おんな)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "女の人(おんなのひと)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k036",
+    "kanji": "男",
+    "readings": {
+      "on": [
+        "ダン",
+        "ナン"
+      ],
+      "kun": [
+        "おとこ"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "男(おとこ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "男の人(おとこのひと)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k037",
+    "kanji": "父",
+    "readings": {
+      "on": [
+        "フ"
+      ],
+      "kun": [
+        "ちち"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "父(ちち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "お父さん(おとうさん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k038",
+    "kanji": "母",
+    "readings": {
+      "on": [
+        "ボ"
+      ],
+      "kun": [
+        "はは"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "母(はは)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "お母さん(おかあさん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k039",
+    "kanji": "目",
+    "readings": {
+      "on": [
+        "モク",
+        "ボク"
+      ],
+      "kun": [
+        "め"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "目(め)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "目的(もくてき)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k040",
+    "kanji": "口",
+    "readings": {
+      "on": [
+        "コウ",
+        "ク"
+      ],
+      "kun": [
+        "くち"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "口(くち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "出口(でぐち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k041",
+    "kanji": "手",
+    "readings": {
+      "on": [
+        "シュ"
+      ],
+      "kun": [
+        "て"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "手(て)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "上手(じょうず)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k042",
+    "kanji": "足",
+    "readings": {
+      "on": [
+        "ソク"
+      ],
+      "kun": [
+        "あし"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "足(あし)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "足りる(たりる)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k043",
+    "kanji": "耳",
+    "readings": {
+      "on": [
+        "ジ"
+      ],
+      "kun": [
+        "みみ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "耳(みみ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "耳鼻科(じびか)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k044",
+    "kanji": "力",
+    "readings": {
+      "on": [
+        "リョク",
+        "リキ"
+      ],
+      "kun": [
+        "ちから"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "力(ちから)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "力持ち(ちからもち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k045",
+    "kanji": "上",
+    "readings": {
+      "on": [
+        "ジョウ",
+        "ショウ"
+      ],
+      "kun": [
+        "うえ",
+        "あ"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "上(うえ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "上手(じょうず)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k046",
+    "kanji": "下",
+    "readings": {
+      "on": [
+        "カ",
+        "ゲ"
+      ],
+      "kun": [
+        "した",
+        "くだ"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "下(した)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "下さい(ください)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k047",
+    "kanji": "中",
+    "readings": {
+      "on": [
+        "チュウ"
+      ],
+      "kun": [
+        "なか"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "中(なか)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "中国(ちゅうごく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k048",
+    "kanji": "外",
+    "readings": {
+      "on": [
+        "ガイ",
+        "ゲ"
+      ],
+      "kun": [
+        "そと",
+        "ほか"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "外(そと)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "外国(がいこく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k049",
+    "kanji": "右",
+    "readings": {
+      "on": [
+        "ウ",
+        "ユウ"
+      ],
+      "kun": [
+        "みぎ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "右(みぎ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "右手(みぎて)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k050",
+    "kanji": "左",
+    "readings": {
+      "on": [
+        "サ"
+      ],
+      "kun": [
+        "ひだり"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "左(ひだり)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "左手(ひだりて)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k051",
+    "kanji": "前",
+    "readings": {
+      "on": [
+        "ゼン"
+      ],
+      "kun": [
+        "まえ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "前(まえ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "名前(なまえ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k052",
+    "kanji": "後",
+    "readings": {
+      "on": [
+        "ゴ",
+        "コウ"
+      ],
+      "kun": [
+        "あと",
+        "うし"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "後(あと)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "午後(ごご)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k053",
+    "kanji": "学",
+    "readings": {
+      "on": [
+        "ガク"
+      ],
+      "kun": [
+        "まな-ぶ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "学校(がっこう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "大学(だいがく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k054",
+    "kanji": "校",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "学校(がっこう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "高校(こうこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k055",
+    "kanji": "先",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "さき"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "先生(せんせい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "先週(せんしゅう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k056",
+    "kanji": "生",
+    "readings": {
+      "on": [
+        "セイ",
+        "ショウ"
+      ],
+      "kun": [
+        "い",
+        "う",
+        "なま"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "先生(せんせい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "学生(がくせい)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k057",
+    "kanji": "語",
+    "readings": {
+      "on": [
+        "ゴ"
+      ],
+      "kun": [
+        "かた-る"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "日本語(にほんご)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "英語(えいご)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k058",
+    "kanji": "文",
+    "readings": {
+      "on": [
+        "ブン",
+        "モン"
+      ],
+      "kun": [
+        "ふみ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "文字(もじ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "作文(さくぶん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k059",
+    "kanji": "字",
+    "readings": {
+      "on": [
+        "ジ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "文字(もじ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "漢字(かんじ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k060",
+    "kanji": "書",
+    "readings": {
+      "on": [
+        "ショ"
+      ],
+      "kun": [
+        "か-く"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "書く(かく)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "教科書(きょうかしょ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k061",
+    "kanji": "読",
+    "readings": {
+      "on": [
+        "ドク",
+        "トク"
+      ],
+      "kun": [
+        "よ-む"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "読む(よむ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "読書(どくしょ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k062",
+    "kanji": "聞",
+    "readings": {
+      "on": [
+        "ブン",
+        "モン"
+      ],
+      "kun": [
+        "き-く"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "聞く(きく)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "新聞(しんぶん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k063",
+    "kanji": "話",
+    "readings": {
+      "on": [
+        "ワ"
+      ],
+      "kun": [
+        "はな-す"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "話す(はなす)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "電話(でんわ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k064",
+    "kanji": "国",
+    "readings": {
+      "on": [
+        "コク"
+      ],
+      "kun": [
+        "くに"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "国(くに)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "外国(がいこく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k065",
+    "kanji": "店",
+    "readings": {
+      "on": [
+        "テン"
+      ],
+      "kun": [
+        "みせ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "お店(おみせ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "本店(ほんてん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k066",
+    "kanji": "駅",
+    "readings": {
+      "on": [
+        "エキ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "駅(えき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "東京駅(とうきょうえき)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k067",
+    "kanji": "道",
+    "readings": {
+      "on": [
+        "ドウ",
+        "トウ"
+      ],
+      "kun": [
+        "みち"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "道(みち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "北海道(ほっかいどう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k068",
+    "kanji": "町",
+    "readings": {
+      "on": [
+        "チョウ"
+      ],
+      "kun": [
+        "まち"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "町(まち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "下町(したまち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k069",
+    "kanji": "門",
+    "readings": {
+      "on": [
+        "モン"
+      ],
+      "kun": [
+        "かど"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "門(もん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "専門(せんもん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k070",
+    "kanji": "来",
+    "readings": {
+      "on": [
+        "ライ"
+      ],
+      "kun": [
+        "く-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "来る(くる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "来年(らいねん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k071",
+    "kanji": "行",
+    "readings": {
+      "on": [
+        "コウ",
+        "ギョウ"
+      ],
+      "kun": [
+        "い-く",
+        "おこな"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "行く(いく)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "銀行(ぎんこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k072",
+    "kanji": "見",
+    "readings": {
+      "on": [
+        "ケン"
+      ],
+      "kun": [
+        "み-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "見る(みる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "見物(けんぶつ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k073",
+    "kanji": "食",
+    "readings": {
+      "on": [
+        "ショク",
+        "ジキ"
+      ],
+      "kun": [
+        "た-べる"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "食べる(たべる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "食事(しょくじ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k074",
+    "kanji": "飲",
+    "readings": {
+      "on": [
+        "イン"
+      ],
+      "kun": [
+        "の-む"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "飲む(のむ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "飲み物(のみもの)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k075",
+    "kanji": "買",
+    "readings": {
+      "on": [
+        "バイ"
+      ],
+      "kun": [
+        "か-う"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "買う(かう)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "売買(ばいばい)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k076",
+    "kanji": "入",
+    "readings": {
+      "on": [
+        "ニュウ"
+      ],
+      "kun": [
+        "はい-る",
+        "い-れる"
+      ]
+    },
+    "strokeCount": 2,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "入る(はいる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "入口(いりぐち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k077",
+    "kanji": "出",
+    "readings": {
+      "on": [
+        "シュツ",
+        "スイ"
+      ],
+      "kun": [
+        "で-る",
+        "だ-す"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "出る(でる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "出口(でぐち)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k078",
+    "kanji": "立",
+    "readings": {
+      "on": [
+        "リツ",
+        "リュウ"
+      ],
+      "kun": [
+        "た-つ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "立つ(たつ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "独立(どくりつ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k079",
+    "kanji": "休",
+    "readings": {
+      "on": [
+        "キュウ"
+      ],
+      "kun": [
+        "やす-む"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "休む(やすむ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "休日(きゅうじつ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k080",
+    "kanji": "起",
+    "readings": {
+      "on": [
+        "キ"
+      ],
+      "kun": [
+        "お-きる"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "起きる(おきる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "起こす(おこす)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k081",
+    "kanji": "帰",
+    "readings": {
+      "on": [
+        "キ"
+      ],
+      "kun": [
+        "かえ-る"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "帰る(かえる)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "帰国(きこく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k082",
+    "kanji": "大",
+    "readings": {
+      "on": [
+        "ダイ",
+        "タイ"
+      ],
+      "kun": [
+        "おお"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "大きい(おおきい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "大学(だいがく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k083",
+    "kanji": "小",
+    "readings": {
+      "on": [
+        "ショウ"
+      ],
+      "kun": [
+        "ちい",
+        "こ"
+      ]
+    },
+    "strokeCount": 3,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "小さい(ちいさい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "小学校(しょうがっこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k084",
+    "kanji": "多",
+    "readings": {
+      "on": [
+        "タ"
+      ],
+      "kun": [
+        "おお-い"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "多い(おおい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "多分(たぶん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k085",
+    "kanji": "少",
+    "readings": {
+      "on": [
+        "ショウ"
+      ],
+      "kun": [
+        "すく-ない",
+        "すこ-し"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "少ない(すくない)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "少し(すこし)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k086",
+    "kanji": "長",
+    "readings": {
+      "on": [
+        "チョウ"
+      ],
+      "kun": [
+        "なが-い"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "長い(ながい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "校長(こうちょう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k087",
+    "kanji": "高",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "たか-い"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "高い(たかい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "高校(こうこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k088",
+    "kanji": "安",
+    "readings": {
+      "on": [
+        "アン"
+      ],
+      "kun": [
+        "やす-い"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "安い(やすい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "安全(あんぜん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k089",
+    "kanji": "新",
+    "readings": {
+      "on": [
+        "シン"
+      ],
+      "kun": [
+        "あたら-しい"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "新しい(あたらしい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "新聞(しんぶん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k090",
+    "kanji": "古",
+    "readings": {
+      "on": [
+        "コ"
+      ],
+      "kun": [
+        "ふる-い"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "古い(ふるい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "古典(こてん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k091",
+    "kanji": "好",
+    "readings": {
+      "on": [
+        "コウ",
+        "ク"
+      ],
+      "kun": [
+        "す-き",
+        "この-む"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "好き(すき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "好物(こうぶつ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k092",
+    "kanji": "天",
+    "readings": {
+      "on": [
+        "テン"
+      ],
+      "kun": [
+        "あめ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "天気(てんき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "天国(てんごく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k093",
+    "kanji": "気",
+    "readings": {
+      "on": [
+        "キ",
+        "ケ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "天気(てんき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "元気(げんき)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k094",
+    "kanji": "白",
+    "readings": {
+      "on": [
+        "ハク",
+        "ビャク"
+      ],
+      "kun": [
+        "しろ",
+        "しら"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "白い(しろい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "白米(はくまい)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k095",
+    "kanji": "黒",
+    "readings": {
+      "on": [
+        "コク"
+      ],
+      "kun": [
+        "くろ"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "黒い(くろい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "黒板(こくばん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k096",
+    "kanji": "赤",
+    "readings": {
+      "on": [
+        "セキ",
+        "シャク"
+      ],
+      "kun": [
+        "あか"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "赤い(あかい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "赤ちゃん(あかちゃん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k097",
+    "kanji": "青",
+    "readings": {
+      "on": [
+        "セイ",
+        "ショウ"
+      ],
+      "kun": [
+        "あお"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "青い(あおい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "青春(せいしゅん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k098",
+    "kanji": "車",
+    "readings": {
+      "on": [
+        "シャ"
+      ],
+      "kun": [
+        "くるま"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "車(くるま)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "電車(でんしゃ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k099",
+    "kanji": "電",
+    "readings": {
+      "on": [
+        "デン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "電気(でんき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "電話(でんわ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k100",
+    "kanji": "本",
+    "readings": {
+      "on": [
+        "ホン"
+      ],
+      "kun": [
+        "もと"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "本(ほん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "日本(にほん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k101",
+    "kanji": "円",
+    "readings": {
+      "on": [
+        "エン"
+      ],
+      "kun": [
+        "まる"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "円(えん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "百円(ひゃくえん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k102",
+    "kanji": "魚",
+    "readings": {
+      "on": [
+        "ギョ"
+      ],
+      "kun": [
+        "さかな",
+        "うお"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "魚(さかな)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "金魚(きんぎょ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k103",
+    "kanji": "肉",
+    "readings": {
+      "on": [
+        "ニク"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "肉(にく)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "牛肉(ぎゅうにく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k104",
+    "kanji": "米",
+    "readings": {
+      "on": [
+        "マイ",
+        "ベイ"
+      ],
+      "kun": [
+        "こめ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "米(こめ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "米国(べいこく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k105",
+    "kanji": "茶",
+    "readings": {
+      "on": [
+        "チャ",
+        "サ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "お茶(おちゃ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "紅茶(こうちゃ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k106",
+    "kanji": "家",
+    "readings": {
+      "on": [
+        "カ",
+        "ケ"
+      ],
+      "kun": [
+        "いえ",
+        "や"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "家(いえ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "家族(かぞく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k107",
+    "kanji": "友",
+    "readings": {
+      "on": [
+        "ユウ"
+      ],
+      "kun": [
+        "とも"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "友達(ともだち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "友人(ゆうじん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k108",
+    "kanji": "何",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "なに",
+        "なん"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "何(なに)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "何時(なんじ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k109",
+    "kanji": "今",
+    "readings": {
+      "on": [
+        "コン",
+        "キン"
+      ],
+      "kun": [
+        "いま"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "今(いま)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "今日(きょう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k110",
+    "kanji": "午",
+    "readings": {
+      "on": [
+        "ゴ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "午前(ごぜん)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "午後(ごご)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k111",
+    "kanji": "正",
+    "readings": {
+      "on": [
+        "セイ",
+        "ショウ"
+      ],
+      "kun": [
+        "ただ-しい",
+        "まさ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "正しい(ただしい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "正月(しょうがつ)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k112",
+    "kanji": "西",
+    "readings": {
+      "on": [
+        "セイ",
+        "サイ"
+      ],
+      "kun": [
+        "にし"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "西(にし)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "関西(かんさい)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k113",
+    "kanji": "東",
+    "readings": {
+      "on": [
+        "トウ"
+      ],
+      "kun": [
+        "ひがし"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "東(ひがし)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "東京(とうきょう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k114",
+    "kanji": "南",
+    "readings": {
+      "on": [
+        "ナン",
+        "ナ"
+      ],
+      "kun": [
+        "みなみ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "南(みなみ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "南米(なんべい)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k115",
+    "kanji": "北",
+    "readings": {
+      "on": [
+        "ホク"
+      ],
+      "kun": [
+        "きた"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "北(きた)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "北海道(ほっかいどう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k116",
+    "kanji": "毎",
+    "readings": {
+      "on": [
+        "マイ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "毎日(まいにち)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "毎週(まいしゅう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k117",
+    "kanji": "早",
+    "readings": {
+      "on": [
+        "ソウ",
+        "サッ"
+      ],
+      "kun": [
+        "はや-い"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "早い(はやい)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "早起き(はやおき)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k118",
+    "kanji": "名",
+    "readings": {
+      "on": [
+        "メイ",
+        "ミョウ"
+      ],
+      "kun": [
+        "な"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "名前(なまえ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "名刺(めいし)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k119",
+    "kanji": "雪",
+    "readings": {
+      "on": [
+        "セツ"
+      ],
+      "kun": [
+        "ゆき"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "雪(ゆき)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "雪国(ゆきぐに)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k120",
+    "kanji": "風",
+    "readings": {
+      "on": [
+        "フウ",
+        "フ"
+      ],
+      "kun": [
+        "かぜ",
+        "かざ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "風(かぜ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "台風(たいふう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k121",
+    "kanji": "音",
+    "readings": {
+      "on": [
+        "オン",
+        "イン"
+      ],
+      "kun": [
+        "おと",
+        "ね"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "音(おと)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "音楽(おんがく)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k122",
+    "kanji": "光",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "ひかり"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "光(ひかり)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "観光(かんこう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k123",
+    "kanji": "牛",
+    "readings": {
+      "on": [
+        "ギュウ"
+      ],
+      "kun": [
+        "うし"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "牛(うし)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "牛乳(ぎゅうにゅう)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": "n5k124",
+    "kanji": "犬",
+    "readings": {
+      "on": [
+        "ケン"
+      ],
+      "kun": [
+        "いぬ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N5",
+    "radical": "",
+    "examples": [
+      {
+        "word": "犬(いぬ)",
+        "reading": "",
+        "meaning": ""
+      },
+      {
+        "word": "愛犬(あいけん)",
+        "reading": "",
+        "meaning": ""
+      }
+    ]
+  }
+]

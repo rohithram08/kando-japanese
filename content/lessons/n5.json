@@ -1,0 +1,2816 @@
+[
+  {
+    "id": "n5l001",
+    "titleJp": "挨拶と自己紹介",
+    "level": "N5",
+    "order": 1,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "こんにちは",
+      "おはよう",
+      "こんばんは",
+      "はじめまして",
+      "よろしく"
+    ],
+    "grammar": [
+      "〜です",
+      "〜は〜です",
+      "わたしは〜です"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "こんにちは！はじめまして。田中です。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はじめまして。山田です。よろしくお願いします。"
+      },
+      {
+        "speaker": "A",
+        "jp": "こちらこそ、よろしくお願いします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Good morning",
+        "answer": "おはようございます"
+      },
+      {
+        "type": "fill",
+        "question": "___はじめまして。田中___。",
+        "answer": [
+          "はじめまして",
+          "です"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l002",
+    "titleJp": "数字と数え方",
+    "level": "N5",
+    "order": 2,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "いち",
+      "に",
+      "さん",
+      "し/よん",
+      "ご",
+      "ろく",
+      "なな/しち",
+      "はち",
+      "く/きゅう",
+      "じゅう"
+    ],
+    "grammar": [
+      "〜つ (general counter)",
+      "〜本 (long objects)",
+      "〜枚 (flat objects)",
+      "〜個 (small objects)"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "りんごをいくつ買いますか？"
+      },
+      {
+        "speaker": "B",
+        "jp": "みっつ買います。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Seven",
+        "answer": "なな / しち"
+      },
+      {
+        "type": "multiple",
+        "question": "How do you say 100?",
+        "options": [
+          "じゅう",
+          "ひゃく",
+          "せん",
+          "まん"
+        ],
+        "answer": "ひゃく"
+      }
+    ]
+  },
+  {
+    "id": "n5l003",
+    "titleJp": "家族",
+    "level": "N5",
+    "order": 3,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "ちち/おとうさん",
+      "はは/おかあさん",
+      "あに/おにいさん",
+      "あね/おねえさん",
+      "おとうと",
+      "いもうと",
+      "そふ/おじいさん",
+      "そぼ/おばあさん"
+    ],
+    "grammar": [
+      "〜の家族",
+      "〜がいます",
+      "家族は〜人です"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "ご家族は何人ですか？"
+      },
+      {
+        "speaker": "B",
+        "jp": "四人家族です。父と母と妹がいます。"
+      },
+      {
+        "speaker": "A",
+        "jp": "いいですね。私は一人っ子です。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Older sister (someone else's)",
+        "answer": "おねえさん"
+      },
+      {
+        "type": "translate",
+        "question": "My father (humble)",
+        "answer": "ちち"
+      },
+      {
+        "type": "multiple",
+        "question": "How do you say younger brother?",
+        "options": [
+          "あに",
+          "おとうと",
+          "いもうと",
+          "あね"
+        ],
+        "answer": "おとうと"
+      }
+    ]
+  },
+  {
+    "id": "n5l004",
+    "titleJp": "日課と時間",
+    "level": "N5",
+    "order": 4,
+    "duration": "30 min",
+    "xp": 60,
+    "vocabulary": [
+      "おきる",
+      "ねる",
+      "たべる",
+      "いく",
+      "かえる",
+      "べんきょうする",
+      "はたらく",
+      "あさ",
+      "ひる",
+      "よる"
+    ],
+    "grammar": [
+      "〜時に",
+      "〜から〜まで",
+      "まず〜、それから〜",
+      "〜ます / 〜ません"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "毎朝何時に起きますか？"
+      },
+      {
+        "speaker": "B",
+        "jp": "六時に起きます。それから、シャワーを浴びて、朝ごはんを食べます。"
+      },
+      {
+        "speaker": "A",
+        "jp": "学校は何時から何時までですか？"
+      },
+      {
+        "speaker": "B",
+        "jp": "八時半から三時までです。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "I sleep at 11 o'clock.",
+        "answer": "十一時にねます。"
+      },
+      {
+        "type": "fill",
+        "question": "学校は八時___三時___です。",
+        "answer": [
+          "から",
+          "まで"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l005",
+    "titleJp": "食べ物とレストランで注文する",
+    "level": "N5",
+    "order": 5,
+    "duration": "30 min",
+    "xp": 60,
+    "vocabulary": [
+      "ごはん",
+      "パン",
+      "さかな",
+      "にく",
+      "やさい",
+      "くだもの",
+      "みず",
+      "おちゃ",
+      "コーヒー",
+      "おいしい"
+    ],
+    "grammar": [
+      "〜をください",
+      "〜をひとつ / ふたつ",
+      "〜はありますか",
+      "いただきます / ごちそうさま"
+    ],
+    "dialogue": [
+      {
+        "speaker": "Store",
+        "jp": "いらっしゃいませ。何になさいますか？"
+      },
+      {
+        "speaker": "A",
+        "jp": "ラーメンをひとつと、餃子をふたつください。"
+      },
+      {
+        "speaker": "Store",
+        "jp": "お飲み物はいかがですか？"
+      },
+      {
+        "speaker": "A",
+        "jp": "お茶をください。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Water please.",
+        "answer": "みずをください。"
+      },
+      {
+        "type": "multiple",
+        "question": "What do you say before eating?",
+        "options": [
+          "ごちそうさま",
+          "いただきます",
+          "おねがいします",
+          "ありがとう"
+        ],
+        "answer": "いただきます"
+      }
+    ]
+  },
+  {
+    "id": "n5l006",
+    "titleJp": "道案内と場所",
+    "level": "N5",
+    "order": 6,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "みぎ",
+      "ひだり",
+      "まっすぐ",
+      "となり",
+      "ちかく",
+      "こうばん"
+    ],
+    "grammar": [
+      "〜はどこですか",
+      "〜をまっすぐ行ってください",
+      "〜のとなりにあります"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "すみません、駅はどこですか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "この道をまっすぐ行って、右に曲がってください。"
+      },
+      {
+        "speaker": "A",
+        "jp": "ありがとうございます！"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Where is the station?",
+        "answer": "えきはどこですか"
+      },
+      {
+        "type": "fill",
+        "question": "この道をまっすぐ___ください。",
+        "answer": [
+          "いって"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l007",
+    "titleJp": "買い物と値段",
+    "level": "N5",
+    "order": 7,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "いくら",
+      "これ",
+      "それ",
+      "あれ",
+      "店員",
+      "レシート"
+    ],
+    "grammar": [
+      "これはいくらですか",
+      "〜をください",
+      "〜円です"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "すみません、この傘はいくらですか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "千円です。"
+      },
+      {
+        "speaker": "A",
+        "jp": "じゃ、これをください。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "How much is this?",
+        "answer": "これはいくらですか"
+      },
+      {
+        "type": "multiple",
+        "question": "How do you say \"Please give me this\"?",
+        "options": [
+          "これをおねがい",
+          "これをください",
+          "これです",
+          "これがある"
+        ],
+        "answer": "これをください"
+      }
+    ]
+  },
+  {
+    "id": "n5l008",
+    "titleJp": "レストランでの注文",
+    "level": "N5",
+    "order": 8,
+    "duration": "25 min",
+    "xp": 55,
+    "vocabulary": [
+      "メニュー",
+      "みず",
+      "おすすめ",
+      "おかいけい",
+      "ごちそうさま"
+    ],
+    "grammar": [
+      "〜をおねがいします",
+      "おすすめは何ですか",
+      "お会計をお願いします"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "すみません、お水をいただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、かしこまりました。"
+      },
+      {
+        "speaker": "A",
+        "jp": "あと、ラーメンをひとつお願いします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Check please",
+        "answer": "おかいけいをおねがいします"
+      },
+      {
+        "type": "fill",
+        "question": "メニューを___ください。",
+        "answer": [
+          "みせて"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l009",
+    "titleJp": "趣味と余暇",
+    "level": "N5",
+    "order": 9,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "しゅみ",
+      "スポーツ",
+      "おんがく",
+      "どくしょ",
+      "りょこう"
+    ],
+    "grammar": [
+      "私の趣味は〜ことです",
+      "〜が好きです",
+      "休みの日に〜をします"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "趣味は何ですか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "映画を見ることと、音楽を聴くことです。"
+      },
+      {
+        "speaker": "A",
+        "jp": "どんな映画が好きですか。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "I like music",
+        "answer": "おんがくがすきです"
+      },
+      {
+        "type": "multiple",
+        "question": "How do you say \"My hobby is reading\"?",
+        "options": [
+          "しゅみはほん",
+          "しゅみはどくしょです",
+          "しゅみはよみます",
+          "ほんがすき"
+        ],
+        "answer": "しゅみはどくしょです"
+      }
+    ]
+  },
+  {
+    "id": "n5l010",
+    "titleJp": "旅行と休日の予定",
+    "level": "N5",
+    "order": 10,
+    "duration": "30 min",
+    "xp": 60,
+    "vocabulary": [
+      "りょこう",
+      "ホテル",
+      "きっぷ",
+      "おみやげ",
+      "しゃしん"
+    ],
+    "grammar": [
+      "〜へ行きたいです",
+      "〜泊〜日",
+      "〜でお土産を買いました"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "週末、どこかへ行きましたか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "京都へ行って、たくさん写真を撮りました。"
+      },
+      {
+        "speaker": "A",
+        "jp": "いいですね！お土産も買いましたか。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "I want to go to Kyoto",
+        "answer": "きょうとへいきたいです"
+      },
+      {
+        "type": "fill",
+        "question": "写真をたくさん___。",
+        "answer": [
+          "とりました"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l011",
+    "titleJp": "曜日とカレンダー",
+    "level": "N5",
+    "order": 11,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "曜日とカレンダー"
+    ],
+    "grammar": [
+      "n5_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "曜日とカレンダーについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Days of the Week & Calendar",
+        "answer": "曜日とカレンダー"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Days of the Week & Calendar?",
+        "options": [
+          "曜日とカレンダー",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "曜日とカレンダー"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Days of the Week & Calendar）",
+        "answer": [
+          "曜日とカレンダー"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l012",
+    "titleJp": "コンビニでの買い物",
+    "level": "N5",
+    "order": 12,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "コンビニでの買い物"
+    ],
+    "grammar": [
+      "n5_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "コンビニでの買い物について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of At the Convenience Store",
+        "answer": "コンビニでの買い物"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about At the Convenience Store?",
+        "options": [
+          "コンビニでの買い物",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "コンビニでの買い物"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（At the Convenience Store）",
+        "answer": [
+          "コンビニでの買い物"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l013",
+    "titleJp": "電車とバスでの移動",
+    "level": "N5",
+    "order": 13,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "電車とバスでの移動"
+    ],
+    "grammar": [
+      "n5_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "電車とバスでの移動について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Commuting by Train & Bus",
+        "answer": "電車とバスでの移動"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Commuting by Train & Bus?",
+        "options": [
+          "電車とバスでの移動",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "電車とバスでの移動"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Commuting by Train & Bus）",
+        "answer": [
+          "電車とバスでの移動"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l014",
+    "titleJp": "週末の予定と誘い",
+    "level": "N5",
+    "order": 14,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "週末の予定と誘い"
+    ],
+    "grammar": [
+      "n5_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "週末の予定と誘いについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Weekend Plans & Invitations",
+        "answer": "週末の予定と誘い"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Weekend Plans & Invitations?",
+        "options": [
+          "週末の予定と誘い",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "週末の予定と誘い"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Weekend Plans & Invitations）",
+        "answer": [
+          "週末の予定と誘い"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l015",
+    "titleJp": "家と部屋の様子",
+    "level": "N5",
+    "order": 15,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "家と部屋の様子"
+    ],
+    "grammar": [
+      "n5_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "家と部屋の様子について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Home & Living Spaces",
+        "answer": "家と部屋の様子"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Home & Living Spaces?",
+        "options": [
+          "家と部屋の様子",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "家と部屋の様子"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Home & Living Spaces）",
+        "answer": [
+          "家と部屋の様子"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l016",
+    "titleJp": "人の外見と性格",
+    "level": "N5",
+    "order": 16,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "人の外見と性格"
+    ],
+    "grammar": [
+      "n5_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "人の外見と性格について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Describing People & Appearance",
+        "answer": "人の外見と性格"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Describing People & Appearance?",
+        "options": [
+          "人の外見と性格",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "人の外見と性格"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Describing People & Appearance）",
+        "answer": [
+          "人の外見と性格"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l017",
+    "titleJp": "色と服装",
+    "level": "N5",
+    "order": 17,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "色と服装"
+    ],
+    "grammar": [
+      "n5_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "色と服装について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Colors & Clothes",
+        "answer": "色と服装"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Colors & Clothes?",
+        "options": [
+          "色と服装",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "色と服装"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Colors & Clothes）",
+        "answer": [
+          "色と服装"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l018",
+    "titleJp": "体調と病院で",
+    "level": "N5",
+    "order": 18,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "体調と病院で"
+    ],
+    "grammar": [
+      "n5_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "体調と病院でについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Health & At the Clinic",
+        "answer": "体調と病院で"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Health & At the Clinic?",
+        "options": [
+          "体調と病院で",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "体調と病院で"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Health & At the Clinic）",
+        "answer": [
+          "体調と病院で"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l019",
+    "titleJp": "好きなものと嫌いなもの",
+    "level": "N5",
+    "order": 19,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "好きなものと嫌いなもの"
+    ],
+    "grammar": [
+      "n5_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "好きなものと嫌いなものについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Likes, Dislikes & Preferences",
+        "answer": "好きなものと嫌いなもの"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Likes, Dislikes & Preferences?",
+        "options": [
+          "好きなものと嫌いなもの",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "好きなものと嫌いなもの"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Likes, Dislikes & Preferences）",
+        "answer": [
+          "好きなものと嫌いなもの"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l020",
+    "titleJp": "日本の四季と祝日",
+    "level": "N5",
+    "order": 20,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "日本の四季と祝日"
+    ],
+    "grammar": [
+      "n5_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本の四季と祝日について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Seasons & Annual Japanese Holidays",
+        "answer": "日本の四季と祝日"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Seasons & Annual Japanese Holidays?",
+        "options": [
+          "日本の四季と祝日",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日本の四季と祝日"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Seasons & Annual Japanese Holidays）",
+        "answer": [
+          "日本の四季と祝日"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l021",
+    "titleJp": "プレゼントのやり取り - あげる/もらう",
+    "level": "N5",
+    "order": 21,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "プレゼントのやり取り - あげる/もらう"
+    ],
+    "grammar": [
+      "n5_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "プレゼントのやり取り - あげる/もらうについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Giving & Receiving Gifts",
+        "answer": "プレゼントのやり取り - あげる/もらう"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Giving & Receiving Gifts?",
+        "options": [
+          "プレゼントのやり取り - あげる/もらう",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "プレゼントのやり取り - あげる/もらう"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Giving & Receiving Gifts）",
+        "answer": [
+          "プレゼントのやり取り - あげる/もらう"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l022",
+    "titleJp": "許可を求める - 〜てもいいですか",
+    "level": "N5",
+    "order": 22,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "許可を求める - 〜てもいいですか"
+    ],
+    "grammar": [
+      "n5_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "許可を求める - 〜てもいいですかについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Asking Permission",
+        "answer": "許可を求める - 〜てもいいですか"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Asking Permission?",
+        "options": [
+          "許可を求める - 〜てもいいですか",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "許可を求める - 〜てもいいですか"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Asking Permission）",
+        "answer": [
+          "許可を求める - 〜てもいいですか"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l023",
+    "titleJp": "禁止とルール - 〜てはいけません",
+    "level": "N5",
+    "order": 23,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "禁止とルール - 〜てはいけません"
+    ],
+    "grammar": [
+      "n5_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "禁止とルール - 〜てはいけませんについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Prohibitions & Rules",
+        "answer": "禁止とルール - 〜てはいけません"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Prohibitions & Rules?",
+        "options": [
+          "禁止とルール - 〜てはいけません",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "禁止とルール - 〜てはいけません"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Prohibitions & Rules）",
+        "answer": [
+          "禁止とルール - 〜てはいけません"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l024",
+    "titleJp": "理由を説明する - 〜から",
+    "level": "N5",
+    "order": 24,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "理由を説明する - 〜から"
+    ],
+    "grammar": [
+      "n5_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "理由を説明する - 〜からについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Explaining Reasons",
+        "answer": "理由を説明する - 〜から"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Explaining Reasons?",
+        "options": [
+          "理由を説明する - 〜から",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "理由を説明する - 〜から"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Explaining Reasons）",
+        "answer": [
+          "理由を説明する - 〜から"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l025",
+    "titleJp": "比較する - AよりBのほうが",
+    "level": "N5",
+    "order": 25,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "比較する - AよりBのほうが"
+    ],
+    "grammar": [
+      "n5_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "比較する - AよりBのほうがについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Comparing Two Items",
+        "answer": "比較する - AよりBのほうが"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Comparing Two Items?",
+        "options": [
+          "比較する - AよりBのほうが",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "比較する - AよりBのほうが"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Comparing Two Items）",
+        "answer": [
+          "比較する - AよりBのほうが"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l026",
+    "titleJp": "一番〜なもの - グループでの比較",
+    "level": "N5",
+    "order": 26,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "一番〜なもの - グループでの比較"
+    ],
+    "grammar": [
+      "n5_g002"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "一番〜なもの - グループでの比較について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Superlatives in a Group",
+        "answer": "一番〜なもの - グループでの比較"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Superlatives in a Group?",
+        "options": [
+          "一番〜なもの - グループでの比較",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "一番〜なもの - グループでの比較"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Superlatives in a Group）",
+        "answer": [
+          "一番〜なもの - グループでの比較"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l027",
+    "titleJp": "経験を話す - 〜たことがある",
+    "level": "N5",
+    "order": 27,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "経験を話す - 〜たことがある"
+    ],
+    "grammar": [
+      "n5_g003"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "経験を話す - 〜たことがあるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Past Experiences",
+        "answer": "経験を話す - 〜たことがある"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Past Experiences?",
+        "options": [
+          "経験を話す - 〜たことがある",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "経験を話す - 〜たことがある"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Past Experiences）",
+        "answer": [
+          "経験を話す - 〜たことがある"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l028",
+    "titleJp": "順番に行動する - 〜てから",
+    "level": "N5",
+    "order": 28,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "順番に行動する - 〜てから"
+    ],
+    "grammar": [
+      "n5_g004"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "順番に行動する - 〜てからについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Sequential Actions",
+        "answer": "順番に行動する - 〜てから"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Sequential Actions?",
+        "options": [
+          "順番に行動する - 〜てから",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "順番に行動する - 〜てから"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Sequential Actions）",
+        "answer": [
+          "順番に行動する - 〜てから"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l029",
+    "titleJp": "希望を述べる - 〜たい / 〜たくない",
+    "level": "N5",
+    "order": 29,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "希望を述べる - 〜たい / 〜たくない"
+    ],
+    "grammar": [
+      "n5_g005"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "希望を述べる - 〜たい / 〜たくないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Expressing Desires",
+        "answer": "希望を述べる - 〜たい / 〜たくない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Expressing Desires?",
+        "options": [
+          "希望を述べる - 〜たい / 〜たくない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "希望を述べる - 〜たい / 〜たくない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Expressing Desires）",
+        "answer": [
+          "希望を述べる - 〜たい / 〜たくない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l030",
+    "titleJp": "〜ながら - 音楽を聴きながら勉強する",
+    "level": "N5",
+    "order": 30,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜ながら - 音楽を聴きながら勉強する"
+    ],
+    "grammar": [
+      "n5_g006"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ながら - 音楽を聴きながら勉強するについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Simultaneous Actions",
+        "answer": "〜ながら - 音楽を聴きながら勉強する"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Simultaneous Actions?",
+        "options": [
+          "〜ながら - 音楽を聴きながら勉強する",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ながら - 音楽を聴きながら勉強する"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Simultaneous Actions）",
+        "answer": [
+          "〜ながら - 音楽を聴きながら勉強する"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l031",
+    "titleJp": "電話での会話",
+    "level": "N5",
+    "order": 31,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "電話での会話"
+    ],
+    "grammar": [
+      "n5_g007"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "電話での会話について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Talking on the Phone",
+        "answer": "電話での会話"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Talking on the Phone?",
+        "options": [
+          "電話での会話",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "電話での会話"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Talking on the Phone）",
+        "answer": [
+          "電話での会話"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l032",
+    "titleJp": "友達の家を訪問する",
+    "level": "N5",
+    "order": 32,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "友達の家を訪問する"
+    ],
+    "grammar": [
+      "n5_g008"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "友達の家を訪問するについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Visiting a Friend's Home",
+        "answer": "友達の家を訪問する"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Visiting a Friend's Home?",
+        "options": [
+          "友達の家を訪問する",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "友達の家を訪問する"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Visiting a Friend's Home）",
+        "answer": [
+          "友達の家を訪問する"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l033",
+    "titleJp": "変化を表す - 〜になる / 〜にする",
+    "level": "N5",
+    "order": 33,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "変化を表す - 〜になる / 〜にする"
+    ],
+    "grammar": [
+      "n5_g009"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "変化を表す - 〜になる / 〜にするについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Expressing Change of State",
+        "answer": "変化を表す - 〜になる / 〜にする"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Expressing Change of State?",
+        "options": [
+          "変化を表す - 〜になる / 〜にする",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "変化を表す - 〜になる / 〜にする"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Expressing Change of State）",
+        "answer": [
+          "変化を表す - 〜になる / 〜にする"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l034",
+    "titleJp": "アドバイスをする - 〜ほうがいい",
+    "level": "N5",
+    "order": 34,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "アドバイスをする - 〜ほうがいい"
+    ],
+    "grammar": [
+      "n5_g010"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "アドバイスをする - 〜ほうがいいについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Giving Casual Advice",
+        "answer": "アドバイスをする - 〜ほうがいい"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Giving Casual Advice?",
+        "options": [
+          "アドバイスをする - 〜ほうがいい",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "アドバイスをする - 〜ほうがいい"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Giving Casual Advice）",
+        "answer": [
+          "アドバイスをする - 〜ほうがいい"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l035",
+    "titleJp": "義務と必要 - 〜なければならない",
+    "level": "N5",
+    "order": 35,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "義務と必要 - 〜なければならない"
+    ],
+    "grammar": [
+      "n5_g011"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "義務と必要 - 〜なければならないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Obligation & Necessity",
+        "answer": "義務と必要 - 〜なければならない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Obligation & Necessity?",
+        "options": [
+          "義務と必要 - 〜なければならない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "義務と必要 - 〜なければならない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Obligation & Necessity）",
+        "answer": [
+          "義務と必要 - 〜なければならない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l036",
+    "titleJp": "不要の表現 - 〜なくてもいい",
+    "level": "N5",
+    "order": 36,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "不要の表現 - 〜なくてもいい"
+    ],
+    "grammar": [
+      "n5_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "不要の表現 - 〜なくてもいいについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of No Need / Optionality",
+        "answer": "不要の表現 - 〜なくてもいい"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about No Need / Optionality?",
+        "options": [
+          "不要の表現 - 〜なくてもいい",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "不要の表現 - 〜なくてもいい"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（No Need / Optionality）",
+        "answer": [
+          "不要の表現 - 〜なくてもいい"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l037",
+    "titleJp": "友達とのタメ口 - 常体",
+    "level": "N5",
+    "order": 37,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "友達とのタメ口 - 常体"
+    ],
+    "grammar": [
+      "n5_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "友達とのタメ口 - 常体について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Casual Speech with Friends",
+        "answer": "友達とのタメ口 - 常体"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Casual Speech with Friends?",
+        "options": [
+          "友達とのタメ口 - 常体",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "友達とのタメ口 - 常体"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Casual Speech with Friends）",
+        "answer": [
+          "友達とのタメ口 - 常体"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l038",
+    "titleJp": "丁寧にお願いする - 〜てください",
+    "level": "N5",
+    "order": 38,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "丁寧にお願いする - 〜てください"
+    ],
+    "grammar": [
+      "n5_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "丁寧にお願いする - 〜てくださいについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Asking for Polite Favors",
+        "answer": "丁寧にお願いする - 〜てください"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Asking for Polite Favors?",
+        "options": [
+          "丁寧にお願いする - 〜てください",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "丁寧にお願いする - 〜てください"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Asking for Polite Favors）",
+        "answer": [
+          "丁寧にお願いする - 〜てください"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l039",
+    "titleJp": "落とし物を探す - 交番で",
+    "level": "N5",
+    "order": 39,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "落とし物を探す - 交番で"
+    ],
+    "grammar": [
+      "n5_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "落とし物を探す - 交番でについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Lost and Found",
+        "answer": "落とし物を探す - 交番で"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Lost and Found?",
+        "options": [
+          "落とし物を探す - 交番で",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "落とし物を探す - 交番で"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Lost and Found）",
+        "answer": [
+          "落とし物を探す - 交番で"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l040",
+    "titleJp": "郵便局と銀行での手続き",
+    "level": "N5",
+    "order": 40,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "郵便局と銀行での手続き"
+    ],
+    "grammar": [
+      "n5_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "郵便局と銀行での手続きについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of At the Post Office & Bank",
+        "answer": "郵便局と銀行での手続き"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about At the Post Office & Bank?",
+        "options": [
+          "郵便局と銀行での手続き",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "郵便局と銀行での手続き"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（At the Post Office & Bank）",
+        "answer": [
+          "郵便局と銀行での手続き"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l041",
+    "titleJp": "料理と簡単レシピ",
+    "level": "N5",
+    "order": 41,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "料理と簡単レシピ"
+    ],
+    "grammar": [
+      "n5_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "料理と簡単レシピについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Cooking & Simple Recipes",
+        "answer": "料理と簡単レシピ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Cooking & Simple Recipes?",
+        "options": [
+          "料理と簡単レシピ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "料理と簡単レシピ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Cooking & Simple Recipes）",
+        "answer": [
+          "料理と簡単レシピ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l042",
+    "titleJp": "ペットと動物の言葉",
+    "level": "N5",
+    "order": 42,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "ペットと動物の言葉"
+    ],
+    "grammar": [
+      "n5_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "ペットと動物の言葉について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Pets & Animal Vocabulary",
+        "answer": "ペットと動物の言葉"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Pets & Animal Vocabulary?",
+        "options": [
+          "ペットと動物の言葉",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "ペットと動物の言葉"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Pets & Animal Vocabulary）",
+        "answer": [
+          "ペットと動物の言葉"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l043",
+    "titleJp": "スポーツと運動習慣",
+    "level": "N5",
+    "order": 43,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "スポーツと運動習慣"
+    ],
+    "grammar": [
+      "n5_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "スポーツと運動習慣について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Sports & Fitness Activities",
+        "answer": "スポーツと運動習慣"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Sports & Fitness Activities?",
+        "options": [
+          "スポーツと運動習慣",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "スポーツと運動習慣"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Sports & Fitness Activities）",
+        "answer": [
+          "スポーツと運動習慣"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l044",
+    "titleJp": "アニメ・漫画・ポップカルチャー",
+    "level": "N5",
+    "order": 44,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "アニメ・漫画・ポップカルチャー"
+    ],
+    "grammar": [
+      "n5_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "アニメ・漫画・ポップカルチャーについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Anime, Manga & Pop Culture",
+        "answer": "アニメ・漫画・ポップカルチャー"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Anime, Manga & Pop Culture?",
+        "options": [
+          "アニメ・漫画・ポップカルチャー",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "アニメ・漫画・ポップカルチャー"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Anime, Manga & Pop Culture）",
+        "answer": [
+          "アニメ・漫画・ポップカルチャー"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l045",
+    "titleJp": "京都と東京の名所案内",
+    "level": "N5",
+    "order": 45,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "京都と東京の名所案内"
+    ],
+    "grammar": [
+      "n5_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "京都と東京の名所案内について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Sightseeing in Kyoto & Tokyo",
+        "answer": "京都と東京の名所案内"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Sightseeing in Kyoto & Tokyo?",
+        "options": [
+          "京都と東京の名所案内",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "京都と東京の名所案内"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Sightseeing in Kyoto & Tokyo）",
+        "answer": [
+          "京都と東京の名所案内"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l046",
+    "titleJp": "日本の食事作法と箸の使い方",
+    "level": "N5",
+    "order": 46,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "日本の食事作法と箸の使い方"
+    ],
+    "grammar": [
+      "n5_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本の食事作法と箸の使い方について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Japanese Table Manners",
+        "answer": "日本の食事作法と箸の使い方"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Japanese Table Manners?",
+        "options": [
+          "日本の食事作法と箸の使い方",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日本の食事作法と箸の使い方"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Japanese Table Manners）",
+        "answer": [
+          "日本の食事作法と箸の使い方"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l047",
+    "titleJp": "神社とお寺の参拝作法",
+    "level": "N5",
+    "order": 47,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "神社とお寺の参拝作法"
+    ],
+    "grammar": [
+      "n5_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "神社とお寺の参拝作法について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Visiting Shrines & Temples",
+        "answer": "神社とお寺の参拝作法"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Visiting Shrines & Temples?",
+        "options": [
+          "神社とお寺の参拝作法",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "神社とお寺の参拝作法"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Visiting Shrines & Temples）",
+        "answer": [
+          "神社とお寺の参拝作法"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l048",
+    "titleJp": "温泉の入り方とルール",
+    "level": "N5",
+    "order": 48,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "温泉の入り方とルール"
+    ],
+    "grammar": [
+      "n5_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "温泉の入り方とルールについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Onsen & Public Bath Etiquette",
+        "answer": "温泉の入り方とルール"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Onsen & Public Bath Etiquette?",
+        "options": [
+          "温泉の入り方とルール",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "温泉の入り方とルール"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Onsen & Public Bath Etiquette）",
+        "answer": [
+          "温泉の入り方とルール"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l049",
+    "titleJp": "日帰り旅行の計画",
+    "level": "N5",
+    "order": 49,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "日帰り旅行の計画"
+    ],
+    "grammar": [
+      "n5_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日帰り旅行の計画について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Planning a Day Trip",
+        "answer": "日帰り旅行の計画"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Planning a Day Trip?",
+        "options": [
+          "日帰り旅行の計画",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日帰り旅行の計画"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Planning a Day Trip）",
+        "answer": [
+          "日帰り旅行の計画"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n5l050",
+    "titleJp": "N5修了とこれからの目標",
+    "level": "N5",
+    "order": 50,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "N5修了とこれからの目標"
+    ],
+    "grammar": [
+      "n5_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "N5修了とこれからの目標について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of N5 Milestone: Review & Goals",
+        "answer": "N5修了とこれからの目標"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about N5 Milestone: Review & Goals?",
+        "options": [
+          "N5修了とこれからの目標",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "N5修了とこれからの目標"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（N5 Milestone: Review & Goals）",
+        "answer": [
+          "N5修了とこれからの目標"
+        ]
+      }
+    ]
+  }
+]

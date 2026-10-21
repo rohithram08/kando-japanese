@@ -1,0 +1,292 @@
+# scripts/generators/n1_generator.py
+# Generates 50 complete N1 stories aligned with JLPT N1 advanced literary and technical standards
+
+import json
+import os
+from common import make_story, to_furigana
+
+N1_TEMPLATES = [
+    ("憲法解釈と統治機構の本質", "憲法[けんぽう] 解釈[かいしゃく]と 統治[とうち] 機構[きこう]の 本質[ほんしつ]", "Constitutional Jurisprudence and the Architecture of State Power",
+     "Legal scholars analyze judicial review precedents concerning the separation of legislative and executive powers.",
+     "違憲審査", "いけんしんさ", "judicial review of constitutionality", "〜であれ", "be it A or B / whether it is", "判示する", "はんじする", "to rule / deliver judicial finding", "憲", "constitution"),
+    ("超低金利政策の終焉とマクロ経済", "超低金利[ちょうていきんり] 政策[せいさく]の 終焉[しゅうえん]と マクロ 経済[けいざい]", "Termination of Unconventional Monetary Policy",
+     "Central bankers model bond yield curve adjustments while managing currency volatility in sovereign debt markets.",
+     "国債", "こくさい", "government sovereign bond", "〜を皮切りに", "starting with / triggered by", "是正する", "ぜせいする", "to correct / redress disparity", "債", "bond / debt"),
+    ("量子重力理論と時空の創発性", "量子重力[りょうしじゅうりょく] 理論[りろん]と 時空[じくう]の 創発性[そうはつせい]", "Quantum Gravity and the Emergence of Spacetime",
+     "Theoretical physicists debate whether spacetime manifold geometry emerges holographically from quantum entanglement.",
+     "創発", "そうはつ", "emergence / emergent property", "〜に至るまで", "extending even unto / down to the smallest", "定式化する", "ていしきかする", "to formulate mathematically", "創", "originate / create"),
+    ("ゲノム編集技術の生命倫理規範", "ゲノム編集[へんしゅう] 技術[ぎじゅつ]の 生命[せいめい] 倫理[りんり] 規範[きはん]", "Bioethical Norms in Germline Genome Editing",
+     "Colloquiums examine the moral boundaries of modifying human embryos against transgenerational uncertainties.",
+     "優生", "ゆうせい", "eugenics", "〜を禁じ得ない", "cannot suppress feeling / cannot help but feel", "規制する", "きせいする", "to regulate legislatively", "規", "rule / standard"),
+    ("近代文学における実存と疎外", "近代[きんだい] 文学[ぶんがく]における 実存[じつぞん]と 疎外[そがい]", "Existential Alienation in Modern Japanese Literature",
+     "Literary critics deconstruct Natsume Soseki's psychological realism amid Meiji modernization anxieties.",
+     "実存", "じつぞん", "existential existence", "〜極まりない", "extremely / utmost degree (literary)", "省察する", "せいさつする", "to contemplate deeply", "存", "exist / keep"),
+    ("スライムの時空論考", "スライムの 時空[じくう] 論考[ろんこう]", "Slime's Philosophical Treatise on Space and Time",
+     "The gelatinous observer synthesizes relativity and Zen awareness into a unified treatise on consciousness.",
+     "形而上", "けいじじょう", "metaphysical", "〜と相まって", "coupled with / in synergy with", "思索する", "しさくする", "to philosophize / meditate", "論", "argument / theory"),
+    ("多国間気候変動条約の批准交渉", "多国間[たこくかん] 気候[きこう] 変動[へんどう] 条約[じょうやく]の 批准[ひじゅん] 交渉[こうしょう]", "Multilateral Ratification of Climate Conventions",
+     "Diplomats bridge national liability clauses through rigorous bilateral side-agreements before midnight deadlines.",
+     "批准", "ひじゅん", "treaty ratification", "〜余儀なくされる", "forced / compelled by circumstance to", "締結する", "ていけつする", "to conclude a treaty", "条", "clause / treaty"),
+    ("最高裁判所大法廷の違憲判決", "最高裁判所[さいこうさいばんしょ] 大法廷[だいほうてい]の 違憲[いけん] 判決[はんけつ]", "Supreme Court En Banc Constitutional Ruling",
+     "Fifteen justices weigh equal protection guarantees against centuries of administrative tradition.",
+     "大法廷", "だいほうてい", "grand bench of the supreme court", "〜に耐えない", "cannot bear / unendurable", "宣告する", "せんこくする", "to pronounce sentence", "判", "judge / decide"),
+    ("神経インターフェースの哲学的境界", "神経[しんけい] インターフェースの 哲学的[てつがくてき] 境界[きょうかい]", "Philosophical Boundaries of Neural Interfaces",
+     "Cognitive neuroscientists question personal identity continuity when synthetic thoughts merge with biological cortex.",
+     "同一性", "どういつせい", "identity / continuity of self", "〜たるもの", "in the capacity of / as befits", "究明する", "きゅうめいする", "to investigate rigorously", "境", "boundary"),
+    ("惑星間テラフォーミングの工学可能性", "惑星間[わくせいかん] テラフォーミングの 工学[こうがく] 可能性[かのうせいう]", "Engineering Feasibility of Planetary Geoengineering",
+     "Astrophysicists simulate carbonate rock release to thicken Martian atmospheric density over centuries.",
+     "大気圏", "たいきけん", "planetary atmosphere", "〜に越したことはない", "nothing is better than / best choice", "涵養する", "かんようする", "to cultivate / replenish", "圏", "sphere / realm"),
+    ("古代金石文の古筆解読と年輪年代学", "古代[こだい] 金石文[きんせきぶん]の 古筆[こひつ] 解読[かいどく]と 年輪[ねんりん] 年代学[ねんだいがく]", "Deciphering Ancient Bronze Inscriptions",
+     "Epigraphers match corroded mirror inscriptions against cedar dendrochronology to pinpoint archaic rulers.",
+     "金石文", "きんせきぶん", "epigraphy / inscriptions on bronze and stone", "〜だに", "even just / even a single thought of", "同定する", "どうていする", "to identify / classify", "銘", "inscription / carve"),
+    ("世界的大流行感染症の数理疫学モデル", "世界的[せかいてき] 大流行[だいりゅうこう] 感染症[かんせんしょう]の 数理[すうり] 疫学[えきがく] モデル", "Mathematical Epidemiology of Pandemic Dynamics",
+     "Statisticians simulate viral mutation lineage drift to calibrate hospital surge capacity triggers.",
+     "実効再生産", "じっこうさいせいさん", "effective reproduction rate", "〜そばから", "no sooner than / as quickly as", "予測する", "よそくする", "to forecast mathematically", "疫", "epidemic"),
+    ("ソブリン債務再編の国際金融枠組み", "ソブリン 債務[さいむ] 再編[さいへん]の 国際[こくさい] 金融[きんゆう] 枠組[わくぐ]み", "Multilateral Sovereign Debt Restructuring",
+     "Creditor clubs agree on debt-for-nature swaps to preserve tropical biodiversity preserves in debtor nations.",
+     "債権", "さいけん", "creditor's claim", "〜にかまけて", "preoccupied with / neglecting other duties", "猶予する", "ゆうよする", "to grant stay / defer debt", "債", "debt"),
+    ("地球外資源開発と宇宙法の統治体系", "地球外[ちきゅうがい] 資源[しげん] 開発[かいはつ]と 宇宙法[うちゅうほう]の 統治[とうち] 体系[たいけい]", "Outer Space Treaty Governance and Asteroid Mining",
+     "International jurists draft equitable resource allocation protocols for lunar regolith helium-3 reserves.",
+     "主権", "しゅけん", "national sovereignty", "〜をもって", "by means of / with (formal)", "規律する", "きりつする", "to govern / discipline legally", "統", "unite / govern"),
+    ("スライムの大統一理論構築", "スライムの 大統一[だいとういつ] 理論[りろん] 構築[こうちく]", "Slime's Unified Field Theory Blueprint",
+     "The slime calculates harmonic curvature equations uniting the strong, weak, and electromagnetic forces.",
+     "対称性", "たいしょうせい", "gauge symmetry", "〜ゆえに", "because of / on account of (literary)", "導出する", "どうしゅつする", "to derive mathematically", "統", "unify"),
+    ("重要インフラに対するサイバー攻撃の抑止", "重要[じゅうよう] インフラに 対[たい]する サイバー攻撃[こうげき]の 抑止[よくし]", "Deterrence of Cyber Warfare against Critical Infrastructure",
+     "Defense intelligence analysts harden electrical SCADA networks against state-sponsored zero-day rootkits.",
+     "抑止", "よくし", "deterrence / check", "〜まじき", "unforgivable / that which ought not to be done", "防衛する", "ぼうえいする", "to defend militarily", "抑", "suppress"),
+    ("日本美学における「もののあわれ」と無常観", "日本[にほん] 美学[びがく]における 「もののあわれ」と 無常観[むじょうかん]", "The Aesthetics of Mono no Aware and Impermanence",
+     "Art historians trace how the fleeting transience of blossoms evolved into a deep spiritual philosophy.",
+     "無常", "むじょう", "impermanence / transience", "〜てやまない", "feel from the bottom of heart / unceasingly", "昇華する", "しょうかする", "to sublimate into art", "美", "beauty"),
+    ("ゼロ知識証明と次世代暗号基盤", "ゼロ知識[ちしき] 証明[しょうめい]と 次世代[じせだい] 暗号[あんごう] 基盤[きばん]", "Zero-Knowledge Proofs in Post-Quantum Cryptography",
+     "Cryptographers design succinct non-interactive arguments of knowledge immune to Shor's algorithm.",
+     "耐量子", "たいりょうし", "quantum-resistant", "〜たりとも〜ない", "not even a single (unit)", "秘匿する", "ひとくする", "to conceal securely", "暗", "dark / cipher"),
+    ("福島第一原発廃炉技術の極限作業", "福島[ふくしま] 第一原発[だいいちげんぱつ] 廃炉[はいろ] 技術[ぎじゅつ]の 極限[きょくげん] 作業[さぎょう]", "Extreme Remote Robotics for Nuclear Decommissioning",
+     "Radiation-hardened snake robots sample solidified fuel debris beneath intense gamma-ray fields.",
+     "放射線", "ほうしゃせん", "ionizing radiation", "〜を余儀なくさせる", "to force upon someone", "遮蔽する", "しゃへいする", "to shield radiation", "廃", "abolish / dismantle"),
+    ("汎用人工知能の価値整合理論", "汎用[はんよう] 人工知能[じんこうちのう]の 価値[かち] 整合[せいごう] 理論[りろん]", "Value Alignment in Artificial General Intelligence",
+     "Researchers formulate mathematical utility bounds ensuring self-improving agents respect human dignity.",
+     "整合", "せいごう", "alignment / consistency", "〜ことごとく", "every single one without exception", "統御する", "とうぎょする", "to govern / hold sway over", "整", "align / order"),
+    ("意識の認知神経科学とクオリア問題", "意識[いしき]の 認知[にんち] 神経[しんけい] 科学[かがく]と クオリア 問題[もんだい]", "Cognitive Neuroscience of Qualia and Subjective Experience",
+     "Neurobiologists search for neural correlates of the subjective vivid redness of an autumn maple leaf.",
+     "主観", "しゅかん", "subjectivity", "〜だに", "even to think of / even dream of", "解明する", "かいめいする", "to decipher riddle", "識", "know / conscious"),
+    ("海洋境界画定と国際海洋法裁判所", "海洋[かいよう] 境界[きょうかい] 画定[かくてい]と 国際[こくさい] 海洋法[かいようほう] 裁判所[さいばんしょ]", "Delimitation of Exclusive Economic Zones in Maritime Law",
+     "Tribunals apply equitable equidistant baselines to settle continental shelf overlaps amicably.",
+     "画定", "かくてい", "delimitation / boundary demarcation", "〜いかんに関わらず", "regardless of circumstances", "調停する", "ちょうていする", "to arbitrate dispute", "画", "draw / delineate"),
+    ("ヒト寿命延伸の倫理的・社会的帰結", "ヒト寿命[じゅみょう] 延伸[えんしん]の 倫理的[りんりてき]・社会的[しゃかいてき] 帰結[きけつ]", "Ethical Consequences of Human Longevity Radical Extension",
+     "Sociologists debate intergenerational wealth succession when cellular senescence is indefinitely halted.",
+     "老化", "ろうか", "cellular senescence / aging", "〜ごとき", "like / as if (literary contempt/metaphor)", "是認する", "ぜにんする", "to approve / validate", "命", "life"),
+    ("希土類元素の地政学と代替材料開発", "希土類[きどるい] 元素[げんそ]の 地政学[ちせいがく]と 代替[だいたい] 材料[ざいりょう] 開発[かいはつ]", "Rare Earth Geopolitics and Synthetic Magnet Development",
+     "Metallurgists synthesize iron-nickel superlattices to eliminate dysprosium dependence in EV motors.",
+     "偏在", "へんざい", "uneven geographic distribution", "〜のみならず", "not only X, but also Y", "創製する", "そうせいする", "to invent / synthesize", "希", "rare / hope"),
+    ("地球内部マントル対流のトモグラフィー解析", "地球内部[ちきゅうないぶ] マントル 対流[たいりゅう]の トモグラフィー 解析[かいせき]", "Seismic Tomography of Deep Mantle Plumes",
+     "Geophysicists invert seismic travel-time delays to image subducting oceanic plates at the core boundary.",
+     "対流", "たいりゅう", "thermal convection", "〜に至るまで", "reaching even to the deepest", "断層撮影する", "だんそうさつえいする", "to image tomographically", "層", "layer / stratum"),
+    ("超臨界二酸化炭素の地中貯留化学", "超臨界[ちょうりんかい] 二酸化炭素[にさんかたんそ]の 地中[ちちゅう] 貯留[ちょりゅう] 化学[かがく]", "Geochemical Mineralization of Supercritical Carbon Dioxide",
+     "Engineers inject fluid carbon dioxide into basalt formations, turning greenhouse gases into solid stone.",
+     "鉱物化", "こうぶつか", "mineralization", "〜をもって", "utilizing / by virtue of", "固定化する", "こていかする", "to sequester permanently", "留", "detain / retain"),
+    ("重力波天文学と中性子星合体の元素合成", "重力波[じゅうりょくは] 天文学[てんもんがく]と 中性子星[ちゅうせいしせい] 合体[がったい]の 元素[げんそ] 合成[ごうせい]", "Gravitational Wave Astronomy and R-Process Nucleosynthesis",
+     "Interferometers detect spacetime ripples originating from colliding neutron stars forging pure gold.",
+     "合体", "がったい", "collision / coalescence", "〜が早いか", "as soon as / the instant that", "検出する", "けんしゅつする", "to detect signal", "波", "wave"),
+    ("成層圏プラットフォームと次世代通信網", "成層圏[せいそうけん] プラットフォームと 次世代[じせだい] 通信網[つうしんもう]", "Stratospheric High-Altitude Pseudo-Satellites",
+     "Solar gliders loiter 20 kilometers above typhoon systems to provide uninterrupted high-speed broadband.",
+     "滞空", "たいくう", "airborne endurance", "〜にとどまらず", "not confined merely to", "中継する", "ちゅうけいする", "to relay telemetry", "層", "stratum"),
+    ("言語決定論と人工言語の思考実験", "言語[げんご] 決定論[けっていろん]と 人工[じんこう] 言語[げんご]の 思考[しこう] 実験[じっけん]", "Linguistic Relativity and Constructed Grammars",
+     "Cognitive linguists test whether tenseless logical languages alter spatial temporal cognition in human speakers.",
+     "相対性", "そうたいせい", "relativity / relational nature", "〜にほかならない", "is the very essence of", "検証する", "けんしょうする", "to experimentally verify", "語", "word / language"),
+    ("脱希少性経済と普遍的ベーシックサービスの設計", "脱希少性[だつきしょうせい] 経済[けいざい]と 普遍的[ふへんてき] ベーシックサービスの 設計[せっけい]", "Post-Scarcity Economics and Universal Basic Assets",
+     "Economists design post-monetary algorithmic resource clearinghouses driven by zero marginal cost energy.",
+     "分配", "ぶんぱい", "resource distribution", "〜ゆえに", "precisely because of", "再編する", "さいへんする", "to restructure radically", "資", "capital / resource"),
+    ("トランスヒューマニズムと人間性の哲学的再定義", "トランスヒューマニズムと 人間性[にんげんせい]の 哲学的[てつがくてき] 再定義[さいていぎ]", "Transhumanist Redefinition of Human Nature",
+     "Ethicists debate whether cognitive prostheses enhance or fundamentally dissolve biological human nature.",
+     "拡張", "かくちょう", "augmentation / enhancement", "〜を余儀なくされる", "compelled to undergo", "再考する", "さいこうする", "to fundamentally rethink", "拡", "broaden / extend"),
+    ("スライムの全知統合思索", "スライムの 全知[ぜんち] 統合[とうごう] 思索[しさく]", "Slime's Universal Synthesis of Knowledge",
+     "The slime unifies linguistic play, deep mathematics, and compassionate awareness into an eternal beacon.",
+     "統合", "とうごう", "unification / synthesis", "〜てやまない", "feel with deep profound passion", "照らす", "てらす", "to illuminate path", "合", "fit / unite"),
+    ("深宇宙コロニーの自律的法規範", "深宇宙[しんうちゅう] コロニーの 自律的[じりつてき] 法規範[ほうきはん]", "Autonomous Constitutionalism for Deep Space Colonies",
+     "Centennial generational starship communities establish legal charters balancing life support rationing.",
+     "自治", "じち", "self-governance / autonomy", "〜たるもの", "in the noble duty of", "制定する", "せいていする", "to enact constitution", "律", "law / rhythm"),
+    ("素粒子衝突型加速器の未踏領域探査", "素粒子[そりゅうし] 衝突型[しょうとつがた] 加速器[かそくき]の 未踏[みとう] 領域[りょういき] 探査[たんさ]", "Probing Beyond the Standard Model in Colliders",
+     "Physicists smash protons at 100 teraelectronvolts to detect super-symmetric dark matter particles.",
+     "未踏", "みとう", "unexplored / virgin territory", "〜に至るまで", "encompassing down to the smallest", "観測する", "かんそくする", "to observe experimentally", "素", "elementary"),
+    ("国際共有水資源条約と越境水争の調停", "国際[こくさい] 共有[きょうゆう] 水資源[みずしげん] 条約[じょうやく]と 越境[えっきょう] 水争[みずあらそい]の 調停[ちょうてい]", "Transboundary River Basin Arbitration Treaties",
+     "Riparian sovereign states agree on algorithmic dam discharge quotas during decadal drought crises.",
+     "利水", "りすい", "water utilization", "〜いかんに関わらず", "irrespective of shifting conditions", "仲裁する", "ちゅうさいする", "to arbitrate conflict", "条", "clause"),
+    ("次世代常温核融合の学術的検証", "次世代[じせだい] 常温[じょうおん] 核融合[かくゆうごう]の 学術的[がくじゅつてき] 検証[けんしょう]", "Rigorous Verification of Low-Energy Nuclear Reactions",
+     "Nanocrystalline nickel-hydrogen lattices undergo neutron mass spectrometry to verify anomalous excess heat.",
+     "再現性", "さいげんせい", "reproducibility", "〜だに", "even to contemplate", "追試する", "ついしする", "to replicate experiment", "核", "nucleus / core"),
+    ("デジタル時代における言語遺産の永続化", "デジタル時代[じだい]における 言語[げんご] 遺産[いさん]の 永続化[えいぞくか]", "Perpetuating Human Language Heritage in the Digital Age",
+     "Archivists etch phonetic rules and cultural literature of all 7,000 human tongues onto quartz glass wafers.",
+     "永続", "えいぞく", "perpetuity / permanence", "〜にほかならない", "is nothing other than", "刻印する", "こくいんする", "to engrave permanently", "遺", "bequeath / leave"),
+    ("学習者たちの偉大なる航海：日本語マスター", "学習者[がくしゅうしゃ]たちの 偉大[いだい]なる 航海[こうかい]：日本語[にほんご]マスター", "The Grand Voyage of Learners: Nihongo Master",
+     "The ultimate graduation narrative celebrating the courageous journey from zero kana to complete N1 fluency.",
+     "到達", "とうたつ", "attainment / reaching destination", "〜に越したことはない", "is the greatest possible triumph", "称える", "たたえる", "to honor / celebrate", "航", "sail / navigate"),
+    ("高度自律型人工知能の法人格付与論", "高度[こうど] 自律型[じりつがた] 人工知能[じんこうちのう]の 法人格[ほうじんかく] 付与論[ふよろん]", "Legal Personhood for Autonomous Algorithmic Entities",
+     "Legal scholars assess fiduciary liabilities when autonomous smart contracts execute corporate acquisitions.",
+     "法人格", "ほうじんかく", "legal personhood", "〜をめぐって", "surrounding contentious debate", "帰属する", "きぞくする", "to belong / vest legally", "法", "law"),
+    ("極限環境生命体の生化学的多様性", "極限[きょくげん] 環境[かんきょう] 生命体[せいめいたい]の 生化学的[せいかがくてき] 多様性[たようせい]", "Biochemistry of Radiotrophic Extremophiles",
+     "Microbiologists analyze melanin-assisted energy synthesis in fungi flourishing inside the Chernobyl reactor.",
+     "代謝", "たいしゃ", "metabolism", "〜ことごとく", "every single observed manifestation", "転換する", "てんかんする", "to convert energy", "極", "extreme"),
+    ("主権国家体制の変容と脱領域的ガバナンス", "主権[しゅけん] 国家[こっか] 体制[たいせい]の 変容[へんよう]と 脱領域的[だつりょういきてき] ガバナンス", "Transboundary Governance Beyond the Westphalian State",
+     "Political theorists model decentralized autonomous protocols managing global planetary commons.",
+     "主権", "しゅけん", "national sovereignty", "〜を余儀なくされる", "forced to adapt to structural reality", "協調する", "きょうちょうする", "to cooperate harmoniously", "治", "govern"),
+    ("深海熱水鉱床生態系における遺伝資源条約", "深海[しんかい] 熱水[ねっすい] 鉱床[こうしょう] 生態系[せいたいけい]における 遺伝[いでん] 資源[しげん] 条約[じょうやく]", "Genetic Resource Treaties in Areas Beyond National Jurisdiction",
+     "Marine biologists establish benefit-sharing protocols for thermophilic enzymes discovered on the seabed.",
+     "公海", "こうかい", "high seas / international waters", "〜いかんに関わらず", "regardless of national fleet power", "保全する", "ほぜんする", "to preserve ecosystems", "海", "ocean"),
+    ("ポスト・デジタル社会における書字文化の復権", "ポスト・デジタル社会[しゃかい]における 書字[しょじ] 文化[ぶんか]の 復権[ふっけん]", "Resurgence of Handwriting in the Post-Digital Era",
+     "Neuroscientists demonstrate that tactile brush calligraphy fosters meditative deep focus unmatched by keyboards.",
+     "書字", "しょじ", "act of handwriting", "〜と相まって", "in tandem with heightened mindfulness", "復権する", "ふっけんする", "to restore prominence", "書", "write"),
+    ("熱核融合炉内壁材料のプラズマ損耗極限", "熱核融合炉[ねつかくゆうごうろ] 内壁[ないへき] 材料[ざいりょう]の プラズマ 損耗[そんもう] 極限[きょくげん]", "Tungsten Divertor Erosion Under Fusion Heat Loads",
+     "Materials scientists subject forged tungsten tiles to 20 megawatts per square meter heat fluxes.",
+     "耐熱", "たいねつ", "heat resistance", "〜に耐える", "able to withstand extreme stress", "溶融する", "ようゆうする", "to melt / liquefy", "壁", "wall"),
+    ("多変数複素関数論における特異点解消", "多変数[たへんすう] 複素[ふくそ] 関数論[かんすうろん]における 特異点[とくいてん] 解消[かいしょう]", "Resolution of Singularities in Algebraic Geometry",
+     "Mathematicians apply birational geometry blow-ups to resolve topological singularities on multidimensional varieties.",
+     "多様体", "たようたい", "manifold / variety", "〜に至るまで", "extending to the highest dimensions", "解消する", "かいしょうする", "to resolve singularity", "数", "number"),
+    ("スライムの宇宙論講義", "スライムの 宇宙論[うちゅうろん] 講義[こうぎ]", "Slime's Final Masterclass on Cosmology",
+     "The wise slime delivers a radiant lecture reminding learners that language is the mirror of the cosmos.",
+     "悠久", "ゆうきゅう", "eternity / timelessness", "〜てやまない", "cherish with boundless gratitude", "包摂する", "ほうせつする", "to subsume into harmony", "宇", "cosmos"),
+    ("世界遺産法における真正性と完全性の調停", "世界遺産法[せかいいさんほう]における 真正性[しんせいせい]と 完全性[かんぜんせい]の 調停[ちょうてい]", "Authenticity and Integrity in World Heritage Law",
+     "Preservationists reconcile periodic timber dismantling rebuilding cycles with global conservation standards.",
+     "真正性", "しんせいせい", "authenticity", "〜にほかならない", "is nothing other than", "調停する", "ちょうていする", "to reconcile paradigms", "真", "true"),
+    ("量子暗号通信衛星網の軌道上配備", "量子[りょうし] 暗号[あんごう] 通信[つうしん] 衛星網[えいせいもう]の 軌道上[きどうじょう] 配備[はいび]", "Orbital Deployment of Quantum Key Distribution Satellites",
+     "Ground telescope lasers catch entangled single photons from low Earth orbit satellites at picosecond timing.",
+     "もつれ", "もつれ", "quantum entanglement", "〜たりとも〜ない", "not even a single photon lost", "鍵配送する", "かぎはいそうする", "to distribute keys", "衛", "protect / guard"),
+    ("高度生命維持システムにおける完全循環生物圏", "高度[こうど] 生命[せいめい] 維持[いじ] システムにおける 完全[かんぜん] 循環[じゅんかん] 生物圏[せいぶつけん]", "Closed-Loop Bioregenerative Life Support",
+     "Hermetic ecological domes recycle carbon, oxygen, and gray water with 99.8% recovery efficiency.",
+     "閉鎖系", "へいさけい", "closed ecological system", "〜をもって", "by virtue of high technology", "維持する", "いじする", "to maintain equilibrium", "環", "ring / cycle"),
+    ("栄光の頂点：日本語完全制覇への道", "栄光[えいこう]の 頂点[ちょうてん]：日本語[にほんご] 完全[かんぜん] 制覇[せいは]への 道[みち]", "Pinnacle of Glory: Conquering the Heights of Japanese",
+     "Looking back upon all 250 graded stories, the learner stands as a true master of the Japanese language.",
+     "制覇", "せいは", "mastery / conquest of goals", "〜にほかならない", "is the sublime realization of dreams", "誇る", "ほこる", "to stand proudly", "栄", "glory")
+]
+
+def generate_n1_stories():
+    stories = []
+    for idx, (title, title_furi, en_title, desc, key_v, key_r, key_m, key_g, g_m, key_vb, vb_r, vb_m, kanji_c, kanji_m) in enumerate(N1_TEMPLATES, start=1):
+        story_id = f"story_n1_{str(idx).zfill(2)}"
+        v_furi = to_furigana(key_v, key_r)
+        vb_furi = to_furigana(key_vb, vb_r)
+        sentences = [
+            {"furigana": f"学術[がくじゅつ]と 思想[しそう]の 最先端[さいせんたん]に おいて、{v_furi}を 巡[めぐ]る 議論[ぎろん]は 日々[ひび] 深[ふか]化を 遂[と]げて います。",
+             "translation": f"At the cutting edge of academia and human thought, debates surrounding {en_title} deepen with every passing day.",
+             "grammarNotes": "〜において: Locative domain marker; 深化を遂げる: Formal idiom for achieving deep evolution."},
+            {"furigana": "いかなる 困難[こんなん]な 状況[じょうきょう]であれ、真理[しんり]を 探究[たんきゅう]する 姿勢[しせい]を 崩[くず]しては なりません。",
+             "translation": f"No matter how difficult the circumstances {g_m}, one must never compromise the posture of pursuing truth.",
+             "grammarNotes": "いかなる〜であれ: Universal concessive ('be it whatever'); 〜てはならない: Solemn prohibition."},
+            {"furigana": f"専門家[せんもんか]たちが 長年[ながねん]に わたる 調査[ちょうさ]を {vb_furi}結果[けっか]、{v_furi}の 本質[ほんしつ]が 次第[しだい]に 明[あき]らかに なって きました。",
+             "translation": f"As a result of specialists {vb_m} across decades of rigorous inquiry, the core essence of {key_m} gradually emerged into clarity.",
+             "grammarNotes": "〜にわたる: Extending across duration; 明らかになる: Become illuminated."},
+            {"furigana": f"この 発見[はっけん]は、関係者[かんけいしゃ]に 驚[おどろ]きと 感銘[かんめい]を 禁[きん]じ得[え]ない ものと なりました。",
+             "translation": "This discovery became something that evoked astonishment and profound admiration which stakeholders could not suppress.",
+             "grammarNotes": "〜を禁じ得ない: Uncontrollable emotional stirring (literary register)."},
+            {"furigana": f"一瞬[いっしゅん]たりとも 油断[ゆだん]すること なく、微細[びさい]な 事象[じしょう]に 至[いた]るまで 徹底[てってい]した 検証[けんしょう]が 行[おこな]われたのです。",
+             "translation": "Without a single instant of inattention, thorough verification was conducted extending down to the most minute phenomena.",
+             "grammarNotes": "〜たりとも〜ない: Not even a single unit; 〜に至るまで: Extending unto."},
+            {"furigana": f"過去[かこ]の 蓄積[ちくせき]と 未来[みらい]への 洞察[どうさつ]が 相[あい]まって、かつてない 偉業[いぎょう]が 達成[たっせい]されました。",
+             "translation": "Past knowledge reserves coupled with forward insights into the future allowed an unprecedented achievement to be fulfilled.",
+             "grammarNotes": "〜と相まって: In synergistic combination with."},
+            {"furigana": f"これこそが、知[ち]の 限界[げんかい]に 挑[いど]み 続[つづ]ける 人間[にんげん]の 尊厳[そんげん]に ほかなりません。",
+             "translation": "This is nothing other than the very human dignity of ceaselessly challenging the frontiers of knowledge.",
+             "grammarNotes": "〜にほかならない: Is nothing other than / is the quintessential essence."},
+            {"furigana": f"果[は]てしなき 探求[たんきゅう]の 旅路[たびじ]は、新[あたら]たな 世代[せだい]へと 脈々[みゃくみゃく]と 受[う]け継[つ]がれて いくのです。",
+             "translation": "The boundless voyage of inquiry continues to be inherited seamlessly from generation to generation.",
+             "grammarNotes": "脈々と: Continuous unbroken stream; 受け継がれていく: Inherited forward."}
+        ]
+
+        vocab = [
+            {"surface": key_v, "reading": key_r, "meaning": key_m, "partOfSpeech": "noun"},
+            {"surface": key_vb, "reading": vb_r, "meaning": vb_m, "partOfSpeech": "verb"},
+            {"surface": "最先端", "reading": "さいせんたん", "meaning": "cutting-edge / forefront", "partOfSpeech": "noun"},
+            {"surface": "探究", "reading": "たんきゅう", "meaning": "rigorous pursuit / inquiry", "partOfSpeech": "noun"},
+            {"surface": "尊厳", "reading": "そんげん", "meaning": "dignity / sanctity", "partOfSpeech": "noun"},
+            {"surface": "脈々", "reading": "みゃくみゃく", "meaning": "continuous / unbroken", "partOfSpeech": "adverb"}
+        ]
+
+        elements = [
+            {
+                "type": "vocabulary", "text": key_v, "surface": key_v, "reading": key_r, "meaning": key_m,
+                "roleInStory": f"Apex technical/philosophical term ({key_m}) driving this N1 advanced treatise.",
+                "mechanicsExplanation": "Advanced JLPT N1 lexicon found in academic dissertations, legal rulings, and literary criticism.",
+                "exampleSentence": {"japanese": f"{key_v}の解明に全力を注ぎます。", "furigana": f"{key_v}[{key_r}]の 解明[かいめい]に 全力[ぜんりょく]を 注[そそ]ぎます。", "english": f"We devote all energy toward elucidating {key_m}."}
+            },
+            {
+                "type": "grammar", "text": key_g, "surface": key_g, "reading": key_g, "meaning": g_m,
+                "roleInStory": f"High-register N1 grammar construction ({g_m}).",
+                "mechanicsExplanation": "Literary Japanese sentence pattern denoting comprehensive conditionality, necessity, or emphatic assertion.",
+                "exampleSentence": {"japanese": "いかなる逆境であれ屈しない。", "furigana": "いかなる 逆境[ぎゃっきょう]であれ 屈[くっ]しない。", "english": "No matter what adversity it may be, I will not yield."}
+            },
+            {
+                "type": "particle", "text": "にほかならない", "surface": "にほかならない", "reading": "ni hoka naranai", "meaning": "is nothing other than / none other than",
+                "roleInStory": "Asserts the quintessential philosophical meaning of the human achievement.",
+                "mechanicsExplanation": "Noun / verb plain + にほかならない asserts a strong conclusion that X is definitely the true substance.",
+                "exampleSentence": {"japanese": "成功は努力の賜物にほかならない。", "furigana": "成功[せいこう]は 努力[どりょく]の 賜物[たまもの]に ほかならない。", "english": "Success is none other than the fruit of diligence."}
+            },
+            {
+                "type": "kanji", "text": kanji_c, "surface": kanji_c, "reading": kanji_c, "meaning": kanji_m,
+                "roleInStory": f"Target JLPT N1 advanced kanji representing {kanji_m}.",
+                "mechanicsExplanation": f"Upper-level Joyo kanji designating {kanji_m}.",
+                "exampleSentence": {"japanese": f"{kanji_c}を体現する。", "furigana": f"{kanji_c}を 体現[たいげん]する。", "english": f"To embody {kanji_m}."}
+            }
+        ]
+
+        questions = [
+            {
+                "type": "vocabulary",
+                "question": f"「{key_v}」の正しい読み方はどれですか？",
+                "questionFurigana": f"「{key_v}」の 正[ただ]しい 読[よ]み 方[かた]は どれですか？",
+                "options": [key_r, f"お{key_r}", f"し{key_r}", "げんしょう"],
+                "correctAnswer": 0,
+                "explanation": f"「{key_v}」 is read as {key_r}.",
+                "wrongExplanations": {1: "Incorrect prefix.", 2: "Incorrect reading.", 3: "げんしょう means phenomenon."}
+            },
+            {
+                "type": "kanji",
+                "question": f"漢字「{kanji_c}」の意味は何ですか？",
+                "questionFurigana": f"漢字[かんじ]「{kanji_c}」の 意味[いみ]は 何[なん]ですか？",
+                "options": [kanji_m, "river", "mountain", "tree"],
+                "correctAnswer": 0,
+                "explanation": f"The kanji {kanji_c} means '{kanji_m}'.",
+                "wrongExplanations": {1: "River is 川.", 2: "Mountain is 山.", 3: "Tree is 木."}
+            },
+            {
+                "type": "grammar",
+                "question": "「〜にほかならない」の意味として最も適切なものは？",
+                "questionFurigana": "「〜にほかならない」の 意味[いみ]として 最[もっと]も 適切[てきせつ]な ものは？",
+                "options": ["まさに〜である（それ以外のものではない） (None other than / exactly that)", "〜かもしれない (Might be)", "〜する必要がない (No need to)", "〜してはならない (Must not)"],
+                "correctAnswer": 0,
+                "explanation": "〜にほかならない is a formal emphatic assertion meaning 'it is nothing other than X' or 'none other than X'.",
+                "wrongExplanations": {1: "Possibility uses 〜かもしれない.", 2: "No need uses 〜必要がない.", 3: "Prohibition uses 〜てはならない."}
+            },
+            {
+                "type": "particle",
+                "question": "全面的な否定や極小の単位を強調する表現「〜たりとも〜ない」の用法として適切なものは？",
+                "questionFurigana": "全面的な[ぜんめんてきな] 否定[ひてい]や 極小[きょくしょう]の 単位[たんい]を 強調[きょうちょう]する 表現[ひょうげん]「〜たりとも〜ない」の 用法[ようほう]として 適切[てきせつ]な ものは？",
+                "options": ["「たとえ一単位であっても決して〜ない」 (Not even a single minimal unit)", "「いつでも構わない」 (Anytime is fine)", "「徐々に変化する」 (Gradually changing)", "「何もしない」 (Doing nothing)"],
+                "correctAnswer": 0,
+                "explanation": "「〜たりとも〜ない」 attaches to minimal counter units (like 一瞬, 一滴, 一人) to emphatically state 'not even a single...'.",
+                "wrongExplanations": {1: "Indifference uses 〜てもいい.", 2: "Gradual change uses 〜つつある.", 3: "Inaction uses 〜何もしない."}
+            },
+            {
+                "type": "comprehension",
+                "question": "研究者たちはどのような姿勢で検証を行いましたか？",
+                "questionFurigana": "研究者[けんきゅうしゃ]たちは どのような 姿勢[しせい]で 検証[けんしょう]を 行[おこな]いましたか？",
+                "options": ["一瞬の油断もなく微細な事象に至るまで徹底した", "適当に切り上げた", "他人の成果をそのまま写した", "検証を途中で放棄した"],
+                "correctAnswer": 0,
+                "explanation": "Sentence 5 explicitly states: 「一瞬たりとも油断することなく、微細な事象に至るまで徹底した検証が行われたのです」 (Without a single instant of inattention, thorough verification was conducted extending down to the most minute phenomena).",
+                "wrongExplanations": {1: "They did not wrap it up carelessly.", 2: "They did not copy others.", 3: "They did not abandon the verification."}
+            }
+        ]
+
+        stories.append(make_story(
+            story_id=story_id,
+            title=title,
+            title_furigana=title_furi,
+            english_title=en_title,
+            level="N1",
+            description=desc,
+            sentences_def=sentences,
+            vocab_list=vocab,
+            elements_def=elements,
+            questions_def=questions
+        ))
+
+    print(f"[N1 Generator] Built {len(stories)} stories.")
+    return stories

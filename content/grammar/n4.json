@@ -1,0 +1,2739 @@
+[
+  {
+    "id": "n4_g001",
+    "pattern": "〜てあげる／てくれる／てもらう",
+    "romaji": "",
+    "formation": "Verb て-form + あげる／くれる／もらう",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "荷物を持ってあげました。",
+        "reading": ""
+      },
+      {
+        "jp": "先生が教えてくれました。",
+        "reading": ""
+      },
+      {
+        "jp": "友達に手伝ってもらいました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g002",
+    "pattern": "〜ば〜のに",
+    "romaji": "",
+    "formation": "Verb conditional ば + のに",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "もっと勉強すればよかったのに。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g003",
+    "pattern": "〜そうです（様態）",
+    "romaji": "",
+    "formation": "Verb/Adj stem + そうです",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "このケーキは美味しそうです。",
+        "reading": ""
+      },
+      {
+        "jp": "雨が降りそうです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g004",
+    "pattern": "〜らしい",
+    "romaji": "",
+    "formation": "Verb/Noun/Adj plain form + らしい",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "田中さんは来ないらしいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g005",
+    "pattern": "〜ようだ",
+    "romaji": "",
+    "formation": "Verb/Adj plain form + ようだ",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "彼は疲れているようです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g006",
+    "pattern": "〜でしょう／だろう",
+    "romaji": "",
+    "formation": "Sentence + でしょう (polite) / だろう (plain)",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "明日は雨でしょう。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は来るだろう。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g007",
+    "pattern": "〜かもしれない",
+    "romaji": "",
+    "formation": "Plain form + かもしれない／かもしれません",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "明日は雪かもしれません。",
+        "reading": ""
+      },
+      {
+        "jp": "彼女は知らないかもしれない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g008",
+    "pattern": "〜なければならない",
+    "romaji": "",
+    "formation": "Verb negative stem + なければならない",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "毎日薬を飲まなければなりません。",
+        "reading": ""
+      },
+      {
+        "jp": "早く起きなきゃ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g009",
+    "pattern": "〜てもいい",
+    "romaji": "",
+    "formation": "Verb て-form + もいい／もいいです",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "ここに座ってもいいですか。",
+        "reading": ""
+      },
+      {
+        "jp": "写真を撮ってもいいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g010",
+    "pattern": "〜てはいけない",
+    "romaji": "",
+    "formation": "Verb て-form + はいけない／はいけません",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "ここでタバコを吸ってはいけません。",
+        "reading": ""
+      },
+      {
+        "jp": "試験中に話してはいけない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g011",
+    "pattern": "〜たことがある",
+    "romaji": "",
+    "formation": "Verb た-form + ことがある",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "富士山に登ったことがあります。",
+        "reading": ""
+      },
+      {
+        "jp": "寿司を食べたことがありますか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g012",
+    "pattern": "〜ながら",
+    "romaji": "",
+    "formation": "Verb stem + ながら",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "音楽を聞きながら勉強します。",
+        "reading": ""
+      },
+      {
+        "jp": "歩きながらスマホを見るのは危ない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g013",
+    "pattern": "〜と思う",
+    "romaji": "",
+    "formation": "Plain form + と思う／と思います",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "彼は正しいと思います。",
+        "reading": ""
+      },
+      {
+        "jp": "明日は晴れると思う。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g014",
+    "pattern": "〜ために",
+    "romaji": "",
+    "formation": "Verb dictionary form / Noun の + ために",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "日本語を学ぶために日本に来ました。",
+        "reading": ""
+      },
+      {
+        "jp": "健康のために運動します。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g015",
+    "pattern": "〜ように",
+    "romaji": "",
+    "formation": "Verb dictionary/negative + ように",
+    "level": "N4",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "日本語が上手になるように毎日練習します。",
+        "reading": ""
+      },
+      {
+        "jp": "遅刻しないように早く出ました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g016",
+    "pattern": "〜受身（〜られる／〜れる）",
+    "romaji": "~rareru / ~reru",
+    "formation": "Group 1: u -> areru | Group 2: ru -> rareru | Group 3: sareru / korareru",
+    "level": "N4",
+    "tags": [
+      "passive",
+      "verb-conjugation",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "雨に降られました。",
+        "reading": ""
+      },
+      {
+        "jp": "先生に褒められました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g017",
+    "pattern": "〜使役（〜させる／〜せる）",
+    "romaji": "~saseru / ~seru",
+    "formation": "Group 1: u -> aseru | Group 2: ru -> saseru | Group 3: saseru / kosaseru",
+    "level": "N4",
+    "tags": [
+      "causative",
+      "verb-conjugation",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "母は弟に野菜を食べさせました。",
+        "reading": ""
+      },
+      {
+        "jp": "子供に好きな本を読ませます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g018",
+    "pattern": "〜使役受身（〜させられる）",
+    "romaji": "~saserareru / ~sareru",
+    "formation": "Causative stem + られる (or Group 1 shortened: ~される)",
+    "level": "N4",
+    "tags": [
+      "causative-passive",
+      "verb-conjugation",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "お酒を飲まされました。",
+        "reading": ""
+      },
+      {
+        "jp": "宿題をたくさんさせられました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g019",
+    "pattern": "〜てしまう",
+    "romaji": "~te shimau",
+    "formation": "Verb て-form + しまう (casual: 〜ちゃう / 〜じゃう)",
+    "level": "N4",
+    "tags": [
+      "aspect",
+      "te-form",
+      "regret",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "宿題を全部やってしまいました。",
+        "reading": ""
+      },
+      {
+        "jp": "財布を落としてしまいました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g020",
+    "pattern": "〜ておく",
+    "romaji": "~te oku",
+    "formation": "Verb て-form + おく (casual: 〜とく)",
+    "level": "N4",
+    "tags": [
+      "preparation",
+      "te-form",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "旅行の前にホテルを予約しておきます。",
+        "reading": ""
+      },
+      {
+        "jp": "窓を開けておいてください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g021",
+    "pattern": "〜てみる",
+    "romaji": "~te miru",
+    "formation": "Verb て-form + みる",
+    "level": "N4",
+    "tags": [
+      "trial",
+      "te-form",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "日本の納豆を食べてみたいです。",
+        "reading": ""
+      },
+      {
+        "jp": "この服を着てみてもいいですか。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g022",
+    "pattern": "〜てある",
+    "romaji": "~te aru",
+    "formation": "Transitive Verb て-form + ある (Subject marked with が)",
+    "level": "N4",
+    "tags": [
+      "state",
+      "te-form",
+      "transitive",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "黒板に名前が書いてあります。",
+        "reading": ""
+      },
+      {
+        "jp": "カレンダーに予定が書いてあります。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g023",
+    "pattern": "〜やすい／〜にくい",
+    "romaji": "~yasui / ~nikui",
+    "formation": "Verb stem + やすい (easy) / にくい (hard)",
+    "level": "N4",
+    "tags": [
+      "adjective",
+      "verb-stem",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "このペンはとても書きやすいです。",
+        "reading": ""
+      },
+      {
+        "jp": "この漢字は覚えにくいです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g024",
+    "pattern": "〜すぎる",
+    "romaji": "~sugiru",
+    "formation": "Verb stem / Adj stem + すぎる",
+    "level": "N4",
+    "tags": [
+      "excess",
+      "verb-stem",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "昨日、食べすぎました。",
+        "reading": ""
+      },
+      {
+        "jp": "この問題は難しすぎます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g025",
+    "pattern": "〜かもしれない",
+    "romaji": "~kamoshirenai",
+    "formation": "Plain form (な-adj/Noun without だ) + かもしれない",
+    "level": "N4",
+    "tags": [
+      "conjecture",
+      "probability",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "明日は雨が降るかもしれません。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は病気かもしれません。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g026",
+    "pattern": "〜はずだ",
+    "romaji": "~hazu da",
+    "formation": "Plain form (な-adj + な, Noun + の) + はずだ",
+    "level": "N4",
+    "tags": [
+      "expectation",
+      "logic",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "田中さんはもう着いたはずです。",
+        "reading": ""
+      },
+      {
+        "jp": "鍵はカバンの中にあるはずだ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g027",
+    "pattern": "〜つもりだ",
+    "romaji": "~tsumori da",
+    "formation": "Verb dictionary form / Verb ない-form + つもりだ",
+    "level": "N4",
+    "tags": [
+      "intention",
+      "plan",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "来年、日本へ行くつもりです。",
+        "reading": ""
+      },
+      {
+        "jp": "タバコをやめるつもりです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g028",
+    "pattern": "〜そうだ（伝聞）",
+    "romaji": "~sou da (denbun)",
+    "formation": "Plain form (Noun/な-adj + だ) + そうだ",
+    "level": "N4",
+    "tags": [
+      "hearsay",
+      "reporting",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "明日は雪が降るそうです。",
+        "reading": ""
+      },
+      {
+        "jp": "あの店のラーメンは美味しいそうです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g029",
+    "pattern": "〜し〜し",
+    "romaji": "~shi ~shi",
+    "formation": "Plain form + し",
+    "level": "N4",
+    "tags": [
+      "listing",
+      "reasons",
+      "conjunction",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "この店は安いし、美味しいし、いつも混んでいます。",
+        "reading": ""
+      },
+      {
+        "jp": "頭も痛いし、熱もあるし、今日は休みます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g030",
+    "pattern": "〜たら",
+    "romaji": "~tara",
+    "formation": "Verb/Adj past plain form + ら",
+    "level": "N4",
+    "tags": [
+      "conditional",
+      "temporal",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "駅に着いたら、電話してください。",
+        "reading": ""
+      },
+      {
+        "jp": "安かったら、買います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g031",
+    "pattern": "間",
+    "romaji": "aida",
+    "formation": "間 + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "間を使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g032",
+    "pattern": "間に",
+    "romaji": "aida",
+    "formation": "間に + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "間にを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g033",
+    "pattern": "あまり～ない",
+    "romaji": "amari~nai",
+    "formation": "あまり～ない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "あまり～ないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g034",
+    "pattern": "後で",
+    "romaji": "ato",
+    "formation": "後で + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "後でを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g035",
+    "pattern": "ば",
+    "romaji": "ba",
+    "formation": "ば + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ばを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g036",
+    "pattern": "場合は",
+    "romaji": "baai",
+    "formation": "場合は + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "場合はを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g037",
+    "pattern": "ばかり",
+    "romaji": "bakari",
+    "formation": "ばかり + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ばかりを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g038",
+    "pattern": "だけで",
+    "romaji": "dake",
+    "formation": "だけで + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "だけでを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g039",
+    "pattern": "出す",
+    "romaji": "dasu",
+    "formation": "出す + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "出すを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g040",
+    "pattern": "でございます",
+    "romaji": "de",
+    "formation": "でございます + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "でございますを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g041",
+    "pattern": "でも",
+    "romaji": "demo",
+    "formation": "でも + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "でもを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g042",
+    "pattern": "ではないか",
+    "romaji": "dewa",
+    "formation": "ではないか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ではないかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g043",
+    "pattern": "が必要",
+    "romaji": "ga",
+    "formation": "が必要 + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "が必要を使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g044",
+    "pattern": "がする",
+    "romaji": "ga",
+    "formation": "がする + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "がするを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g045",
+    "pattern": "がり",
+    "romaji": "gari",
+    "formation": "がり + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "がりを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g046",
+    "pattern": "ございます",
+    "romaji": "gozaimasu",
+    "formation": "ございます + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ございますを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g047",
+    "pattern": "始める",
+    "romaji": "hajimeru",
+    "formation": "始める + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "始めるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g048",
+    "pattern": "はずだ",
+    "romaji": "hazu",
+    "formation": "はずだ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "はずだを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g049",
+    "pattern": "はずがない",
+    "romaji": "hazu",
+    "formation": "はずがない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "はずがないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g050",
+    "pattern": "必要がある",
+    "romaji": "hitsuyou",
+    "formation": "必要がある + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "必要があるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g051",
+    "pattern": "意向形",
+    "romaji": "ikou",
+    "formation": "意向形 + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "意向形を使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g052",
+    "pattern": "いらっしゃる",
+    "romaji": "irassharu",
+    "formation": "いらっしゃる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "いらっしゃるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g053",
+    "pattern": "いたします",
+    "romaji": "itashimasu",
+    "formation": "いたします + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "いたしますを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g054",
+    "pattern": "じゃないか",
+    "romaji": "janai",
+    "formation": "じゃないか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "じゃないかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g055",
+    "pattern": "かどうか",
+    "romaji": "ka",
+    "formation": "かどうか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "かどうかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g056",
+    "pattern": "かしら",
+    "romaji": "ka",
+    "formation": "かしら + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "かしらを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g057",
+    "pattern": "かい",
+    "romaji": "kai",
+    "formation": "かい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "かいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g058",
+    "pattern": "かもしれない",
+    "romaji": "kamo",
+    "formation": "かもしれない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "かもしれないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g059",
+    "pattern": "かな",
+    "romaji": "kana",
+    "formation": "かな + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "かなを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g060",
+    "pattern": "から作る",
+    "romaji": "kara",
+    "formation": "から作る + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "から作るを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g061",
+    "pattern": "きっと",
+    "romaji": "kitto",
+    "formation": "きっと + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "きっとを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g062",
+    "pattern": "頃",
+    "romaji": "koro",
+    "formation": "頃 + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "頃を使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g063",
+    "pattern": "こと",
+    "romaji": "koto",
+    "formation": "こと + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ことを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g064",
+    "pattern": "ことがある",
+    "romaji": "koto",
+    "formation": "ことがある + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ことがあるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g065",
+    "pattern": "ことができる",
+    "romaji": "koto",
+    "formation": "ことができる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ことができるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g066",
+    "pattern": "ことになる",
+    "romaji": "koto",
+    "formation": "ことになる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ことになるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g067",
+    "pattern": "ことにする",
+    "romaji": "koto",
+    "formation": "ことにする + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ことにするを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g068",
+    "pattern": "くする",
+    "romaji": "ku",
+    "formation": "くする + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "くするを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g069",
+    "pattern": "急に",
+    "romaji": "kyuu",
+    "formation": "急に + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "急にを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g070",
+    "pattern": "までに",
+    "romaji": "made",
+    "formation": "までに + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "までにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g071",
+    "pattern": "まま",
+    "romaji": "mama",
+    "formation": "まま + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ままを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g072",
+    "pattern": "または",
+    "romaji": "matawa",
+    "formation": "または + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "またはを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g073",
+    "pattern": "みたいだ",
+    "romaji": "mitai",
+    "formation": "みたいだ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "みたいだを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g074",
+    "pattern": "みたいな",
+    "romaji": "mitai",
+    "formation": "みたいな + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "みたいなを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g075",
+    "pattern": "みたいに",
+    "romaji": "mitai",
+    "formation": "みたいに + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "みたいにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g076",
+    "pattern": "も",
+    "romaji": "mo",
+    "formation": "も + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "もを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g077",
+    "pattern": "な",
+    "romaji": "na",
+    "formation": "な + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g078",
+    "pattern": "など",
+    "romaji": "nado",
+    "formation": "など + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "などを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g079",
+    "pattern": "ながら",
+    "romaji": "nagara",
+    "formation": "ながら + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ながらを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g080",
+    "pattern": "なかなか～ない",
+    "romaji": "nakanaka~nai",
+    "formation": "なかなか～ない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なかなか～ないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g081",
+    "pattern": "なければいけない",
+    "romaji": "nakereba",
+    "formation": "なければいけない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なければいけないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g082",
+    "pattern": "なければならない",
+    "romaji": "nakereba",
+    "formation": "なければならない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なければならないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g083",
+    "pattern": "なら",
+    "romaji": "nara",
+    "formation": "なら + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ならを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g084",
+    "pattern": "なさい",
+    "romaji": "nasai",
+    "formation": "なさい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なさいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g085",
+    "pattern": "なさる",
+    "romaji": "nasaru",
+    "formation": "なさる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "なさるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g086",
+    "pattern": "に気がつく",
+    "romaji": "ni",
+    "formation": "に気がつく + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "に気がつくを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g087",
+    "pattern": "にみえる",
+    "romaji": "ni",
+    "formation": "にみえる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "にみえるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g088",
+    "pattern": "にする",
+    "romaji": "ni",
+    "formation": "にする + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "にするを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g089",
+    "pattern": "にくい",
+    "romaji": "nikui",
+    "formation": "にくい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "にくいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g090",
+    "pattern": "の中で",
+    "romaji": "no",
+    "formation": "の中で + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "の中でを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g091",
+    "pattern": "のに",
+    "romaji": "noni",
+    "formation": "のに + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "のにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g092",
+    "pattern": "のは〜だ",
+    "romaji": "nowa~da",
+    "formation": "のは〜だ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "のは〜だを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g093",
+    "pattern": "お～ください",
+    "romaji": "o~kudasai",
+    "formation": "お～ください + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "お～くださいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g094",
+    "pattern": "お～になる",
+    "romaji": "o~ni",
+    "formation": "お～になる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "お～になるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g095",
+    "pattern": "おきに",
+    "romaji": "oki",
+    "formation": "おきに + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "おきにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g096",
+    "pattern": "終わる",
+    "romaji": "owaru",
+    "formation": "終わる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "終わるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g097",
+    "pattern": "られる",
+    "romaji": "rareru",
+    "formation": "られる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "られるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g098",
+    "pattern": "らしい",
+    "romaji": "rashii",
+    "formation": "らしい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "らしいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g099",
+    "pattern": "さ",
+    "romaji": "sa",
+    "formation": "さ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "さを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g100",
+    "pattern": "さっき",
+    "romaji": "sakki",
+    "formation": "さっき + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "さっきを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g101",
+    "pattern": "させられる",
+    "romaji": "saserareru",
+    "formation": "させられる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "させられるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g102",
+    "pattern": "させる",
+    "romaji": "saseru",
+    "formation": "させる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "させるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g103",
+    "pattern": "させてください",
+    "romaji": "sasete",
+    "formation": "させてください + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "させてくださいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g104",
+    "pattern": "さすが",
+    "romaji": "sasuga",
+    "formation": "さすが + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "さすがを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g105",
+    "pattern": "し",
+    "romaji": "shi",
+    "formation": "し + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "しを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g106",
+    "pattern": "そんなに",
+    "romaji": "sonna",
+    "formation": "そんなに + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "そんなにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g107",
+    "pattern": "それでも",
+    "romaji": "sore",
+    "formation": "それでも + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "それでもを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g108",
+    "pattern": "そうだ",
+    "romaji": "sou",
+    "formation": "そうだ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "そうだを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g109",
+    "pattern": "そうに・そうな",
+    "romaji": "sou",
+    "formation": "そうに・そうな + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "そうに・そうなを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g110",
+    "pattern": "たばかり",
+    "romaji": "ta",
+    "formation": "たばかり + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たばかりを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g111",
+    "pattern": "たところ",
+    "romaji": "ta",
+    "formation": "たところ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たところを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g112",
+    "pattern": "たがる",
+    "romaji": "tagaru",
+    "formation": "たがる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たがるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g113",
+    "pattern": "たら",
+    "romaji": "tara",
+    "formation": "たら + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たらを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g114",
+    "pattern": "たらどう",
+    "romaji": "tara",
+    "formation": "たらどう + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たらどうを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g115",
+    "pattern": "たらいいですか",
+    "romaji": "tara",
+    "formation": "たらいいですか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "たらいいですかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g116",
+    "pattern": "て",
+    "romaji": "/",
+    "formation": "て + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g117",
+    "pattern": "てあげる",
+    "romaji": "te",
+    "formation": "てあげる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てあげるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g118",
+    "pattern": "てほしい",
+    "romaji": "te",
+    "formation": "てほしい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てほしいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g119",
+    "pattern": "ていく",
+    "romaji": "te",
+    "formation": "ていく + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ていくを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g120",
+    "pattern": "ていた",
+    "romaji": "te",
+    "formation": "ていた + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ていたを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g121",
+    "pattern": "ていただけませんか",
+    "romaji": "te",
+    "formation": "ていただけませんか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ていただけませんかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g122",
+    "pattern": "てくれる",
+    "romaji": "te",
+    "formation": "てくれる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てくれるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g123",
+    "pattern": "てくる",
+    "romaji": "te",
+    "formation": "てくる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てくるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g124",
+    "pattern": "てみる",
+    "romaji": "te",
+    "formation": "てみる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てみるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g125",
+    "pattern": "てもらう",
+    "romaji": "te",
+    "formation": "てもらう + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てもらうを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g126",
+    "pattern": "ておく",
+    "romaji": "te",
+    "formation": "ておく + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ておくを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g127",
+    "pattern": "てしまう",
+    "romaji": "/",
+    "formation": "てしまう + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てしまうを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g128",
+    "pattern": "てすみません",
+    "romaji": "te",
+    "formation": "てすみません + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てすみませんを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g129",
+    "pattern": "てやる",
+    "romaji": "te",
+    "formation": "てやる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てやるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g130",
+    "pattern": "てよかった",
+    "romaji": "te",
+    "formation": "てよかった + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てよかったを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g131",
+    "pattern": "ているところ",
+    "romaji": "teiru",
+    "formation": "ているところ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ているところを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g132",
+    "pattern": "ても",
+    "romaji": "temo",
+    "formation": "ても + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "てもを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g133",
+    "pattern": "と",
+    "romaji": "to",
+    "formation": "と + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "とを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g134",
+    "pattern": "と言ってもいい",
+    "romaji": "to",
+    "formation": "と言ってもいい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "と言ってもいいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g135",
+    "pattern": "という",
+    "romaji": "to",
+    "formation": "という + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "というを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g136",
+    "pattern": "ということ",
+    "romaji": "to",
+    "formation": "ということ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ということを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g137",
+    "pattern": "と言われている",
+    "romaji": "to",
+    "formation": "と言われている + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "と言われているを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g138",
+    "pattern": "と聞いた",
+    "romaji": "to",
+    "formation": "と聞いた + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "と聞いたを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g139",
+    "pattern": "と思う",
+    "romaji": "to",
+    "formation": "と思う + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "と思うを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g140",
+    "pattern": "とか～とか",
+    "romaji": "toka~toka",
+    "formation": "とか～とか + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "とか～とかを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g141",
+    "pattern": "ところ",
+    "romaji": "tokoro",
+    "formation": "ところ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ところを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g142",
+    "pattern": "続ける",
+    "romaji": "tsuzukeru",
+    "formation": "続ける + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "続けるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g143",
+    "pattern": "って",
+    "romaji": "tte",
+    "formation": "って + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ってを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g144",
+    "pattern": "受身形",
+    "romaji": "ukemi",
+    "formation": "受身形 + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "受身形を使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g145",
+    "pattern": "やすい",
+    "romaji": "yasui",
+    "formation": "やすい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "やすいを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g146",
+    "pattern": "やっと",
+    "romaji": "yatto",
+    "formation": "やっと + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "やっとを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g147",
+    "pattern": "より",
+    "romaji": "yori",
+    "formation": "より + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "よりを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g148",
+    "pattern": "予定だ",
+    "romaji": "yotei",
+    "formation": "予定だ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "予定だを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g149",
+    "pattern": "ようだ",
+    "romaji": "you",
+    "formation": "ようだ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ようだを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g150",
+    "pattern": "ように",
+    "romaji": "/",
+    "formation": "ように + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ようにを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g151",
+    "pattern": "ようになる",
+    "romaji": "you",
+    "formation": "ようになる + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ようになるを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g152",
+    "pattern": "ようにする",
+    "romaji": "you",
+    "formation": "ようにする + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ようにするを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g153",
+    "pattern": "ようと思う",
+    "romaji": "you",
+    "formation": "ようと思う + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ようと思うを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g154",
+    "pattern": "ぜひ",
+    "romaji": "zehi",
+    "formation": "ぜひ + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "ぜひを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g155",
+    "pattern": "全然～ない",
+    "romaji": "zenzen~nai",
+    "formation": "全然～ない + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "全然～ないを使います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n4_g156",
+    "pattern": "づらい",
+    "romaji": "zurai",
+    "formation": "づらい + ...",
+    "level": "N4",
+    "tags": [
+      "grammar",
+      "N4"
+    ],
+    "examples": [
+      {
+        "jp": "づらいを使います。",
+        "reading": ""
+      }
+    ]
+  }
+]

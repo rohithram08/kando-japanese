@@ -25,8 +25,6 @@ const QuizPage          = lazy(() => import('./pages/QuizPage'))
 const QuizEngine        = lazy(() => import('./components/quiz/QuizEngine'))
 const DramaPlayer       = lazy(() => import('./components/drama/DramaPlayer'))
 const SenseiPage        = lazy(() => import('./pages/SenseiPage'))
-const ChatInterface     = lazy(() => import('./components/chatbot/ChatInterface'))
-const ChatDojo          = lazy(() => import('./pages/ChatDojo'))
 const SRSReview         = lazy(() => import('./components/srs/SRSReview'))
 const VocabularyPage    = lazy(() => import('./pages/VocabularyPage'))
 const ProfilePage       = lazy(() => import('./pages/ProfilePage'))
@@ -62,7 +60,7 @@ export default function App() {
   return (
     <Routes>
       {/* ── Public auth & landing routes ── */}
-      <Route path="/"               element={<LazyRoute Component={LandingPage} message="Loading Nihongo Master..." />} />
+      <Route path="/"               element={<LazyRoute Component={LandingPage} message="Loading Kando Japanese..." />} />
       <Route element={<AuthGuard requireAuth={false} />}>
         <Route path="/login"          element={<LazyRoute Component={LoginPage} message="Loading sign-in..." />} />
         <Route path="/register"       element={<LazyRoute Component={RegisterPage} message="Loading registration..." />} />
@@ -75,26 +73,19 @@ export default function App() {
         <Route path="/reading"             element={<ReadingPage />} />
         <Route path="/reading/:storyId"    element={<ReadingPage />} />
         <Route path="/kana"                element={<LazyRoute Component={KanaPage} message="Loading Kana studio..." />} />
+        <Route path="/grammar"             element={<LazyRoute Component={GrammarPage} message="Loading grammar..." />} />
+        <Route path="/kanji"               element={<LazyRoute Component={KanjiPage} message="Loading kanji..." />} />
+        <Route path="/kanji/:kanjiId"      element={<LazyRoute Component={KanjiStudy} message="Loading kanji details..." />} />
 
         {/* ── Protected routes requiring Authentication ── */}
         <Route element={<AuthGuard />}>
           <Route path="/dashboard"           element={<LazyRoute Component={Dashboard} message="Loading dashboard..." />} />
 
-          {/* ── Lessons ── */}
-          <Route path="/lessons"             element={<LazyRoute Component={LessonsPage} message="Loading lessons..." />} />
-          <Route path="/lessons/browse"      element={<LazyRoute Component={LessonList} message="Loading lesson catalog..." />} />
-          <Route path="/lessons/:level/:day" element={<LazyRoute Component={LessonViewer} message="Loading lesson..." />} />
-
-          {/* ── Grammar ── */}
-          <Route path="/grammar"             element={<LazyRoute Component={GrammarPage} message="Loading grammar guide..." />} />
-
-          {/* ── Kanji ── */}
-          <Route path="/kanji"               element={<LazyRoute Component={KanjiPage} message="Loading Kanji library..." />} />
-          <Route path="/kanji/study"         element={<LazyRoute Component={KanjiStudy} message="Loading Kanji study..." />} />
-
-          {/* ── Quiz ── */}
-          <Route path="/quiz"                element={<LazyRoute Component={QuizPage} message="Loading quiz..." />} />
-          <Route path="/quiz/:lessonId"      element={<LazyRoute Component={QuizEngine} message="Loading quiz engine..." />} />
+          {/* ── Story Lessons (Unified Learning Center: Stories, Grammar, Vocab, Quizzes) ── */}
+          <Route path="/lessons/*"           element={<Navigate to="/reading" replace />} />
+          <Route path="/lessons"             element={<Navigate to="/reading" replace />} />
+          <Route path="/quiz/*"              element={<Navigate to="/reading" replace />} />
+          <Route path="/quiz"                element={<Navigate to="/reading" replace />} />
 
           {/* ── Drama ── */}
           <Route path="/drama"               element={<LazyRoute Component={DramaPlayer} message="Loading drama player..." />} />

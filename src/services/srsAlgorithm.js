@@ -63,11 +63,11 @@ export function calculateNextReview(card, quality) {
 export function buttonToQuality(button) {
   const map = {
     'forgot': 0,
-    'hard': 2,
+    'hard': 3,
     'good': 4,
     'easy': 5,
     0: 0,
-    1: 2,
+    1: 3,
     2: 4,
     3: 5
   }

@@ -1,0 +1,2712 @@
+[
+  {
+    "id": "n1l001",
+    "titleJp": "現代語に残る古典表現",
+    "level": "N1",
+    "order": 1,
+    "duration": "60 min",
+    "xp": 150,
+    "vocabulary": [
+      "古典語",
+      "文語",
+      "現代語",
+      "慣用句",
+      "故事成語"
+    ],
+    "grammar": [
+      "〜べし / べからず",
+      "〜ず (classical negative)",
+      "〜たる (classical で ある)",
+      "〜ゆえに",
+      "〜なり"
+    ],
+    "dialogue": [
+      {
+        "speaker": "Literary",
+        "jp": "為せば成る、為さねば成らぬ何事も。"
+      },
+      {
+        "speaker": "Proverb",
+        "jp": "急がば回れ。"
+      },
+      {
+        "speaker": "Formal Notice",
+        "jp": "関係者以外立入るべからず。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Translate the classical negative ず: 知らず",
+        "answer": "not knowing / without knowing"
+      },
+      {
+        "type": "modernize",
+        "question": "〜べからず → modern equivalent",
+        "answer": "〜てはいけない / 〜てはならない"
+      }
+    ]
+  },
+  {
+    "id": "n1l002",
+    "titleJp": "心理・感情の微妙な表現",
+    "level": "N1",
+    "order": 2,
+    "duration": "55 min",
+    "xp": 140,
+    "vocabulary": [
+      "葛藤",
+      "逡巡",
+      "忸怩",
+      "自嘲",
+      "諦念",
+      "憤慨",
+      "懐疑"
+    ],
+    "grammar": [
+      "〜てやまない",
+      "〜ずにはいられない",
+      "〜を禁じ得ない",
+      "〜のいたりだ",
+      "〜に堪えない"
+    ],
+    "dialogue": [
+      {
+        "speaker": "Essay",
+        "jp": "彼の無謀な行動に、驚きを禁じ得なかった。"
+      },
+      {
+        "speaker": "Speech",
+        "jp": "皆様のご健康とご発展を願ってやみません。"
+      },
+      {
+        "speaker": "Monologue",
+        "jp": "知っていながら、言わずにはいられなかった。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "I cannot help but admire him.",
+        "answer": "彼のことを尊敬せずにはいられない。"
+      },
+      {
+        "type": "usage",
+        "question": "What nuance does 〜てやまない carry?",
+        "answer": "Deep, sincere, unceasing emotional state — always used with emotional verbs"
+      }
+    ]
+  },
+  {
+    "id": "n1l003",
+    "titleJp": "論理的・学術的表現",
+    "level": "N1",
+    "order": 3,
+    "duration": "60 min",
+    "xp": 150,
+    "vocabulary": [
+      "論旨",
+      "主張",
+      "根拠",
+      "反論",
+      "帰結",
+      "前提",
+      "論証",
+      "命題"
+    ],
+    "grammar": [
+      "〜に即して",
+      "〜をふまえて",
+      "〜から導かれる",
+      "〜とみなす",
+      "〜に相当する"
+    ],
+    "dialogue": [
+      {
+        "speaker": "Academic",
+        "jp": "この研究結果をふまえて、新たな仮説を提唱する。"
+      },
+      {
+        "speaker": "Debate",
+        "jp": "相手の主張は事実に即していない。"
+      },
+      {
+        "speaker": "Paper",
+        "jp": "この現象は経済的格差に起因すると見なすことができる。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Based on the data, we can conclude that...",
+        "answer": "データをふまえて、〜と結論づけられる。"
+      }
+    ]
+  },
+  {
+    "id": "n1l004",
+    "titleJp": "四字熟語",
+    "level": "N1",
+    "order": 4,
+    "duration": "50 min",
+    "xp": 130,
+    "vocabulary": [
+      "一石二鳥 (one stone two birds)",
+      "七転八起 (fall seven rise eight)",
+      "以心伝心 (heart to heart communication)",
+      "自業自得 (reap what you sow)",
+      "臨機応変 (adapting to the situation)",
+      "試行錯誤 (trial and error)",
+      "先手必勝 (he who acts first wins)"
+    ],
+    "grammar": [
+      "四字熟語 as adverb: 〜に",
+      "四字熟語 as noun modifier: 〜な / の",
+      "四字熟語 as predicate: 〜だ"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "彼女の対応は本当に臨機応変で素晴らしい。"
+      },
+      {
+        "speaker": "B",
+        "jp": "試行錯誤を繰り返した末に、ついに解決策が見つかった。"
+      },
+      {
+        "speaker": "A",
+        "jp": "まさに一石二鳥ですね！"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "match",
+        "question": "Match: 自業自得",
+        "answer": "reap what you sow / you brought it on yourself"
+      },
+      {
+        "type": "match",
+        "question": "Match: 以心伝心",
+        "answer": "telepathy / heart-to-heart understanding without words"
+      }
+    ]
+  },
+  {
+    "id": "n1l005",
+    "titleJp": "政治・法律・経済用語",
+    "level": "N1",
+    "order": 5,
+    "duration": "60 min",
+    "xp": 150,
+    "vocabulary": [
+      "立法",
+      "司法",
+      "行政",
+      "憲法",
+      "条約",
+      "規制緩和",
+      "財政",
+      "GDP",
+      "景気",
+      "金融政策"
+    ],
+    "grammar": [
+      "〜に基づいて",
+      "〜を前提として",
+      "〜の観点から",
+      "〜を背景に",
+      "〜に照らして"
+    ],
+    "dialogue": [
+      {
+        "speaker": "News",
+        "jp": "憲法の規定に基づいて、新たな法律が制定された。"
+      },
+      {
+        "speaker": "Analysis",
+        "jp": "少子化を背景に、移民政策の見直しが求められている。"
+      },
+      {
+        "speaker": "Report",
+        "jp": "経済の観点から見ると、この政策は有効だと考えられる。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "From a legal perspective",
+        "answer": "法律の観点から"
+      },
+      {
+        "type": "translate",
+        "question": "Based on the regulations",
+        "answer": "規則に基づいて"
+      }
+    ]
+  },
+  {
+    "id": "n1l006",
+    "titleJp": "近代文語表現と格調高い文体",
+    "level": "N1",
+    "order": 6,
+    "duration": "60 min",
+    "xp": 150,
+    "vocabulary": [
+      "格調",
+      "古風",
+      "文語体",
+      "修辞",
+      "格言"
+    ],
+    "grammar": [
+      "〜たるもの",
+      "〜べからず",
+      "〜んばかり"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "国民の信託を受けた議員たるものは、私利私欲を捨てて公のために尽くすべきだ。"
+      },
+      {
+        "speaker": "B",
+        "jp": "まさにその通り。不正は許すべからざる行為である。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "As an educator",
+        "answer": "きょういくしゃたるもの"
+      }
+    ]
+  },
+  {
+    "id": "n1l007",
+    "titleJp": "学術論文の批評と討論",
+    "level": "N1",
+    "order": 7,
+    "duration": "55 min",
+    "xp": 145,
+    "vocabulary": [
+      "仮説",
+      "検証",
+      "査読",
+      "反証",
+      "蓋然性"
+    ],
+    "grammar": [
+      "〜と相まって",
+      "〜に堪えない",
+      "〜であれ"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "緻密なデータ分析と論理的推論が相まって、本論文の説得力は極めて高い。"
+      },
+      {
+        "speaker": "B",
+        "jp": "いかなる反論であれ、この実証結果を覆すことは困難でしょう。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Coupled with data",
+        "answer": "データとあいまって"
+      }
+    ]
+  },
+  {
+    "id": "n1l008",
+    "titleJp": "企業統治と事業再編",
+    "level": "N1",
+    "order": 8,
+    "duration": "60 min",
+    "xp": 155,
+    "vocabulary": [
+      "買収",
+      "取締役会",
+      "株主総会",
+      "企業価値",
+      "再編"
+    ],
+    "grammar": [
+      "〜を余儀なくされる",
+      "〜極まりない",
+      "〜まじき"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "市場競争の激化により、不採算部門の売却を余儀なくされた。"
+      },
+      {
+        "speaker": "B",
+        "jp": "取締役として株主の利益を損なうような行動は、あるまじきことだ。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Forced to change plans",
+        "answer": "けいかくのへんこうをよぎなくされた"
+      }
+    ]
+  },
+  {
+    "id": "n1l009",
+    "titleJp": "法哲学と人権擁護の言説",
+    "level": "N1",
+    "order": 9,
+    "duration": "60 min",
+    "xp": 150,
+    "vocabulary": [
+      "判例",
+      "違憲審査",
+      "司法",
+      "法治主義",
+      "条文"
+    ],
+    "grammar": [
+      "〜に即して",
+      "〜を皮切りに",
+      "〜ならでは"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "時代の変化に即して、憲法解釈の柔軟な適用が議論されている。"
+      },
+      {
+        "speaker": "B",
+        "jp": "法治主義の原則を堅持しつつ、国民の基本的人権を守ることが肝要だ。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Conforming to reality",
+        "answer": "げんじつにそくして"
+      }
+    ]
+  },
+  {
+    "id": "n1l010",
+    "titleJp": "日本文学の美意識と哲学的思索",
+    "level": "N1",
+    "order": 10,
+    "duration": "60 min",
+    "xp": 160,
+    "vocabulary": [
+      "美意識",
+      "幽玄",
+      "情緒",
+      "無常観",
+      "文学的"
+    ],
+    "grammar": [
+      "〜きらいがある",
+      "〜だに",
+      "〜ならでは"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "古典文学に漂う無常観は、日本ならではの美意識の結晶と言えるでしょう。"
+      },
+      {
+        "speaker": "B",
+        "jp": "桜の散り際を惜しむ心だに、その深遠な精神性を物語っています。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Unique to Japan",
+        "answer": "にほんならでは"
+      }
+    ]
+  },
+  {
+    "id": "n1l011",
+    "titleJp": "〜なりとも - 少しなりとも力になりたい",
+    "level": "N1",
+    "order": 11,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜なりとも - 少しなりとも力になりたい"
+    ],
+    "grammar": [
+      "n1_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜なりとも - 少しなりとも力になりたいについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Regardless of Fate - ~Nari to mo",
+        "answer": "〜なりとも - 少しなりとも力になりたい"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Regardless of Fate - ~Nari to mo?",
+        "options": [
+          "〜なりとも - 少しなりとも力になりたい",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜なりとも - 少しなりとも力になりたい"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Regardless of Fate - ~Nari to mo）",
+        "answer": [
+          "〜なりとも - 少しなりとも力になりたい"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l012",
+    "titleJp": "〜いかんによらず - 理由のいかんによらず",
+    "level": "N1",
+    "order": 12,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜いかんによらず - 理由のいかんによらず"
+    ],
+    "grammar": [
+      "n1_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜いかんによらず - 理由のいかんによらずについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Irrespective of Criteria - ~Ikan ni Yorazu",
+        "answer": "〜いかんによらず - 理由のいかんによらず"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Irrespective of Criteria - ~Ikan ni Yorazu?",
+        "options": [
+          "〜いかんによらず - 理由のいかんによらず",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜いかんによらず - 理由のいかんによらず"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Irrespective of Criteria - ~Ikan ni Yorazu）",
+        "answer": [
+          "〜いかんによらず - 理由のいかんによらず"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l013",
+    "titleJp": "〜いかんだ - 合否は君の努力いかんだ",
+    "level": "N1",
+    "order": 13,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜いかんだ - 合否は君の努力いかんだ"
+    ],
+    "grammar": [
+      "n1_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜いかんだ - 合否は君の努力いかんだについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Governed by - ~Ikan da",
+        "answer": "〜いかんだ - 合否は君の努力いかんだ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Governed by - ~Ikan da?",
+        "options": [
+          "〜いかんだ - 合否は君の努力いかんだ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜いかんだ - 合否は君の努力いかんだ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Governed by - ~Ikan da）",
+        "answer": [
+          "〜いかんだ - 合否は君の努力いかんだ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l014",
+    "titleJp": "〜ことなしに - 犠牲を払うことなしに成功はない",
+    "level": "N1",
+    "order": 14,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜ことなしに - 犠牲を払うことなしに成功はない"
+    ],
+    "grammar": [
+      "n1_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ことなしに - 犠牲を払うことなしに成功はないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of No Wonder at All - ~Koto nashi ni",
+        "answer": "〜ことなしに - 犠牲を払うことなしに成功はない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about No Wonder at All - ~Koto nashi ni?",
+        "options": [
+          "〜ことなしに - 犠牲を払うことなしに成功はない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ことなしに - 犠牲を払うことなしに成功はない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（No Wonder at All - ~Koto nashi ni）",
+        "answer": [
+          "〜ことなしに - 犠牲を払うことなしに成功はない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l015",
+    "titleJp": "〜ことなく - 立ち止まることなく前進し続けた",
+    "level": "N1",
+    "order": 15,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜ことなく - 立ち止まることなく前進し続けた"
+    ],
+    "grammar": [
+      "n1_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ことなく - 立ち止まることなく前進し続けたについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Never Ever - ~Koto naku",
+        "answer": "〜ことなく - 立ち止まることなく前進し続けた"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Never Ever - ~Koto naku?",
+        "options": [
+          "〜ことなく - 立ち止まることなく前進し続けた",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ことなく - 立ち止まることなく前進し続けた"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Never Ever - ~Koto naku）",
+        "answer": [
+          "〜ことなく - 立ち止まることなく前進し続けた"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l016",
+    "titleJp": "〜限りだ - 嬉しい限りでございます",
+    "level": "N1",
+    "order": 16,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜限りだ - 嬉しい限りでございます"
+    ],
+    "grammar": [
+      "n1_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜限りだ - 嬉しい限りでございますについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of As Long As Breath Holds - ~Kagiri da",
+        "answer": "〜限りだ - 嬉しい限りでございます"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about As Long As Breath Holds - ~Kagiri da?",
+        "options": [
+          "〜限りだ - 嬉しい限りでございます",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜限りだ - 嬉しい限りでございます"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（As Long As Breath Holds - ~Kagiri da）",
+        "answer": [
+          "〜限りだ - 嬉しい限りでございます"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l017",
+    "titleJp": "〜を超えて - 世代を超えて愛される古典",
+    "level": "N1",
+    "order": 17,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜を超えて - 世代を超えて愛される古典"
+    ],
+    "grammar": [
+      "n1_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜を超えて - 世代を超えて愛される古典について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Surpassing Human Limits - ~O Koete",
+        "answer": "〜を超えて - 世代を超えて愛される古典"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Surpassing Human Limits - ~O Koete?",
+        "options": [
+          "〜を超えて - 世代を超えて愛される古典",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜を超えて - 世代を超えて愛される古典"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Surpassing Human Limits - ~O Koete）",
+        "answer": [
+          "〜を超えて - 世代を超えて愛される古典"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l018",
+    "titleJp": "〜を装って - 親切を装って近づく詐欺手口",
+    "level": "N1",
+    "order": 18,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜を装って - 親切を装って近づく詐欺手口"
+    ],
+    "grammar": [
+      "n1_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜を装って - 親切を装って近づく詐欺手口について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of In the Guise of - ~O Yosotte",
+        "answer": "〜を装って - 親切を装って近づく詐欺手口"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about In the Guise of - ~O Yosotte?",
+        "options": [
+          "〜を装って - 親切を装って近づく詐欺手口",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜を装って - 親切を装って近づく詐欺手口"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（In the Guise of - ~O Yosotte）",
+        "answer": [
+          "〜を装って - 親切を装って近づく詐欺手口"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l019",
+    "titleJp": "〜を顧みず - 己の保身を顧みず正義を貫く",
+    "level": "N1",
+    "order": 19,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜を顧みず - 己の保身を顧みず正義を貫く"
+    ],
+    "grammar": [
+      "n1_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜を顧みず - 己の保身を顧みず正義を貫くについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Beyond Bounds of Propriety - ~O Kaerimizu",
+        "answer": "〜を顧みず - 己の保身を顧みず正義を貫く"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Beyond Bounds of Propriety - ~O Kaerimizu?",
+        "options": [
+          "〜を顧みず - 己の保身を顧みず正義を貫く",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜を顧みず - 己の保身を顧みず正義を貫く"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Beyond Bounds of Propriety - ~O Kaerimizu）",
+        "answer": [
+          "〜を顧みず - 己の保身を顧みず正義を貫く"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l020",
+    "titleJp": "〜に反して - 予想に反して株価が急落した",
+    "level": "N1",
+    "order": 20,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜に反して - 予想に反して株価が急落した"
+    ],
+    "grammar": [
+      "n1_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に反して - 予想に反して株価が急落したについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of In Direct Contradiction - ~Ni Hanshite",
+        "answer": "〜に反して - 予想に反して株価が急落した"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about In Direct Contradiction - ~Ni Hanshite?",
+        "options": [
+          "〜に反して - 予想に反して株価が急落した",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に反して - 予想に反して株価が急落した"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（In Direct Contradiction - ~Ni Hanshite）",
+        "answer": [
+          "〜に反して - 予想に反して株価が急落した"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l021",
+    "titleJp": "取締役会におけるM&A戦略の審議",
+    "level": "N1",
+    "order": 21,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "取締役会におけるM&A戦略の審議"
+    ],
+    "grammar": [
+      "n1_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "取締役会におけるM&A戦略の審議について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Executive Boardroom Deliberations",
+        "answer": "取締役会におけるM&A戦略の審議"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Executive Boardroom Deliberations?",
+        "options": [
+          "取締役会におけるM&A戦略の審議",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "取締役会におけるM&A戦略の審議"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Executive Boardroom Deliberations）",
+        "answer": [
+          "取締役会におけるM&A戦略の審議"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l022",
+    "titleJp": "日本国憲法と最高裁判所判例の精読",
+    "level": "N1",
+    "order": 22,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "日本国憲法と最高裁判所判例の精読"
+    ],
+    "grammar": [
+      "n1_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本国憲法と最高裁判所判例の精読について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Constitutional Jurisprudence & Case Law",
+        "answer": "日本国憲法と最高裁判所判例の精読"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Constitutional Jurisprudence & Case Law?",
+        "options": [
+          "日本国憲法と最高裁判所判例の精読",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日本国憲法と最高裁判所判例の精読"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Constitutional Jurisprudence & Case Law）",
+        "answer": [
+          "日本国憲法と最高裁判所判例の精読"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l023",
+    "titleJp": "国際条約の締結と多国間交渉の外交辞令",
+    "level": "N1",
+    "order": 23,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "国際条約の締結と多国間交渉の外交辞令"
+    ],
+    "grammar": [
+      "n1_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "国際条約の締結と多国間交渉の外交辞令について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Diplomatic Protocols & Treaties",
+        "answer": "国際条約の締結と多国間交渉の外交辞令"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Diplomatic Protocols & Treaties?",
+        "options": [
+          "国際条約の締結と多国間交渉の外交辞令",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "国際条約の締結と多国間交渉の外交辞令"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Diplomatic Protocols & Treaties）",
+        "answer": [
+          "国際条約の締結と多国間交渉の外交辞令"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l024",
+    "titleJp": "日本銀行の金融政策と長短金利操作（YCC）",
+    "level": "N1",
+    "order": 24,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "日本銀行の金融政策と長短金利操作（YCC）"
+    ],
+    "grammar": [
+      "n1_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本銀行の金融政策と長短金利操作（YCC）について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Macroeconomic Monetary Policy",
+        "answer": "日本銀行の金融政策と長短金利操作（YCC）"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Macroeconomic Monetary Policy?",
+        "options": [
+          "日本銀行の金融政策と長短金利操作（YCC）",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日本銀行の金融政策と長短金利操作（YCC）"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Macroeconomic Monetary Policy）",
+        "answer": [
+          "日本銀行の金融政策と長短金利操作（YCC）"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l025",
+    "titleJp": "ゲノム編集と生命倫理を巡る哲学的考察",
+    "level": "N1",
+    "order": 25,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "ゲノム編集と生命倫理を巡る哲学的考察"
+    ],
+    "grammar": [
+      "n1_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "ゲノム編集と生命倫理を巡る哲学的考察について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Bioethics in Modern Gene Editing",
+        "answer": "ゲノム編集と生命倫理を巡る哲学的考察"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Bioethics in Modern Gene Editing?",
+        "options": [
+          "ゲノム編集と生命倫理を巡る哲学的考察",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "ゲノム編集と生命倫理を巡る哲学的考察"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Bioethics in Modern Gene Editing）",
+        "answer": [
+          "ゲノム編集と生命倫理を巡る哲学的考察"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l026",
+    "titleJp": "民法における所有権と不法行為責任の法理",
+    "level": "N1",
+    "order": 26,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "民法における所有権と不法行為責任の法理"
+    ],
+    "grammar": [
+      "n1_g002"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "民法における所有権と不法行為責任の法理について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Civil Code & Property Rights",
+        "answer": "民法における所有権と不法行為責任の法理"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Civil Code & Property Rights?",
+        "options": [
+          "民法における所有権と不法行為責任の法理",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "民法における所有権と不法行為責任の法理"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Civil Code & Property Rights）",
+        "answer": [
+          "民法における所有権と不法行為責任の法理"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l027",
+    "titleJp": "スチュワードシップ・コードと株主総会決議",
+    "level": "N1",
+    "order": 27,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "スチュワードシップ・コードと株主総会決議"
+    ],
+    "grammar": [
+      "n1_g003"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "スチュワードシップ・コードと株主総会決議について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Corporate Governance & Shareholder Activism",
+        "answer": "スチュワードシップ・コードと株主総会決議"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Corporate Governance & Shareholder Activism?",
+        "options": [
+          "スチュワードシップ・コードと株主総会決議",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "スチュワードシップ・コードと株主総会決議"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Corporate Governance & Shareholder Activism）",
+        "answer": [
+          "スチュワードシップ・コードと株主総会決議"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l028",
+    "titleJp": "夏目漱石『こころ』に見る明治期の近代知識人の苦悩",
+    "level": "N1",
+    "order": 28,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "夏目漱石『こころ』に見る明治期の近代知識人の苦悩"
+    ],
+    "grammar": [
+      "n1_g004"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "夏目漱石『こころ』に見る明治期の近代知識人の苦悩について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Classical Literary Nuances: Soseki & Akutagawa",
+        "answer": "夏目漱石『こころ』に見る明治期の近代知識人の苦悩"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Classical Literary Nuances: Soseki & Akutagawa?",
+        "options": [
+          "夏目漱石『こころ』に見る明治期の近代知識人の苦悩",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "夏目漱石『こころ』に見る明治期の近代知識人の苦悩"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Classical Literary Nuances: Soseki & Akutagawa）",
+        "answer": [
+          "夏目漱石『こころ』に見る明治期の近代知識人の苦悩"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l029",
+    "titleJp": "現代俳句における季語の本意と切れ字の美学",
+    "level": "N1",
+    "order": 29,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "現代俳句における季語の本意と切れ字の美学"
+    ],
+    "grammar": [
+      "n1_g005"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "現代俳句における季語の本意と切れ字の美学について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Modern Haiku & Waka Poetic Aesthetics",
+        "answer": "現代俳句における季語の本意と切れ字の美学"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Modern Haiku & Waka Poetic Aesthetics?",
+        "options": [
+          "現代俳句における季語の本意と切れ字の美学",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "現代俳句における季語の本意と切れ字の美学"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Modern Haiku & Waka Poetic Aesthetics）",
+        "answer": [
+          "現代俳句における季語の本意と切れ字の美学"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l030",
+    "titleJp": "西田幾多郎『善の研究』における純粋経験の構造",
+    "level": "N1",
+    "order": 30,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "西田幾多郎『善の研究』における純粋経験の構造"
+    ],
+    "grammar": [
+      "n1_g006"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "西田幾多郎『善の研究』における純粋経験の構造について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Philosophical Argumentation: Nishida Kitaro",
+        "answer": "西田幾多郎『善の研究』における純粋経験の構造"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Philosophical Argumentation: Nishida Kitaro?",
+        "options": [
+          "西田幾多郎『善の研究』における純粋経験の構造",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "西田幾多郎『善の研究』における純粋経験の構造"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Philosophical Argumentation: Nishida Kitaro）",
+        "answer": [
+          "西田幾多郎『善の研究』における純粋経験の構造"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l031",
+    "titleJp": "経済安全保障と半導体サプライチェーンの再構築",
+    "level": "N1",
+    "order": 31,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "経済安全保障と半導体サプライチェーンの再構築"
+    ],
+    "grammar": [
+      "n1_g007"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "経済安全保障と半導体サプライチェーンの再構築について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Geopolitical Security & Supply Chains",
+        "answer": "経済安全保障と半導体サプライチェーンの再構築"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Geopolitical Security & Supply Chains?",
+        "options": [
+          "経済安全保障と半導体サプライチェーンの再構築",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "経済安全保障と半導体サプライチェーンの再構築"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Geopolitical Security & Supply Chains）",
+        "answer": [
+          "経済安全保障と半導体サプライチェーンの再構築"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l032",
+    "titleJp": "原子力発電の再稼働とエネルギー安全保障のジレンマ",
+    "level": "N1",
+    "order": 32,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "原子力発電の再稼働とエネルギー安全保障のジレンマ"
+    ],
+    "grammar": [
+      "n1_g008"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "原子力発電の再稼働とエネルギー安全保障のジレンマについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Nuclear Energy & National Energy Mix",
+        "answer": "原子力発電の再稼働とエネルギー安全保障のジレンマ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Nuclear Energy & National Energy Mix?",
+        "options": [
+          "原子力発電の再稼働とエネルギー安全保障のジレンマ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "原子力発電の再稼働とエネルギー安全保障のジレンマ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Nuclear Energy & National Energy Mix）",
+        "answer": [
+          "原子力発電の再稼働とエネルギー安全保障のジレンマ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l033",
+    "titleJp": "老舗企業の事業承継と暖簾の継承",
+    "level": "N1",
+    "order": 33,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "老舗企業の事業承継と暖簾の継承"
+    ],
+    "grammar": [
+      "n1_g009"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "老舗企業の事業承継と暖簾の継承について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Corporate Succession in Family Dynasties",
+        "answer": "老舗企業の事業承継と暖簾の継承"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Corporate Succession in Family Dynasties?",
+        "options": [
+          "老舗企業の事業承継と暖簾の継承",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "老舗企業の事業承継と暖簾の継承"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Corporate Succession in Family Dynasties）",
+        "answer": [
+          "老舗企業の事業承継と暖簾の継承"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l034",
+    "titleJp": "量子コンピューティングと耐量子暗号の最前線",
+    "level": "N1",
+    "order": 34,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "量子コンピューティングと耐量子暗号の最前線"
+    ],
+    "grammar": [
+      "n1_g010"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "量子コンピューティングと耐量子暗号の最前線について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Quantum Computing & Cryptographic Frontiers",
+        "answer": "量子コンピューティングと耐量子暗号の最前線"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Quantum Computing & Cryptographic Frontiers?",
+        "options": [
+          "量子コンピューティングと耐量子暗号の最前線",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "量子コンピューティングと耐量子暗号の最前線"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Quantum Computing & Cryptographic Frontiers）",
+        "answer": [
+          "量子コンピューティングと耐量子暗号の最前線"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l035",
+    "titleJp": "宇宙基本法と月面資源開発の国際秩序",
+    "level": "N1",
+    "order": 35,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "宇宙基本法と月面資源開発の国際秩序"
+    ],
+    "grammar": [
+      "n1_g011"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "宇宙基本法と月面資源開発の国際秩序について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Space Exploration Treaties & Commercial Mining",
+        "answer": "宇宙基本法と月面資源開発の国際秩序"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Space Exploration Treaties & Commercial Mining?",
+        "options": [
+          "宇宙基本法と月面資源開発の国際秩序",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "宇宙基本法と月面資源開発の国際秩序"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Space Exploration Treaties & Commercial Mining）",
+        "answer": [
+          "宇宙基本法と月面資源開発の国際秩序"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l036",
+    "titleJp": "汎用人工知能（AGI）の意識と法的人格の是非",
+    "level": "N1",
+    "order": 36,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "汎用人工知能（AGI）の意識と法的人格の是非"
+    ],
+    "grammar": [
+      "n1_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "汎用人工知能（AGI）の意識と法的人格の是非について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Artificial Intelligence Consciousness & Agency",
+        "answer": "汎用人工知能（AGI）の意識と法的人格の是非"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Artificial Intelligence Consciousness & Agency?",
+        "options": [
+          "汎用人工知能（AGI）の意識と法的人格の是非",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "汎用人工知能（AGI）の意識と法的人格の是非"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Artificial Intelligence Consciousness & Agency）",
+        "answer": [
+          "汎用人工知能（AGI）の意識と法的人格の是非"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l037",
+    "titleJp": "巨大都市東京の再開発と防災都市計画の調和",
+    "level": "N1",
+    "order": 37,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "巨大都市東京の再開発と防災都市計画の調和"
+    ],
+    "grammar": [
+      "n1_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "巨大都市東京の再開発と防災都市計画の調和について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Urban Regeneration in Megacities",
+        "answer": "巨大都市東京の再開発と防災都市計画の調和"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Urban Regeneration in Megacities?",
+        "options": [
+          "巨大都市東京の再開発と防災都市計画の調和",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "巨大都市東京の再開発と防災都市計画の調和"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Urban Regeneration in Megacities）",
+        "answer": [
+          "巨大都市東京の再開発と防災都市計画の調和"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l038",
+    "titleJp": "ユネスコ無形文化遺産と伝統工芸の継承危機",
+    "level": "N1",
+    "order": 38,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "ユネスコ無形文化遺産と伝統工芸の継承危機"
+    ],
+    "grammar": [
+      "n1_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "ユネスコ無形文化遺産と伝統工芸の継承危機について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Preserving Intangible Cultural Heritage",
+        "answer": "ユネスコ無形文化遺産と伝統工芸の継承危機"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Preserving Intangible Cultural Heritage?",
+        "options": [
+          "ユネスコ無形文化遺産と伝統工芸の継承危機",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "ユネスコ無形文化遺産と伝統工芸の継承危機"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Preserving Intangible Cultural Heritage）",
+        "answer": [
+          "ユネスコ無形文化遺産と伝統工芸の継承危機"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l039",
+    "titleJp": "第二言語習得における脳機能局在と臨界期仮説",
+    "level": "N1",
+    "order": 39,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "第二言語習得における脳機能局在と臨界期仮説"
+    ],
+    "grammar": [
+      "n1_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "第二言語習得における脳機能局在と臨界期仮説について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Neuroscience of Language Acquisition",
+        "answer": "第二言語習得における脳機能局在と臨界期仮説"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Neuroscience of Language Acquisition?",
+        "options": [
+          "第二言語習得における脳機能局在と臨界期仮説",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "第二言語習得における脳機能局在と臨界期仮説"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Neuroscience of Language Acquisition）",
+        "answer": [
+          "第二言語習得における脳機能局在と臨界期仮説"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l040",
+    "titleJp": "炭素税導入と国際炭素国境調整措置（CBAM）",
+    "level": "N1",
+    "order": 40,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "炭素税導入と国際炭素国境調整措置（CBAM）"
+    ],
+    "grammar": [
+      "n1_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "炭素税導入と国際炭素国境調整措置（CBAM）について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Environmental Law & Carbon Taxation",
+        "answer": "炭素税導入と国際炭素国境調整措置（CBAM）"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Environmental Law & Carbon Taxation?",
+        "options": [
+          "炭素税導入と国際炭素国境調整措置（CBAM）",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "炭素税導入と国際炭素国境調整措置（CBAM）"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Environmental Law & Carbon Taxation）",
+        "answer": [
+          "炭素税導入と国際炭素国境調整措置（CBAM）"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l041",
+    "titleJp": "非正規雇用の拡大と格差社会の構造分析",
+    "level": "N1",
+    "order": 41,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "非正規雇用の拡大と格差社会の構造分析"
+    ],
+    "grammar": [
+      "n1_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "非正規雇用の拡大と格差社会の構造分析について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Labor Market Polarization & Precariat",
+        "answer": "非正規雇用の拡大と格差社会の構造分析"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Labor Market Polarization & Precariat?",
+        "options": [
+          "非正規雇用の拡大と格差社会の構造分析",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "非正規雇用の拡大と格差社会の構造分析"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Labor Market Polarization & Precariat）",
+        "answer": [
+          "非正規雇用の拡大と格差社会の構造分析"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l042",
+    "titleJp": "メタボリズム運動と黒川紀章のカプセル建築",
+    "level": "N1",
+    "order": 42,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "メタボリズム運動と黒川紀章のカプセル建築"
+    ],
+    "grammar": [
+      "n1_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "メタボリズム運動と黒川紀章のカプセル建築について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Postmodern Japanese Architecture",
+        "answer": "メタボリズム運動と黒川紀章のカプセル建築"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Postmodern Japanese Architecture?",
+        "options": [
+          "メタボリズム運動と黒川紀章のカプセル建築",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "メタボリズム運動と黒川紀章のカプセル建築"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Postmodern Japanese Architecture）",
+        "answer": [
+          "メタボリズム運動と黒川紀章のカプセル建築"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l043",
+    "titleJp": "禅宗における直指人心とビジネスにおける直観力",
+    "level": "N1",
+    "order": 43,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "禅宗における直指人心とビジネスにおける直観力"
+    ],
+    "grammar": [
+      "n1_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "禅宗における直指人心とビジネスにおける直観力について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Zen Epistemology in Modern Work",
+        "answer": "禅宗における直指人心とビジネスにおける直観力"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Zen Epistemology in Modern Work?",
+        "options": [
+          "禅宗における直指人心とビジネスにおける直観力",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "禅宗における直指人心とビジネスにおける直観力"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Zen Epistemology in Modern Work）",
+        "answer": [
+          "禅宗における直指人心とビジネスにおける直観力"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l044",
+    "titleJp": "漢語の受容と明治期における翻訳造語の誕生",
+    "level": "N1",
+    "order": 44,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "漢語の受容と明治期における翻訳造語の誕生"
+    ],
+    "grammar": [
+      "n1_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "漢語の受容と明治期における翻訳造語の誕生について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Sino-Japanese Literary Lexicon (Kango)",
+        "answer": "漢語の受容と明治期における翻訳造語の誕生"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Sino-Japanese Literary Lexicon (Kango)?",
+        "options": [
+          "漢語の受容と明治期における翻訳造語の誕生",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "漢語の受容と明治期における翻訳造語の誕生"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Sino-Japanese Literary Lexicon (Kango)）",
+        "answer": [
+          "漢語の受容と明治期における翻訳造語の誕生"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l045",
+    "titleJp": "終末期医療における自己決定権と尊厳死の法制化",
+    "level": "N1",
+    "order": 45,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "終末期医療における自己決定権と尊厳死の法制化"
+    ],
+    "grammar": [
+      "n1_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "終末期医療における自己決定権と尊厳死の法制化について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Medical Ethics in End-of-Life Decisions",
+        "answer": "終末期医療における自己決定権と尊厳死の法制化"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Medical Ethics in End-of-Life Decisions?",
+        "options": [
+          "終末期医療における自己決定権と尊厳死の法制化",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "終末期医療における自己決定権と尊厳死の法制化"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Medical Ethics in End-of-Life Decisions）",
+        "answer": [
+          "終末期医療における自己決定権と尊厳死の法制化"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l046",
+    "titleJp": "サイバー安全保障とインフラ防護の法制度",
+    "level": "N1",
+    "order": 46,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "サイバー安全保障とインフラ防護の法制度"
+    ],
+    "grammar": [
+      "n1_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "サイバー安全保障とインフラ防護の法制度について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Cyber Warfare & Critical Infrastructure Defense",
+        "answer": "サイバー安全保障とインフラ防護の法制度"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Cyber Warfare & Critical Infrastructure Defense?",
+        "options": [
+          "サイバー安全保障とインフラ防護の法制度",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "サイバー安全保障とインフラ防護の法制度"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Cyber Warfare & Critical Infrastructure Defense）",
+        "answer": [
+          "サイバー安全保障とインフラ防護の法制度"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l047",
+    "titleJp": "途上国開発援助におけるインパクト投資と持続可能性",
+    "level": "N1",
+    "order": 47,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "途上国開発援助におけるインパクト投資と持続可能性"
+    ],
+    "grammar": [
+      "n1_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "途上国開発援助におけるインパクト投資と持続可能性について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Micro-Financing & Global Humanitarian Aid",
+        "answer": "途上国開発援助におけるインパクト投資と持続可能性"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Micro-Financing & Global Humanitarian Aid?",
+        "options": [
+          "途上国開発援助におけるインパクト投資と持続可能性",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "途上国開発援助におけるインパクト投資と持続可能性"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Micro-Financing & Global Humanitarian Aid）",
+        "answer": [
+          "途上国開発援助におけるインパクト投資と持続可能性"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l048",
+    "titleJp": "日本語方言の歴史的変遷と東西アクセント境界",
+    "level": "N1",
+    "order": 48,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "日本語方言の歴史的変遷と東西アクセント境界"
+    ],
+    "grammar": [
+      "n1_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本語方言の歴史的変遷と東西アクセント境界について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Historical Dialectology & Regional Accents",
+        "answer": "日本語方言の歴史的変遷と東西アクセント境界"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Historical Dialectology & Regional Accents?",
+        "options": [
+          "日本語方言の歴史的変遷と東西アクセント境界",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "日本語方言の歴史的変遷と東西アクセント境界"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Historical Dialectology & Regional Accents）",
+        "answer": [
+          "日本語方言の歴史的変遷と東西アクセント境界"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l049",
+    "titleJp": "能楽の世阿弥『風姿花伝』における秘すれば花",
+    "level": "N1",
+    "order": 49,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "能楽の世阿弥『風姿花伝』における秘すれば花"
+    ],
+    "grammar": [
+      "n1_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "能楽の世阿弥『風姿花伝』における秘すれば花について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Hermeneutics of Traditional Performing Arts",
+        "answer": "能楽の世阿弥『風姿花伝』における秘すれば花"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Hermeneutics of Traditional Performing Arts?",
+        "options": [
+          "能楽の世阿弥『風姿花伝』における秘すれば花",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "能楽の世阿弥『風姿花伝』における秘すれば花"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Hermeneutics of Traditional Performing Arts）",
+        "answer": [
+          "能楽の世阿弥『風姿花伝』における秘すれば花"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n1l050",
+    "titleJp": "N1最高峰の達成と日本語の究極的深化",
+    "level": "N1",
+    "order": 50,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "N1最高峰の達成と日本語の究極的深化"
+    ],
+    "grammar": [
+      "n1_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "N1最高峰の達成と日本語の究極的深化について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of N1 Pinnacle: Native-Level Artistry & Intellectual Fluency",
+        "answer": "N1最高峰の達成と日本語の究極的深化"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about N1 Pinnacle: Native-Level Artistry & Intellectual Fluency?",
+        "options": [
+          "N1最高峰の達成と日本語の究極的深化",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "N1最高峰の達成と日本語の究極的深化"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（N1 Pinnacle: Native-Level Artistry & Intellectual Fluency）",
+        "answer": [
+          "N1最高峰の達成と日本語の究極的深化"
+        ]
+      }
+    ]
+  }
+]

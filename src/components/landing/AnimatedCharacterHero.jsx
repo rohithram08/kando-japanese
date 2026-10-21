@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Sparkles, Volume2, RotateCcw, Flame } from 'lucide-react'
-import HanaSenseiCharacter2D from '../sensei/HanaSenseiCharacter2D'
+import KandoSlime from '../mascot/KandoSlime'
 import { playPop } from '../../utils/soundEffects'
 
 const GREETINGS = [
@@ -8,71 +8,96 @@ const GREETINGS = [
     japanese: '「こんにちは！一緒に日本語を勉強しましょう！」',
     romaji: 'Konnichiwa! Issho ni nihongo o benkyou shimashou!',
     english: "Hello! Let's study Japanese together! I'll guide you through stories, conversation, and grammar.",
+    mood: 'waving',
   },
   {
     japanese: '「今日も一歩ずつ、楽しく学びましょう！」',
     romaji: 'Kyou mo ippo zutsu, tanoshiku manabimashou!',
     english: "Step by step, let's enjoy learning today too! Consistent practice helps you progress toward fluency.",
+    mood: 'idle',
   },
   {
-    japanese: '「分からないことがあれば、何でも聞いてね！」',
-    romaji: 'Wakaranai koto ga areba, nan demo kiite ne!',
-    english: "If there's anything you don't understand, just ask me anytime!",
+    japanese: '「やっほー！感動スライムだよ！一緒に日本語を学ぼう！」',
+    romaji: 'Yahho~! Kando Suraimu da yo! Issho ni nihongo o manabou!',
+    english: "Hii there! I'm Kando Slime! Let's master Japanese together!",
+    mood: 'waving',
   },
   {
-    japanese: '「ようこそ！生きた日本語の世界へ！」',
-    romaji: 'Youkoso! Ikita nihongo no sekai e!',
-    english: "Welcome to the world of living Japanese! Real context, real comprehension.",
+    japanese: '「必勝！漢字も文法も、毎日コツコツ覚えるよ！」',
+    romaji: 'Hisshou! Kanji mo bunpou mo, mainichi kotsukotsu oboeru yo!',
+    english: "Victory! Kanji and grammar, mastering them piece by piece!",
+    mood: 'studying',
+  },
+  {
+    japanese: '「すごい！よくできました！レベルアップ！」',
+    romaji: 'Sugoi! Yoku dekimashita! Reberu appu!',
+    english: "Incredible! Fantastic work! Level Up!",
+    mood: 'celebrating',
   },
 ]
 
-const FLOATING_KANA = [
+const SATELLITE_CARDS = [
   {
-    char: 'あ',
-    type: 'Hiragana',
-    romaji: 'a',
-    note: 'First step',
-    pos: 'top-4 -left-4 sm:-left-6',
-    anim: 'animate-float-slow',
-    delay: '0s',
-    parallax: { x: -14, y: -10 },
+    id: 'streak',
+    category: 'Daily Habit',
+    icon: '🔥',
+    title: '7-Day Streak',
+    subtitle: '継続は力なり',
+    position: 'top-2 -left-2 sm:-left-6',
+    animClass: 'animate-satellite-tl',
+    borderGlow: 'hover:border-amber-500/60 hover:shadow-amber-500/20',
+    badgeBg: 'bg-amber-500/15 text-amber-600 dark:text-amber-400',
+    type: 'streak',
   },
   {
-    char: '桜',
-    type: 'Kanji',
+    id: 'kanji',
+    category: 'JLPT N5 Kanji',
+    japanese: '桜',
     romaji: 'sakura',
-    note: 'Cherry blossom',
-    pos: 'top-8 -right-4 sm:-right-6',
-    anim: 'animate-float-medium',
-    delay: '1.2s',
-    parallax: { x: 16, y: -12 },
+    meaning: 'Cherry Blossom',
+    speakText: 'さくら',
+    position: 'top-2 -right-2 sm:-right-6',
+    animClass: 'animate-satellite-tr',
+    borderGlow: 'hover:border-rose-400/60 hover:shadow-rose-500/20',
+    badgeBg: 'bg-rose-500/15 text-rose-500',
+    type: 'interactive',
+    ariaLabel: 'Kanji character 桜',
   },
   {
-    char: '猫',
-    type: 'Kanji',
+    id: 'kana',
+    category: 'Hiragana Foundation',
+    japanese: 'あ',
+    romaji: 'a',
+    meaning: 'First Step',
+    speakText: 'あ',
+    position: 'bottom-4 -left-2 sm:-left-6',
+    animClass: 'animate-satellite-bl',
+    borderGlow: 'hover:border-indigo-500/60 hover:shadow-indigo-500/20',
+    badgeBg: 'bg-indigo-500/15 text-indigo-500',
+    type: 'interactive',
+    ariaLabel: 'Hiragana character あ',
+  },
+  {
+    id: 'vocab',
+    category: 'Core Vocab',
+    japanese: '猫',
+    furigana: 'ねこ',
     romaji: 'neko',
-    note: 'Cat',
-    pos: 'bottom-24 -left-6 sm:-left-8',
-    anim: 'animate-float-medium',
-    delay: '2.1s',
-    parallax: { x: -12, y: 14 },
-  },
-  {
-    char: '話',
-    type: 'Kanji',
-    romaji: 'hanasu',
-    note: 'Speak / Dialogue',
-    pos: 'bottom-16 -right-6 sm:-right-8',
-    anim: 'animate-float-slow',
-    delay: '3.4s',
-    parallax: { x: 14, y: 12 },
+    meaning: 'Cat',
+    speakText: 'ねこ',
+    position: 'bottom-4 -right-2 sm:-right-6',
+    animClass: 'animate-satellite-br',
+    borderGlow: 'hover:border-emerald-500/60 hover:shadow-emerald-500/20',
+    badgeBg: 'bg-emerald-500/15 text-emerald-500',
+    type: 'interactive',
+    ariaLabel: 'Vocabulary word 猫',
   },
 ]
 
 export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
   const [greetingIndex, setGreetingIndex] = useState(0)
   const [activeKana, setActiveKana] = useState(null)
-  const [characterState, setCharacterState] = useState('idle')
+  const [slimeMood, setSlimeMood] = useState('waving')
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const heroStageRef = useRef(null)
@@ -89,7 +114,11 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
   const activeGreeting = GREETINGS[greetingIndex]
 
   const nextGreeting = () => {
-    setGreetingIndex((prev) => (prev + 1) % GREETINGS.length)
+    setGreetingIndex((prev) => {
+      const nextIdx = (prev + 1) % GREETINGS.length
+      setSlimeMood(GREETINGS[nextIdx].mood || 'waving')
+      return nextIdx
+    })
   }
 
   // Mouse parallax tracking for non-touch desktop devices
@@ -107,43 +136,20 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
     setMousePos({ x: 0, y: 0 })
   }
 
-  // Hana-sensei hover wave & click reaction
-  const handleMouseEnterHana = () => {
-    if (!isSpeaking && characterState === 'idle') {
-      setCharacterState('greeting')
-    }
-  }
-
-  const handleMouseLeaveHana = () => {
-    if (!isSpeaking && characterState === 'greeting') {
-      setCharacterState('idle')
-    }
-  }
-
-  const handleCharacterClick = () => {
-    setCharacterState('happy')
-    playPop()
-    nextGreeting()
-    setTimeout(() => {
-      setCharacterState((prev) => (prev === 'happy' ? 'idle' : prev))
-    }, 2200)
-  }
-
   const handleNextGreeting = () => {
     playPop()
     nextGreeting()
   }
 
-  const handleKanaClick = (item) => {
-    setActiveKana(item.char === activeKana ? null : item.char)
-    setCharacterState('listening')
+  const handleSatelliteClick = (item) => {
+    setActiveKana(item.id === activeKana ? null : item.id)
     playPop()
-    if (onSpeak) {
-      onSpeak(item.char)
+    if (item.type === 'streak') {
+      setSlimeMood('celebrating')
+    } else if (item.speakText) {
+      if (onSpeak) onSpeak(item.speakText)
+      setSlimeMood(item.id === 'kana' ? 'waving' : item.id === 'vocab' ? 'celebrating' : 'curious')
     }
-    setTimeout(() => {
-      setCharacterState((prev) => (prev === 'listening' ? 'idle' : prev))
-    }, 1800)
   }
 
   return (
@@ -164,7 +170,7 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
         key={greetingIndex}
         className="w-full mb-4 sm:mb-6 card p-4 sm:p-5 rounded-3xl border border-indigo-500/25 bg-surface/95 backdrop-blur-md shadow-xl relative animate-bubble-pop z-30 transition-all"
         role="region"
-        aria-label="Hana-sensei welcome message"
+        aria-label="Kando Slime welcome message"
       >
         {/* Header row with avatar badge, speaker, and controls */}
         <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-border/60">
@@ -172,10 +178,10 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
             <span className="text-xs font-bold text-foreground flex items-center gap-1">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span>Hana-sensei (花先生)</span>
+              <span>Kando Slime (感動スライム) 🌸</span>
             </span>
             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-              AI Tutor
+              Interactive 2D Mascot
             </span>
           </div>
 
@@ -187,7 +193,7 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
               disabled={isSpeaking}
               className="p-1.5 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               title="Listen to Japanese pronunciation"
-              aria-label="Listen to Hana-sensei greeting"
+              aria-label="Listen to Kando Slime greeting"
             >
               <Volume2 className={`w-4 h-4 text-primary ${isSpeaking ? 'animate-bounce' : ''}`} />
             </button>
@@ -220,147 +226,115 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
           "{activeGreeting.english}"
         </p>
 
-        {/* Comic speech bubble tail pointing to Hana-sensei */}
+        {/* Comic speech bubble tail pointing to Kando Slime */}
         <div
           className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-r border-b border-indigo-500/25 transform rotate-45 pointer-events-none"
           aria-hidden="true"
         />
       </div>
 
-      {/* ── Character Center Stage & Floating Japanese Objects ──────── */}
-      <div className="relative w-full max-w-[340px] sm:max-w-[420px] h-[340px] sm:h-[420px] flex items-center justify-center hana-character-container select-none">
+      {/* ── Character Center Stage & Synchronized Japanese Orbit Satellites ──────── */}
+      <div className="relative w-full max-w-[390px] sm:max-w-[460px] h-[350px] sm:h-[390px] flex items-center justify-center select-none">
         
-        {/* Halo Glow Ring */}
+        {/* Subtle Celestial Orbit Track with Rotating Glow */}
         <div
-          className="absolute inset-4 rounded-full border-2 border-dashed border-indigo-500/20 animate-halo pointer-events-none"
+          className="absolute inset-4 rounded-full border-2 border-dashed border-indigo-400/20 animate-orbit-ring pointer-events-none"
           aria-hidden="true"
-        />
-
-        {/* Floating Mini Streak Badge (Top Left) */}
-        <div
-          className="absolute top-2 left-2 z-20 px-3 py-1.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-border shadow-lg flex items-center gap-2 animate-float-slow"
-          style={{
-            animationDelay: '0.4s',
-            transform: isTouchDevice
-              ? undefined
-              : `translate3d(${mousePos.x * -8}px, ${mousePos.y * -8}px, 0)`,
-            transition: 'transform 0.15s ease-out',
-          }}
         >
-          <span className="p-1 rounded-lg bg-orange-500/10 text-orange-500">
-            <Flame className="w-3.5 h-3.5" />
-          </span>
-          <div className="text-left">
-            <div className="text-[10px] text-muted-foreground font-semibold leading-tight">Daily Habit</div>
-            <div className="text-xs font-black text-foreground">7-Day Streak 🔥</div>
-          </div>
+          {/* Subtle celestial orbital sparkles on the track */}
+          <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-cyan-400/80 shadow-sm shadow-cyan-400" />
+          <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-pink-400/80 shadow-sm shadow-pink-400" />
+          <span className="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 rounded-full bg-amber-400/80 shadow-sm shadow-amber-400" />
+          <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-indigo-400/80 shadow-sm shadow-indigo-400" />
         </div>
 
-        {/* Floating Mini Vocab Card (Top Right) */}
-        <div
-          className="absolute top-4 right-0 z-20 px-3 py-1.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-border shadow-lg flex items-center gap-2 animate-float-medium"
-          style={{
-            animationDelay: '1.8s',
-            transform: isTouchDevice
-              ? undefined
-              : `translate3d(${mousePos.x * 10}px, ${mousePos.y * -10}px, 0)`,
-            transition: 'transform 0.15s ease-out',
-          }}
-        >
-          <span className="p-1 rounded-lg bg-emerald-500/10 text-emerald-500 font-bold text-xs">
-            猫
-          </span>
-          <div className="text-left">
-            <div className="text-[10px] text-muted-foreground font-medium leading-tight">N5 Vocab</div>
-            <div className="text-xs font-bold text-foreground">ねこ · Cat</div>
-          </div>
-        </div>
-
-        {/* Floating Mini Steaming Tea Cup (Bottom Left) */}
-        <div
-          className="absolute bottom-6 left-0 z-20 px-2.5 py-1.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-border shadow-md flex items-center gap-1.5 animate-float-slow"
-          style={{
-            animationDelay: '2.4s',
-            transform: isTouchDevice
-              ? undefined
-              : `translate3d(${mousePos.x * -10}px, ${mousePos.y * 8}px, 0)`,
-            transition: 'transform 0.15s ease-out',
-          }}
-          title="Matcha tea break"
-        >
-          <div className="relative">
-            <span className="text-base">🍵</span>
-            <span className="absolute -top-2 left-1.5 w-1 h-2 rounded-full bg-emerald-400/50 animate-steam" />
-          </div>
-          <span className="text-[10px] font-semibold text-muted-foreground">お茶の時間</span>
-        </div>
-
-        {/* Floating JLPT Progress Pill (Bottom Right) */}
-        <div
-          className="absolute bottom-4 right-0 z-20 px-3 py-1.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-border shadow-lg flex items-center gap-1.5 animate-float-medium"
-          style={{
-            animationDelay: '0.9s',
-            transform: isTouchDevice
-              ? undefined
-              : `translate3d(${mousePos.x * 8}px, ${mousePos.y * 10}px, 0)`,
-            transition: 'transform 0.15s ease-out',
-          }}
-        >
-          <span className="w-2 h-2 rounded-full bg-indigo-600" />
-          <span className="text-[11px] font-black text-foreground">N5 → N1</span>
-          <span className="text-[10px] text-muted-foreground font-medium">Roadmap</span>
-        </div>
-
-        {/* ── Interactive Floating Kana & Kanji Chips with Cursor Parallax ── */}
-        {FLOATING_KANA.map((item) => {
-          const xOffset = isTouchDevice ? 0 : mousePos.x * item.parallax.x
-          const yOffset = isTouchDevice ? 0 : mousePos.y * item.parallax.y
+        {/* ── 4 Non-Overlapping Interactive Learning Satellites ── */}
+        {SATELLITE_CARDS.map((card) => {
+          const parallaxX = isTouchDevice ? 0 : mousePos.x * 4
+          const parallaxY = isTouchDevice ? 0 : mousePos.y * 4
 
           return (
             <button
-              key={item.char}
+              key={card.id}
               type="button"
-              onClick={() => handleKanaClick(item)}
-              className={`absolute ${item.pos} z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-surface/95 backdrop-blur-md border border-indigo-500/25 shadow-md flex flex-col items-center justify-center font-bold text-sm sm:text-base text-foreground transition-all duration-300 hover:scale-125 hover:border-indigo-500 hover:bg-indigo-500/10 hover:shadow-indigo-500/25 cursor-pointer ${item.anim}`}
+              onClick={() => handleSatelliteClick(card)}
+              className={`absolute ${card.position} z-20 px-3 py-1.5 rounded-2xl bg-surface/90 backdrop-blur-md border border-border/70 shadow-lg flex items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 ${card.animClass} ${card.borderGlow}`}
               style={{
-                animationDelay: item.delay,
-                transform: isTouchDevice ? undefined : `translate3d(${xOffset}px, ${yOffset}px, 0)`,
-                transition: 'transform 0.15s ease-out',
+                transform: `translate3d(${parallaxX}px, ${parallaxY}px, 0)`,
               }}
-              title={`Click to pronounce: ${item.char} (${item.romaji})`}
-              aria-label={`${item.type} character ${item.char}`}
+              title={card.type === 'streak' ? 'Daily Habit Streak' : `Click to hear: ${card.japanese} (${card.romaji})`}
+              aria-label={card.ariaLabel || card.title || `${card.japanese} - ${card.meaning}`}
             >
-              <span className="font-jp text-primary">{item.char}</span>
-              <span className="text-[8px] text-muted-foreground -mt-1 font-mono uppercase">
-                {item.romaji}
-              </span>
+              {card.type === 'streak' ? (
+                <>
+                  <span className={`p-1.5 rounded-xl ${card.badgeBg}`}>
+                    <Flame className="w-3.5 h-3.5 fill-current" />
+                  </span>
+                  <div className="text-left">
+                    <div className="text-[10px] text-muted-foreground font-semibold leading-tight">{card.category}</div>
+                    <div className="text-xs font-black text-foreground">{card.title}</div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <span className={`w-8 h-8 rounded-xl ${card.badgeBg} flex items-center justify-center font-jp font-black text-sm`}>
+                    {card.japanese}
+                  </span>
+                  <div className="text-left">
+                    <div className="text-[9px] text-muted-foreground font-medium uppercase tracking-wider leading-tight">{card.romaji}</div>
+                    <div className="text-xs font-bold text-foreground">{card.meaning}</div>
+                  </div>
+                </>
+              )}
             </button>
           )
         })}
 
-        {/* ── Prominent 2D Hana-sensei Illustration with Hover Wave ── */}
-        <div
-          onMouseEnter={handleMouseEnterHana}
-          onMouseLeave={handleMouseLeaveHana}
-          className="relative transition-transform duration-300 hover:scale-[1.03]"
-        >
-          <HanaSenseiCharacter2D
-            state={isSpeaking ? 'greeting' : characterState}
-            size="lg"
+        {/* ── Centered 2D Kando Slime Mascot (Interactive, Eye-Tracking, Squash & Stretch) ── */}
+        <div className="relative z-10 transition-transform duration-300">
+          <KandoSlime
+            mood={slimeMood}
+            size={230}
             interactive={true}
-            showAura={true}
-            showStatusPill={true}
-            onCharacterClick={handleCharacterClick}
-            onStateChange={setCharacterState}
+            showSpeech={false}
+            showMoodButtons={false}
+            onSpeak={onSpeak}
+            onMoodChange={setSlimeMood}
           />
         </div>
 
       </div>
 
+      {/* ── Mascot Mood Switcher Buttons (Single, Clean Dock — No Duplicates) ── */}
+      <div className="flex items-center justify-center gap-1.5 mt-3 z-20 flex-wrap p-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-border/70 shadow-md">
+        {[
+          { id: 'waving', label: '👋 Wave' },
+          { id: 'studying', label: '📚 Study' },
+          { id: 'celebrating', label: '🎉 Celebrate' },
+          { id: 'curious', label: '🤔 Curious' },
+        ].map((btn) => (
+          <button
+            key={btn.id}
+            type="button"
+            onClick={() => {
+              playPop()
+              setSlimeMood(btn.id)
+            }}
+            className={`px-3.5 py-1.5 text-xs font-bold rounded-full transition-all duration-200 ${
+              slimeMood === btn.id
+                ? 'bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-sm scale-105'
+                : 'text-muted-foreground hover:text-foreground hover:bg-muted/70'
+            }`}
+          >
+            {btn.label}
+          </button>
+        ))}
+      </div>
+
       {/* ── Subtitle Cue ───────────────────────────────────────────── */}
-      <div className="text-[11px] text-muted-foreground mt-3 flex items-center gap-1.5 opacity-80">
+      <div className="text-[11px] text-muted-foreground mt-2 flex items-center gap-1.5 opacity-80">
         <Sparkles className="w-3 h-3 text-primary" />
-        <span>Tap Hana-sensei or floating chips to interact & hear pronunciation</span>
+        <span>Tap Kando Slime to squish & poke · Eyes track your cursor in real time</span>
       </div>
 
     </div>

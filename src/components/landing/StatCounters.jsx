@@ -3,18 +3,12 @@ import React, { useEffect, useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Sparkles, BookOpen, MessageCircle, Languages } from 'lucide-react'
 
-import n1Kanji from '../../data/kanji/n1_kanji'
-import n2Kanji from '../../data/kanji/n2_kanji'
-import { N3_KANJI } from '../../data/kanji/n3_kanji'
-import { N4_KANJI } from '../../data/kanji/n4_kanji'
-import { N5_KANJI } from '../../data/kanji/n5_kanji'
+import { KANJI } from '../../data'
 
-const TOTAL_BUNDLED_KANJI =
-  (Array.isArray(n1Kanji) ? n1Kanji.length : 0) +
-  (Array.isArray(n2Kanji) ? n2Kanji.length : 0) +
-  (Array.isArray(N3_KANJI) ? N3_KANJI.length : 0) +
-  (Array.isArray(N4_KANJI) ? N4_KANJI.length : 0) +
-  (Array.isArray(N5_KANJI) ? N5_KANJI.length : 0)
+const TOTAL_BUNDLED_KANJI = Object.values(KANJI).reduce(
+  (sum, list) => sum + (Array.isArray(list) ? list.length : 0),
+  0
+)
 
 const STAT_ITEMS = [
   {

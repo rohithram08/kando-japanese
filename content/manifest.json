@@ -1,0 +1,25 @@
+{
+  "version": "2.5.0",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-10-21T14:45:00Z",
+  "supportedLanguages": [
+    "en",
+    "ta",
+    "hi"
+  ],
+  "defaultLanguage": "en",
+  "levels": [
+    "N5",
+    "N4",
+    "N3",
+    "N2",
+    "N1"
+  ],
+  "stats": {
+    "vocabulary": 2382,
+    "kanji": 960,
+    "grammar": 464,
+    "lessons": 250,
+    "totalEntries": 4056
+  }
+}

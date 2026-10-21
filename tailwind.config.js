@@ -25,6 +25,10 @@ export default {
           foreground: 'hsl(var(--surface-foreground) / <alpha-value>)',
           muted:      'hsl(var(--surface-muted) / <alpha-value>)',
         },
+        card: {
+          DEFAULT:    'hsl(var(--surface) / <alpha-value>)',
+          foreground: 'hsl(var(--surface-foreground) / <alpha-value>)',
+        },
 
         primary: {
           DEFAULT:    'hsl(var(--primary) / <alpha-value>)',
@@ -59,8 +63,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        jp:   ['Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'sans-serif'],
+        sans:     ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        jp:       ['Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'sans-serif'],
+        japanese: ['Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'sans-serif'],
       },
       boxShadow: {
         'card':    '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',

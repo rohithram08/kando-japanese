@@ -1,7 +1,7 @@
 // ─── App-wide constants and tunables ─────────────────────
 export const APP_CONFIG = {
   // App identity
-  APP_NAME: 'Nihongo Master',
+  APP_NAME: 'Kando Japanese',
   LOCAL_STORAGE_KEY: 'nihongo_settings',
 
   // File upload limits

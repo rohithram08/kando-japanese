@@ -21,6 +21,7 @@ export interface StorySentence {
   audioUrl?: string;
   grammarNotes?: string;
   tokens?: SentenceToken[];
+  learningElementIds?: string[];
 }
 
 export interface VocabularyAnnotation {
@@ -35,13 +36,35 @@ export interface VocabularyAnnotation {
   pitchVerified?: boolean;
 }
 
+export type LearningElementType = 'vocabulary' | 'grammar' | 'particle' | 'kanji';
+
+export interface LearningElement {
+  id: string;
+  type: LearningElementType;
+  text: string;
+  surface?: string;
+  reading?: string;
+  meaning: string;
+  roleInStory: string;
+  mechanicsExplanation: string;
+  exampleSentence: {
+    japanese: string;
+    furigana: string;
+    english: string;
+  };
+  jlptLevel?: JLPTLevel;
+  pitchPattern?: string;
+}
+
 export interface ComprehensionQuestion {
   id: string;
+  type?: 'vocabulary' | 'kanji' | 'grammar' | 'particle' | 'comprehension';
   question: string;
   questionFurigana?: string;
   options: string[];
   correctAnswer: number; // 0-indexed index of correct option
   explanation: string;
+  wrongExplanations?: Record<number, string>;
   referencedSentenceIndex?: number;
 }
 
@@ -62,6 +85,7 @@ export interface GradedStory {
   };
   sentences: StorySentence[];
   vocabulary: VocabularyAnnotation[];
+  learningElements?: LearningElement[];
   questions: ComprehensionQuestion[];
 }
 

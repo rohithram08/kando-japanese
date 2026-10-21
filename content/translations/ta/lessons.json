@@ -1,0 +1,2202 @@
+{
+  "n5l011": {
+    "title": "Days of the Week & Calendar",
+    "description": "Dates, days, months, and planning appointments.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Days of the Week & Calendar பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Days of the Week & Calendar பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l012": {
+    "title": "At the Convenience Store",
+    "description": "Interacting with clerks at a Japanese konbini.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் At the Convenience Store பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் At the Convenience Store பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l013": {
+    "title": "Commuting by Train & Bus",
+    "description": "Buying tickets and riding public transport in Tokyo.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Commuting by Train & Bus பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Commuting by Train & Bus பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l014": {
+    "title": "Weekend Plans & Invitations",
+    "description": "Inviting friends to go out using ~masen ka.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Weekend Plans & Invitations பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Weekend Plans & Invitations பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l015": {
+    "title": "Home & Living Spaces",
+    "description": "Describing rooms, furniture, and where items are located.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Home & Living Spaces பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Home & Living Spaces பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l016": {
+    "title": "Describing People & Appearance",
+    "description": "Adjectives for height, hair, clothing, and traits.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Describing People & Appearance பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Describing People & Appearance பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l017": {
+    "title": "Colors & Clothes",
+    "description": "Naming colors, shoes, shirts, coats, and hats.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Colors & Clothes பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Colors & Clothes பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l018": {
+    "title": "Health & At the Clinic",
+    "description": "Explaining symptoms like head aches and colds to a doctor.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Health & At the Clinic பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Health & At the Clinic பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l019": {
+    "title": "Likes, Dislikes & Preferences",
+    "description": "Using suki, kirai, and jouzu to express tastes.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Likes, Dislikes & Preferences பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Likes, Dislikes & Preferences பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l020": {
+    "title": "Seasons & Annual Japanese Holidays",
+    "description": "New Year's, Hanami, Obon, and Golden Week.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Seasons & Annual Japanese Holidays பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Seasons & Annual Japanese Holidays பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l021": {
+    "title": "Giving & Receiving Gifts",
+    "description": "Social exchange etiquette with ageru and morau.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Giving & Receiving Gifts பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Giving & Receiving Gifts பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l022": {
+    "title": "Asking Permission",
+    "description": "Politely asking if you may take photos or sit down.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Asking Permission பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Asking Permission பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l023": {
+    "title": "Prohibitions & Rules",
+    "description": "Understanding signs and rules in museums and stations.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Prohibitions & Rules பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Prohibitions & Rules பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l024": {
+    "title": "Explaining Reasons",
+    "description": "Giving straightforward explanations with kara.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Explaining Reasons பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Explaining Reasons பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l025": {
+    "title": "Comparing Two Items",
+    "description": "Comparing speed, price, and quality between two choices.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Comparing Two Items பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Comparing Two Items பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l026": {
+    "title": "Superlatives in a Group",
+    "description": "Saying which is the best, tallest, or tastiest.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Superlatives in a Group பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Superlatives in a Group பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l027": {
+    "title": "Past Experiences",
+    "description": "Sharing travel and activity experiences with ~ta koto ga aru.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Past Experiences பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Past Experiences பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l028": {
+    "title": "Sequential Actions",
+    "description": "Describing doing task A before moving to task B.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Sequential Actions பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Sequential Actions பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l029": {
+    "title": "Expressing Desires",
+    "description": "Stating what you want to do or don't want to do.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Expressing Desires பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Expressing Desires பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l030": {
+    "title": "Simultaneous Actions",
+    "description": "Doing two tasks at once with nagara.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Simultaneous Actions பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Simultaneous Actions பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l031": {
+    "title": "Talking on the Phone",
+    "description": "Moshi moshi, answering, and taking simple messages.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Talking on the Phone பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Talking on the Phone பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l032": {
+    "title": "Visiting a Friend's Home",
+    "description": "Ojama shimasu etiquette, gifts, and taking off shoes.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Visiting a Friend's Home பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Visiting a Friend's Home பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l033": {
+    "title": "Expressing Change of State",
+    "description": "Becoming cold, turning 20, or choosing an option.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Expressing Change of State பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Expressing Change of State பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l034": {
+    "title": "Giving Casual Advice",
+    "description": "Recommending healthy habits with ~hou ga ii.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Giving Casual Advice பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Giving Casual Advice பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l035": {
+    "title": "Obligation & Necessity",
+    "description": "Expressing must-do tasks for school and work.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Obligation & Necessity பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Obligation & Necessity பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l036": {
+    "title": "No Need / Optionality",
+    "description": "Reassuring someone that an action is unnecessary.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் No Need / Optionality பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் No Need / Optionality பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l037": {
+    "title": "Casual Speech with Friends",
+    "description": "Short forms, da, and friendly particle drops.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Casual Speech with Friends பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Casual Speech with Friends பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l038": {
+    "title": "Asking for Polite Favors",
+    "description": "Requesting actions with ~te kudasai.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Asking for Polite Favors பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Asking for Polite Favors பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l039": {
+    "title": "Lost and Found",
+    "description": "Reporting lost wallets and umbrellas at the kouban.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Lost and Found பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Lost and Found பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l040": {
+    "title": "At the Post Office & Bank",
+    "description": "Mailing letters, exchanging currency, and ATMs.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் At the Post Office & Bank பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் At the Post Office & Bank பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l041": {
+    "title": "Cooking & Simple Recipes",
+    "description": "Kitchen verbs like cut, boil, fry, and mix.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Cooking & Simple Recipes பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Cooking & Simple Recipes பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l042": {
+    "title": "Pets & Animal Vocabulary",
+    "description": "Dogs, cats, birds, and describing animal habits.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Pets & Animal Vocabulary பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Pets & Animal Vocabulary பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l043": {
+    "title": "Sports & Fitness Activities",
+    "description": "Talking about gym visits, jogging, and soccer.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Sports & Fitness Activities பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Sports & Fitness Activities பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l044": {
+    "title": "Anime, Manga & Pop Culture",
+    "description": "Discussing favorite series, genres, and conventions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Anime, Manga & Pop Culture பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Anime, Manga & Pop Culture பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l045": {
+    "title": "Sightseeing in Kyoto & Tokyo",
+    "description": "Visiting Asakusa, Shibuya, Kinkaku-ji, and Gion.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Sightseeing in Kyoto & Tokyo பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Sightseeing in Kyoto & Tokyo பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l046": {
+    "title": "Japanese Table Manners",
+    "description": "Itadakimasu, gochisousama, and chopstick taboos.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Japanese Table Manners பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Japanese Table Manners பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l047": {
+    "title": "Visiting Shrines & Temples",
+    "description": "Purification fountains, bowing, clapping, and omikuji.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Visiting Shrines & Temples பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Visiting Shrines & Temples பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l048": {
+    "title": "Onsen & Public Bath Etiquette",
+    "description": "Washing before entering the hot spring waters.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Onsen & Public Bath Etiquette பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Onsen & Public Bath Etiquette பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l049": {
+    "title": "Planning a Day Trip",
+    "description": "Packing, buying tickets, and checking departure times.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Planning a Day Trip பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Planning a Day Trip பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n5l050": {
+    "title": "N5 Milestone: Review & Goals",
+    "description": "Reflecting on beginner foundations and stepping to N4.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் N5 Milestone: Review & Goals பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் N5 Milestone: Review & Goals பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l011": {
+    "title": "Suffering Passive - Meiwaku no Ukemi",
+    "description": "Expressing hardship caused by external occurrences.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Suffering Passive - Meiwaku no Ukemi பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Suffering Passive - Meiwaku no Ukemi பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l012": {
+    "title": "Causative Form - ~Saseru",
+    "description": "Making or letting someone perform an action.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Causative Form - ~Saseru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Causative Form - ~Saseru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l013": {
+    "title": "Causative-Passive Form",
+    "description": "Being forced or made to do something reluctantly.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Causative-Passive Form பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Causative-Passive Form பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l014": {
+    "title": "Advance Preparations - ~Te Oku",
+    "description": "Taking preparatory action in anticipation of future events.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Advance Preparations - ~Te Oku பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Advance Preparations - ~Te Oku பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l015": {
+    "title": "Regret & Completion - ~Te Shimau",
+    "description": "Finishing completely, or feeling regret over a mishap.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Regret & Completion - ~Te Shimau பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Regret & Completion - ~Te Shimau பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l016": {
+    "title": "Trying Things Out - ~Te Miru",
+    "description": "Attempting something to discover what it is like.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Trying Things Out - ~Te Miru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Trying Things Out - ~Te Miru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l017": {
+    "title": "Resulting State - ~Te Aru",
+    "description": "Describing states deliberately arranged by someone.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Resulting State - ~Te Aru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Resulting State - ~Te Aru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l018": {
+    "title": "Progressive Change - ~Te Iku / ~Te Kuru",
+    "description": "Temporal progression of changes towards or away.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Progressive Change - ~Te Iku / ~Te Kuru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Progressive Change - ~Te Iku / ~Te Kuru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l019": {
+    "title": "Conjecture by Appearance - ~Sou Da",
+    "description": "Judging status from visual appearance.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Conjecture by Appearance - ~Sou Da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Conjecture by Appearance - ~Sou Da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l020": {
+    "title": "Reporting Hearsay - ~Sou Da",
+    "description": "Transmitting rumors or news heard from reports.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Reporting Hearsay - ~Sou Da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Reporting Hearsay - ~Sou Da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l021": {
+    "title": "Resemblance - ~You Da / ~Mitai Da",
+    "description": "Similes and figurative resemblances.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Resemblance - ~You Da / ~Mitai Da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Resemblance - ~You Da / ~Mitai Da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l022": {
+    "title": "Typical Characteristics - ~Rashii",
+    "description": "Showing true quintessential properties of a category.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Typical Characteristics - ~Rashii பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Typical Characteristics - ~Rashii பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l023": {
+    "title": "Excessive Action - ~Sugiru",
+    "description": "Exceeding proper limits or doing to excess.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Excessive Action - ~Sugiru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Excessive Action - ~Sugiru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l024": {
+    "title": "Ease & Difficulty - ~Yasui / ~Nikui",
+    "description": "Expressing whether tasks are easy or tough to execute.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Ease & Difficulty - ~Yasui / ~Nikui பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Ease & Difficulty - ~Yasui / ~Nikui பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l025": {
+    "title": "Quoting Speech - ~To Iu / ~To Omou",
+    "description": "Reporting direct and indirect speech or thoughts.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Quoting Speech - ~To Iu / ~To Omou பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Quoting Speech - ~To Iu / ~To Omou பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l026": {
+    "title": "Personal Decision - ~Koto ni Suru",
+    "description": "Consciously deciding upon a personal resolution.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Personal Decision - ~Koto ni Suru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Personal Decision - ~Koto ni Suru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l027": {
+    "title": "External Decision - ~Koto ni Naru",
+    "description": "Explaining decisions arranged by circumstances or rules.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் External Decision - ~Koto ni Naru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் External Decision - ~Koto ni Naru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l028": {
+    "title": "Acquiring Habits - ~You ni Naru",
+    "description": "Reaching a new state of capability over time.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Acquiring Habits - ~You ni Naru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Acquiring Habits - ~You ni Naru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l029": {
+    "title": "Conscious Effort - ~You ni Suru",
+    "description": "Striving continuously to maintain a good practice.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Conscious Effort - ~You ni Suru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Conscious Effort - ~You ni Suru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l030": {
+    "title": "Without Doing - ~Naide / ~Zuni",
+    "description": "Carrying out actions without doing another.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Without Doing - ~Naide / ~Zuni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Without Doing - ~Naide / ~Zuni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l031": {
+    "title": "Unexpected Contrast - ~Noni",
+    "description": "Expressing frustration at unexpected results.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Unexpected Contrast - ~Noni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Unexpected Contrast - ~Noni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l032": {
+    "title": "Purposes - ~Tame ni vs ~You ni",
+    "description": "Distinguishing direct goals from potential conditions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Purposes - ~Tame ni vs ~You ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Purposes - ~Tame ni vs ~You ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l033": {
+    "title": "Role & Capacity - ~Toshite",
+    "description": "Stating someone's capacity, role, or qualification.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Role & Capacity - ~Toshite பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Role & Capacity - ~Toshite பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l034": {
+    "title": "Causes & Agents - ~Ni Yotte",
+    "description": "Indicating agents of inventions or causes of events.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Causes & Agents - ~Ni Yotte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Causes & Agents - ~Ni Yotte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l035": {
+    "title": "Regarding / Contrast - ~Ni Taishite",
+    "description": "Target of actions, or contrasting two elements.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Regarding / Contrast - ~Ni Taishite பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Regarding / Contrast - ~Ni Taishite பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l036": {
+    "title": "Action Boundaries - ~Hajimeru / ~Owaru",
+    "description": "Pinpointing onset and conclusion of verb actions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Action Boundaries - ~Hajimeru / ~Owaru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Action Boundaries - ~Hajimeru / ~Owaru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l037": {
+    "title": "Persistence - ~Tsuzukeru",
+    "description": "Enduring continuously through actions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Persistence - ~Tsuzukeru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Persistence - ~Tsuzukeru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l038": {
+    "title": "Just Completed - ~Ta Bakari / ~Ta Tokoro",
+    "description": "Expressing actions that finished just moments ago.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Just Completed - ~Ta Bakari / ~Ta Tokoro பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Just Completed - ~Ta Bakari / ~Ta Tokoro பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l039": {
+    "title": "Transitive and Intransitive Mastery",
+    "description": "Mastering key verb pairs in context.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Transitive and Intransitive Mastery பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Transitive and Intransitive Mastery பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l040": {
+    "title": "Gentle Commands - ~Nasai",
+    "description": "Parental or teacher commands with soft authority.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Gentle Commands - ~Nasai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Gentle Commands - ~Nasai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l041": {
+    "title": "Obligations & Prohibitions in Daily Life",
+    "description": "Rules on public trains, apartments, and sidewalks.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Obligations & Prohibitions in Daily Life பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Obligations & Prohibitions in Daily Life பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l042": {
+    "title": "Workplace Phone Basics",
+    "description": "Taking polite office calls and transferring inquiries.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Workplace Phone Basics பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Workplace Phone Basics பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l043": {
+    "title": "Writing Professional Inquiries",
+    "description": "Drafting structured inquiry emails in business style.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Writing Professional Inquiries பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Writing Professional Inquiries பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l044": {
+    "title": "Handling Transport Delays",
+    "description": "Communicating with station staff about delays.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Handling Transport Delays பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Handling Transport Delays பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l045": {
+    "title": "Renting an Apartment in Japan",
+    "description": "Key money (shikikin/reikin), contracts, and layouts.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Renting an Apartment in Japan பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Renting an Apartment in Japan பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l046": {
+    "title": "City Office Registration",
+    "description": "Health insurance, my number, and address changes.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் City Office Registration பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் City Office Registration பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l047": {
+    "title": "Waste Separation Etiquette",
+    "description": "Burnable, non-burnable, plastics, and bottle bins.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Waste Separation Etiquette பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Waste Separation Etiquette பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l048": {
+    "title": "Part-Time Job Interviewing",
+    "description": "Jiko-PR, schedule availability, and motivations.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Part-Time Job Interviewing பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Part-Time Job Interviewing பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l049": {
+    "title": "Natural Disaster Preparedness",
+    "description": "Disaster alerts, emergency kits, and evacuation spots.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Natural Disaster Preparedness பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Natural Disaster Preparedness பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n4l050": {
+    "title": "N4 Milestone: Practical Independence",
+    "description": "Consolidating elementary grammar into natural flow.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் N4 Milestone: Practical Independence பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் N4 Milestone: Practical Independence பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l011": {
+    "title": "High Certainty - ~Ni Chigai Nai",
+    "description": "Deducing conclusions with strong conviction.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் High Certainty - ~Ni Chigai Nai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் High Certainty - ~Ni Chigai Nai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l012": {
+    "title": "Apprehension & Risk - ~Osore ga Aru",
+    "description": "Warning against potential danger or disasters.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Apprehension & Risk - ~Osore ga Aru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Apprehension & Risk - ~Osore ga Aru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l013": {
+    "title": "Severe Limit - ~Shika ~Nai",
+    "description": "Having zero other alternatives remaining.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Severe Limit - ~Shika ~Nai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Severe Limit - ~Shika ~Nai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l014": {
+    "title": "Extreme Extent - ~Bakari da",
+    "description": "Describing tendencies that continually intensify.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Extreme Extent - ~Bakari da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Extreme Extent - ~Bakari da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l015": {
+    "title": "Approximation & Limits - ~Hodo / ~Kurai",
+    "description": "Illustrating depth of feeling through comparisons.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Approximation & Limits - ~Hodo / ~Kurai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Approximation & Limits - ~Hodo / ~Kurai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l016": {
+    "title": "Natural Limits - ~Kagiri",
+    "description": "As long as a state holds true.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Natural Limits - ~Kagiri பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Natural Limits - ~Kagiri பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l017": {
+    "title": "Special Treatment - ~Ni Kagitte",
+    "description": "Irony of unfortunate coincidences.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Special Treatment - ~Ni Kagitte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Special Treatment - ~Ni Kagitte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l018": {
+    "title": "Based on Evidence - ~Ni Motozuite",
+    "description": "Grounding conclusions on factual materials.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Based on Evidence - ~Ni Motozuite பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Based on Evidence - ~Ni Motozuite பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l019": {
+    "title": "Along the Lines of - ~Ni Sotte",
+    "description": "Adhering to guidelines, policies, or paths.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Along the Lines of - ~Ni Sotte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Along the Lines of - ~Ni Sotte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l020": {
+    "title": "In Response to - ~Ni Kotaete",
+    "description": "Meeting expectations, demands, or wishes.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் In Response to - ~Ni Kotaete பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் In Response to - ~Ni Kotaete பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l021": {
+    "title": "Depending on Context - ~Shidai da",
+    "description": "Showing that results depend entirely upon a factor.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Depending on Context - ~Shidai da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Depending on Context - ~Shidai da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l022": {
+    "title": "Immediate Sequence - ~Shidai",
+    "description": "Taking action immediately after a condition clears.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Immediate Sequence - ~Shidai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Immediate Sequence - ~Shidai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l023": {
+    "title": "Focus on Subject - ~O Megutte",
+    "description": "Controversies and discussions centered around an issue.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Focus on Subject - ~O Megutte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Focus on Subject - ~O Megutte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l024": {
+    "title": "Starting Point - ~O Kawa kiri ni",
+    "description": "Marking the beginning of a sequential rollout.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Starting Point - ~O Kawa kiri ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Starting Point - ~O Kawa kiri ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l025": {
+    "title": "Triggered by - ~O Kikkake ni",
+    "description": "Pinpointing catalytic life moments.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Triggered by - ~O Kikkake ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Triggered by - ~O Kikkake ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l026": {
+    "title": "Target Audience - ~Muke / ~Muki",
+    "description": "Differentiating intentional target from natural fit.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Target Audience - ~Muke / ~Muki பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Target Audience - ~Muke / ~Muki பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l027": {
+    "title": "Unusual Frequency - ~Gachi da",
+    "description": "Expressing unwelcome tendencies that recur often.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Unusual Frequency - ~Gachi da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Unusual Frequency - ~Gachi da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l028": {
+    "title": "Physical Sensation - ~Gimi da",
+    "description": "Having slight symptoms or indications of a state.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Physical Sensation - ~Gimi da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Physical Sensation - ~Gimi da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l029": {
+    "title": "Doubtful Validity - ~Koto ka",
+    "description": "Exclaiming how many times or how deeply.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Doubtful Validity - ~Koto ka பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Doubtful Validity - ~Koto ka பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l030": {
+    "title": "No Wonder - ~Hazu da",
+    "description": "Deducing expected outcomes logically.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் No Wonder - ~Hazu da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் No Wonder - ~Hazu da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l031": {
+    "title": "Contrary to Expectation - ~Hazu ga Nai",
+    "description": "Categorically rejecting a possibility.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Contrary to Expectation - ~Hazu ga Nai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Contrary to Expectation - ~Hazu ga Nai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l032": {
+    "title": "Needless to Say - ~Made mo Nai",
+    "description": "Affirming that a conclusion is obvious.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Needless to Say - ~Made mo Nai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Needless to Say - ~Made mo Nai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l033": {
+    "title": "Only Just Barely - ~Yatto",
+    "description": "Emphasizing prolonged relief upon arrival.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Only Just Barely - ~Yatto பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Only Just Barely - ~Yatto பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l034": {
+    "title": "Full of Imperfections - ~Darake",
+    "description": "Unpleasant abundance of dust, errors, or debt.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Full of Imperfections - ~Darake பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Full of Imperfections - ~Darake பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l035": {
+    "title": "Covered with Residue - ~Mamire",
+    "description": "Surface coated with mud, blood, or sweat.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Covered with Residue - ~Mamire பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Covered with Residue - ~Mamire பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l036": {
+    "title": "At the Occasion of - ~Sai shite",
+    "description": "Ceremonial or formal preparatory steps.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் At the Occasion of - ~Sai shite பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் At the Occasion of - ~Sai shite பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l037": {
+    "title": "Speaking of - ~To Ieba",
+    "description": "Triggering associations from a keyword.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Speaking of - ~To Ieba பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Speaking of - ~To Ieba பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l038": {
+    "title": "Even If - ~Tatoe ~Temo",
+    "description": "Hypothetical resilience despite adverse conditions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Even If - ~Tatoe ~Temo பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Even If - ~Tatoe ~Temo பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l039": {
+    "title": "Extreme Hypothetical - ~Toshitara",
+    "description": "Exploring hypothetical scenarios.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Extreme Hypothetical - ~Toshitara பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Extreme Hypothetical - ~Toshitara பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l040": {
+    "title": "In Terms of - ~Ue de",
+    "description": "Procedural sequences requiring prior clearance.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் In Terms of - ~Ue de பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் In Terms of - ~Ue de பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l041": {
+    "title": "Judging from - ~Kara Miru to",
+    "description": "Evaluating matters from a particular perspective.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Judging from - ~Kara Miru to பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Judging from - ~Kara Miru to பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l042": {
+    "title": "Professional Office Mannerisms",
+    "description": "Polished sonkeigo and kenjougo in daily office meetings.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Professional Office Mannerisms பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Professional Office Mannerisms பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l043": {
+    "title": "Negotiating Deadlines with Clients",
+    "description": "Handling delivery pushbacks cordially.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Negotiating Deadlines with Clients பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Negotiating Deadlines with Clients பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l044": {
+    "title": "Japanese Medical Consultations",
+    "description": "Explaining nuanced aches and chronic ailments.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Japanese Medical Consultations பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Japanese Medical Consultations பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l045": {
+    "title": "Banking, Taxes & Pensions in Japan",
+    "description": "Navigating nenkin, furasato nouzei, and kakutei shinkoku.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Banking, Taxes & Pensions in Japan பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Banking, Taxes & Pensions in Japan பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l046": {
+    "title": "Participating in Neighborhood Chonaikai",
+    "description": "Civic duties, emergency drills, and local festivals.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Participating in Neighborhood Chonaikai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Participating in Neighborhood Chonaikai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l047": {
+    "title": "Job Hunting (Shukatsu) Overview",
+    "description": "Writing motivating reason (shibou-douki) essays.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Job Hunting (Shukatsu) Overview பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Job Hunting (Shukatsu) Overview பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l048": {
+    "title": "Interpreting Japanese News Broadcasts",
+    "description": "Dissecting formal broadcaster jargon.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Interpreting Japanese News Broadcasts பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Interpreting Japanese News Broadcasts பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l049": {
+    "title": "Expressing Nuanced Opinions in Debates",
+    "description": "Cushion words (Kushon-kotoba) in tense debates.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Expressing Nuanced Opinions in Debates பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Expressing Nuanced Opinions in Debates பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n3l050": {
+    "title": "N3 Milestone: Conquering the Intermediate Plateau",
+    "description": "Crossing from conversational learner to independent reader.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் N3 Milestone: Conquering the Intermediate Plateau பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் N3 Milestone: Conquering the Intermediate Plateau பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l011": {
+    "title": "Far from It - ~Dokoroka",
+    "description": "Directly defying anticipated outcomes.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Far from It - ~Dokoroka பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Far from It - ~Dokoroka பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l012": {
+    "title": "At Most - ~Tatte",
+    "description": "Expressing futility regardless of current actions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் At Most - ~Tatte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் At Most - ~Tatte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l013": {
+    "title": "As If - ~Bakari ni",
+    "description": "Blaming a single catastrophic trigger for failure.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் As If - ~Bakari ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் As If - ~Bakari ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l014": {
+    "title": "Every Single Time - ~Tabi ni",
+    "description": "Evoking recurrent nostalgic reactions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Every Single Time - ~Tabi ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Every Single Time - ~Tabi ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l015": {
+    "title": "Not Only But Also - ~Bakari ka",
+    "description": "Compounding accomplishments across spheres.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Not Only But Also - ~Bakari ka பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Not Only But Also - ~Bakari ka பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l016": {
+    "title": "Nothing Short of - ~Ni Hokanaranai",
+    "description": "Asserting the definitive sole root cause.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Nothing Short of - ~Ni Hokanaranai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Nothing Short of - ~Ni Hokanaranai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l017": {
+    "title": "Natural Consequence - ~Mono da",
+    "description": "Reflecting upon human nature and natural truths.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Natural Consequence - ~Mono da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Natural Consequence - ~Mono da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l018": {
+    "title": "Reflecting Nostalgia - ~Mono da",
+    "description": "Nostalgically recollecting past youth.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Reflecting Nostalgia - ~Mono da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Reflecting Nostalgia - ~Mono da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l019": {
+    "title": "Deep Emotion - ~Mono da",
+    "description": "Expressing deep philosophical awe.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Deep Emotion - ~Mono da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Deep Emotion - ~Mono da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l020": {
+    "title": "Self-Discipline - ~Beki dewa Nai",
+    "description": "Articulating moral imperatives and ethics.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Self-Discipline - ~Beki dewa Nai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Self-Discipline - ~Beki dewa Nai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l021": {
+    "title": "Regret Over Duty - ~Beki Datta",
+    "description": "Expressing remorse over unfulfilled duty.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Regret Over Duty - ~Beki Datta பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Regret Over Duty - ~Beki Datta பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l022": {
+    "title": "I Wonder If It Can Be - ~Mono ka",
+    "description": "Vigorously repudiating an assertion.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் I Wonder If It Can Be - ~Mono ka பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் I Wonder If It Can Be - ~Mono ka பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l023": {
+    "title": "Due to Sensitivity - ~Amari",
+    "description": "Psychological overwhelm impeding normal function.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Due to Sensitivity - ~Amari பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Due to Sensitivity - ~Amari பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l024": {
+    "title": "No Choice Given Rules - ~Zaru o Enai",
+    "description": "Official institutional concession under pressure.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் No Choice Given Rules - ~Zaru o Enai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் No Choice Given Rules - ~Zaru o Enai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l025": {
+    "title": "Hard to Do Emotionally - ~Gatai",
+    "description": "Psychological barrier preventing belief or forgiveness.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Hard to Do Emotionally - ~Gatai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Hard to Do Emotionally - ~Gatai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l026": {
+    "title": "Cannot Complete - ~Kirenai",
+    "description": "Inexhaustible quantity surpassing completion.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Cannot Complete - ~Kirenai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Cannot Complete - ~Kirenai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l027": {
+    "title": "Completely Consumed - ~Kiru",
+    "description": "Exhausting energy or resources to the last drop.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Completely Consumed - ~Kiru பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Completely Consumed - ~Kiru பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l028": {
+    "title": "Can/Cannot Bear - ~Eru / ~Enai",
+    "description": "Formal evaluation of theoretical possibilities.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Can/Cannot Bear - ~Eru / ~Enai பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Can/Cannot Bear - ~Eru / ~Enai பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l029": {
+    "title": "On the Pretense of - ~Ni Kakotsukete",
+    "description": "Using a pretext to mask personal intentions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் On the Pretense of - ~Ni Kakotsukete பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் On the Pretense of - ~Ni Kakotsukete பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l030": {
+    "title": "Regardless of Outcome - ~Dou Are",
+    "description": "Steadfast resolve indifferent to consequences.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Regardless of Outcome - ~Dou Are பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Regardless of Outcome - ~Dou Are பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l031": {
+    "title": "Formal Corporate Proposals",
+    "description": "Drafting structured enterprise proposals.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Formal Corporate Proposals பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Formal Corporate Proposals பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l032": {
+    "title": "Client Contract Negotiations",
+    "description": "Terms, liability limits, and NDA stipulations.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Client Contract Negotiations பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Client Contract Negotiations பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l033": {
+    "title": "Corporate Apologies & Crisis Management",
+    "description": "Corporate crisis containment phrasing.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Corporate Apologies & Crisis Management பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Corporate Apologies & Crisis Management பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l034": {
+    "title": "Financial Statement Analysis",
+    "description": "Operating income, balance sheets, and dividends.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Financial Statement Analysis பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Financial Statement Analysis பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l035": {
+    "title": "Cross-Cultural Team Leadership",
+    "description": "Facilitating multinational consensus in Tokyo offices.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Cross-Cultural Team Leadership பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Cross-Cultural Team Leadership பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l036": {
+    "title": "Intellectual Property & Patents",
+    "description": "Trademarks, trade secrets, and compliance.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Intellectual Property & Patents பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Intellectual Property & Patents பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l037": {
+    "title": "Labor Law & Workplace Rights",
+    "description": "Overtime regulations, labor boards, and severance.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Labor Law & Workplace Rights பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Labor Law & Workplace Rights பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l038": {
+    "title": "Editorial Column Interpretation",
+    "description": "Analyzing high-level op-ed literary structure.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Editorial Column Interpretation பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Editorial Column Interpretation பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l039": {
+    "title": "Analyzing Modern Societal Issues",
+    "description": "Demographic crisis and social pension debates.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Analyzing Modern Societal Issues பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Analyzing Modern Societal Issues பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l040": {
+    "title": "Artificial Intelligence & Labor Dynamics",
+    "description": "Technological shifts in Japanese conglomerates.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Artificial Intelligence & Labor Dynamics பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Artificial Intelligence & Labor Dynamics பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l041": {
+    "title": "Environmental Policies & Green Transition",
+    "description": "Carbon neutrality pledges and industrial transitions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Environmental Policies & Green Transition பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Environmental Policies & Green Transition பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l042": {
+    "title": "Japanese Consumer Psychology",
+    "description": "Omotenashi, consumer trust, and packaging finesse.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Japanese Consumer Psychology பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Japanese Consumer Psychology பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l043": {
+    "title": "Navigating Japanese Legal Documents",
+    "description": "Deciphering dense contractual legalese.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Navigating Japanese Legal Documents பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Navigating Japanese Legal Documents பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l044": {
+    "title": "Academic Research Abstract Writing",
+    "description": "Academic precision in peer-reviewed formats.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Academic Research Abstract Writing பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Academic Research Abstract Writing பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l045": {
+    "title": "Debate: Remote Work vs Office Attendance",
+    "description": "Work-from-home vs face-to-face synergy debates.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Debate: Remote Work vs Office Attendance பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Debate: Remote Work vs Office Attendance பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l046": {
+    "title": "Japanese Architectural Philosophy",
+    "description": "Kenzo Tange, Kengo Kuma, and spatial aesthetics.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Japanese Architectural Philosophy பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Japanese Architectural Philosophy பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l047": {
+    "title": "Wabi-Sabi & The Philosophy of Imperfection",
+    "description": "Tea ceremony, kintsugi, and mindfulness in crafts.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Wabi-Sabi & The Philosophy of Imperfection பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Wabi-Sabi & The Philosophy of Imperfection பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l048": {
+    "title": "History of the Showa Economic Miracle",
+    "description": "Keiretsu, MITI, and industrial resurrection.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் History of the Showa Economic Miracle பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் History of the Showa Economic Miracle பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l049": {
+    "title": "Sustainable Tourism in Historical Districts",
+    "description": "Balancing inbound tourism with residential serenity.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Sustainable Tourism in Historical Districts பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Sustainable Tourism in Historical Districts பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n2l050": {
+    "title": "N2 Milestone: Advanced Fluency and Professional Autonomy",
+    "description": "Mastering sophisticated nuance in professional life.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் N2 Milestone: Advanced Fluency and Professional Autonomy பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் N2 Milestone: Advanced Fluency and Professional Autonomy பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l011": {
+    "title": "Regardless of Fate - ~Nari to mo",
+    "description": "Yearning to offer even the slightest sliver of support.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Regardless of Fate - ~Nari to mo பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Regardless of Fate - ~Nari to mo பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l012": {
+    "title": "Irrespective of Criteria - ~Ikan ni Yorazu",
+    "description": "Absolute formal non-negotiability.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Irrespective of Criteria - ~Ikan ni Yorazu பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Irrespective of Criteria - ~Ikan ni Yorazu பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l013": {
+    "title": "Governed by - ~Ikan da",
+    "description": "Total existential dependence on an underlying criterion.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Governed by - ~Ikan da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Governed by - ~Ikan da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l014": {
+    "title": "No Wonder at All - ~Koto nashi ni",
+    "description": "Precluding triumphs without rigorous sacrifice.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் No Wonder at All - ~Koto nashi ni பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் No Wonder at All - ~Koto nashi ni பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l015": {
+    "title": "Never Ever - ~Koto naku",
+    "description": "Uninterrupted lifelong resolve without faltering.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Never Ever - ~Koto naku பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Never Ever - ~Koto naku பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l016": {
+    "title": "As Long As Breath Holds - ~Kagiri da",
+    "description": "Utmost emotional limit of personal joy or grief.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் As Long As Breath Holds - ~Kagiri da பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் As Long As Breath Holds - ~Kagiri da பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l017": {
+    "title": "Surpassing Human Limits - ~O Koete",
+    "description": "Timeless trans-generational appeal.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Surpassing Human Limits - ~O Koete பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Surpassing Human Limits - ~O Koete பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l018": {
+    "title": "In the Guise of - ~O Yosotte",
+    "description": "Deceptive malice cloaked in benevolent pretenses.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் In the Guise of - ~O Yosotte பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் In the Guise of - ~O Yosotte பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l019": {
+    "title": "Beyond Bounds of Propriety - ~O Kaerimizu",
+    "description": "Discarding personal self-preservation for righteousness.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Beyond Bounds of Propriety - ~O Kaerimizu பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Beyond Bounds of Propriety - ~O Kaerimizu பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l020": {
+    "title": "In Direct Contradiction - ~Ni Hanshite",
+    "description": "Statistical defiance of established predictive models.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் In Direct Contradiction - ~Ni Hanshite பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் In Direct Contradiction - ~Ni Hanshite பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l021": {
+    "title": "Executive Boardroom Deliberations",
+    "description": "High-stakes mergers, acquisitions, and fiduciary governance.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Executive Boardroom Deliberations பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Executive Boardroom Deliberations பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l022": {
+    "title": "Constitutional Jurisprudence & Case Law",
+    "description": "Judicial review, precedents, and civil liberties.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Constitutional Jurisprudence & Case Law பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Constitutional Jurisprudence & Case Law பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l023": {
+    "title": "Diplomatic Protocols & Treaties",
+    "description": "Bilateral treaties, conventions, and diplomatic nuances.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Diplomatic Protocols & Treaties பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Diplomatic Protocols & Treaties பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l024": {
+    "title": "Macroeconomic Monetary Policy",
+    "description": "Monetary easing, inflation targets, and yield curves.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Macroeconomic Monetary Policy பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Macroeconomic Monetary Policy பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l025": {
+    "title": "Bioethics in Modern Gene Editing",
+    "description": "CRISPR ethics, germline therapies, and philosophical bounds.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Bioethics in Modern Gene Editing பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Bioethics in Modern Gene Editing பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l026": {
+    "title": "Civil Code & Property Rights",
+    "description": "Tort liability, contractual restitution, and jurisprudence.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Civil Code & Property Rights பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Civil Code & Property Rights பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l027": {
+    "title": "Corporate Governance & Shareholder Activism",
+    "description": "Institutional investors, proxy voting, and ESG audits.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Corporate Governance & Shareholder Activism பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Corporate Governance & Shareholder Activism பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l028": {
+    "title": "Classical Literary Nuances: Soseki & Akutagawa",
+    "description": "Psychological alienation in Meiji intellectual prose.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Classical Literary Nuances: Soseki & Akutagawa பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Classical Literary Nuances: Soseki & Akutagawa பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l029": {
+    "title": "Modern Haiku & Waka Poetic Aesthetics",
+    "description": "Spatial suspension, seasonal resonance, and kireji.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Modern Haiku & Waka Poetic Aesthetics பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Modern Haiku & Waka Poetic Aesthetics பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l030": {
+    "title": "Philosophical Argumentation: Nishida Kitaro",
+    "description": "Pure experience, basho ontology, and Kyoto school.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Philosophical Argumentation: Nishida Kitaro பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Philosophical Argumentation: Nishida Kitaro பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l031": {
+    "title": "Geopolitical Security & Supply Chains",
+    "description": "Critical materials resilience and global alliances.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Geopolitical Security & Supply Chains பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Geopolitical Security & Supply Chains பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l032": {
+    "title": "Nuclear Energy & National Energy Mix",
+    "description": "Energy self-sufficiency vs seismic vulnerability.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Nuclear Energy & National Energy Mix பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Nuclear Energy & National Energy Mix பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l033": {
+    "title": "Corporate Succession in Family Dynasties",
+    "description": "Centuries-old shinise longevity and lineage continuity.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Corporate Succession in Family Dynasties பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Corporate Succession in Family Dynasties பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l034": {
+    "title": "Quantum Computing & Cryptographic Frontiers",
+    "description": "Post-quantum algorithms and computational supremacy.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Quantum Computing & Cryptographic Frontiers பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Quantum Computing & Cryptographic Frontiers பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l035": {
+    "title": "Space Exploration Treaties & Commercial Mining",
+    "description": "Lunar accords, space debris, and orbital commerce.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Space Exploration Treaties & Commercial Mining பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Space Exploration Treaties & Commercial Mining பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l036": {
+    "title": "Artificial Intelligence Consciousness & Agency",
+    "description": "Sentience thresholds and legal personhood in autonomous agents.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Artificial Intelligence Consciousness & Agency பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Artificial Intelligence Consciousness & Agency பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l037": {
+    "title": "Urban Regeneration in Megacities",
+    "description": "Vertical cities, earthquake resilience, and green belts.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Urban Regeneration in Megacities பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Urban Regeneration in Megacities பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l038": {
+    "title": "Preserving Intangible Cultural Heritage",
+    "description": "Master lacquerware, kabuki lineages, and state subsidies.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Preserving Intangible Cultural Heritage பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Preserving Intangible Cultural Heritage பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l039": {
+    "title": "Neuroscience of Language Acquisition",
+    "description": "Synaptic plasticity and neural substrates of multilingualism.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Neuroscience of Language Acquisition பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Neuroscience of Language Acquisition பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l040": {
+    "title": "Environmental Law & Carbon Taxation",
+    "description": "Emissions trading mechanisms and trade competitiveness.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Environmental Law & Carbon Taxation பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Environmental Law & Carbon Taxation பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l041": {
+    "title": "Labor Market Polarization & Precariat",
+    "description": "Dual labor markets and social safety net restructuring.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Labor Market Polarization & Precariat பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Labor Market Polarization & Precariat பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l042": {
+    "title": "Postmodern Japanese Architecture",
+    "description": "Metabolism, capsule towers, and organic modularity.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Postmodern Japanese Architecture பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Postmodern Japanese Architecture பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l043": {
+    "title": "Zen Epistemology in Modern Work",
+    "description": "Mu-shin, koan meditation, and executive clarity.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Zen Epistemology in Modern Work பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Zen Epistemology in Modern Work பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l044": {
+    "title": "Sino-Japanese Literary Lexicon (Kango)",
+    "description": "How Meiji scholars coined terms for philosophy and science.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Sino-Japanese Literary Lexicon (Kango) பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Sino-Japanese Literary Lexicon (Kango) பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l045": {
+    "title": "Medical Ethics in End-of-Life Decisions",
+    "description": "Living wills, palliative care, and bioethics boards.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Medical Ethics in End-of-Life Decisions பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Medical Ethics in End-of-Life Decisions பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l046": {
+    "title": "Cyber Warfare & Critical Infrastructure Defense",
+    "description": "Zero-trust paradigms and state-sponsored intrusions.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Cyber Warfare & Critical Infrastructure Defense பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Cyber Warfare & Critical Infrastructure Defense பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l047": {
+    "title": "Micro-Financing & Global Humanitarian Aid",
+    "description": "SDG metrics, micro-credit, and grant efficacy.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Micro-Financing & Global Humanitarian Aid பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Micro-Financing & Global Humanitarian Aid பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l048": {
+    "title": "Historical Dialectology & Regional Accents",
+    "description": "Kansai vs Kanto pitch, Tohoku shifts, and linguistic roots.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Historical Dialectology & Regional Accents பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Historical Dialectology & Regional Accents பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l049": {
+    "title": "Hermeneutics of Traditional Performing Arts",
+    "description": "Subtle beauty (Yugen), flower metaphors, and artistic immortality.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் Hermeneutics of Traditional Performing Arts பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் Hermeneutics of Traditional Performing Arts பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  },
+  "n1l050": {
+    "title": "N1 Pinnacle: Native-Level Artistry & Intellectual Fluency",
+    "description": "Synthesizing deep linguistic artistry into effortless mastery.",
+    "culturalNote": "ஜப்பானிய கலாச்சாரத்தில் N1 Pinnacle: Native-Level Artistry & Intellectual Fluency பற்றிய புரிதல் மிகவும் முக்கியமானது.",
+    "dialogue": [
+      "நான் N1 Pinnacle: Native-Level Artistry & Intellectual Fluency பற்றி உங்களுடன் கலந்துரையாடலாமா?",
+      "ஆம், மகிழ்ச்சியுடன். என்ன விஷயம்?",
+      "இதை சற்று விரிவாக விளக்க முடியுமா?",
+      "நிச்சயமாக, படிப்படியாக விளக்குகிறேன்."
+    ]
+  }
+}

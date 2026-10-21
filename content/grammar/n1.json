@@ -1,0 +1,536 @@
+[
+  {
+    "id": "n1g001",
+    "pattern": "〜いかんによらず / いかんにかかわらず",
+    "romaji": "~ikan ni yorazu / ikan ni kakawarazu",
+    "formation": "Noun + のいかんによらず / のいかんにかかわらず",
+    "level": "N1",
+    "tags": [
+      "formal",
+      "regardless",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "結果のいかんによらず、全力を尽くす。",
+        "reading": ""
+      },
+      {
+        "jp": "理由のいかんにかかわらず、遅刻は認めない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g002",
+    "pattern": "〜をもって",
+    "romaji": "~o motte",
+    "formation": "Noun + をもって",
+    "level": "N1",
+    "tags": [
+      "means",
+      "time",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "本日をもって、この店は閉店いたします。",
+        "reading": ""
+      },
+      {
+        "jp": "実力をもって問題を解決した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g003",
+    "pattern": "〜ならでは",
+    "romaji": "~naradewa",
+    "formation": "Noun + ならでは（の）",
+    "level": "N1",
+    "tags": [
+      "uniqueness",
+      "characteristic",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "日本ならではの文化がある。",
+        "reading": ""
+      },
+      {
+        "jp": "プロならではの技術だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g004",
+    "pattern": "〜に足る",
+    "romaji": "~ni taru",
+    "formation": "Verb dictionary form + に足る / に足りる",
+    "level": "N1",
+    "tags": [
+      "worthy",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "信頼するに足る人物だ。",
+        "reading": ""
+      },
+      {
+        "jp": "評価するに足る作品だと思う。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g005",
+    "pattern": "〜とあって",
+    "romaji": "~to atte",
+    "formation": "Plain form + とあって",
+    "level": "N1",
+    "tags": [
+      "reason",
+      "special-circumstance",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "三連休とあって、観光地は大混雑だった。",
+        "reading": ""
+      },
+      {
+        "jp": "人気アイドルの来日とあって、ファンが殺到した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g006",
+    "pattern": "〜を皮切りに（して）",
+    "romaji": "~o kawakiri ni (shite)",
+    "formation": "Noun + を皮切りに(して)",
+    "level": "N1",
+    "tags": [
+      "beginning",
+      "series",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "東京公演を皮切りに、全国ツアーが始まった。",
+        "reading": ""
+      },
+      {
+        "jp": "A社を皮切りに、多くの企業が参入した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g007",
+    "pattern": "〜ともなると / ともなれば",
+    "romaji": "~to mo naru to / to mo nareba",
+    "formation": "Noun + ともなると / ともなれば",
+    "level": "N1",
+    "tags": [
+      "status",
+      "expectation",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "社長ともなると、責任も大きい。",
+        "reading": ""
+      },
+      {
+        "jp": "有名人ともなれば、プライバシーがない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g008",
+    "pattern": "〜といえども",
+    "romaji": "~to ie domo",
+    "formation": "Plain form / Noun + といえども",
+    "level": "N1",
+    "tags": [
+      "concession",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "プロといえども、失敗することはある。",
+        "reading": ""
+      },
+      {
+        "jp": "法律といえども、完璧ではない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g009",
+    "pattern": "〜ずにはおかない",
+    "romaji": "~zu ni wa okanai",
+    "formation": "Verb nai-stem + ずにはおかない",
+    "level": "N1",
+    "tags": [
+      "inevitability",
+      "determination",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "この映画は見る人を感動させずにはおかない。",
+        "reading": ""
+      },
+      {
+        "jp": "犯人を逮捕せずにはおかない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g010",
+    "pattern": "〜にほかならない",
+    "romaji": "~ni hoka naranai",
+    "formation": "Noun / Plain form + にほかならない",
+    "level": "N1",
+    "tags": [
+      "assertion",
+      "emphasis",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "この成功は、チームの努力にほかならない。",
+        "reading": ""
+      },
+      {
+        "jp": "彼が来なかったのは、怠慢にほかならない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g011",
+    "pattern": "〜が最後",
+    "romaji": "~ga saigo",
+    "formation": "Verb た form + が最後",
+    "level": "N1",
+    "tags": [
+      "irreversible",
+      "consequence",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "彼女に話しかけたが最後、一時間は止まらない。",
+        "reading": ""
+      },
+      {
+        "jp": "借金をしたが最後、返済に苦しむことになる。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g012",
+    "pattern": "〜べからず",
+    "romaji": "~bekarazu",
+    "formation": "Verb dictionary form + べからず",
+    "level": "N1",
+    "tags": [
+      "prohibition",
+      "classical",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "芝生に入るべからず。",
+        "reading": ""
+      },
+      {
+        "jp": "規則を破るべからず。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g013",
+    "pattern": "〜てやまない",
+    "romaji": "~te yamanai",
+    "formation": "Verb て form + やまない",
+    "level": "N1",
+    "tags": [
+      "emotion",
+      "formal",
+      "literary",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "皆様のご活躍を願ってやみません。",
+        "reading": ""
+      },
+      {
+        "jp": "彼の才能を愛してやまない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g014",
+    "pattern": "〜ないまでも",
+    "romaji": "~nai made mo",
+    "formation": "Verb nai form + までも",
+    "level": "N1",
+    "tags": [
+      "concession",
+      "minimum",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "毎日とは言わないまでも、週に一度は運動すべきだ。",
+        "reading": ""
+      },
+      {
+        "jp": "完璧でないまでも、最善を尽くした。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g015",
+    "pattern": "〜をものともせず",
+    "romaji": "~o mono to mo sezu",
+    "formation": "Noun + をものともせず（に）",
+    "level": "N1",
+    "tags": [
+      "adversity",
+      "bravery",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "嵐をものともせず、船は前進した。",
+        "reading": ""
+      },
+      {
+        "jp": "批判をものともせず、改革を続けた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g016",
+    "pattern": "〜のみならず",
+    "romaji": "~nomi narazu",
+    "formation": "Noun / Plain form + のみならず",
+    "level": "N1",
+    "tags": [
+      "addition",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "国内のみならず、海外でも活躍している。",
+        "reading": ""
+      },
+      {
+        "jp": "経済のみならず、文化面でも発展した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g017",
+    "pattern": "〜に即して",
+    "romaji": "~ni sokushite",
+    "formation": "Noun + に即して / に即した + Noun",
+    "level": "N1",
+    "tags": [
+      "accordance",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "法律に即して対処する。",
+        "reading": ""
+      },
+      {
+        "jp": "現実に即した計画を立てる。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g018",
+    "pattern": "〜そばから",
+    "romaji": "~soba kara",
+    "formation": "Verb dictionary / た form + そばから",
+    "level": "N1",
+    "tags": [
+      "repetition",
+      "frustration",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "片付けるそばから、子供が散らかす。",
+        "reading": ""
+      },
+      {
+        "jp": "覚えるそばから忘れてしまう。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g019",
+    "pattern": "〜ときたら",
+    "romaji": "~to kitara",
+    "formation": "Noun + ときたら",
+    "level": "N1",
+    "tags": [
+      "complaint",
+      "exasperation",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "うちの息子ときたら、まったく勉強しない。",
+        "reading": ""
+      },
+      {
+        "jp": "最近の若者ときたら、礼儀を知らない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g020",
+    "pattern": "〜ゆえに",
+    "romaji": "~yue ni",
+    "formation": "Noun + の + ゆえに / Plain form + ゆえに",
+    "level": "N1",
+    "tags": [
+      "cause",
+      "formal",
+      "literary",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "若さゆえに、過ちを犯した。",
+        "reading": ""
+      },
+      {
+        "jp": "無知ゆえに、傷つけてしまった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g021",
+    "pattern": "〜であれ / 〜であろうと",
+    "romaji": "~de are / ~de arou to",
+    "formation": "Noun + であれ / であろうと",
+    "level": "N1",
+    "tags": [
+      "uncompromising",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "いかなる理由であれ、暴力は決して許されない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g022",
+    "pattern": "〜たるもの",
+    "romaji": "~taru mono",
+    "formation": "Noun + たるもの",
+    "level": "N1",
+    "tags": [
+      "duty",
+      "classical",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "指導者たるものは、常に大局を見据えなければならない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g023",
+    "pattern": "〜を余儀なくされる",
+    "romaji": "~o yogi naku sareru",
+    "formation": "Noun + を余儀なくされる",
+    "level": "N1",
+    "tags": [
+      "unavoidable",
+      "external-force",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "台風の影響により、イベントの中止を余儀なくされた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g024",
+    "pattern": "〜と相まって",
+    "romaji": "~to aimatte",
+    "formation": "Noun + と相まって",
+    "level": "N1",
+    "tags": [
+      "combination",
+      "synergy",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "才能と不断の努力が相まって、彼は世界一の座を射止めた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n1g025",
+    "pattern": "〜極まりない / 〜極まる",
+    "romaji": "~kiwamarinai / ~kiwamaru",
+    "formation": "な-adj stem + 極まりない / 極まる (or Noun + 極まりない)",
+    "level": "N1",
+    "tags": [
+      "extreme",
+      "formal",
+      "N1"
+    ],
+    "examples": [
+      {
+        "jp": "そのような無責任な態度は、遺憾極まりない。",
+        "reading": ""
+      }
+    ]
+  }
+]

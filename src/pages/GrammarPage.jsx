@@ -12,6 +12,7 @@ import { useAuthStore } from '../store/authStore'
 import { useProgressStore } from '../store/progressStore'
 import { audioService } from '../services/audioService'
 import LevelSelector from '../components/common/LevelSelector'
+import ParticleStudio from '../components/grammar/ParticleStudio'
 import {
   getCurriculumMeaning,
   getCurriculumExplanation,
@@ -56,7 +57,7 @@ const GrammarCard = React.forwardRef(function GrammarCard(
   const translationEntry = getCurriculumTranslation(item.id, activeLang)
   const meta = LEVEL_META[item.level]
 
-  const speak = (text) => audioService.speak(text)
+  const speak = (text) => audioService.speak(text).catch(() => {})
 
   return (
     <motion.div
@@ -259,6 +260,7 @@ export default function GrammarPage() {
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState(null)
   const [openId, setOpenId] = useState(null)
+  const [showParticleStudio, setShowParticleStudio] = useState(false)
 
   const user = useAuthStore((s) => s.user)
   const isGuest = !user?.id
@@ -374,6 +376,51 @@ export default function GrammarPage() {
           </div>
         </div>
       </motion.div>
+
+      {/* Particle Parallelism Studio Spotlight Banner */}
+      <div className="bg-surface border border-border rounded-2xl p-4 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-primary flex items-center justify-center text-white shrink-0 shadow-xs">
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-bold text-foreground">
+                助詞パラレル道場 (Particle Parallelism Studio)
+              </h3>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary uppercase">
+                New
+              </span>
+            </div>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Master Japanese particles through native Tamil (வேற்றுமை) and Hindi (कारक) SOV alignment!
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={() => setShowParticleStudio((v) => !v)}
+          className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all shrink-0 ${
+            showParticleStudio
+              ? 'bg-muted hover:bg-muted/80 text-foreground border border-border'
+              : 'bg-primary text-white hover:opacity-90 shadow-sm shadow-primary/25'
+          }`}
+        >
+          {showParticleStudio ? 'Close Studio' : 'Launch Particle Studio 助詞'}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {showParticleStudio && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden"
+          >
+            <ParticleStudio />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="space-y-3">
         <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.grammar} />

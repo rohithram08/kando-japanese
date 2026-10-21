@@ -1,0 +1,536 @@
+[
+  {
+    "id": "n2g001",
+    "pattern": "〜にもかかわらず",
+    "romaji": "~ni mo kakawarazu",
+    "formation": "Noun / Verb (plain) / Adjective + にもかかわらず",
+    "level": "N2",
+    "tags": [
+      "conjunction",
+      "contrast",
+      "formal"
+    ],
+    "examples": [
+      {
+        "jp": "雨にもかかわらず、試合は行われた。",
+        "reading": ""
+      },
+      {
+        "jp": "努力したにもかかわらず、試験に落ちた。",
+        "reading": ""
+      },
+      {
+        "jp": "忙しいにもかかわらず、来てくれた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g002",
+    "pattern": "〜をはじめ（として）",
+    "romaji": "~o hajime (toshite)",
+    "formation": "Noun + をはじめ(として) + other nouns",
+    "level": "N2",
+    "tags": [
+      "listing",
+      "example",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "東京をはじめ、大阪や名古屋など多くの都市で販売される。",
+        "reading": ""
+      },
+      {
+        "jp": "社長をはじめ、社員全員が参加した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g003",
+    "pattern": "〜に加えて",
+    "romaji": "~ni kuwaete",
+    "formation": "Noun + に加えて",
+    "level": "N2",
+    "tags": [
+      "addition",
+      "formal",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "英語に加えて、日本語も話せます。",
+        "reading": ""
+      },
+      {
+        "jp": "寒さに加えて、風も強かった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g004",
+    "pattern": "〜かねない",
+    "romaji": "~kanenai",
+    "formation": "Verb stem + かねない",
+    "level": "N2",
+    "tags": [
+      "possibility",
+      "warning",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "このまま放置すると、大事故になりかねない。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は嘘をつきかねない人だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g005",
+    "pattern": "〜をめぐって",
+    "romaji": "~o megutte",
+    "formation": "Noun + をめぐって / をめぐる + Noun",
+    "level": "N2",
+    "tags": [
+      "topic",
+      "debate",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "予算をめぐって激しい議論が行われた。",
+        "reading": ""
+      },
+      {
+        "jp": "領土をめぐる問題は複雑だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g006",
+    "pattern": "〜に際して",
+    "romaji": "~ni saishite",
+    "formation": "Noun / Verb dictionary form + に際して",
+    "level": "N2",
+    "tags": [
+      "formal",
+      "occasion",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "入学に際して、保護者の同意が必要です。",
+        "reading": ""
+      },
+      {
+        "jp": "契約を結ぶに際して、内容をよく確認してください。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g007",
+    "pattern": "〜に反して",
+    "romaji": "~ni hanshite",
+    "formation": "Noun + に反して / に反する + Noun",
+    "level": "N2",
+    "tags": [
+      "contrast",
+      "opposition",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "予想に反して、試験は簡単だった。",
+        "reading": ""
+      },
+      {
+        "jp": "親の意志に反して、芸術家になった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g008",
+    "pattern": "〜を通じて / を通して",
+    "romaji": "~o tsujite / o tooshite",
+    "formation": "Noun + を通じて / を通して",
+    "level": "N2",
+    "tags": [
+      "means",
+      "method",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "インターネットを通じて情報を集める。",
+        "reading": ""
+      },
+      {
+        "jp": "一年を通じて温暖な気候だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g009",
+    "pattern": "〜末に",
+    "romaji": "~sue ni",
+    "formation": "Verb た form / Noun + の + 末に",
+    "level": "N2",
+    "tags": [
+      "result",
+      "process",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "長い議論の末に、結論が出た。",
+        "reading": ""
+      },
+      {
+        "jp": "悩んだ末に、会社を辞めることにした。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g010",
+    "pattern": "〜にわたって",
+    "romaji": "~ni watatte",
+    "formation": "Noun (time/range) + にわたって / にわたる + Noun",
+    "level": "N2",
+    "tags": [
+      "range",
+      "duration",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "三日間にわたって会議が続いた。",
+        "reading": ""
+      },
+      {
+        "jp": "広い範囲にわたる調査が行われた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g011",
+    "pattern": "〜に対して",
+    "romaji": "~ni taishite",
+    "formation": "Noun + に対して / に対する + Noun",
+    "level": "N2",
+    "tags": [
+      "direction",
+      "contrast",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "先生に対して失礼な態度をとった。",
+        "reading": ""
+      },
+      {
+        "jp": "兄が背が高いのに対して、弟は低い。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g012",
+    "pattern": "〜というより",
+    "romaji": "~to iu yori",
+    "formation": "Phrase A + というより + Phrase B",
+    "level": "N2",
+    "tags": [
+      "correction",
+      "nuance",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "彼は怒っているというより、悲しんでいる。",
+        "reading": ""
+      },
+      {
+        "jp": "これは趣味というより、仕事だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g013",
+    "pattern": "〜上で",
+    "romaji": "~ue de",
+    "formation": "Verb dictionary/た form + 上で / Noun + の + 上で",
+    "level": "N2",
+    "tags": [
+      "condition",
+      "prerequisite",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "契約する上で、注意すべき点がある。",
+        "reading": ""
+      },
+      {
+        "jp": "話し合った上で、決定します。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g014",
+    "pattern": "〜をきっかけに",
+    "romaji": "~o kikkake ni",
+    "formation": "Noun + をきっかけに(して)",
+    "level": "N2",
+    "tags": [
+      "trigger",
+      "turning-point",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "この事故をきっかけに、安全対策が強化された。",
+        "reading": ""
+      },
+      {
+        "jp": "留学をきっかけに、英語が好きになった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g015",
+    "pattern": "〜からといって",
+    "romaji": "~kara to itte",
+    "formation": "Verb / Adjective / Noun plain form + からといって",
+    "level": "N2",
+    "tags": [
+      "reason",
+      "warning",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "お金があるからといって、幸せとは限らない。",
+        "reading": ""
+      },
+      {
+        "jp": "忙しいからといって、食事を抜いてはいけない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g016",
+    "pattern": "〜次第",
+    "romaji": "~shidai",
+    "formation": "Verb stem + 次第 / Noun + 次第",
+    "level": "N2",
+    "tags": [
+      "sequence",
+      "condition",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "準備ができ次第、出発します。",
+        "reading": ""
+      },
+      {
+        "jp": "結果は努力次第だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g017",
+    "pattern": "〜ものの",
+    "romaji": "~mono no",
+    "formation": "Verb / Adjective plain form + ものの",
+    "level": "N2",
+    "tags": [
+      "concession",
+      "contrast",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "勉強したものの、試験に落ちた。",
+        "reading": ""
+      },
+      {
+        "jp": "申し込んだものの、まだ返事がない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g018",
+    "pattern": "〜に伴って",
+    "romaji": "~ni tomonatte",
+    "formation": "Noun / Verb dictionary form + に伴って / に伴い",
+    "level": "N2",
+    "tags": [
+      "parallel-change",
+      "formal",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "経済成長に伴って、生活水準が上がった。",
+        "reading": ""
+      },
+      {
+        "jp": "人口増加に伴い、住宅不足が深刻化している。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g019",
+    "pattern": "〜において / における",
+    "romaji": "~ni oite / ni okeru",
+    "formation": "Noun + において / における + Noun",
+    "level": "N2",
+    "tags": [
+      "location",
+      "context",
+      "formal",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "現代社会において、情報は非常に重要だ。",
+        "reading": ""
+      },
+      {
+        "jp": "教育における問題を議論する。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g020",
+    "pattern": "〜にとって",
+    "romaji": "~ni totte",
+    "formation": "Noun + にとって",
+    "level": "N2",
+    "tags": [
+      "perspective",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "子供にとって、遊びは大切な学びだ。",
+        "reading": ""
+      },
+      {
+        "jp": "私にとって、家族が一番大切です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g021",
+    "pattern": "〜に際して",
+    "romaji": "~ni saishite",
+    "formation": "Noun / Verb dictionary form + に際して",
+    "level": "N2",
+    "tags": [
+      "formal",
+      "occasion",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "新しい事業を始めるに際して、綿密な計画を立てた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g022",
+    "pattern": "〜を契機に（して）",
+    "romaji": "~o keiki ni (shite)",
+    "formation": "Noun + を契機に（して）",
+    "level": "N2",
+    "tags": [
+      "turning-point",
+      "catalyst",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "オリンピックを契機に、街の再開発が進んだ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g023",
+    "pattern": "〜を問わず",
+    "romaji": "~o towazu",
+    "formation": "Noun + を問わず",
+    "level": "N2",
+    "tags": [
+      "universal",
+      "formal",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "経験の有無を問わず、どなたでも応募できます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g024",
+    "pattern": "〜ざるを得ない",
+    "romaji": "~zaru o enai",
+    "formation": "Verb ない-stem + ざるを得ない (する -> せざるを得ない)",
+    "level": "N2",
+    "tags": [
+      "obligation",
+      "unavoidable",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "これだけの証拠があれば、事実を認めざるを得ない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n2g025",
+    "pattern": "〜かねる",
+    "romaji": "~kaneru",
+    "formation": "Verb stem + かねる",
+    "level": "N2",
+    "tags": [
+      "business",
+      "polite-refusal",
+      "N2"
+    ],
+    "examples": [
+      {
+        "jp": "お客様のご要望には応じかねます。",
+        "reading": ""
+      }
+    ]
+  }
+]

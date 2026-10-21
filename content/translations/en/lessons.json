@@ -1,0 +1,2680 @@
+{
+  "n5l001": {
+    "title": "Greetings & Self-Introduction",
+    "description": "Learn essential Japanese greetings and how to introduce yourself.",
+    "culturalNote": "In Japan, bowing while greeting is customary. The depth of the bow reflects the level of respect.",
+    "dialogue": [
+      "Hello! Nice to meet you. I am Tanaka.",
+      "Nice to meet you. I am Yamada. Please treat me well.",
+      "Likewise, please treat me well."
+    ]
+  },
+  "n5l002": {
+    "title": "Numbers & Counting",
+    "description": "Learn Japanese numbers from 1 to 10,000 and basic counters.",
+    "culturalNote": "Japanese has multiple counter systems depending on what is being counted.",
+    "dialogue": [
+      "How many apples will you buy?",
+      "I will buy three."
+    ]
+  },
+  "n5l003": {
+    "title": "Family Members",
+    "description": "Learn vocabulary for family members in Japanese, including humble and honorific forms.",
+    "culturalNote": "Japanese uses different words for your own family (humble) vs. someone else's family (honorific). ちち = my father; おとうさん = your/someone's father.",
+    "dialogue": [
+      "How many people are in your family?",
+      "There are four of us. I have a father, mother, and younger sister.",
+      "That's nice. I am an only child."
+    ]
+  },
+  "n5l004": {
+    "title": "Daily Routine & Time",
+    "description": "Learn to talk about daily activities and express time in Japanese.",
+    "culturalNote": "Japan uses both the 12-hour and 24-hour clock. Train schedules and official times often use the 24-hour format.",
+    "dialogue": [
+      "What time do you wake up every morning?",
+      "I wake up at six. Then I take a shower and eat breakfast.",
+      "What time is school from and until?",
+      "It is from 8:30 until 3:00."
+    ]
+  },
+  "n5l005": {
+    "title": "Food & Ordering at a Restaurant",
+    "description": "Learn food vocabulary and how to order food at a Japanese restaurant.",
+    "culturalNote": "いただきます is said before eating, expressing gratitude. ごちそうさまでした is said after eating, thanking the cook or host.",
+    "dialogue": [
+      "Welcome. What will you have?",
+      "One ramen and two gyoza please.",
+      "What would you like to drink?",
+      "Green tea please."
+    ]
+  },
+  "n5l006": {
+    "title": "Asking for Directions",
+    "description": "Learn how to navigate Japanese cities and ask for directions politely.",
+    "culturalNote": "Japanese police boxes (交番, kouban) are prominent throughout cities and will happily provide directions with maps.",
+    "dialogue": [
+      "Excuse me, where is the station?",
+      "Go straight along this street and turn right.",
+      "Thank you very much!"
+    ]
+  },
+  "n5l007": {
+    "title": "Shopping & Asking Prices",
+    "description": "Learn how to ask for prices, specify items, and purchase goods in stores.",
+    "culturalNote": "When paying in Japan, you place your money into a small plastic or metallic tray (カルトン) on the counter rather than handing it directly.",
+    "dialogue": [
+      "Excuse me, how much is this umbrella?",
+      "It is 1,000 yen.",
+      "Well then, I will take this please."
+    ]
+  },
+  "n5l008": {
+    "title": "Ordering at Restaurants",
+    "description": "Master ordering delicious Japanese food, asking for water, and requesting the bill.",
+    "culturalNote": "Saying ごちそうさまでした (Gochisousama deshita) when leaving a restaurant expresses heartfelt gratitude for the meal.",
+    "dialogue": [
+      "Excuse me, could I get some water?",
+      "Yes, certainly.",
+      "Also, one bowl of ramen, please."
+    ]
+  },
+  "n5l009": {
+    "title": "Hobbies & Leisure",
+    "description": "Talk about your favorite hobbies, sports, music, and weekend activities.",
+    "culturalNote": "In Japan, sharing hobbies (趣味) is one of the most common icebreakers when meeting new classmates or colleagues.",
+    "dialogue": [
+      "What is your hobby?",
+      "Watching movies and listening to music.",
+      "What kind of movies do you like?"
+    ]
+  },
+  "n5l010": {
+    "title": "Travel & Vacation Plans",
+    "description": "Learn how to discuss upcoming trips, hotel stays, and vacation dates.",
+    "culturalNote": "Giving おみやげ (omiyage - souvenir gifts, usually regional snacks) to friends and coworkers after traveling is an essential social norm.",
+    "dialogue": [
+      "Did you go anywhere over the weekend?",
+      "I went to Kyoto and took lots of photos.",
+      "How nice! Did you also buy souvenirs?"
+    ]
+  },
+  "n4l001": {
+    "title": "Giving & Receiving (てあげる / てもらう / てくれる)",
+    "description": "Master the complex system of giving and receiving in Japanese.",
+    "culturalNote": "The direction of giving/receiving is crucial in Japanese. Using the wrong form can sound unnatural or even rude.",
+    "dialogue": [
+      "Tanaka carried my bags for me.",
+      "That's kind. Did you have the teacher teach you?",
+      "Yes, I had the teacher teach me. It was very helpful."
+    ]
+  },
+  "n4l002": {
+    "title": "Causative & Passive Forms",
+    "description": "Learn how to make someone do something, and how to express being acted upon.",
+    "culturalNote": "The causative-passive form (させられる) often carries a nuance of being forced to do something against one's will.",
+    "dialogue": [
+      "I was made to work overtime by the manager.",
+      "That must have been tough. I made my child eat vegetables."
+    ]
+  },
+  "n4l003": {
+    "title": "Expressing Conditions (〜ば / 〜たら / 〜と / 〜なら)",
+    "description": "Master the four conditional forms in Japanese and when to use each one.",
+    "culturalNote": "と is for natural/automatic consequences. たら is most versatile. ば is often for hypotheticals. なら is for advice based on new information.",
+    "dialogue": [
+      "If you have time, shall we go see a movie?",
+      "When work finishes, I'll contact you.",
+      "If you're going to Tokyo, you should go to Sky Tree."
+    ]
+  },
+  "n4l004": {
+    "title": "Expressing Hearsay & Appearance (〜そう / 〜らしい / 〜ようだ)",
+    "description": "Learn how to express what things seem like and what you've heard.",
+    "culturalNote": "〜そうだ has two completely different meanings depending on conjugation: verb-stem + そうだ = looks like; plain form + そうだ = hearsay.",
+    "dialogue": [
+      "According to the news, it seems it will snow tomorrow.",
+      "Really? Looking at the sky, it certainly does seem cloudy.",
+      "It seems like Tanaka caught a cold."
+    ]
+  },
+  "n4l005": {
+    "title": "Making Requests & Giving Permission",
+    "description": "Learn polite ways to make requests and ask for or give permission.",
+    "culturalNote": "Politeness levels matter greatly in Japanese. Using too casual a form with a superior can be seen as disrespectful.",
+    "dialogue": [
+      "Excuse me, is it alright if I open the window?",
+      "Yes, please go ahead. But since the air conditioning is on, please just a little.",
+      "Understood. Could you help me a bit?"
+    ]
+  },
+  "n4l006": {
+    "title": "Giving and Receiving Favors",
+    "description": "Master the nuance of doing things for others and receiving favors using てあげる, てくれる, and てもらう.",
+    "culturalNote": "In Japanese culture, acknowledging who initiated a favor preserves harmonious social distance and gratitude.",
+    "dialogue": [
+      "That luggage looks heavy. Shall I carry it for you?",
+      "Thank you very much! That is a great help."
+    ]
+  },
+  "n4l007": {
+    "title": "Expressing Completion & Regret",
+    "description": "Express total completion and unintentional mistakes using 〜てしまう.",
+    "culturalNote": "〜てしまう expresses an empathetic vulnerability, signaling to listeners that an error was not malicious.",
+    "dialogue": [
+      "What happened? You don't look well.",
+      "I accidentally left my umbrella on the train."
+    ]
+  },
+  "n4l008": {
+    "title": "Conditionals in Daily Conversation",
+    "description": "Learn the differences between 〜たら, 〜ば, 〜なら, and 〜と in real-world scenarios.",
+    "culturalNote": "〜と is strictly for natural constants and machine consequences (press this button and change comes out).",
+    "dialogue": [
+      "If the weather is good tomorrow, shall we go to the beach?",
+      "Sounds great! If it rains, let's make it an art museum instead."
+    ]
+  },
+  "n4l009": {
+    "title": "Potential and Abilities",
+    "description": "Learn how to describe what you can and cannot do using potential verb conjugations.",
+    "culturalNote": "Potential verbs mark their object with が instead of を in standard Japanese (e.g. 寿司が食べられる).",
+    "dialogue": [
+      "Can you read Japanese newspapers?",
+      "I can still only read a few kanji."
+    ]
+  },
+  "n4l010": {
+    "title": "Workplace Requests & Keigo Basics",
+    "description": "Learn foundational honorific and humble expressions for office and retail environments.",
+    "culturalNote": "Keigo reflects humility towards clients and elders while maintaining professional boundaries.",
+    "dialogue": [
+      "Director, could you please check this document?",
+      "Understood. I will look at it later."
+    ]
+  },
+  "n3l001": {
+    "title": "Expressing Reason & Cause (〜ため / 〜せいで / 〜おかげで)",
+    "description": "Learn nuanced ways to express reasons and causes, including blame and gratitude.",
+    "culturalNote": "おかげで implies positive outcome; せいで implies negative outcome. Using them incorrectly can seem sarcastic.",
+    "dialogue": [
+      "It is thanks to the teacher that I passed the exam.",
+      "On the contrary, because of my poor health, I couldn't concentrate on the exam.",
+      "For next year too, let's prepare more."
+    ]
+  },
+  "n3l002": {
+    "title": "Expressing Contrast (〜のに / 〜くせに / 〜一方)",
+    "description": "Express contrast and unexpected results using various conjunctions.",
+    "culturalNote": "くせに is stronger and more critical than のに. It implies the speaker thinks the subject should know better.",
+    "dialogue": [
+      "Even though I studied so much, I ended up failing the exam.",
+      "Despite knowing, he is pretending not to know.",
+      "While cities are convenient, on the other hand they lack nature."
+    ]
+  },
+  "n3l003": {
+    "title": "Potential, Desire & Necessity",
+    "description": "Express ability, desires, and necessity using various grammatical forms.",
+    "culturalNote": "べきだ expresses a moral obligation or advice; なければならない is a stronger, more external obligation.",
+    "dialogue": [
+      "He is always wanting new games.",
+      "For your health, you should eat more vegetables.",
+      "You're right. We need to exercise every day."
+    ]
+  },
+  "n3l004": {
+    "title": "Quotation & Reported Speech",
+    "description": "Learn how to report what others said, thought, or heard.",
+    "culturalNote": "Japanese reported speech does not always change tense like English does. Context and time expressions carry tense information.",
+    "dialogue": [
+      "According to Tanaka, it seems a new cafe opened near the station.",
+      "Yamada said they are going on a trip next week.",
+      "I heard from the manager that the meeting has been postponed."
+    ]
+  },
+  "n3l005": {
+    "title": "Expressing Change & Transformation",
+    "description": "Learn how to express gradual or sudden changes in state.",
+    "culturalNote": "てくる implies a change coming toward the present from the past; ていく implies a change going away into the future.",
+    "dialogue": [
+      "After studying Japanese, I became able to understand the news.",
+      "Recently, the number of people who write letters has decreased.",
+      "Technology will continue to develop from here on."
+    ]
+  },
+  "n3l006": {
+    "title": "Explaining Circumstances and Nuances",
+    "description": "Express complex reasoning and clarify misunderstandings using 〜わけだ and 〜わけではない.",
+    "culturalNote": "〜わけだ shows that you have synthesized the facts and empathetically understand the situation.",
+    "dialogue": [
+      "Apparently he suddenly returned to his home country.",
+      "I heard his mother fell ill. So that is why he hurried back."
+    ]
+  },
+  "n3l007": {
+    "title": "Contrasts and Surprising Outcomes",
+    "description": "Compare expectations with reality using 〜わりに and 〜くせに.",
+    "culturalNote": "Nuance matters: 〜くせに is strictly derogatory and should never be used toward customers or superiors.",
+    "dialogue": [
+      "Even though this PC was cheap, it is really fast!",
+      "It has a reputation for great performance considering the price."
+    ]
+  },
+  "n3l008": {
+    "title": "Business Meetings & Problem Solving",
+    "description": "Communicate project updates, report delays, and offer collaborative solutions.",
+    "culturalNote": "The Japanese business reporting framework Horenso (報告・連絡・相談) is vital in team dynamics.",
+    "dialogue": [
+      "I have a report regarding the project's progress.",
+      "Is there a risk that we might miss the delivery deadline?"
+    ]
+  },
+  "n3l009": {
+    "title": "Healthcare & Clinical Visits",
+    "description": "Describe medical symptoms, fever, allergy reactions, and medication schedules accurately.",
+    "culturalNote": "In Japan, pharmacies require an official doctor's prescription (処方箋, shohousen) for most clinical treatments.",
+    "dialogue": [
+      "I have felt a bit feverish since yesterday, and my throat hurts unbearably.",
+      "Don't push yourself; take your medicine and get some rest."
+    ]
+  },
+  "n3l010": {
+    "title": "Weather Forecasts & Natural Disasters",
+    "description": "Understand news reports on typhoons, earthquakes, evacuation warnings, and seasonal weather.",
+    "culturalNote": "Japan is world-renowned for disaster preparedness drills (防災訓練) held regularly across schools and workplaces.",
+    "dialogue": [
+      "A large typhoon is approaching, with risk of storm conditions starting tonight.",
+      "Let us confirm the evacuation shelters in advance."
+    ]
+  },
+  "n2l001": {
+    "title": "Formal Written Japanese",
+    "description": "Learn the key differences between spoken and written Japanese and formal expression patterns.",
+    "culturalNote": "Business Japanese (ビジネス日本語) has its own set of expressions and formulas. Keigo (敬語) — honorific language — is essential in professional settings.",
+    "dialogue": [
+      "Dear Sir/Madam, I hope this letter finds you in good health and spirits.",
+      "Regarding this matter, we kindly request your confirmation."
+    ]
+  },
+  "n2l002": {
+    "title": "Keigo — Honorific Language Deep Dive",
+    "description": "Master sonkeigo (respectful), kenjougo (humble), and teineigo (polite) forms.",
+    "culturalNote": "Keigo is fundamental to Japanese professional life. Mistakes in keigo can cause significant social friction in formal settings.",
+    "dialogue": [
+      "The manager is currently out.",
+      "Is Tanaka-sama available?",
+      "Could you please wait a moment?"
+    ]
+  },
+  "n2l003": {
+    "title": "Complex Sentence Structures",
+    "description": "Build complex, multi-clause sentences using advanced connectives.",
+    "culturalNote": "〜以上は and 〜からには both mean \"now that / since\" but 以上は is slightly more formal.",
+    "dialogue": [
+      "Now that you have decided to do it, you must persevere until the end.",
+      "Although I want to study abroad, there is also the matter of money.",
+      "Although I applied, I have not yet been able to confirm the details."
+    ]
+  },
+  "n2l004": {
+    "title": "Reading News & Media Japanese",
+    "description": "Learn vocabulary and structures commonly used in Japanese news and media.",
+    "culturalNote": "News Japanese often uses passive voice and nominalizations. The style is dense and omits particles more frequently than conversational Japanese.",
+    "dialogue": [
+      "According to the government's announcement, new economic measures are expected to be implemented from next month.",
+      "Along with the rise in prices, concerns are growing about the impact on household budgets."
+    ]
+  },
+  "n2l005": {
+    "title": "Expressing Degree & Extent",
+    "description": "Express degree, extent, and limits using advanced grammatical patterns.",
+    "culturalNote": "〜だけあって acknowledges that a result is natural given a person's background or effort. It always has a positive or expected nuance.",
+    "dialogue": [
+      "As expected of someone who works hard, her grades are very good.",
+      "As long as you are healthy, you can do anything else.",
+      "There is nobody who works as hard as him."
+    ]
+  },
+  "n2l006": {
+    "title": "Executive Presentations & Public Speaking",
+    "description": "Structure formal business pitches, introduce project proposals, and address stakeholder questions.",
+    "culturalNote": "Japanese business presentations follow the Ki-Shou-Ten-Ketsu or Premise-Analysis-Proposal flow.",
+    "dialogue": [
+      "On the occasion of today's presentation, I will make a proposal based on recent market trends.",
+      "Very interesting. Please share the specific implementation timeline."
+    ]
+  },
+  "n2l007": {
+    "title": "Contract Negotiations & Corporate Inquiries",
+    "description": "Master diplomatic business negotiations, formal concession requests, and contractual terms.",
+    "culturalNote": "Directly saying \"No\" (いいえ) in Japanese negotiations is avoided; phrases like 応じかねます or 検討いたします are standard.",
+    "dialogue": [
+      "We sincerely apologize, but we are unable to comply with the proposed delivery date.",
+      "Is that so? In that case, we have no choice but to reconsider."
+    ]
+  },
+  "n2l008": {
+    "title": "Editorial Reading & Media Discourse",
+    "description": "Analyze newspaper editorials, op-eds, and economic columns with sophisticated grammatical connectors.",
+    "culturalNote": "JLPT N2 reading comprehension relies heavily on recognizing logical shift markers like 一方で and 反面.",
+    "dialogue": [
+      "While digitalization advances, privacy protection is gradually becoming an urgent challenge.",
+      "To enjoy the benefits of technological innovation, establishing sound regulations is nothing less than essential."
+    ]
+  },
+  "n2l009": {
+    "title": "Demographics & Societal Transformations",
+    "description": "Discuss sociological changes, birthrate dynamics, regional revitalization, and workforce diversification.",
+    "culturalNote": "Regional revitalization (地方創生, chihou sousei) is one of the highest priority socioeconomic initiatives in modern Japan.",
+    "dialogue": [
+      "Concurrently with the aging population, the expansion of social security costs is raising concern.",
+      "Building sustainable local communities across the entire nation is indeed urgent."
+    ]
+  },
+  "n2l010": {
+    "title": "Customer Relations & Crisis Management",
+    "description": "Handle customer grievances, issue public apologies, and communicate corrective measures with maximum etiquette.",
+    "culturalNote": "Formal Japanese corporate apologies follow a codified protocol emphasizing restitution, humility, and root-cause remediation.",
+    "dialogue": [
+      "Regarding our recent oversight, we offer our most humble apologies.",
+      "Going forward, please enforce thorough preventive measures so this never occurs again."
+    ]
+  },
+  "n1l001": {
+    "title": "Classical Japanese Elements in Modern Japanese",
+    "description": "Understand classical Japanese grammar patterns that survive in formal modern Japanese.",
+    "culturalNote": "Classical Japanese (文語/古文) appears in proverbs, set phrases, legal texts, formal literature, and signage. N1 candidates must recognize these patterns.",
+    "dialogue": [
+      "If you try, you will succeed; if you do not try, nothing will be achieved.",
+      "More haste, less speed. (lit. If in a hurry, take the roundabout way.)",
+      "No entry for unauthorized persons."
+    ]
+  },
+  "n1l002": {
+    "title": "Nuanced Expressions of Emotion & Psychology",
+    "description": "Express subtle emotions and psychological states with precision.",
+    "culturalNote": "These expressions appear frequently in formal speeches, literary works, essays, and business correspondence. They convey deep sincerity.",
+    "dialogue": [
+      "I could not help but be surprised at his reckless behavior.",
+      "I sincerely and endlessly hope for your health and development.",
+      "Knowing it, I couldn't help but say it."
+    ]
+  },
+  "n1l003": {
+    "title": "Logical & Academic Discourse",
+    "description": "Master the language of academic papers, debates, and logical argumentation.",
+    "culturalNote": "Japanese academic writing heavily uses noun-heavy structures, passive voice, and hedging expressions. Direct assertions are often softened.",
+    "dialogue": [
+      "Based on these research results, I propose a new hypothesis.",
+      "The opponent's argument is not based on the facts.",
+      "This phenomenon can be considered to originate from economic disparities."
+    ]
+  },
+  "n1l004": {
+    "title": "Four-Character Idioms (四字熟語)",
+    "description": "Learn essential four-character compound words derived from Chinese classics.",
+    "culturalNote": "四字熟語 are an important part of Japanese literary and formal culture. Many originate from Chinese classics (漢文) and Buddhist teachings.",
+    "dialogue": [
+      "Her ability to adapt to situations is truly wonderful.",
+      "After repeating trial and error, a solution was finally found.",
+      "That's exactly killing two birds with one stone!"
+    ]
+  },
+  "n1l005": {
+    "title": "Political, Legal & Economic Vocabulary",
+    "description": "Build vocabulary for understanding Japanese news, law, and economic discourse.",
+    "culturalNote": "The ability to understand NHK news broadcasts and read newspaper articles is a practical benchmark for N1 level Japanese.",
+    "dialogue": [
+      "Based on the provisions of the constitution, a new law was enacted.",
+      "Against the backdrop of a declining birthrate, a review of immigration policy is being called for.",
+      "From an economic perspective, this policy is considered effective."
+    ]
+  },
+  "n1l006": {
+    "title": "Classical Nuance in Formal Modern Prose",
+    "description": "Decipher classical literary particles, archaic verbs, and historic grammatical patterns embedded in official declarations.",
+    "culturalNote": "Classical grammatical markers like 〜たるもの lend an elevated moral authority and gravity to Japanese statecraft.",
+    "dialogue": [
+      "Those who are legislators entrusted by the people must cast aside self-interest and serve the public good.",
+      "Indeed so. Corruption is an unpardonable act."
+    ]
+  },
+  "n1l007": {
+    "title": "Academic Research & Peer Review Discourse",
+    "description": "Engage in academic methodology, critique scientific hypotheses, and defend experimental findings.",
+    "culturalNote": "Japanese academic publications require rigorous modesty (謙譲) coupled with indisputable empirical substantiation.",
+    "dialogue": [
+      "Meticulous data analysis coupled with logical inference lends this paper immense persuasive power.",
+      "No matter what counter-arguments may arise, overturning these empirical results will be difficult."
+    ]
+  },
+  "n1l008": {
+    "title": "Corporate Governance & Strategic Mergers",
+    "description": "Debate shareholder rights, antitrust compliance, corporate acquisition, and executive fiduciary duties.",
+    "culturalNote": "Japan's revised Corporate Governance Code places heavy emphasis on independent outside directors and capital efficiency.",
+    "dialogue": [
+      "Due to intensifying market competition, we were forced into divesting unprofitable divisions.",
+      "As a board director, actions impairing shareholder value are unpardonable."
+    ]
+  },
+  "n1l009": {
+    "title": "Jurisprudence & Constitutional Philosophy",
+    "description": "Analyze legal precedents, judicial interpretations of constitutional rights, and legal equity.",
+    "culturalNote": "The Supreme Court of Japan (最高裁判所) serves as the ultimate arbiter of constitutional interpretation.",
+    "dialogue": [
+      "In accordance with changing times, flexible application of constitutional interpretation is being debated.",
+      "It is essential to uphold the rule of law while safeguarding the fundamental human rights of citizens."
+    ]
+  },
+  "n1l010": {
+    "title": "Literary Critique & Aesthetic Philosophy",
+    "description": "Explore the aesthetic concepts of 物の哀れ (mono no aware), 幽玄 (yuugen), and わび・さび (wabi-sabi) in classical and modern prose.",
+    "culturalNote": "Mono no aware (物の哀れ) captures the gentle sadness of impermanence, famously epitomized in The Tale of Genji (源氏物語).",
+    "dialogue": [
+      "The sense of transience that permeates classical literature can truly be called the crystallization of an aesthetic sensibility unique to Japan.",
+      "Even the simple sentiment of lamenting the falling cherry blossoms speaks to that profound spirituality."
+    ]
+  },
+  "n5l011": {
+    "title": "Days of the Week & Calendar",
+    "description": "Dates, days, months, and planning appointments.",
+    "culturalNote": "In Japan, understanding Days of the Week & Calendar reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Days of the Week & Calendar?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l012": {
+    "title": "At the Convenience Store",
+    "description": "Interacting with clerks at a Japanese konbini.",
+    "culturalNote": "In Japan, understanding At the Convenience Store reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding At the Convenience Store?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l013": {
+    "title": "Commuting by Train & Bus",
+    "description": "Buying tickets and riding public transport in Tokyo.",
+    "culturalNote": "In Japan, understanding Commuting by Train & Bus reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Commuting by Train & Bus?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l014": {
+    "title": "Weekend Plans & Invitations",
+    "description": "Inviting friends to go out using ~masen ka.",
+    "culturalNote": "In Japan, understanding Weekend Plans & Invitations reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Weekend Plans & Invitations?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l015": {
+    "title": "Home & Living Spaces",
+    "description": "Describing rooms, furniture, and where items are located.",
+    "culturalNote": "In Japan, understanding Home & Living Spaces reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Home & Living Spaces?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l016": {
+    "title": "Describing People & Appearance",
+    "description": "Adjectives for height, hair, clothing, and traits.",
+    "culturalNote": "In Japan, understanding Describing People & Appearance reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Describing People & Appearance?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l017": {
+    "title": "Colors & Clothes",
+    "description": "Naming colors, shoes, shirts, coats, and hats.",
+    "culturalNote": "In Japan, understanding Colors & Clothes reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Colors & Clothes?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l018": {
+    "title": "Health & At the Clinic",
+    "description": "Explaining symptoms like head aches and colds to a doctor.",
+    "culturalNote": "In Japan, understanding Health & At the Clinic reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Health & At the Clinic?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l019": {
+    "title": "Likes, Dislikes & Preferences",
+    "description": "Using suki, kirai, and jouzu to express tastes.",
+    "culturalNote": "In Japan, understanding Likes, Dislikes & Preferences reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Likes, Dislikes & Preferences?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l020": {
+    "title": "Seasons & Annual Japanese Holidays",
+    "description": "New Year's, Hanami, Obon, and Golden Week.",
+    "culturalNote": "In Japan, understanding Seasons & Annual Japanese Holidays reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Seasons & Annual Japanese Holidays?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l021": {
+    "title": "Giving & Receiving Gifts",
+    "description": "Social exchange etiquette with ageru and morau.",
+    "culturalNote": "In Japan, understanding Giving & Receiving Gifts reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Giving & Receiving Gifts?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l022": {
+    "title": "Asking Permission",
+    "description": "Politely asking if you may take photos or sit down.",
+    "culturalNote": "In Japan, understanding Asking Permission reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Asking Permission?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l023": {
+    "title": "Prohibitions & Rules",
+    "description": "Understanding signs and rules in museums and stations.",
+    "culturalNote": "In Japan, understanding Prohibitions & Rules reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Prohibitions & Rules?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l024": {
+    "title": "Explaining Reasons",
+    "description": "Giving straightforward explanations with kara.",
+    "culturalNote": "In Japan, understanding Explaining Reasons reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Explaining Reasons?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l025": {
+    "title": "Comparing Two Items",
+    "description": "Comparing speed, price, and quality between two choices.",
+    "culturalNote": "In Japan, understanding Comparing Two Items reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Comparing Two Items?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l026": {
+    "title": "Superlatives in a Group",
+    "description": "Saying which is the best, tallest, or tastiest.",
+    "culturalNote": "In Japan, understanding Superlatives in a Group reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Superlatives in a Group?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l027": {
+    "title": "Past Experiences",
+    "description": "Sharing travel and activity experiences with ~ta koto ga aru.",
+    "culturalNote": "In Japan, understanding Past Experiences reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Past Experiences?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l028": {
+    "title": "Sequential Actions",
+    "description": "Describing doing task A before moving to task B.",
+    "culturalNote": "In Japan, understanding Sequential Actions reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Sequential Actions?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l029": {
+    "title": "Expressing Desires",
+    "description": "Stating what you want to do or don't want to do.",
+    "culturalNote": "In Japan, understanding Expressing Desires reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Expressing Desires?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l030": {
+    "title": "Simultaneous Actions",
+    "description": "Doing two tasks at once with nagara.",
+    "culturalNote": "In Japan, understanding Simultaneous Actions reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Simultaneous Actions?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l031": {
+    "title": "Talking on the Phone",
+    "description": "Moshi moshi, answering, and taking simple messages.",
+    "culturalNote": "In Japan, understanding Talking on the Phone reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Talking on the Phone?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l032": {
+    "title": "Visiting a Friend's Home",
+    "description": "Ojama shimasu etiquette, gifts, and taking off shoes.",
+    "culturalNote": "In Japan, understanding Visiting a Friend's Home reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Visiting a Friend's Home?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l033": {
+    "title": "Expressing Change of State",
+    "description": "Becoming cold, turning 20, or choosing an option.",
+    "culturalNote": "In Japan, understanding Expressing Change of State reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Expressing Change of State?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l034": {
+    "title": "Giving Casual Advice",
+    "description": "Recommending healthy habits with ~hou ga ii.",
+    "culturalNote": "In Japan, understanding Giving Casual Advice reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Giving Casual Advice?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l035": {
+    "title": "Obligation & Necessity",
+    "description": "Expressing must-do tasks for school and work.",
+    "culturalNote": "In Japan, understanding Obligation & Necessity reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Obligation & Necessity?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l036": {
+    "title": "No Need / Optionality",
+    "description": "Reassuring someone that an action is unnecessary.",
+    "culturalNote": "In Japan, understanding No Need / Optionality reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding No Need / Optionality?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l037": {
+    "title": "Casual Speech with Friends",
+    "description": "Short forms, da, and friendly particle drops.",
+    "culturalNote": "In Japan, understanding Casual Speech with Friends reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Casual Speech with Friends?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l038": {
+    "title": "Asking for Polite Favors",
+    "description": "Requesting actions with ~te kudasai.",
+    "culturalNote": "In Japan, understanding Asking for Polite Favors reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Asking for Polite Favors?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l039": {
+    "title": "Lost and Found",
+    "description": "Reporting lost wallets and umbrellas at the kouban.",
+    "culturalNote": "In Japan, understanding Lost and Found reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Lost and Found?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l040": {
+    "title": "At the Post Office & Bank",
+    "description": "Mailing letters, exchanging currency, and ATMs.",
+    "culturalNote": "In Japan, understanding At the Post Office & Bank reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding At the Post Office & Bank?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l041": {
+    "title": "Cooking & Simple Recipes",
+    "description": "Kitchen verbs like cut, boil, fry, and mix.",
+    "culturalNote": "In Japan, understanding Cooking & Simple Recipes reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Cooking & Simple Recipes?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l042": {
+    "title": "Pets & Animal Vocabulary",
+    "description": "Dogs, cats, birds, and describing animal habits.",
+    "culturalNote": "In Japan, understanding Pets & Animal Vocabulary reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Pets & Animal Vocabulary?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l043": {
+    "title": "Sports & Fitness Activities",
+    "description": "Talking about gym visits, jogging, and soccer.",
+    "culturalNote": "In Japan, understanding Sports & Fitness Activities reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Sports & Fitness Activities?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l044": {
+    "title": "Anime, Manga & Pop Culture",
+    "description": "Discussing favorite series, genres, and conventions.",
+    "culturalNote": "In Japan, understanding Anime, Manga & Pop Culture reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Anime, Manga & Pop Culture?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l045": {
+    "title": "Sightseeing in Kyoto & Tokyo",
+    "description": "Visiting Asakusa, Shibuya, Kinkaku-ji, and Gion.",
+    "culturalNote": "In Japan, understanding Sightseeing in Kyoto & Tokyo reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Sightseeing in Kyoto & Tokyo?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l046": {
+    "title": "Japanese Table Manners",
+    "description": "Itadakimasu, gochisousama, and chopstick taboos.",
+    "culturalNote": "In Japan, understanding Japanese Table Manners reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Japanese Table Manners?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l047": {
+    "title": "Visiting Shrines & Temples",
+    "description": "Purification fountains, bowing, clapping, and omikuji.",
+    "culturalNote": "In Japan, understanding Visiting Shrines & Temples reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Visiting Shrines & Temples?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l048": {
+    "title": "Onsen & Public Bath Etiquette",
+    "description": "Washing before entering the hot spring waters.",
+    "culturalNote": "In Japan, understanding Onsen & Public Bath Etiquette reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Onsen & Public Bath Etiquette?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l049": {
+    "title": "Planning a Day Trip",
+    "description": "Packing, buying tickets, and checking departure times.",
+    "culturalNote": "In Japan, understanding Planning a Day Trip reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Planning a Day Trip?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n5l050": {
+    "title": "N5 Milestone: Review & Goals",
+    "description": "Reflecting on beginner foundations and stepping to N4.",
+    "culturalNote": "In Japan, understanding N5 Milestone: Review & Goals reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding N5 Milestone: Review & Goals?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l011": {
+    "title": "Suffering Passive - Meiwaku no Ukemi",
+    "description": "Expressing hardship caused by external occurrences.",
+    "culturalNote": "In Japan, understanding Suffering Passive - Meiwaku no Ukemi reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Suffering Passive - Meiwaku no Ukemi?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l012": {
+    "title": "Causative Form - ~Saseru",
+    "description": "Making or letting someone perform an action.",
+    "culturalNote": "In Japan, understanding Causative Form - ~Saseru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Causative Form - ~Saseru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l013": {
+    "title": "Causative-Passive Form",
+    "description": "Being forced or made to do something reluctantly.",
+    "culturalNote": "In Japan, understanding Causative-Passive Form reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Causative-Passive Form?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l014": {
+    "title": "Advance Preparations - ~Te Oku",
+    "description": "Taking preparatory action in anticipation of future events.",
+    "culturalNote": "In Japan, understanding Advance Preparations - ~Te Oku reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Advance Preparations - ~Te Oku?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l015": {
+    "title": "Regret & Completion - ~Te Shimau",
+    "description": "Finishing completely, or feeling regret over a mishap.",
+    "culturalNote": "In Japan, understanding Regret & Completion - ~Te Shimau reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Regret & Completion - ~Te Shimau?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l016": {
+    "title": "Trying Things Out - ~Te Miru",
+    "description": "Attempting something to discover what it is like.",
+    "culturalNote": "In Japan, understanding Trying Things Out - ~Te Miru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Trying Things Out - ~Te Miru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l017": {
+    "title": "Resulting State - ~Te Aru",
+    "description": "Describing states deliberately arranged by someone.",
+    "culturalNote": "In Japan, understanding Resulting State - ~Te Aru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Resulting State - ~Te Aru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l018": {
+    "title": "Progressive Change - ~Te Iku / ~Te Kuru",
+    "description": "Temporal progression of changes towards or away.",
+    "culturalNote": "In Japan, understanding Progressive Change - ~Te Iku / ~Te Kuru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Progressive Change - ~Te Iku / ~Te Kuru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l019": {
+    "title": "Conjecture by Appearance - ~Sou Da",
+    "description": "Judging status from visual appearance.",
+    "culturalNote": "In Japan, understanding Conjecture by Appearance - ~Sou Da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Conjecture by Appearance - ~Sou Da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l020": {
+    "title": "Reporting Hearsay - ~Sou Da",
+    "description": "Transmitting rumors or news heard from reports.",
+    "culturalNote": "In Japan, understanding Reporting Hearsay - ~Sou Da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Reporting Hearsay - ~Sou Da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l021": {
+    "title": "Resemblance - ~You Da / ~Mitai Da",
+    "description": "Similes and figurative resemblances.",
+    "culturalNote": "In Japan, understanding Resemblance - ~You Da / ~Mitai Da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Resemblance - ~You Da / ~Mitai Da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l022": {
+    "title": "Typical Characteristics - ~Rashii",
+    "description": "Showing true quintessential properties of a category.",
+    "culturalNote": "In Japan, understanding Typical Characteristics - ~Rashii reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Typical Characteristics - ~Rashii?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l023": {
+    "title": "Excessive Action - ~Sugiru",
+    "description": "Exceeding proper limits or doing to excess.",
+    "culturalNote": "In Japan, understanding Excessive Action - ~Sugiru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Excessive Action - ~Sugiru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l024": {
+    "title": "Ease & Difficulty - ~Yasui / ~Nikui",
+    "description": "Expressing whether tasks are easy or tough to execute.",
+    "culturalNote": "In Japan, understanding Ease & Difficulty - ~Yasui / ~Nikui reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Ease & Difficulty - ~Yasui / ~Nikui?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l025": {
+    "title": "Quoting Speech - ~To Iu / ~To Omou",
+    "description": "Reporting direct and indirect speech or thoughts.",
+    "culturalNote": "In Japan, understanding Quoting Speech - ~To Iu / ~To Omou reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Quoting Speech - ~To Iu / ~To Omou?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l026": {
+    "title": "Personal Decision - ~Koto ni Suru",
+    "description": "Consciously deciding upon a personal resolution.",
+    "culturalNote": "In Japan, understanding Personal Decision - ~Koto ni Suru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Personal Decision - ~Koto ni Suru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l027": {
+    "title": "External Decision - ~Koto ni Naru",
+    "description": "Explaining decisions arranged by circumstances or rules.",
+    "culturalNote": "In Japan, understanding External Decision - ~Koto ni Naru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding External Decision - ~Koto ni Naru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l028": {
+    "title": "Acquiring Habits - ~You ni Naru",
+    "description": "Reaching a new state of capability over time.",
+    "culturalNote": "In Japan, understanding Acquiring Habits - ~You ni Naru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Acquiring Habits - ~You ni Naru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l029": {
+    "title": "Conscious Effort - ~You ni Suru",
+    "description": "Striving continuously to maintain a good practice.",
+    "culturalNote": "In Japan, understanding Conscious Effort - ~You ni Suru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Conscious Effort - ~You ni Suru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l030": {
+    "title": "Without Doing - ~Naide / ~Zuni",
+    "description": "Carrying out actions without doing another.",
+    "culturalNote": "In Japan, understanding Without Doing - ~Naide / ~Zuni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Without Doing - ~Naide / ~Zuni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l031": {
+    "title": "Unexpected Contrast - ~Noni",
+    "description": "Expressing frustration at unexpected results.",
+    "culturalNote": "In Japan, understanding Unexpected Contrast - ~Noni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Unexpected Contrast - ~Noni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l032": {
+    "title": "Purposes - ~Tame ni vs ~You ni",
+    "description": "Distinguishing direct goals from potential conditions.",
+    "culturalNote": "In Japan, understanding Purposes - ~Tame ni vs ~You ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Purposes - ~Tame ni vs ~You ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l033": {
+    "title": "Role & Capacity - ~Toshite",
+    "description": "Stating someone's capacity, role, or qualification.",
+    "culturalNote": "In Japan, understanding Role & Capacity - ~Toshite reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Role & Capacity - ~Toshite?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l034": {
+    "title": "Causes & Agents - ~Ni Yotte",
+    "description": "Indicating agents of inventions or causes of events.",
+    "culturalNote": "In Japan, understanding Causes & Agents - ~Ni Yotte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Causes & Agents - ~Ni Yotte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l035": {
+    "title": "Regarding / Contrast - ~Ni Taishite",
+    "description": "Target of actions, or contrasting two elements.",
+    "culturalNote": "In Japan, understanding Regarding / Contrast - ~Ni Taishite reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Regarding / Contrast - ~Ni Taishite?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l036": {
+    "title": "Action Boundaries - ~Hajimeru / ~Owaru",
+    "description": "Pinpointing onset and conclusion of verb actions.",
+    "culturalNote": "In Japan, understanding Action Boundaries - ~Hajimeru / ~Owaru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Action Boundaries - ~Hajimeru / ~Owaru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l037": {
+    "title": "Persistence - ~Tsuzukeru",
+    "description": "Enduring continuously through actions.",
+    "culturalNote": "In Japan, understanding Persistence - ~Tsuzukeru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Persistence - ~Tsuzukeru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l038": {
+    "title": "Just Completed - ~Ta Bakari / ~Ta Tokoro",
+    "description": "Expressing actions that finished just moments ago.",
+    "culturalNote": "In Japan, understanding Just Completed - ~Ta Bakari / ~Ta Tokoro reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Just Completed - ~Ta Bakari / ~Ta Tokoro?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l039": {
+    "title": "Transitive and Intransitive Mastery",
+    "description": "Mastering key verb pairs in context.",
+    "culturalNote": "In Japan, understanding Transitive and Intransitive Mastery reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Transitive and Intransitive Mastery?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l040": {
+    "title": "Gentle Commands - ~Nasai",
+    "description": "Parental or teacher commands with soft authority.",
+    "culturalNote": "In Japan, understanding Gentle Commands - ~Nasai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Gentle Commands - ~Nasai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l041": {
+    "title": "Obligations & Prohibitions in Daily Life",
+    "description": "Rules on public trains, apartments, and sidewalks.",
+    "culturalNote": "In Japan, understanding Obligations & Prohibitions in Daily Life reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Obligations & Prohibitions in Daily Life?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l042": {
+    "title": "Workplace Phone Basics",
+    "description": "Taking polite office calls and transferring inquiries.",
+    "culturalNote": "In Japan, understanding Workplace Phone Basics reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Workplace Phone Basics?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l043": {
+    "title": "Writing Professional Inquiries",
+    "description": "Drafting structured inquiry emails in business style.",
+    "culturalNote": "In Japan, understanding Writing Professional Inquiries reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Writing Professional Inquiries?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l044": {
+    "title": "Handling Transport Delays",
+    "description": "Communicating with station staff about delays.",
+    "culturalNote": "In Japan, understanding Handling Transport Delays reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Handling Transport Delays?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l045": {
+    "title": "Renting an Apartment in Japan",
+    "description": "Key money (shikikin/reikin), contracts, and layouts.",
+    "culturalNote": "In Japan, understanding Renting an Apartment in Japan reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Renting an Apartment in Japan?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l046": {
+    "title": "City Office Registration",
+    "description": "Health insurance, my number, and address changes.",
+    "culturalNote": "In Japan, understanding City Office Registration reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding City Office Registration?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l047": {
+    "title": "Waste Separation Etiquette",
+    "description": "Burnable, non-burnable, plastics, and bottle bins.",
+    "culturalNote": "In Japan, understanding Waste Separation Etiquette reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Waste Separation Etiquette?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l048": {
+    "title": "Part-Time Job Interviewing",
+    "description": "Jiko-PR, schedule availability, and motivations.",
+    "culturalNote": "In Japan, understanding Part-Time Job Interviewing reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Part-Time Job Interviewing?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l049": {
+    "title": "Natural Disaster Preparedness",
+    "description": "Disaster alerts, emergency kits, and evacuation spots.",
+    "culturalNote": "In Japan, understanding Natural Disaster Preparedness reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Natural Disaster Preparedness?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n4l050": {
+    "title": "N4 Milestone: Practical Independence",
+    "description": "Consolidating elementary grammar into natural flow.",
+    "culturalNote": "In Japan, understanding N4 Milestone: Practical Independence reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding N4 Milestone: Practical Independence?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l011": {
+    "title": "High Certainty - ~Ni Chigai Nai",
+    "description": "Deducing conclusions with strong conviction.",
+    "culturalNote": "In Japan, understanding High Certainty - ~Ni Chigai Nai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding High Certainty - ~Ni Chigai Nai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l012": {
+    "title": "Apprehension & Risk - ~Osore ga Aru",
+    "description": "Warning against potential danger or disasters.",
+    "culturalNote": "In Japan, understanding Apprehension & Risk - ~Osore ga Aru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Apprehension & Risk - ~Osore ga Aru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l013": {
+    "title": "Severe Limit - ~Shika ~Nai",
+    "description": "Having zero other alternatives remaining.",
+    "culturalNote": "In Japan, understanding Severe Limit - ~Shika ~Nai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Severe Limit - ~Shika ~Nai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l014": {
+    "title": "Extreme Extent - ~Bakari da",
+    "description": "Describing tendencies that continually intensify.",
+    "culturalNote": "In Japan, understanding Extreme Extent - ~Bakari da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Extreme Extent - ~Bakari da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l015": {
+    "title": "Approximation & Limits - ~Hodo / ~Kurai",
+    "description": "Illustrating depth of feeling through comparisons.",
+    "culturalNote": "In Japan, understanding Approximation & Limits - ~Hodo / ~Kurai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Approximation & Limits - ~Hodo / ~Kurai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l016": {
+    "title": "Natural Limits - ~Kagiri",
+    "description": "As long as a state holds true.",
+    "culturalNote": "In Japan, understanding Natural Limits - ~Kagiri reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Natural Limits - ~Kagiri?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l017": {
+    "title": "Special Treatment - ~Ni Kagitte",
+    "description": "Irony of unfortunate coincidences.",
+    "culturalNote": "In Japan, understanding Special Treatment - ~Ni Kagitte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Special Treatment - ~Ni Kagitte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l018": {
+    "title": "Based on Evidence - ~Ni Motozuite",
+    "description": "Grounding conclusions on factual materials.",
+    "culturalNote": "In Japan, understanding Based on Evidence - ~Ni Motozuite reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Based on Evidence - ~Ni Motozuite?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l019": {
+    "title": "Along the Lines of - ~Ni Sotte",
+    "description": "Adhering to guidelines, policies, or paths.",
+    "culturalNote": "In Japan, understanding Along the Lines of - ~Ni Sotte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Along the Lines of - ~Ni Sotte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l020": {
+    "title": "In Response to - ~Ni Kotaete",
+    "description": "Meeting expectations, demands, or wishes.",
+    "culturalNote": "In Japan, understanding In Response to - ~Ni Kotaete reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding In Response to - ~Ni Kotaete?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l021": {
+    "title": "Depending on Context - ~Shidai da",
+    "description": "Showing that results depend entirely upon a factor.",
+    "culturalNote": "In Japan, understanding Depending on Context - ~Shidai da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Depending on Context - ~Shidai da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l022": {
+    "title": "Immediate Sequence - ~Shidai",
+    "description": "Taking action immediately after a condition clears.",
+    "culturalNote": "In Japan, understanding Immediate Sequence - ~Shidai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Immediate Sequence - ~Shidai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l023": {
+    "title": "Focus on Subject - ~O Megutte",
+    "description": "Controversies and discussions centered around an issue.",
+    "culturalNote": "In Japan, understanding Focus on Subject - ~O Megutte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Focus on Subject - ~O Megutte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l024": {
+    "title": "Starting Point - ~O Kawa kiri ni",
+    "description": "Marking the beginning of a sequential rollout.",
+    "culturalNote": "In Japan, understanding Starting Point - ~O Kawa kiri ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Starting Point - ~O Kawa kiri ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l025": {
+    "title": "Triggered by - ~O Kikkake ni",
+    "description": "Pinpointing catalytic life moments.",
+    "culturalNote": "In Japan, understanding Triggered by - ~O Kikkake ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Triggered by - ~O Kikkake ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l026": {
+    "title": "Target Audience - ~Muke / ~Muki",
+    "description": "Differentiating intentional target from natural fit.",
+    "culturalNote": "In Japan, understanding Target Audience - ~Muke / ~Muki reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Target Audience - ~Muke / ~Muki?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l027": {
+    "title": "Unusual Frequency - ~Gachi da",
+    "description": "Expressing unwelcome tendencies that recur often.",
+    "culturalNote": "In Japan, understanding Unusual Frequency - ~Gachi da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Unusual Frequency - ~Gachi da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l028": {
+    "title": "Physical Sensation - ~Gimi da",
+    "description": "Having slight symptoms or indications of a state.",
+    "culturalNote": "In Japan, understanding Physical Sensation - ~Gimi da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Physical Sensation - ~Gimi da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l029": {
+    "title": "Doubtful Validity - ~Koto ka",
+    "description": "Exclaiming how many times or how deeply.",
+    "culturalNote": "In Japan, understanding Doubtful Validity - ~Koto ka reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Doubtful Validity - ~Koto ka?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l030": {
+    "title": "No Wonder - ~Hazu da",
+    "description": "Deducing expected outcomes logically.",
+    "culturalNote": "In Japan, understanding No Wonder - ~Hazu da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding No Wonder - ~Hazu da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l031": {
+    "title": "Contrary to Expectation - ~Hazu ga Nai",
+    "description": "Categorically rejecting a possibility.",
+    "culturalNote": "In Japan, understanding Contrary to Expectation - ~Hazu ga Nai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Contrary to Expectation - ~Hazu ga Nai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l032": {
+    "title": "Needless to Say - ~Made mo Nai",
+    "description": "Affirming that a conclusion is obvious.",
+    "culturalNote": "In Japan, understanding Needless to Say - ~Made mo Nai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Needless to Say - ~Made mo Nai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l033": {
+    "title": "Only Just Barely - ~Yatto",
+    "description": "Emphasizing prolonged relief upon arrival.",
+    "culturalNote": "In Japan, understanding Only Just Barely - ~Yatto reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Only Just Barely - ~Yatto?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l034": {
+    "title": "Full of Imperfections - ~Darake",
+    "description": "Unpleasant abundance of dust, errors, or debt.",
+    "culturalNote": "In Japan, understanding Full of Imperfections - ~Darake reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Full of Imperfections - ~Darake?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l035": {
+    "title": "Covered with Residue - ~Mamire",
+    "description": "Surface coated with mud, blood, or sweat.",
+    "culturalNote": "In Japan, understanding Covered with Residue - ~Mamire reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Covered with Residue - ~Mamire?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l036": {
+    "title": "At the Occasion of - ~Sai shite",
+    "description": "Ceremonial or formal preparatory steps.",
+    "culturalNote": "In Japan, understanding At the Occasion of - ~Sai shite reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding At the Occasion of - ~Sai shite?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l037": {
+    "title": "Speaking of - ~To Ieba",
+    "description": "Triggering associations from a keyword.",
+    "culturalNote": "In Japan, understanding Speaking of - ~To Ieba reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Speaking of - ~To Ieba?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l038": {
+    "title": "Even If - ~Tatoe ~Temo",
+    "description": "Hypothetical resilience despite adverse conditions.",
+    "culturalNote": "In Japan, understanding Even If - ~Tatoe ~Temo reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Even If - ~Tatoe ~Temo?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l039": {
+    "title": "Extreme Hypothetical - ~Toshitara",
+    "description": "Exploring hypothetical scenarios.",
+    "culturalNote": "In Japan, understanding Extreme Hypothetical - ~Toshitara reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Extreme Hypothetical - ~Toshitara?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l040": {
+    "title": "In Terms of - ~Ue de",
+    "description": "Procedural sequences requiring prior clearance.",
+    "culturalNote": "In Japan, understanding In Terms of - ~Ue de reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding In Terms of - ~Ue de?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l041": {
+    "title": "Judging from - ~Kara Miru to",
+    "description": "Evaluating matters from a particular perspective.",
+    "culturalNote": "In Japan, understanding Judging from - ~Kara Miru to reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Judging from - ~Kara Miru to?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l042": {
+    "title": "Professional Office Mannerisms",
+    "description": "Polished sonkeigo and kenjougo in daily office meetings.",
+    "culturalNote": "In Japan, understanding Professional Office Mannerisms reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Professional Office Mannerisms?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l043": {
+    "title": "Negotiating Deadlines with Clients",
+    "description": "Handling delivery pushbacks cordially.",
+    "culturalNote": "In Japan, understanding Negotiating Deadlines with Clients reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Negotiating Deadlines with Clients?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l044": {
+    "title": "Japanese Medical Consultations",
+    "description": "Explaining nuanced aches and chronic ailments.",
+    "culturalNote": "In Japan, understanding Japanese Medical Consultations reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Japanese Medical Consultations?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l045": {
+    "title": "Banking, Taxes & Pensions in Japan",
+    "description": "Navigating nenkin, furasato nouzei, and kakutei shinkoku.",
+    "culturalNote": "In Japan, understanding Banking, Taxes & Pensions in Japan reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Banking, Taxes & Pensions in Japan?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l046": {
+    "title": "Participating in Neighborhood Chonaikai",
+    "description": "Civic duties, emergency drills, and local festivals.",
+    "culturalNote": "In Japan, understanding Participating in Neighborhood Chonaikai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Participating in Neighborhood Chonaikai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l047": {
+    "title": "Job Hunting (Shukatsu) Overview",
+    "description": "Writing motivating reason (shibou-douki) essays.",
+    "culturalNote": "In Japan, understanding Job Hunting (Shukatsu) Overview reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Job Hunting (Shukatsu) Overview?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l048": {
+    "title": "Interpreting Japanese News Broadcasts",
+    "description": "Dissecting formal broadcaster jargon.",
+    "culturalNote": "In Japan, understanding Interpreting Japanese News Broadcasts reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Interpreting Japanese News Broadcasts?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l049": {
+    "title": "Expressing Nuanced Opinions in Debates",
+    "description": "Cushion words (Kushon-kotoba) in tense debates.",
+    "culturalNote": "In Japan, understanding Expressing Nuanced Opinions in Debates reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Expressing Nuanced Opinions in Debates?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n3l050": {
+    "title": "N3 Milestone: Conquering the Intermediate Plateau",
+    "description": "Crossing from conversational learner to independent reader.",
+    "culturalNote": "In Japan, understanding N3 Milestone: Conquering the Intermediate Plateau reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding N3 Milestone: Conquering the Intermediate Plateau?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l011": {
+    "title": "Far from It - ~Dokoroka",
+    "description": "Directly defying anticipated outcomes.",
+    "culturalNote": "In Japan, understanding Far from It - ~Dokoroka reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Far from It - ~Dokoroka?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l012": {
+    "title": "At Most - ~Tatte",
+    "description": "Expressing futility regardless of current actions.",
+    "culturalNote": "In Japan, understanding At Most - ~Tatte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding At Most - ~Tatte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l013": {
+    "title": "As If - ~Bakari ni",
+    "description": "Blaming a single catastrophic trigger for failure.",
+    "culturalNote": "In Japan, understanding As If - ~Bakari ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding As If - ~Bakari ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l014": {
+    "title": "Every Single Time - ~Tabi ni",
+    "description": "Evoking recurrent nostalgic reactions.",
+    "culturalNote": "In Japan, understanding Every Single Time - ~Tabi ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Every Single Time - ~Tabi ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l015": {
+    "title": "Not Only But Also - ~Bakari ka",
+    "description": "Compounding accomplishments across spheres.",
+    "culturalNote": "In Japan, understanding Not Only But Also - ~Bakari ka reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Not Only But Also - ~Bakari ka?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l016": {
+    "title": "Nothing Short of - ~Ni Hokanaranai",
+    "description": "Asserting the definitive sole root cause.",
+    "culturalNote": "In Japan, understanding Nothing Short of - ~Ni Hokanaranai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Nothing Short of - ~Ni Hokanaranai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l017": {
+    "title": "Natural Consequence - ~Mono da",
+    "description": "Reflecting upon human nature and natural truths.",
+    "culturalNote": "In Japan, understanding Natural Consequence - ~Mono da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Natural Consequence - ~Mono da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l018": {
+    "title": "Reflecting Nostalgia - ~Mono da",
+    "description": "Nostalgically recollecting past youth.",
+    "culturalNote": "In Japan, understanding Reflecting Nostalgia - ~Mono da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Reflecting Nostalgia - ~Mono da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l019": {
+    "title": "Deep Emotion - ~Mono da",
+    "description": "Expressing deep philosophical awe.",
+    "culturalNote": "In Japan, understanding Deep Emotion - ~Mono da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Deep Emotion - ~Mono da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l020": {
+    "title": "Self-Discipline - ~Beki dewa Nai",
+    "description": "Articulating moral imperatives and ethics.",
+    "culturalNote": "In Japan, understanding Self-Discipline - ~Beki dewa Nai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Self-Discipline - ~Beki dewa Nai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l021": {
+    "title": "Regret Over Duty - ~Beki Datta",
+    "description": "Expressing remorse over unfulfilled duty.",
+    "culturalNote": "In Japan, understanding Regret Over Duty - ~Beki Datta reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Regret Over Duty - ~Beki Datta?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l022": {
+    "title": "I Wonder If It Can Be - ~Mono ka",
+    "description": "Vigorously repudiating an assertion.",
+    "culturalNote": "In Japan, understanding I Wonder If It Can Be - ~Mono ka reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding I Wonder If It Can Be - ~Mono ka?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l023": {
+    "title": "Due to Sensitivity - ~Amari",
+    "description": "Psychological overwhelm impeding normal function.",
+    "culturalNote": "In Japan, understanding Due to Sensitivity - ~Amari reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Due to Sensitivity - ~Amari?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l024": {
+    "title": "No Choice Given Rules - ~Zaru o Enai",
+    "description": "Official institutional concession under pressure.",
+    "culturalNote": "In Japan, understanding No Choice Given Rules - ~Zaru o Enai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding No Choice Given Rules - ~Zaru o Enai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l025": {
+    "title": "Hard to Do Emotionally - ~Gatai",
+    "description": "Psychological barrier preventing belief or forgiveness.",
+    "culturalNote": "In Japan, understanding Hard to Do Emotionally - ~Gatai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Hard to Do Emotionally - ~Gatai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l026": {
+    "title": "Cannot Complete - ~Kirenai",
+    "description": "Inexhaustible quantity surpassing completion.",
+    "culturalNote": "In Japan, understanding Cannot Complete - ~Kirenai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Cannot Complete - ~Kirenai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l027": {
+    "title": "Completely Consumed - ~Kiru",
+    "description": "Exhausting energy or resources to the last drop.",
+    "culturalNote": "In Japan, understanding Completely Consumed - ~Kiru reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Completely Consumed - ~Kiru?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l028": {
+    "title": "Can/Cannot Bear - ~Eru / ~Enai",
+    "description": "Formal evaluation of theoretical possibilities.",
+    "culturalNote": "In Japan, understanding Can/Cannot Bear - ~Eru / ~Enai reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Can/Cannot Bear - ~Eru / ~Enai?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l029": {
+    "title": "On the Pretense of - ~Ni Kakotsukete",
+    "description": "Using a pretext to mask personal intentions.",
+    "culturalNote": "In Japan, understanding On the Pretense of - ~Ni Kakotsukete reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding On the Pretense of - ~Ni Kakotsukete?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l030": {
+    "title": "Regardless of Outcome - ~Dou Are",
+    "description": "Steadfast resolve indifferent to consequences.",
+    "culturalNote": "In Japan, understanding Regardless of Outcome - ~Dou Are reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Regardless of Outcome - ~Dou Are?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l031": {
+    "title": "Formal Corporate Proposals",
+    "description": "Drafting structured enterprise proposals.",
+    "culturalNote": "In Japan, understanding Formal Corporate Proposals reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Formal Corporate Proposals?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l032": {
+    "title": "Client Contract Negotiations",
+    "description": "Terms, liability limits, and NDA stipulations.",
+    "culturalNote": "In Japan, understanding Client Contract Negotiations reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Client Contract Negotiations?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l033": {
+    "title": "Corporate Apologies & Crisis Management",
+    "description": "Corporate crisis containment phrasing.",
+    "culturalNote": "In Japan, understanding Corporate Apologies & Crisis Management reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Corporate Apologies & Crisis Management?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l034": {
+    "title": "Financial Statement Analysis",
+    "description": "Operating income, balance sheets, and dividends.",
+    "culturalNote": "In Japan, understanding Financial Statement Analysis reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Financial Statement Analysis?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l035": {
+    "title": "Cross-Cultural Team Leadership",
+    "description": "Facilitating multinational consensus in Tokyo offices.",
+    "culturalNote": "In Japan, understanding Cross-Cultural Team Leadership reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Cross-Cultural Team Leadership?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l036": {
+    "title": "Intellectual Property & Patents",
+    "description": "Trademarks, trade secrets, and compliance.",
+    "culturalNote": "In Japan, understanding Intellectual Property & Patents reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Intellectual Property & Patents?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l037": {
+    "title": "Labor Law & Workplace Rights",
+    "description": "Overtime regulations, labor boards, and severance.",
+    "culturalNote": "In Japan, understanding Labor Law & Workplace Rights reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Labor Law & Workplace Rights?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l038": {
+    "title": "Editorial Column Interpretation",
+    "description": "Analyzing high-level op-ed literary structure.",
+    "culturalNote": "In Japan, understanding Editorial Column Interpretation reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Editorial Column Interpretation?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l039": {
+    "title": "Analyzing Modern Societal Issues",
+    "description": "Demographic crisis and social pension debates.",
+    "culturalNote": "In Japan, understanding Analyzing Modern Societal Issues reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Analyzing Modern Societal Issues?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l040": {
+    "title": "Artificial Intelligence & Labor Dynamics",
+    "description": "Technological shifts in Japanese conglomerates.",
+    "culturalNote": "In Japan, understanding Artificial Intelligence & Labor Dynamics reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Artificial Intelligence & Labor Dynamics?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l041": {
+    "title": "Environmental Policies & Green Transition",
+    "description": "Carbon neutrality pledges and industrial transitions.",
+    "culturalNote": "In Japan, understanding Environmental Policies & Green Transition reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Environmental Policies & Green Transition?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l042": {
+    "title": "Japanese Consumer Psychology",
+    "description": "Omotenashi, consumer trust, and packaging finesse.",
+    "culturalNote": "In Japan, understanding Japanese Consumer Psychology reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Japanese Consumer Psychology?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l043": {
+    "title": "Navigating Japanese Legal Documents",
+    "description": "Deciphering dense contractual legalese.",
+    "culturalNote": "In Japan, understanding Navigating Japanese Legal Documents reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Navigating Japanese Legal Documents?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l044": {
+    "title": "Academic Research Abstract Writing",
+    "description": "Academic precision in peer-reviewed formats.",
+    "culturalNote": "In Japan, understanding Academic Research Abstract Writing reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Academic Research Abstract Writing?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l045": {
+    "title": "Debate: Remote Work vs Office Attendance",
+    "description": "Work-from-home vs face-to-face synergy debates.",
+    "culturalNote": "In Japan, understanding Debate: Remote Work vs Office Attendance reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Debate: Remote Work vs Office Attendance?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l046": {
+    "title": "Japanese Architectural Philosophy",
+    "description": "Kenzo Tange, Kengo Kuma, and spatial aesthetics.",
+    "culturalNote": "In Japan, understanding Japanese Architectural Philosophy reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Japanese Architectural Philosophy?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l047": {
+    "title": "Wabi-Sabi & The Philosophy of Imperfection",
+    "description": "Tea ceremony, kintsugi, and mindfulness in crafts.",
+    "culturalNote": "In Japan, understanding Wabi-Sabi & The Philosophy of Imperfection reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Wabi-Sabi & The Philosophy of Imperfection?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l048": {
+    "title": "History of the Showa Economic Miracle",
+    "description": "Keiretsu, MITI, and industrial resurrection.",
+    "culturalNote": "In Japan, understanding History of the Showa Economic Miracle reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding History of the Showa Economic Miracle?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l049": {
+    "title": "Sustainable Tourism in Historical Districts",
+    "description": "Balancing inbound tourism with residential serenity.",
+    "culturalNote": "In Japan, understanding Sustainable Tourism in Historical Districts reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Sustainable Tourism in Historical Districts?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n2l050": {
+    "title": "N2 Milestone: Advanced Fluency and Professional Autonomy",
+    "description": "Mastering sophisticated nuance in professional life.",
+    "culturalNote": "In Japan, understanding N2 Milestone: Advanced Fluency and Professional Autonomy reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding N2 Milestone: Advanced Fluency and Professional Autonomy?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l011": {
+    "title": "Regardless of Fate - ~Nari to mo",
+    "description": "Yearning to offer even the slightest sliver of support.",
+    "culturalNote": "In Japan, understanding Regardless of Fate - ~Nari to mo reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Regardless of Fate - ~Nari to mo?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l012": {
+    "title": "Irrespective of Criteria - ~Ikan ni Yorazu",
+    "description": "Absolute formal non-negotiability.",
+    "culturalNote": "In Japan, understanding Irrespective of Criteria - ~Ikan ni Yorazu reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Irrespective of Criteria - ~Ikan ni Yorazu?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l013": {
+    "title": "Governed by - ~Ikan da",
+    "description": "Total existential dependence on an underlying criterion.",
+    "culturalNote": "In Japan, understanding Governed by - ~Ikan da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Governed by - ~Ikan da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l014": {
+    "title": "No Wonder at All - ~Koto nashi ni",
+    "description": "Precluding triumphs without rigorous sacrifice.",
+    "culturalNote": "In Japan, understanding No Wonder at All - ~Koto nashi ni reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding No Wonder at All - ~Koto nashi ni?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l015": {
+    "title": "Never Ever - ~Koto naku",
+    "description": "Uninterrupted lifelong resolve without faltering.",
+    "culturalNote": "In Japan, understanding Never Ever - ~Koto naku reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Never Ever - ~Koto naku?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l016": {
+    "title": "As Long As Breath Holds - ~Kagiri da",
+    "description": "Utmost emotional limit of personal joy or grief.",
+    "culturalNote": "In Japan, understanding As Long As Breath Holds - ~Kagiri da reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding As Long As Breath Holds - ~Kagiri da?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l017": {
+    "title": "Surpassing Human Limits - ~O Koete",
+    "description": "Timeless trans-generational appeal.",
+    "culturalNote": "In Japan, understanding Surpassing Human Limits - ~O Koete reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Surpassing Human Limits - ~O Koete?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l018": {
+    "title": "In the Guise of - ~O Yosotte",
+    "description": "Deceptive malice cloaked in benevolent pretenses.",
+    "culturalNote": "In Japan, understanding In the Guise of - ~O Yosotte reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding In the Guise of - ~O Yosotte?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l019": {
+    "title": "Beyond Bounds of Propriety - ~O Kaerimizu",
+    "description": "Discarding personal self-preservation for righteousness.",
+    "culturalNote": "In Japan, understanding Beyond Bounds of Propriety - ~O Kaerimizu reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Beyond Bounds of Propriety - ~O Kaerimizu?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l020": {
+    "title": "In Direct Contradiction - ~Ni Hanshite",
+    "description": "Statistical defiance of established predictive models.",
+    "culturalNote": "In Japan, understanding In Direct Contradiction - ~Ni Hanshite reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding In Direct Contradiction - ~Ni Hanshite?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l021": {
+    "title": "Executive Boardroom Deliberations",
+    "description": "High-stakes mergers, acquisitions, and fiduciary governance.",
+    "culturalNote": "In Japan, understanding Executive Boardroom Deliberations reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Executive Boardroom Deliberations?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l022": {
+    "title": "Constitutional Jurisprudence & Case Law",
+    "description": "Judicial review, precedents, and civil liberties.",
+    "culturalNote": "In Japan, understanding Constitutional Jurisprudence & Case Law reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Constitutional Jurisprudence & Case Law?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l023": {
+    "title": "Diplomatic Protocols & Treaties",
+    "description": "Bilateral treaties, conventions, and diplomatic nuances.",
+    "culturalNote": "In Japan, understanding Diplomatic Protocols & Treaties reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Diplomatic Protocols & Treaties?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l024": {
+    "title": "Macroeconomic Monetary Policy",
+    "description": "Monetary easing, inflation targets, and yield curves.",
+    "culturalNote": "In Japan, understanding Macroeconomic Monetary Policy reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Macroeconomic Monetary Policy?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l025": {
+    "title": "Bioethics in Modern Gene Editing",
+    "description": "CRISPR ethics, germline therapies, and philosophical bounds.",
+    "culturalNote": "In Japan, understanding Bioethics in Modern Gene Editing reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Bioethics in Modern Gene Editing?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l026": {
+    "title": "Civil Code & Property Rights",
+    "description": "Tort liability, contractual restitution, and jurisprudence.",
+    "culturalNote": "In Japan, understanding Civil Code & Property Rights reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Civil Code & Property Rights?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l027": {
+    "title": "Corporate Governance & Shareholder Activism",
+    "description": "Institutional investors, proxy voting, and ESG audits.",
+    "culturalNote": "In Japan, understanding Corporate Governance & Shareholder Activism reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Corporate Governance & Shareholder Activism?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l028": {
+    "title": "Classical Literary Nuances: Soseki & Akutagawa",
+    "description": "Psychological alienation in Meiji intellectual prose.",
+    "culturalNote": "In Japan, understanding Classical Literary Nuances: Soseki & Akutagawa reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Classical Literary Nuances: Soseki & Akutagawa?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l029": {
+    "title": "Modern Haiku & Waka Poetic Aesthetics",
+    "description": "Spatial suspension, seasonal resonance, and kireji.",
+    "culturalNote": "In Japan, understanding Modern Haiku & Waka Poetic Aesthetics reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Modern Haiku & Waka Poetic Aesthetics?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l030": {
+    "title": "Philosophical Argumentation: Nishida Kitaro",
+    "description": "Pure experience, basho ontology, and Kyoto school.",
+    "culturalNote": "In Japan, understanding Philosophical Argumentation: Nishida Kitaro reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Philosophical Argumentation: Nishida Kitaro?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l031": {
+    "title": "Geopolitical Security & Supply Chains",
+    "description": "Critical materials resilience and global alliances.",
+    "culturalNote": "In Japan, understanding Geopolitical Security & Supply Chains reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Geopolitical Security & Supply Chains?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l032": {
+    "title": "Nuclear Energy & National Energy Mix",
+    "description": "Energy self-sufficiency vs seismic vulnerability.",
+    "culturalNote": "In Japan, understanding Nuclear Energy & National Energy Mix reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Nuclear Energy & National Energy Mix?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l033": {
+    "title": "Corporate Succession in Family Dynasties",
+    "description": "Centuries-old shinise longevity and lineage continuity.",
+    "culturalNote": "In Japan, understanding Corporate Succession in Family Dynasties reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Corporate Succession in Family Dynasties?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l034": {
+    "title": "Quantum Computing & Cryptographic Frontiers",
+    "description": "Post-quantum algorithms and computational supremacy.",
+    "culturalNote": "In Japan, understanding Quantum Computing & Cryptographic Frontiers reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Quantum Computing & Cryptographic Frontiers?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l035": {
+    "title": "Space Exploration Treaties & Commercial Mining",
+    "description": "Lunar accords, space debris, and orbital commerce.",
+    "culturalNote": "In Japan, understanding Space Exploration Treaties & Commercial Mining reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Space Exploration Treaties & Commercial Mining?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l036": {
+    "title": "Artificial Intelligence Consciousness & Agency",
+    "description": "Sentience thresholds and legal personhood in autonomous agents.",
+    "culturalNote": "In Japan, understanding Artificial Intelligence Consciousness & Agency reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Artificial Intelligence Consciousness & Agency?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l037": {
+    "title": "Urban Regeneration in Megacities",
+    "description": "Vertical cities, earthquake resilience, and green belts.",
+    "culturalNote": "In Japan, understanding Urban Regeneration in Megacities reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Urban Regeneration in Megacities?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l038": {
+    "title": "Preserving Intangible Cultural Heritage",
+    "description": "Master lacquerware, kabuki lineages, and state subsidies.",
+    "culturalNote": "In Japan, understanding Preserving Intangible Cultural Heritage reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Preserving Intangible Cultural Heritage?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l039": {
+    "title": "Neuroscience of Language Acquisition",
+    "description": "Synaptic plasticity and neural substrates of multilingualism.",
+    "culturalNote": "In Japan, understanding Neuroscience of Language Acquisition reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Neuroscience of Language Acquisition?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l040": {
+    "title": "Environmental Law & Carbon Taxation",
+    "description": "Emissions trading mechanisms and trade competitiveness.",
+    "culturalNote": "In Japan, understanding Environmental Law & Carbon Taxation reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Environmental Law & Carbon Taxation?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l041": {
+    "title": "Labor Market Polarization & Precariat",
+    "description": "Dual labor markets and social safety net restructuring.",
+    "culturalNote": "In Japan, understanding Labor Market Polarization & Precariat reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Labor Market Polarization & Precariat?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l042": {
+    "title": "Postmodern Japanese Architecture",
+    "description": "Metabolism, capsule towers, and organic modularity.",
+    "culturalNote": "In Japan, understanding Postmodern Japanese Architecture reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Postmodern Japanese Architecture?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l043": {
+    "title": "Zen Epistemology in Modern Work",
+    "description": "Mu-shin, koan meditation, and executive clarity.",
+    "culturalNote": "In Japan, understanding Zen Epistemology in Modern Work reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Zen Epistemology in Modern Work?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l044": {
+    "title": "Sino-Japanese Literary Lexicon (Kango)",
+    "description": "How Meiji scholars coined terms for philosophy and science.",
+    "culturalNote": "In Japan, understanding Sino-Japanese Literary Lexicon (Kango) reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Sino-Japanese Literary Lexicon (Kango)?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l045": {
+    "title": "Medical Ethics in End-of-Life Decisions",
+    "description": "Living wills, palliative care, and bioethics boards.",
+    "culturalNote": "In Japan, understanding Medical Ethics in End-of-Life Decisions reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Medical Ethics in End-of-Life Decisions?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l046": {
+    "title": "Cyber Warfare & Critical Infrastructure Defense",
+    "description": "Zero-trust paradigms and state-sponsored intrusions.",
+    "culturalNote": "In Japan, understanding Cyber Warfare & Critical Infrastructure Defense reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Cyber Warfare & Critical Infrastructure Defense?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l047": {
+    "title": "Micro-Financing & Global Humanitarian Aid",
+    "description": "SDG metrics, micro-credit, and grant efficacy.",
+    "culturalNote": "In Japan, understanding Micro-Financing & Global Humanitarian Aid reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Micro-Financing & Global Humanitarian Aid?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l048": {
+    "title": "Historical Dialectology & Regional Accents",
+    "description": "Kansai vs Kanto pitch, Tohoku shifts, and linguistic roots.",
+    "culturalNote": "In Japan, understanding Historical Dialectology & Regional Accents reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Historical Dialectology & Regional Accents?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l049": {
+    "title": "Hermeneutics of Traditional Performing Arts",
+    "description": "Subtle beauty (Yugen), flower metaphors, and artistic immortality.",
+    "culturalNote": "In Japan, understanding Hermeneutics of Traditional Performing Arts reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding Hermeneutics of Traditional Performing Arts?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  },
+  "n1l050": {
+    "title": "N1 Pinnacle: Native-Level Artistry & Intellectual Fluency",
+    "description": "Synthesizing deep linguistic artistry into effortless mastery.",
+    "culturalNote": "In Japan, understanding N1 Pinnacle: Native-Level Artistry & Intellectual Fluency reflects both linguistic proficiency and cultural etiquette.",
+    "dialogue": [
+      "Could I consult with you regarding N1 Pinnacle: Native-Level Artistry & Intellectual Fluency?",
+      "Yes, gladly. What is it about?",
+      "Could you explain this point in more detail?",
+      "Certainly. I will explain it step by step."
+    ]
+  }
+}

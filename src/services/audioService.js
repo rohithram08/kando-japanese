@@ -183,7 +183,13 @@ class AudioService {
   // Speak a full sentence with word highlighting
   speakWithHighlight(text, onWordBoundary) {
     return new Promise((resolve) => {
-      this.synthesis.cancel()
+      if (!this.synthesis) {
+        resolve()
+        return
+      }
+
+      this.stop()
+      const currentSession = this.sessionId
 
       const utterance = new SpeechSynthesisUtterance(text)
       utterance.lang = 'ja-JP'
@@ -193,15 +199,33 @@ class AudioService {
         utterance.voice = this.japaneseVoice
       }
 
+      utterance.onstart = () => {
+        if (currentSession !== this.sessionId) return
+        this.isPlaying = true
+      }
+
       utterance.onboundary = (event) => {
+        if (currentSession !== this.sessionId) return
         if (event.name === 'word') {
           onWordBoundary?.(event.charIndex, event.charLength)
         }
       }
 
-      utterance.onend = resolve
-      utterance.onerror = resolve
+      utterance.onend = () => {
+        if (currentSession !== this.sessionId) return
+        this.isPlaying = false
+        this.currentUtterance = null
+        resolve()
+      }
 
+      utterance.onerror = () => {
+        if (currentSession !== this.sessionId) return
+        this.isPlaying = false
+        this.currentUtterance = null
+        resolve()
+      }
+
+      this.currentUtterance = utterance
       this.synthesis.speak(utterance)
     })
   }

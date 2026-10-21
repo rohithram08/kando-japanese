@@ -37,4 +37,15 @@ checkpoint-c-browser-results.json
 # Local reference materials
 sample_application_duolingo/
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Backend uploads
+backend/uploads/
+uploads/
+
+
+
 

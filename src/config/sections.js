@@ -156,26 +156,16 @@ export const SECTIONS = [
     statLabel: 'mastered',
   },
   {
-    id: 'lessons',
-    label: 'Lessons',
-    shortLabel: 'Lessons',
-    path: '/lessons',
-    icon: BookOpen,
-    tint: 'blue',
-    group: 'learn',
-    description: 'Structured courses from N5 to N1',
-    statKey: 'lessonsCompleted',
-    statLabel: 'completed',
-  },
-  {
     id: 'reading',
     label: 'Graded Reader',
-    shortLabel: 'Reading',
+    shortLabel: 'Graded Reader',
     path: '/reading',
     icon: BookOpen,
     tint: 'teal',
     group: 'learn',
-    description: 'JLPT-aligned graded reading practice',
+    description: 'Learn Japanese naturally through graded stories with vocabulary, grammar, and quizzes',
+    statKey: 'lessonsCompleted',
+    statLabel: 'completed',
   },
   {
     id: 'grammar',
@@ -210,16 +200,6 @@ export const SECTIONS = [
     description: 'Build your word bank with flashcards',
     statKey: 'vocabLearned',
     statLabel: 'learned',
-  },
-  {
-    id: 'quiz',
-    label: 'Quiz',
-    shortLabel: 'Quiz',
-    path: '/quiz',
-    icon: Swords,
-    tint: 'violet',
-    group: 'practice',
-    description: 'Test yourself against the clock',
   },
   {
     id: 'review',
@@ -317,4 +297,4 @@ export const sectionsByGroup = (group) => SECTIONS.filter((s) => s.group === gro
 
 // Friendly fallback used by Navbar/page headers for routes with no exact match
 // (e.g. nested routes like /lessons/N5/3 or /profile/:userId)
-export const DEFAULT_PAGE_META = { label: 'Nihongo Master', icon: Sparkles, tint: 'red' }
+export const DEFAULT_PAGE_META = { label: 'Kando Japanese', icon: Sparkles, tint: 'red' }

@@ -23,7 +23,7 @@ describe('Lessons Routes Handlers', () => {
     expect(next).not.toHaveBeenCalled();
     expect(jsonResult).toBeDefined();
     expect(jsonResult.lessons).toBeInstanceOf(Array);
-    expect(jsonResult.lessons.length).toBe(5);
+    expect(jsonResult.lessons.length).toBe(50);
     expect(jsonResult.lessons[0].id).toBe('n5l001');
   });
 

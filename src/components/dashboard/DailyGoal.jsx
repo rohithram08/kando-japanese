@@ -1,25 +1,30 @@
-// src/components/dashboard/DailyGoal.jsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Target, Check, Zap, Sparkles, TrendingUp } from 'lucide-react'
+import { Target, Check, Sparkles, TrendingUp } from 'lucide-react'
 import { useDailyGoalsStore, GOAL_THRESHOLDS } from '../../store/dailyGoalsStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useSettingsStore } from '../../store/settingsStore'
+import { useAuthStore } from '../../store/authStore'
 import { useI18n } from '../../i18n'
+import toast from 'react-hot-toast'
+import { playFanfare } from '../../utils/soundEffects'
+import { AnimatedLiquidWaveIcon } from '../common/WaveXPBadge'
 
 export default function DailyGoal() {
   const { t } = useI18n()
+  const user = useAuthStore((s) => s.user)
   const progress = useDailyGoalsStore()
   const dailyXP = useProgressStore((s) => s.dailyXP)
+  const awardDailyGoalXP = useProgressStore((s) => s.awardDailyGoalXP)
   const xpGoal = useSettingsStore((s) => s.dailyGoal)
 
   const dailyGoals = [
     {
       id: 'lesson',
-      label: t('dashboard.goal_lesson', 'Complete a lesson'),
+      label: t('dashboard.goal_lesson', 'Complete a story lesson'),
       emoji: '📚',
       xp: 15,
-      category: t('nav.lessons', 'Lessons'),
+      category: t('nav.reading', 'Story Lessons'),
     },
     {
       id: 'review',
@@ -58,6 +63,20 @@ export default function DailyGoal() {
   const radius = 15.9
   const circumference = 2 * Math.PI * radius
 
+  useEffect(() => {
+    if (!allDone) return
+    try {
+      const today = new Intl.DateTimeFormat('en-CA').format(new Date())
+      const claimedDate = localStorage.getItem('nihongo_daily_goal_claimed')
+      if (claimedDate !== today) {
+        localStorage.setItem('nihongo_daily_goal_claimed', today)
+        awardDailyGoalXP(user?.id)
+        playFanfare()
+        toast.success(t('toast.daily_goal_bonus', 'Daily Goals Complete! Bonus +50 XP! 🎯'), { icon: '🌟' })
+      }
+    } catch {}
+  }, [allDone, awardDailyGoalXP, user?.id, t])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -77,14 +96,14 @@ export default function DailyGoal() {
             {t('dashboard.daily_goals_desc', 'Complete tasks to earn XP')}
           </p>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-500/20">
-          <Zap className="w-3 h-3" />
-          {earnedXP}/{totalXP} XP
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/20">
+          <AnimatedLiquidWaveIcon size={16} />
+          {earnedXP}/{totalXP} Wave XP
         </div>
       </div>
 
       <div className="card-body">
-        {/* Daily XP Goal (from Settings → Study Preferences) */}
+        {/* Daily Wave XP Goal (from Settings → Study Preferences) */}
         <div className={`flex items-center gap-3 mb-5 p-3 rounded-xl border ${
           xpGoalHit
             ? 'bg-green-50 dark:bg-green-500/10 border-green-100 dark:border-green-500/20'
@@ -97,9 +116,9 @@ export default function DailyGoal() {
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-foreground">Daily XP Goal</span>
+              <span className="text-xs font-semibold text-foreground">Daily Wave XP Goal</span>
               <span className={`text-xs font-bold ${xpGoalHit ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`}>
-                {dailyXP}/{xpGoal} XP
+                {dailyXP}/{xpGoal} Wave XP
               </span>
             </div>
             <div className="mt-1.5 h-1.5 rounded-full overflow-hidden bg-muted">
@@ -203,7 +222,7 @@ export default function DailyGoal() {
                 <div className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold flex-shrink-0 ${
                   isDone ? 'bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-muted text-muted-foreground'
                 }`}>
-                  {isDone ? <><Check className="w-3 h-3" />{t('common.complete', 'Done')}</> : <>+{goal.xp} XP</>}
+                  {isDone ? <><Check className="w-3 h-3" />{t('common.complete', 'Done')}</> : <>+{goal.xp} Wave XP</>}
                 </div>
               </motion.div>
             )

@@ -197,7 +197,7 @@ export default function KanaPage() {
       {/* ── Top Header & Script Selector ──────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 mb-2">
             <Sparkles className="w-3.5 h-3.5" />
             Beginner Japanese Foundations
           </div>
@@ -215,7 +215,7 @@ export default function KanaPage() {
             onClick={() => setScript('hiragana')}
             className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
               script === 'hiragana'
-                ? 'bg-purple-600 text-white shadow-md'
+                ? 'bg-rose-600 text-white shadow-md'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
@@ -227,7 +227,7 @@ export default function KanaPage() {
             onClick={() => setScript('katakana')}
             className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
               script === 'katakana'
-                ? 'bg-purple-600 text-white shadow-md'
+                ? 'bg-rose-600 text-white shadow-md'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
@@ -256,7 +256,7 @@ export default function KanaPage() {
               </div>
             </div>
 
-            <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
               <Star className="w-6 h-6 fill-current" />
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function KanaPage() {
           {/* Progress track */}
           <div className="w-full h-2.5 rounded-full bg-muted overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-purple-600 to-indigo-600"
+              className="h-full bg-gradient-to-r from-rose-500 to-pink-600"
               initial={{ width: 0 }}
               animate={{ width: `${scriptStats.percent}%` }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -314,7 +314,7 @@ export default function KanaPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-bold transition-all whitespace-nowrap ${
                 isActive
-                  ? 'bg-purple-600 text-white shadow-md'
+                  ? 'bg-rose-600 text-white shadow-md'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
               }`}
             >

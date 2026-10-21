@@ -20,7 +20,7 @@ async function bundleData() {
         jlptLevel: item.level,
         title: item.pattern,
         content: `Romaji: ${item.romaji}\nMeaning: ${item.meaning}\nFormation: ${item.formation}\nExplanation: ${item.explanation}\nExamples: ${item.examples.map(e => `${e.jp} - ${e.en}`).join(' | ')}`,
-        source: 'NihonGo Master Grammar Data',
+        source: 'Kando Japanese Grammar Data',
         tags: item.tags || []
       });
     }
@@ -35,7 +35,7 @@ async function bundleData() {
         jlptLevel: item.level,
         title: item.kanji,
         content: `Readings: ON (${item.readings.on.join(', ')}) KUN (${item.readings.kun.join(', ')})\nMeaning: ${item.meaning}\nStrokes: ${item.strokeCount}\nExamples: ${item.examples.map(e => `${e.word} (${e.reading}) - ${e.meaning}`).join(' | ')}`,
-        source: 'NihonGo Master Kanji Data',
+        source: 'Kando Japanese Kanji Data',
         tags: []
       });
     }
@@ -50,7 +50,7 @@ async function bundleData() {
         jlptLevel: item.level,
         title: item.word,
         content: `Reading: ${item.reading}\nRomaji: ${item.romaji || ''}\nMeaning: ${item.meaning}\nPart of Speech: ${item.partOfSpeech}\nExample: ${item.example.jp} - ${item.example.en}`,
-        source: 'NihonGo Master Vocabulary Data',
+        source: 'Kando Japanese Vocabulary Data',
         tags: []
       });
     }
@@ -65,7 +65,7 @@ async function bundleData() {
         jlptLevel: level,
         title: item.title,
         content: `Description: ${item.description}\nObjectives: ${(item.objectives || []).join(', ')}\nKey Grammar: ${item.grammarTarget}\nCultural Note: ${item.culturalNote || ''}\nDialogue: ${(item.dialogue || []).map(d => `${d.speaker}: ${d.jp} - ${d.en}`).join(' | ')}`,
-        source: 'NihonGo Master Lessons Data',
+        source: 'Kando Japanese Lessons Data',
         tags: []
       });
     }
@@ -79,7 +79,7 @@ async function bundleData() {
       jlptLevel: item.level,
       title: item.title,
       content: `Channel: ${item.hostOrChannel}\nCategory: ${item.category}\nDescription: ${item.description}\nPurpose: ${item.learningPurpose}\nPlatform: ${item.platform}`,
-      source: 'NihonGo Master Drama/Listening Resources',
+      source: 'Kando Japanese Drama/Listening Resources',
       tags: item.tags || []
     });
   }

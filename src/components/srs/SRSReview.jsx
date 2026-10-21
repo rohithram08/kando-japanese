@@ -17,6 +17,7 @@ import SRSReviewCard from './SRSReviewCard';
 import { useI18n, getCurriculumMeaning } from '../../i18n';
 import { BookOpen, Sparkles, Compass, CheckCircle2 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { playSuccess, playError, playFanfare, playSwoosh, playClick } from '../../utils/soundEffects';
 
 export default function SRSReview() {
   const navigate = useNavigate();
@@ -37,28 +38,68 @@ export default function SRSReview() {
     completed: 0,
   });
   const [sessionComplete, setSessionComplete] = useState(false);
+  const [batchCheckpoint, setBatchCheckpoint] = useState(false);
+  const BATCH_SIZE = 15;
 
   const loadCards = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await getDueCards();
-      const rawList = res?.cards || [];
-      const resolvedList = rawList.map((c) => ({
-        ...c,
-        resolved: resolveCardContent(c),
-      }));
-      setCards(resolvedList);
-      setSessionStats((prev) => ({ ...prev, total: resolvedList.length }));
+      if (user?.id) {
+        const res = await getDueCards();
+        const rawList = res?.cards || [];
+        const resolvedList = rawList.map((c) => ({
+          ...c,
+          resolved: resolveCardContent(c),
+        }));
+        setCards(resolvedList);
+        setSessionStats((prev) => ({ ...prev, total: resolvedList.length }));
+      } else {
+        // Guest mode fallback — load cards saved in localStorage
+        const raw = localStorage.getItem('nihongo_guest_srs_deck');
+        let guestIds = [];
+        try {
+          guestIds = raw ? JSON.parse(raw) : [];
+        } catch {
+          guestIds = [];
+        }
+        const guestCards = (guestIds || []).map((refId, i) => {
+          let cardType = 'vocabulary';
+          if (typeof refId === 'string') {
+            if (refId.startsWith('k_') || /^n[1-5]k\d+/i.test(refId) || (refId.length === 1 && /[\u4e00-\u9faf]/.test(refId))) {
+              cardType = 'kanji';
+            } else if (refId.startsWith('hiragana_') || refId.startsWith('katakana_') || refId.startsWith('h_') || /^[\u3040-\u30ff]$/.test(refId)) {
+              cardType = 'kana';
+            } else if (/^n[1-5]_?g\d+/i.test(refId)) {
+              cardType = 'grammar';
+            }
+          }
+          const cardObj = {
+            id: `guest_${i}_${refId}`,
+            cardRefId: refId,
+            cardType,
+            repetitions: 0,
+            intervalDays: 1,
+            easeFactor: 2.5,
+            isMastered: false,
+          };
+          return {
+            ...cardObj,
+            resolved: resolveCardContent(cardObj),
+          };
+        });
+        setCards(guestCards);
+        setSessionStats((prev) => ({ ...prev, total: guestCards.length }));
+      }
     } catch (err) {
       console.error('Failed to load due cards:', err);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [user?.id]);
 
   useEffect(() => {
     loadCards();
-  }, [user, loadCards]);
+  }, [loadCards]);
 
   const handleQuality = useCallback(
     async (quality) => {
@@ -67,14 +108,33 @@ export default function SRSReview() {
 
       try {
         const srsIntervalMode = useSettingsStore.getState().srsInterval || 'balanced';
-        const result = await reviewCard(card.id, { quality, intervalMode: srsIntervalMode });
-        const isMastered = result?.card?.isMastered || false;
+        let isMastered = false;
+        let xpGained = calculateSRSReviewXP(quality);
 
-        // Consume xpResult directly from reviewCard response to prevent duplicate XP awards
-        const xpResult = result?.xpResult || (user?.id ? await awardSRSReviewXP(user.id, quality, isMastered, card.id) : null);
-        const xpGained = xpResult?.xpGained !== undefined
-          ? xpResult.xpGained
-          : (calculateSRSReviewXP(quality) + (isMastered ? XP_REWARDS.SRS_CARD_MASTERED : 0));
+        if (user?.id) {
+          const result = await reviewCard(card.id, { quality, intervalMode: srsIntervalMode });
+          isMastered = result?.card?.isMastered || false;
+
+          // Consume xpResult directly from reviewCard response to prevent duplicate XP awards
+          const xpResult = result?.xpResult || await awardSRSReviewXP(user.id, quality, isMastered, card.id);
+          xpGained = xpResult?.xpGained !== undefined
+            ? xpResult.xpGained
+            : (calculateSRSReviewXP(quality) + (isMastered ? XP_REWARDS.SRS_CARD_MASTERED : 0));
+
+          if (xpResult) {
+            useProgressStore.setState((s) => ({
+              totalXP: xpResult.totalXP ?? s.totalXP,
+              userLevel: xpResult.newLevel ?? s.userLevel,
+              streak: xpResult.streakDays ?? s.streak,
+              dailyXP: s.dailyXP + (xpResult.xpGained || 0),
+            }));
+          }
+        } else {
+          // Guest mode review progression
+          if (quality >= 3) {
+            isMastered = quality === 5;
+          }
+        }
 
         setSessionXP((prev) => prev + xpGained);
         incrementCards();
@@ -88,17 +148,19 @@ export default function SRSReview() {
           wrong: quality < 3 ? prev.wrong + 1 : prev.wrong,
         }));
 
-        if (xpResult && updateProfile) {
-          updateProfile({
-            xp_points: xpResult.totalXP ?? xpResult.newTotal,
-            current_level: xpResult.jlptLevel || profile?.current_level,
-          });
-        }
-
         if (currentIndex + 1 >= cards.length) {
+          playFanfare();
           setSessionComplete(true);
           toast.success(`Review complete! +${sessionXP + xpGained} XP 🎉`);
+        } else if ((currentIndex + 1) % BATCH_SIZE === 0) {
+          playFanfare();
+          setBatchCheckpoint(true);
         } else {
+          if (quality >= 3) {
+            playSuccess();
+          } else {
+            playError();
+          }
           setCurrentIndex((prev) => prev + 1);
           setRevealed(false);
         }
@@ -107,7 +169,7 @@ export default function SRSReview() {
         toast.error('Failed to record review');
       }
     },
-    [cards, currentIndex, user?.id, awardSRSReviewXP, incrementCards, addReview, incrementMastered, updateProfile, profile?.current_level, sessionXP]
+    [cards, currentIndex, user?.id, awardSRSReviewXP, incrementCards, addReview, incrementMastered, sessionXP]
   );
 
   // Keyboard navigation: Space/Enter reveals; 1, 2, 3, 4 grades quality
@@ -118,11 +180,12 @@ export default function SRSReview() {
       if (!revealed) {
         if (e.code === 'Space' || e.code === 'Enter') {
           e.preventDefault();
+          playSwoosh();
           setRevealed(true);
         }
       } else {
         if (e.key === '1') handleQuality(0);
-        else if (e.key === '2') handleQuality(2);
+        else if (e.key === '2') handleQuality(3);
         else if (e.key === '3') handleQuality(4);
         else if (e.key === '4') handleQuality(5);
       }
@@ -206,6 +269,61 @@ export default function SRSReview() {
           </div>
         </div>
       </div>
+    );
+  }
+
+  // ── Batch Checkpoint (Anti-Burnout) ──
+  if (batchCheckpoint) {
+    const batchAccuracy = sessionStats.completed > 0
+      ? Math.round((sessionStats.correct / sessionStats.completed) * 100)
+      : 100;
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="max-w-md mx-auto text-center py-8 px-4 space-y-6"
+      >
+        <div className="w-20 h-20 mx-auto rounded-3xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-4xl shadow-sm">
+          ⚡
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">
+            {t('srs.checkpoint_title', 'Batch Checkpoint Reached!')}
+          </h2>
+          <p className="text-sm mt-1 text-muted-foreground">
+            {t('srs.checkpoint_desc', `You have reviewed ${sessionStats.completed} cards so far with ${batchAccuracy}% accuracy.`)}
+          </p>
+        </div>
+
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-50 text-yellow-600 dark:bg-yellow-500/10 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-500/20 font-bold text-sm shadow-sm">
+          <span>⭐</span>
+          <span>+{sessionXP} XP Earned</span>
+        </div>
+
+        <div className="flex flex-col gap-3 pt-2">
+          <button
+            onClick={() => {
+              playClick();
+              setBatchCheckpoint(false);
+              setCurrentIndex((prev) => prev + 1);
+              setRevealed(false);
+            }}
+            className="w-full py-3.5 rounded-2xl font-bold text-sm bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white shadow-md transition-all active:scale-98 cursor-pointer"
+          >
+            {t('srs.continue_batch', 'Continue Next Batch')} ({cards.length - (currentIndex + 1)} cards left) →
+          </button>
+          <button
+            onClick={() => {
+              playClick();
+              setBatchCheckpoint(false);
+              setSessionComplete(true);
+            }}
+            className="w-full py-3 rounded-2xl font-semibold text-sm border bg-surface border-border text-foreground hover:bg-muted transition-all active:scale-98 cursor-pointer"
+          >
+            {t('srs.finish_session', 'Wrap Up Session for Now')}
+          </button>
+        </div>
+      </motion.div>
     );
   }
 
@@ -322,7 +440,10 @@ export default function SRSReview() {
           <SRSReviewCard
             card={cardData}
             revealed={revealed}
-            onReveal={() => setRevealed(true)}
+            onReveal={() => {
+              playSwoosh();
+              setRevealed(true);
+            }}
             getLangMeaning={getLangMeaning}
           />
         </motion.div>
@@ -338,7 +459,7 @@ export default function SRSReview() {
           >
             {[
               { quality: 0, keyNumber: '1', label: t('srs.quality_forgot', 'Forgot'), color: 'bg-red-500 hover:bg-red-600', emoji: '😰' },
-              { quality: 2, keyNumber: '2', label: t('srs.quality_hard', 'Hard'), color: 'bg-orange-500 hover:bg-orange-600', emoji: '😓' },
+              { quality: 3, keyNumber: '2', label: t('srs.quality_hard', 'Hard'), color: 'bg-orange-500 hover:bg-orange-600', emoji: '😓' },
               { quality: 4, keyNumber: '3', label: t('srs.quality_good', 'Good'), color: 'bg-blue-500 hover:bg-blue-600', emoji: '😊' },
               { quality: 5, keyNumber: '4', label: t('srs.quality_easy', 'Easy'), color: 'bg-green-500 hover:bg-green-600', emoji: '😄' },
             ].map(({ quality, keyNumber, label, color, emoji }) => {

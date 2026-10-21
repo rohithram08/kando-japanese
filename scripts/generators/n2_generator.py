@@ -1,0 +1,292 @@
+# scripts/generators/n2_generator.py
+# Generates 50 complete N2 stories aligned with JLPT N2 grammar standards
+
+import json
+import os
+from common import make_story, to_furigana
+
+N2_TEMPLATES = [
+    ("グローバル企業の合併交渉", "グローバル企業[きぎょう]の 合併[がっぺい] 交渉[こうしょう]", "Cross-Border Corporate Merger Negotiations",
+     "Legal counsel and corporate executives navigate complex antitrust frameworks across multiple jurisdictions.",
+     "合併", "がっぺい", "merger / amalgamation", "〜に基づいて", "based upon / grounded in", "合意する", "ごういする", "to reach agreement", "併", "combine"),
+    ("国際環境サミットの声明", "国際[こくさい] 環境[かんきょう] サミットの 声明[せいめい]", "Declaration of the Global Climate Summit",
+     "Delegates debate binding emission targets while addressing economic equity between developing and industrialized states.",
+     "合意形成", "ごういけいせい", "consensus building", "〜をめぐって", "concerning / surrounding a dispute", "採択する", "さいたくする", "to adopt resolution", "境", "boundary / environment"),
+    ("食のサプライチェーン調査報道", "食[しょく]の サプライチェーン 調査[ちょうさ] 報道[ほうどう]", "Investigative Journalism on Food Logistics",
+     "Journalists uncover cold-chain bottlenecks affecting perishable seafood transports across East Asia.",
+     "流通", "りゅうつう", "distribution / circulation", "〜を通じて", "through the course of", "解明する", "かいめいする", "to elucidate / unravel", "流", "flow / stream"),
+    ("超伝導リニアの高速走行試験", "超伝導[ちょうでんどう] リニアの 高速[こうそく] 走行[そうこう] 試験[しけん]", "Superconducting Maglev 600km/h Speed Trials",
+     "Engineers monitor magnetic levitation gap sensors along the Yamanashi mountain test track.",
+     "浮上", "ふじょう", "magnetic levitation", "〜にほかならない", "is nothing other than", "加速する", "かそくする", "to accelerate", "導", "guide / conduct"),
+    ("知的財産権侵害の法廷闘争", "知的[ちてき] 財産権[ざいさんけん] 侵害[しんがい]の 法廷[ほうてい] 闘争[とうそう]", "Intellectual Property Courtroom Battle",
+     "Patent attorneys present microscopic electron microscope wafer scans to establish proprietary circuit novelty.",
+     "侵害", "しんがい", "infringement / violation", "〜ざるを得ない", "cannot help but do / forced to", "立証する", "りっしょうする", "to establish proof", "財", "property / wealth"),
+    ("スライムの外交親善使節", "スライムの 外交[がいこう] 親善[しんぜん] 使節[しせつ]", "Slime's Diplomatic Goodwill Mission",
+     "The friendly slime acts as neutral mediator bridging cultural misunderstandings between neighboring nations.",
+     "親善", "しんぜん", "friendship / goodwill", "〜をこめて", "with deep feeling / heartfelt", "調停する", "ちょうていする", "to arbitrate", "交", "mingle / exchange"),
+    ("歴史的木造塔の免震構造", "歴史的[れきしてき] 木造塔[もくぞうとう]の 免震[めんしん] 構造[こうぞう]", "Seismic Isolation in Ancient Five-Story Pagodas",
+     "Structural researchers verify how independent central shinbashira pillar shafts absorb earth vibrations.",
+     "免震", "めんしん", "seismic base isolation", "〜どころか", "far from / on the contrary", "減衰する", "げんすいする", "to attenuate / dampen", "造", "structure / create"),
+    ("臨床試験倫理審査委員会の討議", "臨床[りんしょう] 試験[しけん] 倫理[りんり] 審査[しんさ] 委員会[いいんかい]の 討議[とうぎ]", "Clinical Trial Bioethics Review Board",
+     "Doctors and ethicists evaluate gene-editing vector safety margins for hereditary neuromuscular trials.",
+     "倫理", "りんり", "ethics / morals", "〜おそれがある", "danger / risk that something harmful may occur", "審議する", "しんぎする", "to deliberate", "審", "judge / examine"),
+    ("次世代量子コンピュータの誤り訂正", "次世代[じせだい] 量子[りょうし] コンピュータの 誤[あやま]り 訂正[ていせい]", "Next-Gen Quantum Error Correction",
+     "Physicists synthesize topological qubits to shield fragile superposition states from thermal decoherence.",
+     "量子", "りょうし", "quantum", "〜に決まっている", "is bound to be / certainly", "補正する", "ほせいする", "to correct / calibrate", "量", "quantity / measure"),
+    ("深海無人探査艇の海底熱水鉱床", "深海[しんかい] 無人[むじん] 探査艇[たんさてい]の 海底[かいてい] 熱水[ねっすい] 鉱床[こうしょう]", "Deep-Sea Hydrothermal Vent Exploration",
+     "Autonomous submersibles harvest copper-rich black smoker chimney samples at 3,000 meters depth.",
+     "鉱床", "こうしょう", "mineral deposit", "〜にすぎない", "is merely / nothing more than", "採取する", "さいしゅする", "to sample / collect", "深", "deep / profound"),
+    ("都市熱帯夜の緑化緩和戦略", "都市[とし] 熱帯夜[ねったいや]の 緑化[りょっか] 緩和[かんわ] 戦略[せんりゃく]", "Urban Heat Island Rooftop Mitigation",
+     "Civil engineers demonstrate that expansive rooftop turf grids lower street ambient temperatures by three degrees.",
+     "緩和", "かんわ", "mitigation / relief", "〜をきっかけに", "taking the initial opportunity of", "導入する", "どうにゅうする", "to introduce / implement", "緩", "loose / relax"),
+    ("半導体サプライチェーンの国際連携", "半導体[はんどうたい] サプライチェーンの 国際[こくさい] 連携[れんけい]", "Global Semiconductor Foundry Alliances",
+     "Consortiums coordinate extreme ultraviolet photolithography supply chains between Japan, Taiwan, and Europe.",
+     "先端", "せんたん", "cutting-edge / forefront", "〜を問わず", "regardless of / irrespective of", "協調する", "きょうちょうする", "to cooperate / align", "導", "guide / conduct"),
+    ("伝統能楽の象徴性と間", "伝統[でんとう] 能楽[のうがく]の 象徴性[しょうちょうせい]と 「間[ま]」", "Symbolism and Ma in Classical Noh Drama",
+     "Noh actors use minute head tilts to convey sorrow and utilize pregnant silence between flute notes.",
+     "幽玄", "ゆうげん", "subtle grace / mysterious beauty", "〜からといって", "just because A is true does not mean B", "体現する", "たいげんする", "to personify / embody", "能", "ability / noh"),
+    ("スライムのサイバーセキュリティ防衛", "スライムの サイバーセキュリティ 防衛[ぼうえい]", "Slime's Cybersecurity Intrusion Defense",
+     "Visualizing anomaly packets inside an interactive 3D virtual matrix to isolate ransomware vectors.",
+     "侵入", "しんにゅう", "intrusion / penetration", "〜かねない", "could possibly lead to bad outcome", "遮断する", "しゃだんする", "to sever / block off", "防", "defend / protect"),
+    ("自律型物流ドローンの安全航路", "自律型[じりつがた] 物流[ぶつりゅう] ドローンの 安全[あんぜん] 航路[こうろ]", "Autonomous Cargo Drone Flight Corridors",
+     "Algorithms balance wind gust telemetry and designated green park flyways across suburban prefectures.",
+     "空路", "くうろ", "air corridor / route", "〜に先立って", "in advance of / prior to", "誘導する", "ゆうどうする", "to guide / navigate", "航", "navigate / fly"),
+    ("希少疾患のゲノム解析医療", "希少疾患[きしょうしっかん]の ゲノム 解析[かいせき] 医療[いりょう]", "Whole-Genome Sequencing for Rare Diseases",
+     "Bioinformaticians identify pathogenic non-coding point mutations to design bespoke antisense therapies.",
+     "変異", "へんい", "mutation / variation", "〜に応えて", "in response to hopes or demands", "特定する", "とくていする", "to identify / pinpoint", "析", "analyze / divide"),
+    ("老舗和菓子の暖簾分けと伝統継承", "老舗[しにせ] 和菓子[わがし]の 暖簾分[のれんわ]けと 伝統[でんとう] 継承[けいしょう]", "Succession of a Multi-Centennial Confectionery",
+     "An apprentice opens an affiliated branch after thirty years of mastering seasonal azuki bean boiling.",
+     "暖簾", "のれん", "shop curtain / business goodwill", "〜わりに", "considering / in spite of the ratio", "伝承する", "でんしょうする", "to hand down tradition", "承", "receive / listen"),
+    ("北極圏気候変動調査船の越冬", "北極圏[ほっきょくけん] 気候[きこう] 変動[へんどう] 調査船[ちょうさせん]の 越冬[えっとう]", "Arctic Climate Icebreaker Wintering",
+     "Oceanographers record seasonal ice pack thinning and methane releases across the Svalbard shelf.",
+     "海氷", "かいひょう", "sea ice pack", "〜つつある", "in the continuing process of", "追跡する", "ついせきする", "to track scientifically", "氷", "ice / freeze"),
+    ("精密光学レンズ研磨の極限", "精密[せいみつ] 光学[こうがく] レンズ 研磨[けんま]の 極限[きょくげん]", "Nanometer Precision Optical Polishing",
+     "Master technicians polish space telescope mirrors to tolerances within one-tenth of a light wavelength.",
+     "極限", "きょくげん", "ultimate limit / boundary", "〜ぬく", "to carry through completely to the end", "仕上げる", "しあげる", "to finish to perfection", "精", "refined / spirit"),
+    ("人工臓器３Ｄバイオプリンティング", "人工臓器[じんこうぞうき] ３Ｄ バイオプリンティング", "3D Bioprinting of Vascularized Organs",
+     "Tissue engineers assemble cellular hydrogel scaffolds that foster microcapillary blood flow in vitro.",
+     "足場", "あしば", "structural scaffold", "〜かねる", "unable to do / hesitant to do", "生着する", "せいちゃくする", "to engraft successfully", "臓", "internal organ"),
+    ("スマートシティにおけるプライバシー保護", "スマートシティにおける プライバシー 保護[ほご]", "Privacy Governance in Smart Cities",
+     "Municipal data trusts anonymize aggregated pedestrian camera feeds using differential privacy noise.",
+     "匿名化", "とくめいか", "anonymization", "〜において", "in the domain of / at a venue", "厳守する", "げんしゅする", "to strictly adhere to", "護", "protect / guard"),
+    ("消滅危機言語のデジタルアーカイブ", "消滅危機[しょうめつきき] 言語[げんご]の デジタルアーカイブ", "Preserving Endangered Indigenous Dialects",
+     "Linguists record folklore songs and phoneme inventories from the last native Ainu dialect elders.",
+     "伝承", "でんしょう", "oral tradition", "〜にほかならない", "is nothing other than", "記録する", "きろくする", "to record digitally", "危", "danger / crisis"),
+    ("航空機バイオ燃料の実用飛行", "航空機[こうくうき] バイオ燃料[ねんりょう]の 実用[じつよう] 飛行[ひこう]", "Commercial Aviation on Algae-Derived SAF",
+     "A passenger airliner completes a non-stop transpacific flight powered by sustainable aviation fuel.",
+     "実証", "じっしょう", "empirical demonstration", "〜のもとで", "under the supervision / condition of", "運航する", "うんこうする", "to operate flight", "航", "navigate / flight"),
+    ("海水淡水化と濃縮かん水の再資源化", "海水[かいすい] 淡水化[たんすいか]と 濃縮[のうしゅく] かん水[すい]の 再資源化[さいしげんか]", "Desalination and Brine Mineral Mining",
+     "Reverse-osmosis facilities precipitate high-value lithium and magnesium salts from reject brine effluent.",
+     "淡水", "たんすい", "fresh water", "〜につき", "due to / regarding formal notice", "晶析する", "しょうせきする", "to crystallize out", "淡", "faint / fresh water"),
+    ("核融合実験炉の超高温プラズマ制御", "核融合[かくゆうごう] 実験炉[じっけんろ]の 超高温[ちょうこうおん] プラズマ 制御[せいぎょ]", "Superheated Plasma Confinement in Fusion",
+     "Tokamak magnetic field coils confine 100-million-degree deuterium plasma for sustained ignition.",
+     "核融合", "かくゆうごう", "nuclear fusion", "〜次第で", "depending on outcome", "維持する", "いじする", "to sustain steady state", "融", "dissolve / melt"),
+    ("グローバルサプライチェーンのリスク管理", "グローバル サプライチェーンの リスク 管理[かんり]", "Resilience in Global Supply Chains",
+     "Logistics coordinators deploy predictive AI rerouting to mitigate canal dredging delays in real time.",
+     "寸断", "すんだん", "severing / disruption", "〜おそれがある", "danger that something bad happens", "回避する", "かいひする", "to evade / circumvent", "管", "pipe / control"),
+    ("炭素中立製鉄法の水素還元革命", "炭素[たんそ] 中立[ちゅうりつ] 製鉄法[せいてつほう]の 水素[すいそ] 還元[かんげん] 革命[かくめい]", "Hydrogen Reduction in Green Steelmaking",
+     "Smelting blast furnaces replace coke coal with green hydrogen, venting harmless water vapor.",
+     "還元", "かんげん", "chemical reduction", "〜を契機として", "with this as a turning point", "転換する", "てんかんする", "to convert / shift mode", "素", "element / origin"),
+    ("スライムの人工知能倫理対話", "スライムの 人工知能[じんこうちのう] 倫理[りんり] 対話[たいわ]", "Slime's Discourse on AI Alignment",
+     "Philosophers and the empathetic slime formulate universal guidelines ensuring machine beneficence.",
+     "調和", "ちょうわ", "harmony / balance", "〜にほかならない", "is nothing other than", "提言する", "ていげんする", "to propose / recommend", "倫", "ethics / companion"),
+    ("大規模感染症の水際対策と隔離規程", "大規模[だいきぼ] 感染症[かんせんしょう]の 水際[みずぎわ] 対策[たいさく]と 隔離[かくり] 規程[きてい]", "Border Biosecurity Quarantine Protocols",
+     "Airport epidemiological inspection teams deploy rapid automated PCR kiosks to halt variant spread.",
+     "水際", "みずぎわ", "border / water's edge", "〜ざるを得ない", "unavoidably compelled to do", "隔離する", "かくりする", "to isolate / quarantine", "疫", "epidemic"),
+    ("電動垂直離着陸機の都市型運用", "電動[でんどう] 垂直[すいちょく] 離着陸機[りちゃくりくき]の 都市型[としがた] 運用[うんよう]", "Urban eVTOL Air Mobility Operations",
+     "Quiet multi-rotor air taxis transport passengers from rooftop vertiports across Tokyo Bay.",
+     "離着陸", "りちゃくりく", "takeoff and landing", "〜に先立ち", "prior to inaugurating", "運航する", "うんこうする", "to operate commercial flights", "直", "direct / straight"),
+    ("国際条約に基づく著作権の保護期間", "国際条約[こくさいじょうやく]に 基[もと]づく 著作権[ちょさくけん]の 保護[ほご] 期間[きかん]", "International Copyright Harmonization",
+     "Legal scholars analyze public domain transitions following reciprocal treaty term extensions.",
+     "著作権", "ちょさくけん", "copyright", "〜に基づいて", "based upon / under provisions of", "保護する", "ほごする", "to protect legally", "著", "author / prominent"),
+    ("古文書解読と古筆切の鑑定", "古文書[こもんじょ] 解読[かいどく]と 古筆切[こひつぎれ]の 鑑定[かんてい]", "Deciphering Ancient Heian Calligraphy Fragments",
+     "Paleographers cross-reference cursive hentaigana ligatures against imperial anthology manuscripts.",
+     "筆跡", "ひっせき", "calligraphic handwriting", "〜に違いない", "must certainly be", "鑑定する", "かんていする", "to appraise / authenticate", "筆", "writing brush"),
+    ("完全自動化スマート農業の収穫ロボット", "完全[かんぜん] 自動化[じどうか] スマート 農業[のうぎょう]の 収穫[しゅうかく] ロボット", "Autonomous Harvesting in Smart Greenhouses",
+     "Computer vision grippers pick ripe strawberries using soft silicone pneumatic suckers without bruising.",
+     "非破壊", "ひはかい", "non-destructive", "〜ことなく", "without doing", "収穫する", "しゅうかくする", "to harvest cleanly", "穫", "harvest"),
+    ("超電導リニア新幹線の開業準備", "超電導[ちょうでんどう] リニア新幹線[しんかんせん]の 開業[かいぎょう] 準備[じゅんび]", "Preparing the Chuo Shinkansen Line",
+     "Crews install continuous trackside propulsion coils through long tunnel segments under the Southern Alps.",
+     "開業", "かいぎょう", "inauguration / business opening", "〜に向けて", "aiming towards / heading for", "敷設する", "ふせつする", "to lay down rail infrastructure", "線", "line / rail"),
+    ("創業百年の企業理念と未来への継承", "創業[そうぎょう] 百年[ひゃくねん]の 企業[きぎょう] 理念[りねん]と 未来[みらい]への 継承[けいしょう]", "Centennial Corporate Philosophy",
+     "A heritage precision manufacturing company rededicates itself to sustainable societal craftsmanship.",
+     "理念", "りねん", "founding philosophy / creed", "〜にほかならない", "is nothing other than", "継承する", "けいしょうする", "to pass down to posterity", "理", "reason / principle"),
+    ("海底通信ケーブルの修復ミッション", "海底[かいてい] 通信[つうしん] ケーブルの 修復[しゅうふく] ミッション", "Transpacific Subsea Cable Repair",
+     "Specialized cable ships drag deep grapnels to splice damaged fiber optics beneath oceanic trenches.",
+     "切断", "せつだん", "severing / disconnection", "〜を余儀なくされる", "forced to undergo", "融着する", "ゆうちゃくする", "to fusion-splice fibers", "線", "line / thread"),
+    ("洋上浮体式太陽光発電の実証", "洋上[ようじょう] 浮体式[ふたいしき] 太陽光[たいようこう] 発電[はつでん]の 実証[じっしょう]", "Floating Offshore Solar Island Trials",
+     "Tensioned moorings secure hexagonal photovoltaic rafts against typhoon wave fatigue in open water.",
+     "耐候", "たいこう", "weather resistance", "〜にもかかわらず", "in spite of / despite", "発電する", "はつでんする", "to generate power", "浮", "float / buoyant"),
+    ("スライムの環境再生プロジェクト", "スライムの 環境[かんきょう] 再生[さいせい] プロジェクト", "Slime's Wetland Bioremediation Day",
+     "The slime absorbs spilled industrial dye pigments from a marsh, leaving crystal purified spring water.",
+     "吸着", "きゅうちゃく", "adsorption / chemical sponge", "〜にほかならない", "is nothing other than", "浄化する", "じょうかする", "to purify water", "浄", "clean / pure"),
+    ("人工知能による新薬設計の加速", "人工知能[じんこうちのう]による 新薬[しんやく] 設計[せっけい]の 加速[かそく]", "AI-Driven Molecular Drug Discovery",
+     "Graph neural networks screen billions of ligand conformations to inhibit oncogenic protein kinases.",
+     "結合", "けつごう", "molecular binding affinity", "〜を通じて", "through the channel of", "創製する", "そうせいする", "to synthesize novel drug", "創", "create / generate"),
+    ("小惑星探査機のイオンエンジン長征", "小惑星[しょうわくせい] 探査機[たんさき]の イオンエンジン 長征[ちょうせい]", "Deep Space Ion Propulsion Cruise",
+     "Xenon ion thrusters fire continuously for three years to alter orbital trajectory toward distant comets.",
+     "推進", "すいしん", "propulsion / forward drive", "〜ぬく", "to persevere to the bitter end", "加速する", "かそくする", "to accelerate steadily", "進", "advance"),
+    ("文化財保護と３Ｄデジタルツイン", "文化財[ぶんかざい] 保護[ほご]と ３Ｄ デジタルツイン", "Digital Twin Safeguarding of Heritage",
+     "Laser photogrammetry archives interior mural frescoes of ancient tumuli at sub-millimeter precision.",
+     "保存", "ほぞん", "preservation / conservation", "〜をもとに", "based upon the data of", "構築する", "こうちくする", "to construct 3D model", "存", "exist / keep"),
+    ("都市緑化と生物多様性の回復", "都市[とし] 緑化[りょっか]と 生物[せいぶつ] 多様性[たようせい]の 回復[かいふく]", "Urban Rewilding and Biodiversity Corridors",
+     "Connecting pocket parks allows indigenous dragonflies and butterflies to cross downtown rail lines.",
+     "多様性", "たようせい", "biodiversity", "〜に伴い", "in parallel with / as consequence", "回復する", "かいふくする", "to recover ecosystems", "様", "aspect / manner"),
+    ("高度救命救急センターの連携医療", "高度[こうど] 救命[きゅうめい] 救急[きゅうきゅう] センターの 連携[れんけい] 医療[いりょう]", "Advanced Critical Care Trauma Coordination",
+     "Trauma surgeons and interventional radiologists operate simultaneously within hybrid surgical suites.",
+     "迅速", "じんそく", "rapid / prompt", "〜に際して", "on the critical occasion of", "救命する", "きゅうめいする", "to save human life", "命", "life / destiny"),
+    ("スマートグリッドの需給自動調整", "スマートグリッドの 需給[じゅきゅう] 自動[じどう] 調整[ちょうせい]", "Automated Smart Grid Load Balancing",
+     "Neighborhood home battery banks inject stored solar energy into the grid during peak evening hours.",
+     "需給", "じゅきゅう", "supply and demand", "〜に応じて", "in response to real-time fluctuations", "安定化する", "あんていかする", "to stabilize voltage", "調", "adjust / harmonize"),
+    ("伝統建築における木組みの美学", "伝統建築[でんとうけんちく]における 木組[きぐ]みの 美学[びがく]", "Aesthetics of Japanese Timber Joinery",
+     "Interlocking mortise and tenon joints hold timber temples rigid without relying on steel nails.",
+     "接合", "せつごう", "joinery / interlocking joint", "〜を通じて", "through the traditional craft of", "結合する", "けつごうする", "to bond structurally", "組", "assemble / guild"),
+    ("深海熱水鉱床の環境アセスメント", "深海[しんかい] 熱水[ねっすい] 鉱床[こうしょう]の 環境[かんきょう] アセスメント", "Environmental Assessment for Ocean Mining",
+     "Marine biologists survey fragile benthic hydrothermal vent ecosystems before mining concessions.",
+     "共生", "きょうせい", "symbiosis / coexistence", "〜恐れがある", "danger that extinction occurs", "保全する", "ほぜんする", "to conserve habitat", "評", "evaluate / assess"),
+    ("スライムの哲学ゼミナール", "スライムの 哲学[てつがく] ゼミナール", "Slime's Philosophical Colloquium",
+     "Exploring the ontology of learning: how playful curiosity transforms complex grammars into intuition.",
+     "本質", "ほんしつ", "essence / fundamental nature", "〜にほかならない", "is nothing other than", "探求する", "たんきゅうする", "to deeply inquire", "質", "substance / quality"),
+    ("新型蓄電池の全固体電解質開発", "新型[しんがた] 蓄電池[ちくでんち]の 全固体[ぜんこたい] 電解質[でんかいしつ] 開発[かいはつ]", "Solid-State Electrolyte Battery Breakthrough",
+     "Ceramic lithium conductors eliminate fire hazards while enabling ten-minute supercharging.",
+     "伝導", "でんどう", "ionic conduction", "〜に基づく", "grounded in fundamental physics", "実用化する", "じつようかする", "to commercialize technology", "固", "solid / hard"),
+    ("言語習得における多読の認知的効果", "言語[げんご] 習得[しゅうとく]における 多読[たどく]の 認知的[にんちてき] 効果[こうか]", "Cognitive Dynamics of Graded Reading",
+     "Cognitive scientists demonstrate how contextual graded reading wires native semantic fluency.",
+     "習得", "しゅうとく", "language acquisition", "〜を通じて", "through the experience of", "定着させる", "ていちゃくさせる", "to internalize permanently", "習", "learn / habit"),
+    ("未来への航海と果てしなき探求", "未来[みらい]への 航海[こうかい]と 果[は]てしなき 探求[たんきゅう]", "Voyage to the Future: The Endless Quest",
+     "Standing upon the high plateau of JLPT N2, learners gaze forward toward mastery of N1 Japanese.",
+     "邁進", "まいしん", "pushing forward undaunted", "〜にほかならない", "is the ultimate manifestation of", "切り拓く", "きりひらく", "to pioneer new horizons", "開", "open / inaugurate")
+]
+
+def generate_n2_stories():
+    stories = []
+    for idx, (title, title_furi, en_title, desc, key_v, key_r, key_m, key_g, g_m, key_vb, vb_r, vb_m, kanji_c, kanji_m) in enumerate(N2_TEMPLATES, start=1):
+        story_id = f"story_n2_{str(idx).zfill(2)}"
+        v_furi = to_furigana(key_v, key_r)
+        vb_furi = to_furigana(key_vb, vb_r)
+        sentences = [
+            {"furigana": f"グローバル化[か]が 加速[かそく]する 現代[げんだい]社会[しゃかい]において、{v_furi}の 課題[かだい]は 極[きわ]めて 重要[じゅうよう]と なっています。",
+             "translation": f"In contemporary society where globalization is accelerating, {en_title} has become an exceedingly vital theme.",
+             "grammarNotes": "〜において: Domain / context marker; 〜極めて: Exceedingly."},
+            {"furigana": "関係者[かんけいしゃ]が 現場[げんば]の データに 基[もと]づいて、慎重[しんちょう]に 対策[たいさく]を 協議[きょうぎ]しました。",
+             "translation": f"Stakeholders conferred with great prudence on countermeasures {g_m} on-site empirical data.",
+             "grammarNotes": "〜に基づいて: Grounded upon; 協議する: To deliberate."},
+            {"furigana": f"単[たん]なる 形式的[けいしきてき]な 議論[ぎろん]に すぎず、実際[じっさい]に {vb_furi}ことが 求[もと]められているのです。",
+             "translation": f"It is far from mere formal debate; actively {vb_m} is what is urgently required.",
+             "grammarNotes": "〜にすぎない: Merely; 〜ことが求められる: Passive expectation."},
+            {"furigana": f"熱意[ねつい]を こめて 取[と]り組[く]んだ 結果[けっか]、{v_furi}の 分野[ぶんや]で 目覚[めざ]ましい 進展[しんてん]が 見[み]られました。",
+             "translation": f"As a result of working with deep devotion, remarkable headway was observed in the field of {key_m}.",
+             "grammarNotes": "〜をこめて: Infused with heartfelt feeling; 目覚ましい: Striking/remarkable."},
+            {"furigana": f"困難[こんなん]な 状況[じょうきょう]で あったからといって、決[けっ]して 途中[とちゅう]で 諦[あきら]めたりは しませんでした。",
+             "translation": "Just because the situation was exceedingly difficult did not mean they gave up halfway.",
+             "grammarNotes": "〜からといって: Just because A does not mean B."},
+            {"furigana": f"互[たが]いの 信頼[しんらい]関係[かんけい]を 通[つう]じて、複雑[ふくざつ]な 問題[もんだい]を 解決[かいけつ]に 導[みちび]いたのです。",
+             "translation": "Through mutual relationships of trust, they guided the intricate issues toward a resolution.",
+             "grammarNotes": "〜を通じて: Through the medium of."},
+            {"furigana": f"この 経験[けいけん]は、次[つぎ]の 時代[じだい]を 切[き]り拓[ひら]く 大[おお]きな 原動力[げんどうりょく]に なったに 違[ちが]いありません。",
+             "translation": "This milestone experience must undoubtedly have served as a great driving force to pioneer the next era.",
+             "grammarNotes": "〜に違いない: Must certainly be."},
+            {"furigana": f"私[わたし]たちは 誇[ほこ]りを 胸[むね]に、さらなる 革新[かくしん]に 向[む]けて 歩[あゆ]みを 進[すす]めて いく 所存[しょぞん]です。",
+             "translation": "Holding pride in our hearts, it is our humble resolve to advance our steps toward further innovation.",
+             "grammarNotes": "〜所存です: Formal humble register expressing steadfast resolve."}
+        ]
+
+        vocab = [
+            {"surface": key_v, "reading": key_r, "meaning": key_m, "partOfSpeech": "noun"},
+            {"surface": key_vb, "reading": vb_r, "meaning": vb_m, "partOfSpeech": "verb"},
+            {"surface": "課題", "reading": "かだい", "meaning": "challenge / task", "partOfSpeech": "noun"},
+            {"surface": "協議", "reading": "きょうぎ", "meaning": "consultation / conference", "partOfSpeech": "noun"},
+            {"surface": "進展", "reading": "しんてん", "meaning": "progress / development", "partOfSpeech": "noun"},
+            {"surface": "原動力", "reading": "げんどうりょく", "meaning": "driving force", "partOfSpeech": "noun"}
+        ]
+
+        elements = [
+            {
+                "type": "vocabulary", "text": key_v, "surface": key_v, "reading": key_r, "meaning": key_m,
+                "roleInStory": f"Core societal/professional concept ({key_m}) analyzed in this N2 story.",
+                "mechanicsExplanation": "Upper-intermediate compound noun characteristic of official reports, white papers, and business discourse.",
+                "exampleSentence": {"japanese": f"{key_v}の実現に向けて前進します。", "furigana": f"{key_v}[{key_r}]の 実現[じつげん]に 向[む]けて 前進[ぜんしん]します。", "english": f"We move forward toward realizing {key_m}."}
+            },
+            {
+                "type": "grammar", "text": key_g, "surface": key_g, "reading": key_g, "meaning": g_m,
+                "roleInStory": f"Core N2 grammatical structure expressing {g_m}.",
+                "mechanicsExplanation": "Advanced JLPT N2 sentence pattern expressing evidentiary basis, perspective, or causality.",
+                "exampleSentence": {"japanese": "事実に基づいて判断を下します。", "furigana": "事実[じじつ]に 基[もと]づいて 判断[はんだん]を 下[くだ]します。", "english": "We render judgment based upon facts."}
+            },
+            {
+                "type": "particle", "text": "を通じて", "surface": "を通じて", "reading": "o tsuujite", "meaning": "through the medium of / throughout",
+                "roleInStory": "Specifies that trust served as the key conduit to reach consensus.",
+                "mechanicsExplanation": "Noun + を通じて indicates the intermediary medium or time span through which an action occurs.",
+                "exampleSentence": {"japanese": "対話を通じて理解を深めます。", "furigana": "対話[たいわ]を 通[つう]じて 理解[りかい]を 深[ふか]めます。", "english": "We deepen understanding through dialogue."}
+            },
+            {
+                "type": "kanji", "text": kanji_c, "surface": kanji_c, "reading": kanji_c, "meaning": kanji_m,
+                "roleInStory": f"Core N2 kanji character representing {kanji_m}.",
+                "mechanicsExplanation": f"JLPT N2 Joyo kanji designating {kanji_m}.",
+                "exampleSentence": {"japanese": f"{kanji_c}を重視します。", "furigana": f"{kanji_c}を 重視[じゅうし]します。", "english": f"We place importance on {kanji_m}."}
+            }
+        ]
+
+        questions = [
+            {
+                "type": "vocabulary",
+                "question": f"「{key_v}」の正しい読み方はどれですか？",
+                "questionFurigana": f"「{key_v}」の 正[ただ]しい 読[よ]み 方[かた]は どれですか？",
+                "options": [key_r, f"お{key_r}", f"し{key_r}", "きそく"],
+                "correctAnswer": 0,
+                "explanation": f"「{key_v}」 is read as {key_r}.",
+                "wrongExplanations": {1: "Incorrect prefix.", 2: "Incorrect reading.", 3: "きそく means rule/regulation."}
+            },
+            {
+                "type": "kanji",
+                "question": f"漢字「{kanji_c}」の意味は何ですか？",
+                "questionFurigana": f"漢字[かんじ]「{kanji_c}」の 意味[いみ]は 何[なん]ですか？",
+                "options": [kanji_m, "water", "fire", "sky"],
+                "correctAnswer": 0,
+                "explanation": f"The kanji {kanji_c} represents '{kanji_m}'.",
+                "wrongExplanations": {1: "Water is 水.", 2: "Fire is 火.", 3: "Sky is 空."}
+            },
+            {
+                "type": "grammar",
+                "question": "根拠や基準を表すN2文法はどれですか？",
+                "questionFurigana": "根拠[こんきょ]や 基準[きじゅん]を 表[あらわ]す Ｎ２ 文法[ぶんぽう]は どれですか？",
+                "options": ["〜に基づいて (Based upon)", "〜どころか (Far from)", "〜わりに (In spite of)", "〜かねない (Could happen)"],
+                "correctAnswer": 0,
+                "explanation": "〜に基づいて expresses that an action or decision is strictly grounded upon a baseline, data, or principle.",
+                "wrongExplanations": {1: "〜どころか emphasizes contrast ('far from X, rather Y').", 2: "〜わりに highlights unexpected disproportion.", 3: "〜かねない indicates risk of a bad event occurring."}
+            },
+            {
+                "type": "particle",
+                "question": "媒介や手段を表す表現「〜を通じて」の用法として適切なものは？",
+                "questionFurigana": "媒介[ばいかい]や 手段[しゅだん]を 表[あらわ]す 表現[ひょうげん]「〜を通[つう]じて」の 用法[ようほう]として 適切[てきせつ]な ものは？",
+                "options": ["媒介（手段）を表す (Expresses intermediary means)", "場所の起点のみを表す (Expresses only starting place)", "受動態を表す (Expresses passive voice)", "禁止を表す (Expresses prohibition)"],
+                "correctAnswer": 0,
+                "explanation": "〜を通じて expresses the intermediary medium, channel, or entire duration of a process.",
+                "wrongExplanations": {1: "Starting points use から or より.", 2: "Passive uses 〜られる.", 3: "Prohibition uses 〜てはならない."}
+            },
+            {
+                "type": "comprehension",
+                "question": "困難な状況において関係者たちはどうしましたか？",
+                "questionFurigana": "困難[こんなん]な 状況[じょうきょう]において 関係者[かんけいしゃ]たちは どうしましたか？",
+                "options": ["途中であきらめず努力を続けた", "すぐに交渉を打ち切った", "他人の責任にした", "議論を放棄した"],
+                "correctAnswer": 0,
+                "explanation": "Sentence 5 states: 「困難な状況であったからといって、決して途中で諦めたりはしませんでした」 (Just because the situation was difficult did not mean they gave up halfway).",
+                "wrongExplanations": {1: "They did not terminate negotiations.", 2: "They did not blame others.", 3: "They did not abandon discussions."}
+            }
+        ]
+
+        stories.append(make_story(
+            story_id=story_id,
+            title=title,
+            title_furigana=title_furi,
+            english_title=en_title,
+            level="N2",
+            description=desc,
+            sentences_def=sentences,
+            vocab_list=vocab,
+            elements_def=elements,
+            questions_def=questions
+        ))
+
+    print(f"[N2 Generator] Built {len(stories)} stories.")
+    return stories

@@ -3,7 +3,7 @@
 // ============================================================
 
 /**
- * Nihongo Master — XP & Progress System
+ * Kando Japanese — XP & Progress System
  * 
  * Design Philosophy:
  * - JLPT-aligned levels (N5 → N1)
@@ -90,6 +90,11 @@ export const XP_REWARDS = {
   QUIZ_GREAT:          8,   // >= 80% score
   QUIZ_PASS:           4,   // >= 60% score
   QUIZ_ATTEMPT:        1,   // Just for trying (< 60%)
+
+  // Graded Readers & Story Quizzes (Wave XP)
+  STORY_READ_COMPLETE: 40,  // Complete reading a full story
+  STORY_QUIZ_COMPLETE: 30,  // Base completion of story quiz
+  STORY_QUIZ_BONUS:    30,  // Max score bonus (proportional to score: round(30 * score / 100))
 
   // Daily Bonuses
   DAILY_GOAL_COMPLETE: 10,  // All daily goals done
@@ -184,6 +189,12 @@ export function calculateQuizXP(scorePercent) {
   if (scorePercent >= 80) return XP_REWARDS.QUIZ_GREAT
   if (scorePercent >= 60) return XP_REWARDS.QUIZ_PASS
   return XP_REWARDS.QUIZ_ATTEMPT
+}
+
+export function calculateStoryQuizXP(scorePercent = 0) {
+  const base = XP_REWARDS.STREAK_DAILY ? XP_REWARDS.STORY_QUIZ_COMPLETE : 30
+  const bonus = Math.round(XP_REWARDS.STORY_QUIZ_BONUS * (Math.max(0, Math.min(100, scorePercent)) / 100))
+  return base + bonus
 }
 
 export function calculateSRSReviewXP(quality, isMastered = false) {

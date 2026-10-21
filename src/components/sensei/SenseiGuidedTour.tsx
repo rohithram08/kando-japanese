@@ -19,7 +19,7 @@ const TOUR_STEPS: TourStep[] = [
     id: 'greet',
     targetId: null,
     title: 'Konnichiwa! (こんにちは)',
-    message: 'Konnichiwa! Welcome to NihonGo Master! I am so delighted to meet you! 🌸',
+    message: 'Konnichiwa! Welcome to Kando Japanese! I am so delighted to meet you! 🌸',
     animation: 'greeting',
     emotion: 'happy'
   },
@@ -132,7 +132,7 @@ export function SenseiGuidedTour() {
       setCurrentStepIndex(prev => prev + 1);
     } else {
       await completeTour();
-      triggerCelebration("Tour completed! Welcome to NihonGo Master! 🌸");
+      triggerCelebration("Tour completed! Welcome to Kando Japanese! 🌸");
     }
   };
 

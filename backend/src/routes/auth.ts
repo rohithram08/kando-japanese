@@ -133,14 +133,75 @@ authRouter.get('/me', requireAuth, async (req, res, next) => {
   }
 });
 
-authRouter.post('/reset-password-request', authLimiter, (req, res) => {
-  // TODO: implement reset logic
-  res.json({ message: 'If an account exists, a reset link will be sent.' });
+authRouter.post('/reset-password-request', authLimiter, async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      throw new AppError(400, 'Email is required', 'VALIDATION_ERROR');
+    }
+
+    const user = await db.query.users.findFirst({
+      where: eq(users.email, email.toLowerCase().trim()),
+    });
+
+    if (!user) {
+      // Return success to avoid email enumeration, but with friendly dev message
+      return res.json({ message: 'If an account exists, a reset link will be sent.' });
+    }
+
+    // Generate signed reset token valid for 1 hour
+    const token = jwt.sign(
+      { userId: user.id, email: user.email, type: 'pwd_reset' },
+      env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
+    const resetUrl = `/reset-password?token=${token}`;
+    console.log(`🔑 Password reset link for ${user.email}: ${resetUrl}`);
+
+    res.json({
+      message: 'Password reset link ready.',
+      token,
+      resetUrl,
+    });
+  } catch (err) {
+    next(err);
+  }
 });
 
-authRouter.post('/reset-password', authLimiter, (req, res) => {
-  // TODO: implement reset logic
-  res.json({ message: 'Password reset functionality stub.' });
+authRouter.post('/reset-password', authLimiter, async (req, res, next) => {
+  try {
+    const { token, newPassword } = req.body;
+    if (!token || !newPassword) {
+      throw new AppError(400, 'Token and new password are required', 'VALIDATION_ERROR');
+    }
+
+    if (newPassword.length < 6) {
+      throw new AppError(400, 'Password must be at least 6 characters', 'VALIDATION_ERROR');
+    }
+
+    let decoded: any;
+    try {
+      decoded = jwt.verify(token, env.JWT_SECRET);
+    } catch {
+      throw new AppError(400, 'Invalid or expired reset token', 'INVALID_TOKEN');
+    }
+
+    if (!decoded || decoded.type !== 'pwd_reset' || !decoded.userId) {
+      throw new AppError(400, 'Invalid reset token', 'INVALID_TOKEN');
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(newPassword, salt);
+
+    await db.update(users)
+      .set({ passwordHash })
+      .where(eq(users.id, decoded.userId));
+
+    res.json({ message: 'Password updated successfully. You can now log in.' });
+  } catch (err) {
+    next(err);
+  }
 });
 
 // Google OAuth

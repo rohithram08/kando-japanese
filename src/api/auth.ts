@@ -8,6 +8,7 @@ import type {
   LoginResponse,
   AuthMeResponse,
   ResetPasswordRequestPayload,
+  ResetPasswordRequestResponse,
   ResetPasswordPayload,
 } from '../types/api';
 
@@ -55,8 +56,8 @@ export function getGoogleOAuthUrl(): string {
 /**
  * Request a password reset email.
  */
-export function requestPasswordReset(data: ResetPasswordRequestPayload): Promise<{ message: string }> {
-  return post<{ message: string }>('/auth/reset-password-request', data);
+export function requestPasswordReset(data: ResetPasswordRequestPayload): Promise<ResetPasswordRequestResponse> {
+  return post<ResetPasswordRequestResponse>('/auth/reset-password-request', data);
 }
 
 /**

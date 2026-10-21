@@ -57,9 +57,9 @@ export default function StoryCard({ story, progress, onSelect }) {
             <span>Sentence {currentSentence} of {totalSentences}</span>
           </div>
         ) : (
-          <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
-            {totalSentences} sentences
-          </span>
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-cyan-700 dark:text-cyan-300">
+            <span>+70~100 Wave XP</span>
+          </div>
         )}
 
         <button

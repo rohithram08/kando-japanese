@@ -1,0 +1,3413 @@
+[
+  {
+    "id": "n3_g001",
+    "pattern": "〜わけではない",
+    "romaji": "",
+    "formation": "Plain form + わけではない／わけじゃない",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "嫌いなわけではないが、あまり食べない。",
+        "reading": ""
+      },
+      {
+        "jp": "難しいわけじゃないけど、時間がかかる。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g002",
+    "pattern": "〜にもかかわらず",
+    "romaji": "",
+    "formation": "Noun / Verb plain form + にもかかわらず",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "雨にもかかわらず、試合は続けられた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g003",
+    "pattern": "〜に対して",
+    "romaji": "",
+    "formation": "Noun + に対して",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "先生の質問に対して答えました。",
+        "reading": ""
+      },
+      {
+        "jp": "彼が賛成なのに対して、私は反対だ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g004",
+    "pattern": "〜によって",
+    "romaji": "",
+    "formation": "Noun + によって",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "この絵はピカソによって描かれました。",
+        "reading": ""
+      },
+      {
+        "jp": "結果は努力によって変わる。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g005",
+    "pattern": "〜として",
+    "romaji": "",
+    "formation": "Noun + として",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "医者として働いています。",
+        "reading": ""
+      },
+      {
+        "jp": "友達として彼女を助けたい。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g006",
+    "pattern": "〜ばかり",
+    "romaji": "",
+    "formation": "Verb た-form / Noun + ばかり",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "今来たばかりです。",
+        "reading": ""
+      },
+      {
+        "jp": "彼はゲームばかりしている。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g007",
+    "pattern": "〜さえ〜ば",
+    "romaji": "",
+    "formation": "Noun + さえ / Verb stem + さえすれば",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "お金さえあれば何でも買える。",
+        "reading": ""
+      },
+      {
+        "jp": "健康でさえあれば幸せだ。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g008",
+    "pattern": "〜ものの",
+    "romaji": "",
+    "formation": "Plain form + ものの",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "日本語を勉強したものの、まだ話せない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g009",
+    "pattern": "〜だけでなく〜も",
+    "romaji": "",
+    "formation": "Noun / Plain form + だけでなく ~ も",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "彼女は英語だけでなく、日本語も話せます。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g010",
+    "pattern": "〜てしまう",
+    "romaji": "",
+    "formation": "Verb て-form + しまう／ちゃう (casual)",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "宿題をやってしまいました。",
+        "reading": ""
+      },
+      {
+        "jp": "財布を忘れちゃった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g011",
+    "pattern": "〜ことになっている",
+    "romaji": "",
+    "formation": "Verb plain form + ことになっている",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "明日会議があることになっています。",
+        "reading": ""
+      },
+      {
+        "jp": "ここでは靴を脱ぐことになっている。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g012",
+    "pattern": "〜わけがない",
+    "romaji": "",
+    "formation": "Plain form + わけがない／わけはない",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "彼がそんなことを言うわけがない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g013",
+    "pattern": "〜ところ",
+    "romaji": "",
+    "formation": "Verb various forms + ところ",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "今から出かけるところです。",
+        "reading": ""
+      },
+      {
+        "jp": "ご飯を食べているところです。",
+        "reading": ""
+      },
+      {
+        "jp": "今来たところです。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g014",
+    "pattern": "〜とともに",
+    "romaji": "",
+    "formation": "Noun / Verb dictionary form + とともに",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "時代の変化とともに、技術も進歩した。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g015",
+    "pattern": "〜に加えて",
+    "romaji": "",
+    "formation": "Noun + に加えて",
+    "level": "N3",
+    "tags": [],
+    "examples": [
+      {
+        "jp": "雨に加えて、風も強かった。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g016",
+    "pattern": "〜わけがない",
+    "romaji": "~wake ga nai",
+    "formation": "Plain form (な-adj + な, Noun + の) + わけがない",
+    "level": "N3",
+    "tags": [
+      "conviction",
+      "impossibility",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "彼が嘘をつくわけがありません。",
+        "reading": ""
+      },
+      {
+        "jp": "こんな難しい試験に合格できるわけがない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g017",
+    "pattern": "〜わけにはいかない",
+    "romaji": "~wake ni wa ikanai",
+    "formation": "Verb dictionary form / Verb ない-form + わけにはいかない",
+    "level": "N3",
+    "tags": [
+      "obligation",
+      "modality",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "明日は大事な会議があるので、休むわけにはいきません。",
+        "reading": ""
+      },
+      {
+        "jp": "約束したから、行かないわけにはいかない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g018",
+    "pattern": "〜に違いない",
+    "romaji": "~ni chigainai",
+    "formation": "Plain form (な-adj / Noun without だ) + に違いない",
+    "level": "N3",
+    "tags": [
+      "certainty",
+      "conjecture",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "犯人は彼に違いない。",
+        "reading": ""
+      },
+      {
+        "jp": "あれだけの努力をしたのだから、合格するに違いない。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g019",
+    "pattern": "〜わりに（は）",
+    "romaji": "~wari ni (wa)",
+    "formation": "Plain form (な-adj + な, Noun + の) + わりに（は）",
+    "level": "N3",
+    "tags": [
+      "contrast",
+      "comparison",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "この料理は値段のわりに美味しい。",
+        "reading": ""
+      },
+      {
+        "jp": "彼は勉強しなかったわりには良い点を取った。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g020",
+    "pattern": "〜くせに",
+    "romaji": "~kuse ni",
+    "formation": "Plain form (な-adj + な, Noun + の) + くせに",
+    "level": "N3",
+    "tags": [
+      "criticism",
+      "contrast",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "自分で何も言わないくせに、文句ばかり言う。",
+        "reading": ""
+      },
+      {
+        "jp": "お金がないくせに、高い車を買った。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g021",
+    "pattern": "〜たびに",
+    "romaji": "~tabi ni",
+    "formation": "Verb dictionary form / Noun + の + たびに",
+    "level": "N3",
+    "tags": [
+      "frequency",
+      "temporal",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "この曲を聴くたびに、学生時代を思い出す。",
+        "reading": ""
+      },
+      {
+        "jp": "旅行のたびに、お土産を買います。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g022",
+    "pattern": "〜ついでに",
+    "romaji": "~tsuide ni",
+    "formation": "Verb dictionary/past / Noun + の + ついでに",
+    "level": "N3",
+    "tags": [
+      "opportunity",
+      "action",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "散歩のついでに、手紙を出してきた。",
+        "reading": ""
+      },
+      {
+        "jp": "コンビニに行くついでに、牛乳を買ってきて。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g023",
+    "pattern": "〜最中に（〜さいちゅうに）",
+    "romaji": "~saichuu ni",
+    "formation": "Verb ている / Noun + の + 最中に",
+    "level": "N3",
+    "tags": [
+      "timing",
+      "interruption",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "食事の最中に、電話がかかってきた。",
+        "reading": ""
+      },
+      {
+        "jp": "会議の最中に、停電が起きた。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g024",
+    "pattern": "〜たとたん（に）",
+    "romaji": "~ta totan (ni)",
+    "formation": "Verb た-form + とたん（に）",
+    "level": "N3",
+    "tags": [
+      "timing",
+      "immediate",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "窓を開けたとたん、強い風が入ってきた。",
+        "reading": ""
+      },
+      {
+        "jp": "立ち上がったとたんに、めまいがした。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g025",
+    "pattern": "〜おかげで",
+    "romaji": "~okage de",
+    "formation": "Plain form (な-adj + な, Noun + の) + おかげで",
+    "level": "N3",
+    "tags": [
+      "cause",
+      "gratitude",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "先生のおかげで、試験に合格できました。",
+        "reading": ""
+      },
+      {
+        "jp": "薬を飲んだおかげで、すっかり良くなりました。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g026",
+    "pattern": "上げる",
+    "romaji": "ageru",
+    "formation": "上げる + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "上げるの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g027",
+    "pattern": "あまり",
+    "romaji": "amari",
+    "formation": "あまり + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "あまりの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g028",
+    "pattern": "あまりにも",
+    "romaji": "amari ni mo",
+    "formation": "あまりにも + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "あまりにもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g029",
+    "pattern": "合う",
+    "romaji": "au",
+    "formation": "合う + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "合うの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g030",
+    "pattern": "ばいい",
+    "romaji": "ba ii",
+    "formation": "ばいい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ばいいの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g031",
+    "pattern": "ばよかった",
+    "romaji": "ba yokatta",
+    "formation": "ばよかった + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ばよかったの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g032",
+    "pattern": "ば～ほど",
+    "romaji": "ba~hodo",
+    "formation": "ば～ほど + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ば～ほどの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g033",
+    "pattern": "ば～のに",
+    "romaji": "ba~noni",
+    "formation": "ば～のに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ば～のにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g034",
+    "pattern": "ばかりで",
+    "romaji": "bakari de",
+    "formation": "ばかりで + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ばかりでの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g035",
+    "pattern": "ばかりでなく",
+    "romaji": "bakari denaku",
+    "formation": "ばかりでなく + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ばかりでなくの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g036",
+    "pattern": "べきだ",
+    "romaji": "beki da",
+    "formation": "べきだ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "べきだの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g037",
+    "pattern": "べきではない",
+    "romaji": "beki dewa nai",
+    "formation": "べきではない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "べきではないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g038",
+    "pattern": "別に～ない",
+    "romaji": "betsu ni~nai",
+    "formation": "別に～ない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "別に～ないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g039",
+    "pattern": "ぶりに",
+    "romaji": "buri ni",
+    "formation": "ぶりに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ぶりにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g040",
+    "pattern": "中",
+    "romaji": "chuu / juu",
+    "formation": "中 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "中の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g041",
+    "pattern": "だけ",
+    "romaji": "dake",
+    "formation": "だけ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "だけの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g042",
+    "pattern": "だけでなく",
+    "romaji": "dake de naku",
+    "formation": "だけでなく + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "だけでなくの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g043",
+    "pattern": "だけど",
+    "romaji": "dakedo",
+    "formation": "だけど + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "だけどの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g044",
+    "pattern": "だらけ",
+    "romaji": "darake",
+    "formation": "だらけ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "だらけの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g045",
+    "pattern": "どんなに～ても",
+    "romaji": "donna ni~temo",
+    "formation": "どんなに～ても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "どんなに～てもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g046",
+    "pattern": "どうしても",
+    "romaji": "doushitemo",
+    "formation": "どうしても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "どうしてもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g047",
+    "pattern": "ふりをする",
+    "romaji": "furi o suru",
+    "formation": "ふりをする + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ふりをするの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g048",
+    "pattern": "ふと",
+    "romaji": "futo",
+    "formation": "ふと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ふとの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g049",
+    "pattern": "がち",
+    "romaji": "gachi",
+    "formation": "がち + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "がちの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g050",
+    "pattern": "がたい",
+    "romaji": "gatai",
+    "formation": "がたい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "がたいの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g051",
+    "pattern": "気味",
+    "romaji": "gimi",
+    "formation": "気味 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "気味の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g052",
+    "pattern": "ごとに",
+    "romaji": "goto ni",
+    "formation": "ごとに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ごとにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g053",
+    "pattern": "ほど",
+    "romaji": "hodo",
+    "formation": "ほど + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ほどの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g054",
+    "pattern": "ほど～ない",
+    "romaji": "hodo~nai",
+    "formation": "ほど～ない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ほど～ないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g055",
+    "pattern": "一度に",
+    "romaji": "ichido ni",
+    "formation": "一度に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "一度にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g056",
+    "pattern": "いくら～ても",
+    "romaji": "ikura~temo",
+    "formation": "いくら～ても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "いくら～てもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g057",
+    "pattern": "一方だ",
+    "romaji": "ippou da",
+    "formation": "一方だ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "一方だの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g058",
+    "pattern": "一体",
+    "romaji": "ittai",
+    "formation": "一体 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "一体の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g059",
+    "pattern": "じゃない",
+    "romaji": "janai",
+    "formation": "じゃない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "じゃないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g060",
+    "pattern": "か何か",
+    "romaji": "ka nani ka",
+    "formation": "か何か + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "か何かの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g061",
+    "pattern": "かける",
+    "romaji": "kakeru",
+    "formation": "かける + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "かけるの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g062",
+    "pattern": "から〜にかけて",
+    "romaji": "kara~ni kakete",
+    "formation": "から〜にかけて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "から〜にかけての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g063",
+    "pattern": "代わりに",
+    "romaji": "kawari ni",
+    "formation": "代わりに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "代わりにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g064",
+    "pattern": "結果",
+    "romaji": "kekka",
+    "formation": "結果 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "結果の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g065",
+    "pattern": "結局",
+    "romaji": "kekkyoku",
+    "formation": "結局 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "結局の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g066",
+    "pattern": "決して～ない",
+    "romaji": "kesshite~nai",
+    "formation": "決して～ない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "決して～ないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g067",
+    "pattern": "切れない",
+    "romaji": "kirenai",
+    "formation": "切れない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "切れないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g068",
+    "pattern": "きり",
+    "romaji": "kiri",
+    "formation": "きり + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "きりの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g069",
+    "pattern": "切る",
+    "romaji": "kiru",
+    "formation": "切る + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "切るの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g070",
+    "pattern": "っけ",
+    "romaji": "kke",
+    "formation": "っけ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "っけの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g071",
+    "pattern": "込む",
+    "romaji": "komu",
+    "formation": "込む + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "込むの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g072",
+    "pattern": "こそ",
+    "romaji": "koso",
+    "formation": "こそ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "こその表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g073",
+    "pattern": "こと",
+    "romaji": "koto",
+    "formation": "こと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ことの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g074",
+    "pattern": "ことから",
+    "romaji": "koto kara",
+    "formation": "ことから + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ことからの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g075",
+    "pattern": "ことになっている",
+    "romaji": "koto ni natteiru",
+    "formation": "ことになっている + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ことになっているの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g076",
+    "pattern": "ことはない",
+    "romaji": "koto wa nai",
+    "formation": "ことはない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ことはないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g077",
+    "pattern": "ことは～が",
+    "romaji": "koto wa~ga",
+    "formation": "ことは～が + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ことは～がの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g078",
+    "pattern": "くらい・ぐらい",
+    "romaji": "kurai / gurai",
+    "formation": "くらい・ぐらい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "くらい・ぐらいの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g079",
+    "pattern": "くせに",
+    "romaji": "kuse ni",
+    "formation": "くせに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "くせにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g080",
+    "pattern": "まるで",
+    "romaji": "maru de",
+    "formation": "まるで + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "まるでの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g081",
+    "pattern": "まさか",
+    "romaji": "masaka",
+    "formation": "まさか + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "まさかの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g082",
+    "pattern": "めったに～ない",
+    "romaji": "metta ni~nai",
+    "formation": "めったに～ない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "めったに～ないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g083",
+    "pattern": "も～ば～も",
+    "romaji": "mo~ba~mo",
+    "formation": "も～ば～も + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "も～ば～もの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g084",
+    "pattern": "もしかしたら",
+    "romaji": "moshika shitara",
+    "formation": "もしかしたら + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "もしかしたらの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g085",
+    "pattern": "もしも〜たら",
+    "romaji": "moshimo~tara",
+    "formation": "もしも〜たら + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "もしも〜たらの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g086",
+    "pattern": "向け",
+    "romaji": "muke",
+    "formation": "向け + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "向けの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g087",
+    "pattern": "向き",
+    "romaji": "muki",
+    "formation": "向き + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "向きの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g088",
+    "pattern": "むしろ",
+    "romaji": "mushiro",
+    "formation": "むしろ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "むしろの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g089",
+    "pattern": "ながらも",
+    "romaji": "nagara mo",
+    "formation": "ながらも + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ながらもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g090",
+    "pattern": "ないことはない",
+    "romaji": "nai koto wa nai",
+    "formation": "ないことはない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ないことはないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g091",
+    "pattern": "ないと",
+    "romaji": "naito",
+    "formation": "ないと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ないとの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g092",
+    "pattern": "なかなか",
+    "romaji": "nakanaka",
+    "formation": "なかなか + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "なかなかの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g093",
+    "pattern": "直す",
+    "romaji": "naosu",
+    "formation": "直す + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "直すの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g094",
+    "pattern": "なるべく",
+    "romaji": "naru beku",
+    "formation": "なるべく + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "なるべくの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g095",
+    "pattern": "なぜなら",
+    "romaji": "nazenara",
+    "formation": "なぜなら + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "なぜならの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g096",
+    "pattern": "んだって",
+    "romaji": "ndatte",
+    "formation": "んだって + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "んだっての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g097",
+    "pattern": "に違いない",
+    "romaji": "ni chigai nai",
+    "formation": "に違いない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に違いないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g098",
+    "pattern": "に反して",
+    "romaji": "ni hanshite",
+    "formation": "に反して + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に反しての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g099",
+    "pattern": "にかけて",
+    "romaji": "ni kakete",
+    "formation": "にかけて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にかけての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g100",
+    "pattern": "に関する",
+    "romaji": "ni kan suru",
+    "formation": "に関する + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に関するの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g101",
+    "pattern": "にかわって",
+    "romaji": "ni kawatte",
+    "formation": "にかわって + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にかわっての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g102",
+    "pattern": "に比べて",
+    "romaji": "ni kurabete",
+    "formation": "に比べて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に比べての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g103",
+    "pattern": "に慣れる",
+    "romaji": "ni nareru",
+    "formation": "に慣れる + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に慣れるの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g104",
+    "pattern": "において",
+    "romaji": "ni oite",
+    "formation": "において + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "においての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g105",
+    "pattern": "にしたがって",
+    "romaji": "ni shitagatte",
+    "formation": "にしたがって + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にしたがっての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g106",
+    "pattern": "にしても",
+    "romaji": "ni shite mo",
+    "formation": "にしても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にしてもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g107",
+    "pattern": "にしては",
+    "romaji": "ni shite wa",
+    "formation": "にしては + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にしてはの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g108",
+    "pattern": "に対して",
+    "romaji": "ni taishite",
+    "formation": "に対して + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "に対しての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g109",
+    "pattern": "にとって",
+    "romaji": "ni totte",
+    "formation": "にとって + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にとっての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g110",
+    "pattern": "について",
+    "romaji": "ni tsuite",
+    "formation": "について + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "についての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g111",
+    "pattern": "につれて",
+    "romaji": "ni tsurete",
+    "formation": "につれて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "につれての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g112",
+    "pattern": "には",
+    "romaji": "ni wa",
+    "formation": "には + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "にはの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g113",
+    "pattern": "のでしょうか",
+    "romaji": "no deshou ka",
+    "formation": "のでしょうか + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "のでしょうかの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g114",
+    "pattern": "を中心に",
+    "romaji": "o chuushin ni",
+    "formation": "を中心に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "を中心にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g115",
+    "pattern": "をはじめ",
+    "romaji": "o hajime",
+    "formation": "をはじめ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "をはじめの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g116",
+    "pattern": "を込めて",
+    "romaji": "o komete",
+    "formation": "を込めて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "を込めての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g117",
+    "pattern": "っぽい",
+    "romaji": "ppoi",
+    "formation": "っぽい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "っぽいの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g118",
+    "pattern": "さえ",
+    "romaji": "sae",
+    "formation": "さえ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "さえの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g119",
+    "pattern": "さえ～ば",
+    "romaji": "sae~ba",
+    "formation": "さえ～ば + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "さえ～ばの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g120",
+    "pattern": "際に",
+    "romaji": "sai ni",
+    "formation": "際に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "際にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g121",
+    "pattern": "最中に",
+    "romaji": "saichuu ni",
+    "formation": "最中に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "最中にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g122",
+    "pattern": "さらに",
+    "romaji": "sara ni",
+    "formation": "さらに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "さらにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g123",
+    "pattern": "さて",
+    "romaji": "sate",
+    "formation": "さて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "さての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g124",
+    "pattern": "せいで",
+    "romaji": "sei de",
+    "formation": "せいで + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "せいでの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g125",
+    "pattern": "せいぜい",
+    "romaji": "seizei",
+    "formation": "せいぜい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "せいぜいの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g126",
+    "pattern": "しばらく",
+    "romaji": "shibaraku",
+    "formation": "しばらく + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "しばらくの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g127",
+    "pattern": "しかない",
+    "romaji": "shikanai",
+    "formation": "しかない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "しかないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g128",
+    "pattern": "そのために",
+    "romaji": "sono tame ni",
+    "formation": "そのために + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "そのためにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g129",
+    "pattern": "それとも",
+    "romaji": "soretomo",
+    "formation": "それとも + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "それともの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g130",
+    "pattern": "そうもない",
+    "romaji": "sou mo nai",
+    "formation": "そうもない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "そうもないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g131",
+    "pattern": "すでに",
+    "romaji": "sude ni",
+    "formation": "すでに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "すでにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g132",
+    "pattern": "すなわち",
+    "romaji": "sunawachi",
+    "formation": "すなわち + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "すなわちの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g133",
+    "pattern": "たものだ",
+    "romaji": "ta mono da",
+    "formation": "たものだ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たものだの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g134",
+    "pattern": "たとたん",
+    "romaji": "ta totan",
+    "formation": "たとたん + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たとたんの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g135",
+    "pattern": "たびに",
+    "romaji": "tabi ni",
+    "formation": "たびに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たびにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g136",
+    "pattern": "ために",
+    "romaji": "tame ni",
+    "formation": "ために + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ためにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g137",
+    "pattern": "確かに",
+    "romaji": "tashika ni",
+    "formation": "確かに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "確かにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g138",
+    "pattern": "たて",
+    "romaji": "tate",
+    "formation": "たて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g139",
+    "pattern": "たとえ～ても",
+    "romaji": "tatoe~temo",
+    "formation": "たとえ～ても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たとえ～てもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g140",
+    "pattern": "例えば",
+    "romaji": "tatoeba",
+    "formation": "例えば + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "例えばの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g141",
+    "pattern": "たって",
+    "romaji": "tatte",
+    "formation": "たって + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "たっての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g142",
+    "pattern": "てばかりいる",
+    "romaji": "te bakari iru",
+    "formation": "てばかりいる + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てばかりいるの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g143",
+    "pattern": "てごらん",
+    "romaji": "te goran",
+    "formation": "てごらん + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てごらんの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g144",
+    "pattern": "てはじめて",
+    "romaji": "te hajimete",
+    "formation": "てはじめて + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てはじめての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g145",
+    "pattern": "てからでないと",
+    "romaji": "te kara de nai to",
+    "formation": "てからでないと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てからでないとの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g146",
+    "pattern": "てしょうがない",
+    "romaji": "te shou ga nai",
+    "formation": "てしょうがない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てしょうがないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g147",
+    "pattern": "て済む",
+    "romaji": "te sumu",
+    "formation": "て済む + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "て済むの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g148",
+    "pattern": "てはいけないから",
+    "romaji": "te wa ikenai kara",
+    "formation": "てはいけないから + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てはいけないからの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g149",
+    "pattern": "ている場合じゃない",
+    "romaji": "teiru baai janai",
+    "formation": "ている場合じゃない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ている場合じゃないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g150",
+    "pattern": "的",
+    "romaji": "teki",
+    "formation": "的 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "的の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g151",
+    "pattern": "ても始まらない",
+    "romaji": "temo hajimaranai",
+    "formation": "ても始まらない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ても始まらないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g152",
+    "pattern": "てもかまわない",
+    "romaji": "temo kamawanai",
+    "formation": "てもかまわない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てもかまわないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g153",
+    "pattern": "てもしょうがない",
+    "romaji": "temo shou ga nai",
+    "formation": "てもしょうがない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "てもしょうがないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g154",
+    "pattern": "と言えば",
+    "romaji": "to ieba",
+    "formation": "と言えば + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "と言えばの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g155",
+    "pattern": "といっても",
+    "romaji": "to ittemo",
+    "formation": "といっても + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "といってもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g156",
+    "pattern": "ということだ",
+    "romaji": "to iu koto da",
+    "formation": "ということだ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ということだの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g157",
+    "pattern": "というのは",
+    "romaji": "to iu nowa",
+    "formation": "というのは + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "というのはの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g158",
+    "pattern": "と言うと",
+    "romaji": "to iu to",
+    "formation": "と言うと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "と言うとの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g159",
+    "pattern": "というより",
+    "romaji": "to iu yori",
+    "formation": "というより + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "というよりの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g160",
+    "pattern": "とすれば",
+    "romaji": "to sureba",
+    "formation": "とすれば + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "とすればの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g161",
+    "pattern": "と共に",
+    "romaji": "to tomo ni",
+    "formation": "と共に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "と共にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g162",
+    "pattern": "途中で",
+    "romaji": "tochuu de",
+    "formation": "途中で + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "途中での表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g163",
+    "pattern": "ところで",
+    "romaji": "tokoro de",
+    "formation": "ところで + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ところでの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g164",
+    "pattern": "ところが",
+    "romaji": "tokoro ga",
+    "formation": "ところが + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ところがの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g165",
+    "pattern": "とおりに",
+    "romaji": "toori ni",
+    "formation": "とおりに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "とおりにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g166",
+    "pattern": "通す",
+    "romaji": "toosu",
+    "formation": "通す + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "通すの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g167",
+    "pattern": "として",
+    "romaji": "toshite",
+    "formation": "として + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "としての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g168",
+    "pattern": "とても～ない",
+    "romaji": "totemo~nai",
+    "formation": "とても～ない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "とても～ないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g169",
+    "pattern": "とは限らない",
+    "romaji": "towa kagiranai",
+    "formation": "とは限らない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "とは限らないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g170",
+    "pattern": "つい",
+    "romaji": "tsui",
+    "formation": "つい + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ついの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g171",
+    "pattern": "ついに",
+    "romaji": "tsui ni",
+    "formation": "ついに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ついにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g172",
+    "pattern": "ついでに",
+    "romaji": "tsuide ni",
+    "formation": "ついでに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ついでにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g173",
+    "pattern": "つまり",
+    "romaji": "tsumari",
+    "formation": "つまり + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "つまりの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g174",
+    "pattern": "つもりだった",
+    "romaji": "tsumori datta",
+    "formation": "つもりだった + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "つもりだったの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g175",
+    "pattern": "つもりで",
+    "romaji": "tsumori de",
+    "formation": "つもりで + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "つもりでの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g176",
+    "pattern": "うちに",
+    "romaji": "uchi ni",
+    "formation": "うちに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "うちにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g177",
+    "pattern": "上で",
+    "romaji": "ue de",
+    "formation": "上で + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "上での表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g178",
+    "pattern": "上に",
+    "romaji": "ue ni",
+    "formation": "上に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "上にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g179",
+    "pattern": "は別として",
+    "romaji": "wa betsu toshite",
+    "formation": "は別として + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "は別としての表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g180",
+    "pattern": "はもちろん",
+    "romaji": "wa mochiron",
+    "formation": "はもちろん + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "はもちろんの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g181",
+    "pattern": "は～で有名",
+    "romaji": "wa~de yuumei",
+    "formation": "は～で有名 + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "は～で有名の表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g182",
+    "pattern": "わけだ",
+    "romaji": "wake da",
+    "formation": "わけだ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わけだの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g183",
+    "pattern": "わけではない",
+    "romaji": "wake dewa nai",
+    "formation": "わけではない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わけではないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g184",
+    "pattern": "わけがない",
+    "romaji": "wake ga nai",
+    "formation": "わけがない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わけがないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g185",
+    "pattern": "わけにはいかない",
+    "romaji": "wake niwa ikanai",
+    "formation": "わけにはいかない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わけにはいかないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g186",
+    "pattern": "割に",
+    "romaji": "wari ni",
+    "formation": "割に + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "割にの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g187",
+    "pattern": "わざと",
+    "romaji": "wazato",
+    "formation": "わざと + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わざとの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g188",
+    "pattern": "わざわざ",
+    "romaji": "wazawaza",
+    "formation": "わざわざ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "わざわざの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g189",
+    "pattern": "よりも",
+    "romaji": "yorimo",
+    "formation": "よりも + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "よりもの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g190",
+    "pattern": "ようがない",
+    "romaji": "you ga nai",
+    "formation": "ようがない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ようがないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g191",
+    "pattern": "ような気がする",
+    "romaji": "you na ki ga suru",
+    "formation": "ような気がする + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ような気がするの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g192",
+    "pattern": "ように",
+    "romaji": "you ni",
+    "formation": "ように + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ようにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g193",
+    "pattern": "ように見える",
+    "romaji": "you ni mieru",
+    "formation": "ように見える + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ように見えるの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g194",
+    "pattern": "ようとしない",
+    "romaji": "you to shinai",
+    "formation": "ようとしない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ようとしないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g195",
+    "pattern": "ようとする",
+    "romaji": "you to suru",
+    "formation": "ようとする + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ようとするの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g196",
+    "pattern": "ずに",
+    "romaji": "zuni",
+    "formation": "ずに + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ずにの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g197",
+    "pattern": "ずにはいられない",
+    "romaji": "zuni wa irarenai",
+    "formation": "ずにはいられない + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ずにはいられないの表現です。",
+        "reading": ""
+      }
+    ]
+  },
+  {
+    "id": "n3_g198",
+    "pattern": "ずつ",
+    "romaji": "zutsu",
+    "formation": "ずつ + ...",
+    "level": "N3",
+    "tags": [
+      "grammar",
+      "N3"
+    ],
+    "examples": [
+      {
+        "jp": "ずつの表現です。",
+        "reading": ""
+      }
+    ]
+  }
+]

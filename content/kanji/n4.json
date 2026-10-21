@@ -1,0 +1,3130 @@
+[
+  {
+    "id": "n4k001",
+    "kanji": "開",
+    "readings": {
+      "on": [
+        "カイ"
+      ],
+      "kun": [
+        "あ-ける",
+        "ひら-く"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k002",
+    "kanji": "閉",
+    "readings": {
+      "on": [
+        "ヘイ"
+      ],
+      "kun": [
+        "し-める",
+        "と-じる"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k003",
+    "kanji": "使",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "つか-う"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k004",
+    "kanji": "始",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "はじ-める",
+        "はじ-まる"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k005",
+    "kanji": "終",
+    "readings": {
+      "on": [
+        "シュウ"
+      ],
+      "kun": [
+        "お-わる",
+        "お-える"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k006",
+    "kanji": "持",
+    "readings": {
+      "on": [
+        "ジ"
+      ],
+      "kun": [
+        "も-つ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k007",
+    "kanji": "待",
+    "readings": {
+      "on": [
+        "タイ"
+      ],
+      "kun": [
+        "ま-つ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k008",
+    "kanji": "知",
+    "readings": {
+      "on": [
+        "チ"
+      ],
+      "kun": [
+        "し-る"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k009",
+    "kanji": "思",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "おも-う"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k010",
+    "kanji": "考",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "かんが-える"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k011",
+    "kanji": "教",
+    "readings": {
+      "on": [
+        "キョウ"
+      ],
+      "kun": [
+        "おし-える"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k012",
+    "kanji": "働",
+    "readings": {
+      "on": [
+        "ドウ"
+      ],
+      "kun": [
+        "はたら-く"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k013",
+    "kanji": "急",
+    "readings": {
+      "on": [
+        "キュウ"
+      ],
+      "kun": [
+        "いそ-ぐ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k014",
+    "kanji": "泳",
+    "readings": {
+      "on": [
+        "エイ"
+      ],
+      "kun": [
+        "およ-ぐ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k015",
+    "kanji": "走",
+    "readings": {
+      "on": [
+        "ソウ"
+      ],
+      "kun": [
+        "はし-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k016",
+    "kanji": "歩",
+    "readings": {
+      "on": [
+        "ホ",
+        "ブ"
+      ],
+      "kun": [
+        "ある-く",
+        "あゆ-む"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k017",
+    "kanji": "乗",
+    "readings": {
+      "on": [
+        "ジョウ"
+      ],
+      "kun": [
+        "の-る"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k018",
+    "kanji": "降",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "お-りる",
+        "ふ-る"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k019",
+    "kanji": "着",
+    "readings": {
+      "on": [
+        "チャク"
+      ],
+      "kun": [
+        "き-る",
+        "つ-く"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k020",
+    "kanji": "送",
+    "readings": {
+      "on": [
+        "ソウ"
+      ],
+      "kun": [
+        "おく-る"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k021",
+    "kanji": "受",
+    "readings": {
+      "on": [
+        "ジュ"
+      ],
+      "kun": [
+        "う-ける"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k022",
+    "kanji": "貸",
+    "readings": {
+      "on": [
+        "タイ"
+      ],
+      "kun": [
+        "か-す"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k023",
+    "kanji": "借",
+    "readings": {
+      "on": [
+        "シャク"
+      ],
+      "kun": [
+        "か-りる"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k024",
+    "kanji": "売",
+    "readings": {
+      "on": [
+        "バイ"
+      ],
+      "kun": [
+        "う-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k025",
+    "kanji": "取",
+    "readings": {
+      "on": [
+        "シュ"
+      ],
+      "kun": [
+        "と-る"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k026",
+    "kanji": "作",
+    "readings": {
+      "on": [
+        "サク",
+        "サ"
+      ],
+      "kun": [
+        "つく-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k027",
+    "kanji": "洗",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "あら-う"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k028",
+    "kanji": "切",
+    "readings": {
+      "on": [
+        "セツ",
+        "サイ"
+      ],
+      "kun": [
+        "き-る"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k029",
+    "kanji": "引",
+    "readings": {
+      "on": [
+        "イン"
+      ],
+      "kun": [
+        "ひ-く"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k030",
+    "kanji": "押",
+    "readings": {
+      "on": [
+        "オウ"
+      ],
+      "kun": [
+        "お-す"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k031",
+    "kanji": "暑",
+    "readings": {
+      "on": [
+        "ショ"
+      ],
+      "kun": [
+        "あつ-い"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k032",
+    "kanji": "寒",
+    "readings": {
+      "on": [
+        "カン"
+      ],
+      "kun": [
+        "さむ-い"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k033",
+    "kanji": "暖",
+    "readings": {
+      "on": [
+        "ダン"
+      ],
+      "kun": [
+        "あたた-かい"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k034",
+    "kanji": "涼",
+    "readings": {
+      "on": [
+        "リョウ"
+      ],
+      "kun": [
+        "すず-しい"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k035",
+    "kanji": "強",
+    "readings": {
+      "on": [
+        "キョウ",
+        "ゴウ"
+      ],
+      "kun": [
+        "つよ-い"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k036",
+    "kanji": "弱",
+    "readings": {
+      "on": [
+        "ジャク"
+      ],
+      "kun": [
+        "よわ-い"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k037",
+    "kanji": "重",
+    "readings": {
+      "on": [
+        "ジュウ",
+        "チョウ"
+      ],
+      "kun": [
+        "おも-い",
+        "かさ-ねる"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k038",
+    "kanji": "軽",
+    "readings": {
+      "on": [
+        "ケイ"
+      ],
+      "kun": [
+        "かる-い"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k039",
+    "kanji": "広",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "ひろ-い"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k040",
+    "kanji": "狭",
+    "readings": {
+      "on": [
+        "キョウ"
+      ],
+      "kun": [
+        "せま-い"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k041",
+    "kanji": "速",
+    "readings": {
+      "on": [
+        "ソク"
+      ],
+      "kun": [
+        "はや-い"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k042",
+    "kanji": "遅",
+    "readings": {
+      "on": [
+        "チ"
+      ],
+      "kun": [
+        "おそ-い"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k043",
+    "kanji": "近",
+    "readings": {
+      "on": [
+        "キン",
+        "コン"
+      ],
+      "kun": [
+        "ちか-い"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k044",
+    "kanji": "遠",
+    "readings": {
+      "on": [
+        "エン",
+        "オン"
+      ],
+      "kun": [
+        "とお-い"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k045",
+    "kanji": "明",
+    "readings": {
+      "on": [
+        "メイ",
+        "ミョウ"
+      ],
+      "kun": [
+        "あか-るい",
+        "あ-ける"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k046",
+    "kanji": "暗",
+    "readings": {
+      "on": [
+        "アン"
+      ],
+      "kun": [
+        "くら-い"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k047",
+    "kanji": "太",
+    "readings": {
+      "on": [
+        "タイ",
+        "タ"
+      ],
+      "kun": [
+        "ふと-い"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k048",
+    "kanji": "細",
+    "readings": {
+      "on": [
+        "サイ"
+      ],
+      "kun": [
+        "ほそ-い",
+        "こま-かい"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k049",
+    "kanji": "病",
+    "readings": {
+      "on": [
+        "ビョウ",
+        "ヘイ"
+      ],
+      "kun": [
+        "や-む"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k050",
+    "kanji": "院",
+    "readings": {
+      "on": [
+        "イン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k051",
+    "kanji": "医",
+    "readings": {
+      "on": [
+        "イ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k052",
+    "kanji": "薬",
+    "readings": {
+      "on": [
+        "ヤク"
+      ],
+      "kun": [
+        "くすり"
+      ]
+    },
+    "strokeCount": 16,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k053",
+    "kanji": "痛",
+    "readings": {
+      "on": [
+        "ツウ"
+      ],
+      "kun": [
+        "いた-い"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k054",
+    "kanji": "頭",
+    "readings": {
+      "on": [
+        "トウ",
+        "ズ"
+      ],
+      "kun": [
+        "あたま"
+      ]
+    },
+    "strokeCount": 16,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k055",
+    "kanji": "顔",
+    "readings": {
+      "on": [
+        "ガン"
+      ],
+      "kun": [
+        "かお"
+      ]
+    },
+    "strokeCount": 18,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k056",
+    "kanji": "首",
+    "readings": {
+      "on": [
+        "シュ"
+      ],
+      "kun": [
+        "くび"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k057",
+    "kanji": "背",
+    "readings": {
+      "on": [
+        "ハイ"
+      ],
+      "kun": [
+        "せ",
+        "せい"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k058",
+    "kanji": "体",
+    "readings": {
+      "on": [
+        "タイ",
+        "テイ"
+      ],
+      "kun": [
+        "からだ"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k059",
+    "kanji": "心",
+    "readings": {
+      "on": [
+        "シン"
+      ],
+      "kun": [
+        "こころ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k060",
+    "kanji": "声",
+    "readings": {
+      "on": [
+        "セイ",
+        "ショウ"
+      ],
+      "kun": [
+        "こえ"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k061",
+    "kanji": "血",
+    "readings": {
+      "on": [
+        "ケツ"
+      ],
+      "kun": [
+        "ち"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k062",
+    "kanji": "骨",
+    "readings": {
+      "on": [
+        "コツ"
+      ],
+      "kun": [
+        "ほね"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k063",
+    "kanji": "皮",
+    "readings": {
+      "on": [
+        "ヒ"
+      ],
+      "kun": [
+        "かわ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k064",
+    "kanji": "所",
+    "readings": {
+      "on": [
+        "ショ",
+        "ジョ"
+      ],
+      "kun": [
+        "ところ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k065",
+    "kanji": "場",
+    "readings": {
+      "on": [
+        "ジョウ"
+      ],
+      "kun": [
+        "ば"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k066",
+    "kanji": "室",
+    "readings": {
+      "on": [
+        "シツ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k067",
+    "kanji": "館",
+    "readings": {
+      "on": [
+        "カン"
+      ],
+      "kun": [
+        "やかた"
+      ]
+    },
+    "strokeCount": 16,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k068",
+    "kanji": "橋",
+    "readings": {
+      "on": [
+        "キョウ"
+      ],
+      "kun": [
+        "はし"
+      ]
+    },
+    "strokeCount": 16,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k069",
+    "kanji": "港",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "みなと"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k070",
+    "kanji": "島",
+    "readings": {
+      "on": [
+        "トウ"
+      ],
+      "kun": [
+        "しま"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k071",
+    "kanji": "池",
+    "readings": {
+      "on": [
+        "チ"
+      ],
+      "kun": [
+        "いけ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k072",
+    "kanji": "湖",
+    "readings": {
+      "on": [
+        "コ"
+      ],
+      "kun": [
+        "みずうみ"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k073",
+    "kanji": "海",
+    "readings": {
+      "on": [
+        "カイ"
+      ],
+      "kun": [
+        "うみ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k074",
+    "kanji": "公",
+    "readings": {
+      "on": [
+        "コウ"
+      ],
+      "kun": [
+        "おおやけ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k075",
+    "kanji": "園",
+    "readings": {
+      "on": [
+        "エン"
+      ],
+      "kun": [
+        "その"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k076",
+    "kanji": "寺",
+    "readings": {
+      "on": [
+        "ジ"
+      ],
+      "kun": [
+        "てら"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k077",
+    "kanji": "神",
+    "readings": {
+      "on": [
+        "シン",
+        "ジン"
+      ],
+      "kun": [
+        "かみ",
+        "かん"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k078",
+    "kanji": "社",
+    "readings": {
+      "on": [
+        "シャ"
+      ],
+      "kun": [
+        "やしろ"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k079",
+    "kanji": "兄",
+    "readings": {
+      "on": [
+        "ケイ",
+        "キョウ"
+      ],
+      "kun": [
+        "あに"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k080",
+    "kanji": "弟",
+    "readings": {
+      "on": [
+        "ダイ",
+        "デ",
+        "テイ"
+      ],
+      "kun": [
+        "おとうと"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k081",
+    "kanji": "姉",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "あね"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k082",
+    "kanji": "妹",
+    "readings": {
+      "on": [
+        "マイ"
+      ],
+      "kun": [
+        "いもうと"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k083",
+    "kanji": "祖",
+    "readings": {
+      "on": [
+        "ソ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k084",
+    "kanji": "夫",
+    "readings": {
+      "on": [
+        "フウ",
+        "フ"
+      ],
+      "kun": [
+        "おっと",
+        "おとこ"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k085",
+    "kanji": "妻",
+    "readings": {
+      "on": [
+        "サイ"
+      ],
+      "kun": [
+        "つま"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k086",
+    "kanji": "息",
+    "readings": {
+      "on": [
+        "ソク"
+      ],
+      "kun": [
+        "いき"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k087",
+    "kanji": "娘",
+    "readings": {
+      "on": [
+        "ジョウ"
+      ],
+      "kun": [
+        "むすめ"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k088",
+    "kanji": "会",
+    "readings": {
+      "on": [
+        "カイ",
+        "エ"
+      ],
+      "kun": [
+        "あ-う"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k089",
+    "kanji": "社",
+    "readings": {
+      "on": [
+        "シャ"
+      ],
+      "kun": [
+        "やしろ"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k090",
+    "kanji": "員",
+    "readings": {
+      "on": [
+        "イン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k091",
+    "kanji": "長",
+    "readings": {
+      "on": [
+        "チョウ"
+      ],
+      "kun": [
+        "なが-い",
+        "おさ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k092",
+    "kanji": "部",
+    "readings": {
+      "on": [
+        "ブ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k093",
+    "kanji": "課",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k094",
+    "kanji": "業",
+    "readings": {
+      "on": [
+        "ギョウ",
+        "ゴウ"
+      ],
+      "kun": [
+        "わざ"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k095",
+    "kanji": "仕",
+    "readings": {
+      "on": [
+        "シ",
+        "ジ"
+      ],
+      "kun": [
+        "つか-える"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k096",
+    "kanji": "事",
+    "readings": {
+      "on": [
+        "ジ",
+        "ズ"
+      ],
+      "kun": [
+        "こと"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k097",
+    "kanji": "用",
+    "readings": {
+      "on": [
+        "ヨウ"
+      ],
+      "kun": [
+        "もちい-る"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k098",
+    "kanji": "品",
+    "readings": {
+      "on": [
+        "ヒン",
+        "ホン"
+      ],
+      "kun": [
+        "しな"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k099",
+    "kanji": "物",
+    "readings": {
+      "on": [
+        "ブツ",
+        "モツ"
+      ],
+      "kun": [
+        "もの"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k100",
+    "kanji": "金",
+    "readings": {
+      "on": [
+        "キン",
+        "コン"
+      ],
+      "kun": [
+        "かね"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k101",
+    "kanji": "銀",
+    "readings": {
+      "on": [
+        "ギン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k102",
+    "kanji": "料",
+    "readings": {
+      "on": [
+        "リョウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k103",
+    "kanji": "代",
+    "readings": {
+      "on": [
+        "ダイ",
+        "タイ"
+      ],
+      "kun": [
+        "か-わる",
+        "よ"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k104",
+    "kanji": "号",
+    "readings": {
+      "on": [
+        "ゴウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k105",
+    "kanji": "番",
+    "readings": {
+      "on": [
+        "バン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k106",
+    "kanji": "駐",
+    "readings": {
+      "on": [
+        "チュウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k107",
+    "kanji": "線",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k108",
+    "kanji": "地",
+    "readings": {
+      "on": [
+        "チ",
+        "ジ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k109",
+    "kanji": "鉄",
+    "readings": {
+      "on": [
+        "テツ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k110",
+    "kanji": "飛",
+    "readings": {
+      "on": [
+        "ヒ"
+      ],
+      "kun": [
+        "と-ぶ"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k111",
+    "kanji": "船",
+    "readings": {
+      "on": [
+        "セン"
+      ],
+      "kun": [
+        "ふね"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k112",
+    "kanji": "旅",
+    "readings": {
+      "on": [
+        "リョ"
+      ],
+      "kun": [
+        "たび"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k113",
+    "kanji": "泊",
+    "readings": {
+      "on": [
+        "ハク"
+      ],
+      "kun": [
+        "と-まる"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k114",
+    "kanji": "荷",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "に"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k115",
+    "kanji": "通",
+    "readings": {
+      "on": [
+        "ツウ",
+        "ツ"
+      ],
+      "kun": [
+        "とお-る",
+        "かよ-う"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k116",
+    "kanji": "昼",
+    "readings": {
+      "on": [
+        "チュウ"
+      ],
+      "kun": [
+        "ひる"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k117",
+    "kanji": "夜",
+    "readings": {
+      "on": [
+        "ヤ"
+      ],
+      "kun": [
+        "よる",
+        "よ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k118",
+    "kanji": "朝",
+    "readings": {
+      "on": [
+        "チョウ"
+      ],
+      "kun": [
+        "あさ"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k119",
+    "kanji": "晩",
+    "readings": {
+      "on": [
+        "バン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k120",
+    "kanji": "酒",
+    "readings": {
+      "on": [
+        "シュ"
+      ],
+      "kun": [
+        "さけ",
+        "さか"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k121",
+    "kanji": "野",
+    "readings": {
+      "on": [
+        "ヤ"
+      ],
+      "kun": [
+        "の"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k122",
+    "kanji": "菜",
+    "readings": {
+      "on": [
+        "サイ"
+      ],
+      "kun": [
+        "な"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k123",
+    "kanji": "果",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "は-たす",
+        "くだもの"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k124",
+    "kanji": "味",
+    "readings": {
+      "on": [
+        "ミ"
+      ],
+      "kun": [
+        "あじ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k125",
+    "kanji": "甘",
+    "readings": {
+      "on": [
+        "カン"
+      ],
+      "kun": [
+        "あま-い"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k126",
+    "kanji": "辛",
+    "readings": {
+      "on": [
+        "シン",
+        "カラ"
+      ],
+      "kun": [
+        "から-い",
+        "つら-い"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k127",
+    "kanji": "皿",
+    "readings": {
+      "on": [
+        "サラ",
+        "ベイ"
+      ],
+      "kun": [
+        "さら"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k128",
+    "kanji": "茶",
+    "readings": {
+      "on": [
+        "チャ",
+        "サ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k129",
+    "kanji": "飯",
+    "readings": {
+      "on": [
+        "ハン"
+      ],
+      "kun": [
+        "めし"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k130",
+    "kanji": "森",
+    "readings": {
+      "on": [
+        "シン"
+      ],
+      "kun": [
+        "もり"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k131",
+    "kanji": "林",
+    "readings": {
+      "on": [
+        "リン"
+      ],
+      "kun": [
+        "はやし"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k132",
+    "kanji": "石",
+    "readings": {
+      "on": [
+        "セキ",
+        "シャク",
+        "コク"
+      ],
+      "kun": [
+        "いし"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k133",
+    "kanji": "砂",
+    "readings": {
+      "on": [
+        "サ",
+        "シャ"
+      ],
+      "kun": [
+        "すな"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k134",
+    "kanji": "岩",
+    "readings": {
+      "on": [
+        "ガン"
+      ],
+      "kun": [
+        "いわ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k135",
+    "kanji": "泥",
+    "readings": {
+      "on": [
+        "デイ"
+      ],
+      "kun": [
+        "どろ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k136",
+    "kanji": "氷",
+    "readings": {
+      "on": [
+        "ヒョウ"
+      ],
+      "kun": [
+        "こおり"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k137",
+    "kanji": "波",
+    "readings": {
+      "on": [
+        "ハ"
+      ],
+      "kun": [
+        "なみ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k138",
+    "kanji": "星",
+    "readings": {
+      "on": [
+        "セイ",
+        "ショウ"
+      ],
+      "kun": [
+        "ほし"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k139",
+    "kanji": "太",
+    "readings": {
+      "on": [
+        "タイ",
+        "タ"
+      ],
+      "kun": [
+        "ふと-い"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k140",
+    "kanji": "温",
+    "readings": {
+      "on": [
+        "オン"
+      ],
+      "kun": [
+        "あたた-かい"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k141",
+    "kanji": "度",
+    "readings": {
+      "on": [
+        "ド",
+        "ト",
+        "タク"
+      ],
+      "kun": [
+        "たび"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k142",
+    "kanji": "意",
+    "readings": {
+      "on": [
+        "イ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k143",
+    "kanji": "味",
+    "readings": {
+      "on": [
+        "ミ"
+      ],
+      "kun": [
+        "あじ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k144",
+    "kanji": "色",
+    "readings": {
+      "on": [
+        "ショク",
+        "シキ"
+      ],
+      "kun": [
+        "いろ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k145",
+    "kanji": "形",
+    "readings": {
+      "on": [
+        "ケイ",
+        "ギョウ"
+      ],
+      "kun": [
+        "かたち"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k146",
+    "kanji": "問",
+    "readings": {
+      "on": [
+        "モン"
+      ],
+      "kun": [
+        "と-う",
+        "とい"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k147",
+    "kanji": "答",
+    "readings": {
+      "on": [
+        "トウ"
+      ],
+      "kun": [
+        "こた-える",
+        "こたえ"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k148",
+    "kanji": "理",
+    "readings": {
+      "on": [
+        "リ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k149",
+    "kanji": "由",
+    "readings": {
+      "on": [
+        "ユ",
+        "ユウ",
+        "ユイ"
+      ],
+      "kun": [
+        "よし"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k150",
+    "kanji": "以",
+    "readings": {
+      "on": [
+        "イ"
+      ],
+      "kun": [
+        "もっ-て"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k151",
+    "kanji": "別",
+    "readings": {
+      "on": [
+        "ベツ"
+      ],
+      "kun": [
+        "わか-れる"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k152",
+    "kanji": "特",
+    "readings": {
+      "on": [
+        "トク"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k153",
+    "kanji": "同",
+    "readings": {
+      "on": [
+        "ドウ"
+      ],
+      "kun": [
+        "おな-じ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k154",
+    "kanji": "反",
+    "readings": {
+      "on": [
+        "ハン",
+        "ホン",
+        "タン"
+      ],
+      "kun": [
+        "そ-る",
+        "かえ-す"
+      ]
+    },
+    "strokeCount": 4,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k155",
+    "kanji": "全",
+    "readings": {
+      "on": [
+        "ゼン"
+      ],
+      "kun": [
+        "まった-く",
+        "すべ-て"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k156",
+    "kanji": "半",
+    "readings": {
+      "on": [
+        "ハン"
+      ],
+      "kun": [
+        "なか-ば"
+      ]
+    },
+    "strokeCount": 5,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k157",
+    "kanji": "両",
+    "readings": {
+      "on": [
+        "リョウ"
+      ],
+      "kun": [
+        "もろ-"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k158",
+    "kanji": "各",
+    "readings": {
+      "on": [
+        "カク"
+      ],
+      "kun": [
+        "おのおの"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k159",
+    "kanji": "次",
+    "readings": {
+      "on": [
+        "ジ",
+        "シ"
+      ],
+      "kun": [
+        "つぎ",
+        "つ-ぐ"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k160",
+    "kanji": "数",
+    "readings": {
+      "on": [
+        "スウ",
+        "ス"
+      ],
+      "kun": [
+        "かず",
+        "かぞ-える"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k161",
+    "kanji": "量",
+    "readings": {
+      "on": [
+        "リョウ"
+      ],
+      "kun": [
+        "はか-る"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k162",
+    "kanji": "計",
+    "readings": {
+      "on": [
+        "ケイ"
+      ],
+      "kun": [
+        "はか-る"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k163",
+    "kanji": "点",
+    "readings": {
+      "on": [
+        "テン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k164",
+    "kanji": "位",
+    "readings": {
+      "on": [
+        "イ"
+      ],
+      "kun": [
+        "くらい"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k165",
+    "kanji": "服",
+    "readings": {
+      "on": [
+        "フク"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k166",
+    "kanji": "着",
+    "readings": {
+      "on": [
+        "チャク"
+      ],
+      "kun": [
+        "き-る",
+        "つ-く"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k167",
+    "kanji": "帽",
+    "readings": {
+      "on": [
+        "ボウ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k168",
+    "kanji": "靴",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "くつ"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k169",
+    "kanji": "袋",
+    "readings": {
+      "on": [
+        "タイ"
+      ],
+      "kun": [
+        "ふくろ"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k170",
+    "kanji": "注",
+    "readings": {
+      "on": [
+        "チュウ"
+      ],
+      "kun": [
+        "そそ-ぐ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k171",
+    "kanji": "意",
+    "readings": {
+      "on": [
+        "イ"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k172",
+    "kanji": "願",
+    "readings": {
+      "on": [
+        "ガン"
+      ],
+      "kun": [
+        "ねが-う"
+      ]
+    },
+    "strokeCount": 19,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k173",
+    "kanji": "頼",
+    "readings": {
+      "on": [
+        "ライ"
+      ],
+      "kun": [
+        "たの-む",
+        "たよ-る"
+      ]
+    },
+    "strokeCount": 16,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k174",
+    "kanji": "困",
+    "readings": {
+      "on": [
+        "コン"
+      ],
+      "kun": [
+        "こま-る"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k175",
+    "kanji": "忘",
+    "readings": {
+      "on": [
+        "ボウ"
+      ],
+      "kun": [
+        "わす-れる"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k176",
+    "kanji": "覚",
+    "readings": {
+      "on": [
+        "カク"
+      ],
+      "kun": [
+        "おぼ-える",
+        "さ-める"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k177",
+    "kanji": "習",
+    "readings": {
+      "on": [
+        "シュウ"
+      ],
+      "kun": [
+        "なら-う"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k178",
+    "kanji": "練",
+    "readings": {
+      "on": [
+        "レン"
+      ],
+      "kun": [
+        "ね-る"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k179",
+    "kanji": "試",
+    "readings": {
+      "on": [
+        "シ"
+      ],
+      "kun": [
+        "こころ-みる",
+        "ため-す"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k180",
+    "kanji": "験",
+    "readings": {
+      "on": [
+        "ケン",
+        "ゲン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 18,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k181",
+    "kanji": "験",
+    "readings": {
+      "on": [
+        "ケン"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 18,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k182",
+    "kanji": "合",
+    "readings": {
+      "on": [
+        "ゴウ",
+        "ガッ",
+        "カッ"
+      ],
+      "kun": [
+        "あ-う",
+        "あわ-せる"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k183",
+    "kanji": "集",
+    "readings": {
+      "on": [
+        "シュウ"
+      ],
+      "kun": [
+        "あつ-める",
+        "あつ-まる"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k184",
+    "kanji": "配",
+    "readings": {
+      "on": [
+        "ハイ"
+      ],
+      "kun": [
+        "くば-る"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k185",
+    "kanji": "決",
+    "readings": {
+      "on": [
+        "ケツ"
+      ],
+      "kun": [
+        "き-める",
+        "き-まる"
+      ]
+    },
+    "strokeCount": 7,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k186",
+    "kanji": "定",
+    "readings": {
+      "on": [
+        "テイ",
+        "ジョウ"
+      ],
+      "kun": [
+        "さだ-める"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k187",
+    "kanji": "約",
+    "readings": {
+      "on": [
+        "ヤク"
+      ],
+      "kun": [
+        "-"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k188",
+    "kanji": "連",
+    "readings": {
+      "on": [
+        "レン"
+      ],
+      "kun": [
+        "つら-なる",
+        "つ-れる"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k189",
+    "kanji": "続",
+    "readings": {
+      "on": [
+        "ゾク",
+        "ショク"
+      ],
+      "kun": [
+        "つづ-ける",
+        "つづ-く"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  },
+  {
+    "id": "n4k190",
+    "kanji": "変",
+    "readings": {
+      "on": [
+        "ヘン"
+      ],
+      "kun": [
+        "か-わる",
+        "か-える"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N4",
+    "radical": "",
+    "examples": []
+  }
+]

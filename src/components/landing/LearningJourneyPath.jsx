@@ -291,7 +291,7 @@ export default function LearningJourneyPath() {
             </span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base mt-3 max-w-2xl mx-auto">
-            Not just isolated flashcards or drills. Nihongo Master connects
+            Not just isolated flashcards or drills. Kando Japanese connects
             comprehension, conversation, and memory into an unbroken learning
             continuum.
           </p>

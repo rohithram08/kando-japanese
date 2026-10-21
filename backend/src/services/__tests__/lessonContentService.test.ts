@@ -16,7 +16,7 @@ describe('Lesson Content Service', () => {
 
   it('returns all lessons for N5 level with summaries', () => {
     const lessons = getLessonsByLevel('N5');
-    expect(lessons.length).toBe(5);
+    expect(lessons.length).toBe(50);
     expect(lessons[0]).toMatchObject({
       id: 'n5l001',
       level: 'N5',
@@ -30,7 +30,7 @@ describe('Lesson Content Service', () => {
   it('returns all lessons for N1-N4 levels', () => {
     ['N1', 'N2', 'N3', 'N4'].forEach((lvl) => {
       const lessons = getLessonsByLevel(lvl);
-      expect(lessons.length).toBe(5);
+      expect(lessons.length).toBe(50);
       expect(lessons[0].level).toBe(lvl);
     });
   });

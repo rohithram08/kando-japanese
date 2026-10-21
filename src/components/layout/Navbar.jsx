@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, Zap, Star, Flame, Menu, LogOut } from 'lucide-react'
+import { Bell, Star, Menu, LogOut } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useNotificationStore } from '../../store/notificationStore'
 import ThemeToggle from '../ui/ThemeToggle'
 import LanguageSelector from '../common/LanguageSelector'
-import { getSectionByPath, DEFAULT_PAGE_META, TINTS } from '../../config/sections'
 import { useSettingsStore } from '../../store/settingsStore'
-import { t } from '../../i18n'
+import { useI18n } from '../../i18n'
 import toast from 'react-hot-toast'
+import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
+import JellyStreakBadge from '../streak/JellyStreakBadge'
+import WaveXPBadge from '../common/WaveXPBadge'
 
 // ── Avatar data (same as ProfilePage) ───────────────────────
 const AVATARS = [
@@ -56,8 +58,9 @@ function timeAgo(isoString) {
 const Navbar = ({ onMobileMenuToggle }) => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { t } = useI18n()
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
-  const { streak = 0, totalXP = 0, userLevel = 1 } = useProgressStore()
+  const { streak = 0, totalXP = 0, userLevel = 1, isStreakFrozen = false } = useProgressStore()
   const { user, profile, logout } = useAuthStore()
 
   const [showNotifications, setShowNotifications] = useState(false)
@@ -120,70 +123,48 @@ const Navbar = ({ onMobileMenuToggle }) => {
     }
   }
 
-  // Page title/icon — single source of truth via SECTIONS, so every route
-  // automatically gets a correct title without a second hardcoded list.
-  const meta = getSectionByPath(location.pathname) || DEFAULT_PAGE_META
-  const PageIcon = meta.icon
-  const pageTint = TINTS[meta.tint] || TINTS.red
-
   return (
-    <nav className="w-full h-16 bg-surface/95 backdrop-blur-md border-b border-border shadow-sm transition-colors duration-300">
+    <nav className="w-full h-16 bg-surface/95 backdrop-blur-md border-b border-border/60 shadow-sm transition-colors duration-300">
       <div className="h-full px-4 sm:px-6 flex items-center justify-between gap-3">
-        {/* ── LEFT ─────────────────────────────────────── */}
-        <div className="flex items-center gap-3 min-w-0">
+        {/* ── LEFT (Mobile hamburger menu only — clean & minimal on desktop) ── */}
+        <div className="flex items-center gap-3">
           {onMobileMenuToggle && (
-            <button
-              onClick={onMobileMenuToggle}
-              className="w-9 h-9 rounded-xl flex items-center justify-center border border-border
-                         bg-muted hover:bg-muted/70 text-muted-foreground hover:text-foreground
-                         transition-colors flex-shrink-0"
-              aria-label="Toggle menu"
-            >
-              <Menu className="w-4 h-4" />
-            </button>
-          )}
-
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className={`hidden sm:flex icon-badge w-8 h-8 ${pageTint.iconBg} flex-shrink-0`}>
-              <PageIcon className={`w-4 h-4 ${pageTint.iconText}`} />
+            <div className="flex items-center gap-2 shrink-0 md:hidden">
+              <button
+                onClick={onMobileMenuToggle}
+                className="w-9 h-9 rounded-xl flex items-center justify-center border border-border
+                           bg-muted hover:bg-muted/70 text-muted-foreground hover:text-foreground
+                           transition-colors flex-shrink-0"
+                aria-label="Toggle menu"
+              >
+                <Menu className="w-4 h-4" />
+              </button>
+              <KandoSlimeLogo size={28} animated />
             </div>
-            <h1 className="text-lg font-bold truncate text-foreground">
-              {meta.id ? t('nav.' + meta.id, displayLanguage, meta.label) : meta.label}
-            </h1>
-          </div>
+          )}
         </div>
 
-        {/* ── RIGHT ────────────────────────────────────── */}
-        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0">
-          {/* Streak */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className={`hidden sm:flex items-center gap-1.5 rounded-full px-3 py-1.5 cursor-default border transition-colors ${
-              streak > 0 ? 'bg-orange-500/10 border-orange-500/20' : 'bg-muted border-border'
-            }`}
-          >
-            <Flame className={`w-4 h-4 ${streak > 0 ? 'text-orange-500' : 'text-muted-foreground'}`} />
-            <span className={`font-bold text-sm ${streak > 0 ? 'text-orange-500' : 'text-muted-foreground'}`}>
-              {streak}
-            </span>
-          </motion.div>
+        {/* ── RIGHT (Essential controls: Streak, XP, Level, Translate, Theme, Notification, Profile) ── */}
+        <div className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 ml-auto">
+          {/* Jelly Streak (2D Animated Slime) */}
+          <JellyStreakBadge
+            streak={streak}
+            isFrozen={isStreakFrozen}
+            size="sm"
+            className="hidden sm:inline-flex"
+          />
 
-          {/* XP */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className={`hidden sm:flex items-center gap-1.5 rounded-full px-3 py-1.5 cursor-default border transition-colors ${
-              totalXP > 0 ? 'bg-yellow-500/10 border-yellow-500/20' : 'bg-muted border-border'
-            }`}
-          >
-            <Zap className={`w-4 h-4 ${totalXP > 0 ? 'text-yellow-500' : 'text-muted-foreground'}`} />
-            <span className={`font-bold text-sm ${totalXP > 0 ? 'text-yellow-500' : 'text-muted-foreground'}`}>
-              {totalXP.toLocaleString()}
-            </span>
-          </motion.div>
+          {/* Wave XP (2D Animated Liquid Wave) */}
+          <WaveXPBadge
+            xp={totalXP}
+            size="sm"
+            className="hidden sm:inline-flex"
+          />
 
           {/* Level */}
           <motion.div
             whileHover={{ scale: 1.05 }}
+            title={`User Level: Lv.${userLevel}`}
             className={`hidden md:flex items-center gap-1.5 bg-gradient-to-r ${getLevelColor(userLevel)} rounded-full px-3 py-1.5 shadow-md cursor-default`}
           >
             <Star className="w-3.5 h-3.5 text-white" />
@@ -196,7 +177,7 @@ const Navbar = ({ onMobileMenuToggle }) => {
           </div>
 
           {/* Theme */}
-          <div className="hidden md:block">
+          <div className="flex items-center">
             <ThemeToggle variant="cycle" />
           </div>
 
@@ -225,7 +206,7 @@ const Navbar = ({ onMobileMenuToggle }) => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-80 rounded-2xl shadow-2xl overflow-hidden border border-border bg-surface z-50"
+                  className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-80 rounded-2xl shadow-2xl overflow-hidden border border-border bg-surface z-50"
                 >
                   <div className="px-4 py-3 border-b border-border flex items-center justify-between">
                     <span className="font-semibold text-sm text-foreground">

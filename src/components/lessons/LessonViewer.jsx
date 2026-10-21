@@ -143,11 +143,12 @@ export default function LessonViewer() {
 
       const xpResult = res?.xpResult
       if (xpResult) {
-        updateProfile({
-          xpPoints: xpResult.totalXP,
-          streakDays: xpResult.streakDays,
-          currentLevel: xpResult.newLevel ? `N${xpResult.newLevel}` : profile?.currentLevel,
-        })
+        useProgressStore.setState((s) => ({
+          totalXP: xpResult.totalXP ?? s.totalXP,
+          userLevel: xpResult.newLevel ?? s.userLevel,
+          streak: xpResult.streakDays ?? s.streak,
+          dailyXP: s.dailyXP + (xpResult.xpGained || 0),
+        }))
 
         if (xpResult.badgesAwarded && xpResult.badgesAwarded.length > 0) {
           xpResult.badgesAwarded.forEach((b) => {

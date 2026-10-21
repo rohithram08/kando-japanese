@@ -1,0 +1,1128 @@
+[
+  {
+    "id": "n1k001",
+    "kanji": "憂",
+    "readings": {
+      "on": [
+        "ユウ"
+      ],
+      "kun": [
+        "うれ",
+        "うい"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "憂慮",
+        "reading": "ゆうりょ",
+        "meaning": "concern / apprehension"
+      },
+      {
+        "word": "憂鬱",
+        "reading": "ゆううつ",
+        "meaning": "depression / melancholy"
+      },
+      {
+        "word": "憂い",
+        "reading": "うれい",
+        "meaning": "sorrow / grief / anxiety"
+      }
+    ]
+  },
+  {
+    "id": "n1k002",
+    "kanji": "覇",
+    "readings": {
+      "on": [
+        "ハ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 19,
+    "level": "N1",
+    "radical": "西",
+    "examples": [
+      {
+        "word": "覇権",
+        "reading": "はけん",
+        "meaning": "hegemony / supremacy"
+      },
+      {
+        "word": "制覇",
+        "reading": "せいは",
+        "meaning": "conquest / domination"
+      },
+      {
+        "word": "覇者",
+        "reading": "はしゃ",
+        "meaning": "champion / conqueror"
+      }
+    ]
+  },
+  {
+    "id": "n1k003",
+    "kanji": "謙",
+    "readings": {
+      "on": [
+        "ケン"
+      ],
+      "kun": []
+    },
+    "strokeCount": 17,
+    "level": "N1",
+    "radical": "言",
+    "examples": [
+      {
+        "word": "謙虚",
+        "reading": "けんきょ",
+        "meaning": "humble / modest"
+      },
+      {
+        "word": "謙遜",
+        "reading": "けんそん",
+        "meaning": "humility / modesty"
+      },
+      {
+        "word": "謙称",
+        "reading": "けんしょう",
+        "meaning": "humble form of address"
+      }
+    ]
+  },
+  {
+    "id": "n1k004",
+    "kanji": "瞭",
+    "readings": {
+      "on": [
+        "リョウ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 17,
+    "level": "N1",
+    "radical": "目",
+    "examples": [
+      {
+        "word": "明瞭",
+        "reading": "めいりょう",
+        "meaning": "clear / distinct"
+      },
+      {
+        "word": "了解",
+        "reading": "りょうかい",
+        "meaning": "understood / roger"
+      },
+      {
+        "word": "瞭然",
+        "reading": "りょうぜん",
+        "meaning": "clear / obvious"
+      }
+    ]
+  },
+  {
+    "id": "n1k005",
+    "kanji": "鑑",
+    "readings": {
+      "on": [
+        "カン"
+      ],
+      "kun": [
+        "かがみ",
+        "かんが"
+      ]
+    },
+    "strokeCount": 23,
+    "level": "N1",
+    "radical": "金",
+    "examples": [
+      {
+        "word": "鑑賞",
+        "reading": "かんしょう",
+        "meaning": "appreciation / viewing"
+      },
+      {
+        "word": "鑑定",
+        "reading": "かんてい",
+        "meaning": "expert opinion / appraisal"
+      },
+      {
+        "word": "年鑑",
+        "reading": "ねんかん",
+        "meaning": "yearbook / annual"
+      }
+    ]
+  },
+  {
+    "id": "n1k006",
+    "kanji": "騰",
+    "readings": {
+      "on": [
+        "トウ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 20,
+    "level": "N1",
+    "radical": "馬",
+    "examples": [
+      {
+        "word": "高騰",
+        "reading": "こうとう",
+        "meaning": "sharp rise / soaring prices"
+      },
+      {
+        "word": "騰貴",
+        "reading": "とうき",
+        "meaning": "rise in prices"
+      },
+      {
+        "word": "沸騰",
+        "reading": "ふっとう",
+        "meaning": "boiling / excitement"
+      }
+    ]
+  },
+  {
+    "id": "n1k007",
+    "kanji": "懸",
+    "readings": {
+      "on": [
+        "ケン",
+        "ケ"
+      ],
+      "kun": [
+        "か",
+        "かか"
+      ]
+    },
+    "strokeCount": 20,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "懸念",
+        "reading": "けねん",
+        "meaning": "concern / worry / fear"
+      },
+      {
+        "word": "懸命",
+        "reading": "けんめい",
+        "meaning": "with all one's might"
+      },
+      {
+        "word": "懸賞",
+        "reading": "けんしょう",
+        "meaning": "prize / reward"
+      }
+    ]
+  },
+  {
+    "id": "n1k008",
+    "kanji": "顕",
+    "readings": {
+      "on": [
+        "ケン"
+      ],
+      "kun": [
+        "あらわ"
+      ]
+    },
+    "strokeCount": 18,
+    "level": "N1",
+    "radical": "頁",
+    "examples": [
+      {
+        "word": "顕著",
+        "reading": "けんちょ",
+        "meaning": "remarkable / striking"
+      },
+      {
+        "word": "顕在",
+        "reading": "けんざい",
+        "meaning": "actual / manifest"
+      },
+      {
+        "word": "顕微鏡",
+        "reading": "けんびきょう",
+        "meaning": "microscope"
+      }
+    ]
+  },
+  {
+    "id": "n1k009",
+    "kanji": "緻",
+    "readings": {
+      "on": [
+        "チ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 16,
+    "level": "N1",
+    "radical": "糸",
+    "examples": [
+      {
+        "word": "精緻",
+        "reading": "せいち",
+        "meaning": "elaborate / minute / precise"
+      },
+      {
+        "word": "緻密",
+        "reading": "ちみつ",
+        "meaning": "minute / fine / careful"
+      }
+    ]
+  },
+  {
+    "id": "n1k010",
+    "kanji": "傲",
+    "readings": {
+      "on": [
+        "ゴウ"
+      ],
+      "kun": [
+        "おご"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "人",
+    "examples": [
+      {
+        "word": "傲慢",
+        "reading": "ごうまん",
+        "meaning": "arrogance / haughtiness"
+      },
+      {
+        "word": "傲岸",
+        "reading": "ごうがん",
+        "meaning": "arrogant / insolent"
+      }
+    ]
+  },
+  {
+    "id": "n1k011",
+    "kanji": "漠",
+    "readings": {
+      "on": [
+        "バク"
+      ],
+      "kun": []
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "水",
+    "examples": [
+      {
+        "word": "漠然",
+        "reading": "ばくぜん",
+        "meaning": "vague / obscure / hazy"
+      },
+      {
+        "word": "砂漠",
+        "reading": "さばく",
+        "meaning": "desert"
+      },
+      {
+        "word": "漠大",
+        "reading": "ばくだい",
+        "meaning": "vast / boundless"
+      }
+    ]
+  },
+  {
+    "id": "n1k012",
+    "kanji": "朽",
+    "readings": {
+      "on": [
+        "キュウ"
+      ],
+      "kun": [
+        "く"
+      ]
+    },
+    "strokeCount": 6,
+    "level": "N1",
+    "radical": "木",
+    "examples": [
+      {
+        "word": "不朽",
+        "reading": "ふきゅう",
+        "meaning": "immortality / everlasting"
+      },
+      {
+        "word": "老朽",
+        "reading": "ろうきゅう",
+        "meaning": "aged / worn out"
+      },
+      {
+        "word": "朽ちる",
+        "reading": "くちる",
+        "meaning": "to decay / rot"
+      }
+    ]
+  },
+  {
+    "id": "n1k013",
+    "kanji": "矯",
+    "readings": {
+      "on": [
+        "キョウ"
+      ],
+      "kun": [
+        "た"
+      ]
+    },
+    "strokeCount": 17,
+    "level": "N1",
+    "radical": "矢",
+    "examples": [
+      {
+        "word": "矯正",
+        "reading": "きょうせい",
+        "meaning": "correction / reform / orthodontics"
+      },
+      {
+        "word": "矯める",
+        "reading": "ためる",
+        "meaning": "to correct / straighten"
+      }
+    ]
+  },
+  {
+    "id": "n1k014",
+    "kanji": "蔑",
+    "readings": {
+      "on": [
+        "ベツ"
+      ],
+      "kun": [
+        "さげす",
+        "ないがし"
+      ]
+    },
+    "strokeCount": 14,
+    "level": "N1",
+    "radical": "艸",
+    "examples": [
+      {
+        "word": "蔑視",
+        "reading": "べっし",
+        "meaning": "contempt / scorn"
+      },
+      {
+        "word": "軽蔑",
+        "reading": "けいべつ",
+        "meaning": "contempt / disdain"
+      },
+      {
+        "word": "蔑む",
+        "reading": "さげすむ",
+        "meaning": "to despise / look down on"
+      }
+    ]
+  },
+  {
+    "id": "n1k015",
+    "kanji": "欺",
+    "readings": {
+      "on": [
+        "ギ"
+      ],
+      "kun": [
+        "あざむ"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N1",
+    "radical": "欠",
+    "examples": [
+      {
+        "word": "詐欺",
+        "reading": "さぎ",
+        "meaning": "fraud / swindle / deception"
+      },
+      {
+        "word": "欺く",
+        "reading": "あざむく",
+        "meaning": "to deceive / trick"
+      },
+      {
+        "word": "欺瞞",
+        "reading": "ぎまん",
+        "meaning": "deception / fraud"
+      }
+    ]
+  },
+  {
+    "id": "n1k016",
+    "kanji": "慄",
+    "readings": {
+      "on": [
+        "リツ"
+      ],
+      "kun": [
+        "おのの",
+        "ふる"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "戦慄",
+        "reading": "せんりつ",
+        "meaning": "shudder / thrill / horror"
+      },
+      {
+        "word": "慄く",
+        "reading": "おののく",
+        "meaning": "to shudder / tremble"
+      }
+    ]
+  },
+  {
+    "id": "n1k017",
+    "kanji": "葛",
+    "readings": {
+      "on": [
+        "カツ",
+        "カッ"
+      ],
+      "kun": [
+        "くず"
+      ]
+    },
+    "strokeCount": 12,
+    "level": "N1",
+    "radical": "艸",
+    "examples": [
+      {
+        "word": "葛藤",
+        "reading": "かっとう",
+        "meaning": "conflict / complication / troubles"
+      },
+      {
+        "word": "葛",
+        "reading": "くず",
+        "meaning": "kudzu / arrowroot"
+      }
+    ]
+  },
+  {
+    "id": "n1k018",
+    "kanji": "贖",
+    "readings": {
+      "on": [
+        "ショク"
+      ],
+      "kun": [
+        "あがな"
+      ]
+    },
+    "strokeCount": 22,
+    "level": "N1",
+    "radical": "貝",
+    "examples": [
+      {
+        "word": "贖罪",
+        "reading": "しょくざい",
+        "meaning": "atonement / expiation / redemption"
+      },
+      {
+        "word": "贖う",
+        "reading": "あがなう",
+        "meaning": "to atone / redeem"
+      }
+    ]
+  },
+  {
+    "id": "n1k019",
+    "kanji": "憤",
+    "readings": {
+      "on": [
+        "フン"
+      ],
+      "kun": [
+        "いきどお"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "憤慨",
+        "reading": "ふんがい",
+        "meaning": "indignation / resentment"
+      },
+      {
+        "word": "義憤",
+        "reading": "ぎふん",
+        "meaning": "righteous indignation"
+      },
+      {
+        "word": "憤る",
+        "reading": "いきどおる",
+        "meaning": "to be indignant / resent"
+      }
+    ]
+  },
+  {
+    "id": "n1k020",
+    "kanji": "粛",
+    "readings": {
+      "on": [
+        "シュク"
+      ],
+      "kun": []
+    },
+    "strokeCount": 11,
+    "level": "N1",
+    "radical": "聿",
+    "examples": [
+      {
+        "word": "厳粛",
+        "reading": "げんしゅく",
+        "meaning": "solemn / grave / austere"
+      },
+      {
+        "word": "粛清",
+        "reading": "しゅくせい",
+        "meaning": "purge / liquidation"
+      },
+      {
+        "word": "自粛",
+        "reading": "じしゅく",
+        "meaning": "self-restraint / voluntary restraint"
+      }
+    ]
+  },
+  {
+    "id": "n1k021",
+    "kanji": "傲",
+    "readings": {
+      "on": [
+        "ゴウ"
+      ],
+      "kun": [
+        "おご"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "人",
+    "examples": [
+      {
+        "word": "傲慢",
+        "reading": "ごうまん",
+        "meaning": "arrogance / haughtiness"
+      },
+      {
+        "word": "傲岸",
+        "reading": "ごうがん",
+        "meaning": "arrogant / insolent"
+      }
+    ]
+  },
+  {
+    "id": "n1k022",
+    "kanji": "凄",
+    "readings": {
+      "on": [
+        "セイ"
+      ],
+      "kun": [
+        "すご",
+        "すさ"
+      ]
+    },
+    "strokeCount": 10,
+    "level": "N1",
+    "radical": "冫",
+    "examples": [
+      {
+        "word": "凄惨",
+        "reading": "せいさん",
+        "meaning": "ghastly / gruesome"
+      },
+      {
+        "word": "凄絶",
+        "reading": "せいぜつ",
+        "meaning": "sublime / heroic"
+      }
+    ]
+  },
+  {
+    "id": "n1k023",
+    "kanji": "刹",
+    "readings": {
+      "on": [
+        "セツ",
+        "サツ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 8,
+    "level": "N1",
+    "radical": "刀",
+    "examples": [
+      {
+        "word": "刹那",
+        "reading": "せつな",
+        "meaning": "moment / instant"
+      },
+      {
+        "word": "古刹",
+        "reading": "こさつ",
+        "meaning": "ancient temple"
+      }
+    ]
+  },
+  {
+    "id": "n1k024",
+    "kanji": "緻",
+    "readings": {
+      "on": [
+        "チ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "糸",
+    "examples": [
+      {
+        "word": "緻密",
+        "reading": "ちみつ",
+        "meaning": "precise / meticulous"
+      },
+      {
+        "word": "精緻",
+        "reading": "せいち",
+        "meaning": "delicate / minute"
+      }
+    ]
+  },
+  {
+    "id": "n1k025",
+    "kanji": "貪",
+    "readings": {
+      "on": [
+        "トン",
+        "タン"
+      ],
+      "kun": [
+        "むさぼ"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N1",
+    "radical": "貝",
+    "examples": [
+      {
+        "word": "貪欲",
+        "reading": "どんよく",
+        "meaning": "insatiable / greedy"
+      },
+      {
+        "word": "貪る",
+        "reading": "むさぼる",
+        "meaning": "to indulge in / devour"
+      }
+    ]
+  },
+  {
+    "id": "n1k026",
+    "kanji": "慄",
+    "readings": {
+      "on": [
+        "リツ"
+      ],
+      "kun": [
+        "おのの"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "戦慄",
+        "reading": "せんりつ",
+        "meaning": "shudder / horror"
+      },
+      {
+        "word": "慄然",
+        "reading": "りつぜん",
+        "meaning": "horrified / terrified"
+      }
+    ]
+  },
+  {
+    "id": "n1k027",
+    "kanji": "憧",
+    "readings": {
+      "on": [
+        "ショウ"
+      ],
+      "kun": [
+        "あこが"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "心",
+    "examples": [
+      {
+        "word": "憧憬",
+        "reading": "しょうけい",
+        "meaning": "longing / aspiration"
+      },
+      {
+        "word": "憧れ",
+        "reading": "あこがれ",
+        "meaning": "yearning / longing"
+      }
+    ]
+  },
+  {
+    "id": "n1k028",
+    "kanji": "嘲",
+    "readings": {
+      "on": [
+        "チョウ",
+        "トウ"
+      ],
+      "kun": [
+        "あざけ"
+      ]
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "口",
+    "examples": [
+      {
+        "word": "嘲笑",
+        "reading": "ちょうしょう",
+        "meaning": "scornful laugh / ridicule"
+      },
+      {
+        "word": "自嘲",
+        "reading": "じちょう",
+        "meaning": "self-mockery"
+      }
+    ]
+  },
+  {
+    "id": "n1k029",
+    "kanji": "曖",
+    "readings": {
+      "on": [
+        "アイ"
+      ],
+      "kun": []
+    },
+    "strokeCount": 17,
+    "level": "N1",
+    "radical": "日",
+    "examples": [
+      {
+        "word": "曖昧",
+        "reading": "あいまい",
+        "meaning": "vague / ambiguous"
+      }
+    ]
+  },
+  {
+    "id": "n1k030",
+    "kanji": "昧",
+    "readings": {
+      "on": [
+        "マイ"
+      ],
+      "kun": [
+        "くら"
+      ]
+    },
+    "strokeCount": 9,
+    "level": "N1",
+    "radical": "日",
+    "examples": [
+      {
+        "word": "曖昧",
+        "reading": "あいまい",
+        "meaning": "vague / ambiguous"
+      },
+      {
+        "word": "三昧",
+        "reading": "ざんまい",
+        "meaning": "absorption / samadhi"
+      }
+    ]
+  },
+  {
+    "id": "n1k031",
+    "kanji": "羞",
+    "readings": {
+      "on": [
+        "シュウ"
+      ],
+      "kun": [
+        "はじ",
+        "はずかし"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N1",
+    "radical": "羊",
+    "examples": [
+      {
+        "word": "羞恥",
+        "reading": "しゅうち",
+        "meaning": "shame / embarrassment"
+      },
+      {
+        "word": "羞恥心",
+        "reading": "しゅうちしん",
+        "meaning": "sense of shame"
+      }
+    ]
+  },
+  {
+    "id": "n1k032",
+    "kanji": "氾",
+    "readings": {
+      "on": [
+        "ハン"
+      ],
+      "kun": []
+    },
+    "strokeCount": 5,
+    "level": "N1",
+    "radical": "水",
+    "examples": [
+      {
+        "word": "氾濫",
+        "reading": "はんらん",
+        "meaning": "inundation / overflowing"
+      }
+    ]
+  },
+  {
+    "id": "n1k033",
+    "kanji": "乖",
+    "readings": {
+      "on": [
+        "カイ"
+      ],
+      "kun": [
+        "そむ"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N1",
+    "radical": "丿",
+    "examples": [
+      {
+        "word": "乖離",
+        "reading": "かいり",
+        "meaning": "divergence / estrangement"
+      }
+    ]
+  },
+  {
+    "id": "n1k034",
+    "kanji": "軋",
+    "readings": {
+      "on": [
+        "アツ"
+      ],
+      "kun": [
+        "きし"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N1",
+    "radical": "車",
+    "examples": [
+      {
+        "word": "軋轢",
+        "reading": "あつれき",
+        "meaning": "friction / discord"
+      },
+      {
+        "word": "軋む",
+        "reading": "きしむ",
+        "meaning": "to creak / jar"
+      }
+    ]
+  },
+  {
+    "id": "n1k035",
+    "kanji": "痕",
+    "readings": {
+      "on": [
+        "コン"
+      ],
+      "kun": [
+        "あと"
+      ]
+    },
+    "strokeCount": 11,
+    "level": "N1",
+    "radical": "疒",
+    "examples": [
+      {
+        "word": "痕跡",
+        "reading": "こんせき",
+        "meaning": "trace / vestige"
+      },
+      {
+        "word": "傷痕",
+        "reading": "きずあと",
+        "meaning": "scar"
+      }
+    ]
+  },
+  {
+    "id": "n1k036",
+    "kanji": "毀",
+    "readings": {
+      "on": [
+        "キ"
+      ],
+      "kun": [
+        "こぼ",
+        "こわ"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "殳",
+    "examples": [
+      {
+        "word": "毀損",
+        "reading": "きそん",
+        "meaning": "damage / defamation"
+      },
+      {
+        "word": "破毀",
+        "reading": "はき",
+        "meaning": "annulment / revocation"
+      }
+    ]
+  },
+  {
+    "id": "n1k037",
+    "kanji": "苛",
+    "readings": {
+      "on": [
+        "カ"
+      ],
+      "kun": [
+        "いら"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N1",
+    "radical": "艸",
+    "examples": [
+      {
+        "word": "苛酷",
+        "reading": "かこく",
+        "meaning": "rigorous / cruel"
+      },
+      {
+        "word": "苛立つ",
+        "reading": "いらだつ",
+        "meaning": "to get irritated"
+      }
+    ]
+  },
+  {
+    "id": "n1k038",
+    "kanji": "遵",
+    "readings": {
+      "on": [
+        "ジュン"
+      ],
+      "kun": []
+    },
+    "strokeCount": 15,
+    "level": "N1",
+    "radical": "辵",
+    "examples": [
+      {
+        "word": "遵守",
+        "reading": "じゅんしゅ",
+        "meaning": "compliance / observance"
+      },
+      {
+        "word": "遵法",
+        "reading": "じゅんぽう",
+        "meaning": "law-abiding"
+      }
+    ]
+  },
+  {
+    "id": "n1k039",
+    "kanji": "嫉",
+    "readings": {
+      "on": [
+        "シツ"
+      ],
+      "kun": [
+        "そね",
+        "ねた"
+      ]
+    },
+    "strokeCount": 13,
+    "level": "N1",
+    "radical": "女",
+    "examples": [
+      {
+        "word": "嫉妬",
+        "reading": "しっと",
+        "meaning": "jealousy / envy"
+      },
+      {
+        "word": "嫉む",
+        "reading": "そねむ",
+        "meaning": "to be jealous of"
+      }
+    ]
+  },
+  {
+    "id": "n1k040",
+    "kanji": "妬",
+    "readings": {
+      "on": [
+        "ト"
+      ],
+      "kun": [
+        "ねた",
+        "そね"
+      ]
+    },
+    "strokeCount": 8,
+    "level": "N1",
+    "radical": "女",
+    "examples": [
+      {
+        "word": "嫉妬",
+        "reading": "しっと",
+        "meaning": "jealousy / envy"
+      },
+      {
+        "word": "妬む",
+        "reading": "ねたむ",
+        "meaning": "to envy"
+      }
+    ]
+  }
+]

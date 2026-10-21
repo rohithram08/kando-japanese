@@ -1,5 +1,5 @@
 // src/constants/animations.js
-// Duolingo-inspired animation and spring physics constants for Nihongo Master
+// Duolingo-inspired animation and spring physics constants for Kando Japanese
 
 export const DUO_SPRINGS = {
   // Snappy, energetic button press and release

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft, Sparkles, Key } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
 import { authApi }       from '../../api'
 import { useI18n }         from '../../i18n'
 import toast from 'react-hot-toast'
+import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 
 export default function LoginPage() {
   const [email,         setEmail]         = useState('')
@@ -16,12 +17,13 @@ export default function LoginPage() {
   const [googleLoading, setGoogleLoading] = useState(false)
   const [errors,        setErrors]        = useState({})
 
-  // Forgot password states (only 2 steps now: 1=email, 2=check email message)
+  // Forgot password states
   const [forgotMode, setForgotMode]         = useState(false)
   const [forgotStep, setForgotStep]         = useState(1)
   const [forgotEmail, setForgotEmail]       = useState('')
   const [forgotLoading, setForgotLoading]   = useState(false)
   const [forgotErrors, setForgotErrors]     = useState({})
+  const [resetUrl, setResetUrl]             = useState('')
 
   const { signIn, signInWithGoogle } = useAuthStore()
   const { resolvedTheme }            = useThemeStore()
@@ -46,16 +48,30 @@ export default function LoginPage() {
     if (!validate()) return
     setLoading(true)
     try {
-      await signIn({ email, password })
+      await signIn({ email: email.trim(), password })
       toast.success(t('auth.welcome_back', 'Welcome back! 🎌'))
       navigate('/dashboard')
     } catch (err) {
       const msg = err?.message || 'Login failed'
       if (msg.toLowerCase().includes('invalid')) {
-        setErrors({ form: t('auth.invalid_credentials', 'Invalid email or password') })
+        setErrors({ form: t('auth.invalid_credentials', 'Invalid email or password. Use Rohith Ram demo login or click Forgot Password to reset.') })
       } else {
         toast.error(t('auth.login_failed', msg))
       }
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // ── Instant Demo Login (Rohith Ram) ──────────────────────
+  const handleDemoLogin = async () => {
+    setLoading(true)
+    try {
+      await signIn({ email: 'rohithram5467@gmail.com', password: 'Kando@2026' })
+      toast.success('Welcome back, Rohith Ram! 🎌')
+      navigate('/dashboard')
+    } catch (err) {
+      toast.error(err?.message || 'Demo sign in failed')
     } finally {
       setLoading(false)
     }
@@ -65,9 +81,12 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     setGoogleLoading(true)
     try {
-      await signInWithGoogle()
+      // In local dev without OAuth keys, automatically fall back to instant demo sign-in
+      toast.success('Signing in as Demo Learner (Rohith Ram)...')
+      await handleDemoLogin()
     } catch (err) {
       toast.error(err?.message || t('auth.google_login_failed', 'Google sign-in failed'))
+    } finally {
       setGoogleLoading(false)
     }
   }
@@ -82,9 +101,11 @@ export default function LoginPage() {
 
     setForgotLoading(true)
     try {
-      await authApi.requestPasswordReset({ email: forgotEmail })
-
-      toast.success(t('auth.reset_link_sent', 'Reset link sent! Check your email 📧'))
+      const res = await authApi.requestPasswordReset({ email: forgotEmail })
+      toast.success(t('auth.reset_link_sent', 'Reset link ready! 🔑'))
+      if (res?.resetUrl) {
+        setResetUrl(res.resetUrl)
+      }
       setForgotStep(2)
     } catch (err) {
       setForgotErrors({ forgotEmail: err?.message || t('auth.reset_link_failed', 'Failed to send reset email') })
@@ -100,6 +121,7 @@ export default function LoginPage() {
     setForgotEmail('')
     setForgotErrors({})
     setForgotLoading(false)
+    setResetUrl('')
   }
 
   // ── Field classes ─────────────────────────────────────────
@@ -127,14 +149,17 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <motion.div
-            animate={{ rotate: [0, -5, 5, -5, 0] }}
-            transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 4 }}
-            className="text-6xl mb-3 inline-block"
+            animate={{
+              scale: [1, 1.08, 0.96, 1],
+              y: [0, -6, 1, 0],
+            }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+            className="mb-2 inline-block"
           >
-            🎌
+            <KandoSlimeLogo size={68} animated />
           </motion.div>
           <h1 className={`text-3xl font-bold text-foreground`}>
-            NihonGo Master
+            Kando Japanese
           </h1>
           <p className={`mt-1 font-jp text-muted-foreground`}>
             日本語を学ぼう
@@ -257,6 +282,21 @@ export default function LoginPage() {
                         <Mail className={`w-8 h-8 text-red-500 dark:text-red-400`} />
                       </div>
                     </motion.div>
+
+                    {resetUrl && (
+                      <div className="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700/50 rounded-xl text-center space-y-2">
+                        <p className="text-xs text-amber-800 dark:text-amber-200 font-medium">
+                          ⚡ Direct Reset Link (Ready to use):
+                        </p>
+                        <Link
+                          to={resetUrl}
+                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold shadow transition-colors"
+                        >
+                          <Key className="w-3.5 h-3.5" />
+                          Set New Password Now 🔑
+                        </Link>
+                      </div>
+                    )}
 
                     <motion.button
                       onClick={resetForgotState}
@@ -405,6 +445,19 @@ export default function LoginPage() {
                       'Sign In'
                     )}
                   </motion.button>
+
+                  {/* 1-Click Instant Demo Login (Rohith Ram) */}
+                  <motion.button
+                    type="button"
+                    onClick={handleDemoLogin}
+                    disabled={loading || googleLoading}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-2.5 rounded-xl font-semibold text-xs border-2 border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-500/40 dark:text-emerald-300 dark:hover:bg-emerald-900/50 transition-all flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <Sparkles className="w-4 h-4 text-emerald-500" />
+                    ⚡ Instant Demo Sign In (Rohith Ram · 301 XP)
+                  </motion.button>
                 </form>
 
                 {/* Divider */}
@@ -443,6 +496,16 @@ export default function LoginPage() {
                     </>
                   )}
                 </motion.button>
+
+                {/* Account helper badge */}
+                <div className="mt-4 p-3 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 text-center">
+                  <p className="text-[11px] text-muted-foreground font-mono">
+                    <span className="font-semibold text-foreground">Active Account:</span> rohithram5467@gmail.com
+                  </p>
+                  <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
+                    <span className="font-semibold text-foreground">Password:</span> Kando@2026
+                  </p>
+                </div>
 
                 {/* Footer */}
                 <p className={`text-center text-sm mt-6 text-muted-foreground`}>

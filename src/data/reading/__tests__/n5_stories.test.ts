@@ -4,10 +4,10 @@ import { parseFuriganaSegments } from '../../../utils/furiganaUtils';
 import { VERIFIED_PITCH_DICTIONARY } from '../../pitch/pitchData';
 
 describe('Graded Reading — Content Expansion & Dataset Validation', () => {
-  it('contains four valid N5 stories and two valid N4 stories with unique IDs', () => {
-    expect(n5Stories.length).toBe(4);
-    expect(n4Stories.length).toBe(2);
-    expect(allStories.length).toBe(6);
+  it('contains fifty stories per level (250 total) across N5, N4, N3, N2, N1 with unique IDs', () => {
+    expect(n5Stories.length).toBe(50);
+    expect(n4Stories.length).toBe(50);
+    expect(allStories.length).toBe(250);
 
     const ids = new Set<string>();
     allStories.forEach((story) => {
@@ -19,11 +19,11 @@ describe('Graded Reading — Content Expansion & Dataset Validation', () => {
   allStories.forEach((story) => {
     describe(`Story: ${story.id} (${story.title}) [${story.level}]`, () => {
       it('has complete metadata and educational provenance', () => {
-        expect(story.id).toMatch(/^story_(n5|n4)_\d+$/);
+        expect(story.id).toMatch(/^story_(n5|n4|n3|n2|n1)_\d+$/);
         expect(story.title).toBeTruthy();
         expect(story.titleFurigana).toBeTruthy();
         expect(story.englishTitle).toBeTruthy();
-        expect(['N5', 'N4']).toContain(story.level);
+        expect(['N5', 'N4', 'N3', 'N2', 'N1']).toContain(story.level);
         expect(story.estimatedMinutes).toBeGreaterThan(0);
         expect(story.published).toBe(true);
         expect(story.provenance.verified).toBe(true);

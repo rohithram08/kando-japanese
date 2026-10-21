@@ -24,7 +24,6 @@ srsRouter.get('/due', requireAuth, async (req, res, next) => {
       where: and(
         eq(srsCards.userId, userId),
         lte(srsCards.nextReviewDate, today),
-        eq(srsCards.isMastered, false),
       ),
       limit,
     });
@@ -62,7 +61,6 @@ srsRouter.get('/due/count', requireAuth, async (req, res, next) => {
       .where(and(
         eq(srsCards.userId, userId),
         lte(srsCards.nextReviewDate, today),
-        eq(srsCards.isMastered, false)
       ));
 
     res.json({ count: Number(result[0]?.count || 0) });

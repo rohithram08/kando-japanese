@@ -11,6 +11,7 @@ import FillBlank from './FillBlank'
 import { useI18n, getCurriculumMeaning } from '../../i18n'
 import confetti from 'canvas-confetti'
 import toast from 'react-hot-toast'
+import { playSuccess, playError, playFanfare } from '../../utils/soundEffects'
 
 export default function QuizEngine() {
   const { lessonId } = useParams()
@@ -32,10 +33,16 @@ export default function QuizEngine() {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [showFeedback, setShowFeedback] = useState(false)
   const timerRef = useRef(null)
+  const feedbackTimeoutRef = useRef(null)
+  const scoreRef = useRef(0)
+  scoreRef.current = score
 
   useEffect(() => {
     loadQuiz()
-    return () => clearInterval(timerRef.current)
+    return () => {
+      clearInterval(timerRef.current)
+      clearTimeout(feedbackTimeoutRef.current)
+    }
   }, [lessonId])
 
   useEffect(() => {
@@ -44,7 +51,7 @@ export default function QuizEngine() {
         setTimeLeft(prev => {
           if (prev <= 1) {
             clearInterval(timerRef.current)
-            finishQuiz()
+            finishQuiz(scoreRef.current)
             return 0
           }
           return prev - 1
@@ -110,16 +117,27 @@ export default function QuizEngine() {
       })
     }
 
-    const allVocabMeanings = (VOCABULARY[lesson?.level || 'N5'] || []).map(v => getCurriculumMeaning(v, locale) || v.meaning_en || v.meaning).filter(Boolean)
-    const allKanjiMeanings = (KANJI[lesson?.level || 'N5'] || []).map(k => getCurriculumMeaning(k, locale) || k.meaning_en || k.meaning).filter(Boolean)
+    const hasJapaneseChars = (str) => typeof str === 'string' && /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(str);
 
-    const getWrongAnswers = (correct, pool, count = 3) => {
-      const wrong = pool.filter(m => m !== correct)
+    const allVocabMeanings = (VOCABULARY[lesson?.level || 'N5'] || [])
+      .map(v => getCurriculumMeaning(v, locale) || v.meaning_en || v.meaning)
+      .filter(m => m && typeof m === 'string' && !hasJapaneseChars(m))
+    const allKanjiMeanings = (KANJI[lesson?.level || 'N5'] || [])
+      .map(k => getCurriculumMeaning(k, locale) || k.meaning_en || k.meaning)
+      .filter(m => m && typeof m === 'string' && !hasJapaneseChars(m))
+
+    const getWrongAnswers = (correct, pool, count = 3, questionWord = '', questionReading = '') => {
+      const wrong = pool.filter(m =>
+        m !== correct &&
+        m !== questionWord &&
+        m !== questionReading &&
+        !hasJapaneseChars(m)
+      )
       const shuffled = wrong.sort(() => Math.random() - 0.5)
       const picked = shuffled.slice(0, count)
-      const fallbacks = ['None of the above', "I don't know", 'Something else']
+      const fallbacks = ['To understand thoroughly', 'Everyday action', 'Something peaceful', 'Natural environment']
       while (picked.length < count) {
-        picked.push(fallbacks[picked.length])
+        picked.push(fallbacks[picked.length % fallbacks.length])
       }
       return picked
     }
@@ -127,7 +145,7 @@ export default function QuizEngine() {
     vocab.slice(0, 3).forEach(v => {
       const meaning = getCurriculumMeaning(v, locale) || v?.meaning_en || v?.meaning
       if (!meaning || !v?.word) return
-      const wrongAnswers = getWrongAnswers(meaning, allVocabMeanings)
+      const wrongAnswers = getWrongAnswers(meaning, allVocabMeanings, 3, v.word, v.reading)
       const allOptions = [meaning, ...wrongAnswers]
       const shuffled = allOptions.sort(() => Math.random() - 0.5)
       questions.push({
@@ -144,7 +162,7 @@ export default function QuizEngine() {
       const char = k?.character || k?.kanji
       const meaning = getCurriculumMeaning(k, locale) || k?.meaning_en || k?.meaning
       if (!meaning || !char) return
-      const wrongAnswers = getWrongAnswers(meaning, allKanjiMeanings)
+      const wrongAnswers = getWrongAnswers(meaning, allKanjiMeanings, 3, char, k?.onyomi || k?.kunyomi)
       const allOptions = [meaning, ...wrongAnswers]
       const shuffled = allOptions.sort(() => Math.random() - 0.5)
       questions.push({
@@ -182,7 +200,16 @@ export default function QuizEngine() {
     setShowFeedback(true)
 
     const isCorrect = answerIndex === questions[currentQ].correct
-    if (isCorrect) setScore(prev => prev + 1)
+    if (isCorrect) {
+      playSuccess()
+      setScore(prev => {
+        const next = prev + 1
+        scoreRef.current = next
+        return next
+      })
+    } else {
+      playError()
+    }
 
     setAnswers(prev => [
       ...prev,
@@ -194,11 +221,12 @@ export default function QuizEngine() {
       },
     ])
 
-    setTimeout(() => {
+    clearTimeout(feedbackTimeoutRef.current)
+    feedbackTimeoutRef.current = setTimeout(() => {
       setShowFeedback(false)
       setSelectedAnswer(null)
       if (currentQ + 1 >= questions.length) {
-        finishQuiz()
+        finishQuiz(scoreRef.current)
       } else {
         setCurrentQ(prev => prev + 1)
       }
@@ -206,16 +234,19 @@ export default function QuizEngine() {
   }
 
   // ── Finish quiz using new XP system ───────────────────
-  const finishQuiz = async () => {
+  const finishQuiz = async (overrideScore) => {
     clearInterval(timerRef.current)
+    clearTimeout(feedbackTimeoutRef.current)
     setQuizComplete(true)
 
+    const effectiveScore = typeof overrideScore === 'number' ? overrideScore : scoreRef.current
     const finalScore = questions.length > 0
-      ? Math.round((score / questions.length) * 100)
+      ? Math.round((effectiveScore / questions.length) * 100)
       : 0
     const passed = finalScore >= (quiz?.passing_score || 70)
 
     if (passed) {
+      playFanfare()
       confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } })
     }
 

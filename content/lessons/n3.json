@@ -1,0 +1,2711 @@
+[
+  {
+    "id": "n3l001",
+    "titleJp": "理由・原因の表現",
+    "level": "N3",
+    "order": 1,
+    "duration": "35 min",
+    "xp": 80,
+    "vocabulary": [
+      "原因",
+      "理由",
+      "結果",
+      "影響",
+      "責任"
+    ],
+    "grammar": [
+      "〜ために",
+      "〜せいで / せいか",
+      "〜おかげで / おかげか",
+      "〜からこそ"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "試験に合格できたのは、先生のおかげです。"
+      },
+      {
+        "speaker": "B",
+        "jp": "逆に、私は体調が悪かったせいで、試験に集中できませんでした。"
+      },
+      {
+        "speaker": "A",
+        "jp": "来年のためにも、もっと準備をしましょう。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "choose",
+        "question": "Which expresses blame/negative cause?",
+        "options": [
+          "おかげで",
+          "せいで",
+          "ために"
+        ],
+        "answer": "せいで"
+      },
+      {
+        "type": "translate",
+        "question": "Thanks to your help, I finished.",
+        "answer": "あなたの助けのおかげで、終わりました。"
+      }
+    ]
+  },
+  {
+    "id": "n3l002",
+    "titleJp": "逆接・対比表現",
+    "level": "N3",
+    "order": 2,
+    "duration": "35 min",
+    "xp": 80,
+    "vocabulary": [
+      "対比",
+      "逆接",
+      "一方",
+      "反面",
+      "矛盾"
+    ],
+    "grammar": [
+      "〜のに (unexpected/complaint)",
+      "〜くせに (despite, negative nuance)",
+      "〜一方(で) (on the other hand)",
+      "〜反面"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "あんなに勉強したのに、試験に落ちてしまった。"
+      },
+      {
+        "speaker": "B",
+        "jp": "彼は知っているくせに、知らないふりをしている。"
+      },
+      {
+        "speaker": "A",
+        "jp": "都市は便利な一方で、自然が少ない。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "choose",
+        "question": "Which carries a nuance of complaint or dissatisfaction?",
+        "options": [
+          "一方で",
+          "のに",
+          "ために"
+        ],
+        "answer": "のに"
+      }
+    ]
+  },
+  {
+    "id": "n3l003",
+    "titleJp": "可能・願望・必要性",
+    "level": "N3",
+    "order": 3,
+    "duration": "40 min",
+    "xp": 85,
+    "vocabulary": [
+      "能力",
+      "可能性",
+      "必要性",
+      "希望",
+      "願い"
+    ],
+    "grammar": [
+      "〜ことができる",
+      "〜たがる (third person desire)",
+      "〜必要がある",
+      "〜べきだ",
+      "〜なければならない"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "彼はいつも新しいゲームを欲しがっています。"
+      },
+      {
+        "speaker": "B",
+        "jp": "健康のためには、もっと野菜を食べるべきです。"
+      },
+      {
+        "speaker": "A",
+        "jp": "そうですね。毎日運動する必要がありますね。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "choose",
+        "question": "べきだ vs なければならない: which is stronger obligation?",
+        "options": [
+          "べきだ",
+          "なければならない"
+        ],
+        "answer": "なければならない"
+      }
+    ]
+  },
+  {
+    "id": "n3l004",
+    "titleJp": "引用・伝達表現",
+    "level": "N3",
+    "order": 4,
+    "duration": "35 min",
+    "xp": 80,
+    "vocabulary": [
+      "引用",
+      "伝達",
+      "報告",
+      "噂",
+      "情報"
+    ],
+    "grammar": [
+      "〜と言っていた",
+      "〜と思っている",
+      "〜によると〜そうだ",
+      "〜とのことです",
+      "〜と聞いた"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "田中さんによると、新しいカフェが駅の近くにできたそうです。"
+      },
+      {
+        "speaker": "B",
+        "jp": "山田さんは来週旅行に行くと言っていましたよ。"
+      },
+      {
+        "speaker": "A",
+        "jp": "部長から、会議が延期されたとのことです。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Tanaka said he is tired.",
+        "answer": "田中さんは疲れたと言っていました。"
+      }
+    ]
+  },
+  {
+    "id": "n3l005",
+    "titleJp": "変化の表現",
+    "level": "N3",
+    "order": 5,
+    "duration": "35 min",
+    "xp": 80,
+    "vocabulary": [
+      "変化",
+      "成長",
+      "発展",
+      "増加",
+      "減少"
+    ],
+    "grammar": [
+      "〜ようになる",
+      "〜なくなる",
+      "〜てくる",
+      "〜ていく",
+      "〜に変わる"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "日本語を勉強してから、ニュースが聞き取れるようになりました。"
+      },
+      {
+        "speaker": "B",
+        "jp": "最近、手紙を書く人が少なくなりましたね。"
+      },
+      {
+        "speaker": "A",
+        "jp": "技術はこれからもっと発展していくでしょう。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "I became able to swim.",
+        "answer": "泳げるようになりました。"
+      },
+      {
+        "type": "translate",
+        "question": "I stopped eating meat.",
+        "answer": "肉を食べなくなりました。"
+      }
+    ]
+  },
+  {
+    "id": "n3l006",
+    "titleJp": "事情説明とニュアンス",
+    "level": "N3",
+    "order": 6,
+    "duration": "35 min",
+    "xp": 85,
+    "vocabulary": [
+      "事情",
+      "誤解",
+      "納得",
+      "弁明",
+      "理由"
+    ],
+    "grammar": [
+      "〜わけだ",
+      "〜わけではない",
+      "〜わけがない"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "彼、急に国へ帰ったらしいよ。"
+      },
+      {
+        "speaker": "B",
+        "jp": "お母さんが病気になったそうだ。それで急いで帰国したわけだね。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "It is not that I dislike it",
+        "answer": "きらいなわけではない"
+      },
+      {
+        "type": "fill",
+        "question": "そんなはずが___。",
+        "answer": [
+          "ない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l007",
+    "titleJp": "対比と予想外の結果",
+    "level": "N3",
+    "order": 7,
+    "duration": "30 min",
+    "xp": 80,
+    "vocabulary": [
+      "評価",
+      "外見",
+      "価格",
+      "結果",
+      "努力"
+    ],
+    "grammar": [
+      "〜わりに",
+      "〜くせに",
+      "〜にもかかわらず"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "このパソコン、安かったのにすごく速いですね。"
+      },
+      {
+        "speaker": "B",
+        "jp": "値段のわりには性能が良いと評判ですよ。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Considering the price, it is delicious",
+        "answer": "ねだんのわりにおいしい"
+      }
+    ]
+  },
+  {
+    "id": "n3l008",
+    "titleJp": "業務連絡と課題解決",
+    "level": "N3",
+    "order": 8,
+    "duration": "40 min",
+    "xp": 95,
+    "vocabulary": [
+      "進捗",
+      "課題",
+      "納期",
+      "検討",
+      "対応"
+    ],
+    "grammar": [
+      "〜に関して",
+      "〜について",
+      "〜おそれがある"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "プロジェクトの進捗に関してご報告があります。"
+      },
+      {
+        "speaker": "B",
+        "jp": "納期に遅れるおそれがありますか。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Regarding this problem",
+        "answer": "このもんだいにかんして"
+      }
+    ]
+  },
+  {
+    "id": "n3l009",
+    "titleJp": "健康と病院での症状説明",
+    "level": "N3",
+    "order": 9,
+    "duration": "30 min",
+    "xp": 85,
+    "vocabulary": [
+      "症状",
+      "処方箋",
+      "アレルギー",
+      "安静",
+      "診察"
+    ],
+    "grammar": [
+      "〜気味",
+      "〜がち",
+      "〜てたまらない"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "昨日から少し風邪気味で、喉が痛くてたまりません。"
+      },
+      {
+        "speaker": "B",
+        "jp": "無理をせず、薬を飲んで安静にしてください。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "A touch of cold",
+        "answer": "かぜぎみ"
+      }
+    ]
+  },
+  {
+    "id": "n3l010",
+    "titleJp": "気象情報と防災",
+    "level": "N3",
+    "order": 10,
+    "duration": "35 min",
+    "xp": 90,
+    "vocabulary": [
+      "警報",
+      "避難",
+      "台風",
+      "地震",
+      "警戒"
+    ],
+    "grammar": [
+      "〜にともなって",
+      "〜を中心に",
+      "〜恐れがある"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "大型の台風が接近しており、今夜から暴風雨になるおそれがあります。"
+      },
+      {
+        "speaker": "B",
+        "jp": "早めに避難場所を確認しておきましょう。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "There is a risk of rain",
+        "answer": "あめのおそれがある"
+      }
+    ]
+  },
+  {
+    "id": "n3l011",
+    "titleJp": "〜に違いない - 彼が犯人に違いない",
+    "level": "N3",
+    "order": 11,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜に違いない - 彼が犯人に違いない"
+    ],
+    "grammar": [
+      "n3_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に違いない - 彼が犯人に違いないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of High Certainty - ~Ni Chigai Nai",
+        "answer": "〜に違いない - 彼が犯人に違いない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about High Certainty - ~Ni Chigai Nai?",
+        "options": [
+          "〜に違いない - 彼が犯人に違いない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に違いない - 彼が犯人に違いない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（High Certainty - ~Ni Chigai Nai）",
+        "answer": [
+          "〜に違いない - 彼が犯人に違いない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l012",
+    "titleJp": "〜おそれがある - 大雨で川が氾濫するおそれがある",
+    "level": "N3",
+    "order": 12,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜おそれがある - 大雨で川が氾濫するおそれがある"
+    ],
+    "grammar": [
+      "n3_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜おそれがある - 大雨で川が氾濫するおそれがあるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Apprehension & Risk - ~Osore ga Aru",
+        "answer": "〜おそれがある - 大雨で川が氾濫するおそれがある"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Apprehension & Risk - ~Osore ga Aru?",
+        "options": [
+          "〜おそれがある - 大雨で川が氾濫するおそれがある",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜おそれがある - 大雨で川が氾濫するおそれがある"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Apprehension & Risk - ~Osore ga Aru）",
+        "answer": [
+          "〜おそれがある - 大雨で川が氾濫するおそれがある"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l013",
+    "titleJp": "〜しかない - 自分でやるしかない",
+    "level": "N3",
+    "order": 13,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜しかない - 自分でやるしかない"
+    ],
+    "grammar": [
+      "n3_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜しかない - 自分でやるしかないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Severe Limit - ~Shika ~Nai",
+        "answer": "〜しかない - 自分でやるしかない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Severe Limit - ~Shika ~Nai?",
+        "options": [
+          "〜しかない - 自分でやるしかない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜しかない - 自分でやるしかない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Severe Limit - ~Shika ~Nai）",
+        "answer": [
+          "〜しかない - 自分でやるしかない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l014",
+    "titleJp": "〜ばかりだ - 状況は悪化するばかりだ",
+    "level": "N3",
+    "order": 14,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜ばかりだ - 状況は悪化するばかりだ"
+    ],
+    "grammar": [
+      "n3_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ばかりだ - 状況は悪化するばかりだについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Extreme Extent - ~Bakari da",
+        "answer": "〜ばかりだ - 状況は悪化するばかりだ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Extreme Extent - ~Bakari da?",
+        "options": [
+          "〜ばかりだ - 状況は悪化するばかりだ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ばかりだ - 状況は悪化するばかりだ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Extreme Extent - ~Bakari da）",
+        "answer": [
+          "〜ばかりだ - 状況は悪化するばかりだ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l015",
+    "titleJp": "〜ほど・〜くらい - 泣きたいほど嬉しい",
+    "level": "N3",
+    "order": 15,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜ほど・〜くらい - 泣きたいほど嬉しい"
+    ],
+    "grammar": [
+      "n3_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ほど・〜くらい - 泣きたいほど嬉しいについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Approximation & Limits - ~Hodo / ~Kurai",
+        "answer": "〜ほど・〜くらい - 泣きたいほど嬉しい"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Approximation & Limits - ~Hodo / ~Kurai?",
+        "options": [
+          "〜ほど・〜くらい - 泣きたいほど嬉しい",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ほど・〜くらい - 泣きたいほど嬉しい"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Approximation & Limits - ~Hodo / ~Kurai）",
+        "answer": [
+          "〜ほど・〜くらい - 泣きたいほど嬉しい"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l016",
+    "titleJp": "〜限り - 生きている限り挑戦し続ける",
+    "level": "N3",
+    "order": 16,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜限り - 生きている限り挑戦し続ける"
+    ],
+    "grammar": [
+      "n3_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜限り - 生きている限り挑戦し続けるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Natural Limits - ~Kagiri",
+        "answer": "〜限り - 生きている限り挑戦し続ける"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Natural Limits - ~Kagiri?",
+        "options": [
+          "〜限り - 生きている限り挑戦し続ける",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜限り - 生きている限り挑戦し続ける"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Natural Limits - ~Kagiri）",
+        "answer": [
+          "〜限り - 生きている限り挑戦し続ける"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l017",
+    "titleJp": "〜に限って - 傘を持たない日に限って雨が降る",
+    "level": "N3",
+    "order": 17,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜に限って - 傘を持たない日に限って雨が降る"
+    ],
+    "grammar": [
+      "n3_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に限って - 傘を持たない日に限って雨が降るについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Special Treatment - ~Ni Kagitte",
+        "answer": "〜に限って - 傘を持たない日に限って雨が降る"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Special Treatment - ~Ni Kagitte?",
+        "options": [
+          "〜に限って - 傘を持たない日に限って雨が降る",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に限って - 傘を持たない日に限って雨が降る"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Special Treatment - ~Ni Kagitte）",
+        "answer": [
+          "〜に限って - 傘を持たない日に限って雨が降る"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l018",
+    "titleJp": "〜に基づいて - データに基づいて判断する",
+    "level": "N3",
+    "order": 18,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜に基づいて - データに基づいて判断する"
+    ],
+    "grammar": [
+      "n3_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に基づいて - データに基づいて判断するについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Based on Evidence - ~Ni Motozuite",
+        "answer": "〜に基づいて - データに基づいて判断する"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Based on Evidence - ~Ni Motozuite?",
+        "options": [
+          "〜に基づいて - データに基づいて判断する",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に基づいて - データに基づいて判断する"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Based on Evidence - ~Ni Motozuite）",
+        "answer": [
+          "〜に基づいて - データに基づいて判断する"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l019",
+    "titleJp": "〜に沿って - マニュアルに沿って作業を進める",
+    "level": "N3",
+    "order": 19,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜に沿って - マニュアルに沿って作業を進める"
+    ],
+    "grammar": [
+      "n3_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に沿って - マニュアルに沿って作業を進めるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Along the Lines of - ~Ni Sotte",
+        "answer": "〜に沿って - マニュアルに沿って作業を進める"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Along the Lines of - ~Ni Sotte?",
+        "options": [
+          "〜に沿って - マニュアルに沿って作業を進める",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に沿って - マニュアルに沿って作業を進める"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Along the Lines of - ~Ni Sotte）",
+        "answer": [
+          "〜に沿って - マニュアルに沿って作業を進める"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l020",
+    "titleJp": "〜に応えて - ファンの期待に応える",
+    "level": "N3",
+    "order": 20,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜に応えて - ファンの期待に応える"
+    ],
+    "grammar": [
+      "n3_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に応えて - ファンの期待に応えるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of In Response to - ~Ni Kotaete",
+        "answer": "〜に応えて - ファンの期待に応える"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about In Response to - ~Ni Kotaete?",
+        "options": [
+          "〜に応えて - ファンの期待に応える",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に応えて - ファンの期待に応える"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（In Response to - ~Ni Kotaete）",
+        "answer": [
+          "〜に応えて - ファンの期待に応える"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l021",
+    "titleJp": "〜次第だ - 努力次第で結果が変わる",
+    "level": "N3",
+    "order": 21,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜次第だ - 努力次第で結果が変わる"
+    ],
+    "grammar": [
+      "n3_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜次第だ - 努力次第で結果が変わるについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Depending on Context - ~Shidai da",
+        "answer": "〜次第だ - 努力次第で結果が変わる"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Depending on Context - ~Shidai da?",
+        "options": [
+          "〜次第だ - 努力次第で結果が変わる",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜次第だ - 努力次第で結果が変わる"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Depending on Context - ~Shidai da）",
+        "answer": [
+          "〜次第だ - 努力次第で結果が変わる"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l022",
+    "titleJp": "〜次第 - 準備ができ次第、出発します",
+    "level": "N3",
+    "order": 22,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜次第 - 準備ができ次第、出発します"
+    ],
+    "grammar": [
+      "n3_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜次第 - 準備ができ次第、出発しますについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Immediate Sequence - ~Shidai",
+        "answer": "〜次第 - 準備ができ次第、出発します"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Immediate Sequence - ~Shidai?",
+        "options": [
+          "〜次第 - 準備ができ次第、出発します",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜次第 - 準備ができ次第、出発します"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Immediate Sequence - ~Shidai）",
+        "answer": [
+          "〜次第 - 準備ができ次第、出発します"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l023",
+    "titleJp": "〜をめぐって - 遺産をめぐって争う",
+    "level": "N3",
+    "order": 23,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜をめぐって - 遺産をめぐって争う"
+    ],
+    "grammar": [
+      "n3_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜をめぐって - 遺産をめぐって争うについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Focus on Subject - ~O Megutte",
+        "answer": "〜をめぐって - 遺産をめぐって争う"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Focus on Subject - ~O Megutte?",
+        "options": [
+          "〜をめぐって - 遺産をめぐって争う",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜をめぐって - 遺産をめぐって争う"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Focus on Subject - ~O Megutte）",
+        "answer": [
+          "〜をめぐって - 遺産をめぐって争う"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l024",
+    "titleJp": "〜を皮切りに - 東京公演を皮切りに全国ツアー",
+    "level": "N3",
+    "order": 24,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜を皮切りに - 東京公演を皮切りに全国ツアー"
+    ],
+    "grammar": [
+      "n3_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜を皮切りに - 東京公演を皮切りに全国ツアーについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Starting Point - ~O Kawa kiri ni",
+        "answer": "〜を皮切りに - 東京公演を皮切りに全国ツアー"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Starting Point - ~O Kawa kiri ni?",
+        "options": [
+          "〜を皮切りに - 東京公演を皮切りに全国ツアー",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜を皮切りに - 東京公演を皮切りに全国ツアー"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Starting Point - ~O Kawa kiri ni）",
+        "answer": [
+          "〜を皮切りに - 東京公演を皮切りに全国ツアー"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l025",
+    "titleJp": "〜をきっかけに - アニメをきっかけに日本語を始めた",
+    "level": "N3",
+    "order": 25,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜をきっかけに - アニメをきっかけに日本語を始めた"
+    ],
+    "grammar": [
+      "n3_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜をきっかけに - アニメをきっかけに日本語を始めたについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Triggered by - ~O Kikkake ni",
+        "answer": "〜をきっかけに - アニメをきっかけに日本語を始めた"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Triggered by - ~O Kikkake ni?",
+        "options": [
+          "〜をきっかけに - アニメをきっかけに日本語を始めた",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜をきっかけに - アニメをきっかけに日本語を始めた"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Triggered by - ~O Kikkake ni）",
+        "answer": [
+          "〜をきっかけに - アニメをきっかけに日本語を始めた"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l026",
+    "titleJp": "〜向け・〜向き - 子ども向けの本",
+    "level": "N3",
+    "order": 26,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜向け・〜向き - 子ども向けの本"
+    ],
+    "grammar": [
+      "n3_g002"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜向け・〜向き - 子ども向けの本について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Target Audience - ~Muke / ~Muki",
+        "answer": "〜向け・〜向き - 子ども向けの本"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Target Audience - ~Muke / ~Muki?",
+        "options": [
+          "〜向け・〜向き - 子ども向けの本",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜向け・〜向き - 子ども向けの本"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Target Audience - ~Muke / ~Muki）",
+        "answer": [
+          "〜向け・〜向き - 子ども向けの本"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l027",
+    "titleJp": "〜がちだ - 冬は風邪を引きがちだ",
+    "level": "N3",
+    "order": 27,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜がちだ - 冬は風邪を引きがちだ"
+    ],
+    "grammar": [
+      "n3_g003"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜がちだ - 冬は風邪を引きがちだについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Unusual Frequency - ~Gachi da",
+        "answer": "〜がちだ - 冬は風邪を引きがちだ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Unusual Frequency - ~Gachi da?",
+        "options": [
+          "〜がちだ - 冬は風邪を引きがちだ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜がちだ - 冬は風邪を引きがちだ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Unusual Frequency - ~Gachi da）",
+        "answer": [
+          "〜がちだ - 冬は風邪を引きがちだ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l028",
+    "titleJp": "〜気味だ - 風邪気味なので早く寝る",
+    "level": "N3",
+    "order": 28,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜気味だ - 風邪気味なので早く寝る"
+    ],
+    "grammar": [
+      "n3_g004"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜気味だ - 風邪気味なので早く寝るについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Physical Sensation - ~Gimi da",
+        "answer": "〜気味だ - 風邪気味なので早く寝る"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Physical Sensation - ~Gimi da?",
+        "options": [
+          "〜気味だ - 風邪気味なので早く寝る",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜気味だ - 風邪気味なので早く寝る"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Physical Sensation - ~Gimi da）",
+        "answer": [
+          "〜気味だ - 風邪気味なので早く寝る"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l029",
+    "titleJp": "〜ことか - 何度注意したことか",
+    "level": "N3",
+    "order": 29,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜ことか - 何度注意したことか"
+    ],
+    "grammar": [
+      "n3_g005"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜ことか - 何度注意したことかについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Doubtful Validity - ~Koto ka",
+        "answer": "〜ことか - 何度注意したことか"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Doubtful Validity - ~Koto ka?",
+        "options": [
+          "〜ことか - 何度注意したことか",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜ことか - 何度注意したことか"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Doubtful Validity - ~Koto ka）",
+        "answer": [
+          "〜ことか - 何度注意したことか"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l030",
+    "titleJp": "〜はずだ - 電車が止まっているから遅れるはずだ",
+    "level": "N3",
+    "order": 30,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜はずだ - 電車が止まっているから遅れるはずだ"
+    ],
+    "grammar": [
+      "n3_g006"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜はずだ - 電車が止まっているから遅れるはずだについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of No Wonder - ~Hazu da",
+        "answer": "〜はずだ - 電車が止まっているから遅れるはずだ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about No Wonder - ~Hazu da?",
+        "options": [
+          "〜はずだ - 電車が止まっているから遅れるはずだ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜はずだ - 電車が止まっているから遅れるはずだ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（No Wonder - ~Hazu da）",
+        "answer": [
+          "〜はずだ - 電車が止まっているから遅れるはずだ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l031",
+    "titleJp": "〜はずがない - 彼が嘘をつくはずがない",
+    "level": "N3",
+    "order": 31,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜はずがない - 彼が嘘をつくはずがない"
+    ],
+    "grammar": [
+      "n3_g007"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜はずがない - 彼が嘘をつくはずがないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Contrary to Expectation - ~Hazu ga Nai",
+        "answer": "〜はずがない - 彼が嘘をつくはずがない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Contrary to Expectation - ~Hazu ga Nai?",
+        "options": [
+          "〜はずがない - 彼が嘘をつくはずがない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜はずがない - 彼が嘘をつくはずがない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Contrary to Expectation - ~Hazu ga Nai）",
+        "answer": [
+          "〜はずがない - 彼が嘘をつくはずがない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l032",
+    "titleJp": "〜までもない - 言うまでもなく健康が一番だ",
+    "level": "N3",
+    "order": 32,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜までもない - 言うまでもなく健康が一番だ"
+    ],
+    "grammar": [
+      "n3_g008"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜までもない - 言うまでもなく健康が一番だについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Needless to Say - ~Made mo Nai",
+        "answer": "〜までもない - 言うまでもなく健康が一番だ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Needless to Say - ~Made mo Nai?",
+        "options": [
+          "〜までもない - 言うまでもなく健康が一番だ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜までもない - 言うまでもなく健康が一番だ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Needless to Say - ~Made mo Nai）",
+        "answer": [
+          "〜までもない - 言うまでもなく健康が一番だ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l033",
+    "titleJp": "〜やっと - やっと試験が終わった",
+    "level": "N3",
+    "order": 33,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜やっと - やっと試験が終わった"
+    ],
+    "grammar": [
+      "n3_g009"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜やっと - やっと試験が終わったについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Only Just Barely - ~Yatto",
+        "answer": "〜やっと - やっと試験が終わった"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Only Just Barely - ~Yatto?",
+        "options": [
+          "〜やっと - やっと試験が終わった",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜やっと - やっと試験が終わった"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Only Just Barely - ~Yatto）",
+        "answer": [
+          "〜やっと - やっと試験が終わった"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l034",
+    "titleJp": "〜だらけ - 間違いだらけの答案",
+    "level": "N3",
+    "order": 34,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜だらけ - 間違いだらけの答案"
+    ],
+    "grammar": [
+      "n3_g010"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜だらけ - 間違いだらけの答案について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Full of Imperfections - ~Darake",
+        "answer": "〜だらけ - 間違いだらけの答案"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Full of Imperfections - ~Darake?",
+        "options": [
+          "〜だらけ - 間違いだらけの答案",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜だらけ - 間違いだらけの答案"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Full of Imperfections - ~Darake）",
+        "answer": [
+          "〜だらけ - 間違いだらけの答案"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l035",
+    "titleJp": "〜まみれ - 泥まみれになって遊ぶ",
+    "level": "N3",
+    "order": 35,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜まみれ - 泥まみれになって遊ぶ"
+    ],
+    "grammar": [
+      "n3_g011"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜まみれ - 泥まみれになって遊ぶについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Covered with Residue - ~Mamire",
+        "answer": "〜まみれ - 泥まみれになって遊ぶ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Covered with Residue - ~Mamire?",
+        "options": [
+          "〜まみれ - 泥まみれになって遊ぶ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜まみれ - 泥まみれになって遊ぶ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Covered with Residue - ~Mamire）",
+        "answer": [
+          "〜まみれ - 泥まみれになって遊ぶ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l036",
+    "titleJp": "〜に際して - 新規事業の立ち上げに際して",
+    "level": "N3",
+    "order": 36,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜に際して - 新規事業の立ち上げに際して"
+    ],
+    "grammar": [
+      "n3_g012"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜に際して - 新規事業の立ち上げに際してについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of At the Occasion of - ~Sai shite",
+        "answer": "〜に際して - 新規事業の立ち上げに際して"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about At the Occasion of - ~Sai shite?",
+        "options": [
+          "〜に際して - 新規事業の立ち上げに際して",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜に際して - 新規事業の立ち上げに際して"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（At the Occasion of - ~Sai shite）",
+        "answer": [
+          "〜に際して - 新規事業の立ち上げに際して"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l037",
+    "titleJp": "〜といえば - 日本といえば富士山だ",
+    "level": "N3",
+    "order": 37,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "〜といえば - 日本といえば富士山だ"
+    ],
+    "grammar": [
+      "n3_g013"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜といえば - 日本といえば富士山だについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Speaking of - ~To Ieba",
+        "answer": "〜といえば - 日本といえば富士山だ"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Speaking of - ~To Ieba?",
+        "options": [
+          "〜といえば - 日本といえば富士山だ",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜といえば - 日本といえば富士山だ"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Speaking of - ~To Ieba）",
+        "answer": [
+          "〜といえば - 日本といえば富士山だ"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l038",
+    "titleJp": "〜たとえ〜ても - たとえ反対されても諦めない",
+    "level": "N3",
+    "order": 38,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "〜たとえ〜ても - たとえ反対されても諦めない"
+    ],
+    "grammar": [
+      "n3_g014"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜たとえ〜ても - たとえ反対されても諦めないについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Even If - ~Tatoe ~Temo",
+        "answer": "〜たとえ〜ても - たとえ反対されても諦めない"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Even If - ~Tatoe ~Temo?",
+        "options": [
+          "〜たとえ〜ても - たとえ反対されても諦めない",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜たとえ〜ても - たとえ反対されても諦めない"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Even If - ~Tatoe ~Temo）",
+        "answer": [
+          "〜たとえ〜ても - たとえ反対されても諦めない"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l039",
+    "titleJp": "〜としたら - もし宝くじが当たったとしたら",
+    "level": "N3",
+    "order": 39,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "〜としたら - もし宝くじが当たったとしたら"
+    ],
+    "grammar": [
+      "n3_g015"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜としたら - もし宝くじが当たったとしたらについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Extreme Hypothetical - ~Toshitara",
+        "answer": "〜としたら - もし宝くじが当たったとしたら"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Extreme Hypothetical - ~Toshitara?",
+        "options": [
+          "〜としたら - もし宝くじが当たったとしたら",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜としたら - もし宝くじが当たったとしたら"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Extreme Hypothetical - ~Toshitara）",
+        "answer": [
+          "〜としたら - もし宝くじが当たったとしたら"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l040",
+    "titleJp": "〜上で - 書類を確認した上で署名する",
+    "level": "N3",
+    "order": 40,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "〜上で - 書類を確認した上で署名する"
+    ],
+    "grammar": [
+      "n3_g016"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜上で - 書類を確認した上で署名するについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of In Terms of - ~Ue de",
+        "answer": "〜上で - 書類を確認した上で署名する"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about In Terms of - ~Ue de?",
+        "options": [
+          "〜上で - 書類を確認した上で署名する",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜上で - 書類を確認した上で署名する"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（In Terms of - ~Ue de）",
+        "answer": [
+          "〜上で - 書類を確認した上で署名する"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l041",
+    "titleJp": "〜から見ると - 外国人から見ると不思議な習慣",
+    "level": "N3",
+    "order": 41,
+    "duration": "21 min",
+    "xp": 55,
+    "vocabulary": [
+      "〜から見ると - 外国人から見ると不思議な習慣"
+    ],
+    "grammar": [
+      "n3_g017"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "〜から見ると - 外国人から見ると不思議な習慣について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Judging from - ~Kara Miru to",
+        "answer": "〜から見ると - 外国人から見ると不思議な習慣"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Judging from - ~Kara Miru to?",
+        "options": [
+          "〜から見ると - 外国人から見ると不思議な習慣",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "〜から見ると - 外国人から見ると不思議な習慣"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Judging from - ~Kara Miru to）",
+        "answer": [
+          "〜から見ると - 外国人から見ると不思議な習慣"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l042",
+    "titleJp": "ビジネス敬語の実践マナー",
+    "level": "N3",
+    "order": 42,
+    "duration": "22 min",
+    "xp": 60,
+    "vocabulary": [
+      "ビジネス敬語の実践マナー"
+    ],
+    "grammar": [
+      "n3_g018"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "ビジネス敬語の実践マナーについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Professional Office Mannerisms",
+        "answer": "ビジネス敬語の実践マナー"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Professional Office Mannerisms?",
+        "options": [
+          "ビジネス敬語の実践マナー",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "ビジネス敬語の実践マナー"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Professional Office Mannerisms）",
+        "answer": [
+          "ビジネス敬語の実践マナー"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l043",
+    "titleJp": "納期交渉とスケジュール調整",
+    "level": "N3",
+    "order": 43,
+    "duration": "23 min",
+    "xp": 65,
+    "vocabulary": [
+      "納期交渉とスケジュール調整"
+    ],
+    "grammar": [
+      "n3_g019"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "納期交渉とスケジュール調整について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Negotiating Deadlines with Clients",
+        "answer": "納期交渉とスケジュール調整"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Negotiating Deadlines with Clients?",
+        "options": [
+          "納期交渉とスケジュール調整",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "納期交渉とスケジュール調整"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Negotiating Deadlines with Clients）",
+        "answer": [
+          "納期交渉とスケジュール調整"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l044",
+    "titleJp": "病院での詳細な問診と診断の聞き取り",
+    "level": "N3",
+    "order": 44,
+    "duration": "24 min",
+    "xp": 70,
+    "vocabulary": [
+      "病院での詳細な問診と診断の聞き取り"
+    ],
+    "grammar": [
+      "n3_g020"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "病院での詳細な問診と診断の聞き取りについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Japanese Medical Consultations",
+        "answer": "病院での詳細な問診と診断の聞き取り"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Japanese Medical Consultations?",
+        "options": [
+          "病院での詳細な問診と診断の聞き取り",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "病院での詳細な問診と診断の聞き取り"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Japanese Medical Consultations）",
+        "answer": [
+          "病院での詳細な問診と診断の聞き取り"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l045",
+    "titleJp": "税金・年金・確定申告の手続き",
+    "level": "N3",
+    "order": 45,
+    "duration": "25 min",
+    "xp": 50,
+    "vocabulary": [
+      "税金・年金・確定申告の手続き"
+    ],
+    "grammar": [
+      "n3_g021"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "税金・年金・確定申告の手続きについて相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Banking, Taxes & Pensions in Japan",
+        "answer": "税金・年金・確定申告の手続き"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Banking, Taxes & Pensions in Japan?",
+        "options": [
+          "税金・年金・確定申告の手続き",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "税金・年金・確定申告の手続き"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Banking, Taxes & Pensions in Japan）",
+        "answer": [
+          "税金・年金・確定申告の手続き"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l046",
+    "titleJp": "町内会と地域コミュニティへの参加",
+    "level": "N3",
+    "order": 46,
+    "duration": "26 min",
+    "xp": 55,
+    "vocabulary": [
+      "町内会と地域コミュニティへの参加"
+    ],
+    "grammar": [
+      "n3_g022"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "町内会と地域コミュニティへの参加について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Participating in Neighborhood Chonaikai",
+        "answer": "町内会と地域コミュニティへの参加"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Participating in Neighborhood Chonaikai?",
+        "options": [
+          "町内会と地域コミュニティへの参加",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "町内会と地域コミュニティへの参加"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Participating in Neighborhood Chonaikai）",
+        "answer": [
+          "町内会と地域コミュニティへの参加"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l047",
+    "titleJp": "就職活動のエントリーシート対策",
+    "level": "N3",
+    "order": 47,
+    "duration": "27 min",
+    "xp": 60,
+    "vocabulary": [
+      "就職活動のエントリーシート対策"
+    ],
+    "grammar": [
+      "n3_g023"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "就職活動のエントリーシート対策について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Job Hunting (Shukatsu) Overview",
+        "answer": "就職活動のエントリーシート対策"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Job Hunting (Shukatsu) Overview?",
+        "options": [
+          "就職活動のエントリーシート対策",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "就職活動のエントリーシート対策"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Job Hunting (Shukatsu) Overview）",
+        "answer": [
+          "就職活動のエントリーシート対策"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l048",
+    "titleJp": "NHKニュースの聞き取りと時事表現",
+    "level": "N3",
+    "order": 48,
+    "duration": "28 min",
+    "xp": 65,
+    "vocabulary": [
+      "NHKニュースの聞き取りと時事表現"
+    ],
+    "grammar": [
+      "n3_g024"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "NHKニュースの聞き取りと時事表現について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Interpreting Japanese News Broadcasts",
+        "answer": "NHKニュースの聞き取りと時事表現"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Interpreting Japanese News Broadcasts?",
+        "options": [
+          "NHKニュースの聞き取りと時事表現",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "NHKニュースの聞き取りと時事表現"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Interpreting Japanese News Broadcasts）",
+        "answer": [
+          "NHKニュースの聞き取りと時事表現"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l049",
+    "titleJp": "会議での反対意見の角の立たない伝え方",
+    "level": "N3",
+    "order": 49,
+    "duration": "29 min",
+    "xp": 70,
+    "vocabulary": [
+      "会議での反対意見の角の立たない伝え方"
+    ],
+    "grammar": [
+      "n3_g025"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "会議での反対意見の角の立たない伝え方について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of Expressing Nuanced Opinions in Debates",
+        "answer": "会議での反対意見の角の立たない伝え方"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about Expressing Nuanced Opinions in Debates?",
+        "options": [
+          "会議での反対意見の角の立たない伝え方",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "会議での反対意見の角の立たない伝え方"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（Expressing Nuanced Opinions in Debates）",
+        "answer": [
+          "会議での反対意見の角の立たない伝え方"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "n3l050",
+    "titleJp": "N3修了と上級への跳躍",
+    "level": "N3",
+    "order": 50,
+    "duration": "20 min",
+    "xp": 50,
+    "vocabulary": [
+      "N3修了と上級への跳躍"
+    ],
+    "grammar": [
+      "n3_g001"
+    ],
+    "dialogue": [
+      {
+        "speaker": "A",
+        "jp": "N3修了と上級への跳躍について相談があるのですが、よろしいでしょうか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "はい、喜んで。どのようなことでしょうか。"
+      },
+      {
+        "speaker": "A",
+        "jp": "この点について詳しく教えていただけますか。"
+      },
+      {
+        "speaker": "B",
+        "jp": "かしこまりました。順を追ってご説明いたします。"
+      }
+    ],
+    "exercises": [
+      {
+        "type": "translate",
+        "question": "Key concept of N3 Milestone: Conquering the Intermediate Plateau",
+        "answer": "N3修了と上級への跳躍"
+      },
+      {
+        "type": "multiple",
+        "question": "Which phrase best fits in a conversation about N3 Milestone: Conquering the Intermediate Plateau?",
+        "options": [
+          "N3修了と上級への跳躍",
+          "わかりません",
+          "いいえ",
+          "失礼します"
+        ],
+        "answer": "N3修了と上級への跳躍"
+      },
+      {
+        "type": "fill",
+        "question": "___について勉強しています。（N3 Milestone: Conquering the Intermediate Plateau）",
+        "answer": [
+          "N3修了と上級への跳躍"
+        ]
+      }
+    ]
+  }
+]

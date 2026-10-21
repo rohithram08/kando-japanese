@@ -12,6 +12,7 @@ import { useThemeStore } from '../store/themeStore'
 import ThemeToggle from '../components/ui/ThemeToggle'
 import SakuraPetals2D from '../components/landing/SakuraPetals2D'
 import AnimatedCharacterHero from '../components/landing/AnimatedCharacterHero'
+import KandoSlimeLogo from '../components/mascot/KandoSlimeLogo'
 import LearningJourneyPath from '../components/landing/LearningJourneyPath'
 import JLPTLevelPicker, { JLPT_DETAILS } from '../components/landing/JLPTLevelPicker'
 import StatCounters from '../components/landing/StatCounters'
@@ -135,13 +136,13 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl shrink-0">
-            <span className="text-xl sm:text-2xl transform transition-transform group-hover:scale-110" role="img" aria-label="Japanese flag">🎌</span>
+            <KandoSlimeLogo size={34} animated showBlossom className="group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
               <span className="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 bg-clip-text text-transparent whitespace-nowrap">
-                Nihongo Master
+                Kando Japanese
               </span>
               <span className="text-[10px] text-muted-foreground -mt-1 font-medium tracking-wider whitespace-nowrap">
-                日本語マスター
+                感動 — 日本語学習
               </span>
             </div>
           </Link>
@@ -549,7 +550,7 @@ export default function LandingPage() {
 
           <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-foreground">Nihongo Master</span>
+              <span className="font-bold text-foreground">Kando Japanese</span>
               <span>•</span>
               <span>© {new Date().getFullYear()} All rights reserved.</span>
             </div>

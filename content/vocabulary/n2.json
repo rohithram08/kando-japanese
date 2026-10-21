@@ -1,0 +1,527 @@
+[
+  {
+    "id": "n2_001",
+    "word": "把握",
+    "reading": "はあく",
+    "romaji": "haaku",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "現状を正確に把握することが重要だ。"
+    }
+  },
+  {
+    "id": "n2_002",
+    "word": "配慮",
+    "reading": "はいりょ",
+    "romaji": "hairyo",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "他の人への配慮が大切です。"
+    }
+  },
+  {
+    "id": "n2_003",
+    "word": "促す",
+    "reading": "うながす",
+    "romaji": "unagasu",
+    "pos": "verb (u)",
+    "level": "N2",
+    "tags": [
+      "verb (u)",
+      "N2"
+    ],
+    "example": {
+      "jp": "早期解決を促す必要がある。"
+    }
+  },
+  {
+    "id": "n2_004",
+    "word": "妨げる",
+    "reading": "さまたげる",
+    "romaji": "samatageru",
+    "pos": "verb (ru)",
+    "level": "N2",
+    "tags": [
+      "verb (ru)",
+      "N2"
+    ],
+    "example": {
+      "jp": "成長を妨げる要因を排除する。"
+    }
+  },
+  {
+    "id": "n2_005",
+    "word": "取り組む",
+    "reading": "とりくむ",
+    "romaji": "torikumu",
+    "pos": "verb (u)",
+    "level": "N2",
+    "tags": [
+      "verb (u)",
+      "N2"
+    ],
+    "example": {
+      "jp": "環境問題に積極的に取り組んでいる。"
+    }
+  },
+  {
+    "id": "n2_006",
+    "word": "見直す",
+    "reading": "みなおす",
+    "romaji": "minaosu",
+    "pos": "verb (u)",
+    "level": "N2",
+    "tags": [
+      "verb (u)",
+      "N2"
+    ],
+    "example": {
+      "jp": "計画を根本から見直す必要がある。"
+    }
+  },
+  {
+    "id": "n2_007",
+    "word": "抱える",
+    "reading": "かかえる",
+    "romaji": "kakaeru",
+    "pos": "verb (ru)",
+    "level": "N2",
+    "tags": [
+      "verb (ru)",
+      "N2"
+    ],
+    "example": {
+      "jp": "多くの企業が資金難を抱えている。"
+    }
+  },
+  {
+    "id": "n2_008",
+    "word": "曖昧",
+    "reading": "あいまい",
+    "romaji": "aimai",
+    "pos": "na-adj",
+    "level": "N2",
+    "tags": [
+      "na-adj",
+      "N2"
+    ],
+    "example": {
+      "jp": "彼の返事は曖昧だった。"
+    }
+  },
+  {
+    "id": "n2_009",
+    "word": "素直",
+    "reading": "すなお",
+    "romaji": "sunao",
+    "pos": "na-adj",
+    "level": "N2",
+    "tags": [
+      "na-adj",
+      "N2"
+    ],
+    "example": {
+      "jp": "彼女は素直な性格です。"
+    }
+  },
+  {
+    "id": "n2_010",
+    "word": "煩わしい",
+    "reading": "わずらわしい",
+    "romaji": "wazurawashii",
+    "pos": "i-adj",
+    "level": "N2",
+    "tags": [
+      "i-adj",
+      "N2"
+    ],
+    "example": {
+      "jp": "煩わしい手続きが多い。"
+    }
+  },
+  {
+    "id": "n2_011",
+    "word": "恐れ",
+    "reading": "おそれ",
+    "romaji": "osore",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "台風が上陸する恐れがある。"
+    }
+  },
+  {
+    "id": "n2_012",
+    "word": "一致",
+    "reading": "いっち",
+    "romaji": "icchi",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "二人の意見が完全に一致した。"
+    }
+  },
+  {
+    "id": "n2_013",
+    "word": "蓄積",
+    "reading": "ちくせき",
+    "romaji": "chikuseki",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "長年の経験が蓄積されている。"
+    }
+  },
+  {
+    "id": "n2_014",
+    "word": "互い",
+    "reading": "たがい",
+    "romaji": "tagai",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "お互いの長所を活かそう。"
+    }
+  },
+  {
+    "id": "n2_015",
+    "word": "妥協",
+    "reading": "だきょう",
+    "romaji": "dakyou",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "妥協点を見つけることが交渉の鍵だ。"
+    }
+  },
+  {
+    "id": "n2_016",
+    "word": "根拠",
+    "reading": "こんきょ",
+    "romaji": "konkyo",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "根拠のない批判は受け入れられない。"
+    }
+  },
+  {
+    "id": "n2_017",
+    "word": "傾向",
+    "reading": "けいこう",
+    "romaji": "keikou",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "最近、若者の読書離れの傾向がある。"
+    }
+  },
+  {
+    "id": "n2_018",
+    "word": "現状",
+    "reading": "げんじょう",
+    "romaji": "genjou",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "現状を維持することが難しい。"
+    }
+  },
+  {
+    "id": "n2_019",
+    "word": "措置",
+    "reading": "そち",
+    "romaji": "sochi",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "緊急措置が必要だ。"
+    }
+  },
+  {
+    "id": "n2_020",
+    "word": "対策",
+    "reading": "たいさく",
+    "romaji": "taisaku",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "環境問題の対策を講じる。"
+    }
+  },
+  {
+    "id": "n2_021",
+    "word": "負担",
+    "reading": "ふたん",
+    "romaji": "futan",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "経済的な負担が大きい。"
+    }
+  },
+  {
+    "id": "n2_022",
+    "word": "維持",
+    "reading": "いじ",
+    "romaji": "iji",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "健康を維持するために運動している。"
+    }
+  },
+  {
+    "id": "n2_023",
+    "word": "促進",
+    "reading": "そくしん",
+    "romaji": "sokushin",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "経済成長を促進する政策が必要だ。"
+    }
+  },
+  {
+    "id": "n2_024",
+    "word": "削減",
+    "reading": "さくげん",
+    "romaji": "sakugen",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "コスト削減が急務だ。"
+    }
+  },
+  {
+    "id": "n2_025",
+    "word": "拡大",
+    "reading": "かくだい",
+    "romaji": "kakudai",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "事業を海外に拡大する計画がある。"
+    }
+  },
+  {
+    "id": "n2_026",
+    "word": "縮小",
+    "reading": "しゅくしょう",
+    "romaji": "shukushou",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "組織を縮小する方針が決まった。"
+    }
+  },
+  {
+    "id": "n2_027",
+    "word": "効率",
+    "reading": "こうりつ",
+    "romaji": "kouritsu",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "作業効率を上げる必要がある。"
+    }
+  },
+  {
+    "id": "n2_028",
+    "word": "収益",
+    "reading": "しゅうえき",
+    "romaji": "shuueki",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "今年度の収益は増加した。"
+    }
+  },
+  {
+    "id": "n2_029",
+    "word": "損失",
+    "reading": "そんしつ",
+    "romaji": "sonshitsu",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "大きな損失を被った。"
+    }
+  },
+  {
+    "id": "n2_030",
+    "word": "評価",
+    "reading": "ひょうか",
+    "romaji": "hyouka",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "彼の仕事は高く評価されている。"
+    }
+  },
+  {
+    "id": "n2_031",
+    "word": "方針",
+    "reading": "ほうしん",
+    "romaji": "houshin",
+    "pos": "noun",
+    "level": "N2",
+    "tags": [
+      "noun",
+      "N2"
+    ],
+    "example": {
+      "jp": "政府の新しい方針が発表された。"
+    }
+  },
+  {
+    "id": "n2_032",
+    "word": "把握",
+    "reading": "はあく",
+    "romaji": "haaku",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "現状を正確に把握する。"
+    }
+  },
+  {
+    "id": "n2_033",
+    "word": "配慮",
+    "reading": "はいりょ",
+    "romaji": "hairyo",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "周囲への配慮を忘れない。"
+    }
+  },
+  {
+    "id": "n2_034",
+    "word": "協議",
+    "reading": "きょうぎ",
+    "romaji": "kyougi",
+    "pos": "noun/verb",
+    "level": "N2",
+    "tags": [
+      "noun/verb",
+      "N2"
+    ],
+    "example": {
+      "jp": "両国間で協議を重ねた。"
+    }
+  },
+  {
+    "id": "n2_035",
+    "word": "迅速",
+    "reading": "じんそく",
+    "romaji": "jinsoku",
+    "pos": "na-adj",
+    "level": "N2",
+    "tags": [
+      "na-adj",
+      "N2"
+    ],
+    "example": {
+      "jp": "迅速な対応が求められる。"
+    }
+  }
+]

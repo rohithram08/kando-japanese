@@ -18,10 +18,12 @@ import {
   XP_REWARDS,
   calculateLessonXP,
   calculateQuizXP,
+  calculateStoryQuizXP,
   calculateSRSReviewXP,
   calculateStreakBonus,
 } from '../utils/progressCalculator';
 import type { JLPTLevel, XPEventType, SRSQuality, User, GrammarProgress } from '../types/models';
+import { useCelebrationStore } from './celebrationStore';
 
 export interface ProgressState {
   streak: number;
@@ -82,8 +84,18 @@ export interface ProgressState {
   awardKanaXP: (userId?: string, kanaId?: string, mastered?: boolean) => Promise<any>;
   awardGrammarXP: (userId?: string, grammarId?: string, status?: 'not_started' | 'studied' | 'mastered', mastered?: boolean) => Promise<any>;
   awardDailyGoalXP: (userId?: string) => Promise<any>;
+  awardStoryCompletionXP: (storyId: string, userId?: string) => Promise<{ xpGained: number; alreadyClaimed: boolean }>;
+  awardStoryQuizXP: (storyId: string, score?: number, userId?: string) => Promise<{ xpGained: number; alreadyClaimed: boolean }>;
+  isStoryXPClaimed: (storyId: string) => boolean;
+  isQuizXPClaimed: (storyId: string) => boolean;
+  streakFreezes: number;
+  isStreakFrozen: boolean;
+  equipStreakFreeze: (count?: number) => void;
+  useStreakFreeze: () => boolean;
+  checkAndMaintainStreak: () => { streak: number; preservedWithFreeze: boolean };
   updateStreak: (userId?: string) => Promise<number>;
   loadSRSDue: (userId?: string) => Promise<number>;
+  incrementXP: (amount: number, userId?: string) => Promise<any>;
   incrementLessons: () => void;
   incrementKanji: () => void;
   incrementVocab: () => void;
@@ -93,6 +105,17 @@ export interface ProgressState {
   incrementMastered: () => void;
   resetDailyXP: () => void;
   reset: () => void;
+}
+
+function getDayDiff(dateStr1: string, dateStr2: string): number {
+  try {
+    const d1 = new Date(dateStr1 + 'T00:00:00');
+    const d2 = new Date(dateStr2 + 'T00:00:00');
+    const diffTime = d1.getTime() - d2.getTime();
+    return Math.round(diffTime / (1000 * 60 * 60 * 24));
+  } catch {
+    return 0;
+  }
 }
 
 function getLocalDayString(): string {
@@ -106,6 +129,21 @@ function getLocalDayString(): string {
 export const useProgressStore = create<ProgressState>((set, get) => ({
   // ── State ───────────────────────────────────────────────
   streak: 0,
+  streakFreezes: (() => {
+    try {
+      const stored = localStorage.getItem('nihongo_streak_freezes');
+      return stored !== null ? Math.max(0, parseInt(stored, 10)) : 2;
+    } catch {
+      return 2;
+    }
+  })(),
+  isStreakFrozen: (() => {
+    try {
+      return localStorage.getItem('nihongo_streak_frozen_today') === 'true';
+    } catch {
+      return false;
+    }
+  })(),
   totalXP: 0,
   dailyXP: 0,
   userLevel: 1,
@@ -223,6 +261,18 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       syncStatus: userId ? 'saving' : 'idle',
     });
 
+    // Trigger 2D animated celebrations
+    try {
+      const celebrationStore = useCelebrationStore.getState();
+      if (newUserLevel > previousState.userLevel) {
+        celebrationStore.triggerLevelUp(previousState.userLevel, newUserLevel);
+      } else if (amount > 0) {
+        celebrationStore.triggerXPGain(amount, newTotal, eventData?.event);
+      }
+    } catch (e) {
+      console.debug('celebrationStore trigger error:', e);
+    }
+
     // Cache daily XP
     try {
       const today = getLocalDayString();
@@ -337,14 +387,21 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         });
         if (res?.xpResult) {
           const { totalXP, newLevel, streakDays } = res.xpResult;
+          const xpGained = res.xpResult.xpGained || 0;
+          const nextDaily = get().dailyXP + xpGained;
+          try {
+            const today = getLocalDayString();
+            localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: today, xp: nextDaily }));
+          } catch {}
           set({
             totalXP,
+            dailyXP: nextDaily,
             userLevel: newLevel,
             streak: streakDays ?? get().streak,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
           });
           return {
-            xpGained: res.xpResult.xpGained,
+            xpGained,
             newTotal: totalXP,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
             userLevel: newLevel,
@@ -368,14 +425,21 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         });
         if (res?.xpResult) {
           const { totalXP, newLevel, streakDays } = res.xpResult;
+          const xpGained = res.xpResult.xpGained || 0;
+          const nextDaily = get().dailyXP + xpGained;
+          try {
+            const today = getLocalDayString();
+            localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: today, xp: nextDaily }));
+          } catch {}
           set({
             totalXP,
+            dailyXP: nextDaily,
             userLevel: newLevel,
             streak: streakDays ?? get().streak,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
           });
           return {
-            xpGained: res.xpResult.xpGained,
+            xpGained,
             newTotal: totalXP,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
             userLevel: newLevel,
@@ -500,8 +564,15 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         const { totalXP, newLevel, streakDays, xpGained } = res.xpResult;
         const currentTotal = get().totalXP;
         const updatedTotal = totalXP ?? (currentTotal + (xpGained || 0));
+        const gain = xpGained || 0;
+        const nextDaily = get().dailyXP + gain;
+        try {
+          const today = getLocalDayString();
+          localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: today, xp: nextDaily }));
+        } catch {}
         set({
           totalXP: updatedTotal,
+          dailyXP: nextDaily,
           userLevel: newLevel ?? get().userLevel,
           streak: streakDays ?? get().streak,
           jlptLevel: getJLPTLevel(updatedTotal).level as JLPTLevel,
@@ -529,32 +600,184 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     }
   },
 
+  awardStoryCompletionXP: async (storyId: string, userId?: string) => {
+    if (!storyId) return { xpGained: 0, alreadyClaimed: false };
+    try {
+      const claimedList = JSON.parse(localStorage.getItem('nihongo_claimed_story_xp') || '[]');
+      if (claimedList.includes(storyId)) {
+        return { xpGained: 0, alreadyClaimed: true };
+      }
+      claimedList.push(storyId);
+      localStorage.setItem('nihongo_claimed_story_xp', JSON.stringify(claimedList));
+    } catch {}
+
+    const res = await get().addXP(XP_REWARDS.STORY_READ_COMPLETE, userId, {
+      event: 'lesson_completed',
+      lessonId: `story_${storyId}`,
+      score: 100,
+    } as any);
+
+    return { xpGained: XP_REWARDS.STORY_READ_COMPLETE, alreadyClaimed: false, res };
+  },
+
+  awardStoryQuizXP: async (storyId: string, score: number = 100, userId?: string) => {
+    if (!storyId) return { xpGained: 0, alreadyClaimed: false };
+    let alreadyClaimed = false;
+    try {
+      const claimedList = JSON.parse(localStorage.getItem('nihongo_claimed_quiz_xp') || '[]');
+      if (claimedList.includes(storyId)) {
+        alreadyClaimed = true;
+      } else {
+        claimedList.push(storyId);
+        localStorage.setItem('nihongo_claimed_quiz_xp', JSON.stringify(claimedList));
+      }
+    } catch {}
+
+    // Always record Jelly Streak on quiz completion
+    await get().updateStreak(userId);
+
+    if (alreadyClaimed) {
+      return { xpGained: 0, alreadyClaimed: true };
+    }
+
+    const xpAmount = calculateStoryQuizXP(score);
+    const res = await get().addXP(xpAmount, userId, {
+      event: 'quiz_completed',
+      quizId: `story_quiz_${storyId}`,
+      score,
+    } as any);
+
+    return { xpGained: xpAmount, alreadyClaimed: false, res };
+  },
+
+  isStoryXPClaimed: (storyId: string) => {
+    try {
+      const list = JSON.parse(localStorage.getItem('nihongo_claimed_story_xp') || '[]');
+      return list.includes(storyId);
+    } catch {
+      return false;
+    }
+  },
+
+  isQuizXPClaimed: (storyId: string) => {
+    try {
+      const list = JSON.parse(localStorage.getItem('nihongo_claimed_quiz_xp') || '[]');
+      return list.includes(storyId);
+    } catch {
+      return false;
+    }
+  },
+
   awardDailyGoalXP: async (userId) => {
     return get().addXP(XP_REWARDS.DAILY_GOAL_COMPLETE, userId, { event: 'daily_goal_complete' });
   },
 
   // ── Streak Management ───────────────────────────────────
-  updateStreak: async (userId) => {
-    const { streak } = get();
-    const newStreak = streak + 1;
-    const { bonus } = calculateStreakBonus(newStreak);
+  equipStreakFreeze: (count = 1) => {
+    const updated = Math.max(0, get().streakFreezes + count);
+    try {
+      localStorage.setItem('nihongo_streak_freezes', String(updated));
+    } catch {}
+    set({ streakFreezes: updated });
+  },
 
-    set({ streak: newStreak });
+  useStreakFreeze: () => {
+    const current = get().streakFreezes;
+    if (current <= 0) return false;
+    const updated = current - 1;
+    try {
+      localStorage.setItem('nihongo_streak_freezes', String(updated));
+      localStorage.setItem('nihongo_streak_frozen_today', 'true');
+    } catch {}
+    set({ streakFreezes: updated, isStreakFrozen: true });
+    return true;
+  },
 
-    if (bonus > 0) {
-      await get().addXP(bonus, userId);
+  checkAndMaintainStreak: () => {
+    const today = getLocalDayString();
+    let lastDate: string | null = null;
+    try {
+      lastDate = localStorage.getItem('nihongo_last_streak_date');
+    } catch {}
+
+    if (!lastDate) {
+      return { streak: get().streak, preservedWithFreeze: false };
     }
+
+    const diffDays = getDayDiff(today, lastDate);
+    if (diffDays <= 1) {
+      return { streak: get().streak, preservedWithFreeze: false };
+    }
+
+    if (diffDays === 2) {
+      if (get().streakFreezes > 0) {
+        const remaining = get().streakFreezes - 1;
+        const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+        try {
+          localStorage.setItem('nihongo_streak_freezes', String(remaining));
+          localStorage.setItem('nihongo_last_streak_date', yesterday);
+          localStorage.setItem('nihongo_streak_frozen_today', 'true');
+        } catch {}
+        set({ streakFreezes: remaining, isStreakFrozen: true });
+        return { streak: get().streak, preservedWithFreeze: true };
+      }
+    }
+
+    try {
+      localStorage.removeItem('nihongo_last_streak_date');
+      localStorage.setItem('nihongo_streak_frozen_today', 'false');
+    } catch {}
+    set({ streak: 0, isStreakFrozen: false });
+    return { streak: 0, preservedWithFreeze: false };
+  },
+
+  updateStreak: async (userId) => {
+    const today = getLocalDayString();
+    let alreadyRecordedToday = false;
+    try {
+      const lastDate = localStorage.getItem('nihongo_last_streak_date');
+      if (lastDate === today) {
+        alreadyRecordedToday = true;
+      }
+    } catch {}
 
     if (userId) {
       try {
         const res = await recordStreakActivity();
         if (res?.streakDays) {
           set({ streak: res.streakDays });
+          try {
+            localStorage.setItem('nihongo_last_streak_date', today);
+          } catch {}
           return res.streakDays;
         }
       } catch (err) {
         console.error('Failed to update streak:', err);
       }
+    }
+
+    if (alreadyRecordedToday) {
+      return get().streak;
+    }
+
+    const { streak } = get();
+    const newStreak = streak + 1;
+    const { bonus } = calculateStreakBonus(newStreak);
+
+    try {
+      localStorage.setItem('nihongo_last_streak_date', today);
+    } catch {}
+
+    set({ streak: newStreak });
+
+    try {
+      useCelebrationStore.getState().triggerStreakClaim(streak, newStreak);
+    } catch (e) {
+      console.debug('streak celebration trigger error:', e);
+    }
+
+    if (bonus > 0) {
+      await get().addXP(bonus, userId);
     }
 
     return newStreak;
@@ -575,6 +798,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   },
 
   // ── Counter Increments ──────────────────────────────────
+  incrementXP: (amount: number, userId?: string) => get().addXP(amount, userId),
   incrementLessons: () => set((s) => ({ lessonsCompleted: s.lessonsCompleted + 1 })),
   incrementKanji: () => set((s) => ({ kanjiLearned: s.kanjiLearned + 1 })),
   incrementVocab: () => set((s) => ({ vocabLearned: s.vocabLearned + 1 })),
@@ -586,7 +810,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   // ── Daily XP Reset ──────────────────────────────────────
   resetDailyXP: () => {
     try {
-      const today = new Date().toISOString().split('T')[0];
+      const today = getLocalDayString();
       const cached = JSON.parse(localStorage.getItem('nihongo_daily_xp') || '{}');
       if (cached.date !== today) {
         set({ dailyXP: 0 });

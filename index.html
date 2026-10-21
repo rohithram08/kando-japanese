@@ -2,34 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#6366f1" id="theme-color-meta" />
     <meta
       name="description"
-      content="NihonGo Master - Learn Japanese from N5 to N1 for free.
-               Kanji, grammar, vocabulary, drama, and AI conversation practice."
+      content="Kando Japanese (感動) - Learn Japanese from N5 to N1 with AI Sensei, 250 interactive lessons, kanji stroke engine, and natural multilingual explanations (English, Tamil, Hindi)."
     />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="NihonGo Master - Free Japanese Learning" />
-    <meta property="og:description" content="Learn Japanese from N5 to N1 with kanji, grammar, drama and AI chat" />
+    <meta property="og:title" content="Kando Japanese (感動) - Master Japanese with Joy & Fluency" />
+    <meta property="og:description" content="Learn Japanese from N5 to N1 with 250 interactive lessons, AI Sensei, kanji, grammar, and multilingual explanations." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.png" />
-    <meta property="og:url" content="https://nihongo-master.app" />
-    <meta property="og:site_name" content="NihonGo Master" />
+    <meta property="og:url" content="https://kando-japanese.app" />
+    <meta property="og:site_name" content="Kando Japanese" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="NihonGo Master - Free Japanese Learning" />
-    <meta name="twitter:description" content="Learn Japanese from N5 to N1 with kanji, grammar, drama and AI chat" />
+    <meta name="twitter:title" content="Kando Japanese (感動) - Master Japanese with Joy & Fluency" />
+    <meta name="twitter:description" content="Learn Japanese from N5 to N1 with 250 interactive lessons, AI Sensei, kanji, grammar, and multilingual explanations." />
     <meta name="twitter:image" content="/og-image.png" />
 
     <!-- PWA / Mobile -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="NihonGo Master" />
+    <meta name="apple-mobile-web-app-title" content="Kando Japanese" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
 
@@ -45,7 +44,7 @@
       rel="stylesheet"
     />
 
-    <title>🎌 NihonGo Master - Learn Japanese Daily</title>
+    <title>Kando Japanese (感動) - Master Japanese Daily</title>
 
     <!-- ============================================================
          THEME INIT — Synchronous, zero-flash
@@ -199,9 +198,9 @@
         pointer-events: none;
       }
 
-      /* Background kanji */
+      /* Background kanji (感動) */
       #loading-screen::after {
-        content: '学';
+        content: '感';
         position: absolute;
         font-family: 'Noto Sans JP', serif;
         font-size: clamp(15rem, 40vw, 30rem);
@@ -289,20 +288,44 @@
         50%       { transform: scale(1.08); opacity: 0.2; }
       }
 
-      /* ── Emoji ── */
-      .loader-emoji {
+      /* ── Slime Mascot Logo Animation ── */
+      .loader-slime-wrap {
         position: relative;
-        font-size: 3.5rem;
-        line-height: 1;
-        user-select: none;
-        animation: emojiFloat 3s ease-in-out infinite;
-        filter: drop-shadow(0 0 20px var(--loader-glow));
-        z-index: 1;
+        width: 104px;
+        height: 104px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        animation: loaderSlimeJelly 2.2s ease-in-out infinite;
+        filter: drop-shadow(0 0 24px rgba(99, 102, 241, 0.45));
       }
 
-      @keyframes emojiFloat {
-        0%, 100% { transform: translateY(0)  scale(1); }
-        50%       { transform: translateY(-8px) scale(1.05); }
+      @keyframes loaderSlimeJelly {
+        0%, 100% { transform: translateY(0) scale(1, 1); }
+        25%       { transform: translateY(-8px) scale(0.95, 1.06); }
+        50%       { transform: translateY(0) scale(1.05, 0.94); }
+        75%       { transform: translateY(-3px) scale(0.98, 1.02); }
+      }
+
+      .loader-slime-eyes {
+        transform-origin: 50% 56%;
+        animation: loaderSlimeBlink 3.4s infinite ease-in-out;
+      }
+
+      @keyframes loaderSlimeBlink {
+        0%, 93%, 100% { transform: scaleY(1); }
+        95%, 98%      { transform: scaleY(0.1); }
+      }
+
+      .loader-blossom {
+        transform-origin: 62px 16px;
+        animation: loaderBlossomSway 3s ease-in-out infinite;
+      }
+
+      @keyframes loaderBlossomSway {
+        0%, 100% { transform: translate(62px, 16px) scale(0.9) rotate(0deg); }
+        50%       { transform: translate(62px, 16px) scale(0.9) rotate(10deg); }
       }
 
       /* ── Title ── */
@@ -628,8 +651,8 @@
           z-index: 99999;
         "
       >
-        <div style="font-size: 3rem; margin-bottom: 1rem">🎌</div>
-        <h1 style="font-size: 1.5rem; margin: 0 0 0.5rem">NihonGo Master</h1>
+        <div style="font-size: 3rem; margin-bottom: 1rem">🌸</div>
+        <h1 style="font-size: 1.5rem; margin: 0 0 0.5rem">Kando Japanese (感動)</h1>
         <p style="opacity: 0.7; max-width: 300px">
           JavaScript is required. Please enable it and reload.
         </p>
@@ -639,7 +662,7 @@
     <!-- ============================================================
          LOADING SCREEN
          ============================================================ -->
-    <div id="loading-screen" role="status" aria-label="Loading NihonGo Master">
+    <div id="loading-screen" role="status" aria-label="Loading Kando Japanese">
       <!-- Sakura particles -->
       <div class="sakura-container" aria-hidden="true">
         <div class="sakura-petal"></div>
@@ -655,16 +678,68 @@
       </div>
 
       <div class="loader-content">
-        <!-- Logo with rings -->
+        <!-- Kando Slime Vector Mascot Logo with Jelly Bounce & Rings -->
         <div class="loader-logo-wrap" aria-hidden="true">
           <div class="loader-logo-ring"></div>
           <div class="loader-logo-ring"></div>
-          <div class="loader-logo-ring"></div>
-          <div class="loader-emoji">🎌</div>
+          <div class="loader-slime-wrap">
+            <svg viewBox="0 0 100 100" style="width: 100%; height: 100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="loaderSlimeBody" x1="20" y1="20" x2="80" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="40%" stop-color="#0ea5e9" />
+                  <stop offset="85%" stop-color="#2563eb" />
+                  <stop offset="100%" stop-color="#1d4ed8" />
+                </linearGradient>
+                <radialGradient id="loaderSlimeBase" cx="50" cy="85" r="38" fx="50" fy="88" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.55" />
+                  <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="loaderSlimeShine" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.15" />
+                </linearGradient>
+              </defs>
+              <ellipse cx="50" cy="91" rx="36" ry="5.5" fill="#0f172a" fill-opacity="0.22" />
+              <!-- Rimuru Jelly Slime Body: Chubby, Bouncy, Dome/Mochi Shaped (TenSura Anime Accurate) -->
+              <path
+                d="M 50 30
+                   C 68 30, 84 42, 87 60
+                   C 89 74, 82 85, 68 87
+                   C 58 88.5, 42 88.5, 32 87
+                   C 18 85, 11 74, 13 60
+                   C 16 42, 32 30, 50 30 Z"
+                fill="url(#loaderSlimeBody)"
+              />
+              <path
+                d="M 20 72
+                   C 32 84, 68 84, 80 72
+                   C 86 81, 74 88, 50 88
+                   C 26 88, 14 81, 20 72 Z"
+                fill="url(#loaderSlimeBase)"
+              />
+              <ellipse cx="34" cy="39" rx="8.5" ry="3.5" transform="rotate(-28 34 39)" fill="url(#loaderSlimeShine)" />
+              <circle cx="23" cy="47" r="2.2" fill="#ffffff" fill-opacity="0.75" />
+              <!-- Expressive Anime Eyes with Blinking -->
+              <g class="loader-slime-eyes">
+                <ellipse cx="37" cy="58" rx="4.5" ry="6.5" fill="#0f172a" />
+                <circle cx="35.5" cy="55" r="2.1" fill="#ffffff" />
+                <circle cx="38.8" cy="60.5" r="1.1" fill="#ffffff" />
+                <ellipse cx="63" cy="58" rx="4.5" ry="6.5" fill="#0f172a" />
+                <circle cx="61.5" cy="55" r="2.1" fill="#ffffff" />
+                <circle cx="64.8" cy="60.5" r="1.1" fill="#ffffff" />
+              </g>
+              <!-- Cheeks -->
+              <ellipse cx="28" cy="66" rx="5.5" ry="3" fill="#f43f5e" fill-opacity="0.55" />
+              <ellipse cx="72" cy="66" rx="5.5" ry="3" fill="#f43f5e" fill-opacity="0.55" />
+              <!-- Smile -->
+              <path d="M 46 64 Q 50 68 54 64" stroke="#0f172a" stroke-width="2" stroke-linecap="round" fill="none" />
+            </svg>
+          </div>
         </div>
 
-        <h1 class="loader-title">NihonGo Master</h1>
-        <p class="loader-subtitle">日本語を学ぼう</p>
+        <h1 class="loader-title">Kando Japanese</h1>
+        <p class="loader-subtitle">感動 — 日本語を学ぼう</p>
 
         <div class="loader-levels" aria-hidden="true">
           <span class="loader-level-tag">N5</span>
@@ -735,11 +810,11 @@
         var minimumTimeReached = false;
 
         /* ── Config ── */
-        var MINIMUM_DISPLAY_MS  = 2200;
-        var COMPLETING_DELAY_MS = 600;
-        var EXIT_DURATION_MS    = 800;
-        var HARD_TIMEOUT_MS     = 10000;
-        var TIP_ROTATE_MS       = 4000;
+        var MINIMUM_DISPLAY_MS  = 400;
+        var COMPLETING_DELAY_MS = 250;
+        var EXIT_DURATION_MS    = 350;
+        var HARD_TIMEOUT_MS     = 6000;
+        var TIP_ROTATE_MS       = 3500;
 
         /* ── Elements ── */
         var screenEl   = document.getElementById('loading-screen');
@@ -751,12 +826,10 @@
 
         /* ── Loading phases ── */
         var phases = [
-          { time: 0,    width: '5%',  value: 5,  text: 'Initializing'        },
-          { time: 400,  width: '15%', value: 15, text: 'Loading core modules' },
-          { time: 800,  width: '30%', value: 30, text: 'Fetching resources'   },
-          { time: 1200, width: '50%', value: 50, text: 'Preparing lessons'    },
-          { time: 1600, width: '65%', value: 65, text: 'Building components'  },
-          { time: 1900, width: '78%', value: 78, text: 'Almost ready'         },
+          { time: 0,   width: '20%', value: 20, text: 'Initializing'         },
+          { time: 100, width: '45%', value: 45, text: 'Loading core modules' },
+          { time: 200, width: '70%', value: 70, text: 'Preparing Kando'      },
+          { time: 320, width: '90%', value: 90, text: 'Almost ready'         },
         ];
 
         var phaseTimers = [];
@@ -841,8 +914,11 @@
           state = 'done';
           /* Restore scrolling */
           document.body.classList.remove('loading-active');
-          if (screenEl && screenEl.parentNode) {
-            screenEl.parentNode.removeChild(screenEl);
+          if (screenEl) {
+            screenEl.style.display = 'none';
+            if (screenEl.parentNode) {
+              screenEl.parentNode.removeChild(screenEl);
+            }
           }
         }
 

@@ -73,6 +73,12 @@ export interface ResetPasswordRequestPayload {
   email: string;
 }
 
+export interface ResetPasswordRequestResponse {
+  message: string;
+  token?: string;
+  resetUrl?: string;
+}
+
 export interface ResetPasswordPayload {
   token: string;
   newPassword: string;

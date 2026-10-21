@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 import { env } from './config/env.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { generalLimiter } from './middleware/rateLimit.js';
@@ -17,12 +18,17 @@ import { senseiRouter } from './routes/sensei.js';
 const app = express();
 
 // ─── Security ────────────────────────────────────────────────────────────────
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+}));
 app.use(cors({
   origin: env.CORS_ORIGINS.split(',').map(s => s.trim()),
   credentials: true,
 }));
 app.use(generalLimiter);
+
+// ─── Static Storage ──────────────────────────────────────────────────────────
+app.use('/storage', express.static(path.resolve(process.cwd(), 'uploads')));
 
 // ─── Parsing ─────────────────────────────────────────────────────────────────
 app.use(express.json({ limit: '1mb' }));

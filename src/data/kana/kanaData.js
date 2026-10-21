@@ -1,5 +1,5 @@
 // src/data/kana/kanaData.js
-// Complete, linguistically verified Hiragana and Katakana dataset for Nihongo Master.
+// Complete, linguistically verified Hiragana and Katakana dataset for Kando Japanese.
 // Covers Gojūon (46), Dakuon (20), Handakuon (5), and Yōon (36) for both scripts.
 
 export const HIRAGANA_GOJUON = [

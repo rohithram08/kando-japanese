@@ -3,8 +3,9 @@ import React, { useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Clock, Zap, BookOpen, ChevronDown, ChevronUp,
-  MessageSquare, Search, Volume2,
+  MessageSquare, Search, Volume2, Target,
 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { LESSONS, LEVEL_META, LEVELS, DATA_COUNTS } from '../data/index'
@@ -14,6 +15,7 @@ import { useI18n } from '../i18n'
 // ── Single lesson card ────────────────────────────────────────
 const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen, onToggle }, ref) {
   const { t } = useI18n()
+  const navigate = useNavigate()
   const meta = LEVEL_META[lesson.level]
 
   const speak = (text) => {
@@ -213,6 +215,34 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
                   {lesson.culturalNote}
                 </div>
               )}
+
+              {/* Action Buttons: Launch Interactive Lesson & Take Quiz */}
+              <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-border/40">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    const lvl = (lesson.level || 'n5').toLowerCase()
+                    const day = lesson.day || lesson.order || 1
+                    navigate(`/lessons/${lvl}/${day}`)
+                  }}
+                  className="flex-1 min-w-[160px] flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-red-500 hover:bg-red-600 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>{t('lessons.start_interactive', 'Interactive Lesson')}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    navigate(`/quiz/${lesson.id}`)
+                  }}
+                  className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-muted hover:bg-muted/80 text-foreground border border-border transition-all active:scale-95 cursor-pointer"
+                >
+                  <Target className="w-4 h-4 text-orange-500" />
+                  <span>{t('lessons.take_quiz', 'Practice Quiz')}</span>
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

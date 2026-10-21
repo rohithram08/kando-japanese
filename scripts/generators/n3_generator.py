@@ -1,0 +1,292 @@
+# scripts/generators/n3_generator.py
+# Generates 50 complete N3 stories aligned with JLPT N3 Grammar Master
+
+import json
+import os
+from common import make_story, to_furigana
+
+N3_TEMPLATES = [
+    ("大学ゼミの共同研究", "大学[だいがく] ゼミの 共同[きょうどう] 研究[けんきゅう]", "Collaborative Research in University Seminar",
+     "Students collaborate on sustainable urban transportation analysis using public transit telemetry.",
+     "共同研究", "きょうどうけんきゅう", "joint research", "〜わけだ", "naturally that is why / logical conclusion", "分析する", "ぶんせきする", "to analyze", "研", "research"),
+    ("ＩＴベンチャーのインターン", "ＩＴベンチャーの インターン", "Internship at a Tokyo Tech Startup",
+     "Working as an engineering intern building cloud APIs and navigating Japanese agile workflows.",
+     "開発", "かいはつ", "development", "〜ようにする", "make continuous effort to do", "納品する", "のうひんする", "to deliver product", "発", "departure / emit"),
+    ("伝統刀鍛冶の工房", "伝統[でんとう] 刀鍛冶[かたなかじ]の 工房[こうぼう]", "The Master Swordsmith's Forge",
+     "Observing white-hot tamahagane steel folded thousands of times to forge a razor katana.",
+     "鍛冶", "かじ", "blacksmithing / forging", "〜に違いない", "must definitely be", "鍛える", "きたえる", "to temper / forge", "刀", "sword"),
+    ("老舗旅館のおもてなし", "老舗[しにせ] 旅館[りょかん]の おもてなし", "Hospitality at a Historic Ryokan",
+     "Experiencing meticulous guest care from freshly steeped hojicha to seasonal kaiseki dinner.",
+     "もてなし", "もてなし", "hospitality / welcome", "〜に対して", "towards / regarding target", "尽くす", "つくす", "to devote fully", "館", "mansion / hall"),
+    ("羽田モノレールの車窓", "羽田[はねだ] モノレールの 車窓[しゃそう]", "View from the Haneda Monorail",
+     "Gliding smoothly above Tokyo Bay waterways while commuter airplanes land into the twilight.",
+     "車窓", "しゃそう", "train window view", "〜最中に", "in the midst of an action", "眺める", "ながめる", "to gaze out", "窓", "window"),
+    ("人工知能と医療の未来", "人工知能[じんこうちのう]と 医療[いりょう]の 未来[みらい]", "Artificial Intelligence in Modern Medicine",
+     "Medical researchers train machine learning models to detect microscopic retinal anomalies.",
+     "診断", "しんだん", "diagnosis", "〜によって", "by means of / according to", "検知する", "けんちする", "to detect", "医", "medicine / doctor"),
+    ("全国高校ディベート選手権", "全国[ぜんこく] 高校[こうこう] ディベート 選手権[せんしゅけん]", "National High School Debate Tournament",
+     "Debating the economic trade-offs of cashless payment systems under strict time clocks.",
+     "論理", "ろんり", "logic / reasoning", "〜はずがない", "cannot possibly be", "反論する", "はんろんする", "to refute", "論", "argument / theory"),
+    ("地域コミュニティの防災訓練", "地域[ちいき] コミュニティの 防災[ぼうさい] 訓練[くんれん]", "Neighborhood Disaster Response Drill",
+     "Neighbors assemble emergency solar generators and distribute purified emergency drinking water.",
+     "防災", "ぼうさい", "disaster prevention", "〜おかげで", "thanks to (positive causality)", "連携する", "れんけいする", "to coordinate", "域", "region / boundary"),
+    ("龍安寺の石庭と禅の思想", "龍安寺[りょうあんじ]の 石庭[せきてい]と 禅[ぜん]の 思想[しそう]", "Zen Meditation at Ryoan-ji Rock Garden",
+     "Contemplating fifteen mossy boulders arranged so that one always remains hidden from any angle.",
+     "思想", "しそう", "philosophical thought", "〜にとって", "from the perspective of", "悟る", "さとる", "to attain enlightenment", "思", "think / thought"),
+    ("ゼロカーボン循環型社会", "ゼロカーボン 循環型[じゅんかんがた] 社会[しゃかい]", "Transition to a Zero-Carbon Society",
+     "Municipal sorting facilities recycle discarded textiles into composite industrial insulation boards.",
+     "再生", "さいせい", "regeneration / recycling", "〜を中心として", "centering upon / focused on", "回収する", "かいしゅうする", "to collect", "環", "ring / circle"),
+    ("北海道のクラフトビール", "北海道[ほっかいどう]の クラフトビール", "Hokkaido Craft Brewing Mastery",
+     "Brewers harness glacial snowmelt and local Furano aroma hops to brew balanced pale ales.",
+     "醸造", "じょうぞう", "brewing / fermentation", "〜たびに", "every single time that", "熟成する", "じゅくせいする", "to mature / age", "造", "create / structure"),
+    ("スライムの日本一周ツーリング", "スライムの 日本[にほん]一周[いっしゅう] ツーリング", "Slime's Cross-Country Motorcycle Tour",
+     "Perched safely in the tank pouch, the slime journeys 3,000 kilometers from Cape Soya to Sata.",
+     "縦断", "じゅうだん", "traversing north to south", "〜に比べて", "compared with", "疾走する", "しっそうする", "to sprint / ride fast", "走", "run / travel"),
+    ("インディーゲームクリエイターの情熱", "インディーゲーム クリエイターの 情熱[じょうねつ]", "Passion of an Indie Game Developer",
+     "Pixel artists and sound designers work through late nights to polish a heartwarming adventure.",
+     "独創", "どくそう", "originality / creative spark", "〜ものだ", "inherent nature / nostalgia", "完成させる", "かんせいさせる", "to bring to completion", "創", "create / originate"),
+    ("有機農家と提携する直売所", "有機農家[ゆうきのうか]と 提携[ていけい]する 直売所[ちょくばいじょ]", "Direct Farm-to-Table Cooperative",
+     "Local farmers stock heirloom squash and purple carrots picked at five o'clock that morning.",
+     "有機", "ゆうき", "organic", "〜ばかり", "nothing but / constantly doing", "収穫する", "しゅうかくする", "to harvest", "農", "agriculture"),
+    ("総合病院救急病棟の二十四時間", "総合病院[そうごうびょういん] 救急[きゅうきゅう] 病棟[びょうとう]の 二十四時間[にじゅうよじかん]", "Twenty-Four Hours in the Emergency Ward",
+     "Nurses and doctors collaborate under sirens to stabilize acute cardiac patients seamlessly.",
+     "緊迫", "きんぱく", "tension / urgency", "〜わけにはいかない", "cannot possibly afford to do", "処置する", "しょちする", "to treat medical emergency", "急", "urgent / hurried"),
+    ("白川郷の合掌造りと結の心", "白川郷[しらかわごう]の 合掌造[がっしょうづく]りと 結[ゆい]の 心[こころ]", "Historic Thatched Roofs of Shirakawa-go",
+     "Villagers assemble by the hundreds to re-thatch massive steep roofs in a single cooperative day.",
+     "共生", "きょうせい", "harmonious coexistence", "〜とおりに", "exactly according to plan", "葺き替える", "ふきかえる", "to re-thatch roof", "村", "village"),
+    ("アニメスタジオの原画作業", "アニメスタジオの 原画[げんが] 作業[さぎょう]", "Keyframe Animation Studio Crunch",
+     "Animators sketch fluid motion arcs frame by frame using translucent light tables.",
+     "作画", "さくが", "animation drawing", "〜間に", "while doing / during interval", "描き出す", "かきだす", "to sketch out", "画", "picture / stroke"),
+    ("都市型屋上水耕栽培", "都市型[としがた] 屋上[おくじょう] 水耕栽培[すいこうさいばい]", "Urban Rooftop Hydroponic Farming",
+     "Growing crisp butterhead lettuces under nutrient water mist on the roof of a high-rise tower.",
+     "循環", "じゅんかん", "circulation / cycle", "〜うちに", "while condition holds / before change", "育成する", "いくせいする", "to cultivate", "培", "cultivate / nourish"),
+    ("スライム探偵事務所の事件簿", "スライム 探偵[たんてい] 事務所[じむしょ]の 事件簿[じけんぼ]", "Slime Detective Agency Files",
+     "Slipping beneath door cracks to retrieve a stolen antique key and solving an art museum riddle.",
+     "推理", "すいり", "deductive reasoning", "〜に違いない", "must undoubtedly be", "突き止める", "つきとめる", "to pinpoint / determine", "探", "search / probe"),
+    ("越前和紙の手漉き職人", "越前和紙[えちぜんわし]の 手漉[てす]き 職人[しょくにん]", "The Master of Echizen Washi Paper",
+     "Swishing mulberry bark pulp rhythmically across fine bamboo screens to produce durable paper.",
+     "耐久", "たいきゅう", "durability / resilience", "〜ぎみ", "slight tendency / feeling", "漉き上げる", "すきあげる", "to screen pulp into paper", "紙", "paper"),
+    ("倉敷ジーンズの藍染め技術", "倉敷[くらしき] ジーンズの 藍染[あいぞ]め 技術[ぎじゅつ]", "Kurashiki Indigo Denim Craft",
+     "Dipping raw cotton yarns into natural indigo vats dozens of times for deep ocean-blue patina.",
+     "藍染め", "あいぞめ", "indigo vat dyeing", "〜向け", "aimed at / targeted for", "染め上げる", "そめあげる", "to dye completely", "技", "skill / technique"),
+    ("京都西陣織の伝統文様", "京都[きょうと] 西陣織[にしじんおり]の 伝統[でんとう] 文様[もんよう]", "Traditional Nishijin Silk Weaving",
+     "Operating complex jacquard looms with thousands of silk threads to weave golden ceremonial obis.",
+     "文様", "もんよう", "traditional decorative pattern", "〜向き", "suitable for / naturally suited to", "織り成す", "おりなす", "to weave together", "織", "weave / fabric"),
+    ("冬の酒蔵と吟醸香", "冬[ふゆ]の 酒蔵[さかぐら]と 吟醸香[ぎんじょうか]", "Winter Sake Brewery and Ginjo Aroma",
+     "Brewmasters tend bubbling yeast tanks at freezing dawn to produce floral, crisp junmai daiginjo.",
+     "発酵", "はっこう", "fermentation", "〜てたまらない", "unbearably / intensely feeling", "見極める", "みきわめる", "to discern clearly", "蔵", "warehouse / storehouse"),
+    ("洋上風力発電の挑戦", "洋上[ようじょう] 風力[ふうりょく] 発電[はつでん]の 挑戦[ちょうせん]", "Offshore Wind Power Frontier",
+     "Engineers inspect massive 80-meter composite blades spinning above choppy Pacific swells.",
+     "風力", "ふうりょく", "wind power / kinetic energy", "〜に基づいて", "based upon / grounded on", "発電する", "はつでんする", "to generate electrical power", "電", "electricity"),
+    ("伝統の鷹狩りと自然保護", "伝統[でんとう]の 鷹狩[たかが]りと 自然[しぜん] 保護[ほご]", "Falconry and Wildlife Stewardship",
+     "Preserving centuries of raptor training protocols while monitoring wild northern goshawk nests.",
+     "猛禽", "もうきん", "bird of prey / raptor", "〜を通じて", "through the course of", "調教する", "ちょうきょうする", "to train / habituate animal", "鳥", "bird"),
+    ("青少年交響楽団の定期演奏会", "青少年[せいしょうねん] 交響楽団[こうきょうがくだん]の 定期[ていき] 演奏会[えんそうかい]", "Youth Symphony Orchestra Concert",
+     "Young violinists and cellists rehearse Beethoven's Fifth with unwavering ensemble discipline.",
+     "調和", "ちょうわ", "harmony / resonance", "〜にこたえて", "in response to expectations", "響かせる", "ひびかせる", "to let sound reverberate", "楽", "music / pleasure"),
+    ("伝統包丁の刃付けと手入れ", "伝統[でんとう] 包丁[ほうちょう]の 刃付[はづ]けと 手入[てい]れ", "Sharpening Japanese Chef Knives",
+     "Gliding carbon steel blades across ceramic water whetstones to produce surgical cutting bevels.",
+     "研磨", "けんま", "abrasive sharpening / polishing", "〜ように", "in a manner that / so as to", "研ぎ澄ます", "とぎすます", "to sharpen razor-sharp", "刃", "blade / cutting edge"),
+    ("自動運転バスの公道実証実験", "自動運転[じどううんてん] バスの 公道[こうどう] 実証[じっしょう] 実験[じっけん]", "Autonomous Bus Street Trials",
+     "Lidar sensors and computer vision navigate pedestrians through narrow mountain hot-spring alleys.",
+     "自動運転", "じどううんてん", "autonomous driving", "〜に伴って", "in tandem with / accompanying", "走行する", "そうこうする", "to drive / travel roadway", "運", "carry / luck"),
+    ("限界集落の古民家再生", "限界集落[げんかいしゅうらく]の 古民家[こみんか] 再生[さいせい]", "Restoring Ancient Rural Farmhouses",
+     "Architects transform 150-year-old timber homes into high-speed fiber-connected remote work retreats.",
+     "再生", "さいせい", "revitalization / restoration", "〜わけではない", "it does not mean that", "蘇らせる", "よみがえらせる", "to resurrect / revive", "家", "house / home"),
+    ("知床半島のヒグマ調査隊", "知床半島[しれとこはんとう]の ヒグマ 調査隊[ちょうさたい]", "Shiretoko Brown Bear Expedition",
+     "Biologists track coastal salmon runs using motion-activated trail cameras and non-invasive fur snags.",
+     "生態", "せいたい", "ecology / mode of life", "〜に際して", "on the occasion of / when doing", "観察する", "かんさつする", "to observe scientifically", "調", "investigate / tone"),
+    ("太陽光パネルの次世代リサイクル", "太陽光[たいようこう] パネルの 次世代[じせだい] リサイクル", "Next-Gen Solar Panel Recycling",
+     "Chemists develop automated thermal peeling machines to reclaim high-purity silicon wafers.",
+     "資源", "しげん", "natural resources", "〜反面", "on the other hand / while conversely", "分離する", "ぶんりする", "to separate / dissociate", "光", "light / ray"),
+    ("伝統工芸の若手後継者たち", "伝統工芸[でんとうこうげい]の 若手[わかて] 後継者[こうけいしゃ]たち", "Young Successors of Traditional Crafts",
+     "Modern apprentices blend lacquerware maki-e gold dust with smartphone accessories for youth appeal.",
+     "後継", "こうけい", "succession / inheritor", "〜にほかならない", "is nothing other than", "受け継ぐ", "うけつぐ", "to inherit tradition", "継", "inherit / patch"),
+    ("スライムと稲荷神社の狐たち", "スライムと 稲荷神社[いなりじんじゃ]の 狐[きつね]たち", "Slime and the Shrine Foxes",
+     "A playful meeting between the gelatinous slime and mysterious stone fox messengers at sunset.",
+     "神秘", "しんぴ", "mystery / mysticism", "〜かのようだ", "as if it were", "見守る", "みまもる", "to watch over protectively", "神", "deity / divine"),
+    ("国立天文台の深夜観測", "国立天文台[こくりつてんもんだい]の 深夜[しんや] 観測[かんそく]", "Midnight at the National Observatory",
+     "Astronomers point optical telescopes into Orion's nebula to measure infrared stellar birthrates.",
+     "観測", "かんそく", "observation / astronomical survey", "〜にすぎない", "merely / nothing more than", "探査する", "たんさする", "to explore / probe", "星", "star"),
+    ("現代建築と耐震技術の融合", "現代建築[げんだいけんちく]と 耐震[たいしん] 技術[ぎじゅつ]の 融合[ゆうごう]", "Seismic Dampening in Modern Towers",
+     "Pendulum counterweights suspended atop skyscrapers absorb violent earthquake oscillation energy.",
+     "耐震", "たいしん", "earthquake resistance", "〜上で", "in the process of / upon doing", "制御する", "せいぎょする", "to control / govern force", "建", "build / erect"),
+    ("絶滅危惧種の保護センター", "絶滅危惧種[ぜつめつきぐしゅ]の 保護[ほご] センター", "Endangered Species Breeding Center",
+     "Avian caretakers incubate Japanese crested ibis eggs at exact temperature to rebuild wild populations.",
+     "繁殖", "はんしょく", "breeding / reproduction", "〜に先立って", "prior to / in advance of", "放鳥する", "ほうちょうする", "to release birds into wild", "種", "species / seed"),
+    ("商店街の空き店舗活用プロジェクト", "商店街[しょうてんがい]の 空[あ]き 店舗[てんぽ] 活用[かつよう] プロジェクト", "Revitalizing Vacant Arcade Storefronts",
+     "Young designers transform abandoned shuttered shops into vibrant community coworking bakeries.",
+     "活性化", "かっせいか", "revitalization / stimulation", "〜をはじめとして", "starting with / represented by", "改装する", "かいそうする", "to renovate / remodel", "店", "shop"),
+    ("京都の老舗和傘工房", "京都[きょうと]の 老舗[しにせ] 和傘[わがさ] 工房[こうぼう]", "The Craft of Kyoto Wagasa Umbrellas",
+     "Applying waterproof persimmon tannin and linseed oil across forty flexible bamboo ribs.",
+     "和傘", "わがさ", "traditional Japanese umbrella", "〜わけだ", "that explains why / reasonable conclusion", "張り合わせる", "はりあわせる", "to glue together layers", "傘", "umbrella"),
+    ("スライムの森林ボランティア", "スライムの 森林[しんりん] ボランティア", "Slime's Forest Volunteer Day",
+     "Rolling across fallen cedar needles to gather dry branches and clear fire breaks in the forest.",
+     "保全", "ほぜん", "conservation / preservation", "〜に違いない", "must certainly be", "清掃する", "せいそうする", "to clean up area", "森", "forest"),
+    ("児童養護施設の図書室支援", "児童養護施設[じどうようごしせつ]の 図書室[としょしつ] 支援[しえん]", "Supporting a Children's Home Library",
+     "Volunteers catalog thousands of donated children's storybooks and organize reading circles.",
+     "支援", "しえん", "support / assistance", "〜てたまらない", "overflowing with emotion", "寄贈する", "きぞうする", "to donate books", "支", "support / branch"),
+    ("地域医療を支える巡回診療車", "地域医療[ちいきいりょう]を 支[ささ]える 巡回[じゅんかい] 診療車[しんりょうしゃ]", "Mobile Clinic in Remote Mountain Valleys",
+     "Doctors travel mountainous passes in custom RV clinics to perform routine bloodwork for elderly residents.",
+     "巡回", "じゅんかい", "patrol / circuit round", "〜に際し", "on the occasion of", "診療する", "しんりょうする", "to examine medically", "療", "healing / medical"),
+    ("クラシックフィルム写真の現像室", "クラシックフィルム 写真[しゃしん]の 現像室[げんぞうしつ]", "The Silver Halide Darkroom",
+     "Submerging photographic paper into chemical developer trays under dim amber safelights.",
+     "現像", "げんぞう", "film chemical development", "〜うちに", "before chemical state changes", "定着させる", "ていちゃくさせる", "to fix photographic image", "室", "room"),
+    ("海洋海洋生物のマイクロプラスチック調査", "海洋生物[かいようせいぶつ]の マイクロプラスチック 調査[ちょうさ]", "Marine Microplastics Survey",
+     "Trawling surface plankton nets across Sagami Bay to measure synthetic fiber concentrations.",
+     "汚染", "おせん", "pollution / contamination", "〜恐れがある", "danger / risk of happening", "分析する", "ぶんせきする", "to chemically analyze", "海", "ocean / sea"),
+    ("伝統芸能狂言の笑いと風刺", "伝統芸能[でんとうげいのう] 狂言[きょうげん]の 笑[わら]いと 風刺[ふうし]", "Satire in Classical Kyogen Comedy",
+     "Actors use exaggerated body gestures and comical dialogue to satirize feudal lords.",
+     "風刺", "ふうし", "satire / irony", "〜ものだ", "inherent customary nature", "演じる", "えんじる", "to perform theatrically", "狂", "mad / comic"),
+    ("スライムのロボットプログラミング", "スライムの ロボット プログラミング", "Slime Learns Robot Kinematics",
+     "Using conductive touch inputs to calibrate servo actuators on a six-legged robotic walker.",
+     "制御", "せいぎょ", "robotic control", "〜ようにする", "ensuring that / striving to", "調整する", "ちょうせいする", "to calibrate / adjust", "制", "control / system"),
+    ("小笠原諸島のアカガシラカラスバト", "小笠原諸島[おがさわらしょとう]の アカガシラカラスバト", "The Red-Headed Wood Pigeon of Ogasawara",
+     "Fencing endemic laurel forests to shield endangered island pigeons from feral predators.",
+     "固有種", "こゆうしゅ", "endemic species", "〜をきっかけに", "taking opportunity of", "保護する", "ほごする", "to conserve wildlife", "島", "island"),
+    ("伝統鍛冶職人の包丁鍛錬", "伝統[でんとう] 鍛冶[かじ] 職人[しょくにん]の 包丁[ほうちょう] 鍛錬[たんれん]", "The Iron Will of the Master Bladesmith",
+     "Hammering white steel billeted between soft cladding iron to create legendary sashimi knives.",
+     "鍛錬", "たんれん", "tempering / rigorous training", "〜にほかならない", "is nothing other than", "打ち延ばす", "うちのばす", "to hammer and stretch", "鋼", "steel"),
+    ("夜間中学で学ぶ高齢者たち", "夜間中学[やかんちゅうがく]で 学[まな]ぶ 高齢者[こうれいしゃ]たち", "Evening Junior High School Scholars",
+     "Elderly learners who missed wartime schooling read Japanese literature aloud with deep emotion.",
+     "向上心", "こうじょうしん", "aspiration / desire to improve", "〜てやまない", "unceasingly / from heart", "朗読する", "ろうどくする", "to read aloud", "学", "study / learning"),
+    ("宇宙探査機の小惑星サンプル帰還", "宇宙探査機[うちゅうたんさき]の 小惑星[しょうわくせい] サンプル 帰還[きかん]", "Asteroid Sample Capsule Return",
+     "Engineers track parachuting capsule telemetry landing across Australian desert scrub.",
+     "探査", "たんさ", "probe / space exploration", "〜に違いない", "must certainly be", "回収する", "かいしゅうする", "to recover capsule", "宙", "outer space / midair"),
+    ("新しい学びの旅立ちと未来への誓い", "新[あたら]しい 学[まな]びの 旅立[たびだ]ちと 未来[みらい]への 誓[ちか]い", "Pledge for Lifelong Japanese Mastery",
+     "Celebrating reaching the N3 milestone and preparing with joyful determination for advanced study.",
+     "飛躍", "ひやく", "quantum leap / rapid progress", "〜にほかならない", "is the very definition of", "邁進する", "まいしんする", "to push forward undaunted", "進", "advance / progress")
+]
+
+def generate_n3_stories():
+    stories = []
+    for idx, (title, title_furi, en_title, desc, key_v, key_r, key_m, key_g, g_m, key_vb, vb_r, vb_m, kanji_c, kanji_m) in enumerate(N3_TEMPLATES, start=1):
+        story_id = f"story_n3_{str(idx).zfill(2)}"
+        v_furi = to_furigana(key_v, key_r)
+        vb_furi = to_furigana(key_vb, vb_r)
+        sentences = [
+            {"furigana": f"日本[にほん]での 生活[せいかつ]が 長[なが]くなるに つれて、ケンさんは {v_furi}の 分野[ぶんや]に 深[ふか]く 関心[かんしん]を 持[も]つように なりました。",
+             "translation": f"As his life in Japan grew longer, Ken came to develop deep interest in {en_title}.",
+             "grammarNotes": "〜につれて: As something changes in parallel; 〜ようになる: Change of habit."},
+            {"furigana": f"専門家[せんもんか]の 話[はな]しに よると、{v_furi}の 取[と]り組[く]みは 年々[ねんねん] 重要[じゅうよう]に なっているという ことです。",
+             "translation": f"According to specialists, initiatives regarding {key_m} are reportedly becoming more critical each year.",
+             "grammarNotes": "〜によると〜ということだ: Evidential hearsay according to source."},
+            {"furigana": "「現場[げんば]で 実際[じっさい]に 経験[けいけん]して こそ、本当[ほんとう]の 意味[いみ]が わかる」と 教授[きょうじゅ]は 語[かた]りました。",
+             "translation": "'Only after experiencing it in person on-site does one understand its true meaning,' the professor explained.",
+             "grammarNotes": "〜てこそ: Only after doing; 語る: To explain."},
+            {"furigana": f"ケンさんは ノートを 手[て]に 取[と]り、熱心[ねっしん]に {v_furi}の 準備[じゅんび]を 進[すす]めました。",
+             "translation": f"Ken took notebook in hand and enthusiastically prepared for {key_m}.",
+             "grammarNotes": "〜を手に取り: Taking in hand; 〜を進める: To advance preparation."},
+            {"furigana": f"失敗[しっぱい]を 恐[おそ]れずに 挑戦[ちょうせん]した おかげで、予想[よそう]以上[いじょう]の 成果[せいか]を 上[あ]げることが できました。",
+             "translation": "Thanks to challenging without fearing failure, he achieved results beyond expectation.",
+             "grammarNotes": "〜ずに: Without doing; 〜おかげで: Thanks to positive cause."},
+            {"furigana": f"周[まわ]りの 仲間[なかま]たちと 意見[いけん]を 交[か]わす たびに、新[あたら]しい 発見[はっけん]が 生[う]まれました。",
+             "translation": "Every single time he exchanged views with his peers, new insights were born.",
+             "grammarNotes": "〜たびに: Every time when; 〜が生まれる: To emerge."},
+            {"furigana": f"こうして 一歩[いっぽ]ずつ 経験[けいけん]を 積[つ]み重[かさ]ねることが、確実[かくじつ]な 成長[せいちょう]に つながるのです。",
+             "translation": "In this way, stacking up experience step by step connects directly to steady growth.",
+             "grammarNotes": "〜積む: Accumulate; 〜につながる: Leads to."},
+            {"furigana": f"明日[あした]からも 好奇心[こうきしん]を 忘[わす]れずに、さらなる 高[たか]みを 目指[めざ]して 努力[どりょく]を 続[つづ]けます。",
+             "translation": "From tomorrow as well, without forgetting curiosity, he will continue striving for even greater heights.",
+             "grammarNotes": "〜を目指して: Aiming towards; 〜を続ける: Continue action."}
+        ]
+
+        vocab = [
+            {"surface": key_v, "reading": key_r, "meaning": key_m, "partOfSpeech": "noun"},
+            {"surface": key_vb, "reading": vb_r, "meaning": vb_m, "partOfSpeech": "verb"},
+            {"surface": "専門家", "reading": "せんもんか", "meaning": "specialist / expert", "partOfSpeech": "noun"},
+            {"surface": "経験", "reading": "けいけん", "meaning": "experience", "partOfSpeech": "noun"},
+            {"surface": "成果", "reading": "せいか", "meaning": "fruit / result / achievement", "partOfSpeech": "noun"},
+            {"surface": "好奇心", "reading": "こうきしん", "meaning": "curiosity", "partOfSpeech": "noun"}
+        ]
+
+        elements = [
+            {
+                "type": "vocabulary", "text": key_v, "surface": key_v, "reading": key_r, "meaning": key_m,
+                "roleInStory": f"Core domain concept ({key_m}) explored in this N3 story.",
+                "mechanicsExplanation": "Upper-intermediate compound noun used in academic, cultural, or business discourse.",
+                "exampleSentence": {"japanese": f"{key_v}の重要性が高まっています。", "furigana": f"{key_v}[{key_r}]の 重要性[じゅうようせい]が 高[たか]まっています。", "english": f"The importance of {key_m} is increasing."}
+            },
+            {
+                "type": "grammar", "text": key_g, "surface": key_g, "reading": key_g, "meaning": g_m,
+                "roleInStory": f"Core N3 grammatical structure expressing {g_m}.",
+                "mechanicsExplanation": "Standard JLPT N3 sentence pattern expressing nuance, reasoning, or logical consequence.",
+                "exampleSentence": {"japanese": "努力したからこそ合格できたわけだ。", "furigana": "努力[どりょく]したからこそ 合格[ごうかく]できた わけだ。", "english": "Precisely because I made efforts, that explains why I was able to pass."}
+            },
+            {
+                "type": "particle", "text": "おかげで", "surface": "おかげで", "reading": "okage de", "meaning": "thanks to (positive cause)",
+                "roleInStory": "Expresses gratitude for the positive outcome of Ken's proactive endeavor.",
+                "mechanicsExplanation": "Attaches to plain form verbs or nouns (+の) to specify a beneficial cause resulting in success.",
+                "exampleSentence": {"japanese": "先生のおかげで上達しました。", "furigana": "先生[せんせい]の おかげで 上達[じょうたつ]しました。", "english": "Thanks to the teacher, I improved."}
+            },
+            {
+                "type": "kanji", "text": kanji_c, "surface": kanji_c, "reading": kanji_c, "meaning": kanji_m,
+                "roleInStory": f"Essential N3 kanji character featured in this story's core vocabulary.",
+                "mechanicsExplanation": f"JLPT N3 standard kanji representing {kanji_m}.",
+                "exampleSentence": {"japanese": f"{kanji_c}の研究を深めます。", "furigana": f"{kanji_c}の 研究[けんきゅう]を 深[ふか]めます。", "english": f"I will deepen research into {kanji_m}."}
+            }
+        ]
+
+        questions = [
+            {
+                "type": "vocabulary",
+                "question": f"「{key_v}」の正しい読み方はどれですか？",
+                "questionFurigana": f"「{key_v}」の 正[ただ]しい 読[よ]み 方[かた]は どれですか？",
+                "options": [key_r, f"お{key_r}", f"し{key_r}", "たいけん"],
+                "correctAnswer": 0,
+                "explanation": f"「{key_v}」 is correctly pronounced as {key_r}.",
+                "wrongExplanations": {1: "Incorrect honorific prefix.", 2: "Incorrect reading.", 3: "たいけん means experience."}
+            },
+            {
+                "type": "kanji",
+                "question": f"漢字「{kanji_c}」の意味は何ですか？",
+                "questionFurigana": f"漢字[かんじ]「{kanji_c}」の 意味[いみ]は 何[なん]ですか？",
+                "options": [kanji_m, "water", "fire", "earth"],
+                "correctAnswer": 0,
+                "explanation": f"The kanji {kanji_c} means '{kanji_m}'.",
+                "wrongExplanations": {1: "Water is 水.", 2: "Fire is 火.", 3: "Earth is 土."}
+            },
+            {
+                "type": "grammar",
+                "question": "良い結果をもたらした原因を表す表現はどれですか？",
+                "questionFurigana": "良[よ]い 結果[けっか]を もたらした 原因[げんいん]を 表[あらわ]す 表現[ひょうげん]は どれですか？",
+                "options": ["〜おかげで (Thanks to)", "〜せいで (Because of - blame)", "〜に反して (Contrary to)", "〜ばかりか (Not only)"],
+                "correctAnswer": 0,
+                "explanation": "〜おかげで expresses gratitude for a positive, favorable causal outcome.",
+                "wrongExplanations": {1: "〜せいで attributes blame to a negative cause.", 2: "〜に反して expresses opposition to expectations.", 3: "〜ばかりか means 'not only... but also'."}
+            },
+            {
+                "type": "particle",
+                "question": "「〜につれて」の意味として最も適切なものは？",
+                "questionFurigana": "「〜につれて」の 意味[いみ]として 最[もっと]も 適切[てきせつ]な ものは？",
+                "options": ["一方の変化とともに他方も変化する (As one changes, the other changes in parallel)", "特定の時を表す (Expresses specific time point)", "逆接を表す (Expresses contradiction)", "目的を表す (Expresses purpose)"],
+                "correctAnswer": 0,
+                "explanation": "〜につれて denotes two changing conditions progressing in parallel ('as A changes, B also changes').",
+                "wrongExplanations": {1: "Specific time is indicated by に or 際に.", 2: "Contradiction is indicated by が or けれども.", 3: "Purpose is indicated by ために or ように."}
+            },
+            {
+                "type": "comprehension",
+                "question": "ケンさんは何のおかげで成果を上げることができましたか？",
+                "questionFurigana": "ケンさんは 何[なん]の おかげで 成果[せいか]を 上[あ]げることが できましたか？",
+                "options": ["失敗を恐れずに挑戦したこと", "何もしなかったこと", "他人にすべて任せたこと", "途中で諦めたこと"],
+                "correctAnswer": 0,
+                "explanation": "Sentence 5 explains: 「失敗を恐れずに挑戦したおかげで、予想以上の成果を上げることができました」 (Thanks to challenging without fearing failure, he achieved results beyond expectation).",
+                "wrongExplanations": {1: "He was very proactive.", 2: "He did not leave it entirely to others.", 3: "He did not give up."}
+            }
+        ]
+
+        stories.append(make_story(
+            story_id=story_id,
+            title=title,
+            title_furigana=title_furi,
+            english_title=en_title,
+            level="N3",
+            description=desc,
+            sentences_def=sentences,
+            vocab_list=vocab,
+            elements_def=elements,
+            questions_def=questions
+        ))
+
+    print(f"[N3 Generator] Built {len(stories)} stories.")
+    return stories

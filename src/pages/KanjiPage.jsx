@@ -32,7 +32,7 @@ const QUIZ_CHOICES    = 4
 // ─────────────────────────────────────────────────────────────────────
 //  HELPERS
 // ─────────────────────────────────────────────────────────────────────
-const speak = (text) => audioService.speak(text)
+const speak = (text) => audioService.speak(text).catch(() => {})
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
 
 // ─────────────────────────────────────────────────────────────────────
@@ -1049,12 +1049,12 @@ function QuizTab({ kanji, isDark, meta }) {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  { id: 'meaning', icon: Target,   label: 'Meaning Quiz',  desc: 'See the kanji → choose its meaning', color: 'blue'    },
-                  { id: 'reading', icon: BookOpen, label: 'Reading Quiz',  desc: 'See the kanji → choose its reading', color: 'emerald' },
-                ].map(({ id, icon: Icon, label, desc, color }) => (
+                  { id: 'meaning', icon: Target,   label: 'Meaning Quiz',  desc: 'See the kanji → choose its meaning', colorClass: 'text-blue-600 dark:text-blue-400'    },
+                  { id: 'reading', icon: BookOpen, label: 'Reading Quiz',  desc: 'See the kanji → choose its reading', colorClass: 'text-emerald-600 dark:text-emerald-400' },
+                ].map(({ id, icon: Icon, label, desc, colorClass }) => (
                   <button key={id} onClick={() => startQuiz(id)}
-                    className={`p-4 rounded-2xl border text-left transition-all hover:scale-[1.02] active:scale-[0.98] bg-gray-50 border-gray-200 hover:bg-white hover:border-gray-300 hover:shadow-md dark:bg-gray-800/60 dark:border-gray-700 dark:hover:border-gray-500`}>
-                    <Icon className={`w-6 h-6 mb-2 text-${color}-600 dark:400`} />
+                    className={`p-4 rounded-2xl border text-left transition-all hover:scale-[1.02] active:scale-[0.98] bg-surface-muted border-border hover:bg-surface hover:border-border hover:shadow-md`}>
+                    <Icon className={`w-6 h-6 mb-2 ${colorClass}`} />
                     <p className={`font-bold text-sm text-foreground`}>{label}</p>
                     <p className={`text-xs mt-0.5 text-muted-foreground`}>{desc}</p>
                   </button>
@@ -1309,17 +1309,22 @@ export default function KanjiPage() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     if (!q) return allKanji
+    const qClean = q.replace(/[-・.\s]/g, '')
     return allKanji.filter(k => {
       const locMeaning = getCurriculumMeaning(k, activeLang).toLowerCase()
       const onR  = (k.readings?.on  || []).join(' ').toLowerCase()
       const kunR = (k.readings?.kun || []).join(' ').toLowerCase()
+      const onRClean = onR.replace(/[-・.\s]/g, '')
+      const kunRClean = kunR.replace(/[-・.\s]/g, '')
+      const romajiR = (k.readings?.romaji || []).join(' ').toLowerCase().replace(/[-・.\s]/g, '')
       return (
-        k.kanji.includes(search) ||
+        k.kanji.includes(search.trim()) ||
         k.meaning.toLowerCase().includes(q) ||
         locMeaning.includes(q) ||
         onR.includes(q) || kunR.includes(q) ||
-        (k.meaning_ta || '').includes(search) ||
-        (k.meaning_hi || '').includes(search)
+        (qClean && (onRClean.includes(qClean) || kunRClean.includes(qClean) || romajiR.includes(qClean))) ||
+        (k.meaning_ta || '').includes(search.trim()) ||
+        (k.meaning_hi || '').includes(search.trim())
       )
     })
   }, [search, allKanji, activeLang])

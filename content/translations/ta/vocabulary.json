@@ -1,0 +1,458 @@
+{
+  "n5v001": {
+    "meaning": "நான்",
+    "example": "நான் ஒரு மாணவர்."
+  },
+  "n5v002": {
+    "meaning": "நீங்கள்",
+    "example": "உங்கள் பெயர் என்ன?"
+  },
+  "n5v003": {
+    "meaning": "அவன்/காதலன்",
+    "example": "அவன் ஒரு மருத்துவர்."
+  },
+  "n5v004": {
+    "meaning": "அவள்/காதலி",
+    "example": "அவள் ஆசிரியர்."
+  },
+  "n5v005": {
+    "meaning": "சாப்பிடு",
+    "example": "சுஷி சாப்பிடுகிறேன்."
+  },
+  "n5v006": {
+    "meaning": "குடி",
+    "example": "தேநீர் குடிக்கிறேன்."
+  },
+  "n5v007": {
+    "meaning": "போ",
+    "example": "பள்ளிக்கு போகிறேன்."
+  },
+  "n5v008": {
+    "meaning": "வா",
+    "example": "நண்பர் வருகிறார்."
+  },
+  "n5v009": {
+    "meaning": "பார்",
+    "example": "திரைப்படம் பார்க்கிறேன்."
+  },
+  "n5v010": {
+    "meaning": "கேள்",
+    "example": "இசை கேட்கிறேன்."
+  },
+  "n5v011": {
+    "meaning": "பேசு",
+    "example": "ஜப்பானிய மொழி பேசுகிறேன்."
+  },
+  "n5v012": {
+    "meaning": "படி",
+    "example": "புத்தகம் படிக்கிறேன்."
+  },
+  "n5v013": {
+    "meaning": "எழுது",
+    "example": "கடிதம் எழுதுகிறேன்."
+  },
+  "n5v014": {
+    "meaning": "வாங்கு",
+    "example": "ஆப்பிள் வாங்குகிறேன்."
+  },
+  "n5v015": {
+    "meaning": "பயன்படுத்து",
+    "example": "கணினி பயன்படுத்துகிறேன்."
+  },
+  "n5v016": {
+    "meaning": "படி",
+    "example": "ஒவ்வொரு நாளும் ஜப்பானிய மொழி படிக்கிறேன்."
+  },
+  "n5v017": {
+    "meaning": "வேலை செய்",
+    "example": "நிறுவனத்தில் வேலை செய்கிறேன்."
+  },
+  "n5v018": {
+    "meaning": "எழுந்திரி",
+    "example": "6 மணிக்கு எழுந்திரிக்கிறேன்."
+  },
+  "n5v019": {
+    "meaning": "தூங்கு",
+    "example": "11 மணிக்கு தூங்குகிறேன்."
+  },
+  "n5v020": {
+    "meaning": "வீடு திரும்பு",
+    "example": "வீட்டுக்கு திரும்புகிறேன்."
+  },
+  "n5v021": {
+    "meaning": "பெரிய",
+    "example": "ஒரு பெரிய நாய் இருக்கிறது."
+  },
+  "n5v022": {
+    "meaning": "சிறிய",
+    "example": "ஒரு சிறிய பூனை இருக்கிறது."
+  },
+  "n5v023": {
+    "meaning": "வெப்பமான",
+    "example": "இன்று வெப்பமாக இருக்கிறது."
+  },
+  "n5v024": {
+    "meaning": "குளிரான",
+    "example": "குளிர்காலம் குளிராக இருக்கிறது."
+  },
+  "n5v025": {
+    "meaning": "சுவையான",
+    "example": "இந்த உணவு சுவையாக இருக்கிறது."
+  },
+  "n5v026": {
+    "meaning": "சுவாரஸ்யமான/வேடிக்கையான",
+    "example": "இந்த புத்தகம் சுவாரஸ்யமாக இருக்கிறது."
+  },
+  "n5v027": {
+    "meaning": "அழகான/குட்டியான",
+    "example": "அழகான பூனை!"
+  },
+  "n5v028": {
+    "meaning": "விலை உயர்ந்த/உயரமான",
+    "example": "இந்த பை விலை உயர்ந்தது."
+  },
+  "n5v029": {
+    "meaning": "மலிவான",
+    "example": "இந்த கடை மலிவானது."
+  },
+  "n5v030": {
+    "meaning": "கடினமான",
+    "example": "ஜப்பானிய மொழி கடினமானது."
+  },
+  "n5v031": {
+    "meaning": "எளிதான/கனிவான",
+    "example": "இந்த கேள்வி எளிதானது."
+  },
+  "n5v032": {
+    "meaning": "சோறு/உணவு",
+    "example": "சாப்பிடுவோம்!"
+  },
+  "n5v033": {
+    "meaning": "ரொட்டி",
+    "example": "காலையில் ரொட்டி சாப்பிடுகிறேன்."
+  },
+  "n5v034": {
+    "meaning": "தண்ணீர்",
+    "example": "தண்ணீர் குடிக்கிறேன்."
+  },
+  "n5v035": {
+    "meaning": "தேநீர்",
+    "example": "தேநீர் வேண்டுமா?"
+  },
+  "n5v036": {
+    "meaning": "காபி",
+    "example": "என்னிக்கு காபி பிடிக்கும்."
+  },
+  "n5v037": {
+    "meaning": "பள்ளி",
+    "example": "பள்ளிக்கு போகிறேன்."
+  },
+  "n5v038": {
+    "meaning": "மருத்துவமனை",
+    "example": "மருத்துவமனைக்கு போகிறேன்."
+  },
+  "n5v039": {
+    "meaning": "சூப்பர்மார்க்கெட்",
+    "example": "சூப்பர்மார்க்கெட்டில் கொள்முதல் செய்கிறேன்."
+  },
+  "n5v040": {
+    "meaning": "உணவகம்",
+    "example": "உணவகத்தில் சாப்பிடுகிறேன்."
+  },
+  "n5v041": {
+    "meaning": "இன்று",
+    "example": "இன்று திங்கட்கிழமை."
+  },
+  "n5v042": {
+    "meaning": "நாளை",
+    "example": "நாளை சந்திப்போம்."
+  },
+  "n5v043": {
+    "meaning": "நேற்று",
+    "example": "நேற்று என்ன செய்தீர்கள்?"
+  },
+  "n5v044": {
+    "meaning": "இப்போது",
+    "example": "இப்போது என்ன மணி?"
+  },
+  "n5v045": {
+    "meaning": "ஒவ்வொரு நாளும்",
+    "example": "ஒவ்வொரு நாளும் உடற்பயிற்சி செய்கிறேன்."
+  },
+  "n5v046": {
+    "meaning": "ஒன்று",
+    "example": "ஒரு ஆப்பிள் தாருங்கள்."
+  },
+  "n5v047": {
+    "meaning": "என்ன",
+    "example": "இது என்ன?"
+  },
+  "n5v048": {
+    "meaning": "எங்கே",
+    "example": "கழிவறை எங்கே?"
+  },
+  "n5v049": {
+    "meaning": "எப்போது",
+    "example": "தேர்வு எப்போது?"
+  },
+  "n5v050": {
+    "meaning": "யார்",
+    "example": "அந்த நபர் யார்?"
+  },
+  "n5v051": {
+    "meaning": "ஏன்",
+    "example": "ஏன் தாமதமானீர்கள்?"
+  },
+  "n5v052": {
+    "meaning": "ஆமாம்",
+    "example": "ஆமாம், புரிகிறது."
+  },
+  "n5v053": {
+    "meaning": "இல்லை",
+    "example": "இல்லை, தவறு."
+  },
+  "n5v054": {
+    "meaning": "புரிந்தது",
+    "example": "புரிந்தது, நன்றி."
+  },
+  "n5v055": {
+    "meaning": "மன்னிக்கவும்",
+    "example": "மன்னிக்கவும், கொஞ்சம் காத்திருங்கள்."
+  },
+  "n5v056": {
+    "meaning": "மிக்க நன்றி",
+    "example": "மிக்க நன்றி, உதவியது."
+  },
+  "n5v057": {
+    "meaning": "பரவாயில்லை",
+    "example": "நன்றி. பரவாயில்லை."
+  },
+  "n5v058": {
+    "meaning": "தயவுசெய்து/வேண்டுகிறேன்",
+    "example": "காபி தாருங்கள் தயவுசெய்து."
+  },
+  "n5v059": {
+    "meaning": "ரயில்",
+    "example": "ரயிலில் பள்ளிக்கு போகிறேன்."
+  },
+  "n5v060": {
+    "meaning": "பேருந்து",
+    "example": "பஸ்ஸில் வந்தேன்."
+  },
+  "n5v061": {
+    "meaning": "டாக்சி",
+    "example": "டாக்சி அழைக்கிறேன்."
+  },
+  "n5v062": {
+    "meaning": "காலை உணவு",
+    "example": "ஒவ்வொரு நாளும் காலை 7 மணிக்கு காலை உணவு சாப்பிடுகிறேன்."
+  },
+  "n5v063": {
+    "meaning": "மதிய உணவு",
+    "example": "நண்பருடன் மதிய உணவு சாப்பிட சென்றேன்."
+  },
+  "n5v064": {
+    "meaning": "இரவு உணவு",
+    "example": "இன்றிரவு உணவு காரி."
+  },
+  "n5v065": {
+    "meaning": "ரயில் நிலையம்",
+    "example": "நிலையம் முன்னால் சந்திப்போம்."
+  },
+  "n5v066": {
+    "meaning": "மருந்து",
+    "example": "உணவுக்கு பின் மருந்து சாப்பிடுகிறேன்."
+  },
+  "n5v067": {
+    "meaning": "கடிதம்",
+    "example": "அம்மாவுக்கு கடிதம் எழுதினேன்."
+  },
+  "n5v068": {
+    "meaning": "பணப்பை",
+    "example": "பணப்பையை வீட்டில் மறந்து வைத்துவிட்டேன்."
+  },
+  "n5v069": {
+    "meaning": "கடிகாரம்",
+    "example": "இந்த கடிகாரம் துல்லியமானது."
+  },
+  "n5v070": {
+    "meaning": "குடை",
+    "example": "மழை பெய்வதால் குடை எடுத்து செல்கிறேன்."
+  },
+  "n5v071": {
+    "meaning": "காலணி / காலணிகள்",
+    "example": "நுழைவாயிலில் காலணிகளை கழற்றுங்கள்."
+  },
+  "n5v072": {
+    "meaning": "உடை / ஆடைகள்",
+    "example": "புதிய ஆடைகள் வாங்கினேன்."
+  },
+  "n5v073": {
+    "meaning": "கண்",
+    "example": "கண் வலிக்கிறது."
+  },
+  "n5v074": {
+    "meaning": "காது",
+    "example": "காது கொடுத்து கவனமாக கேட்கிறேன்."
+  },
+  "n5v075": {
+    "meaning": "கை",
+    "example": "சாப்பிடும் முன் கைகளை கழுவுகிறேன்."
+  },
+  "n5v076": {
+    "meaning": "கால்",
+    "example": "நிறைய நடந்ததால் கால் வலிக்கிறது."
+  },
+  "n5v077": {
+    "meaning": "வாய்",
+    "example": "வாயை பெரிதாக திறக்கவும்."
+  },
+  "n5v078": {
+    "meaning": "நாய்",
+    "example": "ஒரு வெள்ளை நாய் வளர்க்கிறேன்."
+  },
+  "n5v079": {
+    "meaning": "பூனை",
+    "example": "தோட்டத்தில் பூனை இருக்கிறது."
+  },
+  "n4_031": {
+    "meaning": "guide / information",
+    "example": "I will guide you around town."
+  },
+  "n4_032": {
+    "meaning": "contact / inform",
+    "example": "Please contact me when you arrive."
+  },
+  "n4_033": {
+    "meaning": "promise / appointment",
+    "example": "I have an appointment with a friend."
+  },
+  "n4_034": {
+    "meaning": "restraint / hesitation",
+    "example": "Please eat without hesitation."
+  },
+  "n4_035": {
+    "meaning": "complex / complicated",
+    "example": "This grammar is a bit complicated."
+  },
+  "n4_036": {
+    "meaning": "simple / easy",
+    "example": "This problem is very easy."
+  },
+  "n4_037": {
+    "meaning": "convenience / circumstances",
+    "example": "How is your availability tomorrow?"
+  },
+  "n4_038": {
+    "meaning": "scenery / landscape",
+    "example": "The scenery from the mountain is beautiful."
+  },
+  "n4_039": {
+    "meaning": "habit / custom",
+    "example": "Waking up early is a good habit."
+  },
+  "n4_040": {
+    "meaning": "technology / skill",
+    "example": "Japanese technology is advanced."
+  },
+  "n4_041": {
+    "meaning": "interest (in something)",
+    "example": "I am interested in Japanese culture."
+  },
+  "n4_042": {
+    "meaning": "opinion / view",
+    "example": "Please let me hear your opinion."
+  },
+  "n4_043": {
+    "meaning": "consultation / discussion",
+    "example": "I consulted the teacher about my future."
+  },
+  "n4_044": {
+    "meaning": "convenience",
+    "example": "Something inconvenient came up."
+  },
+  "n4_045": {
+    "meaning": "breakdown / malfunction",
+    "example": "The elevator is out of order."
+  },
+  "n3_026": {
+    "meaning": "improvement / reform",
+    "example": "We are striving to improve our services."
+  },
+  "n3_027": {
+    "meaning": "influence / effect",
+    "example": "The weather affected the harvest."
+  },
+  "n3_028": {
+    "meaning": "environment / surroundings",
+    "example": "Let us protect the natural environment."
+  },
+  "n3_029": {
+    "meaning": "responsibility / duty",
+    "example": "Fulfill one's responsibility as a leader."
+  },
+  "n3_030": {
+    "meaning": "development / growth",
+    "example": "The city is developing rapidly."
+  },
+  "n3_031": {
+    "meaning": "economy / economics",
+    "example": "Recovery of the global economy is expected."
+  },
+  "n3_032": {
+    "meaning": "effect / efficacy",
+    "example": "This medicine takes effect quickly."
+  },
+  "n3_033": {
+    "meaning": "gratitude / appreciation",
+    "example": "We appreciate everyone's support."
+  },
+  "n3_034": {
+    "meaning": "goal / target / objective",
+    "example": "We achieved our target for this term."
+  },
+  "n3_035": {
+    "meaning": "trust / confidence",
+    "example": "He is trusted by his peers."
+  },
+  "n2_031": {
+    "meaning": "policy / course of action",
+    "example": "The government's new policy was announced."
+  },
+  "n2_032": {
+    "meaning": "grasp / comprehension",
+    "example": "Accurately grasp the current situation."
+  },
+  "n2_033": {
+    "meaning": "consideration / thoughtfulness",
+    "example": "Do not forget consideration for those around you."
+  },
+  "n2_034": {
+    "meaning": "consultation / deliberation",
+    "example": "Both nations held repeated consultations."
+  },
+  "n2_035": {
+    "meaning": "quick / prompt / rapid",
+    "example": "A prompt response is required."
+  },
+  "n1_031": {
+    "meaning": "excellence / preeminence",
+    "example": "His preeminent ability was highly evaluated."
+  },
+  "n1_032": {
+    "meaning": "fragile / vulnerable",
+    "example": "Fix vulnerabilities in the system."
+  },
+  "n1_033": {
+    "meaning": "consultation / inquiry to committee",
+    "example": "Submit an inquiry to the expert committee."
+  },
+  "n1_034": {
+    "meaning": "divergence / alienation",
+    "example": "Acutely feel the divergence between ideal and reality."
+  },
+  "n1_035": {
+    "meaning": "compliance / adherence to rules",
+    "example": "Thoroughly enforce legal compliance."
+  }
+}
