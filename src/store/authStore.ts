@@ -57,7 +57,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
       // Initialize progress store with user profile data
       if (user) {
-        useProgressStore.getState().initializeProgress(user.id, user);
+        try {
+          await useProgressStore.getState().initializeProgress(user.id, user);
+        } catch {
+          // Non-blocking progress sync failure
+        }
       }
     } catch {
       // 401 Unauthorized or network error → unauthenticated state
@@ -73,7 +77,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const user = await authApi.getMe();
     set({ user, profile: user });
 
-    useProgressStore.getState().initializeProgress(user.id, user);
+    try {
+      await useProgressStore.getState().initializeProgress(user.id, user);
+    } catch {
+      // Non-blocking progress sync failure
+    }
     return user;
   },
 
@@ -84,7 +92,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const user = await authApi.getMe();
     set({ user, profile: user });
 
-    useProgressStore.getState().initializeProgress(user.id, user);
+    try {
+      await useProgressStore.getState().initializeProgress(user.id, user);
+    } catch {
+      // Non-blocking progress sync failure
+    }
     return user;
   },
 
@@ -150,7 +162,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     // Sync progress if level changed
     if (updates.currentLevel !== undefined) {
-      useProgressStore.getState().initializeProgress(currentUser.id, updatedUser);
+      try {
+        await useProgressStore.getState().initializeProgress(currentUser.id, updatedUser);
+      } catch {
+        // Non-blocking progress sync failure
+      }
     }
 
     return updatedUser;

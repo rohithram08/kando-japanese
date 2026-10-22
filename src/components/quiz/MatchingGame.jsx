@@ -195,7 +195,7 @@ const LevelSelector = ({ completedLevels, currentLevel, onSelect }) => (
 
 // ─── Main Component ───────────────────────────────────────────────
 const MatchingGame = ({ onComplete }) => {
-  const { incrementXP } = useProgressStore();
+  const addXP = useProgressStore((s) => s.addXP);
   const user = useAuthStore((s) => s.user);
 
   // Level progression state
@@ -268,7 +268,7 @@ const MatchingGame = ({ onComplete }) => {
       setSelectedRight(null);
 
       const xpGain = 5;
-      incrementXP(xpGain, user?.id);
+      addXP(xpGain, user?.id);
       setSessionXP((prev) => prev + xpGain);
 
       if (newMatched.size === activeLevel.pairs.length) {
@@ -280,7 +280,7 @@ const MatchingGame = ({ onComplete }) => {
             50,
             100 - attempts * 2 - Math.floor(elapsedTime / 5)
           );
-          incrementXP(bonusXP, user?.id);
+          addXP(bonusXP, user?.id);
           setSessionXP((prev) => prev + bonusXP);
 
           // Unlock next level

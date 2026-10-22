@@ -2,8 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { readingRouter } from '../reading.js';
 
 // Mock DB
-vi.mock('../../db/index.js', () => ({
-  db: {
+vi.mock('../../db/index.js', () => {
+  const mockDb: any = {
     query: {
       userReadingProgress: {
         findMany: vi.fn(),
@@ -20,8 +20,10 @@ vi.mock('../../db/index.js', () => ({
         where: vi.fn().mockResolvedValue([{}]),
       })),
     })),
-  },
-}));
+    transaction: vi.fn(async (cb: any) => cb(mockDb)),
+  };
+  return { db: mockDb };
+});
 
 vi.mock('../../services/streakService.js', () => ({
   recordActivity: vi.fn().mockResolvedValue({}),

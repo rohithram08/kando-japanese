@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useAuthStore } from '../authStore';
+import { useProgressStore } from '../progressStore';
 import { authApi, usersApi } from '../../api';
 import type { User } from '../../types/models';
 
@@ -20,6 +21,7 @@ describe('AuthStore (Zustand + JWT Session)', () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
+    vi.spyOn(useProgressStore.getState(), 'initializeProgress').mockResolvedValue(undefined as any);
     useAuthStore.setState({
       user: null,
       profile: null,

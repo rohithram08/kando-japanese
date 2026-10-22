@@ -109,7 +109,7 @@ export const srsCards = mysqlTable('srs_cards', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 }, (table) => ({
   userCardUnique: uniqueIndex('user_card_unique').on(table.userId, table.cardType, table.cardRefId),
-  dueCardsIdx: index('due_cards_idx').on(table.userId, table.nextReviewDate, table.isMastered),
+  dueCardsIdx: index('due_cards_idx').on(table.userId, table.isMastered, table.nextReviewDate),
 }));
 
 // ─── Sensei Conversations ──────────────────────────────────────────────────────

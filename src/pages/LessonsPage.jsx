@@ -11,6 +11,7 @@ import { useSettingsStore } from '../store/settingsStore'
 import { LESSONS, LEVEL_META, LEVELS, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
 import { useI18n } from '../i18n'
+import { audioService } from '../services/audioService'
 
 // ── Single lesson card ────────────────────────────────────────
 const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen, onToggle }, ref) {
@@ -19,9 +20,7 @@ const LessonCard = React.forwardRef(function LessonCard({ lesson, isDark, isOpen
   const meta = LEVEL_META[lesson.level]
 
   const speak = (text) => {
-    const u = new SpeechSynthesisUtterance(text)
-    u.lang = 'ja-JP'
-    window.speechSynthesis.speak(u)
+    audioService.speak(text).catch(() => {})
   }
 
   return (

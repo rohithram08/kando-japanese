@@ -16,10 +16,10 @@ const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export default function StreakCard({ streak = 0 }) {
   const { t } = useI18n();
-  const { streakFreezes = 2, isStreakFrozen = false, equipStreakFreeze } = useProgressStore();
+  const { streakFreezes = 2, isStreakFrozen = false, equipStreakFreeze, dailyXP = 0 } = useProgressStore();
   const jsDay = new Date().getDay();
   const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
-  const hasStudiedToday = streak > 0;
+  const hasStudiedToday = dailyXP > 0;
 
   const handleEquipFreeze = () => {
     equipStreakFreeze(1);

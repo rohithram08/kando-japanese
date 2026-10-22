@@ -10,9 +10,12 @@ import {
   userKanjiProgress,
   userVocabularyProgress,
   userGrammarProgress,
+  userReadingProgress,
   srsCards,
   userStreaks,
   userBadges,
+  senseiConversations,
+  senseiTourProgress,
 } from '../db/schema.js';
 import { eq, and, gte, lte, desc, sql } from 'drizzle-orm';
 import { AppError } from '../middleware/errorHandler.js';
@@ -1267,6 +1270,11 @@ progressRouter.post('/badges', requireAuth, validate(awardBadgeSchema), async (r
     const userId = req.user!.userId;
     const { badgeType, badgeName } = req.body;
 
+    const badgeDef = ALL_BADGES.find((b) => b.id === badgeType);
+    if (!badgeDef) {
+      throw new AppError(400, 'Invalid badge type', 'INVALID_BADGE_TYPE');
+    }
+
     const existing = await db.query.userBadges.findFirst({
       where: and(eq(userBadges.userId, userId), eq(userBadges.badgeType, badgeType)),
     });
@@ -1283,18 +1291,19 @@ progressRouter.post('/badges', requireAuth, validate(awardBadgeSchema), async (r
     }
 
     const badgeId = uuidv4();
+    const effectiveName = badgeName || badgeDef.name || badgeType;
     await db.insert(userBadges).values({
       id: badgeId,
       userId,
       badgeType,
-      badgeName: badgeName || badgeType,
+      badgeName: effectiveName,
     });
 
     res.json({
       badge: {
         id: badgeId,
         badgeType,
-        badgeName: badgeName || badgeType,
+        badgeName: effectiveName,
         awardedAt: new Date().toISOString(),
       },
     });
@@ -1316,9 +1325,12 @@ progressRouter.delete('/reset', requireAuth, async (req, res, next) => {
       await tx.delete(userKanjiProgress).where(eq(userKanjiProgress.userId, userId));
       await tx.delete(userVocabularyProgress).where(eq(userVocabularyProgress.userId, userId));
       await tx.delete(userGrammarProgress).where(eq(userGrammarProgress.userId, userId));
+      await tx.delete(userReadingProgress).where(eq(userReadingProgress.userId, userId));
       await tx.delete(srsCards).where(eq(srsCards.userId, userId));
       await tx.delete(userStreaks).where(eq(userStreaks.userId, userId));
       await tx.delete(userBadges).where(eq(userBadges.userId, userId));
+      await tx.delete(senseiConversations).where(eq(senseiConversations.userId, userId));
+      await tx.delete(senseiTourProgress).where(eq(senseiTourProgress.userId, userId));
 
       await tx.update(users)
         .set({ xpPoints: 0, streakDays: 0, currentLevel: 'N5' })

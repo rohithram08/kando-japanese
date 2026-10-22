@@ -98,45 +98,47 @@ readingRouter.post(
         ? (existing?.completedAt || now)
         : existing?.completedAt || null;
 
-      await db
-        .insert(userReadingProgress)
-        .values({
-          id: progressId,
-          userId,
-          storyId,
-          status,
-          lastSentenceIndex,
-          quizScore: quizScore !== undefined ? quizScore : (existing?.quizScore ?? 0),
-          completedAt,
-          createdAt: now,
-          updatedAt: now,
-        })
-        .onDuplicateKeyUpdate({
-          set: {
-            status: isCompletingNow ? 'completed' : sql`values(${userReadingProgress.status})`,
-            lastSentenceIndex,
-            quizScore: quizScore !== undefined ? quizScore : sql`${userReadingProgress.quizScore}`,
-            completedAt: isCompletingNow
-              ? sql`coalesce(${userReadingProgress.completedAt}, ${now})`
-              : sql`${userReadingProgress.completedAt}`,
-            updatedAt: now,
-          },
-        });
-
-      // Award XP if completed for the first time
       let xpAwarded = 0;
-      if (isCompletingNow && !wasAlreadyCompleted) {
-        xpAwarded = 50 + Math.round((quizScore ?? 100) * 0.25); // 50 base XP + up to 25 bonus
-        await db
-          .update(users)
-          .set({
-            xpPoints: sql`${users.xpPoints} + ${xpAwarded}`,
+      await db.transaction(async (tx) => {
+        await tx
+          .insert(userReadingProgress)
+          .values({
+            id: progressId,
+            userId,
+            storyId,
+            status,
+            lastSentenceIndex,
+            quizScore: quizScore !== undefined ? quizScore : (existing?.quizScore ?? 0),
+            completedAt,
+            createdAt: now,
+            updatedAt: now,
           })
-          .where(eq(users.id, userId));
+          .onDuplicateKeyUpdate({
+            set: {
+              status: isCompletingNow ? 'completed' : sql`${userReadingProgress.status}`,
+              lastSentenceIndex,
+              quizScore: quizScore !== undefined ? quizScore : sql`${userReadingProgress.quizScore}`,
+              completedAt: isCompletingNow
+                ? sql`coalesce(${userReadingProgress.completedAt}, ${now})`
+                : sql`${userReadingProgress.completedAt}`,
+              updatedAt: now,
+            },
+          });
 
-        // Record streak
-        await recordActivity(userId, todayStr);
-      }
+        // Award XP if completed for the first time
+        if (isCompletingNow && !wasAlreadyCompleted) {
+          xpAwarded = 50 + Math.round((quizScore ?? 100) * 0.25); // 50 base XP + up to 25 bonus
+          await tx
+            .update(users)
+            .set({
+              xpPoints: sql`${users.xpPoints} + ${xpAwarded}`,
+            })
+            .where(eq(users.id, userId));
+
+          // Record streak
+          await recordActivity(userId, todayStr);
+        }
+      });
 
       // Fetch the updated record
       const updated = await db.query.userReadingProgress.findFirst({

@@ -7,6 +7,7 @@ class AudioService {
     this.voices = []
     this.japaneseVoice = null
     this.currentUtterance = null
+    this.activeUtterances = new Set()
     this.isPlaying = false
     this.sessionId = 0
     this.voiceListeners = new Set()
@@ -112,6 +113,7 @@ class AudioService {
       }
 
       utterance.onend = () => {
+        this.activeUtterances.delete(utterance)
         if (currentSession !== this.sessionId) return
         this.isPlaying = false
         this.currentUtterance = null
@@ -120,6 +122,7 @@ class AudioService {
       }
 
       utterance.onerror = (event) => {
+        this.activeUtterances.delete(utterance)
         if (currentSession !== this.sessionId) return
         this.isPlaying = false
         this.currentUtterance = null
@@ -127,13 +130,18 @@ class AudioService {
         if (event.error !== 'interrupted' && event.error !== 'canceled') {
           const safeMessage = this.getErrorMessage(event.error)
           options.onError?.(event, safeMessage)
-          reject(event)
+          if (options.rejectOnError) {
+            reject(event)
+          } else {
+            resolve()
+          }
         } else {
           resolve()
         }
       }
 
       this.currentUtterance = utterance
+      this.activeUtterances.add(utterance)
       this.synthesis.speak(utterance)
     })
   }
@@ -164,6 +172,7 @@ class AudioService {
       this.isPlaying = false
       this.currentUtterance = null
     }
+    this.activeUtterances.clear()
   }
 
   // Pause speech
@@ -212,6 +221,7 @@ class AudioService {
       }
 
       utterance.onend = () => {
+        this.activeUtterances.delete(utterance)
         if (currentSession !== this.sessionId) return
         this.isPlaying = false
         this.currentUtterance = null
@@ -219,6 +229,7 @@ class AudioService {
       }
 
       utterance.onerror = () => {
+        this.activeUtterances.delete(utterance)
         if (currentSession !== this.sessionId) return
         this.isPlaying = false
         this.currentUtterance = null
@@ -226,6 +237,7 @@ class AudioService {
       }
 
       this.currentUtterance = utterance
+      this.activeUtterances.add(utterance)
       this.synthesis.speak(utterance)
     })
   }
