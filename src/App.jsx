@@ -108,8 +108,29 @@ export default function App() {
           {/* ── Story Lessons (Unified Learning Center: Stories, Grammar, Vocab, Quizzes) ── */}
           <Route path="/lessons/*"           element={<Navigate to="/reading" replace />} />
           <Route path="/lessons"             element={<Navigate to="/reading" replace />} />
-          <Route path="/quiz/*"              element={<Navigate to="/reading" replace />} />
-          <Route path="/quiz"                element={<Navigate to="/reading" replace />} />
+          {/* Quiz center and lesson-specific quiz engine */}
+          <Route
+            path="/quiz"
+            element={
+              <LazyRoute
+                Component={QuizPage}
+                message="Loading quiz center..."
+              />
+            }
+          />
+          <Route
+            path="/quiz/:lessonId"
+            element={
+              <LazyRoute
+                Component={QuizEngine}
+                message="Preparing your quiz..."
+              />
+            }
+          />
+          <Route
+            path="/quiz/*"
+            element={<Navigate to="/quiz" replace />}
+          />
 
           {/* ── Drama ── */}
           <Route path="/drama"               element={<LazyRoute Component={DramaPlayer} message="Loading drama player..." />} />

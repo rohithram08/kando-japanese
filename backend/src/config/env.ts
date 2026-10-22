@@ -22,7 +22,7 @@ const envSchema = z.object({
   DATABASE_PORT: z.coerce.number().default(4000),
   DATABASE_USER: z.string().min(1),
   DATABASE_PASSWORD: z.string().min(1),
-  DATABASE_NAME: z.string().default('nihongo'),
+  DATABASE_NAME: z.string().default('nihongo_master'),
   DATABASE_SSL: z.string().transform(v => v === 'true').default('true'),
 
   // JWT

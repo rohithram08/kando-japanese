@@ -138,7 +138,7 @@ function StatItem({ item }) {
 export default function StatCounters() {
   return (
     <section className="py-12 bg-background border-t border-border/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 text-left">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-2.5 border border-primary/20">

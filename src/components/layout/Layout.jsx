@@ -84,7 +84,7 @@ const Layout = () => {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="flex-1 min-h-[calc(100vh-4rem)] pb-20 md:pb-6 w-full"
         >
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-2.5 sm:py-4">
+          <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
             <Outlet />
           </div>
         </motion.main>

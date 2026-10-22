@@ -134,7 +134,7 @@ export default function LandingPage() {
       
       {/* ── Public Top Navigation Bar ────────────────────────────── */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl shrink-0">
             <KandoSlimeLogo size={34} animated showBlossom className="group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
@@ -202,25 +202,15 @@ export default function LandingPage() {
                   <ArrowRight className="w-3 h-3" />
                 </button>
 
-                {/* Desktop/Tablet Slide-in Sticky CTA (hidden when hero CTA is in view) */}
-                <div
-                  className={`hidden sm:flex transition-all duration-300 transform ${
-                    heroCtaVisible
-                      ? 'opacity-0 -translate-y-2 pointer-events-none'
-                      : 'opacity-100 translate-y-0 pointer-events-auto'
-                  }`}
-                  aria-hidden={heroCtaVisible ? 'true' : undefined}
+                {/* Desktop/Tablet Slime CTA (always visible and balanced) */}
+                <button
+                  type="button"
+                  onClick={() => { playPop(); navigate('/register') }}
+                  className="hidden sm:inline-flex btn-3d-slime py-2 px-4 text-xs sm:text-sm font-extrabold rounded-xl items-center gap-1.5 shadow-sm"
                 >
-                  <button
-                    type="button"
-                    tabIndex={heroCtaVisible ? -1 : 0}
-                    onClick={() => { playPop(); navigate('/register') }}
-                    className="btn-3d-primary py-2 px-4 text-xs sm:text-sm font-bold rounded-xl flex items-center gap-1.5"
-                  >
-                    <span>Get Started Free</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
+                  <span>Get Started Free</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             )}
           </div>
@@ -242,7 +232,7 @@ export default function LandingPage() {
             aria-hidden="true"
           />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
               
               {/* Left Column: Playful, High-Energy Headline and Action CTAs */}
@@ -311,7 +301,7 @@ export default function LandingPage() {
                         type="button"
                         onClick={() => { playPop(); navigate('/register') }}
                         aria-label="Start Learning Free - Get Started Free"
-                        className="btn-3d-primary py-3.5 px-7 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                        className="btn-3d-slime py-3.5 px-8 rounded-2xl font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
                       >
                         <span>Get Started Free</span>
                         <ArrowRight className="w-4 h-4 ml-1" />
