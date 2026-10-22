@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { GRAMMAR, KANJI, VOCABULARY, LESSONS } from '../src/data/index.js';
-import { DRAMA_RESOURCES } from '../src/data/dramaResources.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -69,19 +68,6 @@ async function bundleData() {
         tags: []
       });
     }
-  }
-
-  // Transform DRAMA
-  for (const item of DRAMA_RESOURCES) {
-    output.push({
-      contentType: 'drama',
-      id: item.id,
-      jlptLevel: item.level,
-      title: item.title,
-      content: `Channel: ${item.hostOrChannel}\nCategory: ${item.category}\nDescription: ${item.description}\nPurpose: ${item.learningPurpose}\nPlatform: ${item.platform}`,
-      source: 'Kando Japanese Drama/Listening Resources',
-      tags: item.tags || []
-    });
   }
 
   const outPath = path.resolve(__dirname, '../backend/src/data/platformKnowledge.json');

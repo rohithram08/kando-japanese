@@ -38,7 +38,7 @@ const PLATFORM_DATA_PATTERNS = [
   /kanji/i,
   /vocabulary/i,
   /listening/i,
-  /drama/i,
+  /reading|story/i,
   /explain/i,
   /difference between/i
 ];

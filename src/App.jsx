@@ -47,7 +47,6 @@ const KanjiPage         = lazyWithRetry(() => import('./pages/KanjiPage'))
 const KanjiStudy        = lazyWithRetry(() => import('./components/kanji/KanjiStudy'))
 const QuizPage          = lazyWithRetry(() => import('./pages/QuizPage'))
 const QuizEngine        = lazyWithRetry(() => import('./components/quiz/QuizEngine'))
-const DramaPlayer       = lazyWithRetry(() => import('./components/drama/DramaPlayer'))
 const SenseiPage        = lazyWithRetry(() => import('./pages/SenseiPage'))
 const SRSReview         = lazyWithRetry(() => import('./components/srs/SRSReview'))
 const VocabularyPage    = lazyWithRetry(() => import('./pages/VocabularyPage'))
@@ -132,8 +131,9 @@ export default function App() {
             element={<Navigate to="/quiz" replace />}
           />
 
-          {/* ── Drama ── */}
-          <Route path="/drama"               element={<LazyRoute Component={DramaPlayer} message="Loading drama player..." />} />
+          {/* ── Legacy Drama redirect to Graded Reader ── */}
+          <Route path="/drama/*"             element={<Navigate to="/reading" replace />} />
+          <Route path="/drama"               element={<Navigate to="/reading" replace />} />
 
           {/* ── Chat & 3D Sensei ── */}
           <Route path="/sensei"              element={<LazyRoute Component={SenseiPage} message="Loading Sensei 3D Studio..." />} />

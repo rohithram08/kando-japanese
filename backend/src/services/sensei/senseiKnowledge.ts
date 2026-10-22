@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export interface KnowledgeItem {
-  contentType: 'lesson' | 'grammar' | 'kanji' | 'vocabulary' | 'drama';
+  contentType: 'lesson' | 'grammar' | 'kanji' | 'vocabulary' | 'reading';
   id: string;
   jlptLevel: string;
   title: string;

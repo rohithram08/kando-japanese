@@ -10,7 +10,7 @@
 
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
-  Swords, RefreshCw, MessageCircle, Bot, Tv2, Mic,
+  Swords, RefreshCw, MessageCircle, Bot, Mic,
   Trophy, BarChart2, Settings, Sparkles,
 } from 'lucide-react'
 
@@ -243,16 +243,6 @@ export const SECTIONS = [
     tint: 'amber',
     group: 'practice',
     description: 'Pronunciation practice out loud',
-  },
-  {
-    id: 'drama',
-    label: 'Drama Theater',
-    shortLabel: 'Drama',
-    path: '/drama',
-    icon: Tv2,
-    tint: 'rose',
-    group: 'practice',
-    description: 'Learn from subtitled video clips',
   },
   {
     id: 'progress',

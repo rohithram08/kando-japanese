@@ -163,7 +163,7 @@ async function runBrowserTests() {
 
     // 6. Test Multi-Route Navigation
     console.log('6. Testing Sensei persistence across platform routes...');
-    const routes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/quiz', '/drama', '/settings'];
+    const routes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/quiz', '/reading', '/settings'];
     for (const r of routes) {
       await page.goto(`http://localhost:3000${r}`, { waitUntil: 'domcontentloaded' });
       const el = await page.waitForSelector('button[aria-label*="AI Sensei"]', { timeout: 5000 }).catch(() => null);

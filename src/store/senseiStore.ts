@@ -259,7 +259,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   executeAction: (action, navigate) => {
     if (!action) return;
 
-    const allowedPrefixes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/quiz', '/drama', '/settings', '/sensei'];
+    const allowedPrefixes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/quiz', '/reading', '/settings', '/sensei'];
 
     if (action.type === 'navigate' && action.payload?.path) {
       const path = action.payload.path;

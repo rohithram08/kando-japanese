@@ -274,30 +274,6 @@
 }
 
 /* ============================================
-   DRAMA PLAYER SUBTITLES
-   ============================================ */
-.subtitle-bar {
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 12px 20px;
-  text-align: center;
-  border-radius: 8px;
-  backdrop-filter: blur(4px);
-}
-
-.subtitle-jp {
-  font-size: 20px;
-  font-family: 'Noto Sans JP', sans-serif;
-  line-height: 1.4;
-}
-
-.subtitle-en {
-  font-size: 14px;
-  color: #d1d5db;
-  margin-top: 4px;
-}
-
-/* ============================================
    SKELETON LOADING
    ============================================ */
 .skeleton {
