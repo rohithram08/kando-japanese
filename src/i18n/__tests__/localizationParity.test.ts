@@ -7,6 +7,8 @@ import {
   getCurriculumTranslation,
   getCurriculumMeaning,
   getCurriculumExplanation,
+  hasUiTranslations,
+  UI_DATA,
 } from '../index'
 import { CANONICAL_INDEX, CANONICAL_CURRICULUM as canonicalCurriculum } from '../../data/canonical'
 import enCurriculum from '../../locales/en/curriculum.json'
@@ -399,6 +401,42 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         const canonical = CANONICAL_INDEX.get(g.id)?.item as any
         expect(canonical).toBeDefined()
         expect(canonical.pattern).toBe(g.pattern)
+      })
+    })
+  })
+
+  // ─────────────────────────────────────────────────────────────
+  // 7. UI Localization Integrity & 100% Key Parity
+  // ─────────────────────────────────────────────────────────────
+  describe('7. UI Localization Integrity & 100% Key Parity', () => {
+    it('verifies every locale shown by hasUiTranslations actually exists in UI_DATA', () => {
+      const activeLocales = SUPPORTED_LOCALES.filter((l) => hasUiTranslations(l.code))
+      expect(activeLocales.length).toBeGreaterThanOrEqual(12)
+
+      activeLocales.forEach((l) => {
+        expect(UI_DATA[l.code] || UI_DATA[l.code.toLowerCase()]).toBeDefined()
+      })
+    })
+
+    it('verifies that every bundled locale in UI_DATA has 100% key parity with English', () => {
+      const en = UI_DATA['en']
+      expect(en).toBeDefined()
+
+      const bundledCodes = Object.keys(UI_DATA).filter((k) => k === k.toLowerCase())
+
+      bundledCodes.forEach((code) => {
+        const localeData = UI_DATA[code]
+        expect(localeData).toBeDefined()
+
+        Object.entries(en).forEach(([section, keys]) => {
+          expect(localeData[section]).toBeDefined()
+          Object.keys(keys as Record<string, any>).forEach((k) => {
+            expect(
+              (localeData[section] as any)?.[k],
+              `Missing key "${section}.${k}" in locale "${code}"`
+            ).toBeDefined()
+          })
+        })
       })
     })
   })

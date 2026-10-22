@@ -59,14 +59,6 @@ const SECTION_TINT = {
   gray:    { bg: 'bg-gray-100 dark:bg-gray-500/10',  text: 'text-gray-600 dark:text-gray-400' },
 }
 
-// Only languages with real translated content in the lesson data
-// (meaning_en / meaning_hi / meaning_ta) are listed here — offering more
-// would silently fall back to English regardless of selection, which is
-// exactly the kind of non-functional control this page should not have.
-// Encoded as full words ('english', 'tamil', 'hindi') to match both the
-// sign-up flow (RegisterPage.jsx) and the lesson card lookups that key
-// off profile.native_language — keep these three in sync if you add a
-// fourth language's translated content to the data set.
 
 const JLPT_LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
 const FONT_SIZES  = [{ value: 'small', label: 'Small' }, { value: 'medium', label: 'Medium' }, { value: 'large', label: 'Large' }]
@@ -367,12 +359,30 @@ export default function SettingsPage() {
     bg-muted/40 border-border text-foreground placeholder:text-muted-foreground focus:bg-surface
   `
 
+  // Module-level option arrays hold English fallbacks only; labels are resolved
+  // through t() on every render so they follow the active display language.
+  const localizedSections = useMemo(
+    () => SECTIONS.map((s) => ({ ...s, label: t(`settings.nav_${s.id}`, s.label) })),
+    [t]
+  )
+  const localizedFontSizes = FONT_SIZES.map((o) => ({ ...o, label: t(`settings.font_${o.value}`, o.label) }))
+  const localizedFuriganaModes = FURIGANA_MODES.map((o) => ({
+    ...o,
+    label: t(`settings.furigana_${o.value}`, o.label),
+    desc: t(`settings.furigana_${o.value}_desc`, o.desc),
+  }))
+  const localizedSrsIntervals = SRS_INTERVALS.map((o) => ({
+    ...o,
+    label: t(`settings.srs_${o.value}`, o.label),
+    desc: t(`settings.srs_${o.value}_desc`, o.desc),
+  }))
+
   // Filter the section nav by the settings search box
   const filteredSections = useMemo(() => {
     const q = settingsQuery.trim().toLowerCase()
-    if (!q) return SECTIONS
-    return SECTIONS.filter((s) => s.label.toLowerCase().includes(q) || s.keywords.includes(q))
-  }, [settingsQuery])
+    if (!q) return localizedSections
+    return localizedSections.filter((s) => s.label.toLowerCase().includes(q) || s.keywords.includes(q))
+  }, [settingsQuery, localizedSections])
 
   // ── Section Renderer ───────────────────────────────────
   const renderSection = () => {
@@ -382,7 +392,7 @@ export default function SettingsPage() {
       case 'profile':
         return (
           <div className="space-y-6">
-            <SectionCard title="Avatar" emoji="🖼️">
+            <SectionCard title={t('settings.avatar_title', 'Avatar')} emoji="🖼️">
               <div className="flex items-center gap-4">
                 <div className="relative group">
                   <motion.div
@@ -433,7 +443,7 @@ export default function SettingsPage() {
               </div>
             </SectionCard>
 
-            <SectionCard title="Display Name" emoji="✏️">
+            <SectionCard title={t('settings.display_name_title', 'Display Name')} emoji="✏️">
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                 <input
@@ -441,7 +451,7 @@ export default function SettingsPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className={`${fieldBase} pl-11`}
-                  placeholder="Your display name"
+                  placeholder={t('settings.display_name_placeholder', 'Your display name')}
                   maxLength={30}
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground">
@@ -481,7 +491,7 @@ export default function SettingsPage() {
           <SectionCard>
             <SettingRow
               label={t('settings.jlpt_target', 'JLPT Target Level')}
-              description="Lessons, Grammar, Vocabulary & Kanji will open to this level by default"
+              description={t('settings.jlpt_desc', 'Lessons, Grammar, Vocabulary & Kanji will open to this level by default')}
             >
               <div className="flex gap-1.5 flex-wrap justify-end">
                 {JLPT_LEVELS.map((lvl) => (
@@ -505,7 +515,7 @@ export default function SettingsPage() {
 
             <SettingRow
               label={t('settings.native_lang_title', 'Native Language (Mother Tongue)')}
-              description="Your mother tongue for demographic and profile records"
+              description={t('settings.native_lang_desc', 'Your mother tongue for demographic and profile records')}
               noBorder
             >
               <SelectField
@@ -524,12 +534,12 @@ export default function SettingsPage() {
       case 'appearance':
         return (
           <div className="space-y-4">
-            <SectionCard title="Theme" emoji="🌗">
+            <SectionCard title={t('settings.theme_title', 'Theme')} emoji="🌗">
               <div className="flex gap-2">
                 {[
-                  { value: 'light',  Icon: Sun,     label: 'Light' },
-                  { value: 'dark',   Icon: Moon,    label: 'Dark' },
-                  { value: 'system', Icon: Monitor, label: 'System' },
+                  { value: 'light',  Icon: Sun,     label: t('settings.theme_light', 'Light') },
+                  { value: 'dark',   Icon: Moon,    label: t('settings.theme_dark', 'Dark') },
+                  { value: 'system', Icon: Monitor, label: t('settings.theme_system', 'System') },
                 ].map(({ value, Icon, label }) => (
                   <button
                     key={value}
@@ -547,13 +557,13 @@ export default function SettingsPage() {
               </div>
             </SectionCard>
 
-            <SectionCard title="Display" emoji="🖥️">
-              <SettingRow label="Font Size" description="Size of text throughout the app">
-                <SelectField value={settings.fontSize} onChange={(v) => updateSettings({ fontSize: v })} options={FONT_SIZES} />
+            <SectionCard title={t('settings.display_title', 'Display')} emoji="🖥️">
+              <SettingRow label={t('settings.font_size', 'Font Size')} description={t('settings.font_size_desc', 'Size of text throughout the app')}>
+                <SelectField value={settings.fontSize} onChange={(v) => updateSettings({ fontSize: v })} options={localizedFontSizes} />
               </SettingRow>
-              <SettingRow label="Furigana Reading Mode" description="Adaptive cognitive fading, on demand tap-to-reveal, or permanent display">
+              <SettingRow label={t('settings.furigana_title', 'Furigana Reading Mode')} description={t('settings.furigana_desc', 'Adaptive cognitive fading, on demand tap-to-reveal, or permanent display')}>
                 <div className="flex gap-1.5 flex-wrap justify-end">
-                  {FURIGANA_MODES.map(({ value, label, desc }) => (
+                  {localizedFuriganaModes.map(({ value, label, desc }) => (
                     <ChoicePill
                       key={value}
                       active={(settings.furiganaMode || 'adaptive') === value}
@@ -565,13 +575,13 @@ export default function SettingsPage() {
                   ))}
                 </div>
               </SettingRow>
-              <SettingRow label="Show Romaji" description="Display romanized pronunciation in Grammar & Vocabulary">
+              <SettingRow label={t('settings.romaji', 'Show Romaji')} description={t('settings.romaji_desc', 'Display romanized pronunciation in Grammar & Vocabulary')}>
                 <Toggle enabled={settings.romaji} onChange={(v) => updateSettings({ romaji: v })} />
               </SettingRow>
-              <SettingRow label="Compact Mode" description="Reduce spacing to fit more content">
+              <SettingRow label={t('settings.compact', 'Compact Mode')} description={t('settings.compact_desc', 'Reduce spacing to fit more content')}>
                 <Toggle enabled={settings.compactMode} onChange={(v) => updateSettings({ compactMode: v })} />
               </SettingRow>
-              <SettingRow label="Animations" description="Enable motion effects and transitions" noBorder>
+              <SettingRow label={t('settings.animations', 'Animations')} description={t('settings.animations_desc', 'Enable motion effects and transitions')} noBorder>
                 <Toggle enabled={settings.animations} onChange={(v) => updateSettings({ animations: v })} />
               </SettingRow>
             </SectionCard>
@@ -582,8 +592,8 @@ export default function SettingsPage() {
       case 'study':
         return (
           <div className="space-y-4">
-            <SectionCard title="Goals" emoji="🎯">
-              <SettingRow label="Daily XP Goal" description="Tracked live on your Dashboard" noBorder>
+            <SectionCard title={t('settings.goals_title', 'Goals')} emoji="🎯">
+              <SettingRow label={t('settings.daily_goal', 'Daily XP Goal')} description={t('settings.daily_goal_desc', 'Tracked live on your Dashboard')} noBorder>
                 <div className="flex gap-1.5 flex-wrap justify-end">
                   {DAILY_GOALS.map((g) => (
                     <ChoicePill key={g} active={settings.dailyGoal === g} onClick={() => updateSettings({ dailyGoal: g })}>
@@ -594,10 +604,10 @@ export default function SettingsPage() {
               </SettingRow>
             </SectionCard>
 
-            <SectionCard title="SRS Settings" emoji="🔁">
-              <SettingRow label="Review Interval Mode" description="How aggressively to space your reviews" noBorder>
+            <SectionCard title={t('settings.srs_title', 'SRS Settings')} emoji="🔁">
+              <SettingRow label={t('settings.srs_interval', 'Review Interval Mode')} description={t('settings.srs_interval_desc', 'How aggressively to space your reviews')} noBorder>
                 <div className="flex gap-1.5">
-                  {SRS_INTERVALS.map(({ value, label, desc }) => (
+                  {localizedSrsIntervals.map(({ value, label, desc }) => (
                     <ChoicePill key={value} active={settings.srsInterval === value} onClick={() => updateSettings({ srsInterval: value })} title={desc}>
                       {label}
                     </ChoicePill>
@@ -606,11 +616,11 @@ export default function SettingsPage() {
               </SettingRow>
             </SectionCard>
 
-            <SectionCard title="Lesson Preferences" emoji="📖">
-              <SettingRow label="Show Translation" description="Display English translations during lessons (off shows a tap-to-reveal)">
+            <SectionCard title={t('settings.lesson_prefs_title', 'Lesson Preferences')} emoji="📖">
+              <SettingRow label={t('settings.show_translation', 'Show Translation')} description={t('settings.show_translation_desc', 'Display English translations during lessons (off shows a tap-to-reveal)')}>
                 <Toggle enabled={settings.showTranslation} onChange={(v) => updateSettings({ showTranslation: v })} />
               </SettingRow>
-              <SettingRow label="Auto-Play Audio" description="Automatically play audio for new words in Lessons" noBorder>
+              <SettingRow label={t('settings.auto_play', 'Auto-Play Audio')} description={t('settings.auto_play_desc', 'Automatically play audio for new words in Lessons')} noBorder>
                 <Toggle enabled={settings.autoPlay} onChange={(v) => updateSettings({ autoPlay: v })} />
               </SettingRow>
             </SectionCard>
@@ -621,10 +631,10 @@ export default function SettingsPage() {
       case 'notifications':
         return (
           <SectionCard>
-            <SettingRow label="Daily Study Reminder" description="A real browser notification while the app is open, at the time below">
+            <SettingRow label={t('settings.reminder', 'Daily Study Reminder')} description={t('settings.reminder_desc', 'A real browser notification while the app is open, at the time below')}>
               <Toggle enabled={settings.dailyReminder} onChange={(v) => updateSettings({ dailyReminder: v })} />
             </SettingRow>
-            <SettingRow label="Reminder Time" description="When to send your daily reminder">
+            <SettingRow label={t('settings.reminder_time', 'Reminder Time')} description={t('settings.reminder_time_desc', 'When to send your daily reminder')}>
               <input
                 type="time"
                 value={settings.reminderTime}
@@ -633,13 +643,13 @@ export default function SettingsPage() {
                 className="px-3 py-2 rounded-xl text-sm border focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors bg-surface border-border text-foreground disabled:opacity-40"
               />
             </SettingRow>
-            <SettingRow label="Streak Alerts" description="Notify you when you hit a streak milestone">
+            <SettingRow label={t('settings.streak_alerts', 'Streak Alerts')} description={t('settings.streak_alerts_desc', 'Notify you when you hit a streak milestone')}>
               <Toggle enabled={settings.streakAlert} onChange={(v) => updateSettings({ streakAlert: v })} />
             </SettingRow>
-            <SettingRow label="Achievement Alerts" description="Notify you when you unlock a badge">
+            <SettingRow label={t('settings.achievement_alerts', 'Achievement Alerts')} description={t('settings.achievement_alerts_desc', 'Notify you when you unlock a badge')}>
               <Toggle enabled={settings.achievementAlert} onChange={(v) => updateSettings({ achievementAlert: v })} />
             </SettingRow>
-            <SettingRow label="Weekly Progress Report" description="An in-app summary of your week, every 7 days" noBorder>
+            <SettingRow label={t('settings.weekly_report', 'Weekly Progress Report')} description={t('settings.weekly_report_desc', 'An in-app summary of your week, every 7 days')} noBorder>
               <Toggle enabled={settings.weeklyReport} onChange={(v) => updateSettings({ weeklyReport: v })} />
             </SettingRow>
           </SectionCard>
@@ -649,13 +659,13 @@ export default function SettingsPage() {
       case 'audio':
         return (
           <SectionCard>
-            <SettingRow label="Auto-Speak" description="Automatically read new words aloud in Vocabulary & Kanji">
+            <SettingRow label={t('settings.auto_speak', 'Auto-Speak')} description={t('settings.auto_speak_desc', 'Automatically read new words aloud in Vocabulary & Kanji')}>
               <Toggle enabled={settings.autoSpeak} onChange={(v) => updateSettings({ autoSpeak: v })} />
             </SettingRow>
-            <SettingRow label="Slow Speech Mode" description="Caps playback speed for clearer pronunciation">
+            <SettingRow label={t('settings.slow_speech', 'Slow Speech Mode')} description={t('settings.slow_speech_desc', 'Caps playback speed for clearer pronunciation')}>
               <Toggle enabled={settings.slowMode} onChange={(v) => updateSettings({ slowMode: v })} />
             </SettingRow>
-            <SettingRow label="Speech Rate" description={`Speed: ${settings.speechRate}x — applies to every audio button in the app`}>
+            <SettingRow label={t('settings.speech_rate', 'Speech Rate')} description={t('settings.speech_rate_desc', { rate: settings.speechRate }, `Speed: ${settings.speechRate}x — applies to every audio button in the app`)}>
               <input
                 type="range" min="0.5" max="2" step="0.1"
                 value={settings.speechRate}
@@ -663,7 +673,7 @@ export default function SettingsPage() {
                 className="w-32 accent-red-500"
               />
             </SettingRow>
-            <SettingRow label="Speech Pitch" description={`Pitch: ${settings.speechPitch}x`} noBorder>
+            <SettingRow label={t('settings.speech_pitch', 'Speech Pitch')} description={t('settings.speech_pitch_desc', { pitch: settings.speechPitch }, `Pitch: ${settings.speechPitch}x`)} noBorder>
               <input
                 type="range" min="0.5" max="2" step="0.1"
                 value={settings.speechPitch}
@@ -678,33 +688,32 @@ export default function SettingsPage() {
       case 'privacy':
         return (
           <div className="space-y-4">
-            <SectionCard title="Analytics" emoji="📊">
+            <SectionCard title={t('settings.analytics_title', 'Analytics')} emoji="📊">
               <p className="text-xs text-muted-foreground mb-3 -mt-2">
-                This build doesn't send analytics or crash reports to any server — these
-                preferences are saved for if/when that's added, and won't change current behavior.
+                {t('settings.analytics_note', "This build doesn't send analytics or crash reports to any server — these preferences are saved for if/when that's added, and won't change current behavior.")}
               </p>
-              <SettingRow label="Usage Analytics" description="Help improve the app with anonymous data">
+              <SettingRow label={t('settings.usage_analytics', 'Usage Analytics')} description={t('settings.usage_analytics_desc', 'Help improve the app with anonymous data')}>
                 <Toggle enabled={settings.analytics} onChange={(v) => updateSettings({ analytics: v })} />
               </SettingRow>
-              <SettingRow label="Crash Reports" description="Send crash logs to help fix bugs" noBorder>
+              <SettingRow label={t('settings.crash_reports', 'Crash Reports')} description={t('settings.crash_reports_desc', 'Send crash logs to help fix bugs')} noBorder>
                 <Toggle enabled={settings.crashReports} onChange={(v) => updateSettings({ crashReports: v })} />
               </SettingRow>
             </SectionCard>
 
-            <SectionCard title="Your Data" emoji="📦">
+            <SectionCard title={t('settings.your_data_title', 'Your Data')} emoji="📦">
               <button
                 onClick={handleExportData}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium border transition-colors bg-surface border-border text-foreground/80 hover:bg-muted"
               >
                 <Download className="w-4 h-4 text-blue-400" />
                 <div className="text-left">
-                  <p className="font-semibold">Export Data</p>
-                  <p className="text-xs text-muted-foreground">Download your profile & preferences as JSON</p>
+                  <p className="font-semibold">{t('settings.export_data', 'Export Data')}</p>
+                  <p className="text-xs text-muted-foreground">{t('settings.export_data_desc', 'Download your profile & preferences as JSON')}</p>
                 </div>
               </button>
             </SectionCard>
 
-            <SectionCard title="Danger Zone" emoji="⚠️">
+            <SectionCard title={t('settings.danger_title', 'Danger Zone')} emoji="⚠️">
               <div className="space-y-3">
                 <button
                   onClick={() => setShowResetSettingsConfirm(true)}
@@ -712,8 +721,8 @@ export default function SettingsPage() {
                 >
                   <RefreshCcw className="w-4 h-4 text-blue-400" />
                   <div className="text-left">
-                    <p className="font-semibold">Reset Settings to Defaults</p>
-                    <p className="text-xs text-muted-foreground">Restore every preference on this page</p>
+                    <p className="font-semibold">{t('settings.reset_settings', 'Reset Settings to Defaults')}</p>
+                    <p className="text-xs text-muted-foreground">{t('settings.reset_settings_desc', 'Restore every preference on this page')}</p>
                   </div>
                 </button>
                 <button
@@ -722,8 +731,8 @@ export default function SettingsPage() {
                 >
                   <RotateCcw className="w-4 h-4" />
                   <div className="text-left">
-                    <p className="font-semibold">Reset Progress</p>
-                    <p className="text-xs text-orange-500/60 dark:text-orange-400/60">Clear all lesson, kanji & vocab progress</p>
+                    <p className="font-semibold">{t('settings.reset_progress_btn', 'Reset Progress')}</p>
+                    <p className="text-xs text-orange-500/60 dark:text-orange-400/60">{t('settings.reset_progress_desc', 'Clear all lesson, kanji & vocab progress')}</p>
                   </div>
                 </button>
                 <button
@@ -732,8 +741,8 @@ export default function SettingsPage() {
                 >
                   <Trash2 className="w-4 h-4" />
                   <div className="text-left">
-                    <p className="font-semibold">Delete Account</p>
-                    <p className="text-xs text-red-500/60 dark:text-red-400/60">Permanently remove all your data</p>
+                    <p className="font-semibold">{t('settings.delete_account', 'Delete Account')}</p>
+                    <p className="text-xs text-red-500/60 dark:text-red-400/60">{t('settings.delete_account_desc', 'Permanently remove all your data')}</p>
                   </div>
                 </button>
               </div>
@@ -840,39 +849,39 @@ export default function SettingsPage() {
         show={showResetConfirm}
         onClose={() => setShowResetConfirm(false)}
         onConfirm={handleResetProgress}
-        title="Reset All Progress?"
-        message="This will permanently delete all your lesson, kanji, and vocabulary progress. This cannot be undone."
-        confirmLabel="Yes, Reset"
+        title={t('settings.confirm_reset_title', 'Reset All Progress?')}
+        message={t('settings.confirm_reset_msg', 'This will permanently delete all your lesson, kanji, and vocabulary progress. This cannot be undone.')}
+        confirmLabel={t('settings.confirm_reset_yes', 'Yes, Reset')}
         confirmColor="bg-orange-500"
       />
       <ConfirmModal
         show={showResetSettingsConfirm}
         onClose={() => setShowResetSettingsConfirm(false)}
         onConfirm={() => { resetToDefaults(); setShowResetSettingsConfirm(false); toast.success(t('toast.settings_reset', 'Settings restored to defaults')) }}
-        title="Reset Settings?"
-        message="This restores every preference on this page to its default value. Your progress and account are not affected."
-        confirmLabel="Reset Settings"
+        title={t('settings.confirm_settings_title', 'Reset Settings?')}
+        message={t('settings.confirm_settings_msg', 'This restores every preference on this page to its default value. Your progress and account are not affected.')}
+        confirmLabel={t('settings.confirm_settings_yes', 'Reset Settings')}
         confirmColor="bg-blue-500"
       />
       <ConfirmModal
         show={showDeleteConfirm}
         onClose={() => setShowDeleteConfirm(false)}
         onConfirm={handleDeleteAccount}
-        title="Delete Account?"
-        message="This permanently deletes all your progress, settings, and profile data, then signs you out. This cannot be undone."
-        confirmLabel="Delete My Data"
+        title={t('settings.confirm_delete_title', 'Delete Account?')}
+        message={t('settings.confirm_delete_msg', 'This permanently deletes all your progress, settings, and profile data, then signs you out. This cannot be undone.')}
+        confirmLabel={t('settings.confirm_delete_yes', 'Delete My Data')}
         confirmColor="bg-red-500"
       />
 
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">⚙️ Settings</h1>
-          <p className="text-sm mt-1 text-muted-foreground">Manage your account and app preferences</p>
+          <h1 className="text-2xl font-bold text-foreground">⚙️ {t('settings.page_title', 'Settings')}</h1>
+          <p className="text-sm mt-1 text-muted-foreground">{t('settings.page_subtitle', 'Manage your account and app preferences')}</p>
         </div>
         <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-500/20">
           <CheckCircle2 className="w-3.5 h-3.5" />
-          Preferences save automatically
+          {t('settings.autosave_badge', 'Preferences save automatically')}
         </div>
       </motion.div>
 
@@ -885,14 +894,14 @@ export default function SettingsPage() {
               type="text"
               value={settingsQuery}
               onChange={(e) => setSettingsQuery(e.target.value)}
-              placeholder="Search settings…"
+              placeholder={t('settings.search_placeholder', 'Search settings…')}
               className="flex-1 bg-transparent outline-none text-xs text-foreground placeholder:text-muted-foreground/70"
             />
           </div>
 
           <nav className="rounded-2xl border overflow-hidden bg-surface border-border">
             {filteredSections.map(({ id, label, icon: Icon, tint }, i) => {
-              const t = SECTION_TINT[tint]
+              const tintCls = SECTION_TINT[tint]
               const active = activeSection === id
               return (
                 <button
@@ -904,8 +913,8 @@ export default function SettingsPage() {
                     ${active ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}
                   `}
                 >
-                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${active ? 'bg-red-500/15' : t.bg}`}>
-                    <Icon className={`w-3.5 h-3.5 ${active ? 'text-red-600 dark:text-red-400' : t.text}`} />
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${active ? 'bg-red-500/15' : tintCls.bg}`}>
+                    <Icon className={`w-3.5 h-3.5 ${active ? 'text-red-600 dark:text-red-400' : tintCls.text}`} />
                   </div>
                   {label}
                   {active && <ChevronRight className="w-3.5 h-3.5 ml-auto" />}
@@ -913,7 +922,7 @@ export default function SettingsPage() {
               )
             })}
             {filteredSections.length === 0 && (
-              <p className="px-4 py-6 text-center text-xs text-muted-foreground">No settings match "{settingsQuery}"</p>
+              <p className="px-4 py-6 text-center text-xs text-muted-foreground">{t('settings.no_match', { query: settingsQuery }, `No settings match "${settingsQuery}"`)}</p>
             )}
           </nav>
         </div>

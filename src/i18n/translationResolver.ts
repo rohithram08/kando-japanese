@@ -2,43 +2,37 @@ import { CurriculumTranslationEntry, CurriculumTranslations, UiTranslations } fr
 import { normalizeLocale, DEFAULT_LOCALE, applyLocaleDirection, isSupportedLocale } from './languageUtils'
 import { useSettingsStore } from '../store/settingsStore'
 
-import enCurriculum from '../locales/en/curriculum.json'
-import enUi from '../locales/en/ui.json'
-import taCurriculum from '../locales/ta/curriculum.json'
-import taUi from '../locales/ta/ui.json'
-import hiCurriculum from '../locales/hi/curriculum.json'
-import hiUi from '../locales/hi/ui.json'
-import esUi from '../locales/es/ui.json'
-import koUi from '../locales/ko/ui.json'
-import zhCnUi from '../locales/zh-CN/ui.json'
-import ptUi from '../locales/pt/ui.json'
-import viUi from '../locales/vi/ui.json'
-import frUi from '../locales/fr/ui.json'
-import deUi from '../locales/de/ui.json'
-import zhTwUi from '../locales/zh-TW/ui.json'
-import idUi from '../locales/id/ui.json'
+// Dynamically import all UI and Curriculum translations from locales folder
+const uiModules = import.meta.glob('../locales/*/ui.json', { eager: true }) as Record<string, { default: UiTranslations }>
+const curriculumModules = import.meta.glob('../locales/*/curriculum.json', { eager: true }) as Record<string, { default: CurriculumTranslations }>
 
-const CURRICULUM_DATA: Record<string, CurriculumTranslations> = {
-  en: enCurriculum as CurriculumTranslations,
-  ta: taCurriculum as CurriculumTranslations,
-  hi: hiCurriculum as CurriculumTranslations,
+export const UI_DATA: Record<string, UiTranslations> = {}
+for (const [path, mod] of Object.entries(uiModules)) {
+  const code = path.match(/locales\/([^/]+)\//)?.[1]
+  if (code && mod?.default) {
+    UI_DATA[code] = mod.default
+    UI_DATA[code.toLowerCase()] = mod.default
+  }
 }
 
-export const UI_DATA: Record<string, UiTranslations> = {
-  en: enUi as UiTranslations,
-  ta: taUi as UiTranslations,
-  hi: hiUi as UiTranslations,
-  es: esUi as UiTranslations,
-  ko: koUi as UiTranslations,
-  'zh-CN': zhCnUi as UiTranslations,
-  'zh-cn': zhCnUi as UiTranslations,
-  pt: ptUi as UiTranslations,
-  vi: viUi as UiTranslations,
-  fr: frUi as UiTranslations,
-  de: deUi as UiTranslations,
-  'zh-TW': zhTwUi as UiTranslations,
-  'zh-tw': zhTwUi as UiTranslations,
-  id: idUi as UiTranslations,
+const CURRICULUM_DATA: Record<string, CurriculumTranslations> = {}
+for (const [path, mod] of Object.entries(curriculumModules)) {
+  const code = path.match(/locales\/([^/]+)\//)?.[1]
+  if (code && mod?.default) {
+    CURRICULUM_DATA[code] = mod.default
+    CURRICULUM_DATA[code.toLowerCase()] = mod.default
+  }
+}
+
+/**
+ * True only when real UI translation data is bundled (or registered) for the
+ * locale. SUPPORTED_LOCALES is a catalogue of *intended* languages; this is the
+ * source of truth for which of them actually translate the interface today.
+ */
+export function hasUiTranslations(locale?: string | null): boolean {
+  if (!locale) return false
+  const raw = locale.trim().replace(/_/g, '-')
+  return Boolean(UI_DATA[raw] || UI_DATA[raw.toLowerCase()])
 }
 
 const MAX_MISSING_KEYS = 500

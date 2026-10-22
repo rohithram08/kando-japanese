@@ -291,7 +291,7 @@ export default function SRSReview() {
             {t('srs.checkpoint_title', 'Batch Checkpoint Reached!')}
           </h2>
           <p className="text-sm mt-1 text-muted-foreground">
-            {t('srs.checkpoint_desc', `You have reviewed ${sessionStats.completed} cards so far with ${batchAccuracy}% accuracy.`)}
+            {t('srs.checkpoint_desc', { completed: sessionStats.completed, accuracy: batchAccuracy }, `You have reviewed ${sessionStats.completed} cards so far with ${batchAccuracy}% accuracy.`)}
           </p>
         </div>
 

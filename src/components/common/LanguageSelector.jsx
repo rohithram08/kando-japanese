@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Check, Globe } from 'lucide-react'
 import { useSettingsStore } from '../../store/settingsStore'
-import { SUPPORTED_LOCALES, normalizeLocale } from '../../i18n'
+import { SUPPORTED_LOCALES, normalizeLocale, hasUiTranslations } from '../../i18n'
 
-const LANGUAGES = SUPPORTED_LOCALES
+// Only offer languages whose interface is actually translated. Listing the rest
+// made the picker look like it worked while the UI silently stayed in English.
+const LANGUAGES = SUPPORTED_LOCALES.filter((l) => hasUiTranslations(l.code))
 
 const LanguageSelector = ({ compact = false, onLanguageChange }) => {
   const displayLanguage = useSettingsStore(
