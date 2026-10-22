@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, Star, Menu, LogOut } from 'lucide-react'
+import { Bell, Star, Menu, LogOut, Sparkles } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useNotificationStore } from '../../store/notificationStore'
@@ -13,6 +13,7 @@ import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
+import NotificationCenter from '../notifications/NotificationCenter'
 
 // ── Avatar data (same as ProfilePage) ───────────────────────
 const AVATARS = [
@@ -42,19 +43,6 @@ function getLevelColor(lvl) {
   return 'from-yellow-400 to-amber-500'
 }
 
-// ── Relative time formatter for real notification timestamps ───
-function timeAgo(isoString) {
-  const diffMs = Date.now() - new Date(isoString).getTime()
-  const min = Math.floor(diffMs / 60000)
-  if (min < 1) return 'Just now'
-  if (min < 60) return `${min}m ago`
-  const hr = Math.floor(min / 60)
-  if (hr < 24) return `${hr}h ago`
-  const day = Math.floor(hr / 24)
-  if (day < 7) return `${day}d ago`
-  return new Date(isoString).toLocaleDateString('en', { month: 'short', day: 'numeric' })
-}
-
 const Navbar = ({ onMobileMenuToggle }) => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -67,8 +55,6 @@ const Navbar = ({ onMobileMenuToggle }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
 
   const notifications = useNotificationStore((s) => s.notifications)
-  const markRead = useNotificationStore((s) => s.markRead)
-  const markAllRead = useNotificationStore((s) => s.markAllRead)
   const unreadCount = notifications.filter((n) => n.unread).length
 
   // ── Get user avatar ─────────────────────────────────────
@@ -104,12 +90,6 @@ const Navbar = ({ onMobileMenuToggle }) => {
     document.addEventListener('mousedown', handler)
     return () => document.removeEventListener('mousedown', handler)
   }, [])
-
-  const handleNotificationClick = (n) => {
-    markRead(n.id)
-    setShowNotifications(false)
-    if (n.link) navigate(n.link)
-  }
 
   const handleLogout = async () => {
     setShowProfileMenu(false)
@@ -181,98 +161,40 @@ const Navbar = ({ onMobileMenuToggle }) => {
             <ThemeToggle variant="cycle" />
           </div>
 
-          {/* ── Notifications ────────────────────────── */}
+          {/* ── Kando Slime Notification Center ───────── */}
           <div className="relative" data-menu>
             <motion.button
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => { setShowNotifications(!showNotifications); setShowProfileMenu(false) }}
-              className="relative w-9 h-9 rounded-xl flex items-center justify-center border border-border
-                         bg-muted hover:bg-muted/70 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Notifications"
+              whileTap={{ scale: 0.94 }}
+              onClick={() => {
+                setShowNotifications(!showNotifications)
+                setShowProfileMenu(false)
+              }}
+              className="kando-notification-trigger"
+              aria-label={unreadCount > 0 ? `Notifications, ${unreadCount} unread` : 'Notifications'}
+              aria-expanded={showNotifications}
+              aria-haspopup="dialog"
             >
-              <Bell className="w-4 h-4" />
+              <Bell className="w-[18px] h-[18px]" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[10px] font-bold flex items-center justify-center">
-                  {unreadCount}
-                </span>
+                <motion.span
+                  key={unreadCount}
+                  initial={{ scale: 0.6 }}
+                  animate={{ scale: 1 }}
+                  className="kando-notification-count"
+                >
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </motion.span>
               )}
+              <span className="kando-notification-spark" aria-hidden="true">
+                <Sparkles size={11} />
+              </span>
             </motion.button>
 
-            <AnimatePresence>
-              {showNotifications && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-80 rounded-2xl shadow-2xl overflow-hidden border border-border bg-surface z-50"
-                >
-                  <div className="px-4 py-3 border-b border-border flex items-center justify-between">
-                    <span className="font-semibold text-sm text-foreground">
-                      {t('nav.notifications', displayLanguage, 'Notifications')}
-                    </span>
-                    {unreadCount > 0 && (
-                      <button
-                        onClick={markAllRead}
-                        className="text-primary hover:opacity-80 text-xs font-medium transition-opacity"
-                      >
-                        {t('nav.mark_all_read', displayLanguage, 'Mark all read')}
-                      </button>
-                    )}
-                  </div>
-
-                  <div className="divide-y divide-border max-h-80 overflow-y-auto">
-                    {notifications.length === 0 ? (
-                      <div className="px-4 py-10 text-center">
-                        <Bell className="w-7 h-7 mx-auto mb-2 text-muted-foreground/40" />
-                        <p className="text-sm text-muted-foreground">
-                          {t('nav.no_notifications', displayLanguage, 'No notifications yet')}
-                        </p>
-                        <p className="text-xs text-muted-foreground/70 mt-0.5">
-                          We'll let you know about reviews, streaks, and badges here
-                        </p>
-                      </div>
-                    ) : (
-                      notifications.map((n) => (
-                        <button
-                          key={n.id}
-                          onClick={() => handleNotificationClick(n)}
-                          className={`w-full text-left px-4 py-3 transition-colors hover:bg-muted ${n.unread ? 'bg-blue-500/5' : ''}`}
-                        >
-                          <div className="flex items-start gap-3">
-                            <span className="text-xl mt-0.5 shrink-0">{n.icon}</span>
-                            <div className="flex-1 min-w-0">
-                              {n.title && (
-                                <p className={`text-sm font-semibold ${n.unread ? 'text-foreground' : 'text-muted-foreground'}`}>
-                                  {n.title}
-                                </p>
-                              )}
-                              <p className={`text-sm ${n.unread ? 'text-foreground' : 'text-muted-foreground'}`}>
-                                {n.text}
-                              </p>
-                              <p className="text-xs text-muted-foreground mt-0.5">{timeAgo(n.time)}</p>
-                            </div>
-                            {n.unread && <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />}
-                          </div>
-                        </button>
-                      ))
-                    )}
-                  </div>
-
-                  {notifications.length > 0 && (
-                    <div className="px-4 py-2 border-t border-border">
-                      <button
-                        onClick={() => useNotificationStore.getState().clearNotifications()}
-                        className="text-center w-full text-xs py-1 text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        Clear all
-                      </button>
-                    </div>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <NotificationCenter
+              isOpen={showNotifications}
+              onClose={() => setShowNotifications(false)}
+            />
           </div>
 
           {/* ── Profile Avatar with Dropdown ─────────── */}

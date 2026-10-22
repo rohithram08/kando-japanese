@@ -18,6 +18,8 @@ import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
 import toast from 'react-hot-toast'
+import { useNotificationStore } from '../store/notificationStore'
+import { requestNotificationPermission, sendBrowserNotification } from '../services/browserNotificationService'
 
 // ── Avatar Collection ──────────────────────────────────────
 const AVATARS = [
@@ -632,7 +634,15 @@ export default function SettingsPage() {
         return (
           <SectionCard>
             <SettingRow label={t('settings.reminder', 'Daily Study Reminder')} description={t('settings.reminder_desc', 'A real browser notification while the app is open, at the time below')}>
-              <Toggle enabled={settings.dailyReminder} onChange={(v) => updateSettings({ dailyReminder: v })} />
+              <Toggle
+                enabled={settings.dailyReminder}
+                onChange={async (v) => {
+                  updateSettings({ dailyReminder: v })
+                  if (v) {
+                    await requestNotificationPermission()
+                  }
+                }}
+              />
             </SettingRow>
             <SettingRow label={t('settings.reminder_time', 'Reminder Time')} description={t('settings.reminder_time_desc', 'When to send your daily reminder')}>
               <input
@@ -649,8 +659,45 @@ export default function SettingsPage() {
             <SettingRow label={t('settings.achievement_alerts', 'Achievement Alerts')} description={t('settings.achievement_alerts_desc', 'Notify you when you unlock a badge')}>
               <Toggle enabled={settings.achievementAlert} onChange={(v) => updateSettings({ achievementAlert: v })} />
             </SettingRow>
-            <SettingRow label={t('settings.weekly_report', 'Weekly Progress Report')} description={t('settings.weekly_report_desc', 'An in-app summary of your week, every 7 days')} noBorder>
+            <SettingRow label={t('settings.weekly_report', 'Weekly Progress Report')} description={t('settings.weekly_report_desc', 'An in-app summary of your week, every 7 days')}>
               <Toggle enabled={settings.weeklyReport} onChange={(v) => updateSettings({ weeklyReport: v })} />
+            </SettingRow>
+            <SettingRow label={t('settings.test_slime_notif', 'Test Slime Notification')} description={t('settings.test_slime_notif_desc', 'Preview a Duolingo-style slime notification in the bell center and desktop')} noBorder>
+              <button
+                type="button"
+                onClick={() => {
+                  const name = profile?.username || user?.email?.split('@')[0] || 'Learner'
+                  useNotificationStore.getState().upsert({
+                    id: `test-reminder-${Date.now()}`,
+                    type: 'daily_reminder',
+                    category: 'reminders',
+                    slimeMood: 'daily',
+                    greeting: `Hi ${name}! It's Slime.`,
+                    title: "It's time for your daily Japanese lesson",
+                    text: '⏰ Take 3 minutes now to complete a quick story or lesson.',
+                    link: '/reading',
+                    primaryAction: { label: 'Start Lesson', link: '/reading' },
+                    secondaryAction: { label: 'Remind me later', action: 'snooze' },
+                  })
+                  sendBrowserNotification({
+                    title: `Hi ${name}! It's Slime 🟢`,
+                    body: "⏰ Time for your daily Japanese lesson. Take 3 minutes now to complete it!",
+                    url: '/reading',
+                  })
+                  toast.success('Slime notification sent! Check the bell icon above 🔔', {
+                    icon: '🟢',
+                    style: {
+                      borderRadius: '16px',
+                      background: '#1a2419',
+                      color: '#bef264',
+                      border: '1px solid rgba(190, 242, 100, 0.2)',
+                    },
+                  })
+                }}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-lime-400/20 text-lime-400 hover:bg-lime-400/30 border border-lime-400/30 transition-colors"
+              >
+                Send Test Alert
+              </button>
             </SettingRow>
           </SectionCard>
         )
