@@ -178,9 +178,9 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
     const intervalMultiplier = multipliers[intervalMode] || 1.0;
     intervalDays = Math.max(1, Math.round(intervalDays * intervalMultiplier));
 
-    const nextReview = new Date();
-    nextReview.setDate(nextReview.getDate() + intervalDays);
     const today = new Date(todayStr);
+    const nextReview = new Date(today);
+    nextReview.setDate(nextReview.getDate() + intervalDays);
     const isMastered = repetitions >= 8 && easeFactor >= 2.0;
 
     await db.update(srsCards)

@@ -1,28 +1,6 @@
 // src/services/translationService.js
-//
-// Live machine translation for languages that don't have curated,
-// human-written content in the lesson data (only English, Tamil, and
-// Hindi do — see meaning_en/meaning_ta/meaning_hi in src/data). For every
-// other language on the Native Language picker, this calls MyMemory — a
-// free, CORS-enabled, no-API-key translation service that works directly
-// from the browser — and caches results so the same word is never
-// re-translated twice.
-//
-// This is honest machine translation, not curated content: it's clearly
-// labeled as such in the UI (see TranslatedText.jsx and useTranslatedText.js)
-// so learners know the difference in reliability from the human-written
-// English/Tamil/Hindi.
+// Curated localization lookup and helpers for supported native languages.
 
-const CACHE_KEY = 'nihongo_translation_cache'
-const CACHE_VERSION = 1
-const MAX_CACHE_ENTRIES = 2000
-
-// Internal native_language values (full words, matching profile.native_language)
-// → MyMemory's ISO 639-1 target codes. Covers every non-English language —
-// note Tamil and Hindi are included here too: while their word meanings
-// are curated (meaning_ta/meaning_hi), example sentences have no curated
-// translation in any language, so those still need a live call even for
-// Tamil/Hindi.
 export const MT_LANG_CODES = {
   tamil: 'ta',
   hindi: 'hi',
@@ -33,65 +11,25 @@ export const MT_LANG_CODES = {
   spanish: 'es',
   arabic: 'ar',
   french: 'fr',
-}
+};
 
 // Languages with curated, human-written WORD MEANINGS in the lesson data
-// (meaning_en / meaning_ta / meaning_hi). Used only for UI labeling
-// ("hand-written" vs "(live)") — translateText() itself doesn't care
-// about this distinction, callers decide whether to prefer curated data.
-export const CURATED_LANGUAGES = ['english', 'tamil', 'hindi']
-export const MACHINE_TRANSLATED_LANGUAGES = Object.keys(MT_LANG_CODES)
-
-function loadCache() {
-  try {
-    const raw = localStorage.getItem(CACHE_KEY)
-    if (!raw) return {}
-    const parsed = JSON.parse(raw)
-    return parsed.v === CACHE_VERSION ? parsed.entries : {}
-  } catch {
-    return {}
-  }
-}
-
-function saveCache(entries) {
-  try {
-    const keys = Object.keys(entries)
-    // Trim oldest entries if the cache grows too large
-    const trimmed = keys.length > MAX_CACHE_ENTRIES
-      ? Object.fromEntries(keys.slice(keys.length - MAX_CACHE_ENTRIES).map((k) => [k, entries[k]]))
-      : entries
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ v: CACHE_VERSION, entries: trimmed }))
-  } catch {
-    /* localStorage full or unavailable — non-critical, cache just won't persist */
-  }
-}
-
-let memoryCache = loadCache()
-const inFlight = new Map() // dedupes simultaneous requests for the same text+lang
-
-function cacheKey(text, langCode) {
-  return `${langCode}::${text}`
-}
+export const CURATED_LANGUAGES = ['english', 'tamil', 'hindi'];
+export const MACHINE_TRANSLATED_LANGUAGES = Object.keys(MT_LANG_CODES);
 
 /**
  * Translate `text` (English) into the target language.
- * `langCode` is a full native_language value ('chinese', 'tamil', etc.).
- * Returns the original text unchanged for English, for languages with no
- * MT mapping, or if translation fails for any reason — this never throws
- * and never leaves the UI blank. Callers that have curated, hand-written
- * data for a field (e.g. word meanings for english/tamil/hindi) should
- * prefer that over calling this at all — see isCurated().
+ * Third-party machine translation is disabled in favor of curated localization.
+ * Returns the original text safely without leaking user data.
  */
 export async function translateText(text, _langCode) {
-  // Browser-direct third-party MT calls are disabled in favor of curated localization.
-  // Returns original text safely without leaking user data or failing silently.
-  return text || ''
+  return text || '';
 }
 
 export function isCurated(langCode) {
-  return CURATED_LANGUAGES.includes(langCode)
+  return CURATED_LANGUAGES.includes(langCode);
 }
 
 export function needsMachineTranslation(langCode) {
-  return langCode in MT_LANG_CODES
+  return langCode in MT_LANG_CODES;
 }
