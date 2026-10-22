@@ -74,15 +74,6 @@ export default function ReadingPage() {
       );
     }
 
-    if (!progressLoaded && loading && !progressMap[story.id]) {
-      return (
-        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-          <div className="w-8 h-8 border-3 border-teal-500/30 border-t-teal-600 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{t('common.loading', 'Loading reading progress...')}</p>
-        </div>
-      );
-    }
-
     const storyProgress = progressMap[story.id] || {
       storyId: story.id,
       status: 'not_started',

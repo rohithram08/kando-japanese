@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
@@ -14,7 +14,6 @@ const SIDEBAR_CLOSED_WIDTH = 72
 const COLLAPSE_STORAGE_KEY = 'nihongo-sidebar-collapsed'
 
 const Layout = () => {
-  const location = useLocation()
   // Watches real app state (SRS due, streaks, badges, level, daily goals)
   // and generates real notifications — runs for the whole authenticated app.
   useNotificationEngine()
@@ -28,7 +27,6 @@ const Layout = () => {
   })
   const [isMobile, setIsMobile] = useState(false)
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false)
-  const [isReady, setIsReady] = useState(true)
 
   const checkMobile = useCallback(() => {
     const mobile = window.innerWidth < MOBILE_BREAKPOINT
@@ -87,19 +85,7 @@ const Layout = () => {
           className="flex-1 min-h-[calc(100vh-4rem)] pb-20 md:pb-6 w-full"
         >
           <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-2.5 sm:py-4">
-            <AnimatePresence mode="wait">
-              {isReady && (
-                <motion.div
-                  key={location.pathname}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 6 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                >
-                  <Outlet />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <Outlet />
           </div>
         </motion.main>
       </div>
