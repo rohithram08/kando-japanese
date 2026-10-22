@@ -141,9 +141,9 @@ export function getJLPTLevel(totalXP) {
 export function getUserLevel(totalXP) {
   if (totalXP <= 0) return 1
 
-  // Quadratic scaling: each level takes slightly more XP
-  // Level 1: 0 XP, Level 2: 50 XP, Level 3: 120, Level 4: 210...
-  // Formula: XP needed for level L = 10 * L * (L + 1) / 2
+  // Quadratic scaling: each level takes progressively more XP
+  // Level 1: 0 XP, Level 2: 30 XP, Level 3: 90, Level 4: 190, Level 5: 340, Level 6: 550...
+  // Formula: XP needed to advance from level L-1 to L = 10 * L * (L + 1) / 2
   let level = 1
   let cumulativeXP = 0
 
@@ -162,18 +162,33 @@ export function getXPForLevel(level) {
 }
 
 export function getUserLevelProgress(totalXP) {
-  const level = getUserLevel(totalXP)
-  let xpAtCurrentLevel = 0
+  const safeXP = Math.max(0, Number(totalXP) || 0)
+  const level = getUserLevel(safeXP)
 
-  for (let i = 1; i <= level; i++) {
-    xpAtCurrentLevel += getXPForLevel(i)
+  // Cumulative XP needed to reach current level
+  let currentLevelXP = 0
+  for (let i = 2; i <= level; i++) {
+    currentLevelXP += getXPForLevel(i)
   }
 
+  // XP required to advance from current level to next level
   const xpForNext = getXPForLevel(level + 1)
-  const xpIntoLevel = totalXP - xpAtCurrentLevel + getXPForLevel(level)
-  const percent = Math.min(Math.round((xpIntoLevel / xpForNext) * 100), 100)
+  const nextLevelXP = currentLevelXP + xpForNext
 
-  return { level, xpIntoLevel, xpForNext, percent }
+  // XP accumulated within current level
+  const xpIntoLevel = Math.max(0, safeXP - currentLevelXP)
+  const percent = xpForNext > 0
+    ? Math.min(100, Math.max(0, Math.round((xpIntoLevel / xpForNext) * 100)))
+    : 100
+
+  return {
+    level,
+    xpIntoLevel,
+    xpForNext,
+    currentLevelXP,
+    nextLevelXP,
+    percent,
+  }
 }
 
 // ── XP Calculator for Activities ──────────────────────────

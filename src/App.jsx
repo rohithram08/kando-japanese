@@ -10,32 +10,56 @@ import { RouteErrorFallback, RouteLoadingFallback } from './components/common/Ro
 // ── Direct / Eager learning pages (instant, zero-waterfall text-first reading) ──
 import ReadingPage from './pages/ReadingPage'
 
-// ── Route-level code-split pages (loaded on demand) ─────────────
-const LoginPage         = lazy(() => import('./components/auth/LoginPage'))
-const RegisterPage      = lazy(() => import('./components/auth/RegisterPage'))
-const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'))
-const Dashboard         = lazy(() => import('./components/dashboard/Dashboard'))
-const LessonsPage       = lazy(() => import('./pages/LessonsPage'))
-const LessonList        = lazy(() => import('./components/lessons/LessonList'))
-const LessonViewer      = lazy(() => import('./components/lessons/LessonViewer'))
-const GrammarPage       = lazy(() => import('./pages/GrammarPage'))
-const KanjiPage         = lazy(() => import('./pages/KanjiPage'))
-const KanjiStudy        = lazy(() => import('./components/kanji/KanjiStudy'))
-const QuizPage          = lazy(() => import('./pages/QuizPage'))
-const QuizEngine        = lazy(() => import('./components/quiz/QuizEngine'))
-const DramaPlayer       = lazy(() => import('./components/drama/DramaPlayer'))
-const SenseiPage        = lazy(() => import('./pages/SenseiPage'))
-const SRSReview         = lazy(() => import('./components/srs/SRSReview'))
-const VocabularyPage    = lazy(() => import('./pages/VocabularyPage'))
-const ProfilePage       = lazy(() => import('./pages/ProfilePage'))
-const UserProfilePage   = lazy(() => import('./pages/UserProfilePage'))
-const ProgressPage      = lazy(() => import('./pages/ProgressPage'))
-const SpeechPage        = lazy(() => import('./pages/SpeechPage'))
-const SettingsPage      = lazy(() => import('./pages/SettingsPage'))
-const AchievementsPage  = lazy(() => import('./pages/AchievementsPage'))
-const KanaPage          = lazy(() => import('./pages/KanaPage'))
-const LandingPage       = lazy(() => import('./pages/LandingPage'))
-const ConversationPracticePage = lazy(() => import('./pages/ConversationPracticePage'))
+// Helper to retry dynamic imports once if a network hiccup or stale bundle occurs
+function lazyWithRetry(importer) {
+  return lazy(async () => {
+    try {
+      return await importer()
+    } catch (err) {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 300))
+        return await importer()
+      } catch (retryErr) {
+        if (typeof window !== 'undefined') {
+          const key = `chunk_retry_${window.location.pathname}`
+          if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1')
+            window.location.reload()
+            return new Promise(() => {})
+          }
+        }
+        throw retryErr
+      }
+    }
+  })
+}
+
+// ── Route-level code-split pages (loaded on demand with auto-retry) ─────────────
+const LoginPage         = lazyWithRetry(() => import('./components/auth/LoginPage'))
+const RegisterPage      = lazyWithRetry(() => import('./components/auth/RegisterPage'))
+const ResetPasswordPage = lazyWithRetry(() => import('./pages/ResetPasswordPage'))
+const Dashboard         = lazyWithRetry(() => import('./components/dashboard/Dashboard'))
+const LessonsPage       = lazyWithRetry(() => import('./pages/LessonsPage'))
+const LessonList        = lazyWithRetry(() => import('./components/lessons/LessonList'))
+const LessonViewer      = lazyWithRetry(() => import('./components/lessons/LessonViewer'))
+const GrammarPage       = lazyWithRetry(() => import('./pages/GrammarPage'))
+const KanjiPage         = lazyWithRetry(() => import('./pages/KanjiPage'))
+const KanjiStudy        = lazyWithRetry(() => import('./components/kanji/KanjiStudy'))
+const QuizPage          = lazyWithRetry(() => import('./pages/QuizPage'))
+const QuizEngine        = lazyWithRetry(() => import('./components/quiz/QuizEngine'))
+const DramaPlayer       = lazyWithRetry(() => import('./components/drama/DramaPlayer'))
+const SenseiPage        = lazyWithRetry(() => import('./pages/SenseiPage'))
+const SRSReview         = lazyWithRetry(() => import('./components/srs/SRSReview'))
+const VocabularyPage    = lazyWithRetry(() => import('./pages/VocabularyPage'))
+const ProfilePage       = lazyWithRetry(() => import('./pages/ProfilePage'))
+const UserProfilePage   = lazyWithRetry(() => import('./pages/UserProfilePage'))
+const ProgressPage      = lazyWithRetry(() => import('./pages/ProgressPage'))
+const SpeechPage        = lazyWithRetry(() => import('./pages/SpeechPage'))
+const SettingsPage      = lazyWithRetry(() => import('./pages/SettingsPage'))
+const AchievementsPage  = lazyWithRetry(() => import('./pages/AchievementsPage'))
+const KanaPage          = lazyWithRetry(() => import('./pages/KanaPage'))
+const LandingPage       = lazyWithRetry(() => import('./pages/LandingPage'))
+const ConversationPracticePage = lazyWithRetry(() => import('./pages/ConversationPracticePage'))
 
 function LazyRoute({ Component, message = 'Loading section...' }) {
   return (

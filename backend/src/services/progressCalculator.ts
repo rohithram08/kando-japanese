@@ -60,11 +60,41 @@ export function getUserLevel(totalXP: number): number {
 
   while (cumulativeXP <= totalXP) {
     level++;
-    cumulativeXP += Math.floor(10 * level * (level + 1) / 2);
+    cumulativeXP += getXPForLevel(level);
     if (level > 200) break;
   }
 
   return level - 1;
+}
+
+export function getXPForLevel(level: number): number {
+  return Math.floor(10 * level * (level + 1) / 2);
+}
+
+export function getUserLevelProgress(totalXP: number) {
+  const safeXP = Math.max(0, Number(totalXP) || 0);
+  const level = getUserLevel(safeXP);
+
+  let currentLevelXP = 0;
+  for (let i = 2; i <= level; i++) {
+    currentLevelXP += getXPForLevel(i);
+  }
+
+  const xpForNext = getXPForLevel(level + 1);
+  const nextLevelXP = currentLevelXP + xpForNext;
+  const xpIntoLevel = Math.max(0, safeXP - currentLevelXP);
+  const percent = xpForNext > 0
+    ? Math.min(100, Math.max(0, Math.round((xpIntoLevel / xpForNext) * 100)))
+    : 100;
+
+  return {
+    level,
+    xpIntoLevel,
+    xpForNext,
+    currentLevelXP,
+    nextLevelXP,
+    percent,
+  };
 }
 
 export function calculateLessonXP(scorePercent: number): number {

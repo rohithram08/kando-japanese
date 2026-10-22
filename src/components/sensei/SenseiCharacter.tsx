@@ -1,11 +1,12 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, OrbitControls, Environment, Html } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls, Html } from '@react-three/drei';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
 import { SenseiBackground } from './SenseiBackground';
 import { SakuraParticles } from './SakuraParticles';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
+import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter2D';
 
 export interface SenseiCharacterProps {
   speechState?: SenseiAnimationState;
@@ -13,6 +14,46 @@ export interface SenseiCharacterProps {
   reducedMotion?: boolean;
   mode?: 'compact' | 'full' | 'portrait';
   targetDirection?: 'left' | 'right' | 'forward' | null;
+}
+
+// ─── WebGL Detection Utility ────────────────────────────────────────────────
+function isWebGLAvailable(): boolean {
+  if (typeof window === 'undefined') return true;
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    );
+  } catch {
+    return false;
+  }
+}
+
+// ─── Map 3D Animation State to 2D State ─────────────────────────────────────
+function to2DAnimationState(state: SenseiAnimationState): HanaAnimationState {
+  switch (state) {
+    case 'greeting':
+    case 'waving':
+      return 'greeting';
+    case 'talking':
+    case 'listening':
+      return 'listening';
+    case 'thinking':
+    case 'confused':
+      return 'thinking';
+    case 'happy':
+      return 'happy';
+    case 'encouraging':
+    case 'teaching':
+    case 'pointing':
+      return 'encouraging';
+    case 'celebrating':
+      return 'celebrating';
+    case 'idle':
+    default:
+      return 'idle';
+  }
 }
 
 // ─── Loading Indicator ────────────────────────────────────────────────────────
@@ -27,14 +68,14 @@ function Loader() {
   );
 }
 
-// ─── Fallback 2D Avatar (Rule 38 Asset Blocker) ─────────────────────────────
+// ─── Fallback 2D Avatar (Rule 38 Asset Blocker inside 3D Canvas) ─────────────
 function AvatarFallback() {
   return (
     <Html center>
-      <div className="flex flex-col items-center justify-center w-[280px] sm:w-[320px] p-6 bg-background/80 backdrop-blur-md rounded-3xl border border-primary/20 shadow-xl overflow-hidden relative">
+      <div className="flex flex-col items-center justify-center w-[280px] sm:w-[320px] p-6 bg-background/85 backdrop-blur-md rounded-3xl border border-primary/20 shadow-xl overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none" />
         
-        <div className="relative w-48 h-48 mb-4 rounded-full border-4 border-primary/30 overflow-hidden shadow-inner">
+        <div className="relative w-44 h-44 mb-3 rounded-full border-4 border-primary/30 overflow-hidden shadow-inner">
           <img 
             src="/images/sensei-avatar-fallback.jpg" 
             alt="Hana-sensei 2D Fallback"
@@ -44,15 +85,53 @@ function AvatarFallback() {
         
         <div className="text-center z-10 relative">
           <h3 className="text-lg font-bold text-primary font-japanese tracking-wider mb-1">花先生</h3>
-          <p className="text-xs text-muted-foreground/80 mb-3 px-2">
-            3D GLB model pending final art pipeline.
+          <p className="text-xs text-muted-foreground/80 mb-2 px-2">
+            Hana-sensei 2D Companion Active
           </p>
           <div className="px-3 py-1 bg-primary/10 rounded-full border border-primary/20 inline-block">
-            <span className="text-xs text-primary font-medium">Avatar Mode Active</span>
+            <span className="text-xs text-primary font-medium">Avatar Mode</span>
           </div>
         </div>
       </div>
     </Html>
+  );
+}
+
+// ─── Pure DOM 2D Fallback (When WebGL is unavailable or Canvas fails) ────────
+function Dom2DView({
+  state,
+  mode,
+  onRetry3D,
+}: {
+  state: SenseiAnimationState;
+  mode: 'compact' | 'full' | 'portrait';
+  onRetry3D?: () => void;
+}) {
+  const isCompact = mode === 'compact';
+
+  return (
+    <div className="w-full h-full min-h-[320px] flex flex-col items-center justify-center p-4 bg-gradient-to-b from-primary/10 via-background to-background relative select-none rounded-2xl overflow-hidden">
+      <div className="relative z-10 flex flex-col items-center">
+        <HanaSenseiCharacter2D
+          state={to2DAnimationState(state)}
+          size={isCompact ? 'md' : 'lg'}
+          showStatusPill={!isCompact}
+        />
+        <div className="flex items-center gap-2 mt-3">
+          <span className="text-xs text-muted-foreground font-medium">
+            2D Sensei Mode
+          </span>
+          {onRetry3D && (
+            <button
+              onClick={onRetry3D}
+              className="text-xs font-semibold text-primary hover:underline ml-1"
+            >
+              • Switch to 3D
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -72,6 +151,10 @@ export default function SenseiCharacter({
   const [isMobileScreen, setIsMobileScreen] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 640 : false
   );
+
+  // WebGL support state
+  const [webGLSupported, setWebGLSupported] = useState<boolean>(() => isWebGLAvailable());
+  const [canvasError, setCanvasError] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -101,49 +184,81 @@ export default function SenseiCharacter({
     cameraFov = 32;
   }
 
+  // Gracefully render 2D view if WebGL is unavailable or encountered canvas error
+  if (!webGLSupported || canvasError) {
+    return (
+      <Dom2DView
+        state={activeState}
+        mode={mode}
+        onRetry3D={() => {
+          setCanvasError(false);
+          setWebGLSupported(isWebGLAvailable());
+        }}
+      />
+    );
+  }
+
   return (
     <div className="w-full h-full relative select-none bg-transparent rounded-2xl overflow-hidden">
-      <Canvas
-        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
-        camera={{ position: cameraPos, fov: cameraFov }}
+      <ErrorBoundary
+        fallbackRender={() => (
+          <Dom2DView
+            state={activeState}
+            mode={mode}
+            onRetry3D={() => setCanvasError(false)}
+          />
+        )}
+        onError={(err) => {
+          console.warn('[SenseiCharacter] Canvas 3D render error, falling back to 2D view:', err);
+          setCanvasError(true);
+        }}
       >
-        <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
-        
-        {/* Environment & Lighting */}
-        <SenseiBackground />
-        {!reducedMotion && <SakuraParticles count={isFull ? 45 : 25} />}
-        
-        <ambientLight intensity={1.4} color="#f5f0fa" />
-        {/* Key light */}
-        <directionalLight position={[1.8, 2.8, 3.2]} intensity={2.2} color="#ffffff" castShadow />
-        {/* Fill light (soft sakura pink) */}
-        <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
-        {/* Rim light (gold) */}
-        <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
-        {/* Dedicated Wand Specular & Emissive Light */}
-        <pointLight position={[0.45, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
-        
-        <Environment preset="city" />
+        <Canvas
+          gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+          camera={{ position: cameraPos, fov: cameraFov }}
+          onCreated={({ gl }) => {
+            gl.domElement.addEventListener('webglcontextlost', (e) => {
+              e.preventDefault();
+              setCanvasError(true);
+            });
+          }}
+        >
+          <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
+          
+          {/* Environment & Lighting (Self-contained, zero external network dependency) */}
+          <SenseiBackground />
+          {!reducedMotion && <SakuraParticles count={isFull ? 45 : 25} />}
+          
+          <ambientLight intensity={1.4} color="#f5f0fa" />
+          {/* Key light */}
+          <directionalLight position={[1.8, 2.8, 3.2]} intensity={2.2} color="#ffffff" castShadow />
+          {/* Fill light (soft sakura pink) */}
+          <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
+          {/* Rim light (gold) */}
+          <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
+          {/* Dedicated Wand Specular & Emissive Light */}
+          <pointLight position={[0.45, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
 
-        <ErrorBoundary FallbackComponent={AvatarFallback}>
-          <Suspense fallback={<Loader />}>
-            <SenseiGLBCharacter state={activeState} targetDirection={targetDirection} />
-          </Suspense>
-        </ErrorBoundary>
+          <ErrorBoundary FallbackComponent={AvatarFallback}>
+            <Suspense fallback={<Loader />}>
+              <SenseiGLBCharacter state={activeState} targetDirection={targetDirection} />
+            </Suspense>
+          </ErrorBoundary>
 
-        {/* OrbitControls: Allows interactive viewing on full stage, restricted on compact */}
-        <OrbitControls
-          target={targetPos}
-          enablePan={false}
-          enableZoom={isFull || isPortrait}
-          minDistance={1.2}
-          maxDistance={3.8}
-          minPolarAngle={isFull ? Math.PI / 3 : Math.PI / 2.3}
-          maxPolarAngle={isFull ? Math.PI / 1.7 : Math.PI / 1.8}
-          minAzimuthAngle={isFull ? -Math.PI : -Math.PI / 8}
-          maxAzimuthAngle={isFull ? Math.PI : Math.PI / 8}
-        />
-      </Canvas>
+          {/* OrbitControls: Allows interactive viewing on full stage, restricted on compact */}
+          <OrbitControls
+            target={targetPos}
+            enablePan={false}
+            enableZoom={isFull || isPortrait}
+            minDistance={1.2}
+            maxDistance={3.8}
+            minPolarAngle={isFull ? Math.PI / 3 : Math.PI / 2.3}
+            maxPolarAngle={isFull ? Math.PI / 1.7 : Math.PI / 1.8}
+            minAzimuthAngle={isFull ? -Math.PI : -Math.PI / 8}
+            maxAzimuthAngle={isFull ? Math.PI : Math.PI / 8}
+          />
+        </Canvas>
+      </ErrorBoundary>
     </div>
   );
 }

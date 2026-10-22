@@ -24,7 +24,20 @@ export function RouteErrorFallback({ error, resetErrorBoundary }) {
 
       <div className="flex flex-wrap items-center justify-center gap-3">
         <button
-          onClick={resetErrorBoundary || (() => window.location.reload())}
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              try {
+                Object.keys(sessionStorage)
+                  .filter((k) => k.startsWith('chunk_retry_'))
+                  .forEach((k) => sessionStorage.removeItem(k));
+              } catch (_) {}
+            }
+            if (typeof resetErrorBoundary === 'function') {
+              resetErrorBoundary();
+            } else {
+              window.location.reload();
+            }
+          }}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-all shadow-sm active:scale-95"
         >
           <RefreshCw className="w-4 h-4" />
