@@ -60,6 +60,7 @@ export default function SenseiPage() {
     greet,
     triggerCelebration,
     fetchHistory,
+    clearHistory,
     targetDirection,
     qaMode,
     toggleQaMode,
@@ -95,6 +96,16 @@ export default function SenseiPage() {
       fetchHistory();
     }
   }, [messages.length, fetchHistory]);
+
+  // Auto-adapt greeting when language changes in Navbar / Settings
+  const prevLangRef = useRef(explanationLang);
+  useEffect(() => {
+    if (prevLangRef.current && prevLangRef.current !== explanationLang) {
+      // User switched language! Trigger a warm greeting in the new language
+      greet();
+    }
+    prevLangRef.current = explanationLang;
+  }, [explanationLang, greet]);
 
   const handleSend = async (text: string) => {
     if (!text.trim() || isTyping) return;
@@ -190,6 +201,15 @@ export default function SenseiPage() {
             title="Celebrate Progress"
           >
             <Sparkles className="w-3.5 h-3.5" /> Celebrate
+          </button>
+
+          {/* New Topic / Clear */}
+          <button
+            onClick={() => clearHistory()}
+            className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-muted/70 hover:bg-muted text-muted-foreground hover:text-foreground transition-all flex items-center gap-1.5 active:scale-95"
+            title="Start fresh conversation"
+          >
+            <RotateCcw className="w-3.5 h-3.5" /> New Topic
           </button>
 
           {/* Live Speech Stop / Mute Action Button */}

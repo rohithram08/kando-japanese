@@ -226,9 +226,22 @@ export class SenseiService {
       const historyRows = await db.query.senseiConversations.findMany({
         where: eq(senseiConversations.userId, userId),
         orderBy: [desc(senseiConversations.createdAt)],
-        limit: 5,
+        limit: 8,
       });
-      recentTurns = historyRows
+
+      const currentLangCode = (safeContext.explanationLanguage || 'en').toLowerCase().slice(0, 2);
+
+      // Filter recent turns to prevent cross-language dialogue inertia:
+      // If student is currently learning in Hindi, drop turns that contain Tamil script.
+      // If student is currently learning in Tamil, drop turns that contain Devanagari script.
+      const compatibleRows = historyRows.filter(r => {
+        if (!r.content) return false;
+        if (currentLangCode === 'hi' && /[\u0B80-\u0BFF]/.test(r.content)) return false;
+        if (currentLangCode === 'ta' && /[\u0900-\u097F]/.test(r.content)) return false;
+        return true;
+      });
+
+      recentTurns = compatibleRows
         .reverse()
         .filter(r => r.content && r.content !== cleanInput)
         .slice(-4)
@@ -240,16 +253,36 @@ export class SenseiService {
       // ignore
     }
 
+    const targetLangCode = (safeContext.explanationLanguage || 'en').toLowerCase().slice(0, 2);
+    let targetLangName = 'English';
+    if (targetLangCode === 'ta') targetLangName = 'Tamil (தமிழ்)';
+    else if (targetLangCode === 'hi') targetLangName = 'Hindi (हिंदी)';
+    else if (targetLangCode === 'te') targetLangName = 'Telugu (తెలుగు)';
+    else if (targetLangCode === 'ml') targetLangName = 'Malayalam (മലയാളം)';
+    else if (targetLangCode === 'mr') targetLangName = 'Marathi (मराठी)';
+    else if (targetLangCode === 'fr') targetLangName = 'French (Français)';
+    else if (targetLangCode === 'de') targetLangName = 'German (Deutsch)';
+    else if (targetLangCode === 'es') targetLangName = 'Spanish (Español)';
+
     const apiMessages: any[] = [
       { role: 'system', content: systemPrompt },
       ...recentTurns,
+      {
+        role: 'system',
+        content: `[MANDATORY EXPLANATION LANGUAGE DIRECTIVE]
+The student's designated explanation language for this response is: ${targetLangName}.
+1. You MUST speak, explain, and interact with the student exclusively in ${targetLangName}!
+2. Do NOT use Tamil, English, or any previous language from earlier turns for explanations!
+3. When teaching in Hindi, use authentic Devanagari script (हिंदी लिपि). When teaching in Tamil, use authentic Tamil script (தமிழ்).
+4. Japanese vocabulary, kanji, and example sentences should be in Japanese with Kana/Furigana and Romaji.`
+      },
       { role: 'user', content: cleanInput }
     ];
 
     if (isGreeting) {
       apiMessages.push({
         role: 'system',
-        content: `Note: The student just greeted you with "${cleanInput}". Reply warmly as Hana-sensei with a joyful, enthusiastic Japanese greeting ("こんにちは！" / "Konnichiwa!") and welcome them to class. Ask what Japanese topic they would like to practice today. Keep it friendly, encouraging, and natural.`
+        content: `Note: The student just greeted you with "${cleanInput}". Reply warmly as Hana-sensei with a joyful, enthusiastic Japanese greeting ("こんにちは！" / "Konnichiwa!") and welcome them to class in ${targetLangName}. Ask what Japanese topic they would like to practice today. Keep it friendly, encouraging, and natural in ${targetLangName}.`
       });
     }
 
@@ -468,6 +501,14 @@ export class SenseiService {
       orderBy: [desc(senseiConversations.createdAt)],
       limit,
     });
+  }
+
+  /**
+   * Clear chat history for user
+   */
+  async clearHistory(userId: string) {
+    await db.delete(senseiConversations).where(eq(senseiConversations.userId, userId));
+    return { success: true };
   }
 
   /**

@@ -40,6 +40,19 @@ senseiRouter.get('/history', async (req, res, next) => {
 });
 
 /**
+ * Clear chat history
+ * POST /api/sensei/clear
+ */
+senseiRouter.post('/clear', async (req, res, next) => {
+  try {
+    const result = await senseiService.clearHistory(req.user!.userId);
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
  * Get tour progress
  * GET /api/sensei/tour
  */

@@ -80,6 +80,7 @@ interface SenseiState {
   toggleCameraMode: () => void;
   greet: () => void;
   triggerCelebration: (reason?: string) => void;
+  clearHistory: () => Promise<void>;
 }
 
 const isQaModeInit = typeof window !== 'undefined' &&
@@ -232,6 +233,16 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
     }
   },
 
+  clearHistory: async () => {
+    try {
+      await senseiApi.clearHistory();
+    } catch (err) {
+      console.error('Failed to clear sensei history:', err);
+    }
+    set({ messages: [], speechState: 'idle', animationState: 'idle' });
+    get().greet();
+  },
+
   sendMessage: async (message: string, options?: { skipAutoSpeak?: boolean }) => {
     if (!message.trim()) return null;
 
@@ -244,7 +255,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
     }));
 
     try {
-      const explanationLanguage = useSettingsStore.getState().explanationLanguage || 'en';
+      const explanationLanguage = useSettingsStore.getState().explanationLanguage || useSettingsStore.getState().displayLanguage || 'en';
       const res = await senseiApi.chat(message, explanationLanguage);
       const { message: reply, emotion, animation, action } = res;
 

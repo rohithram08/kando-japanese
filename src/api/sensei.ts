@@ -15,6 +15,9 @@ export const chat = (message: string, explanationLanguage?: string) =>
 export const getHistory = () => 
   get<any[]>('/sensei/history');
 
+export const clearHistory = () =>
+  post<{ success: boolean }>('/sensei/clear');
+
 export const getTourProgress = () => 
   get<any>('/sensei/tour');
 
