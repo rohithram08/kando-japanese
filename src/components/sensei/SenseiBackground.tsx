@@ -1,7 +1,17 @@
 import React, { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
-export function SenseiBackground() {
+export interface SenseiBackgroundProps {
+  daisPosition?: [number, number, number];
+  showSlimeDais?: boolean;
+  slimeDaisPosition?: [number, number, number];
+}
+
+export function SenseiBackground({
+  daisPosition = [0, -0.01, 0],
+  showSlimeDais = false,
+  slimeDaisPosition = [0.95, -0.01, 0],
+}: SenseiBackgroundProps) {
   const bgSphereRef = useRef<THREE.Mesh>(null);
 
   // Pre-create radial shadow texture
@@ -65,8 +75,8 @@ export function SenseiBackground() {
         />
       </mesh>
 
-      {/* 2. Hana Sanctuary Dais: Grounding Circular Platform at y = 0 */}
-      <group position={[0, -0.01, 0]}>
+      {/* 2. Hana Sanctuary Dais: Grounding Circular Platform */}
+      <group position={daisPosition}>
         {/* Outer Gold Accent Rim */}
         <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <ringGeometry args={[0.78, 0.82, 64]} />
@@ -108,6 +118,46 @@ export function SenseiBackground() {
           </mesh>
         )}
       </group>
+
+      {/* 3. Slime Companion Dais (Matching Circular Platform on Right) */}
+      {showSlimeDais && (
+        <group position={slimeDaisPosition}>
+          {/* Outer Gold Accent Rim */}
+          <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <ringGeometry args={[0.42, 0.45, 48]} />
+            <meshStandardMaterial
+              color="#d4af37"
+              metalness={0.85}
+              roughness={0.25}
+              emissive="#795548"
+              emissiveIntensity={0.2}
+            />
+          </mesh>
+
+          {/* Inner Tatami Floor */}
+          <mesh position={[0, -0.002, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <circleGeometry args={[0.42, 48]} />
+            <meshStandardMaterial
+              color="#fdfbf9"
+              roughness={0.4}
+              metalness={0.05}
+            />
+          </mesh>
+
+          {/* Contact Shadow under Slime */}
+          {shadowTexture && (
+            <mesh position={[0, 0.002, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[0.55, 0.55]} />
+              <meshBasicMaterial
+                map={shadowTexture}
+                transparent
+                opacity={0.35}
+                depthWrite={false}
+              />
+            </mesh>
+          )}
+        </group>
+      )}
     </group>
   );
 }

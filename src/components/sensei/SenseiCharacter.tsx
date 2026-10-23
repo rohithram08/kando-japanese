@@ -7,6 +7,8 @@ import { SenseiBackground } from './SenseiBackground';
 import { SakuraParticles } from './SakuraParticles';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
 import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter2D';
+import { KandoSlime3D } from './KandoSlime3D';
+import { SlimeMood } from '../mascot/KandoSlime';
 
 export interface SenseiCharacterProps {
   speechState?: SenseiAnimationState;
@@ -15,6 +17,9 @@ export interface SenseiCharacterProps {
   mode?: 'compact' | 'full' | 'portrait';
   targetDirection?: 'left' | 'right' | 'forward' | null;
   stageSide?: 'left' | 'center';
+  slimePersona?: 'mr' | 'mrs';
+  slimeMood?: SlimeMood;
+  showSlime?: boolean;
 }
 
 // ─── WebGL Detection Utility ────────────────────────────────────────────────
@@ -144,6 +149,9 @@ export default function SenseiCharacter({
   mode = 'compact',
   targetDirection = null,
   stageSide = 'center',
+  slimePersona = 'mr',
+  slimeMood = 'idle',
+  showSlime = true,
 }: SenseiCharacterProps) {
   
   // Normalize active animation state (backward compatibility with speechState)
@@ -166,23 +174,31 @@ export default function SenseiCharacter({
   }, []);
 
   // Character 3D stage position:
-  // When stageSide === 'left' and screen is wide enough, position Hana on the left of the classroom!
+  // When stageSide === 'left' and screen is wide enough, position Hana on the LEFT of the classroom (-0.95m),
+  // and position 3D Kando Slime on the RIGHT of the classroom (+0.95m)!
   const isLeft = stageSide === 'left' && !isMobileScreen;
-  const characterPos: [number, number, number] = isLeft ? [-0.56, 0, 0] : [0, 0, 0];
+  const characterPos: [number, number, number] = isLeft ? [-0.95, 0, 0] : [0, 0, 0];
+  const slimePos: [number, number, number] = [0.95, 0, 0];
+  const daisPos: [number, number, number] = isLeft ? [-0.95, -0.01, 0] : [0, -0.01, 0];
+  const slimeDaisPos: [number, number, number] = [0.95, -0.01, 0];
 
   // Camera framing:
-  // - Full stage: captures Hana from cap to sandals at ~85% vertical stage fill
+  // - Full stage: captures both Hana on left and 3D Slime on right with central clear space for speech
   // - Portrait: waist to cap focus for intimate dialogue
   // - Compact: upper body for minimized floating widget
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = isLeft ? [-0.28, 0.74, 0] : [0, 0.74, 0];
-  let cameraPos: [number, number, number] = isMobileScreen ? [0, 0.76, 2.52] : [0, 0.76, 2.28];
-  let cameraFov = isMobileScreen ? 44 : 41;
+  let targetPos: [number, number, number] = isLeft ? [0, 0.78, 0] : [0, 0.74, 0];
+  let cameraPos: [number, number, number] = isLeft
+    ? [0, 0.82, 2.5]
+    : isMobileScreen
+    ? [0, 0.76, 2.52]
+    : [0, 0.76, 2.28];
+  let cameraFov = isLeft ? 43 : isMobileScreen ? 44 : 41;
 
   if (isPortrait) {
-    targetPos = isLeft ? [-0.28, 1.10, 0] : [0, 1.10, 0];
+    targetPos = isLeft ? [-0.5, 1.10, 0] : [0, 1.10, 0];
     cameraPos = isMobileScreen ? [0, 1.12, 1.5] : [0, 1.12, 1.35];
     cameraFov = 34;
   } else if (!isFull) {
@@ -232,8 +248,12 @@ export default function SenseiCharacter({
         >
           <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
           
-          {/* Environment & Lighting (Self-contained, zero external network dependency) */}
-          <SenseiBackground />
+          {/* Environment & Lighting with dedicated Dais for Hana on left and Slime on right */}
+          <SenseiBackground
+            daisPosition={daisPos}
+            showSlimeDais={isLeft && showSlime}
+            slimeDaisPosition={slimeDaisPos}
+          />
           {!reducedMotion && <SakuraParticles count={isFull ? 45 : 25} />}
           
           <ambientLight intensity={1.4} color="#f5f0fa" />
@@ -243,14 +263,40 @@ export default function SenseiCharacter({
           <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
           {/* Rim light (gold) */}
           <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
-          {/* Dedicated Wand Specular & Emissive Light */}
-          <pointLight position={[0.45, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
+          {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
+          <pointLight position={[-0.5, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
+          {/* Dedicated Ambient Keylight for 3D Slime on Right */}
+          {isLeft && showSlime && (
+            <pointLight
+              position={[0.95, 0.7, 0.7]}
+              intensity={2.4}
+              distance={2.5}
+              color={slimePersona === 'mrs' ? '#f472b6' : '#38bdf8'}
+            />
+          )}
 
+          {/* 3D Hana-Sensei Character (Standing on the LEFT Dais) */}
           <ErrorBoundary FallbackComponent={AvatarFallback}>
             <Suspense fallback={<Loader />}>
-              <SenseiGLBCharacter state={activeState} targetDirection={targetDirection} position={characterPos} />
+              <SenseiGLBCharacter
+                state={activeState}
+                targetDirection={targetDirection || (isLeft ? 'right' : null)}
+                position={characterPos}
+              />
             </Suspense>
           </ErrorBoundary>
+
+          {/* 3D Kando Slime (Sitting on the RIGHT Dais) */}
+          {isLeft && showSlime && (
+            <Suspense fallback={null}>
+              <KandoSlime3D
+                position={slimePos}
+                slimeType={slimePersona}
+                mood={slimeMood}
+                scale={1.08}
+              />
+            </Suspense>
+          )}
 
           {/* OrbitControls: Allows interactive viewing on full stage, restricted on compact */}
           <OrbitControls

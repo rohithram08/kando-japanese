@@ -231,29 +231,32 @@ export default function SenseiPage() {
 
       {/* ─── FULL 3D CHARACTER STAGE CANVAS & 2-WAY CLASSROOM ─── */}
       <main className="flex-1 w-full h-full relative overflow-hidden" aria-label="3D Hana-sensei Stage">
-        {/* Full-bleed 3D Character Canvas (Hana-sensei standing on the LEFT side) */}
+        {/* Full-bleed 3D Character Canvas (Hana-sensei on the LEFT, 3D Kando Slime on the RIGHT) */}
         <div className="absolute inset-0 z-0">
           <SenseiCharacter
             state={animationState}
             mode={cameraMode}
             targetDirection="right"
             stageSide="left"
+            slimePersona={slimePersona}
+            slimeMood={activeSlimeMood}
+            showSlime={true}
           />
         </div>
 
         {/* ─── 2-WAY VISUAL CLASSROOM CONVERSATION OVERLAY ─── */}
         <div className="relative z-10 w-full h-full pointer-events-none p-4 sm:p-6 md:p-8">
           
-          {/* ── 1. HANA-SENSEI SPEECH POP-UP (POSITIONED TO HER RIGHT SIDE) ── */}
-          <div className="pointer-events-auto md:absolute md:left-[270px] lg:left-[320px] xl:left-[360px] top-4 md:top-8 w-full md:w-auto max-w-sm sm:max-w-md lg:max-w-lg z-20">
+          {/* ── 1. HANA-SENSEI ANIMATED SPEECH POP-UP (POSITIONED TO HER RIGHT SIDE) ── */}
+          <div className="pointer-events-auto md:absolute md:left-[26%] lg:left-[28%] xl:left-[30%] top-4 md:top-8 w-full md:w-[420px] lg:w-[460px] max-w-[92vw] z-20">
             <AnimatePresence mode="wait">
               {(latestAssistantMessage || isTyping) && (
                 <motion.div
                   key={latestAssistantMessage?.id || 'typing'}
-                  initial={{ opacity: 0, scale: 0.92, x: -16 }}
-                  animate={{ opacity: 1, scale: 1, x: 0 }}
-                  exit={{ opacity: 0, scale: 0.92, x: -16 }}
-                  transition={{ duration: 0.25 }}
+                  initial={{ opacity: 0, scale: 0.88, x: -24, y: -12 }}
+                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.88, x: -24, y: -12 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 24 }}
                   className="relative p-4 sm:p-5 rounded-3xl bg-card/92 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground"
                 >
                   {/* Speech Bubble Tail pointing LEFT towards Hana-sensei */}
@@ -303,16 +306,16 @@ export default function SenseiPage() {
             </AnimatePresence>
           </div>
 
-          {/* ── 2. SLIME IN BOTTOM RIGHT CORNER ── */}
-          <div className="pointer-events-auto absolute bottom-3 right-3 sm:bottom-5 sm:right-5 z-20 flex flex-col items-center select-none">
-            {/* Slime Persona Switcher Pill (Mr. Slime - Blue / Mrs. Slime - Pink) */}
-            <div className="mb-1 flex items-center gap-1 p-1 rounded-full bg-card/90 backdrop-blur-md border border-border/70 shadow-sm text-xs">
+          {/* ── 2. 3D SLIME CONTROLS (BOTTOM RIGHT CORNER NEAR 3D SLIME) ── */}
+          <div className="pointer-events-auto absolute bottom-3 right-3 sm:bottom-5 sm:right-6 z-20 flex flex-col items-center gap-1.5 select-none">
+            {/* Persona Switcher Pill (Mr. Slime - Blue / Mrs. Slime - Pink) */}
+            <div className="flex items-center gap-1 p-1 rounded-full bg-card/90 backdrop-blur-md border border-border/70 shadow-xl text-xs ring-1 ring-primary/20">
               <button
                 type="button"
                 onClick={() => handlePersonaChange('mr')}
-                className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 font-semibold text-xs ${
                   slimePersona === 'mr'
-                    ? 'bg-blue-600 text-white shadow-xs'
+                    ? 'bg-blue-600 text-white shadow-xs scale-105'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -321,36 +324,30 @@ export default function SenseiPage() {
               <button
                 type="button"
                 onClick={() => handlePersonaChange('mrs')}
-                className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                className={`px-3 py-1 rounded-full transition-all flex items-center gap-1 font-semibold text-xs ${
                   slimePersona === 'mrs'
-                    ? 'bg-pink-500 text-white shadow-xs'
+                    ? 'bg-pink-500 text-white shadow-xs scale-105'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
                 <span>🌸</span> Mrs. Slime
               </button>
             </div>
-
-            {/* Kando Slime Mascot with Dynamic Expressions */}
-            <div className="relative flex flex-col items-center">
-              <KandoSlime
-                mood={activeSlimeMood}
-                slimeType={slimePersona}
-                size={145}
-                showSpeech={false}
-                showMoodButtons={false}
-                interactive={true}
-              />
-              {/* Tatami Mat Cushion */}
-              <div className="w-32 h-3 -mt-2 rounded-full bg-gradient-to-r from-amber-900/40 via-amber-700/50 to-amber-900/40 border border-amber-600/40 blur-[1px] shadow-lg pointer-events-none" />
-            </div>
+            <span className="text-[10px] font-semibold text-muted-foreground bg-card/80 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-border/60 shadow-xs">
+              3D Slime Companion
+            </span>
           </div>
 
-          {/* ── 3. USER CHAT BUBBLE (ANCHORED TO THE LEFT OF SLIME WITH EMBEDDED TYPING) ── */}
-          <div className="pointer-events-auto absolute bottom-3 right-[155px] sm:bottom-5 sm:right-[180px] md:right-[200px] w-[calc(100%-175px)] max-w-sm sm:max-w-md md:max-w-lg z-20 flex flex-col gap-2">
+          {/* ── 3. USER CHAT BUBBLE (ANCHORED TO THE LEFT OF 3D SLIME WITH EMBEDDED TYPING) ── */}
+          <div className="pointer-events-auto md:absolute md:right-[210px] lg:right-[250px] xl:right-[280px] bottom-3 sm:bottom-5 w-full md:w-[390px] lg:w-[440px] max-w-[92vw] z-20 flex flex-col gap-2">
             
-            <div className="relative p-3.5 sm:p-4 rounded-3xl bg-card/95 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground">
-              {/* Bubble Tail pointing RIGHT towards Slime */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, x: 20, y: 12 }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              transition={{ type: "spring", stiffness: 320, damping: 24 }}
+              className="relative p-3.5 sm:p-4 rounded-3xl bg-card/95 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground"
+            >
+              {/* Bubble Tail pointing RIGHT towards 3D Slime */}
               <div className="hidden md:block absolute bottom-8 -right-2 w-3.5 h-3.5 bg-card/95 border-r border-t border-primary/30 rotate-45 pointer-events-none" />
 
               {/* Bubble Header */}
@@ -436,7 +433,7 @@ export default function SenseiPage() {
                 </button>
               </form>
 
-            </div>
+            </motion.div>
           </div>
 
         </div>
