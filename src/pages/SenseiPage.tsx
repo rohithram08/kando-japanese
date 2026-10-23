@@ -141,33 +141,11 @@ export default function SenseiPage() {
   const userName = user?.displayName || user?.name || user?.username || 'Rohith Ram';
   const userLevel = useProgressStore(s => s.userLevel || 6);
 
-  // Auto-detect gender: 'female' -> Mrs. Slime (Pink), 'male'/other -> Mr. Slime (Blue)
+  // Auto-detect gender purely from login/registration preference:
+  // 'female' -> Mrs. Slime (Pink), 'male'/other -> Mr. Slime (Blue)
   const savedGender = typeof window !== 'undefined' ? localStorage.getItem('kando_user_gender') : null;
   const userGender = (user as any)?.gender || (user as any)?.sex || savedGender || 'male';
-  const [slimePersona, setSlimePersona] = useState<'mr' | 'mrs'>(
-    userGender.toLowerCase() === 'female' ? 'mrs' : 'mr'
-  );
-
-  useEffect(() => {
-    if ((user as any)?.gender) {
-      setSlimePersona((user as any).gender.toLowerCase() === 'female' ? 'mrs' : 'mr');
-    } else if (savedGender) {
-      setSlimePersona(savedGender.toLowerCase() === 'female' ? 'mrs' : 'mr');
-    }
-  }, [(user as any)?.gender, savedGender]);
-
-  const handlePersonaChange = (persona: 'mr' | 'mrs') => {
-    setSlimePersona(persona);
-    const genderStr = persona === 'mrs' ? 'female' : 'male';
-    localStorage.setItem('kando_user_gender', genderStr);
-    if (user) {
-      try {
-        useAuthStore.getState().updateProfile({ gender: genderStr } as any);
-      } catch {
-        // non-blocking
-      }
-    }
-  };
+  const slimePersona: 'mr' | 'mrs' = userGender.toLowerCase() === 'female' ? 'mrs' : 'mr';
 
   // Dynamic Slime expressions:
   // - User typing in chat bubble -> 'studying' (Hachimaki headband & Kanji book)
@@ -255,7 +233,6 @@ export default function SenseiPage() {
             isSttSupported={isSttSupported}
             onToggleMic={toggleMic}
             quickPrompts={QUICK_PROMPTS}
-            onPersonaChange={handlePersonaChange}
           />
         </div>
       </main>
