@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { senseiApi } from '../api';
 import { audioService } from '../services/audioService';
 import { SenseiAnimationState } from '../components/sensei/controllers/SenseiAnimationController';
+import { useSettingsStore } from './settingsStore';
 
 export type CompanionMode = 'minimized' | 'chat' | 'teaching' | 'tour' | 'celebration' | 'thinking';
 
@@ -189,7 +190,8 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
     }));
 
     try {
-      const res = await senseiApi.chat(message);
+      const explanationLanguage = useSettingsStore.getState().explanationLanguage || 'en';
+      const res = await senseiApi.chat(message, explanationLanguage);
       const { message: reply, emotion, animation, action } = res;
 
       const nextAnim: SenseiAnimationState =

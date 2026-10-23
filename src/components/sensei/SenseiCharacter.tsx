@@ -337,19 +337,21 @@ export default function SenseiCharacter({
           {/* ─── 3D-ANCHORED DIALOGUE BUBBLES IN-SCENE ─── */}
           {isLeft && (
             <>
-              {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (ANCHORED IN 3D SPACE NEXT TO HANA ON LEFT-CENTER) */}
+              {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (ANCHORED IN 3D SPACE NEXT TO HANA'S HEAD) */}
               <Html
-                position={isMobileScreen ? [0, 1.30, 0] : [-0.46, 1.25, 0]}
+                position={isMobileScreen ? [0, 1.30, 0] : [-0.68, 1.35, 0]}
                 center
                 zIndexRange={[100, 0]}
                 style={{ pointerEvents: 'auto' }}
               >
                 <div
                   onPointerDown={(e) => e.stopPropagation()}
-                  className="w-[290px] sm:w-[330px] md:w-[350px] max-w-[85vw] p-3.5 sm:p-4 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
+                  className="w-[280px] sm:w-[310px] md:w-[330px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
                 >
-                  {/* Bubble Tail pointing left towards Hana */}
-                  <div className="absolute top-8 -left-2 w-3.5 h-3.5 bg-slate-900/95 border-l border-b border-pink-400/35 rotate-45 pointer-events-none" />
+                  {/* Comic Speech Bubble Pointer & Trailing Dots pointing to Hana's Head */}
+                  <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-4 h-4 bg-slate-900/95 border-l border-b border-pink-400/40 rotate-45 pointer-events-none" />
+                  <div className="hidden sm:block absolute top-1/2 -left-5 -translate-y-1/2 w-2 h-2 rounded-full bg-pink-400/50 pointer-events-none animate-pulse" />
+                  <div className="hidden sm:block absolute top-1/2 -left-7 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-pink-400/30 pointer-events-none" />
 
                   {/* Header */}
                   <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60">
@@ -387,26 +389,28 @@ export default function SenseiCharacter({
                       <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   ) : (
-                    <div className="max-h-[135px] sm:max-h-[160px] overflow-y-auto pr-1 text-xs sm:text-[13px] leading-relaxed scrollbar-thin text-slate-100">
+                    <div className="max-h-[135px] sm:max-h-[155px] overflow-y-auto pr-1 text-xs sm:text-[13px] leading-relaxed scrollbar-thin text-slate-100">
                       <SenseiMarkdown content={latestAssistantMessage?.content || "Konnichiwa! I am Hana-sensei. Ask me anything about Japanese grammar, vocabulary, or JLPT!"} />
                     </div>
                   )}
                 </div>
               </Html>
 
-              {/* 2. SLIME 3D CHAT & TYPING BUBBLE (ANCHORED IN 3D SPACE NEXT TO SLIME ON RIGHT-CENTER) */}
+              {/* 2. SLIME 3D CHAT & TYPING BUBBLE (ANCHORED IN 3D SPACE NEXT TO SLIME ON RIGHT) */}
               <Html
-                position={isMobileScreen ? [0, 0.45, 0] : [0.46, 0.48, 0]}
+                position={isMobileScreen ? [0, 0.45, 0] : [0.68, 0.38, 0]}
                 center
                 zIndexRange={[100, 0]}
                 style={{ pointerEvents: 'auto' }}
               >
                 <div
                   onPointerDown={(e) => e.stopPropagation()}
-                  className="w-[290px] sm:w-[330px] md:w-[350px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
+                  className="w-[280px] sm:w-[310px] md:w-[330px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
                 >
-                  {/* Bubble Tail pointing right towards Slime */}
-                  <div className="absolute bottom-6 -right-2 w-3.5 h-3.5 bg-slate-900/95 border-r border-t border-sky-400/35 rotate-45 pointer-events-none" />
+                  {/* Comic Speech Bubble Pointer & Trailing Dots pointing to Slime */}
+                  <div className="absolute top-1/2 -right-2.5 -translate-y-1/2 w-4 h-4 bg-slate-900/95 border-r border-t border-sky-400/40 rotate-45 pointer-events-none" />
+                  <div className="hidden sm:block absolute top-1/2 -right-5 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-400/50 pointer-events-none animate-pulse" />
+                  <div className="hidden sm:block absolute top-1/2 -right-7 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-sky-400/30 pointer-events-none" />
 
                   {/* Bubble Header - Gender displayed automatically from login, NO toggle */}
                   <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60 text-xs">

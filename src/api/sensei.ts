@@ -9,8 +9,8 @@ export interface SenseiChatResponse {
   };
 }
 
-export const chat = (message: string) => 
-  post<SenseiChatResponse>('/sensei/chat', { message });
+export const chat = (message: string, explanationLanguage?: string) => 
+  post<SenseiChatResponse>('/sensei/chat', { message, explanationLanguage });
 
 export const getHistory = () => 
   get<any[]>('/sensei/history');

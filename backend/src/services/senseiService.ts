@@ -66,7 +66,7 @@ export class SenseiService {
       };
     }
 
-    // 3. User Context Fetch
+    // 3. User Context Fetch & Multilingual Detection
     let uContext = null;
     try {
       uContext = await senseiContext.getUserContext(userId);
@@ -74,10 +74,28 @@ export class SenseiService {
       console.warn('[SenseiService] Could not fetch user context:', ctxErr);
     }
 
+    // Auto-detect if user's message is in or requests a specific language:
+    const containsTamil = /[\u0B80-\u0BFF]/.test(cleanInput) || /\b(tamil|thamizh|tamilil)\b/i.test(cleanInput);
+    const containsHindi = /[\u0900-\u097F]/.test(cleanInput) || /\b(hindi|hindustani)\b/i.test(cleanInput);
+    const containsTelugu = /[\u0C00-\u0C7F]/.test(cleanInput) || /\b(telugu)\b/i.test(cleanInput);
+    const containsMalayalam = /[\u0D00-\u0D7F]/.test(cleanInput) || /\b(malayalam)\b/i.test(cleanInput);
+    const containsMarathi = /\b(marathi)\b/i.test(cleanInput);
+    const containsFrench = /\b(french|français|francais)\b/i.test(cleanInput);
+    const containsGerman = /\b(german|deutsch)\b/i.test(cleanInput);
+
+    let activeLang = requestContext?.explanationLanguage;
+    if (containsTamil) activeLang = 'ta';
+    else if (containsHindi) activeLang = 'hi';
+    else if (containsTelugu) activeLang = 'te';
+    else if (containsMalayalam) activeLang = 'ml';
+    else if (containsMarathi) activeLang = 'mr';
+    else if (containsFrench) activeLang = 'fr';
+    else if (containsGerman) activeLang = 'de';
+
     const safeContext = {
       jlptLevel: uContext?.jlptLevel || 'N5',
       nativeLanguage: uContext?.nativeLanguage || 'English',
-      explanationLanguage: requestContext?.explanationLanguage || requestContext?.displayLanguage || uContext?.nativeLanguage || 'English',
+      explanationLanguage: activeLang || requestContext?.displayLanguage || uContext?.nativeLanguage || 'English',
       streak: uContext?.streak || 0,
       totalXP: uContext?.totalXP || 0,
       recentLessonIds: uContext?.recentLessonIds || [],

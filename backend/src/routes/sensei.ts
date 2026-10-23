@@ -14,12 +14,12 @@ senseiRouter.use(requireAuth);
  */
 senseiRouter.post('/chat', aiLimiter, async (req, res, next) => {
   try {
-    const { message } = req.body;
+    const { message, explanationLanguage } = req.body;
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
-    const response = await senseiService.chat(req.user!.userId, message);
+    const response = await senseiService.chat(req.user!.userId, message, { explanationLanguage });
     res.json(response);
   } catch (error) {
     next(error);
