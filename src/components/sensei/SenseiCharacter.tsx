@@ -1,12 +1,12 @@
 import React, { useState, Suspense, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
+import * as THREE from 'three';
+import { Canvas, useThree } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { RotateCcw, Send, Mic, MicOff, Keyboard, Square } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
-import { SenseiBackground } from './SenseiBackground';
-import { SakuraParticles } from './SakuraParticles';
+import { SenseiBackground, ClassroomContactShadows } from './SenseiBackground';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
 import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter2D';
 import SenseiMarkdown from './SenseiMarkdown';
@@ -163,6 +163,47 @@ function Dom2DView({
   );
 }
 
+// ─── Synchronized Camera & Controls Controller ──────────────────────────────
+function CameraController({
+  target,
+  cameraPos,
+  cameraFov,
+}: {
+  target: [number, number, number];
+  cameraPos: [number, number, number];
+  cameraFov: number;
+}) {
+  const { camera } = useThree();
+  const controlsRef = React.useRef<any>(null);
+
+  useEffect(() => {
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.fov = cameraFov;
+      camera.position.set(cameraPos[0], cameraPos[1], cameraPos[2]);
+      camera.updateProjectionMatrix();
+    }
+    if (controlsRef.current) {
+      controlsRef.current.target.set(target[0], target[1], target[2]);
+      controlsRef.current.update();
+    }
+  }, [target, cameraPos, cameraFov, camera]);
+
+  return (
+    <OrbitControls
+      ref={controlsRef}
+      target={target}
+      enableRotate={false}
+      enablePan={false}
+      enableZoom={true}
+      minDistance={1.8}
+      maxDistance={5.2}
+      minPolarAngle={Math.PI / 4.2}
+      maxPolarAngle={Math.PI / 1.82}
+      autoRotate={false}
+    />
+  );
+}
+
 // ─── Main Sensei Character Export ───────────────────────────────────────────
 export default function SenseiCharacter({
   speechState,
@@ -205,7 +246,42 @@ export default function SenseiCharacter({
   const [webGLSupported, setWebGLSupported] = useState<boolean>(() => isWebGLAvailable());
   const [canvasError, setCanvasError] = useState<boolean>(false);
   const [showKeyboard, setShowKeyboard] = useState<boolean>(false);
+  const [dioramaRotation, setDioramaRotation] = useState<number>(0);
+  const isDraggingRef = React.useRef(false);
+  const prevXRef = React.useRef(0);
   const currentExplLang = useSettingsStore((s) => s.explanationLanguage || 'ta');
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('button, input, form, select, textarea, [data-interactive]')) {
+      return;
+    }
+    isDraggingRef.current = true;
+    prevXRef.current = e.clientX;
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDraggingRef.current) return;
+    const deltaX = e.clientX - prevXRef.current;
+    prevXRef.current = e.clientX;
+    setDioramaRotation((prev) => prev + deltaX * 0.009);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    isDraggingRef.current = false;
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {}
+  };
+
+  useEffect(() => {
+    if (isPortrait) {
+      setDioramaRotation(0);
+    }
+  }, [isPortrait]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -221,32 +297,31 @@ export default function SenseiCharacter({
   const isLeft = stageSide === 'left' && !isMobileScreen;
   const characterPos: [number, number, number] = isLeft ? [-1.70, 0, 0] : [0, 0, 0];
   const slimePos: [number, number, number] = [1.70, 0, 0];
-  const daisPos: [number, number, number] = isLeft ? [-1.70, -0.01, 0] : [0, -0.01, 0];
-  const slimeDaisPos: [number, number, number] = [1.70, -0.01, 0];
 
   // Camera framing:
-  // - Full stage: captures both Hana on far left and 3D Slime on far right with zero-overlap center
-  // - Portrait: waist to cap focus for intimate dialogue
+  // - Full stage: captures both Hana on far left and 3D Slime on far right inside the 3D Classroom
+  // - Portrait: zooms directly in on Hana-sensei and her speech bubble
   // - Compact: upper body for minimized floating widget
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = isLeft ? [0, 0.76, 0] : [0, 0.74, 0];
+  let targetPos: [number, number, number] = isLeft ? [0, 0.90, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isLeft
-    ? [0, 0.92, 3.45]
+    ? isMobileScreen ? [0, 0.85, 3.2] : [0, 1.0, 3.45]
     : isMobileScreen
     ? [0, 0.76, 2.7]
     : [0, 0.76, 2.3];
   let cameraFov = isLeft ? 46 : isMobileScreen ? 46 : 41;
 
   if (isPortrait) {
-    targetPos = isLeft ? [-0.5, 1.10, 0] : [0, 1.10, 0];
-    cameraPos = isMobileScreen ? [0, 1.12, 1.5] : [0, 1.12, 1.35];
-    cameraFov = 34;
+    // Zoom directly in on Hana-sensei and her speech bubble (centered at -1.28m)
+    targetPos = [-1.28, 1.25, 0];
+    cameraPos = isMobileScreen ? [-1.28, 1.30, 2.4] : [-1.28, 1.30, 2.1];
+    cameraFov = isMobileScreen ? 38 : 35;
   } else if (!isFull) {
-    targetPos = [0, 1.15, 0];
-    cameraPos = [0, 1.18, 1.55];
-    cameraFov = 32;
+    targetPos = [0, 1.05, 0];
+    cameraPos = [0, 1.15, 2.8];
+    cameraFov = 38;
   }
 
   // Gracefully render 2D view if WebGL is unavailable or encountered canvas error
@@ -264,7 +339,13 @@ export default function SenseiCharacter({
   }
 
   return (
-    <div className="w-full h-full relative select-none bg-transparent rounded-2xl overflow-hidden">
+    <div
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      className="w-full h-full relative select-none bg-transparent rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing"
+    >
       <ErrorBoundary
         fallbackRender={() => (
           <Dom2DView
@@ -290,32 +371,35 @@ export default function SenseiCharacter({
         >
           <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
           
-          {/* Environment & Lighting with dedicated Dais for Hana on left and Slime on right */}
-          <SenseiBackground
-            daisPosition={daisPos}
-            showSlimeDais={isLeft && showSlime}
-            slimeDaisPosition={slimeDaisPos}
-          />
-          {!reducedMotion && <SakuraParticles count={isFull ? 45 : 25} />}
+          {/* 1. Stationary 3D Japanese Classroom Background (Never rotates, stays fixed) */}
+          <SenseiBackground />
           
+          {/* General Room Illumination */}
           <ambientLight intensity={1.4} color="#f5f0fa" />
-          {/* Key light */}
           <directionalLight position={[1.8, 2.8, 3.2]} intensity={2.2} color="#ffffff" castShadow />
-          {/* Fill light (soft sakura pink) */}
           <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
-          {/* Rim light (gold) */}
           <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
-          {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
-          <pointLight position={[-1.70, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
-          {/* Dedicated Ambient Keylight for 3D Slime on Right */}
-          {isLeft && showSlime && (
-            <pointLight
-              position={[1.70, 0.7, 0.7]}
-              intensity={2.4}
-              distance={2.5}
-              color={slimePersona === 'mrs' ? '#f472b6' : '#38bdf8'}
+
+          {/* 2. Interactive Character Turntable Group (Hana, Slime & 3D Dialogue Bubbles rotate 360° inside classroom) */}
+          <group rotation={[0, dioramaRotation, 0]}>
+            {/* Grounding Contact Shadows pinned under Hana and Slime */}
+            <ClassroomContactShadows
+              characterPos={characterPos}
+              slimePos={slimePos}
+              showSlime={isLeft && showSlime}
             />
-          )}
+
+            {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
+            <pointLight position={[-1.70, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
+            {/* Dedicated Ambient Keylight for 3D Slime on Right */}
+            {isLeft && showSlime && (
+              <pointLight
+                position={[1.70, 0.7, 0.7]}
+                intensity={2.4}
+                distance={2.5}
+                color={slimePersona === 'mrs' ? '#f472b6' : '#38bdf8'}
+              />
+            )}
 
           {/* 3D Hana-Sensei Character (Standing on the LEFT Dais, looking towards Slime) */}
           <ErrorBoundary FallbackComponent={AvatarFallback}>
@@ -556,21 +640,52 @@ export default function SenseiCharacter({
               </Billboard>
             </>
           )}
+          </group>
 
-          {/* OrbitControls: 360-degree diorama orbiting around both Hana and Slime */}
-          <OrbitControls
-            target={isLeft ? [0, 0.76, 0] : targetPos}
-            enableRotate={true}
-            enablePan={false}
-            enableZoom={true}
-            minDistance={2.0}
-            maxDistance={5.2}
-            minPolarAngle={Math.PI / 4.2}
-            maxPolarAngle={Math.PI / 1.82}
-            autoRotate={false}
+          {/* Synchronized Camera Controller & OrbitControls */}
+          <CameraController
+            target={targetPos}
+            cameraPos={cameraPos}
+            cameraFov={cameraFov}
           />
         </Canvas>
       </ErrorBoundary>
+
+      {/* 360° Classroom Turntable Controls (Available in full mode) */}
+      {!isPortrait && isLeft && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 bg-slate-900/85 backdrop-blur-md rounded-full border border-slate-700/70 shadow-xl text-slate-300 pointer-events-auto">
+          <button
+            type="button"
+            onClick={() => setDioramaRotation((r) => r - Math.PI / 8)}
+            className="p-1 hover:text-white hover:bg-slate-800 rounded-full transition-colors active:scale-95"
+            title="Rotate Left 22.5°"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+          </button>
+          <span className="text-[11px] font-medium tracking-wide text-slate-300 px-1 select-none flex items-center gap-1.5">
+            <span>360° Classroom</span>
+            <span className="text-[10px] text-pink-400 font-japanese font-semibold">教室</span>
+          </span>
+          <button
+            type="button"
+            onClick={() => setDioramaRotation((r) => r + Math.PI / 8)}
+            className="p-1 hover:text-white hover:bg-slate-800 rounded-full transition-colors active:scale-95"
+            title="Rotate Right 22.5°"
+          >
+            <RotateCcw className="w-3.5 h-3.5 -scale-x-100" />
+          </button>
+          {Math.abs(dioramaRotation) > 0.05 && (
+            <button
+              type="button"
+              onClick={() => setDioramaRotation(0)}
+              className="ml-1 px-2 py-0.5 text-[10px] font-semibold bg-slate-800 hover:bg-slate-700 text-pink-300 hover:text-pink-200 rounded-full transition-colors border border-slate-700"
+              title="Reset View"
+            >
+              Reset
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

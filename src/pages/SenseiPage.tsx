@@ -185,7 +185,7 @@ export default function SenseiPage() {
 
           {/* Celebrate */}
           <button
-            onClick={() => triggerCelebration("Great job studying today!")}
+            onClick={() => triggerCelebration()}
             className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-all flex items-center gap-1.5 active:scale-95"
             title="Celebrate Progress"
           >

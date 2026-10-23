@@ -86,6 +86,60 @@ const isQaModeInit = typeof window !== 'undefined' &&
   (new URLSearchParams(window.location.search).get('dev') === 'true' ||
    new URLSearchParams(window.location.search).get('qa') === 'true');
 
+const MULTILINGUAL_GREETINGS: Record<string, string[]> = {
+  ta: [
+    "こんにちは！(Konnichiwa!) இன்று நாம் மகிழ்ச்சியாக ஜப்பானிய மொழியை படிப்போம்! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) ஜப்பானிய இலக்கணம் மற்றும் சொற்களை கற்க நீங்கள் தயாரா? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) இன்று நாம் புதிய பாடங்களை கற்று அசத்துவோம்! 🎌 がんばって！"
+  ],
+  hi: [
+    "こんにちは！(Konnichiwa!) आज हम पूरी लगन से जापानी सीखेंगे! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) क्या आप मेरे साथ जापानी व्याकरण का अभ्यास करने के लिए तैयार हैं? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) चलिए आज कुछ नया और रोमांचक सीखते हैं! 🎌 がんばって！"
+  ],
+  es: [
+    "こんにちは！(Konnichiwa!) ¡Vamos a dar lo mejor aprendiendo japonés hoy! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) ¿Listo para practicar gramática y vocabulario japonés? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) ¡Hana-sensei está aquí para ayudarte a aprender! 🎌 がんばって！"
+  ],
+  fr: [
+    "こんにちは！(Konnichiwa!) Donnons le meilleur de nous-mêmes aujourd'hui ! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) Prêt à étudier le japonais avec moi ? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) Faisons de grands progrès en japonais aujourd'hui ! 🎌 がんばって！"
+  ],
+  de: [
+    "こんにちは！(Konnichiwa!) Geben wir heute unser Bestes beim Japanischlernen! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) Bereit, Grammatik und Vokabeln zu üben? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) Lass uns heute tolle Fortschritte machen! 🎌 がんばって！"
+  ],
+  ko: [
+    "こんにちは！(Konnichiwa!) 오늘도 함께 즐겁게 일본어를 공부해봐요! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) 오늘 일본어 문법과 단어 연습 준비되셨나요? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) 한 걸음씩 꾸준히 마스터해봐요! 🎌 がんばって！"
+  ],
+  zh: [
+    "こんにちは！(Konnichiwa!) 今天也一起加油学日语吧！🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) 准备好和我一起练习日语语法和词汇了吗？✨ がんばって！",
+    "こんにちは！(Konnichiwa!) 一步一个脚印，今天也会有很大进步！🎌 がんばって！"
+  ],
+  en: [
+    "こんにちは！(Konnichiwa!) Let's do our best studying Japanese today! 🌸 がんばって！",
+    "こんにちは！(Konnichiwa!) Ready to practice grammar and vocabulary with me? ✨ がんばって！",
+    "こんにちは！(Konnichiwa!) Sensei is here! What would you like to master today? 🎌 がんばって！"
+  ]
+};
+
+const MULTILINGUAL_CELEBRATIONS: Record<string, string> = {
+  ta: "素晴らしい！(Subarashii!) மிக அருமையான முன்னேற்றம்! தொடர்ந்து முன்னேறுங்கள்! 🎉✨",
+  hi: "素晴らしい！(Subarashii!) बहुत ही शानदार काम! ऐसे ही आगे बढ़ते रहिए! 🎉✨",
+  es: "素晴らしい！(Subarashii!) ¡Excelente trabajo! ¡Sigue con ese increíble ritmo! 🎉✨",
+  fr: "素晴らしい！(Subarashii!) Travail remarquable ! Continue comme ça ! 🎉✨",
+  de: "素晴らしい！(Subarashii!) Fantastische Arbeit! Mach weiter so! 🎉✨",
+  ko: "素晴らしい！(Subarashii!) 대단해요! 정말 훌륭하게 해냈어요! 계속 전진해요! 🎉✨",
+  zh: "素晴らしい！(Subarashii!) 太棒了！请继续保持这样出色的表现！🎉✨",
+  en: "素晴らしい！(Subarashii!) Incredible work! Keep up the amazing momentum! 🎉✨"
+};
+
 export const useSenseiStore = create<SenseiState>((set, get) => ({
   isOpen: false,
   isTouring: false,
@@ -330,14 +384,23 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   },
 
   greet: () => {
-    const greetings = [
-      "Konnichiwa! Let's do our best today! 🌸",
-      "Ready to study Japanese with me? Ganbatte! ✨",
-      "Sensei is here! What would you like to practice today? 🎌"
-    ];
+    const rawLang = useSettingsStore.getState().explanationLanguage || useSettingsStore.getState().displayLanguage || 'en';
+    const langKey = String(rawLang).slice(0, 2).toLowerCase();
+    const greetings = MULTILINGUAL_GREETINGS[langKey] || MULTILINGUAL_GREETINGS['en'];
     const phrase = greetings[Math.floor(Math.random() * greetings.length)];
 
-    set({ animationState: 'waving', speechState: 'waving' });
+    const greetMessage: SenseiMessage = {
+      id: `greet-${Date.now()}`,
+      role: 'assistant',
+      content: phrase,
+      emotion: 'happy'
+    };
+
+    set(state => ({
+      messages: [...state.messages, greetMessage],
+      animationState: 'waving',
+      speechState: 'waving'
+    }));
 
     if (get().speechEnabled) {
       audioService.speak(phrase, {
@@ -353,13 +416,27 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   },
 
   triggerCelebration: (reason?: string) => {
-    set({
+    const rawLang = useSettingsStore.getState().explanationLanguage || useSettingsStore.getState().displayLanguage || 'en';
+    const langKey = String(rawLang).slice(0, 2).toLowerCase();
+    let praise = MULTILINGUAL_CELEBRATIONS[langKey] || MULTILINGUAL_CELEBRATIONS['en'];
+    if (reason) {
+      praise = `素晴らしい！(Subarashii!) ${reason} 🎉✨`;
+    }
+
+    const celebMessage: SenseiMessage = {
+      id: `celebrate-${Date.now()}`,
+      role: 'assistant',
+      content: praise,
+      emotion: 'celebrating'
+    };
+
+    set(state => ({
+      messages: [...state.messages, celebMessage],
       companionMode: 'celebration',
       animationState: 'celebrating',
       speechState: 'celebrating'
-    });
+    }));
 
-    const praise = reason ? `Subarashii! ${reason} 🎉` : "Subarashii! Amazing work! 🎉";
     if (get().speechEnabled) {
       audioService.speak(praise, {
         onStart: () => set({ speechState: 'speaking', animationState: 'speaking' }),
