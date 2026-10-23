@@ -56,7 +56,8 @@ export async function callGroq(messages: Array<{ role: string; content: string }
           throw new AppError(503, 'AI service authentication error', 'AI_AUTH_ERROR');
         }
         if (error.response?.status === 429) {
-          throw new AppError(429, 'AI rate limit reached. Please wait a moment.', 'AI_RATE_LIMITED');
+          console.warn(`[callGroq] Model ${model} rate-limited (429), trying next available model...`);
+          continue;
         }
         console.warn(`[callGroq] Model ${model} failed with ${error.response?.status}:`, error.response?.data?.error?.message || error.message);
       }
@@ -65,6 +66,9 @@ export async function callGroq(messages: Array<{ role: string; content: string }
 
   if (axios.isAxiosError(lastError)) {
     console.error('Groq API error:', lastError.response?.data || lastError.message);
+    if (lastError.response?.status === 429) {
+      throw new AppError(429, 'AI rate limit reached across all models. Please wait a moment.', 'AI_RATE_LIMITED');
+    }
   }
   throw new AppError(503, 'AI service unavailable', 'AI_UNAVAILABLE');
 }

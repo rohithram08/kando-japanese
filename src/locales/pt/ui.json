@@ -500,6 +500,8 @@
     "eyebrow": "Smart Multilingual Lexicon",
     "popular_suggestions": "Popular Words to Explore",
     "recent_searches": "Recent Searches",
-    "error": "Unable to fetch dictionary results. Please check your connection."
+    "error": "Unable to fetch dictionary results. Please check your connection.",
+    "no_results_title": "Nenhuma palavra encontrada",
+    "no_results_desc": "Não encontramos entradas correspondentes. Tente pesquisar usando Romaji, significado ou verifique a ortografia."
   }
 }

@@ -426,7 +426,7 @@ export default function DictionaryPage() {
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-emerald-500" />
                 <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                  {t('dictionary.popular_title', 'Popular Words to Explore')}
+                  {t('dictionary.popular_suggestions', 'Popular Words to Explore')}
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -450,7 +450,7 @@ export default function DictionaryPage() {
                   <div className="flex items-center gap-2">
                     <History className="w-4 h-4 text-cyan-500" />
                     <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                      {t('dictionary.recent_title', 'Recent Searches')}
+                      {t('dictionary.recent_searches', 'Recent Searches')}
                     </h3>
                   </div>
                   <button

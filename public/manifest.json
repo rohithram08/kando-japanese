@@ -4,13 +4,15 @@
   "icons": [
     {
       "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#ef4444",
+  "orientation": "portrait-primary",
+  "theme_color": "#0f172a",
   "background_color": "#030712",
   "description": "Learn Japanese with interactive lessons, kanji study, SRS reviews, and more."
 }
