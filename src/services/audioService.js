@@ -242,13 +242,19 @@ export function sanitizeForSpeech(raw) {
   // 6. Strip bold/italic markdown characters: **word** -> word, *word* -> word, __word__ -> word
   text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
 
-  // 7. Strip Romaji in parentheses following Japanese text:
+  // 7. Strip Romaji / Latin transliteration in parentheses or brackets:
   // e.g. お水 (omizu) -> お水
   // 猫はかわいいです。(Neko wa kawaii desu.) -> 猫はかわいいです。
   // が (ga) -> が
   // は (wa) -> は
-  // 道を教えてください (Michi o otsukusai kudasai) -> 道を教えてください
-  text = text.replace(/([\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\([a-zA-Z0-9\s~—\-_'".!?、。]+\)/g, '$1')
+  // नमस्ते! (Namaste! Bahut hi shandaar sawaal hai!) -> नमस्ते!
+  // है (wa/ha) -> है
+  // नियम (rule) -> नियम
+  // "टॉपिक" (Topic) -> "टॉपिक"
+  // Note: Parentheses containing native script (Hindi, Tamil, Japanese meanings like "(यहाँ आप अपने बारे में...")
+  // are NOT Latin-only and are strictly PRESERVED and spoken by TTS!
+  text = text.replace(/\([a-zA-Z0-9\s~—\-_'".!?/\\:;,#&*@%^+=<>]+\)/g, '')
+  // Strip square-bracketed Romaji readings following Japanese text (while preserving English brackets like "[the way]")
   text = text.replace(/([\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\[[a-zA-Z0-9\s~—\-_'".!?、。]+\]/g, '$1')
 
   // 8. Remove headers: # Header -> Header

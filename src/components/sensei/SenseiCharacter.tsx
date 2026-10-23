@@ -2,7 +2,7 @@ import React, { useState, Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { RotateCcw, Send, Mic, MicOff, Keyboard } from 'lucide-react';
+import { RotateCcw, Send, Mic, MicOff, Keyboard, Square } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
 import { SenseiBackground } from './SenseiBackground';
@@ -31,6 +31,7 @@ export interface SenseiCharacterProps {
   latestUserMessage?: { id?: string; content: string; role: string } | null;
   isTyping?: boolean;
   onReplayAudio?: (content: string) => void;
+  onStopAudio?: () => void;
   userName?: string;
   userLevel?: number;
   input?: string;
@@ -179,6 +180,7 @@ export default function SenseiCharacter({
   latestUserMessage,
   isTyping = false,
   onReplayAudio,
+  onStopAudio,
   userName = 'Rohith Ram',
   userLevel = 6,
   input = '',
@@ -344,7 +346,7 @@ export default function SenseiCharacter({
               {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (FLOATING IN 3D SPACE ABOVE HER HEAD WITH COMIC TAIL) */}
               <Billboard
                 follow={true}
-                position={isMobileScreen ? [0, 1.45, 0] : [-0.70, 1.55, 0]}
+                position={isMobileScreen ? [0, 1.45, 0] : [-0.85, 1.60, 0]}
               >
                 <Html
                   center
@@ -356,7 +358,7 @@ export default function SenseiCharacter({
                     onPointerDown={(e) => e.stopPropagation()}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className="w-[250px] sm:w-[275px] md:w-[295px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
+                    className="w-[220px] sm:w-[240px] md:w-[255px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
                   >
                     {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-LEFT to Hana's Head */}
                     <div className="absolute -bottom-2.5 left-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-l border-pink-400/40 rotate-45 pointer-events-none" />
@@ -370,14 +372,27 @@ export default function SenseiCharacter({
                           🌸
                         </span>
                         <span className="text-xs font-bold text-pink-300 flex items-center gap-1.5 font-japanese">
-                          <span>花先生 (Hana-sensei)</span>
+                          <span>花先生</span>
                           <span className="text-[10px] font-normal text-slate-400 font-sans">
                             {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
                           </span>
                         </span>
                       </div>
 
-                      {latestAssistantMessage && !isTyping && onReplayAudio && (
+                      {/* Speech Action Buttons: Stop button when speaking, Replay when idle */}
+                      {speechState === 'speaking' ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            onStopAudio?.();
+                          }}
+                          className="px-2 py-0.5 bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 rounded-lg transition-colors text-xs flex items-center gap-1 border border-rose-500/40 active:scale-95 animate-pulse"
+                          title="Stop Speaking"
+                        >
+                          <Square className="w-2.5 h-2.5 fill-current" />
+                          <span className="text-[10px] font-semibold">Stop</span>
+                        </button>
+                      ) : latestAssistantMessage && !isTyping && onReplayAudio ? (
                         <button
                           type="button"
                           onClick={() => onReplayAudio(latestAssistantMessage.content)}
@@ -387,7 +402,7 @@ export default function SenseiCharacter({
                           <RotateCcw className="w-3 h-3" />
                           <span className="text-[10px] font-medium">Replay</span>
                         </button>
-                      )}
+                      ) : null}
                     </div>
 
                     {/* Content */}
@@ -410,7 +425,7 @@ export default function SenseiCharacter({
               {/* 2. SLIME 3D CHAT & TYPING BUBBLE (FLOATING IN 3D SPACE ABOVE SLIME WITH COMIC TAIL) */}
               <Billboard
                 follow={true}
-                position={isMobileScreen ? [0, 0.55, 0] : [0.70, 0.76, 0]}
+                position={isMobileScreen ? [0, 0.55, 0] : [0.85, 1.05, 0]}
               >
                 <Html
                   center
@@ -422,7 +437,7 @@ export default function SenseiCharacter({
                     onPointerDown={(e) => e.stopPropagation()}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className="w-[250px] sm:w-[275px] md:w-[295px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
+                    className="w-[220px] sm:w-[240px] md:w-[255px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
                   >
                     {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-RIGHT to Slime */}
                     <div className="absolute -bottom-2.5 right-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-r border-sky-400/40 -rotate-45 pointer-events-none" />

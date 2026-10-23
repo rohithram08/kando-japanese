@@ -285,6 +285,14 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(clean).toBe('The verb 食べる means to eat.');
     });
 
+    it('strips redundant Latin transliteration in parentheses following Indic text while strictly preserving native script meanings', () => {
+      const input = 'नमस्ते! बहुत ही शानदार सवाल है! (Namaste! Bahut hi shandaar sawaal hai!) 🌸\nअर्थ: मैं एक छात्र हूँ। (यहाँ आप अपने बारे में एक सामान्य तथ्य बता रही हैं।)';
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('Namaste! Bahut hi shandaar sawaal hai!');
+      expect(clean).toContain('नमस्ते! बहुत ही शानदार सवाल है!');
+      expect(clean).toContain('अर्थ: मैं एक छात्र हूँ। (यहाँ आप अपने बारे में एक सामान्य तथ्य बता रही हैं।)');
+    });
+
     it('handles markdown links, code blocks, and table pipes cleanly', () => {
       const input = `See [Grammar Guide](/grammar) and \`taberu\`.\n| Particle | Meaning |\n| は | Topic |`;
       const clean = sanitizeForSpeech(input);

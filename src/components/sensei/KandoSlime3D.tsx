@@ -1,5 +1,5 @@
 // src/components/sensei/KandoSlime3D.tsx
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { SlimeMood } from '../mascot/KandoSlime';
@@ -35,6 +35,34 @@ export function KandoSlime3D({
 
   const isMrs = slimeType === 'mrs';
 
+  // ── Authentic Teardrop / Onion-Dome Slime 3D Geometry ──
+  // Revolved cross-section creating the iconic anime slime silhouette:
+  // Flat squishy base, plump mochi belly, and gentle upward-tapering droplet crown.
+  const slimeGeometry = useMemo(() => {
+    const points: THREE.Vector2[] = [];
+    // 1. Base bottom center to outer base rim
+    points.push(new THREE.Vector2(0, 0));
+    points.push(new THREE.Vector2(0.18, 0.005));
+    points.push(new THREE.Vector2(0.32, 0.025));
+    points.push(new THREE.Vector2(0.40, 0.065));
+    // 2. Chubby lower belly
+    points.push(new THREE.Vector2(0.44, 0.13));
+    points.push(new THREE.Vector2(0.43, 0.20));
+    // 3. Inward curve / waist
+    points.push(new THREE.Vector2(0.38, 0.28));
+    points.push(new THREE.Vector2(0.31, 0.35));
+    // 4. Upper dome tapering smoothly into perky teardrop tip
+    points.push(new THREE.Vector2(0.22, 0.42));
+    points.push(new THREE.Vector2(0.12, 0.48));
+    points.push(new THREE.Vector2(0.045, 0.52));
+    points.push(new THREE.Vector2(0.005, 0.545));
+    points.push(new THREE.Vector2(0, 0.55));
+
+    const geo = new THREE.LatheGeometry(points, 48);
+    geo.computeVertexNormals();
+    return geo;
+  }, []);
+
   // Spontaneous anime blinking
   useEffect(() => {
     let blinkTimer: NodeJS.Timeout;
@@ -50,7 +78,7 @@ export function KandoSlime3D({
   // Frame animation loop: jelly breathing, reactive listening tilt, squish spring physics
   useFrame((stateObj, delta) => {
     const t = stateObj.clock.elapsedTime;
-    const breath = Math.sin(t * 3.2) * 0.03;
+    const breath = Math.sin(t * 3.2) * 0.025;
 
     // Decay squish spring
     if (squishFactor > 0.001) {
@@ -60,16 +88,16 @@ export function KandoSlime3D({
     if (bodyMeshRef.current) {
       if (mood === 'celebrating') {
         // Joyful anime hop
-        const hop = Math.abs(Math.sin(t * 7.5)) * 0.16;
-        bodyMeshRef.current.position.y = 0.28 + hop;
+        const hop = Math.abs(Math.sin(t * 7.5)) * 0.14;
+        bodyMeshRef.current.position.y = hop;
         bodyMeshRef.current.scale.set(
-          1.06 + breath + squishFactor * 0.35,
-          0.82 - breath * 1.5 - squishFactor * 0.35,
+          1.04 + breath + squishFactor * 0.35,
+          0.92 - breath * 1.5 - squishFactor * 0.35,
           1.04 + breath + squishFactor * 0.35
         );
       } else if (mood === 'listening') {
         // Attentive tilt towards Hana-sensei on the LEFT
-        bodyMeshRef.current.position.y = 0.28;
+        bodyMeshRef.current.position.y = 0;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
           -0.12,
@@ -77,17 +105,17 @@ export function KandoSlime3D({
         );
         bodyMeshRef.current.rotation.z = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.z,
-          0.06,
+          0.05,
           delta * 4.5
         );
         bodyMeshRef.current.scale.set(
           1.02 + breath + squishFactor * 0.35,
-          0.84 - breath - squishFactor * 0.35,
+          0.96 - breath - squishFactor * 0.35,
           1.02 + breath + squishFactor * 0.35
         );
       } else if (mood === 'studying') {
         // Focused study posture
-        bodyMeshRef.current.position.y = 0.28;
+        bodyMeshRef.current.position.y = 0;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
           0,
@@ -100,12 +128,12 @@ export function KandoSlime3D({
         );
         bodyMeshRef.current.scale.set(
           1.0 + breath * 0.5 + squishFactor * 0.35,
-          0.86 - breath * 0.5 - squishFactor * 0.35,
+          0.97 - breath * 0.5 - squishFactor * 0.35,
           1.0 + breath * 0.5 + squishFactor * 0.35
         );
       } else {
         // Gentle relaxed posture facing Hana
-        bodyMeshRef.current.position.y = 0.28;
+        bodyMeshRef.current.position.y = 0;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
           0,
@@ -117,8 +145,8 @@ export function KandoSlime3D({
           delta * 3.0
         );
         bodyMeshRef.current.scale.set(
-          1.05 + breath + squishFactor * 0.35,
-          0.8 - breath * 1.2 - squishFactor * 0.35,
+          1.03 + breath + squishFactor * 0.35,
+          0.96 - breath * 1.2 - squishFactor * 0.35,
           1.03 + breath + squishFactor * 0.35
         );
       }
@@ -133,7 +161,7 @@ export function KandoSlime3D({
     if (notesGroupRef.current) {
       if (mood === 'listening') {
         notesGroupRef.current.visible = true;
-        notesGroupRef.current.position.y = 0.56 + Math.sin(t * 2.5) * 0.06;
+        notesGroupRef.current.position.y = 0.58 + Math.sin(t * 2.5) * 0.06;
         notesGroupRef.current.rotation.z = Math.sin(t * 2) * 0.15;
       } else {
         notesGroupRef.current.visible = false;
@@ -155,15 +183,15 @@ export function KandoSlime3D({
 
   return (
     <group ref={rootGroupRef} position={position} rotation={rotation} scale={scale} dispose={null}>
-      {/* ── Slime Body Dome (Cute Mochi Shape) ── */}
+      {/* ── Slime Body Dome (Authentic Teardrop Mochi Silhouette) ── */}
       <mesh
         ref={bodyMeshRef}
-        position={[0, 0.28, 0]}
+        geometry={slimeGeometry}
+        position={[0, 0, 0]}
         onPointerDown={handlePointerDown}
         castShadow
         receiveShadow
       >
-        <sphereGeometry args={[0.34, 32, 32]} />
         <meshPhysicalMaterial
           color={jellyColor}
           emissive={emissiveColor}
@@ -179,27 +207,27 @@ export function KandoSlime3D({
         />
 
         {/* ── Specular Shine Glint ── */}
-        <mesh position={[-0.14, 0.16, 0.24]} rotation={[0.2, 0.3, -0.4]}>
+        <mesh position={[-0.14, 0.33, 0.28]} rotation={[0.2, 0.3, -0.4]}>
           <planeGeometry args={[0.09, 0.04]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.75} side={THREE.DoubleSide} />
         </mesh>
-        <mesh position={[-0.2, 0.1, 0.22]}>
+        <mesh position={[-0.20, 0.26, 0.26]}>
           <circleGeometry args={[0.02, 16]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.65} side={THREE.DoubleSide} />
         </mesh>
 
         {/* ── Rosy Blush Cheeks ── */}
-        <mesh position={[-0.17, -0.06, 0.27]}>
+        <mesh position={[-0.18, 0.15, 0.38]}>
           <sphereGeometry args={[0.045, 16, 16]} />
           <meshBasicMaterial color={isMrs ? '#f43f5e' : '#fb7185'} transparent opacity={0.7} />
         </mesh>
-        <mesh position={[0.17, -0.06, 0.27]}>
+        <mesh position={[0.18, 0.15, 0.38]}>
           <sphereGeometry args={[0.045, 16, 16]} />
           <meshBasicMaterial color={isMrs ? '#f43f5e' : '#fb7185'} transparent opacity={0.7} />
         </mesh>
 
         {/* ── Left Anime Eye ── */}
-        <group ref={leftEyeRef} position={[-0.09, 0.03, 0.31]}>
+        <group ref={leftEyeRef} position={[-0.10, 0.21, 0.40]}>
           <mesh scale={[1, 1.4, 0.4]}>
             <sphereGeometry args={[0.034, 16, 16]} />
             <meshBasicMaterial color="#0f172a" />
@@ -219,7 +247,7 @@ export function KandoSlime3D({
         </group>
 
         {/* ── Right Anime Eye ── */}
-        <group ref={rightEyeRef} position={[0.09, 0.03, 0.31]}>
+        <group ref={rightEyeRef} position={[0.10, 0.21, 0.40]}>
           <mesh scale={[1, 1.4, 0.4]}>
             <sphereGeometry args={[0.034, 16, 16]} />
             <meshBasicMaterial color="#0f172a" />
@@ -239,14 +267,14 @@ export function KandoSlime3D({
         </group>
 
         {/* ── Cute Soft Mouth ── */}
-        <mesh position={[0, -0.06, 0.315]} rotation={[0, 0, Math.PI]}>
+        <mesh position={[0, 0.15, 0.415]} rotation={[0, 0, Math.PI]}>
           <torusGeometry args={[0.024, 0.005, 8, 16, Math.PI * 0.9]} />
           <meshBasicMaterial color="#0f172a" />
         </mesh>
 
         {/* ── Mrs. Slime Sakura Blossom Hair Clip ── */}
         {isMrs && (
-          <group position={[0.18, 0.24, 0.14]} rotation={[0.2, 0.4, -0.3]} scale={0.7}>
+          <group position={[0.14, 0.42, 0.18]} rotation={[0.2, 0.4, -0.3]} scale={0.7}>
             {[0, 72, 144, 216, 288].map((angle, idx) => (
               <mesh
                 key={idx}
@@ -266,14 +294,14 @@ export function KandoSlime3D({
 
         {/* ── Studying Mode: Japanese Hachimaki Headband (必勝) ── */}
         {mood === 'studying' && (
-          <group position={[0, 0.12, 0]}>
+          <group position={[0, 0.28, 0]}>
             {/* White Headband Ring */}
             <mesh rotation={[-Math.PI / 2, 0, 0]}>
-              <torusGeometry args={[0.33, 0.024, 8, 32]} />
+              <torusGeometry args={[0.38, 0.024, 8, 32]} />
               <meshStandardMaterial color="#ffffff" roughness={0.3} />
             </mesh>
             {/* Red Hinomaru Sun */}
-            <mesh position={[0, 0, 0.34]}>
+            <mesh position={[0, 0, 0.39]}>
               <circleGeometry args={[0.04, 24]} />
               <meshBasicMaterial color="#ef4444" />
             </mesh>
@@ -295,3 +323,5 @@ export function KandoSlime3D({
     </group>
   );
 }
+export default KandoSlime3D;
+

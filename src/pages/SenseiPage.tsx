@@ -171,7 +171,7 @@ export default function SenseiPage() {
   return (
     <div className="h-[calc(100vh-5.5rem)] min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       
-      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Camera ONLY) ─── */}
+      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Sound/Stop, Camera) ─── */}
       <header className="absolute top-4 right-4 z-20 flex items-center pointer-events-none">
         <div className="pointer-events-auto flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
           {/* Greet */}
@@ -191,6 +191,29 @@ export default function SenseiPage() {
           >
             <Sparkles className="w-3.5 h-3.5" /> Celebrate
           </button>
+
+          {/* Live Speech Stop / Mute Action Button */}
+          {speechState === 'speaking' ? (
+            <button
+              onClick={() => stopSpeech()}
+              className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 transition-all flex items-center gap-1.5 active:scale-95 animate-pulse"
+              title="Stop Hana-sensei speaking"
+            >
+              <Square className="w-3.5 h-3.5 fill-current" /> Stop
+            </button>
+          ) : (
+            <button
+              onClick={() => toggleSpeech()}
+              className={`p-2 rounded-xl transition-all ${
+                speechEnabled
+                  ? 'text-primary hover:bg-muted'
+                  : 'text-muted-foreground hover:bg-muted'
+              }`}
+              title={speechEnabled ? "Mute Voice Speech" : "Unmute Voice Speech"}
+            >
+              {speechEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+            </button>
+          )}
 
           {/* Camera Mode Toggle */}
           <button
@@ -223,6 +246,7 @@ export default function SenseiPage() {
             latestUserMessage={latestUserMessage}
             isTyping={isTyping}
             onReplayAudio={handleReplayAudio}
+            onStopAudio={stopSpeech}
             userName={userName}
             userLevel={userLevel}
             input={input}
