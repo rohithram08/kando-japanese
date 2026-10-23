@@ -149,17 +149,31 @@ export function isHindi(text: string): boolean {
   return /[\u0900-\u097F]/.test(text);
 }
 
+const ENGLISH_STOPWORDS = new Set([
+  'to', 'the', 'a', 'an', 'is', 'are', 'was', 'were', 'in', 'on', 'at', 'by', 'for', 'with', 'from',
+  'and', 'or', 'of', 'it', 'be', 'do', 'have', 'give', 'get', 'go', 'eat', 'drink', 'see', 'look',
+  'buy', 'sell', 'say', 'speak', 'talk', 'read', 'write', 'learn', 'study', 'make', 'take', 'come',
+  'leave', 'live', 'love', 'like', 'know', 'think', 'want', 'feel', 'good', 'bad', 'big', 'small',
+  'new', 'old', 'water', 'cat', 'dog', 'book', 'car', 'friend', 'school', 'house', 'person', 'time'
+]);
+
 export function isRomaji(text: string): boolean {
   const clean = text.trim().toLowerCase();
   if (!/^[a-z\s\-]+$/.test(clean) || clean.length < 2) return false;
-  const words = clean.split(/\s+/);
+  // If starts with English infinitive "to <verb>", it is NOT Romaji
+  if (/^to\s+[a-z]/i.test(clean)) return false;
+  const words = clean.split(/\s+/).filter(Boolean);
+  if (words.some((w) => ENGLISH_STOPWORDS.has(w))) return false;
+  // Characters forbidden in standard Hepburn Romaji: v, l, q, x, c (not followed by h)
+  if (/[vlqx]|c(?!h)/i.test(clean)) return false;
+
+  const romajiRegex = /^(?:[ksthmyrwgzdbp]?[aiueo]|[ksthmyrwgzdbp]y[auo]|ch[aiueo]|sh[aiueo]|ts[aiueo]|j[aiueo]|n|[aeiou]|(?:kk|ss|tt|pp)[aiueo])+$/i;
   return words.every((w) => {
+    if (w.length < 2 && !/^[aeioun]$/i.test(w)) return false;
     // In Japanese Romaji, syllables end in a vowel or 'n'
     if (/[bcdfghjklmpqrstvwxyz]$/i.test(w) && !/n$/i.test(w)) return false;
     // Cannot contain non-Japanese consonant clusters or English vowel combos
     if (/(ea|oa|ee|th|wh|ck|ng|igh|tion|ment|er$|est$)/i.test(w)) return false;
-    // Match standard Hepburn mora syllables
-    const romajiRegex = /^(?:[ksthmyrwgzdbpfv]?[aiueo]|[ksthmyrwgzdbp]y[auo]|ch[aiueo]|sh[aiueo]|ts[aiueo]|j[aiueo]|n|[aeiou]|(?:kk|ss|tt|pp|cc)[aiueo])+$/i;
     return romajiRegex.test(w);
   });
 }
@@ -281,24 +295,77 @@ function searchCurriculum(query: string, locale: string): DictionaryEntry[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];
 
-  const matched = words.filter((item) => {
-    // Exact word or reading match
-    if (item.word.toLowerCase() === q || item.reading.toLowerCase() === q) return true;
-    if (item.romaji.toLowerCase() === q) return true;
+  // If query is an English infinitive like "to give", extract the verb "give"
+  const verbStem = q.startsWith('to ') ? q.slice(3).trim() : null;
 
-    // Partial Japanese match
-    if (item.word.toLowerCase().includes(q) || item.reading.toLowerCase().includes(q)) return true;
-    if (item.romaji.toLowerCase().includes(q)) return true;
+  interface ScoredItem {
+    item: LoadedCurriculumWord;
+    score: number;
+  }
 
-    // Meaning matches based on locale
-    if (item.meaningEn && item.meaningEn.toLowerCase().includes(q)) return true;
-    if (locale === 'ta' && item.meaningTa && item.meaningTa.toLowerCase().includes(q)) return true;
-    if (locale === 'hi' && item.meaningHi && item.meaningHi.toLowerCase().includes(q)) return true;
+  const scored: ScoredItem[] = [];
 
-    return false;
-  });
+  for (const item of words) {
+    let score = 0;
+    const itemWord = item.word.toLowerCase();
+    const itemReading = item.reading.toLowerCase();
+    const itemRomaji = item.romaji.toLowerCase();
+    const itemMeaningEn = (item.meaningEn || '').toLowerCase();
+    const itemMeaningLoc = locale === 'ta'
+      ? (item.meaningTa || '').toLowerCase()
+      : locale === 'hi'
+      ? (item.meaningHi || '').toLowerCase()
+      : itemMeaningEn;
 
-  return matched.slice(0, 15).map((item) => {
+    // 1. Exact Japanese word / reading match
+    if (itemWord === q || itemReading === q) {
+      score = 1000;
+    } else if (itemRomaji === q) {
+      score = 900;
+    }
+    // 2. Exact Meaning match (e.g. "give" or "to give")
+    else if (
+      itemMeaningEn === q ||
+      itemMeaningLoc === q ||
+      (verbStem && (itemMeaningEn === verbStem || itemMeaningEn === `to ${verbStem}`))
+    ) {
+      score = 850;
+    }
+    // 3. Segment match in comma/semicolon-separated definitions (e.g. "to give, to present")
+    else {
+      const segments = itemMeaningEn.split(/[,;/]\s*/).map((s) => s.trim());
+      if (segments.some((s) => s === q || (verbStem && (s === verbStem || s === `to ${verbStem}`)))) {
+        score = 800;
+      } else if (segments.some((s) => s.startsWith(q) || (verbStem && s.startsWith(verbStem)))) {
+        score = 700;
+      } else if (itemMeaningEn.startsWith(q) || (verbStem && itemMeaningEn.startsWith(verbStem))) {
+        score = 650;
+      } else {
+        // Whole word regex match (e.g. \bgive\b)
+        const wordRegex = new RegExp(`\\b${verbStem || q}\\b`, 'i');
+        if (wordRegex.test(itemMeaningEn) || (locale !== 'en' && wordRegex.test(itemMeaningLoc))) {
+          score = 500;
+        } else if (itemWord.includes(q) || itemReading.includes(q)) {
+          score = 300;
+        } else if (itemRomaji.includes(q)) {
+          score = 200;
+        } else if (itemMeaningEn.includes(q) || (locale !== 'en' && itemMeaningLoc.includes(q))) {
+          // If query is short (<= 4 chars like "to g"), don't loosely match in the middle
+          if (q.length <= 4) continue;
+          score = 100;
+        }
+      }
+    }
+
+    if (score > 0) {
+      scored.push({ item, score });
+    }
+  }
+
+  // Sort strictly by relevance score descending
+  scored.sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, 15).map(({ item }) => {
     let localizedMeaning = item.meaningEn;
     let localizedExample = item.exampleEn;
 
@@ -568,6 +635,10 @@ export async function searchHybridDictionary(
 
   // 2. Resolve query keywords for online Lexicon
   let searchKeywords = [query];
+  if (query.toLowerCase().startsWith('to ')) {
+    const stem = query.slice(3).trim();
+    if (stem) searchKeywords = [stem, query];
+  }
   if (detectedType === 'meaning' && locale !== 'en') {
     const mapped = await mapQueryToKeywords(query, locale);
     searchKeywords = mapped;
@@ -576,8 +647,9 @@ export async function searchHybridDictionary(
   // 3. Query Jisho API
   const jishoResults: DictionaryEntry[] = [];
   const seenWords = new Set<string>(localCurriculum.map((c) => c.word));
+  const maxJisho = localCurriculum.length > 0 ? 5 : 10;
 
-  for (const kw of searchKeywords.slice(0, 3)) {
+  for (const kw of searchKeywords.slice(0, 2)) {
     const items = await fetchJisho(kw);
     for (const item of items) {
       const jp = item.japanese?.[0] || {};
@@ -610,9 +682,9 @@ export async function searchHybridDictionary(
         isCurated: false,
       });
 
-      if (jishoResults.length >= 20) break;
+      if (jishoResults.length >= maxJisho) break;
     }
-    if (jishoResults.length >= 20) break;
+    if (jishoResults.length >= maxJisho) break;
   }
 
   // 4. Enrich & Localize Jisho Entries (Translate into user's preferred language + create example sentences)

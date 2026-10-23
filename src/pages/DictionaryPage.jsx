@@ -84,6 +84,8 @@ export default function DictionaryPage() {
   });
 
   const searchInputRef = useRef(null);
+  const searchAbortControllerRef = useRef(null);
+  const searchSeqRef = useRef(0);
 
   // Current language display name
   const currentLangName = useMemo(() => {
@@ -96,11 +98,15 @@ export default function DictionaryPage() {
     return detectSearchQuery(query, currentLangName);
   }, [query, currentLangName]);
 
-  // Debounce search input (350ms)
+  // Debounce search input (400ms) with stopword guard
   useEffect(() => {
+    const trimmed = query.trim();
     const handler = setTimeout(() => {
-      setDebouncedQuery(query.trim());
-    }, 350);
+      // Don't auto-search on bare English particles like "to" alone
+      if (!trimmed || (trimmed.length >= 2 && !/^(to|a|an|the|in|on|at|by|of|or|is)$/i.test(trimmed))) {
+        setDebouncedQuery(trimmed);
+      }
+    }, 400);
     return () => clearTimeout(handler);
   }, [query]);
 
@@ -116,6 +122,14 @@ export default function DictionaryPage() {
         return;
       }
 
+      // Abort any prior in-flight search request to prevent race conditions
+      if (searchAbortControllerRef.current) {
+        searchAbortControllerRef.current.abort();
+      }
+      const abortController = new AbortController();
+      searchAbortControllerRef.current = abortController;
+      const currentSeq = ++searchSeqRef.current;
+
       setLoading(true);
       setError(null);
       setSubmittedQuery(q);
@@ -124,7 +138,11 @@ export default function DictionaryPage() {
         const res = await searchDictionary(q, effectiveLocale, {
           jlpt: selectedJlpt !== 'All' ? selectedJlpt : undefined,
           pos: selectedPos !== 'all' ? selectedPos : undefined,
+          signal: abortController.signal,
         });
+
+        // Drop stale response if a newer search was initiated
+        if (currentSeq !== searchSeqRef.current) return;
 
         setResults(res.results || []);
 
@@ -137,10 +155,17 @@ export default function DictionaryPage() {
           return updated;
         });
       } catch (err) {
-        console.error('Dictionary search error:', err);
-        setError(t('dictionary.error', 'Unable to fetch dictionary results. Please check your connection.'));
+        if (err?.name === 'CanceledError' || err?.code === 'ERR_CANCELED') {
+          return;
+        }
+        if (currentSeq === searchSeqRef.current) {
+          console.error('Dictionary search error:', err);
+          setError(t('dictionary.error', 'Unable to fetch dictionary results. Please check your connection.'));
+        }
       } finally {
-        setLoading(false);
+        if (currentSeq === searchSeqRef.current) {
+          setLoading(false);
+        }
       }
     },
     [effectiveLocale, selectedJlpt, selectedPos, t]
@@ -272,7 +297,7 @@ export default function DictionaryPage() {
                     queryDetection.placeholderText ||
                     t('dictionary.placeholder', 'Try 食べる, taberu, water, தண்ணீர், खाना…')
                   }
-                  className="w-full py-4 pl-3 pr-28 text-base bg-transparent text-foreground placeholder:text-muted-foreground/60 focus:outline-hidden"
+                  className="w-full py-4 pl-3 pr-28 text-base bg-transparent text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-0 border-0 outline-none"
                   autoComplete="off"
                   autoCorrect="off"
                   spellCheck="false"

@@ -1,6 +1,7 @@
 // src/utils/japaneseDetector.ts
 // ─────────────────────────────────────────────────────────────────────────────
 // Real-time script and search intention detector for Kando Dictionary
+// Disambiguates between Japanese (Kanji/Kana), Romaji, and localized meanings.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface QueryDetection {
@@ -10,6 +11,8 @@ export interface QueryDetection {
   icon: string;
   placeholderText: string;
 }
+
+const ENGLISH_WORDS_REGEX = /\b(to|the|a|an|is|are|was|were|in|on|at|by|for|with|from|and|or|of|it|be|do|have|give|get|go|eat|drink|see|look|buy|sell|say|speak|talk|read|write|learn|study|make|take|come|leave|live|love|like|know|think|want|feel|good|bad|big|small|new|old|water|cat|dog|book|car|friend|school|house|person|people|day|year|time)\b/i;
 
 export function detectSearchQuery(query: string, languageLabel: string = 'English'): QueryDetection {
   const q = String(query || '').trim();
@@ -45,15 +48,63 @@ export function detectSearchQuery(query: string, languageLabel: string = 'Englis
     };
   }
 
-  // Romaji check
-  const clean = q.toLowerCase();
-  const isRomajiCandidate =
-    /^[a-z\s\-]+$/.test(clean) &&
-    clean.length >= 2 &&
-    !/[bcdfghjklmpqrstvwxyz]$/i.test(clean) &&
-    !/(ea|oa|ee|th|wh|ck|ng|igh|tion|ment|er$|est$)/i.test(clean);
+  // Tamil script
+  if (/[\u0B80-\u0BFF]/.test(q)) {
+    return {
+      type: 'meaning',
+      label: 'Searching Meaning (Tamil / தமிழ்)',
+      badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
+      icon: '🌐',
+      placeholderText: 'Searching meaning in Tamil…',
+    };
+  }
 
-  if (isRomajiCandidate) {
+  // Devanagari / Hindi script
+  if (/[\u0900-\u097F]/.test(q)) {
+    return {
+      type: 'meaning',
+      label: 'Searching Meaning (Hindi / हिन्दी)',
+      badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
+      icon: '🌐',
+      placeholderText: 'Searching meaning in Hindi…',
+    };
+  }
+
+  const clean = q.toLowerCase();
+
+  // English infinitive "to <verb>" or common English words
+  if (/^to\s+[a-z]/i.test(clean) || ENGLISH_WORDS_REGEX.test(clean)) {
+    return {
+      type: 'meaning',
+      label: `Searching Meaning (${languageLabel})`,
+      badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
+      icon: '🌐',
+      placeholderText: `Searching meaning in ${languageLabel}…`,
+    };
+  }
+
+  // Characters forbidden in standard Hepburn Romaji: v, l, q, x, c (not followed by h)
+  if (/[vlqx]|c(?!h)/i.test(clean)) {
+    return {
+      type: 'meaning',
+      label: `Searching Meaning (${languageLabel})`,
+      badgeColor: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20',
+      icon: '🌐',
+      placeholderText: `Searching meaning in ${languageLabel}…`,
+    };
+  }
+
+  // Strict Hepburn mora validation
+  const romajiMoraRegex = /^(?:[ksthmyrwgzdbp]?[aiueo]|[ksthmyrwgzdbp]y[auo]|ch[aiueo]|sh[aiueo]|ts[aiueo]|j[aiueo]|n|[aeiou]|(?:kk|ss|tt|pp)[aiueo])+$/i;
+  const words = clean.split(/\s+/).filter(Boolean);
+  const isStrictRomaji = words.length > 0 && words.every((w) => {
+    if (w.length < 2 && !/^[aeioun]$/i.test(w)) return false;
+    if (/[bcdfghjklmpqrstvwxyz]$/i.test(w) && !/n$/i.test(w)) return false;
+    if (/(ea|oa|ee|th|wh|ck|ng|igh|tion|ment|er$|est$)/i.test(w)) return false;
+    return romajiMoraRegex.test(w);
+  });
+
+  if (isStrictRomaji) {
     return {
       type: 'romaji',
       label: 'Searching Romaji (Romanized Japanese)',
@@ -63,7 +114,7 @@ export function detectSearchQuery(query: string, languageLabel: string = 'Englis
     };
   }
 
-  // Native Meaning in User's Preferred Language
+  // Default to Meaning
   return {
     type: 'meaning',
     label: `Searching Meaning (${languageLabel})`,
