@@ -260,6 +260,14 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(clean).toBe('Konnichiwa!');
     });
 
+    it('strips grammatical labels in brackets like [noun], [topic], [particle], and [verb]', () => {
+      const input = 'She [noun] is cute, and she [topic] is a student.';
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('noun');
+      expect(clean).not.toContain('topic');
+      expect(clean).toBe('She is cute, and she is a student.');
+    });
+
     it('strips redundant Romaji in parentheses right after Japanese words so speech does not repeat readings', () => {
       const input = `Water = お水 (omizu)\n"Please give me water" = お水を**ください** (Omizu o **kudasai**)\n"Please show me [the way]" = 道を**教えてください** (Michi o **otsukusai kudasai**)`;
       const clean = sanitizeForSpeech(input);
@@ -332,6 +340,16 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(taSegments.some(s => s.text.includes('உதாரணமாக'))).toBe(true);
       expect(taSegments.some(s => s.text.includes('தண்ணீர்'))).toBe(true);
       expect(jaSegments.some(s => s.text.includes('水 を 飲む'))).toBe(true);
+    });
+
+    it('expands inline Japanese particles inside English sentences so speech flows seamlessly without pause', () => {
+      const sentence = 'You will see how we use は to talk about family as a topic.';
+      const segments = segmentMultilingualText(sentence, 'en-US');
+
+      // The entire sentence should remain as 1 continuous segment, with は naturally vocalized as wa!
+      expect(segments.length).toBe(1);
+      expect(segments[0].lang).toBe('en-US');
+      expect(segments[0].text).toBe('You will see how we use wa to talk about family as a topic.');
     });
 
     it('speaks code-switched segments sequentially with Japanese voice for Japanese words without skipping', async () => {

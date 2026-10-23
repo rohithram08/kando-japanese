@@ -37,6 +37,7 @@ export class SenseiExpressionController {
   private blinkInterval = 3.5;
   private isBlinking = false;
   private blinkProgress = 0;
+  private isSpeaking = false;
 
   private currentEmotion: SenseiEmotion = 'neutral';
   private targetWeights: Record<string, number> = {};
@@ -46,6 +47,10 @@ export class SenseiExpressionController {
 
   constructor(scene?: THREE.Group) {
     if (scene) this.setScene(scene);
+  }
+
+  public setSpeaking(speaking: boolean) {
+    this.isSpeaking = speaking;
   }
 
   public setScene(scene: THREE.Group) {
@@ -78,76 +83,47 @@ export class SenseiExpressionController {
       this.targetWeights[key] = 0;
     }
 
-    // Set canonical GLB morph keys & aliases with distinct, readable weights
+    // Set gentle, natural anime expressions (single clean morph target without extreme stacking!)
     switch (emotion) {
       case 'happy':
-        this.targetWeights['happy'] = 0.9;
-        this.targetWeights['Fcl_ALL_Joy'] = 0.85;
-        this.targetWeights['Fcl_EYE_Joy'] = 0.85;
-        this.targetWeights['Fcl_BRW_Joy'] = 0.65;
-        this.targetWeights['Fcl_MTH_Joy'] = 0.85;
+        // Soft, sweet anime smile (0.42 provides a natural warm curve, not a slit-mouth grimace)
+        this.targetWeights['Fcl_ALL_Joy'] = 0.42;
         break;
       case 'celebrating':
-        this.targetWeights['celebrating'] = 1.0;
-        this.targetWeights['happy'] = 1.0;
-        this.targetWeights['Fcl_ALL_Joy'] = 1.0;
-        this.targetWeights['Fcl_EYE_Joy'] = 0.95;
-        this.targetWeights['Fcl_BRW_Joy'] = 0.9;
-        this.targetWeights['Fcl_MTH_Joy'] = 1.0;
+        this.targetWeights['Fcl_ALL_Joy'] = 0.58;
+        this.targetWeights['Fcl_BRW_Joy'] = 0.40;
         break;
       case 'encouraging':
-        this.targetWeights['encouraging'] = 0.85;
-        this.targetWeights['Fcl_ALL_Fun'] = 0.85;
-        this.targetWeights['Fcl_BRW_Fun'] = 0.8;
-        this.targetWeights['Fcl_MTH_Fun'] = 0.75;
+        // Reassuring, friendly teacher smile
+        this.targetWeights['Fcl_ALL_Fun'] = 0.38;
         break;
       case 'surprised':
-        this.targetWeights['surprised'] = 0.9;
-        this.targetWeights['Fcl_ALL_Surprised'] = 0.9;
-        this.targetWeights['Fcl_EYE_Surprised'] = 0.95;
-        this.targetWeights['Fcl_BRW_Surprised'] = 0.85;
-        this.targetWeights['Fcl_MTH_Surprised'] = 0.8;
+        this.targetWeights['Fcl_ALL_Surprised'] = 0.48;
         break;
       case 'sad':
-        this.targetWeights['sad'] = 0.85;
-        this.targetWeights['Fcl_ALL_Sorrow'] = 0.85;
-        this.targetWeights['Fcl_BRW_Sorrow'] = 0.85;
-        this.targetWeights['Fcl_MTH_Sorrow'] = 0.8;
+        this.targetWeights['Fcl_ALL_Sorrow'] = 0.42;
         break;
       case 'confused':
-        this.targetWeights['confused'] = 0.85;
-        this.targetWeights['Fcl_BRW_Sorrow'] = 0.85;
-        this.targetWeights['Fcl_BRW_Surprised'] = 0.45;
-        this.targetWeights['Fcl_MTH_Small'] = 0.55;
+        this.targetWeights['Fcl_BRW_Sorrow'] = 0.45;
+        this.targetWeights['Fcl_MTH_Small'] = 0.25;
         break;
       case 'thinking':
-        this.targetWeights['thinking'] = 0.85;
-        this.targetWeights['Fcl_BRW_Surprised'] = 0.75;
-        this.targetWeights['Fcl_BRW_Joy'] = 0.3;
-        this.targetWeights['Fcl_MTH_Small'] = 0.45;
+        this.targetWeights['Fcl_BRW_Surprised'] = 0.38;
+        this.targetWeights['Fcl_MTH_Small'] = 0.22;
         break;
       case 'listening':
-        this.targetWeights['listening'] = 0.8;
-        this.targetWeights['Fcl_EYE_Spread'] = 0.4;
-        this.targetWeights['Fcl_BRW_Fun'] = 0.35;
-        this.targetWeights['Fcl_ALL_Neutral'] = 0.5;
+        this.targetWeights['Fcl_EYE_Spread'] = 0.30;
+        this.targetWeights['Fcl_ALL_Neutral'] = 0.25;
         break;
       case 'error':
-        this.targetWeights['error'] = 0.85;
-        this.targetWeights['Fcl_ALL_Angry'] = 0.85;
-        this.targetWeights['Fcl_BRW_Angry'] = 0.9;
-        this.targetWeights['Fcl_MTH_Angry'] = 0.65;
+        this.targetWeights['Fcl_ALL_Angry'] = 0.45;
         break;
       case 'sleepy':
-        this.targetWeights['sleepy'] = 0.85;
-        this.targetWeights['Fcl_EYE_Close'] = 0.75;
-        this.targetWeights['Fcl_BRW_Sorrow'] = 0.35;
+        this.targetWeights['Fcl_EYE_Close'] = 0.65;
         break;
       case 'neutral':
       default:
-        this.targetWeights['neutral'] = 0.5;
-        this.targetWeights['Fcl_ALL_Neutral'] = 0.5;
-        this.targetWeights['Fcl_EYE_Natural'] = 0.5;
+        this.targetWeights['Fcl_ALL_Neutral'] = 0.25;
         break;
     }
   }
@@ -156,28 +132,23 @@ export class SenseiExpressionController {
   public setViseme(visemeName: string, weight: number) {
     this.targetWeights[visemeName] = weight;
 
-    // Also map common alias variations to ensure whichever name exists in the GLB is driven
+    // Map to the exact GLB viseme morph targets
     const lower = visemeName.toLowerCase();
     if (lower === 'vowel_a' || lower === 'a') {
-      this.targetWeights['vowel_a'] = weight;
-      this.targetWeights['vowel_A'] = weight;
       this.targetWeights['Fcl_MTH_A'] = weight;
+      this.targetWeights['vowel_a'] = weight;
     } else if (lower === 'vowel_i' || lower === 'i') {
-      this.targetWeights['vowel_i'] = weight;
-      this.targetWeights['vowel_I'] = weight;
       this.targetWeights['Fcl_MTH_I'] = weight;
+      this.targetWeights['vowel_i'] = weight;
     } else if (lower === 'vowel_u' || lower === 'u') {
-      this.targetWeights['vowel_u'] = weight;
-      this.targetWeights['vowel_U'] = weight;
       this.targetWeights['Fcl_MTH_U'] = weight;
+      this.targetWeights['vowel_u'] = weight;
     } else if (lower === 'vowel_e' || lower === 'e') {
-      this.targetWeights['vowel_e'] = weight;
-      this.targetWeights['vowel_E'] = weight;
       this.targetWeights['Fcl_MTH_E'] = weight;
+      this.targetWeights['vowel_e'] = weight;
     } else if (lower === 'vowel_o' || lower === 'o') {
-      this.targetWeights['vowel_o'] = weight;
-      this.targetWeights['vowel_O'] = weight;
       this.targetWeights['Fcl_MTH_O'] = weight;
+      this.targetWeights['vowel_o'] = weight;
     }
   }
 
@@ -226,6 +197,21 @@ export class SenseiExpressionController {
       for (const [key, targetWeight] of Object.entries(this.targetWeights)) {
         if (dict[key] !== undefined) {
           const idx = dict[key];
+          let effectiveWeight = targetWeight;
+
+          // When speaking, decouple active smile/emotion morphs from mouth visemes
+          // so vowels can clearly articulate without being locked into a rigid grin!
+          if (this.isSpeaking && (
+            key.includes('Joy') ||
+            key.includes('Fun') ||
+            key.includes('MTH_Joy') ||
+            key.includes('MTH_Fun') ||
+            key === 'happy' ||
+            key === 'encouraging'
+          )) {
+            effectiveWeight = Math.min(effectiveWeight, 0.12);
+          }
+
           // Smooth interpolation for emotions, snap for blinks/visemes
           const isInstant =
             key.startsWith('blink') ||
@@ -234,9 +220,9 @@ export class SenseiExpressionController {
             key.startsWith('Fcl_EYE_');
 
           if (isInstant) {
-            influences[idx] = targetWeight;
+            influences[idx] = effectiveWeight;
           } else {
-            influences[idx] += (targetWeight - influences[idx]) * (delta * 10);
+            influences[idx] += (effectiveWeight - influences[idx]) * (delta * 10);
           }
         }
       }

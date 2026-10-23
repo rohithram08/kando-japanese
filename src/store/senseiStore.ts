@@ -223,6 +223,9 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
       if (get().speechEnabled && reply) {
         get().stopSpeech();
 
+        // Immediately switch state so 3D character and speaking pill animate without waiting for speech pipeline delay
+        set({ speechState: 'speaking', animationState: 'speaking' });
+
         audioService.speak(reply, {
           onStart: () => set({ speechState: 'speaking', animationState: 'speaking' }),
           onEnd: () => {

@@ -110,60 +110,100 @@ export function detectBaseLanguage(text, userPreferredLocale = 'en') {
   return 'en-US'
 }
 
+export const INLINE_PARTICLE_MAP = {
+  'は': 'wa',
+  'が': 'ga',
+  'を': 'o',
+  'に': 'ni',
+  'で': 'de',
+  'と': 'to',
+  'も': 'mo',
+  'へ': 'e',
+  'の': 'no',
+  'ね': 'ne',
+  'よ': 'yo',
+  'から': 'kara',
+  'まで': 'made',
+  'です': 'desu',
+  'だ': 'da',
+  'ます': 'masu',
+}
+
+export function expandInlineParticles(text) {
+  if (!text) return ''
+  let res = text
+  for (const [p, romaji] of Object.entries(INLINE_PARTICLE_MAP)) {
+    // Match isolated particle surrounded by spaces, quotes, punctuation, or string edges
+    const regex = new RegExp('(^|[\\s"\'(\\[])' + p + '([\\s"\'.,!?;:)\\]]|$)', 'g')
+    res = res.replace(regex, `$1${romaji}$2`)
+    // Run twice for adjacent particles (e.g. "は" and "が")
+    res = res.replace(regex, `$1${romaji}$2`)
+  }
+  return res
+}
+
 export function segmentMultilingualText(text, baseLang = 'en-US') {
   if (!text || typeof text !== 'string') return []
 
-  const rawSegments = []
-  let currentSegment = { text: '', lang: '' }
+  // Break text into logical clauses / sentences at natural speech pause boundaries:
+  // - Newlines
+  // - Colons or dashes separating labels from content
+  // - Sentence terminators followed by whitespace (., !, ?, 。, ！？)
+  const clauseDelimRegex = /(?<=[.!?。！？\n])\s+|(?<=[—\-:]\s+)|(?=\s+[—\-]\s+)/g
+  const rawClauses = text
+    .split(clauseDelimRegex)
+    .map(c => c.trim())
+    .filter(Boolean)
 
-  const getCharLang = (char) => {
-    if (isJapaneseChar(char)) return 'ja-JP'
-    if (isTamilChar(char)) return 'ta-IN'
-    if (isHindiChar(char)) return 'hi-IN'
-    if (isNeutralChar(char)) return 'neutral'
-    return baseLang
-  }
+  const segments = []
 
-  const chars = Array.from(text)
-  for (let i = 0; i < chars.length; i++) {
-    const char = chars[i]
-    const charLang = getCharLang(char)
+  for (const clause of rawClauses) {
+    // Count Japanese Kana/Kanji characters vs Latin/Tamil/Hindi characters
+    const jaChars = (clause.match(/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/g) || []).length
+    const latinChars = (clause.match(/[a-zA-Z]/g) || []).length
+    const tamilChars = (clause.match(/[\u0B80-\u0BFF]/g) || []).length
+    const hindiChars = (clause.match(/[\u0900-\u097F]/g) || []).length
 
-    if (!currentSegment.lang) {
-      currentSegment.lang = charLang === 'neutral' ? baseLang : charLang
-      currentSegment.text += char
-    } else if (charLang === 'neutral') {
-      currentSegment.text += char
-    } else if (charLang === currentSegment.lang) {
-      currentSegment.text += char
-    } else {
-      if (currentSegment.text.trim()) {
-        rawSegments.push({ ...currentSegment })
-      }
-      currentSegment = { text: char, lang: charLang }
+    // If the clause is pure or predominantly Japanese:
+    // Speak with authentic Japanese voice (ja-JP)
+    if (jaChars > 0 && jaChars >= latinChars && jaChars >= tamilChars && jaChars >= hindiChars) {
+      segments.push({ text: clause, lang: 'ja-JP' })
+    }
+    // If the clause is Tamil:
+    else if (tamilChars > 0 && tamilChars >= latinChars) {
+      const expanded = expandInlineParticles(clause)
+      segments.push({ text: expanded, lang: 'ta-IN' })
+    }
+    // If the clause is Hindi:
+    else if (hindiChars > 0 && hindiChars >= latinChars) {
+      const expanded = expandInlineParticles(clause)
+      segments.push({ text: expanded, lang: 'hi-IN' })
+    }
+    // Otherwise it is English (or other baseLang European language):
+    else {
+      // In English sentences, isolated Japanese particles (like は in "how we use は to talk")
+      // are phonetically expanded to their natural pronunciations ("how we use wa to talk"),
+      // preventing the browser from cutting the sentence in half and pausing for 1 second!
+      const expanded = expandInlineParticles(clause)
+      segments.push({ text: expanded, lang: baseLang === 'ja-JP' ? 'ja-JP' : (baseLang || 'en-US') })
     }
   }
 
-  if (currentSegment.text.trim()) {
-    rawSegments.push({ ...currentSegment })
-  }
-
-  // Merge adjacent segments with identical language
+  // Merge consecutive segments with the same language so they speak as ONE continuous utterance
   const merged = []
-  for (const seg of rawSegments) {
+  for (const seg of segments) {
     if (merged.length > 0 && merged[merged.length - 1].lang === seg.lang) {
-      merged[merged.length - 1].text += seg.text
+      merged[merged.length - 1].text += ' ' + seg.text
     } else {
-      merged.push(seg)
+      merged.push({ ...seg })
     }
   }
 
-  // Trim edge separators like dashes or colons that belong between languages
   return merged
-    .map(s => {
-      const trimmed = s.text.replace(/^[ \t—\-:]+|[ \t—\-:]+$/g, '').trim()
-      return { text: trimmed, lang: s.lang }
-    })
+    .map(s => ({
+      text: s.text.replace(/^[ \t—\-:]+|[ \t—\-:]+$/g, '').trim(),
+      lang: s.lang
+    }))
     .filter(s => s.text.length > 0)
 }
 
@@ -176,27 +216,30 @@ export function sanitizeForSpeech(raw) {
   text = text.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
   text = text.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
 
-  // 2. Remove bracketed stage directions & emotion tags: [encouraging], [emotion: happy], (smiling warmly)
-  text = text.replace(/\[(?:emotion|animation):\s*[^\]]+\]/gi, '')
-  text = text.replace(/\[(?:encouraging|friendly|happy|sad|excited|gentle|warmly|softly|curious|proudly|thinking|nodding|smiling|bowing|waving|teaching)[^\]]*\]/gi, '')
-  text = text.replace(/\((?:smiling|laughing|nodding|bowing|chuckle|giggle)[^)]*\)/gi, '')
+  // 2. Remove all grammatical labels, part-of-speech tags, emotion tags, and system annotations in brackets:
+  // e.g. [noun], [topic], [particle], [verb], [subject], [object], [adjective], [encouraging], [emotion: happy], [Next Logical Step]
+  text = text.replace(/\[\s*(?:noun|verb|adjective|adv|particle|topic|subject|object|grammar|encouraging|happy|sad|excited|gentle|warmly|softly|curious|proudly|thinking|nodding|smiling|bowing|waving|teaching|emotion|animation|next logical step|note|hint|tip)[^\]]*\]/gi, '')
 
-  // 3. Remove bullet markers at line start FIRST so they don't corrupt bold/italic asterisk matching
+  // 3. Remove grammatical tags and parenthetical notes:
+  // e.g. (noun), (topic), (particle), (verb), (adjective), (Note: ...), (hint: ...)
+  text = text.replace(/\((?:noun|verb|adjective|adv|particle|topic|subject|object|grammatical|polite|informal|colloquial|transitive|intransitive|note|hint|tip)[^)]*\)/gi, '')
+
+  // 4. Remove bullet markers at line start FIRST so they don't corrupt bold/italic asterisk matching
   text = text.replace(/^[ \t]*[-*+•][ \t]+/gm, '')
 
-  // 4. Remove asterisk action directions like *smiles*, *laughs*, *nods*
+  // 5. Remove asterisk action directions like *smiles*, *laughs*, *nods*
   text = text.replace(/\*(?:[^*]*(?:smile|laugh|nod|bow|wink|sigh|adjusts? glasses|whisper|giggle|chuckle)[^*]*)\*/gi, '')
 
-  // 5. Strip bold/italic markdown characters: **word** -> word, *word* -> word, __word__ -> word
+  // 6. Strip bold/italic markdown characters: **word** -> word, *word* -> word, __word__ -> word
   text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
 
-  // 6. Strip Romaji in parentheses following Japanese text:
+  // 7. Strip Romaji in parentheses following Japanese text:
   // e.g. お水 (omizu) -> お水
   // お水をください (Omizu o kudasai) -> お水をください
   // 道を教えてください (Michi o otsukusai kudasai) -> 道を教えてください
   text = text.replace(/([\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\([a-zA-Z\s~—\-_'"]+\)/g, '$1')
 
-  // 7. Remove headers: # Header -> Header
+  // 8. Remove headers: # Header -> Header
   text = text.replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
 
   // 8. Remove blockquotes: > quote -> quote

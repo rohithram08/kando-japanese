@@ -58,7 +58,8 @@ export function SenseiGLBCharacter({ state, targetDirection = null }: SenseiGLBC
 
   useEffect(() => {
     lipSyncCtrl.setSpeaking(isSpeaking);
-  }, [isSpeaking, lipSyncCtrl]);
+    expressionCtrl.setSpeaking(isSpeaking);
+  }, [isSpeaking, lipSyncCtrl, expressionCtrl]);
 
   // Frame update loop: lip-sync, expressions, procedural micro-motions, and target turning
   useFrame((stateObj, delta) => {
