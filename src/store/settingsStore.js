@@ -54,7 +54,7 @@ const DEFAULT_SETTINGS = {
   weeklyReport: false,
   // Audio
   speechRate: 0.85,
-  speechPitch: 1.0,
+  speechPitch: 1.15,
   autoSpeak: false,           // auto-speak Japanese text outside of Lessons (Vocab/Kanji study)
   slowMode: false,
   // Story Reader (Phase 4.3B)

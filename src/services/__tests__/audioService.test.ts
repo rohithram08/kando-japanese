@@ -1,5 +1,12 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { audioService, detectTextLanguage } from '../audioService';
+import {
+  audioService,
+  detectTextLanguage,
+  sanitizeForSpeech,
+  findBestVoice,
+  isFemaleVoice,
+  isMaleVoice,
+} from '../audioService';
 import { useSettingsStore } from '../../store/settingsStore';
 
 class MockSpeechSynthesisUtterance {
@@ -201,6 +208,124 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(detectTextLanguage('வணக்கம், ஜப்பானிய மொழி கற்போம்')).toBe('ta-IN');
       expect(detectTextLanguage('नमस्ते, जापानी भाषा सीखें')).toBe('hi-IN');
       expect(detectTextLanguage('한국어로 말해요')).toBe('ko-KR');
+    });
+  });
+
+  describe('Speech Sanitization (Emojis, Markdown & Stage Directions)', () => {
+    it('strips emojis and pictographs completely', () => {
+      const input = 'Konnichiwa! 🌸 Let us learn Japanese! ✨⛩️ Ganbatte! 🎉';
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('🌸');
+      expect(clean).not.toContain('✨');
+      expect(clean).not.toContain('⛩️');
+      expect(clean).not.toContain('🎉');
+      expect(clean).toBe('Konnichiwa! Let us learn Japanese! Ganbatte!');
+    });
+
+    it('strips markdown headers and bullet points without vocalizing symbols', () => {
+      const input = `### 1. は vs が
+- **は**: Topic marker
+- **が**: Subject marker`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('#');
+      expect(clean).not.toContain('*');
+      expect(clean).not.toContain('-');
+      expect(clean).toContain('1. は vs が');
+      expect(clean).toContain('は: Topic marker');
+      expect(clean).toContain('が: Subject marker');
+    });
+
+    it('strips stage actions and bracketed emotions like *smiles warmly* and [encouraging]', () => {
+      const input = `[encouraging] *smiles warmly and adjusts glasses* Konnichiwa! *laughs softly* [emotion: happy]`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('smiles warmly');
+      expect(clean).not.toContain('adjusts glasses');
+      expect(clean).not.toContain('laughs softly');
+      expect(clean).not.toContain('encouraging');
+      expect(clean).not.toContain('emotion');
+      expect(clean).toBe('Konnichiwa!');
+    });
+
+    it('retains natural text inside bold and italics formatting', () => {
+      const input = `The verb **食べる** (*taberu*) means to eat.`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).toBe('The verb 食べる (taberu) means to eat.');
+    });
+
+    it('handles markdown links, code blocks, and table pipes cleanly', () => {
+      const input = `See [Grammar Guide](/grammar) and \`taberu\`.\n| Particle | Meaning |\n| は | Topic |`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('|');
+      expect(clean).not.toContain('`');
+      expect(clean).not.toContain('/grammar');
+      expect(clean).toContain('See Grammar Guide and taberu.');
+      expect(clean).toContain('Particle Meaning');
+    });
+
+    it('sanitizes text before passing to SpeechSynthesisUtterance', async () => {
+      let captured: any = null;
+      mockSynthesis.speak.mockImplementation((u: any) => {
+        captured = u;
+        setTimeout(() => u.onend?.(), 0);
+      });
+
+      await audioService.speak('### Lesson 1 🌸\n*smiles* **Konnichiwa**!');
+      expect(captured.text).toBe('Lesson 1. Konnichiwa!');
+      expect(captured.text).not.toContain('#');
+      expect(captured.text).not.toContain('🌸');
+      expect(captured.text).not.toContain('*');
+      expect(captured.pitch).toBe(1.15); // Feminine default pitch
+    });
+  });
+
+  describe('Female Voice Selection & Gender Balancing', () => {
+    const testVoices = [
+      { name: 'Microsoft David Desktop - English (United States)', lang: 'en-US', localService: true },
+      { name: 'Microsoft Zira Desktop - English (United States)', lang: 'en-US', localService: true },
+      { name: 'Microsoft Mark Desktop - English (United States)', lang: 'en-US', localService: true },
+      { name: 'Microsoft Ichiro Desktop - Japanese (Japan)', lang: 'ja-JP', localService: true },
+      { name: 'Microsoft Haruka Desktop - Japanese (Japan)', lang: 'ja-JP', localService: true },
+    ] as any;
+
+    it('correctly identifies female and male voices', () => {
+      expect(isFemaleVoice({ name: 'Microsoft Zira Desktop' } as any)).toBe(true);
+      expect(isFemaleVoice({ name: 'Microsoft Haruka Desktop' } as any)).toBe(true);
+      expect(isFemaleVoice({ name: 'Google 日本語 Female' } as any)).toBe(true);
+      expect(isFemaleVoice({ name: 'Kyoko' } as any)).toBe(true);
+
+      expect(isMaleVoice({ name: 'Microsoft David Desktop' } as any)).toBe(true);
+      expect(isMaleVoice({ name: 'Microsoft Ichiro Desktop' } as any)).toBe(true);
+      expect(isMaleVoice({ name: 'Alex' } as any)).toBe(true);
+      expect(isMaleVoice({ name: 'Otoya' } as any)).toBe(true);
+    });
+
+    it('prioritizes female voice (Zira) over male voice (David) on Windows for English', () => {
+      const best = findBestVoice(testVoices, 'en-US');
+      expect(best?.name).toBe('Microsoft Zira Desktop - English (United States)');
+    });
+
+    it('prioritizes female voice (Haruka) over male voice (Ichiro) on Windows for Japanese', () => {
+      const best = findBestVoice(testVoices, 'ja-JP');
+      expect(best?.name).toBe('Microsoft Haruka Desktop - Japanese (Japan)');
+    });
+
+    it('picks female voice during audioService.speak on multi-voice systems', async () => {
+      mockSynthesis.getVoices.mockReturnValue(testVoices);
+      audioService.loadVoices();
+
+      let captured: any = null;
+      mockSynthesis.speak.mockImplementation((u: any) => {
+        captured = u;
+        setTimeout(() => u.onend?.(), 0);
+      });
+
+      // English explanation
+      await audioService.speak('The particle は marks topic.');
+      expect(captured.voice?.name).toBe('Microsoft Zira Desktop - English (United States)');
+
+      // Japanese phrase
+      await audioService.speak('こんにちは、元気ですか？');
+      expect(captured.voice?.name).toBe('Microsoft Haruka Desktop - Japanese (Japan)');
     });
   });
 });

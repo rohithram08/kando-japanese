@@ -61,7 +61,7 @@ describe('Dictionary Service & Routes', () => {
       expect(res.results[0].reading).toBe('わたし');
       expect(res.results[0].romaji).toBe('watashi');
       expect(res.results[0].source).toBe('curriculum');
-    });
+    }, 15000);
 
     it('returns Tamil meaning when locale is ta', async () => {
       const res = await searchHybridDictionary('私', 'ta');

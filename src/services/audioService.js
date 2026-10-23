@@ -1,6 +1,157 @@
 import { useSettingsStore } from '../store/settingsStore'
 import { t } from '../i18n'
 
+export const FEMALE_VOICE_NAMES = [
+  'zira', 'jenny', 'aria', 'haruka', 'ayumi', 'sayaka', 'nanami', 'keiko',
+  'kyoko', 'samantha', 'victoria', 'karen', 'moira', 'tessa', 'fiona',
+  'serena', 'allison', 'ava', 'susan', 'catherine', 'linda', 'hazel',
+  'heera', 'kalpana', 'swara', 'priya', 'ananya', 'iniya', 'pallavi',
+  'lekha', 'neerja', 'aditi', 'kavya'
+]
+
+export const MALE_VOICE_NAMES = [
+  'david', 'mark', 'george', 'richard', 'alex', 'daniel', 'fred', 'tom',
+  'oliver', 'guy', 'keita', 'ichiro', 'otoya', 'ravi', 'hemant', 'valluvar',
+  'prabhat', 'madhav'
+]
+
+export function isFemaleVoice(voice) {
+  if (!voice) return false
+  if (voice.gender && String(voice.gender).toLowerCase() === 'female') return true
+  const name = `${voice.name || ''} ${voice.voiceURI || ''}`.toLowerCase()
+  if (/\bfemale\b|\bwoman\b|\bgirl\b/.test(name)) return true
+  return FEMALE_VOICE_NAMES.some(fn => name.includes(fn))
+}
+
+export function isMaleVoice(voice) {
+  if (!voice) return false
+  if (voice.gender && String(voice.gender).toLowerCase() === 'male') return true
+  const name = `${voice.name || ''} ${voice.voiceURI || ''}`.toLowerCase()
+  if (/\bfemale\b/.test(name)) return false
+  if (/\bmale\b|\bman\b|\bboy\b/.test(name)) return true
+  return MALE_VOICE_NAMES.some(mn => name.includes(mn))
+}
+
+export function sanitizeForSpeech(raw) {
+  if (!raw || typeof raw !== 'string') return ''
+
+  let text = raw
+
+  // 1. Remove markdown links and images: [text](url) -> text, ![alt](url) -> empty
+  text = text.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+  text = text.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+
+  // 2. Remove bracketed stage directions & emotion tags: [encouraging], [emotion: happy], (smiling warmly)
+  text = text.replace(/\[(?:emotion|animation):\s*[^\]]+\]/gi, '')
+  text = text.replace(/\[(?:encouraging|friendly|happy|sad|excited|gentle|warmly|softly|curious|proudly|thinking|nodding|smiling|bowing|waving|teaching|pointing)[^\]]*\]/gi, '')
+  text = text.replace(/\((?:smiling|laughing|nodding|bowing|chuckle|giggle)[^)]*\)/gi, '')
+
+  // 3. Remove asterisk action directions: *smiles warmly*, *laughs*, *adjusts glasses*
+  text = text.replace(/\*(?:[^*]*(?:smile|laugh|nod|bow|wink|wave|clap|cheer|point|sigh|adjust|whisper|pause|think|warmly|softly|gently|proudly|encourag|giggle|chuckle)[^*]*)\*/gi, '')
+
+  // 4. Strip bold/italic markdown characters while keeping words inside: **word** -> word, *word* -> word, __word__ -> word
+  text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
+
+  // 5. Remove headers: # Header -> Header
+  text = text.replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
+
+  // 6. Remove bullet markers at line start: - item, * item, + item, • item
+  text = text.replace(/^[ \t]*[-*+•][ \t]+/gm, '')
+
+  // 7. Remove blockquotes: > quote -> quote
+  text = text.replace(/^[ \t]*>[ \t]*/gm, '')
+
+  // 8. Remove inline code backticks: `code` -> code
+  text = text.replace(/`([^`]+)`/g, '$1')
+
+  // 9. Remove code fence blocks
+  text = text.replace(/```[\s\S]*?```/g, '')
+
+  // 10. Remove markdown table markers: |
+  text = text.replace(/\|/g, ' ')
+
+  // 11. Remove emojis, pictographs, variation selectors, and joiners
+  text = text.replace(/[\p{Extended_Pictographic}\uFE0E\uFE0F\u200D]/gu, '')
+
+  // 12. Strip stray markdown symbols: #, *, ~, _, ^, \
+  text = text.replace(/[#*~\\^]/g, '')
+
+  // 13. Split into lines, trim, add natural sentence-ending pauses for lines that lack them
+  const lines = text.split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(Boolean)
+
+  const punctuatedLines = lines.map(line => {
+    if (!/[.,!?;:。！？…]$/.test(line)) {
+      return line + '.'
+    }
+    return line
+  })
+
+  text = punctuatedLines.join(' ')
+
+  // 14. Collapse multiple whitespace and normalize punctuation
+  text = text.replace(/[ \t]+/g, ' ')
+  text = text.replace(/ +([.,!?。、！？])/g, '$1')
+  text = text.replace(/([.,!?])\1+/g, '$1')
+  text = text.trim()
+
+  return text
+}
+
+export function findBestVoice(voices, targetLang) {
+  if (!Array.isArray(voices) || voices.length === 0) return null
+
+  const normalizedTarget = (targetLang || 'ja-JP').toLowerCase()
+  const langPrefix = normalizedTarget.split('-')[0]
+
+  // Filter voices matching target language or language family
+  let matchingVoices = voices.filter(v => {
+    const vLang = (v.lang || '').toLowerCase()
+    return vLang === normalizedTarget || vLang.startsWith(langPrefix)
+  })
+
+  // If none match target language prefix, consider all voices
+  if (matchingVoices.length === 0) {
+    matchingVoices = voices
+  }
+
+  const scored = matchingVoices.map(voice => {
+    let score = 0
+    const vLang = (voice.lang || '').toLowerCase()
+    const vName = (voice.name || '').toLowerCase()
+
+    // Language specificity
+    if (vLang === normalizedTarget) {
+      score += 100
+    } else if (vLang.startsWith(langPrefix)) {
+      score += 50
+    }
+
+    // Gender preference — Hana Sensei is female
+    if (isFemaleVoice(voice)) {
+      score += 100
+    } else if (isMaleVoice(voice)) {
+      score -= 80
+    }
+
+    // Natural / Neural quality
+    if (/natural|neural|online/i.test(vName)) {
+      score += 25
+    }
+
+    // Local service
+    if (voice.localService) {
+      score += 10
+    }
+
+    return { voice, score }
+  })
+
+  scored.sort((a, b) => b.score - a.score)
+  return scored[0]?.voice || null
+}
+
 export function detectTextLanguage(text) {
   if (!text || typeof text !== 'string') return 'ja-JP'
 
@@ -75,24 +226,7 @@ class AudioService {
     if (!this.synthesis) return
 
     this.voices = this.synthesis.getVoices()
-
-    // Priority order for Japanese voices
-    const priorities = [
-      v => v.lang === 'ja-JP' && v.localService && v.name.includes('Female'),
-      v => v.lang === 'ja-JP' && v.localService,
-      v => v.lang === 'ja-JP' && v.name.includes('Kyoko'),
-      v => v.lang === 'ja-JP' && v.name.includes('Otoya'),
-      v => v.lang === 'ja-JP',
-      v => v.lang && v.lang.startsWith('ja'),
-    ]
-
-    for (const priority of priorities) {
-      const voice = this.voices.find(priority)
-      if (voice) {
-        this.japaneseVoice = voice
-        break
-      }
-    }
+    this.japaneseVoice = findBestVoice(this.voices, 'ja-JP')
   }
 
   isSupported() {
@@ -111,6 +245,10 @@ class AudioService {
   speak(text, options = {}) {
     if (!this.isSupported() || !text) return Promise.resolve()
 
+    // Clean markdown, stage directions, action tags, emojis, and hashtags before speech
+    const cleanText = sanitizeForSpeech(text)
+    if (!cleanText.trim()) return Promise.resolve()
+
     // Pull real user preferences as defaults — explicit `options` still win,
     // so call sites like speakSlow() can override deliberately.
     const prefs = useSettingsStore.getState()
@@ -126,29 +264,20 @@ class AudioService {
         this.synthesis.cancel()
       }
 
-      const utterance = new SpeechSynthesisUtterance(text)
+      const utterance = new SpeechSynthesisUtterance(cleanText)
 
-      const targetLang = options.lang || detectTextLanguage(text)
+      const targetLang = options.lang || detectTextLanguage(cleanText)
       utterance.lang = targetLang
       utterance.rate = effectiveRate
-      utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.0
+      // Default to 1.15 pitch for Hana Sensei's cheerful, feminine voice tone
+      utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.15
       utterance.volume = options.volume || 1.0
 
-      if (targetLang === 'ja-JP' && this.japaneseVoice) {
+      const bestVoice = findBestVoice(this.voices, targetLang)
+      if (bestVoice) {
+        utterance.voice = bestVoice
+      } else if (targetLang.startsWith('ja') && this.japaneseVoice) {
         utterance.voice = this.japaneseVoice
-      } else {
-        const langPrefix = targetLang.split('-')[0].toLowerCase()
-        const matchedVoice =
-          this.voices.find(v => v.lang.toLowerCase() === targetLang.toLowerCase() && v.localService) ||
-          this.voices.find(v => v.lang.toLowerCase() === targetLang.toLowerCase()) ||
-          this.voices.find(v => v.lang.toLowerCase().startsWith(langPrefix) && v.localService) ||
-          this.voices.find(v => v.lang.toLowerCase().startsWith(langPrefix))
-
-        if (matchedVoice) {
-          utterance.voice = matchedVoice
-        } else if (targetLang.startsWith('ja') && this.japaneseVoice) {
-          utterance.voice = this.japaneseVoice
-        }
       }
 
       utterance.onstart = () => {
@@ -242,15 +371,23 @@ class AudioService {
         return
       }
 
+      const cleanText = sanitizeForSpeech(text)
+      if (!cleanText.trim()) {
+        resolve()
+        return
+      }
+
       this.stop()
       const currentSession = this.sessionId
 
-      const utterance = new SpeechSynthesisUtterance(text)
+      const utterance = new SpeechSynthesisUtterance(cleanText)
       utterance.lang = 'ja-JP'
       utterance.rate = 0.85
+      utterance.pitch = 1.15
 
-      if (this.japaneseVoice) {
-        utterance.voice = this.japaneseVoice
+      const bestVoice = findBestVoice(this.voices, 'ja-JP') || this.japaneseVoice
+      if (bestVoice) {
+        utterance.voice = bestVoice
       }
 
       utterance.onstart = () => {

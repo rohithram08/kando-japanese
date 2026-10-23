@@ -259,6 +259,14 @@ export class SenseiService {
       parsedMessage = parsedMessage.replace(animRegex, '').trim();
     }
 
+    // Extract standalone emotion/animation tags like [encouraging], [happy], [waving]
+    const standaloneTagRegex = /\[(happy|encouraging|thinking|surprised|celebrating|confused|sad|neutral|idle|greeting|waving|talking|teaching|pointing|listening|error)\]/gi;
+    const standaloneMatch = parsedMessage.match(standaloneTagRegex);
+    if (standaloneMatch && parsedEmotion === 'neutral') {
+      parsedEmotion = standaloneMatch[0].replace(/[\[\]]/g, '').toLowerCase();
+    }
+    parsedMessage = parsedMessage.replace(standaloneTagRegex, '').trim();
+
     // Fallback emotion & animation heuristic
     if (parsedEmotion === 'neutral') {
       if (parsedMessage.includes('🎉') || parsedMessage.includes('Subarashii') || parsedMessage.includes('Great job') || parsedMessage.includes('Congratulations')) {
