@@ -68,9 +68,11 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
     expressionCtrl.update(delta);
 
     // 1. Dynamic target-based turning
+    // In Three.js: Positive Y rotation turns towards +X (Right, facing Slime),
+    // Negative Y rotation turns towards -X (Left).
     let targetRotationY = 0;
-    if (targetDirection === 'left') targetRotationY = 0.38;       // ~22 deg leftwards
-    else if (targetDirection === 'right') targetRotationY = -0.38; // ~22 deg rightwards
+    if (targetDirection === 'left') targetRotationY = -0.65;       // ~37 deg leftwards
+    else if (targetDirection === 'right') targetRotationY = 0.65;  // ~37 deg rightwards towards Slime!
 
     if (group.current) {
       group.current.rotation.y = THREE.MathUtils.lerp(
@@ -89,9 +91,10 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
         spineBoneRef.current.rotation.x = Math.sin(t * 1.5) * 0.012;
       }
       if (headBoneRef.current) {
-        // Occasional gentle natural head curiosity drift
-        headBoneRef.current.rotation.y = Math.sin(t * 0.35) * 0.022 + Math.sin(t * 0.8) * 0.008;
-        headBoneRef.current.rotation.z = Math.cos(t * 0.4) * 0.012;
+        // Turn head towards Slime on the right (+X) with natural life drift
+        const targetHeadY = targetDirection === 'right' ? 0.18 : targetDirection === 'left' ? -0.18 : 0;
+        headBoneRef.current.rotation.y = targetHeadY + Math.sin(t * 0.35) * 0.015;
+        headBoneRef.current.rotation.z = Math.cos(t * 0.4) * 0.01;
       }
       if (wandSocketRef.current) {
         // Subtle wand sparkle float

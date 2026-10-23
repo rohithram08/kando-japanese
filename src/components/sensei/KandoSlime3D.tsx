@@ -7,6 +7,7 @@ import { playPop } from '../../utils/soundEffects';
 
 export interface KandoSlime3DProps {
   position?: [number, number, number];
+  rotation?: [number, number, number];
   slimeType?: 'mr' | 'mrs';
   mood?: SlimeMood;
   scale?: number;
@@ -15,7 +16,8 @@ export interface KandoSlime3DProps {
 }
 
 export function KandoSlime3D({
-  position = [0.95, 0, 0],
+  position = [1.05, 0, 0],
+  rotation = [0, -0.65, 0],
   slimeType = 'mr',
   mood = 'idle',
   scale = 1,
@@ -70,12 +72,12 @@ export function KandoSlime3D({
         bodyMeshRef.current.position.y = 0.28;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
-          -0.45,
+          -0.12,
           delta * 4.5
         );
         bodyMeshRef.current.rotation.z = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.z,
-          0.09,
+          0.06,
           delta * 4.5
         );
         bodyMeshRef.current.scale.set(
@@ -88,7 +90,7 @@ export function KandoSlime3D({
         bodyMeshRef.current.position.y = 0.28;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
-          -0.22,
+          0,
           delta * 3.5
         );
         bodyMeshRef.current.rotation.z = THREE.MathUtils.lerp(
@@ -102,11 +104,11 @@ export function KandoSlime3D({
           1.0 + breath * 0.5 + squishFactor * 0.35
         );
       } else {
-        // Gentle relaxed breathing
+        // Gentle relaxed posture facing Hana
         bodyMeshRef.current.position.y = 0.28;
         bodyMeshRef.current.rotation.y = THREE.MathUtils.lerp(
           bodyMeshRef.current.rotation.y,
-          -0.15,
+          0,
           delta * 3.0
         );
         bodyMeshRef.current.rotation.z = THREE.MathUtils.lerp(
@@ -152,7 +154,7 @@ export function KandoSlime3D({
   const emissiveColor = isMrs ? '#db2777' : '#0284c7';
 
   return (
-    <group ref={rootGroupRef} position={position} scale={scale} dispose={null}>
+    <group ref={rootGroupRef} position={position} rotation={rotation} scale={scale} dispose={null}>
       {/* ── Slime Body Dome (Cute Mochi Shape) ── */}
       <mesh
         ref={bodyMeshRef}
