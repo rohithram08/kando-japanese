@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { audioService } from '../audioService';
+import { audioService, detectTextLanguage } from '../audioService';
 import { useSettingsStore } from '../../store/settingsStore';
 
 class MockSpeechSynthesisUtterance {
@@ -170,5 +170,37 @@ describe('audioService — Web Speech API wrapper', () => {
     // Restore
     audioService.japaneseVoice = origVoice;
     audioService.voices = origVoices;
+  });
+
+  describe('Multilingual TTS & Script Auto-Detection', () => {
+    it('detects Japanese text and uses Japanese voice', async () => {
+      let captured: any = null;
+      mockSynthesis.speak.mockImplementation((u: any) => {
+        captured = u;
+        setTimeout(() => u.onend?.(), 0);
+      });
+
+      await audioService.speak('こんにちは！日本語を勉強しましょう。');
+      expect(captured.lang).toBe('ja-JP');
+      expect(captured.voice?.name).toBe('Kyoko');
+    });
+
+    it('detects English grammar explanations and uses English voice, avoiding Japanese accent', async () => {
+      let captured: any = null;
+      mockSynthesis.speak.mockImplementation((u: any) => {
+        captured = u;
+        setTimeout(() => u.onend?.(), 0);
+      });
+
+      await audioService.speak('The particle は (wa) marks the topic of the sentence while が (ga) marks the subject.');
+      expect(captured.lang).toBe('en-US');
+      expect(captured.voice?.name).toBe('Alex');
+    });
+
+    it('detects Tamil and Hindi scripts accurately', () => {
+      expect(detectTextLanguage('வணக்கம், ஜப்பானிய மொழி கற்போம்')).toBe('ta-IN');
+      expect(detectTextLanguage('नमस्ते, जापानी भाषा सीखें')).toBe('hi-IN');
+      expect(detectTextLanguage('한국어로 말해요')).toBe('ko-KR');
+    });
   });
 });

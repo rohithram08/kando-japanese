@@ -142,10 +142,8 @@ export default function SenseiPage() {
 
   const handleReplayAudio = (content: string) => {
     if (!content) return;
-    const isJapanese = /[一-龠ぁ-ゔァ-ヴー]/.test(content);
     useSenseiStore.getState().stopSpeech();
     audioService.speak(content, {
-      lang: isJapanese ? 'ja-JP' : undefined,
       onStart: () => useSenseiStore.getState().setSpeechState('speaking'),
       onEnd: () => useSenseiStore.getState().setSpeechState('idle'),
       onError: () => useSenseiStore.getState().setSpeechState('idle')

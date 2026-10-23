@@ -15,8 +15,6 @@ const AVAILABLE_MODELS = [
   'qwen/qwen3.8-27b',
   'openai/gpt-oss-120b',
   'openai/gpt-oss-20b',
-  'llama-3.3-70b-versatile',
-  'llama-3.1-8b-instant',
 ];
 
 export async function callGroq(messages: Array<{ role: string; content: string }>, maxTokens = 1024): Promise<string> {

@@ -1,6 +1,44 @@
 import { useSettingsStore } from '../store/settingsStore'
 import { t } from '../i18n'
 
+export function detectTextLanguage(text) {
+  if (!text || typeof text !== 'string') return 'ja-JP'
+
+  // Tamil script
+  if (/[\u0B80-\u0BFF]/.test(text)) return 'ta-IN'
+
+  // Devanagari (Hindi) script
+  if (/[\u0900-\u097F]/.test(text)) return 'hi-IN'
+
+  // Korean Hangul
+  if (/[\uAC00-\uD7AF\u1100-\u11FF]/.test(text)) return 'ko-KR'
+
+  // Japanese Kana (Hiragana / Katakana)
+  const kanaMatches = text.match(/[\u3040-\u309F\u30A0-\u30FF]/g) || []
+  // Kanji
+  const kanjiMatches = text.match(/[\u4E00-\u9FAF]/g) || []
+  const japaneseCharCount = kanaMatches.length + kanjiMatches.length
+
+  // Latin letters (English, Romaji, etc.)
+  const latinMatches = text.match(/[a-zA-Z]/g) || []
+  const latinCharCount = latinMatches.length
+
+  // If there are Japanese kana/kanji and they exceed or are equal to Latin letters,
+  // or if there are no Latin letters, it is Japanese.
+  if (japaneseCharCount > 0 && japaneseCharCount >= latinCharCount) {
+    return 'ja-JP'
+  }
+
+  // If Latin letters predominate (e.g. English explanation with a few Japanese words),
+  // speak in English!
+  if (latinCharCount > 0) {
+    return 'en-US'
+  }
+
+  // Default fallback
+  return japaneseCharCount > 0 ? 'ja-JP' : 'en-US'
+}
+
 class AudioService {
   constructor() {
     this.synthesis = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null
@@ -90,20 +128,27 @@ class AudioService {
 
       const utterance = new SpeechSynthesisUtterance(text)
 
-      utterance.lang = options.lang || 'ja-JP'
+      const targetLang = options.lang || detectTextLanguage(text)
+      utterance.lang = targetLang
       utterance.rate = effectiveRate
       utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.0
       utterance.volume = options.volume || 1.0
 
-      if (options.lang && options.lang !== 'ja-JP') {
-        const langPrefix = options.lang.split('-')[0]
-        const matchedVoice = this.voices.find(v => v.lang.startsWith(langPrefix) && v.localService) 
-          || this.voices.find(v => v.lang.startsWith(langPrefix))
+      if (targetLang === 'ja-JP' && this.japaneseVoice) {
+        utterance.voice = this.japaneseVoice
+      } else {
+        const langPrefix = targetLang.split('-')[0].toLowerCase()
+        const matchedVoice =
+          this.voices.find(v => v.lang.toLowerCase() === targetLang.toLowerCase() && v.localService) ||
+          this.voices.find(v => v.lang.toLowerCase() === targetLang.toLowerCase()) ||
+          this.voices.find(v => v.lang.toLowerCase().startsWith(langPrefix) && v.localService) ||
+          this.voices.find(v => v.lang.toLowerCase().startsWith(langPrefix))
+
         if (matchedVoice) {
           utterance.voice = matchedVoice
+        } else if (targetLang.startsWith('ja') && this.japaneseVoice) {
+          utterance.voice = this.japaneseVoice
         }
-      } else if (this.japaneseVoice && (!options.lang || options.lang === 'ja-JP')) {
-        utterance.voice = this.japaneseVoice
       }
 
       utterance.onstart = () => {

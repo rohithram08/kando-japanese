@@ -222,10 +222,8 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
       // Speak if enabled
       if (get().speechEnabled && reply) {
         get().stopSpeech();
-        const isJapanese = /[一-龠ぁ-ゔァ-ヴー]/.test(reply);
 
         audioService.speak(reply, {
-          lang: isJapanese ? 'ja-JP' : undefined,
           onStart: () => set({ speechState: 'speaking', animationState: 'speaking' }),
           onEnd: () => {
             const endAnim = action?.targetId ? 'pointing' : 'idle';
@@ -310,14 +308,6 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
       animationState: 'pointing',
       speechState: 'pointing'
     });
-
-    if (message && get().speechEnabled) {
-      audioService.speak(message, {
-        onStart: () => set({ speechState: 'speaking', animationState: 'speaking' }),
-        onEnd: () => set({ speechState: 'pointing', animationState: 'pointing' }),
-        onError: () => set({ speechState: 'pointing', animationState: 'pointing' })
-      });
-    }
   },
 
   clearTarget: () => {

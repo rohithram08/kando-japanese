@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { motion, AnimatePresence, useDragControls } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
   MessageCircle,
@@ -9,7 +9,6 @@ import {
   Map,
   Square,
   Sparkles,
-  GripHorizontal,
   ChevronDown,
   Minimize2,
   Maximize2,
@@ -153,22 +152,8 @@ export default function SenseiCompanion() {
     <div
       ref={containerRef}
       className="fixed bottom-4 right-4 z-[100] sm:bottom-6 sm:right-6 pointer-events-none"
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`
-      }}
     >
-      <motion.div
-        drag
-        dragMomentum={false}
-        dragElastic={0.1}
-        onDragEnd={(_, info) => {
-          setPosition({
-            x: position.x + info.offset.x,
-            y: position.y + info.offset.y
-          });
-        }}
-        className="pointer-events-auto flex flex-col items-end relative select-none"
-      >
+      <div className="pointer-events-auto flex flex-col items-end relative select-none">
         {/* ─── TEACHING / GUIDANCE POPUP MODE ─── */}
         <SenseiSpeechBubble />
         
@@ -402,7 +387,7 @@ export default function SenseiCompanion() {
                 className="absolute right-16 px-3 py-1.5 rounded-xl bg-card border border-border shadow-lg text-xs font-medium text-foreground whitespace-nowrap pointer-events-none flex items-center gap-1.5"
               >
                 <span>Hana-sensei 🌸</span>
-                <span className="text-[10px] text-muted-foreground">(Click to chat / Drag to move)</span>
+                <span className="text-[10px] text-muted-foreground">(Click to chat)</span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -414,9 +399,9 @@ export default function SenseiCompanion() {
             onClick={handleCharacterClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            aria-label="AI Sensei Movable Companion. Click to chat, double click to greet, drag to reposition."
+            aria-label="Hana-sensei AI Companion. Click to chat."
             aria-expanded={isOpen}
-            className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[2px] shadow-2xl relative cursor-grab active:cursor-grabbing focus:outline-none focus:ring-4 focus:ring-primary/30"
+            className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[2px] shadow-2xl relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-primary/30"
           >
             <div className="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center relative">
               {/* 2D Avatar in Minimized Floating Button */}
@@ -455,7 +440,7 @@ export default function SenseiCompanion() {
             </span>
           </motion.button>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

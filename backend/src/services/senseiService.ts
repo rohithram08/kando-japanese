@@ -1,6 +1,7 @@
 import { db } from '../db/index.js';
 import { senseiConversations, senseiTourProgress } from '../db/schema.js';
 import { eq, desc } from 'drizzle-orm';
+import { env } from '../config/env.js';
 
 import { senseiGuardrails, SenseiIntent } from './sensei/senseiGuardrails.js';
 import { senseiContext } from './sensei/senseiContext.js';
@@ -8,9 +9,9 @@ import { senseiKnowledge } from './sensei/senseiKnowledge.js';
 import { buildSenseiSystemPrompt } from './sensei/senseiPrompts.js';
 
 const AVAILABLE_MODELS = [
-  'llama-3.3-70b-versatile',
-  'llama-3.1-8b-instant',
-  'mixtral-8x7b-32768'
+  'qwen/qwen3.8-27b',
+  'openai/gpt-oss-120b',
+  'openai/gpt-oss-20b'
 ];
 
 export class SenseiService {
@@ -194,7 +195,7 @@ export class SenseiService {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.GROQ_API_KEY}`
+            'Authorization': `Bearer ${env.GROQ_API_KEY || process.env.GROQ_API_KEY}`
           },
           body: JSON.stringify({
             model,
