@@ -1,6 +1,6 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { PerspectiveCamera, OrbitControls, Html } from '@react-three/drei';
+import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { RotateCcw, Send, Mic, MicOff } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -209,14 +209,14 @@ export default function SenseiCharacter({
   }, []);
 
   // Character 3D stage position:
-  // Position Hana comfortably on the LEFT of the classroom (-1.42m),
-  // and position 3D Kando Slime comfortably on the RIGHT of the classroom (+1.42m)!
-  // This provides a spacious 2.84m center zone with zero character collision!
+  // Position Hana on the LEFT of the classroom (-1.25m),
+  // and position 3D Kando Slime on the RIGHT of the classroom (+1.25m)!
+  // Both characters sit on their designated dais with clear center space between them.
   const isLeft = stageSide === 'left' && !isMobileScreen;
-  const characterPos: [number, number, number] = isLeft ? [-1.42, 0, 0] : [0, 0, 0];
-  const slimePos: [number, number, number] = [1.42, 0, 0];
-  const daisPos: [number, number, number] = isLeft ? [-1.42, -0.01, 0] : [0, -0.01, 0];
-  const slimeDaisPos: [number, number, number] = [1.42, -0.01, 0];
+  const characterPos: [number, number, number] = isLeft ? [-1.25, 0, 0] : [0, 0, 0];
+  const slimePos: [number, number, number] = [1.25, 0, 0];
+  const daisPos: [number, number, number] = isLeft ? [-1.25, -0.01, 0] : [0, -0.01, 0];
+  const slimeDaisPos: [number, number, number] = [1.25, -0.01, 0];
 
   // Camera framing:
   // - Full stage: captures both Hana on left and 3D Slime on right with central clear space for speech
@@ -225,9 +225,9 @@ export default function SenseiCharacter({
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = isLeft ? [0, 0.82, 0] : [0, 0.74, 0];
+  let targetPos: [number, number, number] = isLeft ? [0, 0.75, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isLeft
-    ? [0, 0.88, 3.1]
+    ? [0, 0.90, 3.2]
     : isMobileScreen
     ? [0, 0.76, 2.7]
     : [0, 0.76, 2.3];
@@ -300,11 +300,11 @@ export default function SenseiCharacter({
           {/* Rim light (gold) */}
           <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
           {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
-          <pointLight position={[-1.0, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
+          <pointLight position={[-1.25, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
           {/* Dedicated Ambient Keylight for 3D Slime on Right */}
           {isLeft && showSlime && (
             <pointLight
-              position={[1.42, 0.7, 0.7]}
+              position={[1.25, 0.7, 0.7]}
               intensity={2.4}
               distance={2.5}
               color={slimePersona === 'mrs' ? '#f472b6' : '#38bdf8'}
@@ -334,177 +334,196 @@ export default function SenseiCharacter({
             </Suspense>
           )}
 
-          {/* ─── 3D-ANCHORED DIALOGUE BUBBLES IN-SCENE ─── */}
+          {/* ─── 3D-ANCHORED DIALOGUE BUBBLES IN-SCENE (TRUE 3D BILLBOARDS) ─── */}
           {isLeft && (
             <>
-              {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (ANCHORED IN 3D SPACE NEXT TO HANA'S HEAD) */}
-              <Html
-                position={isMobileScreen ? [0, 1.30, 0] : [-0.68, 1.35, 0]}
-                center
-                zIndexRange={[100, 0]}
-                style={{ pointerEvents: 'auto' }}
+              {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (FLOATING IN 3D SPACE ABOVE HER HEAD WITH COMIC TAIL) */}
+              <Billboard
+                follow={true}
+                position={isMobileScreen ? [0, 1.45, 0] : [-0.50, 1.62, 0]}
               >
-                <div
-                  onPointerDown={(e) => e.stopPropagation()}
-                  className="w-[280px] sm:w-[310px] md:w-[330px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
+                <Html
+                  center
+                  distanceFactor={isMobileScreen ? 3.0 : 3.4}
+                  zIndexRange={[100, 0]}
+                  style={{ pointerEvents: 'auto' }}
                 >
-                  {/* Comic Speech Bubble Pointer & Trailing Dots pointing to Hana's Head */}
-                  <div className="absolute top-1/2 -left-2.5 -translate-y-1/2 w-4 h-4 bg-slate-900/95 border-l border-b border-pink-400/40 rotate-45 pointer-events-none" />
-                  <div className="hidden sm:block absolute top-1/2 -left-5 -translate-y-1/2 w-2 h-2 rounded-full bg-pink-400/50 pointer-events-none animate-pulse" />
-                  <div className="hidden sm:block absolute top-1/2 -left-7 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-pink-400/30 pointer-events-none" />
-
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60">
-                    <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-full bg-pink-500/20 border border-pink-400/40 flex items-center justify-center text-xs">
-                        🌸
-                      </span>
-                      <span className="text-xs font-bold text-pink-300 flex items-center gap-1.5 font-japanese">
-                        <span>花先生 (Hana-sensei)</span>
-                        <span className="text-[10px] font-normal text-slate-400 font-sans">
-                          {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
-                        </span>
-                      </span>
-                    </div>
-
-                    {latestAssistantMessage && !isTyping && onReplayAudio && (
-                      <button
-                        type="button"
-                        onClick={() => onReplayAudio(latestAssistantMessage.content)}
-                        className="px-2 py-0.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-pink-300 rounded-lg transition-colors text-xs flex items-center gap-1 border border-slate-700/50"
-                        title="Replay Voice"
-                      >
-                        <RotateCcw className="w-3 h-3" />
-                        <span className="text-[10px] font-medium">Replay</span>
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  {isTyping ? (
-                    <div className="flex items-center gap-2 py-3 text-slate-300">
-                      <span className="text-xs text-slate-400">Hana-sensei is explaining</span>
-                      <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                    </div>
-                  ) : (
-                    <div className="max-h-[135px] sm:max-h-[155px] overflow-y-auto pr-1 text-xs sm:text-[13px] leading-relaxed scrollbar-thin text-slate-100">
-                      <SenseiMarkdown content={latestAssistantMessage?.content || "Konnichiwa! I am Hana-sensei. Ask me anything about Japanese grammar, vocabulary, or JLPT!"} />
-                    </div>
-                  )}
-                </div>
-              </Html>
-
-              {/* 2. SLIME 3D CHAT & TYPING BUBBLE (ANCHORED IN 3D SPACE NEXT TO SLIME ON RIGHT) */}
-              <Html
-                position={isMobileScreen ? [0, 0.45, 0] : [0.68, 0.38, 0]}
-                center
-                zIndexRange={[100, 0]}
-                style={{ pointerEvents: 'auto' }}
-              >
-                <div
-                  onPointerDown={(e) => e.stopPropagation()}
-                  className="w-[280px] sm:w-[310px] md:w-[330px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/35 shadow-[0_20px_50px_rgba(0,0,0,0.65)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
-                >
-                  {/* Comic Speech Bubble Pointer & Trailing Dots pointing to Slime */}
-                  <div className="absolute top-1/2 -right-2.5 -translate-y-1/2 w-4 h-4 bg-slate-900/95 border-r border-t border-sky-400/40 rotate-45 pointer-events-none" />
-                  <div className="hidden sm:block absolute top-1/2 -right-5 -translate-y-1/2 w-2 h-2 rounded-full bg-sky-400/50 pointer-events-none animate-pulse" />
-                  <div className="hidden sm:block absolute top-1/2 -right-7 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-sky-400/30 pointer-events-none" />
-
-                  {/* Bubble Header - Gender displayed automatically from login, NO toggle */}
-                  <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60 text-xs">
-                    <div className="flex items-center gap-1.5 font-bold">
-                      <span className={slimePersona === 'mrs' ? 'text-pink-400' : 'text-sky-400'}>
-                        {slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}
-                      </span>
-                      <span className="text-slate-400 font-normal">({userName})</span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-full font-medium border border-slate-700/50">
-                      Lv.{userLevel} Adventurer
-                    </span>
-                  </div>
-
-                  {/* Recent message quote */}
-                  {latestUserMessage && (
-                    <div className="mb-2 p-1.5 sm:p-2 rounded-xl bg-sky-950/40 border border-sky-500/20 text-xs text-slate-200 font-medium">
-                      <p className="line-clamp-2 italic">“{latestUserMessage.content}”</p>
-                    </div>
-                  )}
-
-                  {/* Quick Suggestion Chips (Compact) */}
-                  {!isTyping && quickPrompts.length > 0 && (
-                    <div className="mb-2 flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
-                      {quickPrompts.slice(0, 2).map((promptText) => (
-                        <button
-                          key={promptText}
-                          type="button"
-                          onClick={() => onSend?.(promptText)}
-                          className="whitespace-nowrap px-2 py-0.5 bg-slate-800/70 hover:bg-sky-950/80 border border-slate-700 hover:border-sky-500/40 text-[10.5px] font-medium rounded-full text-slate-300 transition-all flex-shrink-0 active:scale-95"
-                        >
-                          {promptText}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Embedded Typing Form INSIDE the 3D Slime Bubble */}
-                  <form
-                    onSubmit={onSubmit}
-                    className="w-full p-1 rounded-full bg-slate-950/70 border border-slate-700/80 focus-within:border-sky-400/70 focus-within:ring-2 focus-within:ring-sky-500/20 flex items-center gap-1 transition-all"
+                  <div
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    className="w-[275px] sm:w-[305px] md:w-[325px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
                   >
-                    <input
-                      type="text"
-                      value={input}
-                      onChange={(e) => onInputChange?.(e.target.value)}
-                      placeholder={
-                        isListening
-                          ? "Listening to your voice... 🎤"
-                          : `Type to Hana-sensei as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'}...`
-                      }
-                      disabled={isTyping}
-                      className={`flex-1 bg-transparent px-3 py-1.5 text-xs sm:text-sm focus:outline-none text-white placeholder:text-slate-500 disabled:opacity-50 ${
-                        isListening ? 'text-pink-400 font-medium' : ''
-                      }`}
-                    />
+                    {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-LEFT to Hana's Head */}
+                    <div className="absolute -bottom-2.5 left-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-l border-pink-400/40 rotate-45 pointer-events-none" />
+                    <div className="hidden sm:block absolute -bottom-5 left-5 w-2 h-2 rounded-full bg-slate-900/95 border border-pink-400/50 pointer-events-none animate-pulse" />
+                    <div className="hidden sm:block absolute -bottom-7 left-3 w-1.5 h-1.5 rounded-full bg-pink-400/60 pointer-events-none" />
 
-                    {/* Mic button */}
-                    {isSttSupported && onToggleMic && (
-                      <button
-                        type="button"
-                        onClick={onToggleMic}
-                        className={`p-1.5 rounded-full transition-all active:scale-95 ${
-                          isListening
-                            ? 'bg-pink-500 text-white shadow-md animate-pulse'
-                            : 'text-slate-400 hover:text-white hover:bg-slate-800'
-                        }`}
-                        title={isListening ? "Stop voice listening" : "Speak to Sensei"}
-                      >
-                        {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
-                      </button>
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60">
+                      <div className="flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-pink-500/20 border border-pink-400/40 flex items-center justify-center text-xs">
+                          🌸
+                        </span>
+                        <span className="text-xs font-bold text-pink-300 flex items-center gap-1.5 font-japanese">
+                          <span>花先生 (Hana-sensei)</span>
+                          <span className="text-[10px] font-normal text-slate-400 font-sans">
+                            {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
+                          </span>
+                        </span>
+                      </div>
+
+                      {latestAssistantMessage && !isTyping && onReplayAudio && (
+                        <button
+                          type="button"
+                          onClick={() => onReplayAudio(latestAssistantMessage.content)}
+                          className="px-2 py-0.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-pink-300 rounded-lg transition-colors text-xs flex items-center gap-1 border border-slate-700/50 active:scale-95"
+                          title="Replay Voice"
+                        >
+                          <RotateCcw className="w-3 h-3" />
+                          <span className="text-[10px] font-medium">Replay</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    {isTyping ? (
+                      <div className="flex items-center gap-2 py-3 text-slate-300">
+                        <span className="text-xs text-slate-400">Hana-sensei is explaining</span>
+                        <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      </div>
+                    ) : (
+                      <div className="max-h-[130px] sm:max-h-[150px] overflow-y-auto pr-1 text-xs sm:text-[13px] leading-relaxed scrollbar-thin text-slate-100">
+                        <SenseiMarkdown content={latestAssistantMessage?.content || "Konnichiwa! I am Hana-sensei. Ask me anything about Japanese grammar, vocabulary, or JLPT!"} />
+                      </div>
+                    )}
+                  </div>
+                </Html>
+              </Billboard>
+
+              {/* 2. SLIME 3D CHAT & TYPING BUBBLE (FLOATING IN 3D SPACE ABOVE SLIME WITH COMIC TAIL) */}
+              <Billboard
+                follow={true}
+                position={isMobileScreen ? [0, 0.55, 0] : [0.55, 0.88, 0]}
+              >
+                <Html
+                  center
+                  distanceFactor={isMobileScreen ? 3.0 : 3.4}
+                  zIndexRange={[100, 0]}
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  <div
+                    onPointerDown={(e) => e.stopPropagation()}
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    className="w-[275px] sm:w-[305px] md:w-[325px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
+                  >
+                    {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-RIGHT to Slime */}
+                    <div className="absolute -bottom-2.5 right-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-r border-sky-400/40 -rotate-45 pointer-events-none" />
+                    <div className="hidden sm:block absolute -bottom-5 right-5 w-2 h-2 rounded-full bg-slate-900/95 border border-sky-400/50 pointer-events-none animate-pulse" />
+                    <div className="hidden sm:block absolute -bottom-7 right-3 w-1.5 h-1.5 rounded-full bg-sky-400/60 pointer-events-none" />
+
+                    {/* Bubble Header - Gender displayed automatically from login, NO toggle */}
+                    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60 text-xs">
+                      <div className="flex items-center gap-1.5 font-bold">
+                        <span className={slimePersona === 'mrs' ? 'text-pink-400' : 'text-sky-400'}>
+                          {slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}
+                        </span>
+                        <span className="text-slate-400 font-normal">({userName})</span>
+                      </div>
+                      <span className="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-full font-medium border border-slate-700/50">
+                        Lv.{userLevel} Adventurer
+                      </span>
+                    </div>
+
+                    {/* Recent message quote */}
+                    {latestUserMessage && (
+                      <div className="mb-2 p-1.5 sm:p-2 rounded-xl bg-sky-950/40 border border-sky-500/20 text-xs text-slate-200 font-medium">
+                        <p className="line-clamp-2 italic">“{latestUserMessage.content}”</p>
+                      </div>
                     )}
 
-                    {/* Send button */}
-                    <button
-                      type="submit"
-                      disabled={!input?.trim() || isTyping}
-                      className="p-1.5 bg-sky-500 text-white rounded-full hover:bg-sky-400 disabled:opacity-40 transition-all active:scale-95 shadow-sm"
-                      title="Send message"
+                    {/* Quick Suggestion Chips (Compact) */}
+                    {!isTyping && quickPrompts.length > 0 && (
+                      <div className="mb-2 flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
+                        {quickPrompts.slice(0, 2).map((promptText) => (
+                          <button
+                            key={promptText}
+                            type="button"
+                            onClick={() => onSend?.(promptText)}
+                            className="whitespace-nowrap px-2 py-0.5 bg-slate-800/70 hover:bg-sky-950/80 border border-slate-700 hover:border-sky-500/40 text-[10.5px] font-medium rounded-full text-slate-300 transition-all flex-shrink-0 active:scale-95"
+                          >
+                            {promptText}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Embedded Typing Form INSIDE the 3D Slime Bubble */}
+                    <form
+                      onSubmit={onSubmit}
+                      className="w-full p-1 rounded-full bg-slate-950/70 border border-slate-700/80 focus-within:border-sky-400/70 focus-within:ring-2 focus-within:ring-sky-500/20 flex items-center gap-1 transition-all"
                     >
-                      <Send className="w-3.5 h-3.5" />
-                    </button>
-                  </form>
-                </div>
-              </Html>
+                      <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => onInputChange?.(e.target.value)}
+                        placeholder={
+                          isListening
+                            ? "Listening to your voice... 🎤"
+                            : `Type to Hana-sensei as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'}...`
+                        }
+                        disabled={isTyping}
+                        className={`flex-1 bg-transparent px-3 py-1.5 text-xs sm:text-sm focus:outline-none text-white placeholder:text-slate-500 disabled:opacity-50 ${
+                          isListening ? 'text-pink-400 font-medium' : ''
+                        }`}
+                      />
+
+                      {/* Mic button */}
+                      {isSttSupported && onToggleMic && (
+                        <button
+                          type="button"
+                          onClick={onToggleMic}
+                          className={`p-1.5 rounded-full transition-all active:scale-95 ${
+                            isListening
+                              ? 'bg-pink-500 text-white shadow-md animate-pulse'
+                              : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                          }`}
+                          title={isListening ? "Stop voice listening" : "Speak to Sensei"}
+                        >
+                          {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+                        </button>
+                      )}
+
+                      {/* Send button */}
+                      <button
+                        type="submit"
+                        disabled={!input?.trim() || isTyping}
+                        className="p-1.5 bg-sky-500 text-white rounded-full hover:bg-sky-400 disabled:opacity-40 transition-all active:scale-95 shadow-sm"
+                        title="Send message"
+                      >
+                        <Send className="w-3.5 h-3.5" />
+                      </button>
+                    </form>
+                  </div>
+                </Html>
+              </Billboard>
             </>
           )}
 
-          {/* OrbitControls: Locked to prevent scene distortion while keeping stable classroom view */}
+          {/* OrbitControls: 360-degree diorama orbiting around both Hana and Slime */}
           <OrbitControls
-            target={targetPos}
-            enableRotate={false}
+            target={isLeft ? [0, 0.78, 0] : targetPos}
+            enableRotate={true}
             enablePan={false}
-            enableZoom={false}
+            enableZoom={true}
+            minDistance={1.8}
+            maxDistance={4.8}
+            minPolarAngle={Math.PI / 4.2}
+            maxPolarAngle={Math.PI / 1.82}
+            autoRotate={false}
           />
         </Canvas>
       </ErrorBoundary>
