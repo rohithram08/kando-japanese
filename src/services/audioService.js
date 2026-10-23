@@ -42,7 +42,7 @@ export function isJapaneseChar(char) {
   if (code >= 0x30a0 && code <= 0x30ff) return true // Katakana
   if (code >= 0x4e00 && code <= 0x9faf) return true // Kanji
   if (code >= 0x3400 && code <= 0x4dbf) return true // Rare Kanji
-  if (code >= 0x3000 && code <= 0x303f) return true // Japanese punctuation
+  if (code >= 0x3000 && code <= 0x303f) return true // Japanese punctuation (、 。 ・ 「 」)
   if (code >= 0xff00 && code <= 0xffef) return true // Fullwidth forms (？ ！ ： （ ）)
   return false
 }
@@ -78,6 +78,36 @@ export function localeToTtsLang(locale) {
     case 'id': return 'id-ID'
     default: return 'en-US'
   }
+}
+
+export function detectBaseLanguage(text, userPreferredLocale = 'en') {
+  if (!text || typeof text !== 'string') return 'en-US'
+
+  // If there are Tamil characters in the text, it is Tamil!
+  if (/[\u0B80-\u0BFF]/.test(text)) return 'ta-IN'
+
+  // If Devanagari characters, it is Hindi!
+  if (/[\u0900-\u097F]/.test(text)) return 'hi-IN'
+
+  // If Korean Hangul
+  if (/[\uAC00-\uD7AF\u1100-\u11FF]/.test(text)) return 'ko-KR'
+
+  // If there are Latin letters (English text), it is English (or user's European locale)
+  const latinMatches = text.match(/[a-zA-Z]/g) || []
+  if (latinMatches.length > 0) {
+    const prefLang = localeToTtsLang(userPreferredLocale)
+    if (['es-ES', 'fr-FR', 'de-DE', 'pt-BR', 'it-IT'].includes(prefLang)) {
+      return prefLang
+    }
+    return 'en-US'
+  }
+
+  // Pure Japanese kana/kanji
+  if (/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(text)) {
+    return 'ja-JP'
+  }
+
+  return 'en-US'
 }
 
 export function segmentMultilingualText(text, baseLang = 'en-US') {
@@ -148,40 +178,46 @@ export function sanitizeForSpeech(raw) {
 
   // 2. Remove bracketed stage directions & emotion tags: [encouraging], [emotion: happy], (smiling warmly)
   text = text.replace(/\[(?:emotion|animation):\s*[^\]]+\]/gi, '')
-  text = text.replace(/\[(?:encouraging|friendly|happy|sad|excited|gentle|warmly|softly|curious|proudly|thinking|nodding|smiling|bowing|waving|teaching|pointing)[^\]]*\]/gi, '')
+  text = text.replace(/\[(?:encouraging|friendly|happy|sad|excited|gentle|warmly|softly|curious|proudly|thinking|nodding|smiling|bowing|waving|teaching)[^\]]*\]/gi, '')
   text = text.replace(/\((?:smiling|laughing|nodding|bowing|chuckle|giggle)[^)]*\)/gi, '')
 
-  // 3. Remove asterisk action directions: *smiles warmly*, *laughs*, *adjusts glasses*
-  text = text.replace(/\*(?:[^*]*(?:smile|laugh|nod|bow|wink|wave|clap|cheer|point|sigh|adjust|whisper|pause|think|warmly|softly|gently|proudly|encourag|giggle|chuckle)[^*]*)\*/gi, '')
-
-  // 4. Strip bold/italic markdown characters while keeping words inside: **word** -> word, *word* -> word, __word__ -> word
-  text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
-
-  // 5. Remove headers: # Header -> Header
-  text = text.replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
-
-  // 6. Remove bullet markers at line start: - item, * item, + item, • item
+  // 3. Remove bullet markers at line start FIRST so they don't corrupt bold/italic asterisk matching
   text = text.replace(/^[ \t]*[-*+•][ \t]+/gm, '')
 
-  // 7. Remove blockquotes: > quote -> quote
+  // 4. Remove asterisk action directions like *smiles*, *laughs*, *nods*
+  text = text.replace(/\*(?:[^*]*(?:smile|laugh|nod|bow|wink|sigh|adjusts? glasses|whisper|giggle|chuckle)[^*]*)\*/gi, '')
+
+  // 5. Strip bold/italic markdown characters: **word** -> word, *word* -> word, __word__ -> word
+  text = text.replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
+
+  // 6. Strip Romaji in parentheses following Japanese text:
+  // e.g. お水 (omizu) -> お水
+  // お水をください (Omizu o kudasai) -> お水をください
+  // 道を教えてください (Michi o otsukusai kudasai) -> 道を教えてください
+  text = text.replace(/([\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\([a-zA-Z\s~—\-_'"]+\)/g, '$1')
+
+  // 7. Remove headers: # Header -> Header
+  text = text.replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
+
+  // 8. Remove blockquotes: > quote -> quote
   text = text.replace(/^[ \t]*>[ \t]*/gm, '')
 
-  // 8. Remove inline code backticks: `code` -> code
+  // 9. Remove inline code backticks: `code` -> code
   text = text.replace(/`([^`]+)`/g, '$1')
 
-  // 9. Remove code fence blocks
+  // 10. Remove code fence blocks
   text = text.replace(/```[\s\S]*?```/g, '')
 
-  // 10. Remove markdown table markers: |
+  // 11. Remove markdown table markers: |
   text = text.replace(/\|/g, ' ')
 
-  // 11. Remove emojis, pictographs, variation selectors, and joiners
+  // 12. Remove emojis, pictographs, variation selectors, and joiners
   text = text.replace(/[\p{Extended_Pictographic}\uFE0E\uFE0F\u200D]/gu, '')
 
-  // 12. Strip stray markdown symbols: #, *, ~, _, ^, \
+  // 13. Strip any stray markdown symbols remaining: #, *, ~, _, ^, \
   text = text.replace(/[#*~\\^]/g, '')
 
-  // 13. Split into lines, trim, add natural sentence-ending pauses for lines that lack them
+  // 14. Split into lines, trim, add natural sentence-ending pauses for lines that lack them
   const lines = text.split(/\r?\n/)
     .map(line => line.trim())
     .filter(Boolean)
@@ -195,7 +231,7 @@ export function sanitizeForSpeech(raw) {
 
   text = punctuatedLines.join(' ')
 
-  // 14. Collapse multiple whitespace and normalize punctuation
+  // 15. Collapse multiple whitespace and normalize punctuation
   text = text.replace(/[ \t]+/g, ' ')
   text = text.replace(/ +([.,!?。、！？])/g, '$1')
   text = text.replace(/([.,!?])\1+/g, '$1')
@@ -243,6 +279,11 @@ export function findBestVoice(voices, targetLang) {
     // Modern Neural / Natural / Google voices sound human and interactive (Gemini / ChatGPT style)
     if (/(?:natural|neural|online|google)/i.test(vName)) {
       score += 200
+    }
+
+    // Penalize legacy robotic desktop SAPI voices (e.g. Microsoft Zira Desktop, David Desktop)
+    if (/\bdesktop\b/i.test(vName)) {
+      score -= 80
     }
 
     // High quality preferred Japanese female voices (Hana Sensei's original voices)
@@ -360,14 +401,16 @@ class AudioService {
   speak(text, options = {}) {
     if (!this.isSupported() || !text) return Promise.resolve()
 
-    // Clean markdown, stage directions, action tags, emojis, and hashtags before speech
+    // Clean markdown, stage directions, action tags, emojis, and redundant Romaji in parentheses before speech
     const cleanText = sanitizeForSpeech(text)
     if (!cleanText.trim()) return Promise.resolve()
 
     const prefs = useSettingsStore.getState()
     const baseRate = options.rate ?? prefs.speechRate ?? 0.88
     const effectiveRate = options.rate == null && prefs.slowMode ? Math.min(baseRate, 0.6) : baseRate
-    const baseLang = options.lang || localeToTtsLang(prefs.explanationLanguage || prefs.displayLanguage || 'en')
+
+    // Detect actual language from text contents so numbers in English sentences are never spoken in Tamil!
+    const baseLang = options.lang || detectBaseLanguage(cleanText, prefs.explanationLanguage || prefs.displayLanguage || 'en')
 
     // Segment text into language-specific fragments so Japanese words inside English/Tamil sentences
     // are spoken with the authentic Japanese female voice, and surrounding words are spoken in English/Tamil.
@@ -407,7 +450,19 @@ class AudioService {
         utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.0
         utterance.volume = options.volume || 1.0
 
-        const bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice
+        let bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice
+        // If the selected English voice is a legacy robotic desktop voice (e.g. Zira Desktop),
+        // and we have a high-quality natural Japanese voice (e.g. Google 日本語 / Nanami / Kyoko),
+        // prefer Hana Sensei's signature voice so she speaks with a unified, warm character!
+        if (
+          bestVoice &&
+          /\bdesktop\b/i.test(bestVoice.name) &&
+          this.japaneseVoice &&
+          /(?:google|natural|neural|online)/i.test(this.japaneseVoice.name)
+        ) {
+          bestVoice = this.japaneseVoice
+        }
+
         if (bestVoice) {
           utterance.voice = bestVoice
         }

@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   audioService,
   detectTextLanguage,
+  detectBaseLanguage,
   sanitizeForSpeech,
   findBestVoice,
   isFemaleVoice,
@@ -210,6 +211,18 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(detectTextLanguage('नमस्ते, जापानी भाषा सीखें')).toBe('hi-IN');
       expect(detectTextLanguage('한국어로 말해요')).toBe('ko-KR');
     });
+
+    it('ensures English sentences with numbers use en-US so digits are never spoken in Tamil', () => {
+      const sentence = 'I am so proud that you have kept your 3-day streak alive in Lesson 38!';
+      // Even if userPreferredLocale was 'ta', the text itself is in English!
+      expect(detectBaseLanguage(sentence, 'ta')).toBe('en-US');
+
+      const segments = segmentMultilingualText(sentence, detectBaseLanguage(sentence, 'ta'));
+      expect(segments.length).toBe(1);
+      expect(segments[0].lang).toBe('en-US');
+      expect(segments[0].text).toContain('3-day streak');
+      expect(segments[0].text).toContain('Lesson 38');
+    });
   });
 
   describe('Speech Sanitization (Emojis, Markdown & Stage Directions)', () => {
@@ -247,10 +260,21 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(clean).toBe('Konnichiwa!');
     });
 
-    it('retains natural text inside bold and italics formatting', () => {
+    it('strips redundant Romaji in parentheses right after Japanese words so speech does not repeat readings', () => {
+      const input = `Water = お水 (omizu)\n"Please give me water" = お水を**ください** (Omizu o **kudasai**)\n"Please show me [the way]" = 道を**教えてください** (Michi o **otsukusai kudasai**)`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).not.toContain('(omizu)');
+      expect(clean).not.toContain('(Omizu o kudasai)');
+      expect(clean).not.toContain('(Michi o otsukusai kudasai)');
+      expect(clean).toContain('Water = お水.');
+      expect(clean).toContain('"Please give me water" = お水をください.');
+      expect(clean).toContain('"Please show me [the way]" = 道を教えてください.');
+    });
+
+    it('retains natural text inside bold and italics formatting while stripping Romaji reading tags', () => {
       const input = `The verb **食べる** (*taberu*) means to eat.`;
       const clean = sanitizeForSpeech(input);
-      expect(clean).toBe('The verb 食べる (taberu) means to eat.');
+      expect(clean).toBe('The verb 食べる means to eat.');
     });
 
     it('handles markdown links, code blocks, and table pipes cleanly', () => {

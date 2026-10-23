@@ -15,6 +15,7 @@ import { useSenseiStore } from '../../store/senseiStore';
 import { useNavigate, useLocation } from 'react-router-dom';
 const SenseiCharacter = React.lazy(() => import('./SenseiCharacter'));
 import { SenseiSpeechBubble } from './SenseiSpeechBubble';
+import SenseiMarkdown from './SenseiMarkdown';
 import { useSenseiPageContext } from '../../hooks/useSenseiPageContext';
 import { SenseiGuidedTour } from './SenseiGuidedTour';
 
@@ -291,7 +292,11 @@ export default function SenseiCompanion() {
                           : 'bg-muted/80 text-foreground border border-border/40 rounded-tl-xs'
                       }`}
                     >
-                      {msg.content}
+                      {msg.role === 'user' ? (
+                        <div className="whitespace-pre-wrap">{msg.content}</div>
+                      ) : (
+                        <SenseiMarkdown content={msg.content} />
+                      )}
                       {msg.action && (
                         <div className="mt-2 text-xs opacity-80 flex items-center gap-1.5 border-t border-border/30 pt-1.5">
                           <Map className="w-3.5 h-3.5 text-primary" />

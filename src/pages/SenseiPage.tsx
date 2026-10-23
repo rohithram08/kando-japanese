@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 import SenseiCharacter from '../components/sensei/SenseiCharacter';
+import SenseiMarkdown from '../components/sensei/SenseiMarkdown';
 import { audioService } from '../services/audioService';
 import { useSenseiStore } from '../store/senseiStore';
 import { useSenseiDailyGuidance } from '../hooks/useSenseiDailyGuidance';
@@ -558,7 +559,11 @@ export default function SenseiPage() {
                       : 'bg-muted/70 text-foreground border border-border/40 rounded-tl-xs'
                   }`}
                 >
-                  <div className="whitespace-pre-wrap">{msg.content}</div>
+                  {msg.role === 'user' ? (
+                    <div className="whitespace-pre-wrap">{msg.content}</div>
+                  ) : (
+                    <SenseiMarkdown content={msg.content} />
+                  )}
 
                   {/* Contextual Action Card if Sensei recommended an activity */}
                   {msg.action && (
