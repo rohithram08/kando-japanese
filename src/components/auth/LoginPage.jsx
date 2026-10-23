@@ -456,7 +456,7 @@ export default function LoginPage() {
                     className="w-full py-2.5 rounded-xl font-semibold text-xs border-2 border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-500/40 dark:text-emerald-300 dark:hover:bg-emerald-900/50 transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
                     <Sparkles className="w-4 h-4 text-emerald-500" />
-                    ⚡ Instant Demo Sign In (Rohith Ram · 301 XP)
+                    ⚡ Instant Demo Sign In (Rohith Ram · 736 XP)
                   </motion.button>
                 </form>
 

@@ -453,24 +453,6 @@ export default function KandoSlime({
               fill="none"
             />
           )}
-          {/* Mr. Slime / Mrs. Slime Persona Head Accessories */}
-          {slimeType === 'mrs' ? (
-            <g transform="translate(68, 30) scale(0.85)" className="slime-blossom">
-              {/* Pink Sakura Flower Hair Bow for Mrs. Slime */}
-              <circle cx="0" cy="0" r="4.5" fill="#f43f5e" />
-              <circle cx="-5" cy="-3" r="4" fill="#fb7185" />
-              <circle cx="5" cy="-3" r="4" fill="#fb7185" />
-              <circle cx="-5" cy="4" r="4" fill="#fb7185" />
-              <circle cx="5" cy="4" r="4" fill="#fb7185" />
-              <circle cx="0" cy="0" r="2.2" fill="#fef08a" />
-            </g>
-          ) : (
-            <g transform="translate(50, 24) scale(0.85)">
-              {/* Fresh Adventurer Sprout Leaf for Mr. Slime */}
-              <path d="M 0 6 C -4 1, -6 -3, 0 -7 C 5 -3, 4 1, 0 6 Z" fill="#22c55e" />
-              <path d="M 0 6 C 3 3, 7 2, 9 -2 C 5 -1, 2 2, 0 6 Z" fill="#16a34a" />
-            </g>
-          )}
         </svg>
       </div>
 
