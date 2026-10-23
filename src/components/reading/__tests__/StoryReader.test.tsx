@@ -164,7 +164,7 @@ describe('StoryReader Component', () => {
     fireEvent.click(quizBtn);
 
     // Quiz header should appear
-    expect(screen.getByText(/Comprehension Question 1/i)).toBeDefined();
+    expect(screen.getByText(/Question 1 of/i)).toBeDefined();
 
     // Select correct option for Q1 (七時 (7:00))
     const optionBtn = screen.getByText('七時 (7:00)');
@@ -178,7 +178,7 @@ describe('StoryReader Component', () => {
     fireEvent.click(nextQBtn);
 
     // Should now be at Question 2
-    expect(screen.getByText(/Comprehension Question 2/i)).toBeDefined();
+    expect(screen.getByText(/Question 2 of/i)).toBeDefined();
   });
 
   it('opens vocabulary lookup modal when clicking an annotated word without advancing the sentence', () => {

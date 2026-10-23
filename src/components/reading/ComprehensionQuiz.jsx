@@ -1,40 +1,57 @@
 // src/components/reading/ComprehensionQuiz.jsx
 // ─────────────────────────────────────────────────────────────────────────────
-// Story-Grounded Comprehension Quiz with Contextual Error Explanations
+// Story-Grounded Quiz with contextual explanations for every answer.
+//
+// Rewards are NOT computed here. On submit the quiz hands its score to the
+// parent (`onSubmit`), which saves it through the server-authoritative reading
+// endpoint; this screen only displays what the server actually granted
+// (Wave XP, level, Jelly Streak) — so what you see is what was recorded.
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useState } from 'react';
-import { CheckCircle2, XCircle, Award, ArrowRight, RotateCcw, HelpCircle } from 'lucide-react';
+import { CheckCircle2, XCircle, ArrowRight, RotateCcw } from 'lucide-react';
 import FuriganaText from '../common/FuriganaText';
 import HanaSenseiCharacter2D from '../sensei/HanaSenseiCharacter2D';
 import AudioButton from '../common/AudioButton';
 import { useI18n } from '../../i18n';
 import JellyStreakSlime from '../mascot/JellyStreakSlime';
 import WaveXPBadge from '../common/WaveXPBadge';
+import { useProgressStore } from '../../store/progressStore';
+import { getUserLevelProgress } from '../../utils/progressCalculator';
 
 const TYPE_CONFIG = {
-  vocabulary: { label: '🟢 Vocabulary', bg: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30' },
-  kanji: { label: '🔴 Kanji', bg: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30' },
-  grammar: { label: '🟣 Grammar', bg: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30' },
-  particle: { label: '🔵 Particle', bg: 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-500/30' },
-  comprehension: { label: '📖 Reading Context', bg: 'bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30' },
+  vocabulary: { emoji: '🟢', key: 'type_vocabulary', fallback: 'Vocabulary', bg: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30' },
+  kanji: { emoji: '🔴', key: 'type_kanji', fallback: 'Kanji', bg: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30' },
+  grammar: { emoji: '🟣', key: 'type_grammar', fallback: 'Grammar', bg: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30' },
+  particle: { emoji: '🔵', key: 'type_particle', fallback: 'Particle', bg: 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-500/30' },
+  comprehension: { emoji: '📖', key: 'type_comprehension', fallback: 'Reading Context', bg: 'bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/30' },
 };
 
-export default function ComprehensionQuiz({ questions = [], onComplete, onBackToStory }) {
+export default function ComprehensionQuiz({
+  questions = [],
+  isAuthenticated = false,
+  alreadyCompleted = false,
+  onSubmit,
+  onFinish,
+  onBackToStory,
+}) {
   const { t } = useI18n();
+  const totalXP = useProgressStore((s) => s.totalXP);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({}); // { [qIndex]: optionIndex }
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [result, setResult] = useState(null); // server response from onSubmit
 
   if (!questions || questions.length === 0) {
     return (
       <div className="max-w-2xl mx-auto p-8 bg-surface rounded-3xl border border-border text-center">
-        <p className="text-muted-foreground text-sm">No quiz questions available for this story.</p>
+        <p className="text-muted-foreground text-sm">{t('quiz.no_questions', 'No quiz questions available for this story.')}</p>
         <button
           onClick={onBackToStory}
           className="mt-4 px-6 py-2 rounded-xl bg-primary text-white text-xs font-semibold"
         >
-          Return to Story
+          {t('quiz.return_to_story', 'Return to Story')}
         </button>
       </div>
     );
@@ -54,14 +71,6 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
     }));
   };
 
-  const handleNext = () => {
-    if (isLastQuestion) {
-      setIsSubmitted(true);
-    } else {
-      setCurrentIndex((prev) => prev + 1);
-    }
-  };
-
   const calculateScore = () => {
     let correctCount = 0;
     questions.forEach((q, idx) => {
@@ -72,22 +81,58 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
     return Math.round((correctCount / questions.length) * 100);
   };
 
-  const handleFinish = () => {
+  // Finishing the last question IS completing the quiz: save immediately so the
+  // streak/XP can't be lost by closing the tab on the results screen.
+  const submitQuiz = async () => {
     const score = calculateScore();
-    onComplete(score);
+    setIsSubmitted(true);
+    setSaving(true);
+    try {
+      const res = await onSubmit?.(score);
+      setResult(res || null);
+    } catch {
+      setResult({ synced: false });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleNext = () => {
+    if (isLastQuestion) {
+      submitQuiz();
+    } else {
+      setCurrentIndex((prev) => prev + 1);
+    }
   };
 
   const handleRetry = () => {
     setSelectedAnswers({});
     setCurrentIndex(0);
     setIsSubmitted(false);
+    setResult(null);
   };
 
   // ── Final Result Screen ──
   if (isSubmitted) {
     const score = calculateScore();
     const passed = score >= 70;
-    const waveXPEarned = 40 + 30 + Math.round(score * 0.3);
+    const rewards = result?.rewards;
+    const earned = rewards?.totalXp || 0;
+    const streak = result?.streak;
+    const levelInfo = getUserLevelProgress(totalXP);
+
+    let streakLine = null;
+    if (!saving) {
+      if (streak?.recorded) {
+        streakLine = streak.firstActivityToday
+          ? t('quiz.streak_extended', { days: streak.days }, `Jelly Streak: ${streak.days} days!`)
+          : t('quiz.streak_today', { days: streak.days }, `Today's Jelly Streak is already counted (${streak.days} days).`);
+      } else if (!isAuthenticated) {
+        streakLine = t('quiz.guest_note', 'Sign in to save Wave XP and your Jelly Streak.');
+      } else if (result && result.synced === false) {
+        streakLine = t('quiz.sync_failed', 'Could not reach the server. Your answers are saved on this device, but Wave XP and Jelly Streak were not recorded.');
+      }
+    }
 
     return (
       <div className="max-w-2xl mx-auto p-8 bg-surface rounded-3xl border border-border text-center shadow-lg animate-in fade-in">
@@ -98,52 +143,101 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
             speech={{
               japanese: passed ? 'よくできました！読解マスターです！' : '次はきっと大丈夫！復習してみましょう。',
               romaji: passed ? 'Yoku dekimashita! Dokkai masutaa desu!' : 'Tsugi wa kitto daijoubu! Fukushuu shitemimashou.',
-              english: passed ? 'Well done! Story and quiz completed!' : 'You completed the quiz! Review explanations and try once more.',
+              english: passed
+                ? t('quiz.sensei_pass', 'Well done! Story and quiz completed!')
+                : t('quiz.sensei_fail', 'Quiz completed! Review the explanations and try once more.'),
             }}
           />
         </div>
 
         <h2 className="text-2xl font-bold text-foreground mb-2">
-          Story Lesson Complete!
+          {t('quiz.result_title', 'Quiz Complete!')}
         </h2>
         <p className="text-sm text-muted-foreground mb-6">
-          You scored <span className="font-bold text-primary">{score}%</span> on the story comprehension quiz.
+          {t('quiz.result_score', { score }, `You scored ${score}% on the story quiz.`)}
         </p>
 
-        {/* Jelly Streak Notification Pill */}
-        <div className="p-3 mb-6 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center gap-2.5 text-xs font-bold text-cyan-700 dark:text-cyan-300">
-          <JellyStreakSlime size="xs" mood="celebrating" animated />
-          <span>Daily Jelly Streak Recorded! Keep learning every day!</span>
-        </div>
+        {/* Jelly Streak — shows what the server actually recorded */}
+        {saving ? (
+          <p className="text-xs text-muted-foreground mb-6" role="status">{t('quiz.saving', 'Saving your progress…')}</p>
+        ) : (
+          streakLine && (
+            <div
+              role="status"
+              data-testid="streak-line"
+              className="p-3 mb-6 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center gap-2.5 text-xs font-bold text-cyan-700 dark:text-cyan-300"
+            >
+              {streak?.recorded && <JellyStreakSlime size="xs" mood="celebrating" animated />}
+              <span>{streakLine}</span>
+            </div>
+          )
+        )}
 
         {/* Score Breakdown */}
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="p-4 rounded-2xl bg-muted/50 border border-border">
-            <span className="text-xs text-muted-foreground block mb-1">Result</span>
+            <span className="text-xs text-muted-foreground block mb-1">{t('quiz.result_label', 'Result')}</span>
             <span className={`text-base font-bold ${passed ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
-              {passed ? 'Passed (合格)' : 'Needs Review'}
+              {passed ? t('quiz.passed', 'Passed (合格)') : t('quiz.needs_review', 'Needs Review')}
             </span>
           </div>
-          <div className="p-4 rounded-2xl bg-muted/50 border border-border flex flex-col items-center justify-center">
-            <span className="text-xs text-muted-foreground block mb-1">Wave XP Reward</span>
-            <WaveXPBadge xp={waveXPEarned} size="md" />
+          <div className="p-4 rounded-2xl bg-muted/50 border border-border flex flex-col items-center justify-center" data-testid="wave-xp-result">
+            <span className="text-xs text-muted-foreground block mb-1">{t('quiz.wave_xp_earned', 'Wave XP earned')}</span>
+            {saving ? (
+              <span className="text-xs text-muted-foreground">…</span>
+            ) : earned > 0 ? (
+              <>
+                <WaveXPBadge xp={earned} size="md" />
+                <span className="text-[11px] text-muted-foreground mt-1">
+                  {t('quiz.xp_breakdown', { story: rewards.storyXp, quiz: rewards.quizXp }, `Story +${rewards.storyXp} · Quiz +${rewards.quizXp}`)}
+                </span>
+              </>
+            ) : (
+              <span className="text-base font-bold text-muted-foreground">+0</span>
+            )}
           </div>
         </div>
+
+        {!saving && isAuthenticated && earned === 0 && (rewards?.alreadyCompleted || alreadyCompleted) && (
+          <p className="text-[11px] text-muted-foreground mb-4">
+            {t('quiz.xp_already', "Wave XP for this story was already earned. Retakes keep your best score but don't pay again.")}
+          </p>
+        )}
+
+        {/* Level progress — same numbers as the sidebar and dashboard */}
+        {isAuthenticated && !saving && (
+          <div className="mb-6 text-left" data-testid="level-progress">
+            <div className="flex items-center justify-between text-[11px] text-muted-foreground mb-1">
+              <span className="font-semibold">
+                {t('dashboard.level_label', { level: levelInfo.level }, `Level ${levelInfo.level}`)}
+              </span>
+              <span>
+                {t('quiz.level_progress', { level: levelInfo.level, into: levelInfo.xpIntoLevel, need: levelInfo.xpForNext, next: levelInfo.level + 1 },
+                  `Level ${levelInfo.level} · ${levelInfo.xpIntoLevel}/${levelInfo.xpForNext} Wave XP to Lv.${levelInfo.level + 1}`)}
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-cyan-950/20 dark:bg-cyan-900/40 border border-cyan-500/20 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-cyan-400 to-sky-500 transition-all duration-500" style={{ width: `${levelInfo.percent}%` }} />
+            </div>
+          </div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={handleRetry}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-border text-sm font-semibold text-foreground hover:bg-muted transition-colors flex items-center justify-center space-x-2"
+            disabled={saving}
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl border border-border text-sm font-semibold text-foreground hover:bg-muted disabled:opacity-50 transition-colors flex items-center justify-center space-x-2"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Retry Quiz</span>
+            <span>{t('quiz.retake', 'Retake Quiz')}</span>
           </button>
           <button
-            onClick={handleFinish}
-            className="w-full sm:w-auto px-8 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-semibold shadow-sm hover:shadow transition-all flex items-center justify-center space-x-2"
+            onClick={onFinish}
+            disabled={saving}
+            className="w-full sm:w-auto px-8 py-2.5 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-50 text-white text-sm font-semibold shadow-sm hover:shadow transition-all flex items-center justify-center space-x-2"
           >
-            <span>Save & Complete Story Lesson</span>
+            <span>{t('quiz.back_to_stories', 'Back to Stories')}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -166,17 +260,17 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
             showStatusPill={false}
           />
           <span className={`px-2 py-0.5 rounded-full text-[11px] font-bold border ${typeMeta.bg}`}>
-            {typeMeta.label}
+            {typeMeta.emoji} {t('quiz.' + typeMeta.key, typeMeta.fallback)}
           </span>
           <span className="text-xs font-semibold text-muted-foreground">
-            Comprehension Question {currentIndex + 1} of {questions.length}
+            {t('quiz.question_progress', { current: currentIndex + 1, total: questions.length }, `Question ${currentIndex + 1} of ${questions.length}`)}
           </span>
         </div>
         <button
           onClick={onBackToStory}
           className="text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
-          Review Story
+          {t('quiz.review_story', 'Review Story')}
         </button>
       </div>
 
@@ -242,9 +336,9 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
         }`}>
           <div className="font-bold text-sm mb-1.5 flex items-center gap-1.5">
             {isCorrect ? (
-              <span className="text-emerald-700 dark:text-emerald-400">✅ Correct! 正解です。</span>
+              <span className="text-emerald-700 dark:text-emerald-400">{t('quiz.correct_banner', '✅ Correct! 正解です。')}</span>
             ) : (
-              <span className="text-rose-700 dark:text-rose-400">❌ Incorrect (不正解)</span>
+              <span className="text-rose-700 dark:text-rose-400">{t('quiz.incorrect_banner', '❌ Incorrect (不正解)')}</span>
             )}
           </div>
 
@@ -252,7 +346,7 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
           {!isCorrect && currentQ.wrongExplanations?.[selectedOption] && (
             <div className="mb-2.5 p-3 rounded-xl bg-white/80 dark:bg-black/40 border border-rose-200 dark:border-rose-900">
               <span className="font-bold block text-rose-700 dark:text-rose-300 mb-0.5">
-                Why this option is incorrect:
+                {t('quiz.why_incorrect', 'Why this option is incorrect:')}
               </span>
               <p className="text-foreground">{currentQ.wrongExplanations[selectedOption]}</p>
             </div>
@@ -261,7 +355,7 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
           {/* Grammar & Story Context Explanation */}
           <div className="p-3 rounded-xl bg-white/60 dark:bg-black/30 border border-border/40">
             <span className="font-bold block text-foreground mb-0.5">
-              {isCorrect ? 'Story Context & Linguistic Breakdown:' : 'Correct Answer & Explanation:'}
+              {isCorrect ? t('quiz.context_breakdown', 'Story Context & Linguistic Breakdown:') : t('quiz.correct_explanation', 'Correct Answer & Explanation:')}
             </span>
             <p className="text-muted-foreground">{currentQ.explanation}</p>
           </div>
@@ -275,7 +369,7 @@ export default function ComprehensionQuiz({ questions = [], onComplete, onBackTo
           onClick={handleNext}
           className="px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 disabled:opacity-40 text-white text-xs font-semibold transition-all flex items-center space-x-1.5 shadow-sm"
         >
-          <span>{isLastQuestion ? 'See Results' : 'Next Question'}</span>
+          <span>{isLastQuestion ? t('quiz.see_results', 'See Results') : t('quiz.next_question', 'Next Question')}</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>

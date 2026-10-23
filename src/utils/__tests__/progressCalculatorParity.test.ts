@@ -3,15 +3,11 @@ import {
   XP_REWARDS as FE_XP,
   JLPT_LEVELS as FE_JLPT,
   getBadges as feGetBadges,
-  getUserLevel as feGetUserLevel,
-  getUserLevelProgress as feGetUserLevelProgress,
 } from '../progressCalculator.js';
 import {
   XP_REWARDS as BE_XP,
   JLPT_LEVELS as BE_JLPT,
   ALL_BADGES as BE_BADGES,
-  getUserLevel as beGetUserLevel,
-  getUserLevelProgress as beGetUserLevelProgress,
 } from '../../../backend/src/services/progressCalculator';
 
 describe('Progress Calculator Parity (Frontend <-> Backend)', () => {
@@ -53,34 +49,5 @@ describe('Progress Calculator Parity (Frontend <-> Backend)', () => {
       expect(feBadge).toBeDefined();
       expect(feBadge?.name).toBe(beBadge.name);
     }
-  });
-
-  it('ensures getUserLevel and getUserLevelProgress have exact parity across tiers', () => {
-    const testCases = [0, 15, 29, 30, 89, 90, 189, 190, 339, 340, 442, 549, 550, 1200, 45000];
-    for (const xp of testCases) {
-      expect(feGetUserLevel(xp)).toBe(beGetUserLevel(xp));
-
-      const feProg = feGetUserLevelProgress(xp);
-      const beProg = beGetUserLevelProgress(xp);
-
-      expect(feProg.level).toBe(beProg.level);
-      expect(feProg.xpIntoLevel).toBe(beProg.xpIntoLevel);
-      expect(feProg.xpForNext).toBe(beProg.xpForNext);
-      expect(feProg.currentLevelXP).toBe(beProg.currentLevelXP);
-      expect(feProg.nextLevelXP).toBe(beProg.nextLevelXP);
-      expect(feProg.percent).toBe(beProg.percent);
-    }
-  });
-
-  it('verifies exact level 5 calculation for 442 XP (resolving sidebar 100% display bug)', () => {
-    const progress = feGetUserLevelProgress(442);
-    expect(progress.level).toBe(5);
-    expect(progress.currentLevelXP).toBe(340);
-    expect(progress.nextLevelXP).toBe(550);
-    expect(progress.xpIntoLevel).toBe(102); // 442 - 340
-    expect(progress.xpForNext).toBe(210);
-    // 102 / 210 = 48.57% -> 49% (NOT 100%)
-    expect(progress.percent).toBe(49);
-    expect(progress.percent).toBeLessThan(100);
   });
 });

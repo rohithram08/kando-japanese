@@ -41,11 +41,16 @@ vi.mock('../../../store/progressStore', () => ({
 
 // Mock reading store
 vi.mock('../../../store/readingStore', () => ({
-  useReadingStore: () => ({
-    progressMap: {
-      story_n5_01: { status: 'completed', quizScore: 100 },
-    },
-  }),
+  // Honour selectors like the real zustand hook does
+  useReadingStore: (selector?: (s: any) => any) => {
+    const state = {
+      progressMap: {
+        story_n5_01: { storyId: 'story_n5_01', status: 'completed', quizScore: 100, completedAt: '2026-10-20T10:00:00Z' },
+      },
+      loadAllProgress: vi.fn(),
+    };
+    return selector ? selector(state) : state;
+  },
 }));
 
 // Mock settings store
@@ -82,5 +87,23 @@ describe('Dashboard Component', () => {
     expect(screen.getByText(/Kana Studio/i)).toBeDefined();
     expect(screen.getAllByText(/Graded Reader/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Grammar/i).length).toBeGreaterThan(0);
+  });
+
+  it('shows story progress, quiz performance and level progress derived from persisted data', () => {
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
+
+    // 1 completed story (mocked saved progress) out of the real catalogue size
+    expect(screen.getByTestId('stories-of-total').textContent).toMatch(/^1 of 250 stories completed$/);
+    // Quiz performance comes from the saved quiz score, not a placeholder
+    const perf = screen.getByTestId('quiz-performance');
+    expect(perf.textContent).toMatch(/100%/);
+    expect(perf.textContent).toMatch(/Quizzes completed/);
+    // 301 Wave XP => level 4 (starts at 190), 39 XP short of level 5 (starts at 340): same shared calculator as the sidebar
+    expect(screen.getByTestId('dashboard-level-progress').textContent).toMatch(/Level 4/);
+    expect(screen.getByTestId('dashboard-level-progress').textContent).toMatch(/39 Wave XP to Level 5/);
   });
 });

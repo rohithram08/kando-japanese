@@ -136,7 +136,7 @@ const KanjiQuiz = ({ kanjiList = SAMPLE_QUIZ_DATA, onComplete }) => {
           })
         }
       } catch (err) {
-        console.error('Error awarding kanji quiz XP:', err)
+        console.error('Error awarding kanji quiz Wave XP:', err)
       }
 
       onComplete?.({ score, total: questions.length, maxStreak })
@@ -240,7 +240,7 @@ const KanjiQuiz = ({ kanjiList = SAMPLE_QUIZ_DATA, onComplete }) => {
             { label: 'Score', value: `${score}/${questions.length}`, icon: Target, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 border-blue-100 dark:bg-blue-500/10 dark:border-blue-500/20' },
             { label: 'Accuracy', value: `${accuracy}%`, icon: CheckCircle, color: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 border-green-100 dark:bg-green-500/10 dark:border-green-500/20' },
             { label: 'Best Streak', value: `${maxStreak}x`, icon: Star, color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-50 border-orange-100 dark:bg-orange-500/10 dark:border-orange-500/20' },
-            { label: 'XP Earned', value: `+${totalXPEarned}`, icon: Zap, color: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-50 border-yellow-100 dark:bg-yellow-500/10 dark:border-yellow-500/20' },
+            { label: 'Wave XP Earned', value: `+${totalXPEarned}`, icon: Zap, color: 'text-yellow-600 dark:text-yellow-400', bg: 'bg-yellow-50 border-yellow-100 dark:bg-yellow-500/10 dark:border-yellow-500/20' },
           ].map(({ label, value, icon: Icon, color, bg }) => (
             <motion.div
               key={label}

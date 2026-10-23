@@ -6,7 +6,7 @@
 import { create } from 'zustand';
 import { getReadingProgress, getStoryProgress, saveReadingProgress } from '../api/reading';
 import { useProgressStore } from './progressStore';
-import type { UserReadingProgress, SaveReadingProgressPayload } from '../types/reading';
+import type { UserReadingProgress, SaveReadingProgressPayload, SaveReadingProgressResponse } from '../types/reading';
 
 const GUEST_STORAGE_KEY = 'nihongo_guest_reading_progress';
 
@@ -40,7 +40,7 @@ export interface ReadingState {
   saveProgress: (
     payload: SaveReadingProgressPayload,
     isAuthenticated: boolean
-  ) => Promise<{ progress: UserReadingProgress; xpAwarded: number }>;
+  ) => Promise<SaveReadingProgressResponse>;
 }
 
 export const useReadingStore = create<ReadingState>((set, get) => ({
@@ -142,7 +142,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
       }));
 
       // In guest mode, do not claim server-side persistence or fake backend XP
-      return { progress: updated, xpAwarded: 0 };
+      return { progress: updated, xpAwarded: 0, synced: false };
     }
 
     // Authenticated persistence through backend
@@ -153,12 +153,18 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
         error: null,
       }));
 
-      // Synchronize XP if awarded
-      if (res.xpAwarded > 0) {
-        useProgressStore.getState().addXP(res.xpAwarded);
+      // The server is the single source of truth for Wave XP, level and Jelly
+      // Streak. Mirror its numbers instead of re-computing (or re-awarding) here.
+      if (res.totalXP !== undefined) {
+        useProgressStore.getState().applyServerReward({
+          totalXP: res.totalXP,
+          userLevel: res.userLevel,
+          streakDays: res.streak?.days,
+          xpGained: res.xpAwarded,
+        });
       }
 
-      return res;
+      return { ...res, synced: true };
     } catch (err: any) {
       console.error('Failed to save reading progress to backend:', err);
 
@@ -192,7 +198,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
         progressMap: { ...state.progressMap, [storyId]: fallback },
         error: userFacingError,
       }));
-      return { progress: fallback, xpAwarded: 0 };
+      return { progress: fallback, xpAwarded: 0, synced: false };
     }
   },
 }));

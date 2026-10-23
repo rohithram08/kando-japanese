@@ -72,7 +72,7 @@ export default function DailyGoal() {
         localStorage.setItem('nihongo_daily_goal_claimed', today)
         awardDailyGoalXP(user?.id)
         playFanfare()
-        toast.success(t('toast.daily_goal_bonus', 'Daily Goals Complete! Bonus +50 XP! 🎯'), { icon: '🌟' })
+        toast.success(t('toast.daily_goal_bonus', 'Daily Goals Complete! Bonus +50 Wave XP! 🎯'), { icon: '🌟' })
       }
     } catch {}
   }, [allDone, awardDailyGoalXP, user?.id, t])
@@ -93,7 +93,7 @@ export default function DailyGoal() {
             {t('dashboard.daily_goals_title', 'Daily Goals')}
           </h3>
           <p className="text-xs mt-0.5 text-muted-foreground">
-            {t('dashboard.daily_goals_desc', 'Complete tasks to earn XP')}
+            {t('dashboard.daily_goals_desc', 'Complete tasks to earn Wave XP')}
           </p>
         </div>
         <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/20">

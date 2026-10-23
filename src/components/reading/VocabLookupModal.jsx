@@ -144,7 +144,7 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
           <button
             type="button"
             onClick={onClose}
-            aria-label="Close vocabulary details"
+            aria-label={t('reading.close_vocab_details', 'Close vocabulary details')}
             className="p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
@@ -249,7 +249,7 @@ export default function VocabLookupModal({ vocab, onClose, furiganaMode = null }
             ) : (
               <div className="p-3 rounded-2xl bg-muted/40 border border-border flex items-center space-x-2 text-xs text-muted-foreground">
                 <AlertCircle className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>Pitch accent data awaiting verified dictionary entry</span>
+                <span>{t('reading.pitch_pending', 'Pitch accent data awaiting verified dictionary entry')}</span>
               </div>
             )}
           </div>

@@ -66,7 +66,7 @@ describe('ReadingStore — State and Progress Sync', () => {
   });
 
   describe('Authenticated mode persistence', () => {
-    it('calls backend API and awards XP when completing a story', async () => {
+    it('calls backend API and mirrors the server-granted Wave XP, level and streak (no local re-award)', async () => {
       const mockBackendResponse = {
         progress: {
           id: 'prog-1',
@@ -78,11 +78,16 @@ describe('ReadingStore — State and Progress Sync', () => {
           completedAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         },
-        xpAwarded: 75,
+        xpAwarded: 100,
+        rewards: { storyXp: 40, quizXp: 60, totalXp: 100, firstCompletion: true, alreadyCompleted: false },
+        streak: { recorded: true, days: 4, firstActivityToday: true },
+        totalXP: 1100,
+        userLevel: 13,
       };
 
       (readingApi.saveReadingProgress as any).mockResolvedValue(mockBackendResponse);
       const addXPSpy = vi.spyOn(useProgressStore.getState(), 'addXP').mockImplementation(vi.fn());
+      const applySpy = vi.spyOn(useProgressStore.getState(), 'applyServerReward').mockImplementation(vi.fn());
 
       const { saveProgress } = useReadingStore.getState();
       const result = await saveProgress(
@@ -102,11 +107,56 @@ describe('ReadingStore — State and Progress Sync', () => {
         quizScore: 100,
       });
 
-      expect(result.xpAwarded).toBe(75);
-      expect(addXPSpy).toHaveBeenCalledWith(75);
+      expect(result.xpAwarded).toBe(100);
+      expect(result.synced).toBe(true);
+      expect(applySpy).toHaveBeenCalledWith({ totalXP: 1100, userLevel: 13, streakDays: 4, xpGained: 100 });
+      expect(addXPSpy).not.toHaveBeenCalled(); // the server is the only place XP is computed
 
       const { progressMap } = useReadingStore.getState();
       expect(progressMap['story_n5_01'].status).toBe('completed');
+    });
+
+    it('does not touch Wave XP / streak for plain in_progress saves or retakes that earned nothing', async () => {
+      (readingApi.saveReadingProgress as any).mockResolvedValue({
+        progress: { storyId: 'story_n5_01', status: 'completed', lastSentenceIndex: 9, quizScore: 100 },
+        xpAwarded: 0,
+        rewards: { storyXp: 0, quizXp: 0, totalXp: 0, firstCompletion: false, alreadyCompleted: true },
+        streak: { recorded: true, days: 4, firstActivityToday: false },
+        totalXP: 1100,
+        userLevel: 13,
+      });
+      const applySpy = vi.spyOn(useProgressStore.getState(), 'applyServerReward').mockImplementation(vi.fn());
+
+      const res = await useReadingStore.getState().saveProgress(
+        { storyId: 'story_n5_01', lastSentenceIndex: 9, status: 'completed', quizScore: 100 },
+        true
+      );
+
+      expect(res.xpAwarded).toBe(0);
+      // totals are still mirrored (so every screen agrees) but nothing is "gained"
+      expect(applySpy).toHaveBeenCalledWith({ totalXP: 1100, userLevel: 13, streakDays: 4, xpGained: 0 });
+    });
+
+    it('applyServerReward sets total, level and streak from the server and never goes through addXP', () => {
+      vi.restoreAllMocks(); // earlier tests stub applyServerReward — use the real one here
+      useProgressStore.setState({ totalXP: 90, userLevel: 3, streak: 1, dailyXP: 0 } as any);
+      useProgressStore.getState().applyServerReward({ totalXP: 190, userLevel: 4, streakDays: 2, xpGained: 100 });
+      const st = useProgressStore.getState();
+      expect(st.totalXP).toBe(190);
+      expect(st.userLevel).toBe(4);
+      expect(st.streak).toBe(2);
+      expect(st.dailyXP).toBe(100);
+    });
+
+    it('reports synced:false when the server cannot be reached, so the UI never claims a reward', async () => {
+      (readingApi.saveReadingProgress as any).mockRejectedValue({ code: 'NETWORK_ERROR', status: 0 });
+      const res = await useReadingStore.getState().saveProgress(
+        { storyId: 'story_n5_01', lastSentenceIndex: 9, status: 'completed', quizScore: 100 },
+        true
+      );
+      expect(res.synced).toBe(false);
+      expect(res.xpAwarded).toBe(0);
+      expect(res.rewards).toBeUndefined();
     });
 
     it('loads server records on loadAllProgress for authenticated user', async () => {

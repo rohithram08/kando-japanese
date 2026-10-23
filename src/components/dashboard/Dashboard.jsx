@@ -1,5 +1,5 @@
 // src/components/dashboard/Dashboard.jsx
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -12,6 +12,8 @@ import { useReadingStore } from '../../store/readingStore'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useI18n, t } from '../../i18n'
 import { getUserLevelProgress } from '../../utils/progressCalculator'
+import { summarizeReadingProgress } from '../../utils/storyProgress'
+import { allStories } from '../../data/reading/n5_stories'
 import { sectionsByGroup, TINTS } from '../../config/sections'
 import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
@@ -85,8 +87,6 @@ export default function Dashboard() {
     totalXP,
     streak,
     jlptLevel,
-    userLevel,
-    lessonsCompleted,
     kanjiLearned,
     vocabLearned,
     srsReviewsDue,
@@ -96,7 +96,9 @@ export default function Dashboard() {
   } = useProgressStore()
 
   const progressMap = useReadingStore((s) => s.progressMap) || {}
-  const completedStories = Object.values(progressMap).filter((p) => p?.status === 'completed').length
+  const loadAllReadingProgress = useReadingStore((s) => s.loadAllProgress)
+  const storySummary = useMemo(() => summarizeReadingProgress(progressMap, allStories), [progressMap])
+  const completedStories = storySummary.completedCount
 
   const [loading, setLoading] = useState(true)
 
@@ -105,6 +107,12 @@ export default function Dashboard() {
   const currentXP = totalXP ?? profile?.xpPoints ?? profile?.xp_points ?? 0
   const displayName = profile?.displayName || profile?.display_name || profile?.username || 'Learner'
   const levelProgress = getUserLevelProgress(currentXP)
+
+  // Reading progress must be loaded here too, otherwise the dashboard is wrong
+  // after a refresh/login until the learner happens to open the Graded Reader.
+  useEffect(() => {
+    loadAllReadingProgress?.(!!user)
+  }, [user, loadAllReadingProgress])
 
   useEffect(() => {
     checkAndMaintainStreak?.()
@@ -144,8 +152,8 @@ export default function Dashboard() {
   }
 
   const greeting = getTimeGreeting()
-  const effectiveLessons = completedStories > 0 ? completedStories : lessonsCompleted
-  const stats = { lessonsCompleted: effectiveLessons, kanjiLearned, vocabLearned, srsReviewsDue }
+  // Stories replaced Lessons: this stat now reflects real, persisted story completions.
+  const stats = { lessonsCompleted: completedStories, kanjiLearned, vocabLearned, srsReviewsDue }
 
   const statDefs = [
     { label: t('dashboard.lessons_done', displayLanguage, 'Stories Completed'), key: 'lessonsCompleted', icon: BookOpen, tint: 'blue' },
@@ -192,7 +200,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-2 mt-3 flex-wrap">
             <span className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/20 text-white shadow-xs">
               <GraduationCap className="w-3.5 h-3.5 text-white" />
-              {currentLevel} · Lv.{userLevel}
+              {currentLevel} · Lv.{levelProgress.level}
             </span>
 
             {/* Jelly Streak (2D Animated Slime) */}
@@ -283,6 +291,92 @@ export default function Dashboard() {
       <div className="grid lg:grid-cols-2 gap-4">
         <StreakCard streak={currentStreak} />
         <DailyGoal />
+      </div>
+
+
+      {/* ── Story Progress & Quiz Performance (all derived from saved progress) ── */}
+      <div className="grid lg:grid-cols-2 gap-4" data-testid="story-progress-section">
+        <div className="card p-5">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-sm text-foreground">{t('dashboard.story_progress_title', displayLanguage, 'Story Progress')}</h3>
+            <span className="text-xs text-muted-foreground" data-testid="stories-of-total">
+              {t('dashboard.stories_of_total', displayLanguage, { done: storySummary.completedCount, total: storySummary.totalStories }, `${storySummary.completedCount} of ${storySummary.totalStories} stories completed`)}
+            </span>
+          </div>
+          <div className="h-2 rounded-full bg-muted overflow-hidden mb-4">
+            <div
+              className="h-full bg-gradient-to-r from-cyan-400 to-sky-500 transition-all duration-500"
+              style={{ width: `${storySummary.totalStories ? Math.round((storySummary.completedCount / storySummary.totalStories) * 100) : 0}%` }}
+            />
+          </div>
+
+          {storySummary.current ? (
+            <button
+              onClick={() => navigate(`/reading/${storySummary.current.story.id}`)}
+              className="w-full text-left p-3 rounded-2xl bg-muted/50 border border-border hover:border-primary/40 transition-colors"
+              data-testid="current-story"
+            >
+              <p className="text-[11px] font-semibold text-muted-foreground mb-0.5">{t('dashboard.currently_reading', displayLanguage, 'Currently reading')}</p>
+              <p className="text-sm font-semibold text-foreground truncate">{storySummary.current.story.englishTitle || storySummary.current.story.title}</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5">
+                {storySummary.current.story.level} · {t('dashboard.sentence_progress', displayLanguage, { current: storySummary.current.sentenceNumber, total: storySummary.current.totalSentences }, `Sentence ${storySummary.current.sentenceNumber} of ${storySummary.current.totalSentences}`)}
+              </p>
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate('/reading')}
+              className="w-full text-left p-3 rounded-2xl bg-muted/50 border border-border hover:border-primary/40 transition-colors text-sm font-semibold text-foreground"
+            >
+              {t('dashboard.start_story', displayLanguage, 'Pick your first story')}
+            </button>
+          )}
+
+          {storySummary.recent.length > 0 && (
+            <div className="mt-4">
+              <p className="text-[11px] font-semibold text-muted-foreground mb-1.5">{t('dashboard.recently_completed', displayLanguage, 'Recently completed')}</p>
+              <ul className="space-y-1">
+                {storySummary.recent.map(({ story, score }) => (
+                  <li key={story.id} className="flex items-center justify-between text-xs text-foreground">
+                    <span className="truncate pr-2">{story.englishTitle || story.title}</span>
+                    {score !== null && <span className="font-semibold text-muted-foreground">{score}%</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className="card p-5" data-testid="quiz-performance">
+          <h3 className="font-bold text-sm text-foreground mb-3">{t('dashboard.quiz_performance', displayLanguage, 'Quiz Performance')}</h3>
+          {storySummary.quizzesCompleted > 0 ? (
+            <div className="grid grid-cols-3 gap-3 text-center">
+              <div className="p-3 rounded-2xl bg-muted/50 border border-border">
+                <div className="text-xl font-bold text-foreground">{storySummary.quizzesCompleted}</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">{t('dashboard.quizzes_completed', displayLanguage, 'Quizzes completed')}</div>
+              </div>
+              <div className="p-3 rounded-2xl bg-muted/50 border border-border">
+                <div className="text-xl font-bold text-foreground">{storySummary.avgScore ?? 0}%</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">{t('dashboard.avg_score', displayLanguage, 'Average score')}</div>
+              </div>
+              <div className="p-3 rounded-2xl bg-muted/50 border border-border">
+                <div className="text-xl font-bold text-foreground">{storySummary.bestScore ?? 0}%</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">{t('dashboard.best_score', displayLanguage, 'Best score')}</div>
+              </div>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground">{t('dashboard.no_quizzes', displayLanguage, 'Finish a story and its quiz to see your scores here.')}</p>
+          )}
+
+          <div className="mt-4" data-testid="dashboard-level-progress">
+            <div className="flex items-center justify-between text-[11px] text-muted-foreground mb-1">
+              <span className="font-semibold">{t('dashboard.level_label', displayLanguage, { level: levelProgress.level }, `Level ${levelProgress.level}`)}</span>
+              <span>{t('dashboard.wave_xp_to_next', displayLanguage, { xp: levelProgress.xpToNext, next: levelProgress.level + 1 }, `${levelProgress.xpToNext} Wave XP to Level ${levelProgress.level + 1}`)}</span>
+            </div>
+            <div className="h-2 rounded-full bg-cyan-950/20 dark:bg-cyan-900/40 border border-cyan-500/20 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-cyan-400 to-sky-500 transition-all duration-500" style={{ width: `${levelProgress.percent}%` }} />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Level Progress Chart ── */}

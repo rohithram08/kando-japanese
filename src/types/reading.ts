@@ -106,3 +106,23 @@ export interface SaveReadingProgressPayload {
   status?: 'in_progress' | 'completed';
   quizScore?: number;
 }
+
+export interface StoryRewards {
+  storyXp: number;
+  quizXp: number;
+  totalXp: number;
+  firstCompletion: boolean;
+  alreadyCompleted: boolean;
+}
+
+export interface SaveReadingProgressResponse {
+  progress: UserReadingProgress;
+  /** Total Wave XP paid by this request (0 on retakes / in-progress saves). */
+  xpAwarded: number;
+  rewards?: StoryRewards;
+  streak?: { recorded: boolean; days: number; firstActivityToday: boolean };
+  totalXP?: number;
+  userLevel?: number;
+  /** false for guests and when the server could not be reached. */
+  synced?: boolean;
+}

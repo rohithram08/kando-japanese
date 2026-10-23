@@ -24,7 +24,6 @@ import { useSettingsStore } from '../../store/settingsStore';
 import { useAuthStore } from '../../store/authStore';
 import { useReadingStore } from '../../store/readingStore';
 import { useSRSStore } from '../../store/srsStore';
-import { useProgressStore } from '../../store/progressStore';
 import { useI18n, getCurriculumMeaning } from '../../i18n';
 import FuriganaText from '../common/FuriganaText';
 import AudioButton from '../common/AudioButton';
@@ -242,13 +241,16 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
     setShowQuiz(true);
   };
 
-  const handleQuizComplete = async (score) => {
+  // Called by the quiz as soon as the learner submits their answers. The server is
+  // the single source of truth for Wave XP, level and Jelly Streak: it pays the
+  // story + quiz reward once, credits today's streak (pass or fail) and returns the
+  // numbers, which the quiz screen then displays.
+  const handleQuizSubmit = async (score) => {
     storyAudio.stop();
-    setQuizScore(score);
+    setQuizScore((prev) => Math.max(prev ?? 0, score));
     setCompleted(true);
-    setShowQuiz(false);
 
-    await saveProgress(
+    return saveProgress(
       {
         storyId: story.id,
         lastSentenceIndex: totalSentences - 1,
@@ -257,15 +259,11 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
       },
       isAuthenticated
     );
+  };
 
-    // Award Wave XP and daily Jelly Streak
-    try {
-      const progressStore = useProgressStore.getState();
-      await progressStore.awardStoryCompletionXP(story.id, user?.id);
-      await progressStore.awardStoryQuizXP(story.id, score, user?.id);
-    } catch (e) {
-      console.warn('Could not record story quiz completion XP:', e);
-    }
+  const handleQuizFinish = () => {
+    setShowQuiz(false);
+    handleBack();
   };
 
   // If in quiz mode, show the quiz component
@@ -283,7 +281,10 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
         </div>
         <ComprehensionQuiz
           questions={story.questions}
-          onComplete={handleQuizComplete}
+          isAuthenticated={isAuthenticated}
+          alreadyCompleted={initialProgress?.status === 'completed'}
+          onSubmit={handleQuizSubmit}
+          onFinish={handleQuizFinish}
           onBackToStory={() => setShowQuiz(false)}
         />
       </div>
@@ -323,7 +324,7 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
           <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 p-0.5 bg-gray-50 dark:bg-gray-800/40">
             <button
               onClick={() => setViewMode('card')}
-              title="Sentence-by-sentence mode"
+              title={t('reading.mode_sentence', 'Sentence-by-sentence mode')}
               className={`p-1.5 rounded-md text-xs font-medium transition-colors ${
                 viewMode === 'card'
                   ? 'bg-white dark:bg-gray-700 text-teal-600 dark:text-teal-400 shadow-xs'
@@ -334,7 +335,7 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
             </button>
             <button
               onClick={() => setViewMode('passage')}
-              title="Continuous passage mode"
+              title={t('reading.mode_passage', 'Continuous passage mode')}
               className={`p-1.5 rounded-md text-xs font-medium transition-colors ${
                 viewMode === 'passage'
                   ? 'bg-white dark:bg-gray-700 text-teal-600 dark:text-teal-400 shadow-xs'
@@ -701,7 +702,9 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
                     {t('reading.story_complete', 'Story Mastered!')}
                   </h4>
                   <p className="text-xs text-emerald-700 dark:text-emerald-400">
-                    {t('quiz.score', { score: quizScore ?? 100, total: 100, percent: quizScore ?? 100 }, `Comprehension Quiz Score: ${quizScore ?? 100}%`)}
+                    {quizScore !== null && quizScore !== undefined
+                      ? t('quiz.score', { score: quizScore, total: 100, percent: quizScore }, `Comprehension Quiz Score: ${quizScore}%`)
+                      : null}
                   </p>
                 </div>
               </div>
@@ -768,7 +771,7 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
                     ) : (
                       <div className="mt-2 pt-1 border-t border-gray-200/30 dark:border-gray-700/30 flex items-center space-x-1 text-[10px] text-gray-400">
                         <AlertCircle className="w-3 h-3 text-amber-500/70" />
-                        <span>Pitch accent data awaiting verified dictionary entry</span>
+                        <span>{t('reading.pitch_pending', 'Pitch accent data awaiting verified dictionary entry')}</span>
                       </div>
                     )}
                   </div>

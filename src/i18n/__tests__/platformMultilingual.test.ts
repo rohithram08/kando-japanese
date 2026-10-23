@@ -104,7 +104,7 @@ describe('Full-Platform Multilingual Support & Decoupled Localization Suite', ()
       expect(t('common.streak', 'hi', { count: 7 })).toBe('7 दिन का स्ट्रीक')
       expect(t('common.streak', 'es', { count: 7 })).toBe('Racha de 7 Días')
 
-      expect(t('common.xp', 'en', { count: 350 })).toBe('350 XP')
+      expect(t('common.xp', 'en', { count: 350 })).toBe('350 Wave XP')
     })
 
     it('safely retains unprovided placeholders without crashing', () => {

@@ -16,7 +16,7 @@ import {
   AlertCircle,
   Radio,
 } from 'lucide-react';
-import { t } from '../../i18n';
+import { useI18n } from '../../i18n';
 
 const SPEED_OPTIONS = [0.8, 1.0, 1.2];
 
@@ -35,6 +35,8 @@ export default function StoryAudioPlayer({
   className = '',
   compact = false,
 }) {
+  // Reactive hook (the module-level `t` never re-rendered on language change)
+  const { t } = useI18n();
   if (!isSupported) {
     return (
       <div
@@ -42,7 +44,7 @@ export default function StoryAudioPlayer({
         role="alert"
       >
         <VolumeX className="w-4 h-4 shrink-0 text-amber-500" />
-        <span>Audio synthesis is not supported in this browser.</span>
+        <span>{t('reading.audio_unsupported', 'Audio synthesis is not supported in this browser.')}</span>
       </div>
     );
   }
@@ -110,8 +112,8 @@ export default function StoryAudioPlayer({
           type="button"
           onClick={handleReplayClick}
           className="inline-flex items-center justify-center p-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500"
-          title="Repeat current sentence"
-          aria-label="Repeat current sentence"
+          title={t('reading.audio_repeat', 'Repeat current sentence')}
+          aria-label={t('reading.audio_repeat', 'Repeat current sentence')}
         >
           <RotateCcw className="w-3.5 h-3.5 text-gray-600 dark:text-gray-400" />
         </button>
@@ -120,7 +122,7 @@ export default function StoryAudioPlayer({
         <div
           className="inline-flex items-center rounded-xl p-0.5 bg-gray-200/70 dark:bg-gray-700/60 border border-gray-200 dark:border-gray-700"
           role="group"
-          aria-label="Playback speed"
+          aria-label={t('reading.audio_speed', 'Playback speed')}
         >
           {SPEED_OPTIONS.map((speed) => {
             const isActive = playbackSpeed === speed;
@@ -174,12 +176,12 @@ export default function StoryAudioPlayer({
             {activeAudioStrategy === 'recorded' ? (
               <span className="hidden md:inline-flex items-center space-x-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 font-medium">
                 <Radio className="w-3 h-3 text-emerald-600 animate-pulse" />
-                <span>Recorded Audio</span>
+                <span>{t('reading.audio_recorded', 'Recorded Audio')}</span>
               </span>
             ) : (
               <span
                 className="hidden md:inline-flex items-center space-x-1 px-2 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700/60 font-medium"
-                title="Browser Speech Synthesis (ja-JP)"
+                title={t('reading.audio_browser_tts', 'Browser Speech Synthesis (ja-JP)')}
               >
                 <Volume2 className="w-3 h-3 text-teal-600 dark:text-teal-400" />
                 <span>ja-JP TTS</span>
@@ -190,11 +192,11 @@ export default function StoryAudioPlayer({
               <span
                 role="status"
                 className="inline-flex items-center space-x-1 px-1.5 py-0.5 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60 font-medium ml-1"
-                title="Japanese speech synthesis voice not installed in OS/browser; using default synthesizer"
-                aria-label="Japanese speech synthesis voice not installed in OS/browser; using default synthesizer"
+                title={t('reading.audio_no_voice_detail', 'Japanese speech synthesis voice not installed in OS/browser; using default synthesizer')}
+                aria-label={t('reading.audio_no_voice_detail', 'Japanese speech synthesis voice not installed in OS/browser; using default synthesizer')}
               >
                 <AlertCircle className="w-3 h-3 shrink-0" />
-                <span className="hidden sm:inline text-[10px]">No ja-JP voice</span>
+                <span className="hidden sm:inline text-[10px]">{t('reading.audio_no_voice', 'No ja-JP voice')}</span>
               </span>
             )}
           </div>

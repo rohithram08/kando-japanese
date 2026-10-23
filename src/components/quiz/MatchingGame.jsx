@@ -195,7 +195,7 @@ const LevelSelector = ({ completedLevels, currentLevel, onSelect }) => (
 
 // ─── Main Component ───────────────────────────────────────────────
 const MatchingGame = ({ onComplete }) => {
-  const addXP = useProgressStore((s) => s.addXP);
+  const { incrementXP } = useProgressStore();
   const user = useAuthStore((s) => s.user);
 
   // Level progression state
@@ -268,7 +268,7 @@ const MatchingGame = ({ onComplete }) => {
       setSelectedRight(null);
 
       const xpGain = 5;
-      addXP(xpGain, user?.id);
+      incrementXP(xpGain, user?.id);
       setSessionXP((prev) => prev + xpGain);
 
       if (newMatched.size === activeLevel.pairs.length) {
@@ -280,7 +280,7 @@ const MatchingGame = ({ onComplete }) => {
             50,
             100 - attempts * 2 - Math.floor(elapsedTime / 5)
           );
-          addXP(bonusXP, user?.id);
+          incrementXP(bonusXP, user?.id);
           setSessionXP((prev) => prev + bonusXP);
 
           // Unlock next level
@@ -390,7 +390,7 @@ const MatchingGame = ({ onComplete }) => {
           </div>
           <div className="flex items-center gap-1.5 text-yellow-400">
             <Zap className="w-4 h-4" />
-            <span className="font-bold">+{sessionXP} XP</span>
+            <span className="font-bold">+{sessionXP} Wave XP</span>
           </div>
         </div>
       </div>
@@ -550,7 +550,7 @@ const MatchingGame = ({ onComplete }) => {
                   {
                     icon: Zap,
                     value: `+${sessionXP}`,
-                    label: "XP",
+                    label: "Wave XP",
                     color: "text-yellow-400",
                     bg: "bg-yellow-500/10 border-yellow-500/20",
                   },

@@ -48,6 +48,28 @@ export default function ReadingPage() {
     setCurrentPage(1);
   }, [selectedLevel, searchQuery]);
 
+  // ── Library Overview Filtering & Pagination ──
+  // (hooks must run on every render, so they live above the `storyId` early return)
+  const filteredStories = useMemo(() => {
+    return allStories.filter((s) => {
+      const matchLevel = selectedLevel === 'ALL' || s.level === selectedLevel;
+      if (!matchLevel) return false;
+      if (!searchQuery.trim()) return true;
+      const q = searchQuery.toLowerCase();
+      return (
+        s.title.toLowerCase().includes(q) ||
+        s.englishTitle.toLowerCase().includes(q) ||
+        (s.description && s.description.toLowerCase().includes(q))
+      );
+    });
+  }, [selectedLevel, searchQuery]);
+
+  const totalPages = Math.ceil(filteredStories.length / STORIES_PER_PAGE) || 1;
+  const paginatedStories = useMemo(() => {
+    const start = (currentPage - 1) * STORIES_PER_PAGE;
+    return filteredStories.slice(start, start + STORIES_PER_PAGE);
+  }, [filteredStories, currentPage]);
+
   // If a specific story is requested via route or selection
   if (storyId) {
     const story = getStoryById(storyId);
@@ -59,10 +81,10 @@ export default function ReadingPage() {
             <AlertCircle className="w-8 h-8" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-            {t('common.error', 'Story Not Found')}
+            {t('reading.story_not_found', 'Story Not Found')}
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-            The requested reading text could not be located in the catalog.
+            {t('reading.story_not_found_desc', 'The requested reading text could not be located.')}
           </p>
           <button
             onClick={() => navigate('/reading')}
@@ -70,6 +92,15 @@ export default function ReadingPage() {
           >
             {t('common.back', 'Back to Library')}
           </button>
+        </div>
+      );
+    }
+
+    if (!progressLoaded && loading && !progressMap[story.id]) {
+      return (
+        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
+          <div className="w-8 h-8 border-3 border-teal-500/30 border-t-teal-600 rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{t('common.loading', 'Loading reading progress...')}</p>
         </div>
       );
     }
@@ -90,27 +121,6 @@ export default function ReadingPage() {
       />
     );
   }
-
-  // ── Library Overview Filtering & Pagination ──
-  const filteredStories = useMemo(() => {
-    return allStories.filter((s) => {
-      const matchLevel = selectedLevel === 'ALL' || s.level === selectedLevel;
-      if (!matchLevel) return false;
-      if (!searchQuery.trim()) return true;
-      const q = searchQuery.toLowerCase();
-      return (
-        s.title.toLowerCase().includes(q) ||
-        s.englishTitle.toLowerCase().includes(q) ||
-        (s.description && s.description.toLowerCase().includes(q))
-      );
-    });
-  }, [selectedLevel, searchQuery]);
-
-  const totalPages = Math.ceil(filteredStories.length / STORIES_PER_PAGE) || 1;
-  const paginatedStories = useMemo(() => {
-    const start = (currentPage - 1) * STORIES_PER_PAGE;
-    return filteredStories.slice(start, start + STORIES_PER_PAGE);
-  }, [filteredStories, currentPage]);
 
   const completedCount = Object.values(progressMap).filter(
     (p) => p.status === 'completed'
@@ -192,7 +202,7 @@ export default function ReadingPage() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search stories, titles..."
+            placeholder={t('reading.search_placeholder', 'Search stories, titles...')}
             className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-xs text-gray-800 dark:text-gray-200 placeholder-gray-400 focus:outline-hidden focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
           />
         </div>
@@ -202,8 +212,8 @@ export default function ReadingPage() {
       {paginatedStories.length === 0 ? (
         <div className="text-center py-16 px-4 border border-dashed border-gray-200 dark:border-gray-800 rounded-2xl">
           <BookOpen className="w-10 h-10 mx-auto text-gray-400 mb-2 opacity-50" />
-          <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">No stories match your filter</p>
-          <p className="text-xs text-gray-500 mt-1">Try choosing a different level or clearing the search query.</p>
+          <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">{t('reading.no_match_title', 'No stories match your filter')}</p>
+          <p className="text-xs text-gray-500 mt-1">{t('reading.no_match_hint', 'Try choosing a different level or clearing the search query.')}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

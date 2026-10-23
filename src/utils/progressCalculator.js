@@ -141,9 +141,9 @@ export function getJLPTLevel(totalXP) {
 export function getUserLevel(totalXP) {
   if (totalXP <= 0) return 1
 
-  // Quadratic scaling: each level takes progressively more XP
-  // Level 1: 0 XP, Level 2: 30 XP, Level 3: 90, Level 4: 190, Level 5: 340, Level 6: 550...
-  // Formula: XP needed to advance from level L-1 to L = 10 * L * (L + 1) / 2
+  // Quadratic scaling: each level takes slightly more XP
+  // Level 1: 0 XP, Level 2: 30 XP, Level 3: 90, Level 4: 190, Level 5: 340...
+  // Formula: XP needed for level L = 10 * L * (L + 1) / 2
   let level = 1
   let cumulativeXP = 0
 
@@ -161,33 +161,27 @@ export function getXPForLevel(level) {
   return Math.floor(10 * level * (level + 1) / 2)
 }
 
+/** Total Wave XP at which a given level starts (level 1 starts at 0). */
+export function getLevelStartXP(level) {
+  let cumulative = 0
+  for (let l = 2; l <= level; l++) cumulative += getXPForLevel(l)
+  return cumulative
+}
+
 export function getUserLevelProgress(totalXP) {
-  const safeXP = Math.max(0, Number(totalXP) || 0)
-  const level = getUserLevel(safeXP)
-
-  // Cumulative XP needed to reach current level
-  let currentLevelXP = 0
-  for (let i = 2; i <= level; i++) {
-    currentLevelXP += getXPForLevel(i)
-  }
-
-  // XP required to advance from current level to next level
+  const xp = Math.max(0, Number(totalXP) || 0)
+  const level = getUserLevel(xp)
+  const startXP = getLevelStartXP(level)
   const xpForNext = getXPForLevel(level + 1)
-  const nextLevelXP = currentLevelXP + xpForNext
-
-  // XP accumulated within current level
-  const xpIntoLevel = Math.max(0, safeXP - currentLevelXP)
-  const percent = xpForNext > 0
-    ? Math.min(100, Math.max(0, Math.round((xpIntoLevel / xpForNext) * 100)))
-    : 100
-
+  const xpIntoLevel = Math.min(Math.max(xp - startXP, 0), xpForNext)
   return {
     level,
+    startXP,
     xpIntoLevel,
     xpForNext,
-    currentLevelXP,
-    nextLevelXP,
-    percent,
+    xpToNext: xpForNext - xpIntoLevel,
+    // floor so the bar never reads 100% until the level-up has really happened
+    percent: Math.min(100, Math.floor((xpIntoLevel / xpForNext) * 100)),
   }
 }
 
@@ -207,9 +201,15 @@ export function calculateQuizXP(scorePercent) {
 }
 
 export function calculateStoryQuizXP(scorePercent = 0) {
-  const base = XP_REWARDS.STREAK_DAILY ? XP_REWARDS.STORY_QUIZ_COMPLETE : 30
-  const bonus = Math.round(XP_REWARDS.STORY_QUIZ_BONUS * (Math.max(0, Math.min(100, scorePercent)) / 100))
-  return base + bonus
+  const clamped = Math.max(0, Math.min(100, Number(scorePercent) || 0))
+  return XP_REWARDS.STORY_QUIZ_COMPLETE + Math.round(XP_REWARDS.STORY_QUIZ_BONUS * (clamped / 100))
+}
+
+/** Everything a first-time story + quiz completion pays out (mirrors the backend). */
+export function calculateStoryRewards(scorePercent = 0) {
+  const storyXp = XP_REWARDS.STORY_READ_COMPLETE
+  const quizXp = calculateStoryQuizXP(scorePercent)
+  return { storyXp, quizXp, total: storyXp + quizXp }
 }
 
 export function calculateSRSReviewXP(quality, isMastered = false) {

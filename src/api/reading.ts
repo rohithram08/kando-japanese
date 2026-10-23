@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { get, post } from './client';
-import type { UserReadingProgress, SaveReadingProgressPayload } from '../types/reading';
+import type { UserReadingProgress, SaveReadingProgressPayload, SaveReadingProgressResponse } from '../types/reading';
 
 export async function getReadingProgress(): Promise<UserReadingProgress[]> {
   const response = await get<{ progress: UserReadingProgress[] }>('/reading/progress');
@@ -18,6 +18,6 @@ export async function getStoryProgress(storyId: string): Promise<UserReadingProg
 
 export async function saveReadingProgress(
   payload: SaveReadingProgressPayload
-): Promise<{ progress: UserReadingProgress; xpAwarded: number }> {
-  return post<{ progress: UserReadingProgress; xpAwarded: number }>('/reading/progress', payload);
+): Promise<SaveReadingProgressResponse> {
+  return post<SaveReadingProgressResponse>('/reading/progress', payload);
 }

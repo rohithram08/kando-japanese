@@ -126,7 +126,7 @@ const XPAnimation = ({
     setParticles(newParticles)
   }, [particleCount, isMilestone])
 
-  const xpLabel   = isGain ? `+${xp} XP` : `${xp} XP`
+  const xpLabel   = isGain ? `+${xp} Wave XP` : `${xp} Wave XP`
   const isLarge   = variant === 'large' || isMilestone
   const sizeClass = isLarge ? 'text-xl px-5 py-2.5' : 'text-sm px-3.5 py-1.5'
 
@@ -173,7 +173,7 @@ const XPAnimation = ({
         )
       )}
 
-      {/* XP Badge */}
+      {/* Wave XP Badge */}
       <motion.div
         initial={{ scale: 0, opacity: 0, y: 0 }}
         animate={{
@@ -248,7 +248,7 @@ export const XPBadge = ({ xp, show = true }) => (
         className="inline-flex items-center gap-1 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 text-xs font-bold px-2 py-0.5 rounded-full"
       >
         <Zap className="w-3 h-3" />
-        +{xp} XP
+        +{xp} Wave XP
       </motion.div>
     )}
   </AnimatePresence>
@@ -279,7 +279,7 @@ export const StreakBonus = ({ streak, show = true }) => (
             {streak}× Streak Bonus!
           </p>
           <p className="text-orange-300/60 text-xs">
-            XP multiplier active
+            Wave XP multiplier active
           </p>
         </div>
         <div className="ml-auto text-orange-400 font-black text-lg">
@@ -587,7 +587,7 @@ export const DailyGoalComplete = ({ xpEarned, show = true, onComplete }) => (
           <div>
             <p className="text-white font-black text-base">Daily Goal Complete!</p>
             <p className="text-emerald-200 text-sm">
-              You earned <span className="font-bold text-white">{xpEarned} XP</span> today
+              You earned <span className="font-bold text-white">{xpEarned} Wave XP</span> today
             </p>
           </div>
           <motion.div

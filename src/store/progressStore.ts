@@ -18,7 +18,6 @@ import {
   XP_REWARDS,
   calculateLessonXP,
   calculateQuizXP,
-  calculateStoryQuizXP,
   calculateSRSReviewXP,
   calculateStreakBonus,
 } from '../utils/progressCalculator';
@@ -84,10 +83,11 @@ export interface ProgressState {
   awardKanaXP: (userId?: string, kanaId?: string, mastered?: boolean) => Promise<any>;
   awardGrammarXP: (userId?: string, grammarId?: string, status?: 'not_started' | 'studied' | 'mastered', mastered?: boolean) => Promise<any>;
   awardDailyGoalXP: (userId?: string) => Promise<any>;
-  awardStoryCompletionXP: (storyId: string, userId?: string) => Promise<{ xpGained: number; alreadyClaimed: boolean }>;
-  awardStoryQuizXP: (storyId: string, score?: number, userId?: string) => Promise<{ xpGained: number; alreadyClaimed: boolean }>;
-  isStoryXPClaimed: (storyId: string) => boolean;
-  isQuizXPClaimed: (storyId: string) => boolean;
+  /**
+   * Mirror a server-computed reward (Wave XP total, level, Jelly Streak) into the
+   * store and fire the celebration. Never re-awards or recomputes XP locally.
+   */
+  applyServerReward: (r: { totalXP: number; userLevel?: number; streakDays?: number; xpGained?: number }) => void;
   streakFreezes: number;
   isStreakFrozen: boolean;
   equipStreakFreeze: (count?: number) => void;
@@ -600,71 +600,34 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     }
   },
 
-  awardStoryCompletionXP: async (storyId: string, userId?: string) => {
-    if (!storyId) return { xpGained: 0, alreadyClaimed: false };
+  applyServerReward: ({ totalXP, userLevel, streakDays, xpGained = 0 }) => {
+    const prev = get();
+    const newLevel = userLevel ?? getUserLevel(totalXP);
+    const gain = Math.max(0, xpGained);
+    const nextDaily = prev.dailyXP + gain;
+
+    set({
+      totalXP,
+      dailyXP: nextDaily,
+      userLevel: newLevel,
+      jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
+      streak: streakDays ?? prev.streak,
+      syncStatus: 'saved',
+    });
+
     try {
-      const claimedList = JSON.parse(localStorage.getItem('nihongo_claimed_story_xp') || '[]');
-      if (claimedList.includes(storyId)) {
-        return { xpGained: 0, alreadyClaimed: true };
-      }
-      claimedList.push(storyId);
-      localStorage.setItem('nihongo_claimed_story_xp', JSON.stringify(claimedList));
+      localStorage.setItem('nihongo_daily_xp', JSON.stringify({ date: getLocalDayString(), xp: nextDaily }));
     } catch {}
 
-    const res = await get().addXP(XP_REWARDS.STORY_READ_COMPLETE, userId, {
-      event: 'lesson_completed',
-      lessonId: `story_${storyId}`,
-      score: 100,
-    } as any);
-
-    return { xpGained: XP_REWARDS.STORY_READ_COMPLETE, alreadyClaimed: false, res };
-  },
-
-  awardStoryQuizXP: async (storyId: string, score: number = 100, userId?: string) => {
-    if (!storyId) return { xpGained: 0, alreadyClaimed: false };
-    let alreadyClaimed = false;
     try {
-      const claimedList = JSON.parse(localStorage.getItem('nihongo_claimed_quiz_xp') || '[]');
-      if (claimedList.includes(storyId)) {
-        alreadyClaimed = true;
-      } else {
-        claimedList.push(storyId);
-        localStorage.setItem('nihongo_claimed_quiz_xp', JSON.stringify(claimedList));
+      const celebration = useCelebrationStore.getState();
+      if (newLevel > prev.userLevel) {
+        celebration.triggerLevelUp(prev.userLevel, newLevel);
+      } else if (gain > 0) {
+        celebration.triggerXPGain(gain, totalXP, 'lesson_completed' as any);
       }
-    } catch {}
-
-    // Always record Jelly Streak on quiz completion
-    await get().updateStreak(userId);
-
-    if (alreadyClaimed) {
-      return { xpGained: 0, alreadyClaimed: true };
-    }
-
-    const xpAmount = calculateStoryQuizXP(score);
-    const res = await get().addXP(xpAmount, userId, {
-      event: 'quiz_completed',
-      quizId: `story_quiz_${storyId}`,
-      score,
-    } as any);
-
-    return { xpGained: xpAmount, alreadyClaimed: false, res };
-  },
-
-  isStoryXPClaimed: (storyId: string) => {
-    try {
-      const list = JSON.parse(localStorage.getItem('nihongo_claimed_story_xp') || '[]');
-      return list.includes(storyId);
-    } catch {
-      return false;
-    }
-  },
-
-  isQuizXPClaimed: (storyId: string) => {
-    try {
-      const list = JSON.parse(localStorage.getItem('nihongo_claimed_quiz_xp') || '[]');
-      return list.includes(storyId);
-    } catch {
-      return false;
+    } catch (e) {
+      console.debug('celebrationStore trigger error:', e);
     }
   },
 

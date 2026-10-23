@@ -28,6 +28,11 @@ export const XP_REWARDS = {
   QUIZ_PASS: 4,
   QUIZ_ATTEMPT: 1,
 
+  // Graded Reader stories (Wave XP) — awarded once per story, server-side
+  STORY_READ_COMPLETE: 40,
+  STORY_QUIZ_COMPLETE: 30,
+  STORY_QUIZ_BONUS: 30,
+
   DAILY_GOAL_COMPLETE: 10,
   DAILY_FIRST_LESSON: 3,
 
@@ -60,41 +65,53 @@ export function getUserLevel(totalXP: number): number {
 
   while (cumulativeXP <= totalXP) {
     level++;
-    cumulativeXP += getXPForLevel(level);
+    cumulativeXP += Math.floor(10 * level * (level + 1) / 2);
     if (level > 200) break;
   }
 
   return level - 1;
 }
 
+/** XP needed to go from (level - 1) to `level`. Level 2 costs 30, level 3 costs 60, ... */
 export function getXPForLevel(level: number): number {
-  return Math.floor(10 * level * (level + 1) / 2);
+  return Math.floor((10 * level * (level + 1)) / 2);
+}
+
+/** Total Wave XP at which a given level starts (level 1 starts at 0). */
+export function getLevelStartXP(level: number): number {
+  let cumulative = 0;
+  for (let l = 2; l <= level; l++) cumulative += getXPForLevel(l);
+  return cumulative;
 }
 
 export function getUserLevelProgress(totalXP: number) {
-  const safeXP = Math.max(0, Number(totalXP) || 0);
-  const level = getUserLevel(safeXP);
-
-  let currentLevelXP = 0;
-  for (let i = 2; i <= level; i++) {
-    currentLevelXP += getXPForLevel(i);
-  }
-
+  const xp = Math.max(0, Number(totalXP) || 0);
+  const level = getUserLevel(xp);
+  const startXP = getLevelStartXP(level);
   const xpForNext = getXPForLevel(level + 1);
-  const nextLevelXP = currentLevelXP + xpForNext;
-  const xpIntoLevel = Math.max(0, safeXP - currentLevelXP);
-  const percent = xpForNext > 0
-    ? Math.min(100, Math.max(0, Math.round((xpIntoLevel / xpForNext) * 100)))
-    : 100;
-
+  const xpIntoLevel = Math.min(Math.max(xp - startXP, 0), xpForNext);
   return {
     level,
+    startXP,
     xpIntoLevel,
     xpForNext,
-    currentLevelXP,
-    nextLevelXP,
-    percent,
+    xpToNext: xpForNext - xpIntoLevel,
+    // floor so the bar never reads 100% until the level-up has really happened
+    percent: Math.min(100, Math.floor((xpIntoLevel / xpForNext) * 100)),
   };
+}
+
+/** Quiz part of a story reward: base + proportional score bonus. */
+export function calculateStoryQuizXP(scorePercent = 0): number {
+  const clamped = Math.max(0, Math.min(100, Number(scorePercent) || 0));
+  return XP_REWARDS.STORY_QUIZ_COMPLETE + Math.round(XP_REWARDS.STORY_QUIZ_BONUS * (clamped / 100));
+}
+
+/** Everything a first-time story + quiz completion pays out. */
+export function calculateStoryRewards(scorePercent = 0) {
+  const storyXp = XP_REWARDS.STORY_READ_COMPLETE;
+  const quizXp = calculateStoryQuizXP(scorePercent);
+  return { storyXp, quizXp, total: storyXp + quizXp };
 }
 
 export function calculateLessonXP(scorePercent: number): number {

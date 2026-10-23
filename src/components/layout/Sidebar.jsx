@@ -86,7 +86,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
     <aside
       className={`
         flex flex-col h-full shrink-0 overflow-hidden bg-surface
-        ${isMobileDrawer ? 'w-[260px] shadow-2xl border-r border-border/40' : 'hidden md:flex w-full'}
+        ${isMobileDrawer ? 'w-[260px] shadow-2xl' : 'hidden md:flex w-full'}
       `}
     >
       {/* ── Logo / Brand (seamless top bar integration without jarring divider line) ── */}
@@ -127,8 +127,8 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
         )}
       </div>
 
-      {/* ── Sidebar Body Container with border-r below the top bar line ── */}
-      <div className="flex-1 flex flex-col overflow-hidden border-r border-border/40">
+      {/* ── Sidebar Body Container (no vertical divider against the content area) ── */}
+      <div className="flex-1 flex flex-col overflow-hidden">
         {/* ── Concise Merged User & Wave XP Card (Zero wasted vertical space) ── */}
         {!effectiveCollapsed && (
           <div className="mx-3 my-2.5">
