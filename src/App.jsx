@@ -57,7 +57,7 @@ const SpeechPage        = lazyWithRetry(() => import('./pages/SpeechPage'))
 const SettingsPage      = lazyWithRetry(() => import('./pages/SettingsPage'))
 const AchievementsPage  = lazyWithRetry(() => import('./pages/AchievementsPage'))
 const KanaPage          = lazyWithRetry(() => import('./pages/KanaPage'))
-const DictionaryPage    = lazyWithRetry(() => import('./pages/DictionaryPage'))
+const DictionaryPage    = lazyWithRetry(() => import('./pages/DictionaryPage.jsx'))
 const LandingPage       = lazyWithRetry(() => import('./pages/LandingPage'))
 const ConversationPracticePage = lazyWithRetry(() => import('./pages/ConversationPracticePage'))
 
