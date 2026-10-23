@@ -307,8 +307,8 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(captured.text).not.toContain('#');
       expect(captured.text).not.toContain('🌸');
       expect(captured.text).not.toContain('*');
-      expect(captured.pitch).toBe(1.18); // 16-18 year old female pitch
-      expect(captured.rate).toBe(1.05);  // Snappy, energetic rate
+      expect(captured.pitch).toBe(1.20); // 16-18 year old female pitch
+      expect(captured.rate).toBe(1.10);  // Snappy, energetic rate
     });
 
     it('omits standalone Romaji lines following Japanese lines from speech synthesis', () => {
@@ -317,6 +317,21 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(clean).toContain('私は猫が好きです。');
       expect(clean).toContain('This means I like cats.');
       expect(clean).not.toContain('Watashi wa neko ga suki desu');
+    });
+
+    it('omits parenthetical Romaji lines like (Neko wa kawaii desu.) following Japanese lines', () => {
+      const input = `Example: 猫はかわいいです。\n(Neko wa kawaii desu.)\n"As for cats, they are cute."`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).toContain('猫はかわいいです。');
+      expect(clean).toContain('"As for cats, they are cute."');
+      expect(clean).not.toContain('Neko wa kawaii desu');
+    });
+
+    it('expands particles ga and wa to gah and wah in English text so TTS never spells out g - a', () => {
+      const segments = segmentMultilingualText('Think of は as topic and が as subject and ga is important', 'en-US');
+      expect(segments[0].text).toContain('wah');
+      expect(segments[0].text).toContain('gah');
+      expect(segments[0].text).not.toMatch(/\bga\b/i);
     });
   });
 
@@ -355,10 +370,10 @@ describe('audioService — Web Speech API wrapper', () => {
       const sentence = 'You will see how we use は to talk about family as a topic.';
       const segments = segmentMultilingualText(sentence, 'en-US');
 
-      // The entire sentence should remain as 1 continuous segment, with は naturally vocalized as wa!
+      // The entire sentence should remain as 1 continuous segment, with は naturally vocalized as wah!
       expect(segments.length).toBe(1);
       expect(segments[0].lang).toBe('en-US');
-      expect(segments[0].text).toBe('You will see how we use wa to talk about family as a topic.');
+      expect(segments[0].text).toBe('You will see how we use wah to talk about family as a topic.');
     });
 
     it('expands particle が to phonetic "gah" in English sentences so it is never pronounced "g - a"', () => {

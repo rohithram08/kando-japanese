@@ -14,6 +14,7 @@ export interface SenseiCharacterProps {
   reducedMotion?: boolean;
   mode?: 'compact' | 'full' | 'portrait';
   targetDirection?: 'left' | 'right' | 'forward' | null;
+  stageSide?: 'left' | 'center';
 }
 
 // ─── WebGL Detection Utility ────────────────────────────────────────────────
@@ -142,6 +143,7 @@ export default function SenseiCharacter({
   reducedMotion = false,
   mode = 'compact',
   targetDirection = null,
+  stageSide = 'center',
 }: SenseiCharacterProps) {
   
   // Normalize active animation state (backward compatibility with speechState)
@@ -163,6 +165,11 @@ export default function SenseiCharacter({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Character 3D stage position:
+  // When stageSide === 'left' and screen is wide enough, position Hana on the left of the classroom!
+  const isLeft = stageSide === 'left' && !isMobileScreen;
+  const characterPos: [number, number, number] = isLeft ? [-0.46, 0, 0] : [0, 0, 0];
+
   // Camera framing:
   // - Full stage: captures Hana from cap to sandals at ~85% vertical stage fill
   // - Portrait: waist to cap focus for intimate dialogue
@@ -170,12 +177,12 @@ export default function SenseiCharacter({
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = [0, 0.74, 0];
+  let targetPos: [number, number, number] = isLeft ? [-0.22, 0.74, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isMobileScreen ? [0, 0.76, 2.52] : [0, 0.76, 2.28];
   let cameraFov = isMobileScreen ? 44 : 41;
 
   if (isPortrait) {
-    targetPos = [0, 1.10, 0];
+    targetPos = isLeft ? [-0.22, 1.10, 0] : [0, 1.10, 0];
     cameraPos = isMobileScreen ? [0, 1.12, 1.5] : [0, 1.12, 1.35];
     cameraFov = 34;
   } else if (!isFull) {
@@ -241,7 +248,7 @@ export default function SenseiCharacter({
 
           <ErrorBoundary FallbackComponent={AvatarFallback}>
             <Suspense fallback={<Loader />}>
-              <SenseiGLBCharacter state={activeState} targetDirection={targetDirection} />
+              <SenseiGLBCharacter state={activeState} targetDirection={targetDirection} position={characterPos} />
             </Suspense>
           </ErrorBoundary>
 

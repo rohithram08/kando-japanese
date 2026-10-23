@@ -63,7 +63,7 @@ interface SenseiState {
   toggleSpeech: () => void;
   stopSpeech: () => void;
   fetchHistory: () => Promise<void>;
-  sendMessage: (message: string) => Promise<any>;
+  sendMessage: (message: string, options?: { skipAutoSpeak?: boolean }) => Promise<any>;
   startTour: (force?: boolean) => Promise<void>;
   completeTour: () => Promise<void>;
   skipTour: () => Promise<void>;
@@ -177,7 +177,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
     }
   },
 
-  sendMessage: async (message: string) => {
+  sendMessage: async (message: string, options?: { skipAutoSpeak?: boolean }) => {
     if (!message.trim()) return null;
 
     const tempId = Date.now().toString();
@@ -219,8 +219,8 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
         get().guideTo(action.targetId);
       }
 
-      // Speak if enabled
-      if (get().speechEnabled && reply) {
+      // Speak if enabled and not explicitly skipped (e.g. silent floating companion chat)
+      if (get().speechEnabled && reply && !options?.skipAutoSpeak) {
         get().stopSpeech();
 
         // Immediately switch state so 3D character and speaking pill animate without waiting for speech pipeline delay

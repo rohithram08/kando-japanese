@@ -53,8 +53,8 @@ const DEFAULT_SETTINGS = {
   achievementAlert: true,
   weeklyReport: false,
   // Audio
-  speechRate: 1.05,
-  speechPitch: 1.18,
+  speechRate: 1.10,
+  speechPitch: 1.20,
   autoSpeak: false,           // auto-speak Japanese text outside of Lessons (Vocab/Kanji study)
   slowMode: false,
   // Story Reader (Phase 4.3B)

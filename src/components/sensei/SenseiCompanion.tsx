@@ -115,7 +115,8 @@ export default function SenseiCompanion() {
       stopListening();
     }
 
-    const response = await sendMessage(userMsg);
+    // Companion is silent chat mode — never auto-speak aloud
+    const response = await sendMessage(userMsg, { skipAutoSpeak: true });
     // Only execute navigation action if it is an explicit modal or specific tool
     if (response?.action && response.action.type === 'navigate' && !response.action.payload?.path?.includes('sensei')) {
       executeAction(response.action, navigate);
@@ -204,14 +205,10 @@ export default function SenseiCompanion() {
                         <span className="text-pink-500 font-semibold flex items-center gap-1 animate-pulse">
                           <Mic className="w-3 h-3" /> Listening to you...
                         </span>
-                      ) : speechState === 'speaking' ? (
-                        <span className="text-primary font-medium flex items-center gap-1">
-                          <Volume2 className="w-3 h-3 animate-pulse" /> Speaking...
-                        </span>
                       ) : isTyping ? (
                         <span className="text-amber-500 font-medium">Composing reply...</span>
                       ) : (
-                        <span>AI Japanese Tutor</span>
+                        <span>AI Japanese Tutor • Chat Mode</span>
                       )}
                     </p>
                   </div>

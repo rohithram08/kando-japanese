@@ -16,9 +16,10 @@ export const GLB_MODEL_PATH = '/models/hana-sensei.glb';
 interface SenseiGLBCharacterProps {
   state: SenseiAnimationState;
   targetDirection?: 'left' | 'right' | 'forward' | null;
+  position?: [number, number, number];
 }
 
-export function SenseiGLBCharacter({ state, targetDirection = null }: SenseiGLBCharacterProps) {
+export function SenseiGLBCharacter({ state, targetDirection = null, position = [0, 0, 0] }: SenseiGLBCharacterProps) {
   const group = useRef<THREE.Group>(null);
   const spineBoneRef = useRef<THREE.Object3D | null>(null);
   const headBoneRef = useRef<THREE.Object3D | null>(null);
@@ -118,7 +119,7 @@ export function SenseiGLBCharacter({ state, targetDirection = null }: SenseiGLBC
   }, [state, actions]);
 
   return (
-    <group ref={group} dispose={null}>
+    <group ref={group} position={position} dispose={null}>
       <primitive object={scene} />
     </group>
   );

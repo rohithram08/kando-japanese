@@ -111,7 +111,7 @@ export function detectBaseLanguage(text, userPreferredLocale = 'en') {
 }
 
 export const INLINE_PARTICLE_MAP = {
-  'は': 'wa',
+  'は': 'wah',
   'が': 'gah',
   'を': 'oh',
   'に': 'nee',
@@ -132,6 +132,8 @@ export const INLINE_PARTICLE_MAP = {
 export function expandInlineParticles(text) {
   if (!text) return ''
   let res = text
+
+  // 1. Expand Japanese characters
   for (const [p, romaji] of Object.entries(INLINE_PARTICLE_MAP)) {
     // Match isolated particle surrounded by spaces, quotes, punctuation, or string edges
     const regex = new RegExp('(^|[\\s"\'(\\[])' + p + '([\\s"\'.,!?;:)\\]]|$)', 'g')
@@ -139,6 +141,13 @@ export function expandInlineParticles(text) {
     // Run twice for adjacent particles (e.g. "は" and "が")
     res = res.replace(regex, `$1${romaji}$2`)
   }
+
+  // 2. Expand isolated Latin particle words in English text so TTS engines never spell them out as letters
+  // e.g. "ga" -> "gah" (prevents English TTS pronouncing "g - a" or "Georgia")
+  res = res.replace(/(^|[\s"'(])\bga\b([\s"'.,!?;:)]|$)/gi, '$1gah$2')
+  res = res.replace(/(^|[\s"'(])\bwa\b([\s"'.,!?;:)]|$)/gi, '$1wah$2')
+  res = res.replace(/(^|[\s"'(])\bka\b([\s"'.,!?;:)]|$)/gi, '$1kah$2')
+
   return res
 }
 
@@ -235,9 +244,12 @@ export function sanitizeForSpeech(raw) {
 
   // 7. Strip Romaji in parentheses following Japanese text:
   // e.g. お水 (omizu) -> お水
-  // お水をください (Omizu o kudasai) -> お水をください
+  // 猫はかわいいです。(Neko wa kawaii desu.) -> 猫はかわいいです。
+  // が (ga) -> が
+  // は (wa) -> は
   // 道を教えてください (Michi o otsukusai kudasai) -> 道を教えてください
-  text = text.replace(/([\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\([a-zA-Z\s~—\-_'"]+\)/g, '$1')
+  text = text.replace(/([\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\([a-zA-Z0-9\s~—\-_'".!?、。]+\)/g, '$1')
+  text = text.replace(/([\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+[\s]*)\[[a-zA-Z0-9\s~—\-_'".!?、。]+\]/g, '$1')
 
   // 8. Remove headers: # Header -> Header
   text = text.replace(/^[ \t]*#{1,6}[ \t]+/gm, '')
@@ -282,10 +294,16 @@ export function sanitizeForSpeech(raw) {
     const prevHasJapanese = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(prevLine)
 
     // If the previous line had Japanese (e.g. "私は 猫 が 好きです。"):
-    // and this line has NO Japanese and is a standalone Romaji reading (e.g. "Watashi wa neko ga suki desu."):
+    // and this line has NO Japanese and is a standalone Romaji reading (e.g. "Watashi wa neko ga suki desu.")
+    // or parenthetical reading like "(Neko wa kawaii desu.)":
     if (!lineHasJapanese && prevHasJapanese) {
       if (/^(?:romaji|reading|kana|furigana):\s*/i.test(line)) {
         continue // Skip explicit Romaji line
+      }
+
+      // Skip parenthetical reading line following Japanese
+      if (/^\s*\([^)]*\)\s*$/.test(line)) {
+        continue
       }
 
       const words = line.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/).filter(Boolean)
@@ -488,8 +506,8 @@ class AudioService {
     if (!cleanText.trim()) return Promise.resolve()
 
     const prefs = useSettingsStore.getState()
-    // 16-18 year old female voice: fast, snappy conversational rate (1.05) instead of slow 0.88
-    const baseRate = options.rate ?? prefs.speechRate ?? 1.05
+    // 16-18 year old female voice: brisk, snappy conversational rate (1.10)
+    const baseRate = options.rate ?? prefs.speechRate ?? 1.10
     const effectiveRate = options.rate == null && prefs.slowMode ? Math.min(baseRate, 0.7) : baseRate
 
     // Detect actual language from text contents so numbers in English sentences are never spoken in Tamil!
@@ -529,22 +547,12 @@ class AudioService {
         const utterance = new SpeechSynthesisUtterance(segment.text)
         utterance.lang = segment.lang
         utterance.rate = effectiveRate
-        // 16-18 year old female anime tutor pitch (1.18 bright, youthful tone)
-        utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.18
+        // 16-18 year old female anime tutor pitch (1.20 bright, youthful tone)
+        utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.20
         utterance.volume = options.volume || 1.0
 
-        let bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice
-        // If the selected English voice is a legacy robotic desktop voice (e.g. Zira Desktop),
-        // and we have a high-quality natural Japanese voice (e.g. Google 日本語 / Nanami / Kyoko),
-        // prefer Hana Sensei's signature voice so she speaks with a unified, warm character!
-        if (
-          bestVoice &&
-          /\bdesktop\b/i.test(bestVoice.name) &&
-          this.japaneseVoice &&
-          /(?:google|natural|neural|online)/i.test(this.japaneseVoice.name)
-        ) {
-          bestVoice = this.japaneseVoice
-        }
+        // Use authentic best voice for the segment's exact language (English voices for English, Japanese for Japanese, etc.)
+        const bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice
 
         if (bestVoice) {
           utterance.voice = bestVoice

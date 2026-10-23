@@ -15,13 +15,17 @@ import {
   Smile,
   Compass,
   MessageCircle,
-  HelpCircle
+  HelpCircle,
+  User as UserIcon
 } from 'lucide-react';
 
 import SenseiCharacter from '../components/sensei/SenseiCharacter';
 import SenseiMarkdown from '../components/sensei/SenseiMarkdown';
+import KandoSlime, { SlimeMood } from '../components/mascot/KandoSlime';
 import { audioService } from '../services/audioService';
 import { useSenseiStore } from '../store/senseiStore';
+import { useAuthStore } from '../store/authStore';
+import { useProgressStore } from '../store/progressStore';
 import { SenseiAnimationState } from '../components/sensei/controllers/SenseiAnimationController';
 import { SenseiEmotion } from '../components/sensei/controllers/SenseiExpressionController';
 import { useSpeechToText } from '../hooks/useSpeechToText';
@@ -133,6 +137,22 @@ export default function SenseiPage() {
     });
   };
 
+  const [slimePersona, setSlimePersona] = useState<'mr' | 'mrs'>('mr');
+  const user = useAuthStore(s => s.user || s.profile);
+  const userName = user?.displayName || user?.name || user?.username || 'Rohith Ram';
+  const userLevel = useProgressStore(s => s.userLevel || 6);
+
+  // Dynamic Slime mood synced with live dialogue state
+  const activeSlimeMood: SlimeMood = isTyping
+    ? 'curious'
+    : speechState === 'speaking'
+    ? 'studying'
+    : emotion === 'celebrating' || animationState === 'celebrating'
+    ? 'celebrating'
+    : input.trim().length > 0
+    ? 'studying'
+    : 'waving';
+
   // Get the latest assistant message to display in the live in-stage bubble
   const latestAssistantMessage = [...messages].reverse().find(m => m.role === 'assistant');
   const latestUserMessage = [...messages].reverse().find(m => m.role === 'user');
@@ -235,128 +255,220 @@ export default function SenseiPage() {
         </div>
       </header>
 
-      {/* ─── FULL 3D CHARACTER STAGE CANVAS ─── */}
-      <main className="flex-1 w-full h-full relative" aria-label="3D Hana-sensei Stage">
-        <SenseiCharacter
-          state={animationState}
-          mode={cameraMode}
-          targetDirection={targetDirection}
-        />
+      {/* ─── FULL 3D CHARACTER STAGE CANVAS & 2-WAY CLASSROOM ─── */}
+      <main className="flex-1 w-full h-full relative overflow-hidden" aria-label="3D Hana-sensei Stage">
+        {/* Full-bleed 3D Character Canvas */}
+        <div className="absolute inset-0 z-0">
+          <SenseiCharacter
+            state={animationState}
+            mode={cameraMode}
+            targetDirection="right"
+            stageSide="left"
+          />
+        </div>
 
-        {/* ─── IN-STAGE DYNAMIC SPEECH BUBBLE (beside/above Hana-sensei) ─── */}
-        <AnimatePresence mode="wait">
-          {(latestAssistantMessage || isTyping) && (
-            <motion.div
-              key={latestAssistantMessage?.id || 'typing'}
-              initial={{ opacity: 0, scale: 0.9, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="absolute top-20 right-6 sm:right-10 max-w-[340px] sm:max-w-[420px] lg:max-w-[460px] z-20 pointer-events-auto"
-            >
-              <div className="relative p-5 rounded-3xl bg-card/90 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground">
-                {/* Speech Bubble Tail Indicator */}
-                <div className="absolute -left-3 top-8 w-4 h-4 bg-card/90 border-l border-b border-primary/30 rotate-45 pointer-events-none hidden sm:block" />
+        {/* ─── 2-WAY VISUAL CLASSROOM CONVERSATION OVERLAY ─── */}
+        <div className="relative z-10 w-full h-full pointer-events-none flex flex-col justify-between p-4 sm:p-6 md:p-8 pt-20 pb-4">
+          
+          {/* TOP SECTION: Sensei's Speech Bubble (Left) & Slime Area (Right) */}
+          <div className="flex-1 flex flex-col md:flex-row items-start justify-between gap-6 overflow-hidden">
+            
+            {/* ── LEFT ZONE: HANA-SENSEI SPEECH BUBBLE ── */}
+            <div className="w-full md:w-[48%] lg:w-[44%] pointer-events-auto">
+              <AnimatePresence mode="wait">
+                {(latestAssistantMessage || isTyping) && (
+                  <motion.div
+                    key={latestAssistantMessage?.id || 'typing'}
+                    initial={{ opacity: 0, scale: 0.92, x: -16 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.92, x: -16 }}
+                    transition={{ duration: 0.25 }}
+                    className="relative p-5 rounded-3xl bg-card/92 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground"
+                  >
+                    {/* Speech Bubble Tail pointing towards Sensei */}
+                    <div className="absolute -bottom-2.5 left-10 w-4 h-4 bg-card/92 border-r border-b border-primary/30 rotate-45 pointer-events-none" />
 
-                {/* Header inside bubble */}
-                <div className="flex items-center justify-between mb-2 pb-2 border-b border-border/40">
-                  <span className="text-xs font-bold text-primary flex items-center gap-1.5 font-japanese">
-                    <span>花先生</span>
-                    <span className="text-[10px] font-normal text-muted-foreground font-sans">
-                      {speechState === 'speaking' ? 'Speaking...' : 'Sensei'}
+                    {/* Sensei Bubble Header */}
+                    <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border/40">
+                      <div className="flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs">
+                          🌸
+                        </span>
+                        <span className="text-xs font-bold text-primary flex items-center gap-1.5 font-japanese">
+                          <span>花先生 (Hana-sensei)</span>
+                          <span className="text-[10px] font-normal text-muted-foreground font-sans">
+                            {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
+                          </span>
+                        </span>
+                      </div>
+
+                      {latestAssistantMessage && !isTyping && (
+                        <button
+                          onClick={() => handleReplayAudio(latestAssistantMessage.content)}
+                          className="px-2 py-1 bg-muted/60 hover:bg-muted text-muted-foreground hover:text-primary rounded-lg transition-colors text-xs flex items-center gap-1"
+                          title="Replay Voice"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span className="text-[10px] font-medium">Replay</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Sensei Bubble Content */}
+                    {isTyping ? (
+                      <div className="flex items-center gap-2 py-3">
+                        <span className="text-xs text-muted-foreground">Hana-sensei is explaining</span>
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      </div>
+                    ) : latestAssistantMessage ? (
+                      <div className="max-h-[220px] sm:max-h-[280px] lg:max-h-[320px] overflow-y-auto pr-1 text-sm leading-relaxed scrollbar-thin">
+                        <SenseiMarkdown content={latestAssistantMessage.content} />
+                      </div>
+                    ) : null}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* ── RIGHT ZONE: MR. / MRS. SLIME (THE USER) + USER DIALOGUE BUBBLE + TYPING BAR ── */}
+            <div className="w-full md:w-[48%] lg:w-[44%] pointer-events-auto flex flex-col items-center md:items-end gap-3.5 self-end md:self-auto">
+              
+              {/* User / Slime Dialogue Bubble */}
+              {latestUserMessage && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.92, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  className="w-full max-w-md relative p-4 rounded-3xl bg-primary text-primary-foreground backdrop-blur-xl shadow-xl border border-white/10 text-xs sm:text-sm leading-relaxed"
+                >
+                  {/* Tail pointing down to Slime */}
+                  <div className="absolute -bottom-2 right-12 w-4 h-4 bg-primary border-r border-b border-white/10 rotate-45 pointer-events-none" />
+
+                  <div className="flex items-center justify-between mb-1 pb-1 border-b border-white/20">
+                    <span className="font-bold flex items-center gap-1.5 text-[11px] text-white">
+                      <span>{slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}</span>
+                      <span className="text-white/70 font-normal">({userName})</span>
                     </span>
-                  </span>
+                    <span className="text-[10px] text-white/70 uppercase tracking-wider">
+                      Lv.{userLevel} Adventurer
+                    </span>
+                  </div>
 
-                  {latestAssistantMessage && !isTyping && (
-                    <button
-                      onClick={() => handleReplayAudio(latestAssistantMessage.content)}
-                      className="p-1 hover:bg-muted rounded-lg text-muted-foreground hover:text-primary transition-colors text-xs flex items-center gap-1"
-                      title="Replay Voice"
-                    >
-                      <RotateCcw className="w-3.5 h-3.5" />
-                      <span className="text-[10px]">Replay</span>
-                    </button>
-                  )}
+                  <p className="font-medium text-white/95 mt-1">{latestUserMessage.content}</p>
+                </motion.div>
+              )}
+
+              {/* Slime Persona Controls & Mascot */}
+              <div className="flex flex-col items-center md:items-end gap-1">
+                {/* Slime Persona Switcher Pill */}
+                <div className="flex items-center gap-1 p-1 rounded-full bg-card/85 backdrop-blur-md border border-border/70 shadow-sm text-xs">
+                  <button
+                    onClick={() => setSlimePersona('mr')}
+                    className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                      slimePersona === 'mr'
+                        ? 'bg-primary text-primary-foreground shadow-xs'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <span>🧢</span> Mr. Slime
+                  </button>
+                  <button
+                    onClick={() => setSlimePersona('mrs')}
+                    className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                      slimePersona === 'mrs'
+                        ? 'bg-pink-500 text-white shadow-xs'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <span>🌸</span> Mrs. Slime
+                  </button>
                 </div>
 
-                {/* Content */}
-                {isTyping ? (
-                  <div className="flex items-center gap-2 py-2">
-                    <span className="text-xs text-muted-foreground">Composing response</span>
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                  </div>
-                ) : latestAssistantMessage ? (
-                  <div className="max-h-[220px] sm:max-h-[280px] overflow-y-auto pr-1 text-sm leading-relaxed scrollbar-thin">
-                    <SenseiMarkdown content={latestAssistantMessage.content} />
-                  </div>
-                ) : null}
+                {/* Animated Interactive Kando Slime Mascot */}
+                <div className="relative flex flex-col items-center">
+                  <KandoSlime
+                    mood={activeSlimeMood}
+                    slimeType={slimePersona}
+                    size={160}
+                    showSpeech={false}
+                    showMoodButtons={false}
+                    interactive={true}
+                  />
+                  {/* Tatami Mat / Pedestal for Slime */}
+                  <div className="w-36 h-3.5 -mt-3 rounded-full bg-gradient-to-r from-amber-900/40 via-amber-700/50 to-amber-900/40 border border-amber-600/40 blur-[1px] shadow-lg pointer-events-none" />
+                </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
-        {/* ─── IN-STAGE FLOATING INTERACTIVE INPUT & PROMPT BAR ─── */}
-        <div className="absolute bottom-6 left-4 right-4 sm:left-12 sm:right-12 lg:left-24 lg:right-24 z-20 pointer-events-auto flex flex-col items-center gap-2.5">
-          
-          {/* Quick Action Chips Bar */}
-          {!isTyping && (
-            <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
-              {QUICK_PROMPTS.map(p => (
-                <button
-                  key={p}
-                  onClick={() => handleSend(p)}
-                  className="whitespace-nowrap px-3.5 py-1.5 bg-card/85 backdrop-blur-md border border-border/80 hover:border-primary/50 text-foreground text-xs font-medium rounded-full hover:bg-primary/10 transition-all flex-shrink-0 active:scale-95 shadow-md"
+              {/* ── USER TYPING BAR (DIRECTLY NEAR SLIME ON RIGHT) ── */}
+              <div className="w-full max-w-md flex flex-col gap-2">
+                {/* Quick Prompts Chips */}
+                {!isTyping && (
+                  <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
+                    {QUICK_PROMPTS.slice(0, 4).map(p => (
+                      <button
+                        key={p}
+                        onClick={() => handleSend(p)}
+                        className="whitespace-nowrap px-3 py-1 bg-card/85 backdrop-blur-md border border-border/80 hover:border-primary/50 text-foreground text-[11px] font-medium rounded-full hover:bg-primary/10 transition-all flex-shrink-0 active:scale-95 shadow-xs"
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Input Form with Speech-to-Text Mic */}
+                <form
+                  onSubmit={handleSubmit}
+                  className="w-full p-1.5 rounded-full bg-card/90 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 flex items-center gap-1.5"
                 >
-                  {p}
-                </button>
-              ))}
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder={
+                      isListening
+                        ? "Listening to your voice... 🎤"
+                        : `Ask as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'} in English, Tamil, or Japanese...`
+                    }
+                    disabled={isTyping}
+                    className={`flex-1 bg-transparent px-4 py-2.5 text-xs sm:text-sm focus:outline-none text-foreground placeholder:text-muted-foreground disabled:opacity-50 ${
+                      isListening ? 'text-pink-500 font-medium' : ''
+                    }`}
+                  />
+
+                  {/* Speech-to-Text Mic */}
+                  {isSttSupported && (
+                    <button
+                      type="button"
+                      onClick={toggleMic}
+                      className={`p-2.5 rounded-full transition-all active:scale-95 ${
+                        isListening
+                          ? 'bg-pink-500 text-white shadow-lg animate-pulse'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                      }`}
+                      title={isListening ? "Stop voice listening" : "Speak to Sensei"}
+                    >
+                      {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                    </button>
+                  )}
+
+                  {/* Send Button */}
+                  <button
+                    type="submit"
+                    disabled={!input.trim() || isTyping}
+                    className="p-2.5 bg-primary text-primary-foreground rounded-full hover:opacity-95 disabled:opacity-40 transition-opacity active:scale-95 shadow-md"
+                    title="Send message"
+                  >
+                    <Send className="w-4 h-4 -ml-0.5" />
+                  </button>
+                </form>
+              </div>
+
             </div>
-          )}
 
-          {/* Main Rounded Input Bar with Mic */}
-          <form
-            onSubmit={handleSubmit}
-            className="w-full max-w-3xl p-1.5 rounded-full bg-card/90 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 flex items-center gap-2"
-          >
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={isListening ? "Listening to your voice... 🎤" : t('sensei.ask_placeholder', 'Talk to Hana-sensei in English, Tamil, or Japanese...')}
-              disabled={isTyping}
-              className={`flex-1 bg-transparent px-5 py-3 text-sm focus:outline-none text-foreground placeholder:text-muted-foreground disabled:opacity-50 ${
-                isListening ? 'text-pink-500 font-medium' : ''
-              }`}
-            />
+          </div>
 
-            {/* Speech-to-Text Microphone Button */}
-            {isSttSupported && (
-              <button
-                type="button"
-                onClick={toggleMic}
-                className={`p-3 rounded-full transition-all active:scale-95 ${
-                  isListening
-                    ? 'bg-pink-500 text-white shadow-lg animate-pulse'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
-                }`}
-                title={isListening ? "Stop voice listening" : "Speak to Sensei"}
-              >
-                {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-              </button>
-            )}
-
-            {/* Send Button */}
-            <button
-              type="submit"
-              disabled={!input.trim() || isTyping}
-              className="p-3 bg-primary text-primary-foreground rounded-full hover:opacity-95 disabled:opacity-40 transition-opacity active:scale-95 shadow-md"
-              title="Send message"
-            >
-              <Send className="w-4 h-4 -ml-0.5" />
-            </button>
-          </form>
         </div>
       </main>
 
