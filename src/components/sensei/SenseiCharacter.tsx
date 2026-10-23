@@ -237,6 +237,10 @@ export default function SenseiCharacter({
   // Normalize active animation state (backward compatibility with speechState)
   const activeState: SenseiAnimationState = propState || speechState || 'idle';
 
+  // Mode framing flags
+  const isPortrait = mode === 'portrait';
+  const isFull = mode === 'full';
+
   // Responsive mobile screen detection
   const [isMobileScreen, setIsMobileScreen] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 640 : false
@@ -302,8 +306,6 @@ export default function SenseiCharacter({
   // - Full stage: captures both Hana on far left and 3D Slime on far right inside the 3D Classroom
   // - Portrait: zooms directly in on Hana-sensei and her speech bubble
   // - Compact: upper body for minimized floating widget
-  const isPortrait = mode === 'portrait';
-  const isFull = mode === 'full';
 
   let targetPos: [number, number, number] = isLeft ? [0, 0.90, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isLeft
