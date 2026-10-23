@@ -48,7 +48,10 @@ export default function LoginPage() {
     if (!validate()) return
     setLoading(true)
     try {
-      await signIn({ email: email.trim(), password })
+      const loggedInUser = await signIn({ email: email.trim(), password })
+      if (loggedInUser?.gender) {
+        localStorage.setItem('kando_user_gender', loggedInUser.gender)
+      }
       toast.success(t('auth.welcome_back', 'Welcome back! 🎌'))
       navigate('/dashboard')
     } catch (err) {
@@ -67,6 +70,9 @@ export default function LoginPage() {
   const handleDemoLogin = async () => {
     setLoading(true)
     try {
+      if (!localStorage.getItem('kando_user_gender')) {
+        localStorage.setItem('kando_user_gender', 'male')
+      }
       await signIn({ email: 'rohithram5467@gmail.com', password: 'Kando@2026' })
       toast.success('Welcome back, Rohith Ram! 🎌')
       navigate('/dashboard')

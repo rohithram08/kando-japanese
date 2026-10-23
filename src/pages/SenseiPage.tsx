@@ -137,20 +137,53 @@ export default function SenseiPage() {
     });
   };
 
-  const [slimePersona, setSlimePersona] = useState<'mr' | 'mrs'>('mr');
   const user = useAuthStore(s => s.user || s.profile);
   const userName = user?.displayName || user?.name || user?.username || 'Rohith Ram';
   const userLevel = useProgressStore(s => s.userLevel || 6);
 
-  // Dynamic Slime mood synced with live dialogue state
-  const activeSlimeMood: SlimeMood = isTyping
-    ? 'curious'
-    : speechState === 'speaking'
+  // Auto-detect gender: 'female' -> Mrs. Slime (Pink), 'male'/other -> Mr. Slime (Blue)
+  const savedGender = typeof window !== 'undefined' ? localStorage.getItem('kando_user_gender') : null;
+  const userGender = (user as any)?.gender || (user as any)?.sex || savedGender || 'male';
+  const [slimePersona, setSlimePersona] = useState<'mr' | 'mrs'>(
+    userGender.toLowerCase() === 'female' ? 'mrs' : 'mr'
+  );
+
+  useEffect(() => {
+    if ((user as any)?.gender) {
+      setSlimePersona((user as any).gender.toLowerCase() === 'female' ? 'mrs' : 'mr');
+    } else if (savedGender) {
+      setSlimePersona(savedGender.toLowerCase() === 'female' ? 'mrs' : 'mr');
+    }
+  }, [(user as any)?.gender, savedGender]);
+
+  const handlePersonaChange = (persona: 'mr' | 'mrs') => {
+    setSlimePersona(persona);
+    const genderStr = persona === 'mrs' ? 'female' : 'male';
+    localStorage.setItem('kando_user_gender', genderStr);
+    if (user) {
+      try {
+        useAuthStore.getState().updateProfile({ gender: genderStr } as any);
+      } catch {
+        // non-blocking
+      }
+    }
+  };
+
+  // Dynamic Slime expressions:
+  // - User typing in chat bubble -> 'studying' (Hachimaki headband & Kanji book)
+  // - Hana-sensei speaking -> 'listening' (Attentive face, eyes looking left towards Sensei, music notes)
+  // - Hana-sensei thinking/answering -> 'curious' (Looking attentively)
+  // - Celebration -> 'celebrating' (Star eyes & confetti)
+  // - Idle -> 'waving'
+  const isUserTyping = input.trim().length > 0;
+  const activeSlimeMood: SlimeMood = isUserTyping
     ? 'studying'
+    : speechState === 'speaking'
+    ? 'listening'
+    : isTyping
+    ? 'curious'
     : emotion === 'celebrating' || animationState === 'celebrating'
     ? 'celebrating'
-    : input.trim().length > 0
-    ? 'studying'
     : 'waving';
 
   // Get the latest assistant message to display in the live in-stage bubble
@@ -160,42 +193,9 @@ export default function SenseiPage() {
   return (
     <div className="h-[calc(100vh-5.5rem)] min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       
-      {/* ─── TOP FLOATING GLASS TOOLBAR ─── */}
-      <header className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
-        {/* Sensei Identity Badge */}
-        <div className="pointer-events-auto flex items-center gap-3 bg-card/85 backdrop-blur-xl border border-border/80 px-4 py-2 rounded-2xl shadow-lg ring-1 ring-primary/20">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 via-purple-500 to-amber-400 p-[2px] shadow-sm flex items-center justify-center">
-            <div className="w-full h-full bg-card rounded-[14px] flex items-center justify-center text-lg">
-              🌸
-            </div>
-          </div>
-          <div>
-            <h1 className="text-base font-bold flex items-center gap-2 text-foreground">
-              Hana-sensei 3D
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-japanese">
-                花先生
-              </span>
-            </h1>
-            <p className="text-[11px] text-muted-foreground flex items-center gap-1.5">
-              {isListening ? (
-                <span className="text-pink-500 font-semibold flex items-center gap-1 animate-pulse">
-                  <Mic className="w-3 h-3" /> Listening...
-                </span>
-              ) : speechState === 'speaking' ? (
-                <span className="text-primary font-medium flex items-center gap-1">
-                  <Volume2 className="w-3 h-3 animate-pulse" /> Speaking...
-                </span>
-              ) : isTyping ? (
-                <span className="text-amber-500 font-medium">Thinking...</span>
-              ) : (
-                <span>Interactive Japanese Stage</span>
-              )}
-            </p>
-          </div>
-        </div>
-
-        {/* Quick Action Controls */}
-        <div className="pointer-events-auto flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg">
+      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Camera ONLY) ─── */}
+      <header className="absolute top-4 right-4 z-20 flex items-center pointer-events-none">
+        <div className="pointer-events-auto flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
           {/* Greet */}
           <button
             onClick={() => greet()}
@@ -226,38 +226,12 @@ export default function SenseiPage() {
           >
             <Camera className="w-4 h-4" />
           </button>
-
-          {/* Voice Toggle */}
-          <button
-            onClick={toggleSpeech}
-            className={`p-2 rounded-xl transition-all ${
-              speechEnabled
-                ? 'bg-primary/10 text-primary'
-                : 'hover:bg-muted text-muted-foreground'
-            }`}
-            title={speechEnabled ? "Mute Voice" : "Enable Voice"}
-          >
-            {speechEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-          </button>
-
-          {/* History Drawer Toggle */}
-          <button
-            onClick={() => setShowHistory(!showHistory)}
-            className={`p-2 rounded-xl transition-all ${
-              showHistory
-                ? 'bg-primary text-primary-foreground shadow-xs'
-                : 'hover:bg-muted text-muted-foreground hover:text-foreground'
-            }`}
-            title="Toggle Dialogue History"
-          >
-            <MessageCircle className="w-4 h-4" />
-          </button>
         </div>
       </header>
 
       {/* ─── FULL 3D CHARACTER STAGE CANVAS & 2-WAY CLASSROOM ─── */}
       <main className="flex-1 w-full h-full relative overflow-hidden" aria-label="3D Hana-sensei Stage">
-        {/* Full-bleed 3D Character Canvas */}
+        {/* Full-bleed 3D Character Canvas (Hana-sensei standing on the LEFT side) */}
         <div className="absolute inset-0 z-0">
           <SenseiCharacter
             state={animationState}
@@ -268,205 +242,201 @@ export default function SenseiPage() {
         </div>
 
         {/* ─── 2-WAY VISUAL CLASSROOM CONVERSATION OVERLAY ─── */}
-        <div className="relative z-10 w-full h-full pointer-events-none flex flex-col justify-between p-4 sm:p-6 md:p-8 pt-20 pb-4">
+        <div className="relative z-10 w-full h-full pointer-events-none p-4 sm:p-6 md:p-8">
           
-          {/* TOP SECTION: Sensei's Speech Bubble (Left) & Slime Area (Right) */}
-          <div className="flex-1 flex flex-col md:flex-row items-start justify-between gap-6 overflow-hidden">
-            
-            {/* ── LEFT ZONE: HANA-SENSEI SPEECH BUBBLE ── */}
-            <div className="w-full md:w-[48%] lg:w-[44%] pointer-events-auto">
-              <AnimatePresence mode="wait">
-                {(latestAssistantMessage || isTyping) && (
-                  <motion.div
-                    key={latestAssistantMessage?.id || 'typing'}
-                    initial={{ opacity: 0, scale: 0.92, x: -16 }}
-                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                    exit={{ opacity: 0, scale: 0.92, x: -16 }}
-                    transition={{ duration: 0.25 }}
-                    className="relative p-5 rounded-3xl bg-card/92 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground"
-                  >
-                    {/* Speech Bubble Tail pointing towards Sensei */}
-                    <div className="absolute -bottom-2.5 left-10 w-4 h-4 bg-card/92 border-r border-b border-primary/30 rotate-45 pointer-events-none" />
+          {/* ── 1. HANA-SENSEI SPEECH POP-UP (POSITIONED TO HER RIGHT SIDE) ── */}
+          <div className="pointer-events-auto md:absolute md:left-[270px] lg:left-[320px] xl:left-[360px] top-4 md:top-8 w-full md:w-auto max-w-sm sm:max-w-md lg:max-w-lg z-20">
+            <AnimatePresence mode="wait">
+              {(latestAssistantMessage || isTyping) && (
+                <motion.div
+                  key={latestAssistantMessage?.id || 'typing'}
+                  initial={{ opacity: 0, scale: 0.92, x: -16 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.92, x: -16 }}
+                  transition={{ duration: 0.25 }}
+                  className="relative p-4 sm:p-5 rounded-3xl bg-card/92 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground"
+                >
+                  {/* Speech Bubble Tail pointing LEFT towards Hana-sensei */}
+                  <div className="hidden md:block absolute top-8 -left-2 w-3.5 h-3.5 bg-card/92 border-l border-b border-primary/30 rotate-45 pointer-events-none" />
 
-                    {/* Sensei Bubble Header */}
-                    <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border/40">
-                      <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs">
-                          🌸
+                  {/* Sensei Bubble Header */}
+                  <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border/40">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-xs">
+                        🌸
+                      </span>
+                      <span className="text-xs font-bold text-primary flex items-center gap-1.5 font-japanese">
+                        <span>花先生 (Hana-sensei)</span>
+                        <span className="text-[10px] font-normal text-muted-foreground font-sans">
+                          {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
                         </span>
-                        <span className="text-xs font-bold text-primary flex items-center gap-1.5 font-japanese">
-                          <span>花先生 (Hana-sensei)</span>
-                          <span className="text-[10px] font-normal text-muted-foreground font-sans">
-                            {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
-                          </span>
-                        </span>
-                      </div>
-
-                      {latestAssistantMessage && !isTyping && (
-                        <button
-                          onClick={() => handleReplayAudio(latestAssistantMessage.content)}
-                          className="px-2 py-1 bg-muted/60 hover:bg-muted text-muted-foreground hover:text-primary rounded-lg transition-colors text-xs flex items-center gap-1"
-                          title="Replay Voice"
-                        >
-                          <RotateCcw className="w-3.5 h-3.5" />
-                          <span className="text-[10px] font-medium">Replay</span>
-                        </button>
-                      )}
+                      </span>
                     </div>
 
-                    {/* Sensei Bubble Content */}
-                    {isTyping ? (
-                      <div className="flex items-center gap-2 py-3">
-                        <span className="text-xs text-muted-foreground">Hana-sensei is explaining</span>
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                      </div>
-                    ) : latestAssistantMessage ? (
-                      <div className="max-h-[220px] sm:max-h-[280px] lg:max-h-[320px] overflow-y-auto pr-1 text-sm leading-relaxed scrollbar-thin">
-                        <SenseiMarkdown content={latestAssistantMessage.content} />
-                      </div>
-                    ) : null}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* ── RIGHT ZONE: MR. / MRS. SLIME (THE USER) + USER DIALOGUE BUBBLE + TYPING BAR ── */}
-            <div className="w-full md:w-[48%] lg:w-[44%] pointer-events-auto flex flex-col items-center md:items-end gap-3.5 self-end md:self-auto">
-              
-              {/* User / Slime Dialogue Bubble */}
-              {latestUserMessage && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.92, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  className="w-full max-w-md relative p-4 rounded-3xl bg-primary text-primary-foreground backdrop-blur-xl shadow-xl border border-white/10 text-xs sm:text-sm leading-relaxed"
-                >
-                  {/* Tail pointing down to Slime */}
-                  <div className="absolute -bottom-2 right-12 w-4 h-4 bg-primary border-r border-b border-white/10 rotate-45 pointer-events-none" />
-
-                  <div className="flex items-center justify-between mb-1 pb-1 border-b border-white/20">
-                    <span className="font-bold flex items-center gap-1.5 text-[11px] text-white">
-                      <span>{slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}</span>
-                      <span className="text-white/70 font-normal">({userName})</span>
-                    </span>
-                    <span className="text-[10px] text-white/70 uppercase tracking-wider">
-                      Lv.{userLevel} Adventurer
-                    </span>
+                    {latestAssistantMessage && !isTyping && (
+                      <button
+                        onClick={() => handleReplayAudio(latestAssistantMessage.content)}
+                        className="px-2 py-1 bg-muted/60 hover:bg-muted text-muted-foreground hover:text-primary rounded-lg transition-colors text-xs flex items-center gap-1"
+                        title="Replay Voice"
+                      >
+                        <RotateCcw className="w-3.5 h-3.5" />
+                        <span className="text-[10px] font-medium">Replay</span>
+                      </button>
+                    )}
                   </div>
 
-                  <p className="font-medium text-white/95 mt-1">{latestUserMessage.content}</p>
+                  {/* Sensei Bubble Content */}
+                  {isTyping ? (
+                    <div className="flex items-center gap-2 py-3">
+                      <span className="text-xs text-muted-foreground">Hana-sensei is explaining</span>
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  ) : latestAssistantMessage ? (
+                    <div className="max-h-[200px] sm:max-h-[260px] lg:max-h-[300px] overflow-y-auto pr-1 text-xs sm:text-sm leading-relaxed scrollbar-thin">
+                      <SenseiMarkdown content={latestAssistantMessage.content} />
+                    </div>
+                  ) : null}
                 </motion.div>
               )}
+            </AnimatePresence>
+          </div>
 
-              {/* Slime Persona Controls & Mascot */}
-              <div className="flex flex-col items-center md:items-end gap-1">
-                {/* Slime Persona Switcher Pill */}
-                <div className="flex items-center gap-1 p-1 rounded-full bg-card/85 backdrop-blur-md border border-border/70 shadow-sm text-xs">
-                  <button
-                    onClick={() => setSlimePersona('mr')}
-                    className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
-                      slimePersona === 'mr'
-                        ? 'bg-primary text-primary-foreground shadow-xs'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    <span>🧢</span> Mr. Slime
-                  </button>
-                  <button
-                    onClick={() => setSlimePersona('mrs')}
-                    className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
-                      slimePersona === 'mrs'
-                        ? 'bg-pink-500 text-white shadow-xs'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    <span>🌸</span> Mrs. Slime
-                  </button>
-                </div>
-
-                {/* Animated Interactive Kando Slime Mascot */}
-                <div className="relative flex flex-col items-center">
-                  <KandoSlime
-                    mood={activeSlimeMood}
-                    slimeType={slimePersona}
-                    size={160}
-                    showSpeech={false}
-                    showMoodButtons={false}
-                    interactive={true}
-                  />
-                  {/* Tatami Mat / Pedestal for Slime */}
-                  <div className="w-36 h-3.5 -mt-3 rounded-full bg-gradient-to-r from-amber-900/40 via-amber-700/50 to-amber-900/40 border border-amber-600/40 blur-[1px] shadow-lg pointer-events-none" />
-                </div>
-              </div>
-
-              {/* ── USER TYPING BAR (DIRECTLY NEAR SLIME ON RIGHT) ── */}
-              <div className="w-full max-w-md flex flex-col gap-2">
-                {/* Quick Prompts Chips */}
-                {!isTyping && (
-                  <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
-                    {QUICK_PROMPTS.slice(0, 4).map(p => (
-                      <button
-                        key={p}
-                        onClick={() => handleSend(p)}
-                        className="whitespace-nowrap px-3 py-1 bg-card/85 backdrop-blur-md border border-border/80 hover:border-primary/50 text-foreground text-[11px] font-medium rounded-full hover:bg-primary/10 transition-all flex-shrink-0 active:scale-95 shadow-xs"
-                      >
-                        {p}
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                {/* Input Form with Speech-to-Text Mic */}
-                <form
-                  onSubmit={handleSubmit}
-                  className="w-full p-1.5 rounded-full bg-card/90 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 flex items-center gap-1.5"
-                >
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder={
-                      isListening
-                        ? "Listening to your voice... 🎤"
-                        : `Ask as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'} in English, Tamil, or Japanese...`
-                    }
-                    disabled={isTyping}
-                    className={`flex-1 bg-transparent px-4 py-2.5 text-xs sm:text-sm focus:outline-none text-foreground placeholder:text-muted-foreground disabled:opacity-50 ${
-                      isListening ? 'text-pink-500 font-medium' : ''
-                    }`}
-                  />
-
-                  {/* Speech-to-Text Mic */}
-                  {isSttSupported && (
-                    <button
-                      type="button"
-                      onClick={toggleMic}
-                      className={`p-2.5 rounded-full transition-all active:scale-95 ${
-                        isListening
-                          ? 'bg-pink-500 text-white shadow-lg animate-pulse'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
-                      }`}
-                      title={isListening ? "Stop voice listening" : "Speak to Sensei"}
-                    >
-                      {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-                    </button>
-                  )}
-
-                  {/* Send Button */}
-                  <button
-                    type="submit"
-                    disabled={!input.trim() || isTyping}
-                    className="p-2.5 bg-primary text-primary-foreground rounded-full hover:opacity-95 disabled:opacity-40 transition-opacity active:scale-95 shadow-md"
-                    title="Send message"
-                  >
-                    <Send className="w-4 h-4 -ml-0.5" />
-                  </button>
-                </form>
-              </div>
-
+          {/* ── 2. SLIME IN BOTTOM RIGHT CORNER ── */}
+          <div className="pointer-events-auto absolute bottom-3 right-3 sm:bottom-5 sm:right-5 z-20 flex flex-col items-center select-none">
+            {/* Slime Persona Switcher Pill (Mr. Slime - Blue / Mrs. Slime - Pink) */}
+            <div className="mb-1 flex items-center gap-1 p-1 rounded-full bg-card/90 backdrop-blur-md border border-border/70 shadow-sm text-xs">
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('mr')}
+                className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                  slimePersona === 'mr'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <span>🧢</span> Mr. Slime
+              </button>
+              <button
+                type="button"
+                onClick={() => handlePersonaChange('mrs')}
+                className={`px-2.5 py-0.5 rounded-full transition-all flex items-center gap-1 font-semibold text-[11px] ${
+                  slimePersona === 'mrs'
+                    ? 'bg-pink-500 text-white shadow-xs'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <span>🌸</span> Mrs. Slime
+              </button>
             </div>
 
+            {/* Kando Slime Mascot with Dynamic Expressions */}
+            <div className="relative flex flex-col items-center">
+              <KandoSlime
+                mood={activeSlimeMood}
+                slimeType={slimePersona}
+                size={145}
+                showSpeech={false}
+                showMoodButtons={false}
+                interactive={true}
+              />
+              {/* Tatami Mat Cushion */}
+              <div className="w-32 h-3 -mt-2 rounded-full bg-gradient-to-r from-amber-900/40 via-amber-700/50 to-amber-900/40 border border-amber-600/40 blur-[1px] shadow-lg pointer-events-none" />
+            </div>
+          </div>
+
+          {/* ── 3. USER CHAT BUBBLE (ANCHORED TO THE LEFT OF SLIME WITH EMBEDDED TYPING) ── */}
+          <div className="pointer-events-auto absolute bottom-3 right-[155px] sm:bottom-5 sm:right-[180px] md:right-[200px] w-[calc(100%-175px)] max-w-sm sm:max-w-md md:max-w-lg z-20 flex flex-col gap-2">
+            
+            <div className="relative p-3.5 sm:p-4 rounded-3xl bg-card/95 backdrop-blur-xl border border-primary/30 shadow-2xl ring-1 ring-primary/20 text-foreground">
+              {/* Bubble Tail pointing RIGHT towards Slime */}
+              <div className="hidden md:block absolute bottom-8 -right-2 w-3.5 h-3.5 bg-card/95 border-r border-t border-primary/30 rotate-45 pointer-events-none" />
+
+              {/* Bubble Header */}
+              <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-border/40 text-xs">
+                <div className="flex items-center gap-1.5 font-bold">
+                  <span className={slimePersona === 'mrs' ? 'text-pink-500' : 'text-blue-500'}>
+                    {slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}
+                  </span>
+                  <span className="text-muted-foreground font-normal">({userName})</span>
+                </div>
+                <span className="text-[10px] text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-full font-medium">
+                  Lv.{userLevel} Adventurer
+                </span>
+              </div>
+
+              {/* If user sent a message recently, show it inside the bubble */}
+              {latestUserMessage && (
+                <div className="mb-2 p-2 rounded-xl bg-primary/10 border border-primary/20 text-xs text-foreground/90 font-medium">
+                  <p className="line-clamp-2 italic">“{latestUserMessage.content}”</p>
+                </div>
+              )}
+
+              {/* Quick Suggestion Chips */}
+              {!isTyping && (
+                <div className="mb-2 flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
+                  {QUICK_PROMPTS.slice(0, 3).map(p => (
+                    <button
+                      key={p}
+                      type="button"
+                      onClick={() => handleSend(p)}
+                      className="whitespace-nowrap px-2.5 py-1 bg-muted/60 hover:bg-primary/15 border border-border/60 hover:border-primary/40 text-[11px] font-medium rounded-full text-foreground/80 transition-all flex-shrink-0 active:scale-95"
+                    >
+                      {p}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Embedded Typing Form INSIDE the Slime Bubble */}
+              <form
+                onSubmit={handleSubmit}
+                className="w-full p-1 rounded-full bg-background/80 border border-border/80 focus-within:border-primary/60 focus-within:ring-2 focus-within:ring-primary/20 flex items-center gap-1 transition-all"
+              >
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder={
+                    isListening
+                      ? "Listening to your voice... 🎤"
+                      : `Type to Hana-sensei as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'}...`
+                  }
+                  disabled={isTyping}
+                  className={`flex-1 bg-transparent px-3 py-1.5 text-xs sm:text-sm focus:outline-none text-foreground placeholder:text-muted-foreground/70 disabled:opacity-50 ${
+                    isListening ? 'text-pink-500 font-medium' : ''
+                  }`}
+                />
+
+                {/* Mic button */}
+                {isSttSupported && (
+                  <button
+                    type="button"
+                    onClick={toggleMic}
+                    className={`p-1.5 rounded-full transition-all active:scale-95 ${
+                      isListening
+                        ? 'bg-pink-500 text-white shadow-md animate-pulse'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/80'
+                    }`}
+                    title={isListening ? "Stop voice listening" : "Speak to Sensei"}
+                  >
+                    {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+                  </button>
+                )}
+
+                {/* Send button */}
+                <button
+                  type="submit"
+                  disabled={!input.trim() || isTyping}
+                  className="p-1.5 bg-primary text-primary-foreground rounded-full hover:opacity-90 disabled:opacity-40 transition-opacity active:scale-95 shadow-sm"
+                  title="Send message"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                </button>
+              </form>
+
+            </div>
           </div>
 
         </div>

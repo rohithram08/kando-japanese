@@ -4,7 +4,7 @@ import { Sparkles, Volume2, Heart, RefreshCw } from 'lucide-react'
 import { playPop } from '../../utils/soundEffects'
 import './kandoSlime.css'
 
-export type SlimeMood = 'idle' | 'waving' | 'studying' | 'celebrating' | 'curious'
+export type SlimeMood = 'idle' | 'waving' | 'studying' | 'celebrating' | 'curious' | 'listening'
 
 export interface KandoSlimeProps {
   mood?: SlimeMood
@@ -48,6 +48,11 @@ const DEFAULT_SPEECHES: Record<SlimeMood, { japanese: string; romaji: string; en
     japanese: '「これ、どういう意味？一緒に調べよう！」',
     romaji: 'Kore, dou iu imi? Issho ni shirabeyou!',
     english: "What does this mean? Let's explore and discover together!",
+  },
+  listening: {
+    japanese: '「ふむふむ、なるほど！先生の話をよく聞いてるよ！」',
+    romaji: 'Fumufumu, naruhodo! Sensei no hanashi o yoku kiiteru yo!',
+    english: "Hmm hmm, I see! Listening carefully to Hana-sensei!",
   },
 }
 
@@ -165,6 +170,14 @@ export default function KandoSlime({
 
   const activeSpeech = customSpeech || DEFAULT_SPEECHES[currentMood]
   const pixelSize = typeof size === 'number' ? `${size}px` : size
+  const isMrs = slimeType === 'mrs'
+  const bodyGradientId = isMrs ? 'kandoSlimeBodyMrs' : 'kandoSlimeBodyMr'
+  const baseGradientId = isMrs ? 'kandoSlimeBaseMrs' : 'kandoSlimeBaseMr'
+
+  // When listening to Sensei on the left, shift eyes left towards Sensei
+  const effectiveEyeOffset = currentMood === 'listening'
+    ? { x: -5, y: -1.5 }
+    : eyeOffset
 
   return (
     <div className={`relative inline-flex flex-col items-center select-none ${className}`}>
@@ -177,7 +190,7 @@ export default function KandoSlime({
           <div className="flex items-center justify-between gap-2 mb-1.5">
             <div className="flex items-center gap-1.5 text-xs font-extrabold text-indigo-600 dark:text-indigo-400">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Kando Slime (感動スライム)</span>
+              <span>{isMrs ? 'Mrs. Kando Slime (感動スライム)' : 'Mr. Kando Slime (感動スライム)'}</span>
             </div>
             {onSpeak && (
               <button
@@ -225,7 +238,11 @@ export default function KandoSlime({
       >
         {/* Soft Ambient Jelly Glow */}
         <div
-          className="absolute inset-2 rounded-full bg-gradient-to-tr from-cyan-500/30 via-indigo-500/25 to-pink-500/20 blur-2xl pointer-events-none"
+          className={`absolute inset-2 rounded-full blur-2xl pointer-events-none transition-colors duration-500 ${
+            isMrs
+              ? 'bg-gradient-to-tr from-pink-500/35 via-rose-400/30 to-fuchsia-500/25'
+              : 'bg-gradient-to-tr from-cyan-500/30 via-indigo-500/25 to-blue-500/20'
+          }`}
           aria-hidden="true"
         />
 
@@ -233,7 +250,9 @@ export default function KandoSlime({
         {ripples.map((rip) => (
           <span
             key={rip.id}
-            className="absolute rounded-full border-2 border-cyan-400/60 pointer-events-none slime-ripple"
+            className={`absolute rounded-full border-2 pointer-events-none slime-ripple ${
+              isMrs ? 'border-pink-400/70' : 'border-cyan-400/60'
+            }`}
             style={{
               left: rip.x - 25,
               top: rip.y - 25,
@@ -269,6 +288,14 @@ export default function KandoSlime({
           </div>
         )}
 
+        {/* Listening Musical Notes when Hana-sensei is answering */}
+        {currentMood === 'listening' && (
+          <div className="absolute inset-0 pointer-events-none z-20" aria-hidden="true">
+            <span className="slime-confetti absolute -top-1 left-3 text-primary text-sm font-bold" style={{ '--tx': '-18px', '--ty': '-32px' } as any}>🎵</span>
+            <span className="slime-confetti absolute top-1 right-5 text-pink-400 text-sm font-bold" style={{ '--tx': '18px', '--ty': '-28px' } as any}>✨</span>
+          </div>
+        )}
+
         {/* ── Vector SVG Slime with Full Animation Rig ─────────── */}
         <svg
           viewBox="0 0 100 100"
@@ -279,18 +306,29 @@ export default function KandoSlime({
           }`}
         >
           <defs>
-            {/* Glossy Jelly Body Gradient */}
+            {/* Glossy Jelly Body Gradient - Blue for Mr. Slime, Pink for Mrs. Slime */}
             <linearGradient id="kandoSlimeBody" x1="20" y1="20" x2="80" y2="90" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="40%" stopColor="#0ea5e9" />
-              <stop offset="85%" stopColor="#2563eb" />
-              <stop offset="100%" stopColor="#1d4ed8" />
+              {isMrs ? (
+                <>
+                  <stop offset="0%" stopColor="#f472b6" />
+                  <stop offset="35%" stopColor="#ec4899" />
+                  <stop offset="75%" stopColor="#db2777" />
+                  <stop offset="100%" stopColor="#be185d" />
+                </>
+              ) : (
+                <>
+                  <stop offset="0%" stopColor="#38bdf8" />
+                  <stop offset="40%" stopColor="#0ea5e9" />
+                  <stop offset="85%" stopColor="#2563eb" />
+                  <stop offset="100%" stopColor="#1d4ed8" />
+                </>
+              )}
             </linearGradient>
 
             {/* Inner Jelly Shadow */}
             <radialGradient id="kandoSlimeBase" cx="50" cy="85" r="38" fx="50" fy="88" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#1e3a8a" stopOpacity="0" />
+              <stop offset="0%" stopColor={isMrs ? "#831843" : "#1e3a8a"} stopOpacity={isMrs ? "0.6" : "0.55"} />
+              <stop offset="100%" stopColor={isMrs ? "#831843" : "#1e3a8a"} stopOpacity="0" />
             </radialGradient>
 
             {/* Specular Shine Highlight */}
@@ -336,11 +374,30 @@ export default function KandoSlime({
                    C 84 36, 79 42, 76 50
                    C 74 54, 75 60, 78 64 Z"
                 fill="url(#kandoSlimeBody)"
-                stroke="#2563eb"
+                stroke={isMrs ? '#db2777' : '#2563eb'}
                 strokeWidth="1"
               />
               {/* Palm highlight */}
               <circle cx="86" cy="42" r="2" fill="#ffffff" fillOpacity="0.75" />
+            </g>
+          )}
+
+          {/* Mrs. Slime Hair Ornament: Cute Sakura Blossom Clip */}
+          {isMrs && (
+            <g transform="translate(68, 30)">
+              {/* 5 cherry blossom petals */}
+              {[0, 72, 144, 216, 288].map((angle, idx) => (
+                <path
+                  key={idx}
+                  d="M 0 0 C -2.2 -3.8, -3.2 -6.2, 0 -8 C 3.2 -6.2, 2.2 -3.8, 0 0 Z"
+                  fill="#fdf2f8"
+                  stroke="#f472b6"
+                  strokeWidth="0.6"
+                  transform={`rotate(${angle})`}
+                />
+              ))}
+              <circle cx="0" cy="0" r="1.8" fill="#fb7185" />
+              <circle cx="0" cy="0" r="0.8" fill="#ffffff" />
             </g>
           )}
 
@@ -382,12 +439,12 @@ export default function KandoSlime({
           )}
 
           {/* Rosy Cheeks */}
-          <ellipse cx="28" cy="66" rx="5.5" ry="3" fill="#f43f5e" fillOpacity="0.55" />
-          <ellipse cx="72" cy="66" rx="5.5" ry="3" fill="#f43f5e" fillOpacity="0.55" />
+          <ellipse cx="28" cy="66" rx="5.5" ry="3" fill="#f43f5e" fillOpacity={isMrs ? "0.7" : "0.55"} />
+          <ellipse cx="72" cy="66" rx="5.5" ry="3" fill="#f43f5e" fillOpacity={isMrs ? "0.7" : "0.55"} />
 
           {/* ── Expressive Anime Eyes with Pupil Tracking & Blinking ─ */}
           {/* Left Eye */}
-          <g transform={`translate(${eyeOffset.x * 0.7}, ${eyeOffset.y * 0.7})`}>
+          <g transform={`translate(${effectiveEyeOffset.x * 0.7}, ${effectiveEyeOffset.y * 0.7})`}>
             {isBlinking ? (
               // Rimuru's famous cute curved crescent eye
               <path d="M 31 59 Q 37 53 43 59" stroke="#0f172a" strokeWidth="3" strokeLinecap="round" />
@@ -405,10 +462,17 @@ export default function KandoSlime({
                 <circle cx="38.8" cy="60.5" r="1.1" fill="#ffffff" />
               </g>
             )}
+            {/* Mrs. Slime Eyelashes on Left Eye */}
+            {isMrs && !isBlinking && currentMood !== 'celebrating' && (
+              <g stroke="#0f172a" strokeWidth="1.2" strokeLinecap="round" fill="none">
+                <path d="M 33 53 Q 30 50 28 51" />
+                <path d="M 36 51.5 Q 35 48 33 49" />
+              </g>
+            )}
           </g>
 
           {/* Right Eye */}
-          <g transform={`translate(${eyeOffset.x * 0.7}, ${eyeOffset.y * 0.7})`}>
+          <g transform={`translate(${effectiveEyeOffset.x * 0.7}, ${effectiveEyeOffset.y * 0.7})`}>
             {isBlinking || currentMood === 'waving' ? (
               // Rimuru's famous cute winking crescent eye
               <path d="M 57 59 Q 63 53 69 59" stroke="#0f172a" strokeWidth="3" strokeLinecap="round" />
@@ -424,6 +488,13 @@ export default function KandoSlime({
                 {/* Big sparkling catchlight */}
                 <circle cx="61.5" cy="55" r="2.1" fill="#ffffff" />
                 <circle cx="64.8" cy="60.5" r="1.1" fill="#ffffff" />
+              </g>
+            )}
+            {/* Mrs. Slime Eyelashes on Right Eye */}
+            {isMrs && !isBlinking && currentMood !== 'celebrating' && currentMood !== 'waving' && (
+              <g stroke="#0f172a" strokeWidth="1.2" strokeLinecap="round" fill="none">
+                <path d="M 67 53 Q 70 50 72 51" />
+                <path d="M 64 51.5 Q 65 48 67 49" />
               </g>
             )}
           </g>
@@ -443,6 +514,15 @@ export default function KandoSlime({
           ) : currentMood === 'curious' ? (
             // Small curious "O" mouth
             <ellipse cx="50" cy="65" rx="2.5" ry="3.5" fill="#0f172a" />
+          ) : currentMood === 'listening' ? (
+            // Attentive listening soft smile
+            <path
+              d="M 47 65 Q 50 67.5 53 65"
+              stroke="#0f172a"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              fill="none"
+            />
           ) : (
             // Soft sweet smile
             <path
@@ -481,6 +561,18 @@ export default function KandoSlime({
             }`}
           >
             <span>📚 Study</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => { playPop(); setCurrentMood('listening'); onMoodChange?.('listening') }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 ${
+              currentMood === 'listening'
+                ? 'bg-indigo-600 text-white shadow-md scale-105'
+                : 'text-muted-foreground hover:text-foreground hover:bg-background/80'
+            }`}
+          >
+            <span>👂 Listen</span>
           </button>
 
           <button

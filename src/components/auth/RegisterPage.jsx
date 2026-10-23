@@ -62,6 +62,7 @@ export default function RegisterPage() {
     username:       '',
     email:          '',
     password:       '',
+    gender:         'male',
     nativeLanguage: 'english',
     currentLevel:   'N5',
   })
@@ -98,6 +99,9 @@ export default function RegisterPage() {
   const handleSubmit = async () => {
     setLoading(true)
     try {
+      if (formData.gender) {
+        localStorage.setItem('kando_user_gender', formData.gender)
+      }
       await signUp(formData)
       toast.success('Welcome to Kando Japanese! 🎌')
       navigate('/dashboard')
@@ -311,6 +315,46 @@ export default function RegisterPage() {
                       <AlertCircle className="w-3 h-3" /> {errors.password}
                     </p>
                   )}
+                </div>
+
+                {/* Gender / Companion Mascot Selection */}
+                <div>
+                  <label className="block text-sm font-medium mb-1.5 text-foreground/80">
+                    Gender &amp; Slime Companion
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => update('gender', 'male')}
+                      className={`p-3 rounded-xl border text-left transition-all flex items-center gap-2.5 ${
+                        formData.gender === 'male'
+                          ? 'border-blue-500 bg-blue-50/70 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 ring-2 ring-blue-500/30'
+                          : 'border-border/70 hover:bg-muted/50 text-foreground'
+                      }`}
+                    >
+                      <span className="text-xl">🧢</span>
+                      <div>
+                        <p className="text-xs font-bold">Male</p>
+                        <p className="text-[11px] text-muted-foreground">Mr. Slime (Blue)</p>
+                      </div>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => update('gender', 'female')}
+                      className={`p-3 rounded-xl border text-left transition-all flex items-center gap-2.5 ${
+                        formData.gender === 'female'
+                          ? 'border-pink-500 bg-pink-50/70 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300 ring-2 ring-pink-500/30'
+                          : 'border-border/70 hover:bg-muted/50 text-foreground'
+                      }`}
+                    >
+                      <span className="text-xl">🌸</span>
+                      <div>
+                        <p className="text-xs font-bold">Female</p>
+                        <p className="text-[11px] text-muted-foreground">Mrs. Slime (Pink)</p>
+                      </div>
+                    </button>
+                  </div>
                 </div>
 
                 <motion.button

@@ -71,4 +71,17 @@ describe('KandoSlime Mascot', () => {
     expect(screen.getByRole('button', { name: /Interactive Kando Slime Mascot/i })).toBeDefined()
     expect(screen.queryByText(/Kando Slime \(感動スライム\)/i)).toBeNull()
   })
+
+  it('renders Mrs. Slime with pink styling and distinct speech label', () => {
+    render(<KandoSlime slimeType="mrs" mood="waving" />)
+
+    expect(screen.getByText(/Mrs\. Kando Slime \(感動スライム\)/i)).toBeDefined()
+  })
+
+  it('renders listening mode with attentive listening speech and musical notes', () => {
+    render(<KandoSlime mood="listening" />)
+
+    expect(screen.getByText(/「ふむふむ、なるほど！先生の話をよく聞いてるよ！」/i)).toBeDefined()
+    expect(screen.getByText('🎵')).toBeDefined()
+  })
 })

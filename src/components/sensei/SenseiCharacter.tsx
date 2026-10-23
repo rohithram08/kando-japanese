@@ -168,7 +168,7 @@ export default function SenseiCharacter({
   // Character 3D stage position:
   // When stageSide === 'left' and screen is wide enough, position Hana on the left of the classroom!
   const isLeft = stageSide === 'left' && !isMobileScreen;
-  const characterPos: [number, number, number] = isLeft ? [-0.46, 0, 0] : [0, 0, 0];
+  const characterPos: [number, number, number] = isLeft ? [-0.56, 0, 0] : [0, 0, 0];
 
   // Camera framing:
   // - Full stage: captures Hana from cap to sandals at ~85% vertical stage fill
@@ -177,12 +177,12 @@ export default function SenseiCharacter({
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = isLeft ? [-0.22, 0.74, 0] : [0, 0.74, 0];
+  let targetPos: [number, number, number] = isLeft ? [-0.28, 0.74, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isMobileScreen ? [0, 0.76, 2.52] : [0, 0.76, 2.28];
   let cameraFov = isMobileScreen ? 44 : 41;
 
   if (isPortrait) {
-    targetPos = isLeft ? [-0.22, 1.10, 0] : [0, 1.10, 0];
+    targetPos = isLeft ? [-0.28, 1.10, 0] : [0, 1.10, 0];
     cameraPos = isMobileScreen ? [0, 1.12, 1.5] : [0, 1.12, 1.35];
     cameraFov = 34;
   } else if (!isFull) {
