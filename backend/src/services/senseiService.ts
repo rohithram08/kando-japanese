@@ -101,7 +101,7 @@ export class SenseiService {
             properties: {
               path: {
                 type: "string",
-                description: "The path to navigate to (e.g. /dashboard, /lessons, /quiz, /reading, /progress, /kanji, /vocabulary, /review)",
+                description: "The path to navigate to (e.g. /dashboard, /reading, /progress, /kanji, /vocabulary, /review, /dictionary)",
               }
             },
             required: ["path"],

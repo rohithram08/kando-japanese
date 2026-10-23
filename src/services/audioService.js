@@ -20,6 +20,10 @@ export function isFemaleVoice(voice) {
   if (voice.gender && String(voice.gender).toLowerCase() === 'female') return true
   const name = `${voice.name || ''} ${voice.voiceURI || ''}`.toLowerCase()
   if (/\bfemale\b|\bwoman\b|\bgirl\b/.test(name)) return true
+  // Google 日本語 is female
+  if (name.includes('google 日本語')) return true
+  // Google US English is default female
+  if (name.includes('google us english')) return true
   return FEMALE_VOICE_NAMES.some(fn => name.includes(fn))
 }
 
@@ -30,6 +34,107 @@ export function isMaleVoice(voice) {
   if (/\bfemale\b/.test(name)) return false
   if (/\bmale\b|\bman\b|\bboy\b/.test(name)) return true
   return MALE_VOICE_NAMES.some(mn => name.includes(mn))
+}
+
+export function isJapaneseChar(char) {
+  const code = char.charCodeAt(0)
+  if (code >= 0x3040 && code <= 0x309f) return true // Hiragana
+  if (code >= 0x30a0 && code <= 0x30ff) return true // Katakana
+  if (code >= 0x4e00 && code <= 0x9faf) return true // Kanji
+  if (code >= 0x3400 && code <= 0x4dbf) return true // Rare Kanji
+  if (code >= 0x3000 && code <= 0x303f) return true // Japanese punctuation
+  if (code >= 0xff00 && code <= 0xffef) return true // Fullwidth forms (？ ！ ： （ ）)
+  return false
+}
+
+export function isTamilChar(char) {
+  const code = char.charCodeAt(0)
+  return code >= 0x0b80 && code <= 0x0bff
+}
+
+export function isHindiChar(char) {
+  const code = char.charCodeAt(0)
+  return code >= 0x0900 && code <= 0x097f
+}
+
+export function isNeutralChar(char) {
+  return /^[\s.,!?:;'"()\[\]\/\-—~…0-9\u3000-\u303F\uFF00-\uFFEF]+$/.test(char)
+}
+
+export function localeToTtsLang(locale) {
+  if (!locale) return 'en-US'
+  const prefix = locale.split('-')[0].toLowerCase()
+  switch (prefix) {
+    case 'ta': return 'ta-IN'
+    case 'hi': return 'hi-IN'
+    case 'ja': return 'ja-JP'
+    case 'ko': return 'ko-KR'
+    case 'zh': return locale.toLowerCase().includes('tw') || locale.toLowerCase().includes('hant') ? 'zh-TW' : 'zh-CN'
+    case 'es': return 'es-ES'
+    case 'fr': return 'fr-FR'
+    case 'de': return 'de-DE'
+    case 'pt': return 'pt-BR'
+    case 'vi': return 'vi-VN'
+    case 'id': return 'id-ID'
+    default: return 'en-US'
+  }
+}
+
+export function segmentMultilingualText(text, baseLang = 'en-US') {
+  if (!text || typeof text !== 'string') return []
+
+  const rawSegments = []
+  let currentSegment = { text: '', lang: '' }
+
+  const getCharLang = (char) => {
+    if (isJapaneseChar(char)) return 'ja-JP'
+    if (isTamilChar(char)) return 'ta-IN'
+    if (isHindiChar(char)) return 'hi-IN'
+    if (isNeutralChar(char)) return 'neutral'
+    return baseLang
+  }
+
+  const chars = Array.from(text)
+  for (let i = 0; i < chars.length; i++) {
+    const char = chars[i]
+    const charLang = getCharLang(char)
+
+    if (!currentSegment.lang) {
+      currentSegment.lang = charLang === 'neutral' ? baseLang : charLang
+      currentSegment.text += char
+    } else if (charLang === 'neutral') {
+      currentSegment.text += char
+    } else if (charLang === currentSegment.lang) {
+      currentSegment.text += char
+    } else {
+      if (currentSegment.text.trim()) {
+        rawSegments.push({ ...currentSegment })
+      }
+      currentSegment = { text: char, lang: charLang }
+    }
+  }
+
+  if (currentSegment.text.trim()) {
+    rawSegments.push({ ...currentSegment })
+  }
+
+  // Merge adjacent segments with identical language
+  const merged = []
+  for (const seg of rawSegments) {
+    if (merged.length > 0 && merged[merged.length - 1].lang === seg.lang) {
+      merged[merged.length - 1].text += seg.text
+    } else {
+      merged.push(seg)
+    }
+  }
+
+  // Trim edge separators like dashes or colons that belong between languages
+  return merged
+    .map(s => {
+      const trimmed = s.text.replace(/^[ \t—\-:]+|[ \t—\-:]+$/g, '').trim()
+      return { text: trimmed, lang: s.lang }
+    })
+    .filter(s => s.text.length > 0)
 }
 
 export function sanitizeForSpeech(raw) {
@@ -132,15 +237,25 @@ export function findBestVoice(voices, targetLang) {
     if (isFemaleVoice(voice)) {
       score += 100
     } else if (isMaleVoice(voice)) {
-      score -= 80
+      score -= 150
     }
 
-    // Natural / Neural quality
-    if (/natural|neural|online/i.test(vName)) {
-      score += 25
+    // Modern Neural / Natural / Google voices sound human and interactive (Gemini / ChatGPT style)
+    if (/(?:natural|neural|online|google)/i.test(vName)) {
+      score += 200
     }
 
-    // Local service
+    // High quality preferred Japanese female voices (Hana Sensei's original voices)
+    if (vName.includes('google 日本語') || vName.includes('nanami') || vName.includes('haruka') || vName.includes('kyoko')) {
+      score += 50
+    }
+
+    // High quality preferred English female voices
+    if (vName.includes('jenny') || vName.includes('aria') || vName.includes('samantha')) {
+      score += 50
+    }
+
+    // Local service bonus for low latency
     if (voice.localService) {
       score += 10
     }
@@ -249,11 +364,15 @@ class AudioService {
     const cleanText = sanitizeForSpeech(text)
     if (!cleanText.trim()) return Promise.resolve()
 
-    // Pull real user preferences as defaults — explicit `options` still win,
-    // so call sites like speakSlow() can override deliberately.
     const prefs = useSettingsStore.getState()
-    const baseRate = options.rate ?? prefs.speechRate ?? 0.85
+    const baseRate = options.rate ?? prefs.speechRate ?? 0.88
     const effectiveRate = options.rate == null && prefs.slowMode ? Math.min(baseRate, 0.6) : baseRate
+    const baseLang = options.lang || localeToTtsLang(prefs.explanationLanguage || prefs.displayLanguage || 'en')
+
+    // Segment text into language-specific fragments so Japanese words inside English/Tamil sentences
+    // are spoken with the authentic Japanese female voice, and surrounding words are spoken in English/Tamil.
+    const segments = segmentMultilingualText(cleanText, baseLang)
+    if (segments.length === 0) return Promise.resolve()
 
     return new Promise((resolve, reject) => {
       // Invalidate any ongoing or queued utterances
@@ -264,59 +383,69 @@ class AudioService {
         this.synthesis.cancel()
       }
 
-      const utterance = new SpeechSynthesisUtterance(cleanText)
+      this.isPlaying = true
+      let currentIdx = 0
 
-      const targetLang = options.lang || detectTextLanguage(cleanText)
-      utterance.lang = targetLang
-      utterance.rate = effectiveRate
-      // Default to 1.15 pitch for Hana Sensei's cheerful, feminine voice tone
-      utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.15
-      utterance.volume = options.volume || 1.0
-
-      const bestVoice = findBestVoice(this.voices, targetLang)
-      if (bestVoice) {
-        utterance.voice = bestVoice
-      } else if (targetLang.startsWith('ja') && this.japaneseVoice) {
-        utterance.voice = this.japaneseVoice
-      }
-
-      utterance.onstart = () => {
+      const playNextSegment = () => {
         if (currentSession !== this.sessionId) return
-        this.isPlaying = true
-        options.onStart?.()
-      }
 
-      utterance.onend = () => {
-        this.activeUtterances.delete(utterance)
-        if (currentSession !== this.sessionId) return
-        this.isPlaying = false
-        this.currentUtterance = null
-        options.onEnd?.()
-        resolve()
-      }
+        if (currentIdx >= segments.length) {
+          this.isPlaying = false
+          this.currentUtterance = null
+          options.onEnd?.()
+          resolve()
+          return
+        }
 
-      utterance.onerror = (event) => {
-        this.activeUtterances.delete(utterance)
-        if (currentSession !== this.sessionId) return
-        this.isPlaying = false
-        this.currentUtterance = null
-        // Don't reject or trigger error callback on 'interrupted' errors as they are intentional cancels
-        if (event.error !== 'interrupted' && event.error !== 'canceled') {
-          const safeMessage = this.getErrorMessage(event.error)
-          options.onError?.(event, safeMessage)
-          if (options.rejectOnError) {
-            reject(event)
+        const segment = segments[currentIdx]
+        currentIdx += 1
+
+        const utterance = new SpeechSynthesisUtterance(segment.text)
+        utterance.lang = segment.lang
+        utterance.rate = effectiveRate
+        // Authentic human pitch (1.0 default)
+        utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.0
+        utterance.volume = options.volume || 1.0
+
+        const bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice
+        if (bestVoice) {
+          utterance.voice = bestVoice
+        }
+
+        utterance.onstart = () => {
+          if (currentSession !== this.sessionId) return
+          if (currentIdx === 1) {
+            options.onStart?.()
+          }
+        }
+
+        utterance.onend = () => {
+          this.activeUtterances.delete(utterance)
+          if (currentSession !== this.sessionId) return
+          playNextSegment()
+        }
+
+        utterance.onerror = (event) => {
+          this.activeUtterances.delete(utterance)
+          if (currentSession !== this.sessionId) return
+          if (event.error !== 'interrupted' && event.error !== 'canceled') {
+            const safeMessage = this.getErrorMessage(event.error)
+            options.onError?.(event, safeMessage)
+            // Attempt to continue to next segment rather than breaking the entire phrase
+            playNextSegment()
           } else {
+            this.isPlaying = false
+            this.currentUtterance = null
             resolve()
           }
-        } else {
-          resolve()
         }
+
+        this.currentUtterance = utterance
+        this.activeUtterances.add(utterance)
+        this.synthesis.speak(utterance)
       }
 
-      this.currentUtterance = utterance
-      this.activeUtterances.add(utterance)
-      this.synthesis.speak(utterance)
+      playNextSegment()
     })
   }
 
@@ -326,7 +455,7 @@ class AudioService {
   }
 
   speakNormal(text) {
-    return this.speak(text, { rate: 0.85 })
+    return this.speak(text, { rate: 0.88 })
   }
 
   speakFast(text) {
@@ -382,8 +511,8 @@ class AudioService {
 
       const utterance = new SpeechSynthesisUtterance(cleanText)
       utterance.lang = 'ja-JP'
-      utterance.rate = 0.85
-      utterance.pitch = 1.15
+      utterance.rate = 0.88
+      utterance.pitch = 1.0
 
       const bestVoice = findBestVoice(this.voices, 'ja-JP') || this.japaneseVoice
       if (bestVoice) {
@@ -455,6 +584,6 @@ class AudioService {
 export const audioService = new AudioService()
 
 // Helper function for quick speak
-export const speakJapanese = (text, rate = 0.85) => {
+export const speakJapanese = (text, rate = 0.88) => {
   return audioService.speak(text, { rate })
 }

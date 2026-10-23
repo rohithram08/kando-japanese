@@ -257,10 +257,13 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   executeAction: (action, navigate) => {
     if (!action) return;
 
-    const allowedPrefixes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/quiz', '/reading', '/settings', '/sensei'];
+    const allowedPrefixes = ['/dashboard', '/lessons', '/kanji', '/vocabulary', '/review', '/reading', '/settings', '/sensei', '/dictionary'];
 
     if (action.type === 'navigate' && action.payload?.path) {
-      const path = action.payload.path;
+      let path = action.payload.path;
+      if (path.startsWith('/quiz') || path.startsWith('/lessons')) {
+        path = '/reading';
+      }
       if (allowedPrefixes.some(prefix => path.startsWith(prefix))) {
         navigate(path);
       } else {
@@ -271,10 +274,11 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
         get().guideTo(action.targetId, action.label ? `Check out the ${action.label}!` : undefined);
       }
       if (action.path && navigate) {
-        navigate(action.path);
+        const targetPath = action.path.startsWith('/quiz') ? '/reading' : action.path;
+        navigate(targetPath);
       }
     } else if (action.type === 'suggest_lesson' && action.payload?.lessonId) {
-      navigate(`/quiz/${action.payload.lessonId}`);
+      navigate('/reading');
     } else if (action.type === 'celebrate') {
       get().triggerCelebration(action.payload?.achievement || action.reason);
     } else if (action.type === 'tour') {

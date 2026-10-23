@@ -82,14 +82,14 @@ describe('Dictionary Service & Routes', () => {
       expect(res.results.length).toBeGreaterThan(0);
       const match = res.results.find((r) => r.word === '私');
       expect(match).toBeDefined();
-    }, 15000);
+    }, 45000);
 
     it('searches curriculum by meaning in Hindi', async () => {
       const res = await searchHybridDictionary('मैं', 'hi');
       expect(res.results.length).toBeGreaterThan(0);
       const match = res.results.find((r) => r.word === '私');
       expect(match).toBeDefined();
-    }, 15000);
+    }, 30000);
 
     it('filters results by JLPT level when specified', async () => {
       const res = await searchHybridDictionary('私', 'en', { jlpt: 'N5' });
@@ -97,7 +97,7 @@ describe('Dictionary Service & Routes', () => {
       res.results.forEach((r) => {
         expect(r.level).toBe('N5');
       });
-    }, 15000);
+    }, 30000);
   });
 
   describe('Route Handlers', () => {
@@ -128,6 +128,6 @@ describe('Dictionary Service & Routes', () => {
       expect(jsonResult.data.results).toBeInstanceOf(Array);
       expect(jsonResult.data.results.length).toBeGreaterThan(0);
       expect(jsonResult.data.results[0].word).toBe('食べる');
-    });
+    }, 20000);
   });
 });

@@ -109,29 +109,9 @@ export default function App() {
           {/* ── Story Lessons (Unified Learning Center: Stories, Grammar, Vocab, Quizzes) ── */}
           <Route path="/lessons/*"           element={<Navigate to="/reading" replace />} />
           <Route path="/lessons"             element={<Navigate to="/reading" replace />} />
-          {/* Quiz center and lesson-specific quiz engine */}
-          <Route
-            path="/quiz"
-            element={
-              <LazyRoute
-                Component={QuizPage}
-                message="Loading quiz center..."
-              />
-            }
-          />
-          <Route
-            path="/quiz/:lessonId"
-            element={
-              <LazyRoute
-                Component={QuizEngine}
-                message="Preparing your quiz..."
-              />
-            }
-          />
-          <Route
-            path="/quiz/*"
-            element={<Navigate to="/quiz" replace />}
-          />
+          {/* ── Legacy Quiz Center merged into Graded Reader ── */}
+          <Route path="/quiz/*"              element={<Navigate to="/reading" replace />} />
+          <Route path="/quiz"                element={<Navigate to="/reading" replace />} />
 
           {/* ── Legacy Drama redirect to Graded Reader ── */}
           <Route path="/drama/*"             element={<Navigate to="/reading" replace />} />

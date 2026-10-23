@@ -6,6 +6,7 @@ import {
   findBestVoice,
   isFemaleVoice,
   isMaleVoice,
+  segmentMultilingualText,
 } from '../audioService';
 import { useSettingsStore } from '../../store/settingsStore';
 
@@ -274,23 +275,88 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(captured.text).not.toContain('#');
       expect(captured.text).not.toContain('🌸');
       expect(captured.text).not.toContain('*');
-      expect(captured.pitch).toBe(1.15); // Feminine default pitch
+      expect(captured.pitch).toBe(1.0); // Natural human pitch
     });
   });
 
-  describe('Female Voice Selection & Gender Balancing', () => {
+  describe('Multilingual Code-Switching (Never Skips Japanese or Preferred Language)', () => {
+    it('segments mixed English and Japanese text into language-specific fragments', () => {
+      const input = 'simple sentence using 水? For example: 水 を 飲む (みず を のむ) - To drink water.';
+      const segments = segmentMultilingualText(input, 'en-US');
+
+      expect(segments.length).toBeGreaterThanOrEqual(3);
+      // Japanese kanji & reading must have ja-JP
+      const jaSegments = segments.filter(s => s.lang === 'ja-JP');
+      expect(jaSegments.length).toBeGreaterThan(0);
+      expect(jaSegments.some(s => s.text.includes('水'))).toBe(true);
+      expect(jaSegments.some(s => s.text.includes('飲む'))).toBe(true);
+      expect(jaSegments.some(s => s.text.includes('みず'))).toBe(true);
+
+      // English explanation parts must have en-US
+      const enSegments = segments.filter(s => s.lang === 'en-US');
+      expect(enSegments.some(s => s.text.includes('simple sentence'))).toBe(true);
+      expect(enSegments.some(s => s.text.includes('To drink water'))).toBe(true);
+    });
+
+    it('segments mixed Tamil and Japanese text accurately', () => {
+      const input = 'உதாரணமாக: 水 を 飲む (みず を のむ) - தண்ணீர் குடிப்பது.';
+      const segments = segmentMultilingualText(input, 'ta-IN');
+
+      const taSegments = segments.filter(s => s.lang === 'ta-IN');
+      const jaSegments = segments.filter(s => s.lang === 'ja-JP');
+
+      expect(taSegments.some(s => s.text.includes('உதாரணமாக'))).toBe(true);
+      expect(taSegments.some(s => s.text.includes('தண்ணீர்'))).toBe(true);
+      expect(jaSegments.some(s => s.text.includes('水 を 飲む'))).toBe(true);
+    });
+
+    it('speaks code-switched segments sequentially with Japanese voice for Japanese words without skipping', async () => {
+      const testVoices = [
+        { name: 'Google US English', lang: 'en-US', localService: false },
+        { name: 'Google 日本語', lang: 'ja-JP', localService: false },
+      ] as any;
+      mockSynthesis.getVoices.mockReturnValue(testVoices);
+      audioService.loadVoices();
+
+      const spokenUtterances: any[] = [];
+      mockSynthesis.speak.mockImplementation((u: any) => {
+        spokenUtterances.push(u);
+        setTimeout(() => u.onend?.(), 0);
+      });
+
+      await audioService.speak('For example: 水 を 飲む (みず を のむ) - To drink water.', { lang: 'en-US' });
+
+      // Verifies all segments were queued and spoken
+      expect(spokenUtterances.length).toBeGreaterThanOrEqual(2);
+
+      // English segments spoken with English voice
+      const enUtterance = spokenUtterances.find(u => u.lang === 'en-US');
+      expect(enUtterance).toBeDefined();
+      expect(enUtterance.voice?.name).toBe('Google US English');
+
+      // Japanese segment spoken with authentic Japanese voice (NEVER skipped!)
+      const jaUtterance = spokenUtterances.find(u => u.lang === 'ja-JP');
+      expect(jaUtterance).toBeDefined();
+      expect(jaUtterance.voice?.name).toBe('Google 日本語');
+      expect(jaUtterance.text).toContain('水 を 飲む');
+    });
+  });
+
+  describe('Female Voice Selection & Human-Like Quality', () => {
     const testVoices = [
       { name: 'Microsoft David Desktop - English (United States)', lang: 'en-US', localService: true },
       { name: 'Microsoft Zira Desktop - English (United States)', lang: 'en-US', localService: true },
-      { name: 'Microsoft Mark Desktop - English (United States)', lang: 'en-US', localService: true },
+      { name: 'Google US English', lang: 'en-US' },
       { name: 'Microsoft Ichiro Desktop - Japanese (Japan)', lang: 'ja-JP', localService: true },
       { name: 'Microsoft Haruka Desktop - Japanese (Japan)', lang: 'ja-JP', localService: true },
+      { name: 'Google 日本語', lang: 'ja-JP' },
     ] as any;
 
     it('correctly identifies female and male voices', () => {
       expect(isFemaleVoice({ name: 'Microsoft Zira Desktop' } as any)).toBe(true);
       expect(isFemaleVoice({ name: 'Microsoft Haruka Desktop' } as any)).toBe(true);
-      expect(isFemaleVoice({ name: 'Google 日本語 Female' } as any)).toBe(true);
+      expect(isFemaleVoice({ name: 'Google 日本語' } as any)).toBe(true);
+      expect(isFemaleVoice({ name: 'Google US English' } as any)).toBe(true);
       expect(isFemaleVoice({ name: 'Kyoko' } as any)).toBe(true);
 
       expect(isMaleVoice({ name: 'Microsoft David Desktop' } as any)).toBe(true);
@@ -299,17 +365,17 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(isMaleVoice({ name: 'Otoya' } as any)).toBe(true);
     });
 
-    it('prioritizes female voice (Zira) over male voice (David) on Windows for English', () => {
+    it('prioritizes natural female Google US English over legacy SAPI Zira/David for English', () => {
       const best = findBestVoice(testVoices, 'en-US');
-      expect(best?.name).toBe('Microsoft Zira Desktop - English (United States)');
+      expect(best?.name).toBe('Google US English');
     });
 
-    it('prioritizes female voice (Haruka) over male voice (Ichiro) on Windows for Japanese', () => {
+    it('prioritizes natural female Google 日本語 over legacy Ichiro/Haruka for Japanese', () => {
       const best = findBestVoice(testVoices, 'ja-JP');
-      expect(best?.name).toBe('Microsoft Haruka Desktop - Japanese (Japan)');
+      expect(best?.name).toBe('Google 日本語');
     });
 
-    it('picks female voice during audioService.speak on multi-voice systems', async () => {
+    it('picks top female voice during audioService.speak on multi-voice systems', async () => {
       mockSynthesis.getVoices.mockReturnValue(testVoices);
       audioService.loadVoices();
 
@@ -319,13 +385,13 @@ describe('audioService — Web Speech API wrapper', () => {
         setTimeout(() => u.onend?.(), 0);
       });
 
-      // English explanation
-      await audioService.speak('The particle は marks topic.');
-      expect(captured.voice?.name).toBe('Microsoft Zira Desktop - English (United States)');
+      // English phrase
+      await audioService.speak('Welcome to Kando Japanese!');
+      expect(captured.voice?.name).toBe('Google US English');
 
       // Japanese phrase
       await audioService.speak('こんにちは、元気ですか？');
-      expect(captured.voice?.name).toBe('Microsoft Haruka Desktop - Japanese (Japan)');
+      expect(captured.voice?.name).toBe('Google 日本語');
     });
   });
 });

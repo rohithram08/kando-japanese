@@ -22,7 +22,7 @@ const QUICK_ACTIONS = [
   { label: "Today's Lesson", message: "What is my lesson for today?" },
   { label: "Review SRS", message: "I want to review my SRS cards." },
   { label: "Practice Kanji", message: "Let's practice some Kanji." },
-  { label: "Take Quiz", message: "I'm ready to take a quiz." },
+  { label: "Graded Reader", message: "I want to read stories and test comprehension in Graded Reader." },
   { label: "Listening", message: "I want to practice listening." },
 ];
 
