@@ -11,7 +11,7 @@
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
   Swords, RefreshCw, MessageCircle, Bot, Mic,
-  Trophy, BarChart2, Settings, Sparkles,
+  Trophy, BarChart2, Settings, Sparkles, BookA,
 } from 'lucide-react'
 
 // ── Tint palette ─────────────────────────────────────────────
@@ -200,6 +200,16 @@ export const SECTIONS = [
     description: 'Build your word bank with flashcards',
     statKey: 'vocabLearned',
     statLabel: 'learned',
+  },
+  {
+    id: 'dictionary',
+    label: 'Dictionary',
+    shortLabel: 'Dictionary',
+    path: '/dictionary',
+    icon: BookA,
+    tint: 'teal',
+    group: 'learn',
+    description: 'Smart bidirectional Japanese dictionary with multi-language meanings & examples',
   },
   {
     id: 'review',

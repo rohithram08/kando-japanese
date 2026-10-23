@@ -10,6 +10,7 @@
     "grammar": "व्याकरण",
     "kanji": "कांजी",
     "vocabulary": "शब्दावली",
+    "dictionary": "शब्दकोश",
     "quiz": "प्रश्नोत्तरी केंद्र",
     "srs": "स्मृति समीक्षा (SRS)",
     "sensei": "हाना-सेन्सेई 3D",
@@ -123,7 +124,8 @@
     "no_quizzes": "यहाँ स्कोर देखने के लिए कोई कहानी और उसका क्विज़ पूरा करें।",
     "recently_completed": "हाल ही में पूरी",
     "wave_xp_to_next": "स्तर {next} तक {xp} Wave XP",
-    "level_label": "स्तर {level}"
+    "level_label": "स्तर {level}",
+    "study_today_to_keep_streak": "अपनी {count}-दिनों की लकीर बनाए रखने के लिए आज कोई कहानी या प्रश्नोत्तरी पढ़ें!"
   },
   "quiz": {
     "title": "प्रश्नोत्तरी केंद्र",
@@ -489,5 +491,15 @@
     "not_found": "User not found",
     "not_found_desc": "This user profile does not exist or has been removed.",
     "not_found_title": "User Not Found"
+  },
+  "dictionary": {
+    "title": "जापानी शब्दकोश",
+    "subtitle": "जापानी शब्द (कांजी, काना, रोमाजी) या अपनी भाषा के अर्थ से खोजें।",
+    "placeholder": "खाना, पानी, 食べる, taberu…",
+    "search_btn": "खोजें",
+    "eyebrow": "स्मार्ट बहुभाषी शब्दकोश",
+    "popular_suggestions": "लोकप्रिय शब्द",
+    "recent_searches": "हाल की खोजें",
+    "error": "शब्दकोश परिणाम प्राप्त करने में असमर्थ। कृपया अपना इंटरनेट कनेक्शन जांचें।"
   }
 }

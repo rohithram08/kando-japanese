@@ -27,7 +27,8 @@
     "profile_menu": "프로필 메뉴",
     "my_profile": "내 프로필",
     "logout": "로그아웃",
-    "slime_mail": "Your Slime Mail"
+    "slime_mail": "Your Slime Mail",
+    "dictionary": "사전"
   },
   "common": {
     "language": "표시 및 번역 언어",
@@ -123,7 +124,8 @@
     "no_quizzes": "Finish a story and its quiz to see your scores here.",
     "recently_completed": "Recently completed",
     "wave_xp_to_next": "{xp} Wave XP to Level {next}",
-    "level_label": "Level {level}"
+    "level_label": "Level {level}",
+    "study_today_to_keep_streak": "오늘 이야기나 퀴즈를 학습하여 {count}일 연속 기록을 유지하세요!"
   },
   "quiz": {
     "title": "퀴즈 센터",
@@ -489,5 +491,15 @@
     "not_found": "User not found",
     "not_found_desc": "This user profile does not exist or has been removed.",
     "not_found_title": "User Not Found"
+  },
+  "dictionary": {
+    "title": "Japanese Dictionary",
+    "subtitle": "Search bidirectionally using Japanese (Kanji, Kana, Romaji) or meanings in your language.",
+    "placeholder": "Try 食べる, taberu, water, eat…",
+    "search_btn": "Search",
+    "eyebrow": "Smart Multilingual Lexicon",
+    "popular_suggestions": "Popular Words to Explore",
+    "recent_searches": "Recent Searches",
+    "error": "Unable to fetch dictionary results. Please check your connection."
   }
 }

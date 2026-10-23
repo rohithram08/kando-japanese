@@ -43,6 +43,7 @@ app.get('/api/health', (_req, res) => {
 // ─── Routes ──────────────────────────────────────────────────────────────────
 import { uploadRouter } from './routes/upload.js';
 import { readingRouter } from './routes/reading.js';
+import { dictionaryRouter } from './routes/dictionary.js';
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
@@ -54,6 +55,7 @@ app.use('/api/ai', aiRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/sensei', senseiRouter);
 app.use('/api/reading', readingRouter);
+app.use('/api/dictionary', dictionaryRouter);
 
 // ─── Error Handler ───────────────────────────────────────────────────────────
 app.use(errorHandler);

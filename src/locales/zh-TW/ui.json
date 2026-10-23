@@ -27,7 +27,8 @@
     "profile_menu": "個人檔案選單",
     "my_profile": "我的個人檔案",
     "logout": "登出",
-    "slime_mail": "Your Slime Mail"
+    "slime_mail": "Your Slime Mail",
+    "dictionary": "辭典"
   },
   "common": {
     "language": "顯示與翻譯語言",
@@ -123,7 +124,8 @@
     "no_quizzes": "Finish a story and its quiz to see your scores here.",
     "recently_completed": "Recently completed",
     "wave_xp_to_next": "{xp} Wave XP to Level {next}",
-    "level_label": "Level {level}"
+    "level_label": "Level {level}",
+    "study_today_to_keep_streak": "今天學習一篇故事或測驗，保持你的連續 {count} 天打卡紀錄！"
   },
   "quiz": {
     "title": "測驗中心",
@@ -489,5 +491,15 @@
     "not_found": "User not found",
     "not_found_desc": "This user profile does not exist or has been removed.",
     "not_found_title": "User Not Found"
+  },
+  "dictionary": {
+    "title": "Japanese Dictionary",
+    "subtitle": "Search bidirectionally using Japanese (Kanji, Kana, Romaji) or meanings in your language.",
+    "placeholder": "Try 食べる, taberu, water, eat…",
+    "search_btn": "Search",
+    "eyebrow": "Smart Multilingual Lexicon",
+    "popular_suggestions": "Popular Words to Explore",
+    "recent_searches": "Recent Searches",
+    "error": "Unable to fetch dictionary results. Please check your connection."
   }
 }

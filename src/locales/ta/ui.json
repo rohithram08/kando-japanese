@@ -10,6 +10,7 @@
     "grammar": "இலக்கணம்",
     "kanji": "கான்ஜி",
     "vocabulary": "சொற்களஞ்சியம்",
+    "dictionary": "அகராதி",
     "quiz": "வினாடி வினா மையம்",
     "srs": "நினைவாற்றல் பயிற்சி",
     "sensei": "ஹனா சென்செய் 3D",
@@ -123,7 +124,8 @@
     "no_quizzes": "உங்கள் மதிப்பெண்களைக் காண ஒரு கதையையும் அதன் வினாடி வினாவையும் முடிக்கவும்.",
     "recently_completed": "சமீபத்தில் முடித்தவை",
     "wave_xp_to_next": "நிலை {next} க்கு {xp} Wave XP",
-    "level_label": "நிலை {level}"
+    "level_label": "நிலை {level}",
+    "study_today_to_keep_streak": "உங்கள் {count} நாள் ஸ்ட்ரீக்கைத் தொடர இன்று ஒரு கதை அல்லது வினாடி வினாவைப் படியுங்கள்!"
   },
   "quiz": {
     "title": "வினாடி வினா மையம்",
@@ -489,5 +491,15 @@
     "not_found": "User not found",
     "not_found_desc": "This user profile does not exist or has been removed.",
     "not_found_title": "User Not Found"
+  },
+  "dictionary": {
+    "title": "ஜப்பானிய அகராதி",
+    "subtitle": "ஜப்பானிய சொல் (கான்ஜி, கானா, ரோமாஜி) அல்லது உங்கள் மொழியின் பொருள் கொண்டு தேடுங்கள்.",
+    "placeholder": "சாப்பிடு, தண்ணீர், 食べる, taberu…",
+    "search_btn": "தேடு",
+    "eyebrow": "பன்மொழி ஸ்மார்ட் அகராதி",
+    "popular_suggestions": "பிரபலமான சொற்கள்",
+    "recent_searches": "சமீபத்திய தேடல்கள்",
+    "error": "அகராதி முடிவுகளைப் பெற முடியவில்லை. உங்கள் இணைய இணைப்பைச் சரிபார்க்கவும்."
   }
 }

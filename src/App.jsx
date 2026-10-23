@@ -57,6 +57,7 @@ const SpeechPage        = lazyWithRetry(() => import('./pages/SpeechPage'))
 const SettingsPage      = lazyWithRetry(() => import('./pages/SettingsPage'))
 const AchievementsPage  = lazyWithRetry(() => import('./pages/AchievementsPage'))
 const KanaPage          = lazyWithRetry(() => import('./pages/KanaPage'))
+const DictionaryPage    = lazyWithRetry(() => import('./pages/DictionaryPage'))
 const LandingPage       = lazyWithRetry(() => import('./pages/LandingPage'))
 const ConversationPracticePage = lazyWithRetry(() => import('./pages/ConversationPracticePage'))
 
@@ -99,6 +100,7 @@ export default function App() {
         <Route path="/grammar"             element={<LazyRoute Component={GrammarPage} message="Loading grammar..." />} />
         <Route path="/kanji"               element={<LazyRoute Component={KanjiPage} message="Loading kanji..." />} />
         <Route path="/kanji/:kanjiId"      element={<LazyRoute Component={KanjiStudy} message="Loading kanji details..." />} />
+        <Route path="/dictionary"          element={<LazyRoute Component={DictionaryPage} message="Loading Japanese dictionary..." />} />
 
         {/* ── Protected routes requiring Authentication ── */}
         <Route element={<AuthGuard />}>
