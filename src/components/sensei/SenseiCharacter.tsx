@@ -2,7 +2,7 @@ import React, { useState, Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { RotateCcw, Send, Mic, MicOff } from 'lucide-react';
+import { RotateCcw, Send, Mic, MicOff, Keyboard } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
 import { SenseiBackground } from './SenseiBackground';
@@ -12,6 +12,8 @@ import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter
 import SenseiMarkdown from './SenseiMarkdown';
 import { KandoSlime3D } from './KandoSlime3D';
 import { SlimeMood } from '../mascot/KandoSlime';
+import VirtualLanguageKeyboard from './VirtualLanguageKeyboard';
+import { useSettingsStore } from '../../store/settingsStore';
 
 export interface SenseiCharacterProps {
   speechState?: SenseiAnimationState;
@@ -200,6 +202,8 @@ export default function SenseiCharacter({
   // WebGL support state
   const [webGLSupported, setWebGLSupported] = useState<boolean>(() => isWebGLAvailable());
   const [canvasError, setCanvasError] = useState<boolean>(false);
+  const [showKeyboard, setShowKeyboard] = useState<boolean>(false);
+  const currentExplLang = useSettingsStore((s) => s.explanationLanguage || 'ta');
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -209,29 +213,29 @@ export default function SenseiCharacter({
   }, []);
 
   // Character 3D stage position:
-  // Position Hana on the LEFT of the classroom (-1.25m),
-  // and position 3D Kando Slime on the RIGHT of the classroom (+1.25m)!
-  // Both characters sit on their designated dais with clear center space between them.
+  // Position Hana further to the LEFT (-1.70m),
+  // and position 3D Kando Slime further to the RIGHT (+1.70m)!
+  // Total distance between characters is 3.40m, creating a generous 1.40m central air gap for dialogue!
   const isLeft = stageSide === 'left' && !isMobileScreen;
-  const characterPos: [number, number, number] = isLeft ? [-1.25, 0, 0] : [0, 0, 0];
-  const slimePos: [number, number, number] = [1.25, 0, 0];
-  const daisPos: [number, number, number] = isLeft ? [-1.25, -0.01, 0] : [0, -0.01, 0];
-  const slimeDaisPos: [number, number, number] = [1.25, -0.01, 0];
+  const characterPos: [number, number, number] = isLeft ? [-1.70, 0, 0] : [0, 0, 0];
+  const slimePos: [number, number, number] = [1.70, 0, 0];
+  const daisPos: [number, number, number] = isLeft ? [-1.70, -0.01, 0] : [0, -0.01, 0];
+  const slimeDaisPos: [number, number, number] = [1.70, -0.01, 0];
 
   // Camera framing:
-  // - Full stage: captures both Hana on left and 3D Slime on right with central clear space for speech
+  // - Full stage: captures both Hana on far left and 3D Slime on far right with zero-overlap center
   // - Portrait: waist to cap focus for intimate dialogue
   // - Compact: upper body for minimized floating widget
   const isPortrait = mode === 'portrait';
   const isFull = mode === 'full';
 
-  let targetPos: [number, number, number] = isLeft ? [0, 0.75, 0] : [0, 0.74, 0];
+  let targetPos: [number, number, number] = isLeft ? [0, 0.76, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isLeft
-    ? [0, 0.90, 3.2]
+    ? [0, 0.92, 3.45]
     : isMobileScreen
     ? [0, 0.76, 2.7]
     : [0, 0.76, 2.3];
-  let cameraFov = isLeft ? 45 : isMobileScreen ? 46 : 41;
+  let cameraFov = isLeft ? 46 : isMobileScreen ? 46 : 41;
 
   if (isPortrait) {
     targetPos = isLeft ? [-0.5, 1.10, 0] : [0, 1.10, 0];
@@ -300,11 +304,11 @@ export default function SenseiCharacter({
           {/* Rim light (gold) */}
           <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
           {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
-          <pointLight position={[-1.25, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
+          <pointLight position={[-1.70, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
           {/* Dedicated Ambient Keylight for 3D Slime on Right */}
           {isLeft && showSlime && (
             <pointLight
-              position={[1.25, 0.7, 0.7]}
+              position={[1.70, 0.7, 0.7]}
               intensity={2.4}
               distance={2.5}
               color={slimePersona === 'mrs' ? '#f472b6' : '#38bdf8'}
@@ -340,11 +344,11 @@ export default function SenseiCharacter({
               {/* 1. HANA-SENSEI 3D SPEECH BUBBLE (FLOATING IN 3D SPACE ABOVE HER HEAD WITH COMIC TAIL) */}
               <Billboard
                 follow={true}
-                position={isMobileScreen ? [0, 1.45, 0] : [-0.50, 1.62, 0]}
+                position={isMobileScreen ? [0, 1.45, 0] : [-0.70, 1.55, 0]}
               >
                 <Html
                   center
-                  distanceFactor={isMobileScreen ? 3.0 : 3.4}
+                  distanceFactor={isMobileScreen ? 3.0 : 3.3}
                   zIndexRange={[100, 0]}
                   style={{ pointerEvents: 'auto' }}
                 >
@@ -352,7 +356,7 @@ export default function SenseiCharacter({
                     onPointerDown={(e) => e.stopPropagation()}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className="w-[275px] sm:w-[305px] md:w-[325px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
+                    className="w-[250px] sm:w-[275px] md:w-[295px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-pink-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-pink-500/25 relative select-text transition-all duration-300"
                   >
                     {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-LEFT to Hana's Head */}
                     <div className="absolute -bottom-2.5 left-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-l border-pink-400/40 rotate-45 pointer-events-none" />
@@ -360,8 +364,8 @@ export default function SenseiCharacter({
                     <div className="hidden sm:block absolute -bottom-7 left-3 w-1.5 h-1.5 rounded-full bg-pink-400/60 pointer-events-none" />
 
                     {/* Header */}
-                    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-700/60">
+                      <div className="flex items-center gap-1.5">
                         <span className="w-5 h-5 rounded-full bg-pink-500/20 border border-pink-400/40 flex items-center justify-center text-xs">
                           🌸
                         </span>
@@ -388,14 +392,14 @@ export default function SenseiCharacter({
 
                     {/* Content */}
                     {isTyping ? (
-                      <div className="flex items-center gap-2 py-3 text-slate-300">
+                      <div className="flex items-center gap-2 py-2.5 text-slate-300">
                         <span className="text-xs text-slate-400">Hana-sensei is explaining</span>
                         <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                         <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                         <span className="w-2 h-2 bg-pink-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                     ) : (
-                      <div className="max-h-[130px] sm:max-h-[150px] overflow-y-auto pr-1 text-xs sm:text-[13px] leading-relaxed scrollbar-thin text-slate-100">
+                      <div className="max-h-[110px] sm:max-h-[130px] overflow-y-auto pr-1 text-xs sm:text-[12.5px] leading-relaxed scrollbar-thin text-slate-100">
                         <SenseiMarkdown content={latestAssistantMessage?.content || "Konnichiwa! I am Hana-sensei. Ask me anything about Japanese grammar, vocabulary, or JLPT!"} />
                       </div>
                     )}
@@ -406,11 +410,11 @@ export default function SenseiCharacter({
               {/* 2. SLIME 3D CHAT & TYPING BUBBLE (FLOATING IN 3D SPACE ABOVE SLIME WITH COMIC TAIL) */}
               <Billboard
                 follow={true}
-                position={isMobileScreen ? [0, 0.55, 0] : [0.55, 0.88, 0]}
+                position={isMobileScreen ? [0, 0.55, 0] : [0.70, 0.76, 0]}
               >
                 <Html
                   center
-                  distanceFactor={isMobileScreen ? 3.0 : 3.4}
+                  distanceFactor={isMobileScreen ? 3.0 : 3.3}
                   zIndexRange={[100, 0]}
                   style={{ pointerEvents: 'auto' }}
                 >
@@ -418,7 +422,7 @@ export default function SenseiCharacter({
                     onPointerDown={(e) => e.stopPropagation()}
                     onMouseDown={(e) => e.stopPropagation()}
                     onTouchStart={(e) => e.stopPropagation()}
-                    className="w-[275px] sm:w-[305px] md:w-[325px] max-w-[85vw] p-3 sm:p-3.5 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
+                    className="w-[250px] sm:w-[275px] md:w-[295px] max-w-[85vw] p-2.5 sm:p-3 rounded-3xl bg-slate-900/95 backdrop-blur-2xl border border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.7)] text-slate-100 ring-1 ring-sky-500/25 relative select-text transition-all duration-300"
                   >
                     {/* Comic Thought Bubble Tail & Trailing Circles pointing DOWN-RIGHT to Slime */}
                     <div className="absolute -bottom-2.5 right-7 w-3.5 h-3.5 bg-slate-900/95 border-b border-r border-sky-400/40 -rotate-45 pointer-events-none" />
@@ -426,7 +430,7 @@ export default function SenseiCharacter({
                     <div className="hidden sm:block absolute -bottom-7 right-3 w-1.5 h-1.5 rounded-full bg-sky-400/60 pointer-events-none" />
 
                     {/* Bubble Header - Gender displayed automatically from login, NO toggle */}
-                    <div className="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-700/60 text-xs">
+                    <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-700/60 text-xs">
                       <div className="flex items-center gap-1.5 font-bold">
                         <span className={slimePersona === 'mrs' ? 'text-pink-400' : 'text-sky-400'}>
                           {slimePersona === 'mrs' ? '🌸 Mrs. Slime' : '🧢 Mr. Slime'}
@@ -440,20 +444,20 @@ export default function SenseiCharacter({
 
                     {/* Recent message quote */}
                     {latestUserMessage && (
-                      <div className="mb-2 p-1.5 sm:p-2 rounded-xl bg-sky-950/40 border border-sky-500/20 text-xs text-slate-200 font-medium">
-                        <p className="line-clamp-2 italic">“{latestUserMessage.content}”</p>
+                      <div className="mb-1.5 p-1.5 rounded-xl bg-sky-950/40 border border-sky-500/20 text-xs text-slate-200 font-medium">
+                        <p className="line-clamp-2 italic text-[11px]">“{latestUserMessage.content}”</p>
                       </div>
                     )}
 
                     {/* Quick Suggestion Chips (Compact) */}
-                    {!isTyping && quickPrompts.length > 0 && (
-                      <div className="mb-2 flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 scrollbar-hide">
+                    {!isTyping && quickPrompts.length > 0 && !showKeyboard && (
+                      <div className="mb-1.5 flex items-center gap-1 overflow-x-auto max-w-full pb-0.5 scrollbar-hide">
                         {quickPrompts.slice(0, 2).map((promptText) => (
                           <button
                             key={promptText}
                             type="button"
                             onClick={() => onSend?.(promptText)}
-                            className="whitespace-nowrap px-2 py-0.5 bg-slate-800/70 hover:bg-sky-950/80 border border-slate-700 hover:border-sky-500/40 text-[10.5px] font-medium rounded-full text-slate-300 transition-all flex-shrink-0 active:scale-95"
+                            className="whitespace-nowrap px-2 py-0.5 bg-slate-800/70 hover:bg-sky-950/80 border border-slate-700 hover:border-sky-500/40 text-[10px] font-medium rounded-full text-slate-300 transition-all flex-shrink-0 active:scale-95"
                           >
                             {promptText}
                           </button>
@@ -464,7 +468,7 @@ export default function SenseiCharacter({
                     {/* Embedded Typing Form INSIDE the 3D Slime Bubble */}
                     <form
                       onSubmit={onSubmit}
-                      className="w-full p-1 rounded-full bg-slate-950/70 border border-slate-700/80 focus-within:border-sky-400/70 focus-within:ring-2 focus-within:ring-sky-500/20 flex items-center gap-1 transition-all"
+                      className="w-full p-0.5 rounded-full bg-slate-950/70 border border-slate-700/80 focus-within:border-sky-400/70 focus-within:ring-2 focus-within:ring-sky-500/20 flex items-center gap-0.5 transition-all"
                     >
                       <input
                         type="text"
@@ -473,13 +477,27 @@ export default function SenseiCharacter({
                         placeholder={
                           isListening
                             ? "Listening to your voice... 🎤"
-                            : `Type to Hana-sensei as ${slimePersona === 'mrs' ? 'Mrs. Slime' : 'Mr. Slime'}...`
+                            : `Type to Sensei...`
                         }
                         disabled={isTyping}
-                        className={`flex-1 bg-transparent px-3 py-1.5 text-xs sm:text-sm focus:outline-none text-white placeholder:text-slate-500 disabled:opacity-50 ${
+                        className={`flex-1 bg-transparent px-2.5 py-1 text-xs sm:text-[13px] focus:outline-none text-white placeholder:text-slate-500 disabled:opacity-50 min-w-0 ${
                           isListening ? 'text-pink-400 font-medium' : ''
                         }`}
                       />
+
+                      {/* Virtual Language Keyboard Toggle Button (⌨️) */}
+                      <button
+                        type="button"
+                        onClick={() => setShowKeyboard(!showKeyboard)}
+                        className={`p-1.5 rounded-full transition-all active:scale-95 ${
+                          showKeyboard
+                            ? 'bg-sky-500 text-white shadow-xs'
+                            : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                        }`}
+                        title={showKeyboard ? "Hide on-screen keyboard" : "Open language keyboard (Tamil/Hindi/Japanese/Spanish)"}
+                      >
+                        <Keyboard className="w-3.5 h-3.5" />
+                      </button>
 
                       {/* Mic button */}
                       {isSttSupported && onToggleMic && (
@@ -507,6 +525,17 @@ export default function SenseiCharacter({
                         <Send className="w-3.5 h-3.5" />
                       </button>
                     </form>
+
+                    {/* Integrated On-Screen Virtual Language Keyboard Drawer */}
+                    {showKeyboard && (
+                      <VirtualLanguageKeyboard
+                        initialLanguage={currentExplLang}
+                        onInsertChar={(char) => onInputChange?.((input || '') + char)}
+                        onBackspace={() => onInputChange?.((input || '').slice(0, -1))}
+                        onClear={() => onInputChange?.('')}
+                        onClose={() => setShowKeyboard(false)}
+                      />
+                    )}
                   </div>
                 </Html>
               </Billboard>
@@ -515,12 +544,12 @@ export default function SenseiCharacter({
 
           {/* OrbitControls: 360-degree diorama orbiting around both Hana and Slime */}
           <OrbitControls
-            target={isLeft ? [0, 0.78, 0] : targetPos}
+            target={isLeft ? [0, 0.76, 0] : targetPos}
             enableRotate={true}
             enablePan={false}
             enableZoom={true}
-            minDistance={1.8}
-            maxDistance={4.8}
+            minDistance={2.0}
+            maxDistance={5.2}
             minPolarAngle={Math.PI / 4.2}
             maxPolarAngle={Math.PI / 1.82}
             autoRotate={false}

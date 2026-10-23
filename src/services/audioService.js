@@ -391,6 +391,16 @@ export function findBestVoice(voices, targetLang) {
       score += 50
     }
 
+    // High quality preferred Hindi female voices
+    if (vName.includes('swara') || vName.includes('kalpana') || vName.includes('google हिन्दी') || vName.includes('google hindi') || vName.includes('heera')) {
+      score += 60
+    }
+
+    // High quality preferred Tamil female voices
+    if (vName.includes('pallavi') || vName.includes('iniya') || vName.includes('google தமிழ்') || vName.includes('google tamil')) {
+      score += 60
+    }
+
     // High quality preferred English female voices
     if (vName.includes('jenny') || vName.includes('aria') || vName.includes('samantha')) {
       score += 50

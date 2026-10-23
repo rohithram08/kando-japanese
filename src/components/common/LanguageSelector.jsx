@@ -13,6 +13,8 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
     (s) => s.displayLanguage || s.nativeLanguage || 'en'
   )
   const setDisplayLanguage = useSettingsStore((s) => s.setDisplayLanguage || s.setNativeLanguage)
+  const setExplanationLanguage = useSettingsStore((s) => s.setExplanationLanguage)
+  const updateSettings = useSettingsStore((s) => s.updateSettings)
   const [isOpen, setIsOpen] = useState(false)
   const [search, setSearch] = useState('')
   const dropdownRef = useRef(null)
@@ -49,7 +51,16 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
   }, [isOpen])
 
   const handleSelect = (lang) => {
-    setDisplayLanguage(lang.code)
+    if (updateSettings) {
+      updateSettings({
+        displayLanguage: lang.code,
+        explanationLanguage: lang.code,
+        nativeLanguage: lang.code,
+      })
+    } else {
+      setDisplayLanguage?.(lang.code)
+      setExplanationLanguage?.(lang.code)
+    }
     onLanguageChange?.(lang.code)
     setIsOpen(false)
     setSearch('')

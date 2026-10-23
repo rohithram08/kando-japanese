@@ -22,7 +22,7 @@ import {
 import SenseiCharacter from '../components/sensei/SenseiCharacter';
 import SenseiMarkdown from '../components/sensei/SenseiMarkdown';
 import KandoSlime, { SlimeMood } from '../components/mascot/KandoSlime';
-import { audioService } from '../services/audioService';
+import { audioService, localeToTtsLang } from '../services/audioService';
 import { useSenseiStore } from '../store/senseiStore';
 import { useAuthStore } from '../store/authStore';
 import { useProgressStore } from '../store/progressStore';
@@ -72,7 +72,7 @@ export default function SenseiPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const explanationLang = useSettingsStore(s => s.explanationLanguage || 'en');
-  const speechLang = explanationLang === 'ta' ? 'ta-IN' : explanationLang === 'hi' ? 'hi-IN' : 'en-US';
+  const speechLang = localeToTtsLang(explanationLang);
   const { isListening, transcript, isSupported: isSttSupported, startListening, stopListening } = useSpeechToText(speechLang);
 
   // Sync Speech-to-Text transcript into input field

@@ -10,7 +10,7 @@ export interface SenseiBackgroundProps {
 export function SenseiBackground({
   daisPosition = [0, -0.01, 0],
   showSlimeDais = false,
-  slimeDaisPosition = [0.95, -0.01, 0],
+  slimeDaisPosition = [1.70, -0.01, 0],
 }: SenseiBackgroundProps) {
   const bgSphereRef = useRef<THREE.Mesh>(null);
 
