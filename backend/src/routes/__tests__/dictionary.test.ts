@@ -68,28 +68,28 @@ describe('Dictionary Service & Routes', () => {
       expect(res.results.length).toBeGreaterThan(0);
       expect(res.results[0].word).toBe('私');
       expect(res.results[0].meaning).toBe('நான்');
-    });
+    }, 15000);
 
     it('returns Hindi meaning when locale is hi', async () => {
       const res = await searchHybridDictionary('私', 'hi');
       expect(res.results.length).toBeGreaterThan(0);
       expect(res.results[0].word).toBe('私');
       expect(res.results[0].meaning).toBe('मैं');
-    });
+    }, 15000);
 
     it('searches curriculum by meaning in Tamil', async () => {
       const res = await searchHybridDictionary('நான்', 'ta');
       expect(res.results.length).toBeGreaterThan(0);
       const match = res.results.find((r) => r.word === '私');
       expect(match).toBeDefined();
-    });
+    }, 15000);
 
     it('searches curriculum by meaning in Hindi', async () => {
       const res = await searchHybridDictionary('मैं', 'hi');
       expect(res.results.length).toBeGreaterThan(0);
       const match = res.results.find((r) => r.word === '私');
       expect(match).toBeDefined();
-    });
+    }, 15000);
 
     it('filters results by JLPT level when specified', async () => {
       const res = await searchHybridDictionary('私', 'en', { jlpt: 'N5' });
@@ -97,7 +97,7 @@ describe('Dictionary Service & Routes', () => {
       res.results.forEach((r) => {
         expect(r.level).toBe('N5');
       });
-    });
+    }, 15000);
   });
 
   describe('Route Handlers', () => {

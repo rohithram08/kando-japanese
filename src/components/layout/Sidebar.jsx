@@ -127,16 +127,52 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
         )}
       </div>
 
-      {/* ── Sidebar Body Container (no vertical divider against the content area) ── */}
+      {/* ── Sidebar Body Container ── */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* ── Concise Merged User & Wave XP Card (Zero wasted vertical space) ── */}
-        {!effectiveCollapsed && (
-          <div className="mx-3 my-2.5">
-            <div className={`p-2.5 rounded-xl border relative overflow-hidden transition-all ${
-              isDark
-                ? 'bg-slate-900/60 border-cyan-500/25 shadow-xs'
-                : 'bg-white border-cyan-400/30 shadow-xs'
-            }`}>
+        {/* ── Nav sections ── */}
+        <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-4">
+          <div className="space-y-0.5">
+            <NavItem section={SECTIONS[0]} collapsed={effectiveCollapsed} />
+          </div>
+          {GROUPS.map((group) => {
+            const items = sectionsByGroup(group.key)
+            if (!items.length) return null
+            return (
+              <div key={group.key}>
+                <AnimatePresence>
+                  {!effectiveCollapsed && (
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="text-xs font-semibold uppercase tracking-wider px-3 mb-1 text-muted-foreground/70"
+                    >
+                      {t('nav.' + group.key, displayLanguage, group.label)}
+                    </motion.p>
+                  )}
+                </AnimatePresence>
+                <div className="space-y-0.5">
+                  {items.map((section) => (
+                    <NavItem key={section.id} section={section} collapsed={effectiveCollapsed} />
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </nav>
+
+        {/* ── Replaced Bottom User & Wave XP Card ── */}
+        {!effectiveCollapsed ? (
+          <div className="p-3 border-t border-border/40 bg-surface/40">
+            <NavLink
+              to="/profile"
+              className={`block p-2.5 rounded-xl border relative overflow-hidden transition-all hover:scale-[1.01] active:scale-[0.99] group ${
+                isDark
+                  ? 'bg-slate-900/60 border-cyan-500/25 hover:border-cyan-400/50 shadow-xs'
+                  : 'bg-white border-cyan-400/30 hover:border-cyan-400/60 shadow-xs'
+              }`}
+              title="View your profile & achievements"
+            >
               {/* Subtle ambient cyan liquid shimmer */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-25">
                 <motion.div
@@ -153,7 +189,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                     {jlptLevel}
                   </span>
                   <div className="min-w-0">
-                    <p className={`text-xs font-bold truncate leading-tight ${isDark ? levelMeta.darkText : levelMeta.lightText}`}>
+                    <p className={`text-xs font-bold truncate leading-tight group-hover:text-primary transition-colors ${isDark ? levelMeta.darkText : levelMeta.lightText}`}>
                       {profile?.display_name || profile?.username || 'Student'}
                     </p>
                     <p className="text-[10px] text-muted-foreground font-medium leading-none">
@@ -172,7 +208,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                 )}
               </div>
 
-              {/* Row 2: Animated Wave Icon + XP + Progress Bar (Single concise container) */}
+              {/* Row 2: Animated Wave Icon + XP + Progress Bar */}
               <div className="relative pt-1.5 border-t border-border/40">
                 <div className="flex items-center justify-between gap-1 text-[11px] mb-1">
                   <div className="flex items-center gap-1.5 min-w-0">
@@ -205,66 +241,17 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                   </motion.div>
                 </div>
               </div>
-            </div>
+            </NavLink>
           </div>
-        )}
-
-        {/* ── Nav sections ── */}
-        <nav className="flex-1 overflow-y-auto px-3 py-2 space-y-4">
-          <div className="space-y-0.5">
-            <NavItem section={SECTIONS[0]} collapsed={effectiveCollapsed} />
-          </div>
-          {GROUPS.map((group) => {
-            const items = sectionsByGroup(group.key)
-            if (!items.length) return null
-            return (
-              <div key={group.key}>
-                <AnimatePresence>
-                  {!effectiveCollapsed && (
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="text-xs font-semibold uppercase tracking-wider px-3 mb-1 text-muted-foreground/70"
-                    >
-                      {t('nav.' + group.key, displayLanguage, group.label)}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-                <div className="space-y-0.5">
-                  {items.map((section) => (
-                    <NavItem key={section.id} section={section} collapsed={effectiveCollapsed} />
-                  ))}
-                </div>
-              </div>
-            )
-          })}
-        </nav>
-
-        {/* ── Bottom Wave XP Progress Bar ── */}
-        {!effectiveCollapsed && (
-          <div className="px-4 py-3 border-t border-border/40">
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-xs text-muted-foreground">
-                {t('common.level', displayLanguage, 'Level')} {userLevel}
-              </span>
-              <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400">
-                {totalXP.toLocaleString()} Wave XP
-              </span>
-            </div>
-            <div className="h-2 rounded-full bg-cyan-950/20 dark:bg-cyan-900/40 border border-cyan-500/20 overflow-hidden" title={`Progress to Lv.${userLevel + 1}: ${levelProgress.percent}%`}>
-              <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 relative"
-                animate={{ width: `${Math.max(5, levelProgress.percent)}%` }}
-                transition={{ duration: 0.6 }}
-              >
-                <motion.div
-                  animate={{ x: ['-100%', '200%'] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent w-10"
-                />
-              </motion.div>
-            </div>
+        ) : (
+          <div className="p-2 border-t border-border/40 flex justify-center">
+            <NavLink
+              to="/profile"
+              className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs hover:scale-105 transition-transform`}
+              title={`${profile?.display_name || 'Student'} · Lv.${userLevel} (${totalXP} Wave XP)`}
+            >
+              {jlptLevel}
+            </NavLink>
           </div>
         )}
       </div>
