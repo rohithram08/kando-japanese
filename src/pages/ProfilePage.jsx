@@ -168,16 +168,21 @@ function WeeklyActivityChart({ locale = 'en' }) {
 }
 
 // ── Streak Calendar ───────────────────────────────────────
-function StreakCalendar({ streakDays }) {
+function StreakCalendar({ streakDays, hasStudiedToday = false }) {
   const count = 28
   const days = useMemo(() => {
     const today = new Date()
+    const pastStreakAllowance = streakDays - (hasStudiedToday ? 1 : 0)
     return Array.from({ length: count }, (_, i) => {
       const d = new Date(today)
       d.setDate(d.getDate() - (count - 1 - i))
-      return { date: d, active: i >= count - streakDays, today: i === count - 1 }
+      const isToday = i === count - 1
+      const isActive = isToday
+        ? hasStudiedToday
+        : (pastStreakAllowance > 0 && i >= (count - 1) - pastStreakAllowance)
+      return { date: d, active: isActive, today: isToday }
     })
-  }, [streakDays])
+  }, [streakDays, hasStudiedToday])
 
   return (
     <div className="grid grid-cols-7 gap-1.5">
@@ -189,10 +194,15 @@ function StreakCalendar({ streakDays }) {
           initial={{ scale: 0 }} animate={{ scale: 1 }}
           transition={{ delay: i * 0.012 }}
           className={`aspect-square rounded-md flex items-center justify-center text-[10px] font-medium transition-all ${
-            day.today ? 'bg-purple-500 text-white ring-2 ring-purple-400 ring-offset-1'
-            : day.active ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white'
-            : 'bg-muted text-muted-foreground'
+            day.today
+              ? day.active
+                ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white ring-2 ring-emerald-400 ring-offset-1'
+                : 'border-2 border-dashed border-purple-400 text-purple-600 dark:text-purple-300 animate-pulse'
+              : day.active
+              ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white'
+              : 'bg-muted text-muted-foreground'
           }`}
+          title={day.today ? (day.active ? 'Streak recorded today!' : 'Pending today') : day.active ? 'Streak completed' : ''}
         >
           {day.active || day.today ? day.date.getDate() : ''}
         </motion.div>
@@ -315,6 +325,7 @@ export default function ProfilePage() {
   const currentLevel  = profile?.current_level || progress.jlptLevel || 'N5'
   const xp            = profile?.xp_points || progress.totalXP || 0
   const streakDays    = profile?.streak_days || progress.streak || 0
+  const hasStudiedToday = Boolean(progress.isActiveToday || (progress.dailyXP && progress.dailyXP > 0))
   const levelInfo     = LEVEL_DATA[currentLevel] || LEVEL_DATA.N5
   const xpInLevel     = Math.max(xp - levelInfo.min, 0)
   const xpNeeded      = Math.max(levelInfo.max - levelInfo.min, 1)
@@ -802,7 +813,7 @@ export default function ProfilePage() {
                   <h3 className="font-bold text-base mb-4 flex items-center gap-2 text-foreground">
                     <Flame className="w-5 h-5 text-orange-500" /> {t('profile.streak_calendar', { days: streakDays }, `${streakDays}-Day Streak Calendar`)}
                   </h3>
-                  <StreakCalendar streakDays={streakDays} />
+                  <StreakCalendar streakDays={streakDays} hasStudiedToday={hasStudiedToday} />
                 </div>
               </Card>
             </motion.div>

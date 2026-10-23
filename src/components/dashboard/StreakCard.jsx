@@ -16,10 +16,16 @@ const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 export default function StreakCard({ streak = 0 }) {
   const { t } = useI18n();
-  const { streakFreezes = 2, isStreakFrozen = false, equipStreakFreeze, dailyXP = 0 } = useProgressStore();
+  const {
+    streakFreezes = 2,
+    isStreakFrozen = false,
+    equipStreakFreeze,
+    dailyXP = 0,
+    isActiveToday = false,
+  } = useProgressStore();
   const jsDay = new Date().getDay();
   const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
-  const hasStudiedToday = dailyXP > 0 || streak > 0;
+  const hasStudiedToday = Boolean(isActiveToday || dailyXP > 0);
 
   const handleEquipFreeze = () => {
     equipStreakFreeze(1);
@@ -29,6 +35,13 @@ export default function StreakCard({ streak = 0 }) {
   };
 
   const getMotivation = (val) => {
+    if (!hasStudiedToday && val > 0) {
+      return {
+        text: t('dashboard.study_today_to_keep_streak', { count: val }, `Study a story or quiz today to keep your ${val}-day streak alive!`),
+        emoji: '🔥',
+        color: 'text-amber-600 dark:text-amber-400',
+      };
+    }
     if (val === 0) {
       return {
         text: t('dashboard.start_streak', 'Start your Jelly Streak today!'),

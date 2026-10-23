@@ -28,6 +28,7 @@ export interface ProgressState {
   streak: number;
   totalXP: number;
   dailyXP: number;
+  isActiveToday: boolean;
   userLevel: number;
   jlptLevel: JLPTLevel;
   lessonsCompleted: number;
@@ -146,6 +147,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
   })(),
   totalXP: 0,
   dailyXP: 0,
+  isActiveToday: false,
   userLevel: 1,
   jlptLevel: 'N5',
   lessonsCompleted: 0,
@@ -169,16 +171,28 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     try {
       const data = await getProgress();
 
-      // Check daily XP cache
+      // Server-authoritative check: did user study today?
+      const isActiveToday = Boolean(data.isActiveToday);
       let dailyXP = 0;
-      try {
-        const today = getLocalDayString();
-        const cached = JSON.parse(localStorage.getItem('nihongo_daily_xp') || '{}');
-        if (cached.date === today) {
-          dailyXP = cached.xp || 0;
+      const today = getLocalDayString();
+      const userKey = userId ? `nihongo_daily_xp_${userId}` : 'nihongo_daily_xp';
+
+      if (isActiveToday) {
+        try {
+          const cached = JSON.parse(localStorage.getItem(userKey) || localStorage.getItem('nihongo_daily_xp') || '{}');
+          if (cached.date === today) {
+            dailyXP = cached.xp || 0;
+          }
+        } catch (e) {
+          console.debug('progressStore sync check caught:', e);
         }
-      } catch (e) {
-        console.debug('progressStore sync check caught:', e);
+      } else {
+        // Server says user has NO activity recorded today
+        dailyXP = 0;
+        try {
+          localStorage.removeItem(userKey);
+          localStorage.removeItem('nihongo_daily_xp');
+        } catch {}
       }
 
       // Fetch grammar progress
@@ -199,6 +213,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         streak: data.streakDays,
         jlptLevel: data.jlptLevel,
         userLevel: data.userLevel,
+        isActiveToday,
         dailyXP,
         lessonsCompleted: data.lessonsCompleted,
         kanjiLearned: data.kanjiLearned,
@@ -219,6 +234,8 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       set({
         totalXP: profileXP,
         streak: profileStreak,
+        isActiveToday: false,
+        dailyXP: 0,
         jlptLevel: (profile?.currentLevel || getJLPTLevel(profileXP).level) as JLPTLevel,
         userLevel: getUserLevel(profileXP),
         grammarLearned: 0,
@@ -256,6 +273,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     set({
       totalXP: newTotal,
       dailyXP: newDaily,
+      isActiveToday: true,
       jlptLevel: jlptInfo.level as JLPTLevel,
       userLevel: newUserLevel,
       syncStatus: userId ? 'saving' : 'idle',
@@ -304,6 +322,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
             set({
               totalXP: res.totalXP,
               dailyXP: correctedDaily,
+              isActiveToday: true,
               userLevel: res.newLevel,
               streak: res.streakDays ?? get().streak,
               jlptLevel: getJLPTLevel(res.totalXP).level as JLPTLevel,
@@ -396,6 +415,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
           set({
             totalXP,
             dailyXP: nextDaily,
+            isActiveToday: true,
             userLevel: newLevel,
             streak: streakDays ?? get().streak,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
@@ -434,6 +454,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
           set({
             totalXP,
             dailyXP: nextDaily,
+            isActiveToday: true,
             userLevel: newLevel,
             streak: streakDays ?? get().streak,
             jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
@@ -573,6 +594,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
         set({
           totalXP: updatedTotal,
           dailyXP: nextDaily,
+          isActiveToday: true,
           userLevel: newLevel ?? get().userLevel,
           streak: streakDays ?? get().streak,
           jlptLevel: getJLPTLevel(updatedTotal).level as JLPTLevel,
@@ -606,9 +628,11 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     const gain = Math.max(0, xpGained);
     const nextDaily = prev.dailyXP + gain;
 
+    const hasActivity = gain > 0 || nextDaily > 0;
     set({
       totalXP,
       dailyXP: nextDaily,
+      isActiveToday: hasActivity ? true : prev.isActiveToday,
       userLevel: newLevel,
       jlptLevel: getJLPTLevel(totalXP).level as JLPTLevel,
       streak: streakDays ?? prev.streak,
@@ -708,7 +732,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       try {
         const res = await recordStreakActivity();
         if (res?.streakDays) {
-          set({ streak: res.streakDays });
+          set({ streak: res.streakDays, isActiveToday: true });
           try {
             localStorage.setItem('nihongo_last_streak_date', today);
           } catch {}
@@ -731,7 +755,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       localStorage.setItem('nihongo_last_streak_date', today);
     } catch {}
 
-    set({ streak: newStreak });
+    set({ streak: newStreak, isActiveToday: true });
 
     try {
       useCelebrationStore.getState().triggerStreakClaim(streak, newStreak);
@@ -790,6 +814,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       streak: 0,
       totalXP: 0,
       dailyXP: 0,
+      isActiveToday: false,
       userLevel: 1,
       jlptLevel: 'N5',
       lessonsCompleted: 0,

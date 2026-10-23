@@ -27,6 +27,8 @@ export function useNotificationEngine() {
   const {
     streak = 0,
     totalXP = 0,
+    dailyXP = 0,
+    isActiveToday = false,
     jlptLevel = 'N5',
     lessonsCompleted = 0,
     kanjiLearned = 0,
@@ -45,6 +47,12 @@ export function useNotificationEngine() {
   const prevJlptRef = useRef(jlptLevel)
 
   const displayName = profile?.username || user?.email?.split('@')[0] || 'Learner'
+
+  const hasStudiedToday = Boolean(
+    isActiveToday ||
+    dailyXP > 0 ||
+    Object.keys(GOAL_THRESHOLDS).some((id) => dailyGoals[id] > 0)
+  )
 
   // ── 1. SRS Reviews Due (Live updates in place) ─────────────────────────────
   useEffect(() => {
@@ -82,12 +90,8 @@ export function useNotificationEngine() {
 
   // ── 2. Daily Study Reminder (Duolingo Style: Hi ROHITH! It's Slime.) ───────
   useEffect(() => {
-    const studiedToday = Object.keys(GOAL_THRESHOLDS).some(
-      (id) => dailyGoals[id] > 0
-    )
-
     // In-app reminder if user hasn't studied yet today
-    if (!studiedToday) {
+    if (!hasStudiedToday) {
       const now = new Date()
       const hours = now.getHours()
 
@@ -110,21 +114,17 @@ export function useNotificationEngine() {
       // User studied today; remove the pending daily study nudge
       remove(`daily-reminder-${todayKey()}`)
     }
-  }, [dailyGoals.lesson, dailyGoals.review, dailyGoals.kanji, dailyGoals.chat, displayName, settings.dailyReminder, upsert, remove])
+  }, [hasStudiedToday, displayName, settings.dailyReminder, upsert, remove])
 
   // ── 3. Evening Streak Saver (If streak > 0 and user hasn't studied today) ───
   useEffect(() => {
     if (!settings.streakAlert || streak <= 0) return
 
-    const studiedToday = Object.keys(GOAL_THRESHOLDS).some(
-      (id) => dailyGoals[id] > 0
-    )
-
     const now = new Date()
     const hours = now.getHours()
 
     // Alert in the evening (after 18:00) if streak is at risk
-    if (hours >= 18 && !studiedToday) {
+    if (hours >= 18 && !hasStudiedToday) {
       upsert({
         id: `streak-risk-${todayKey()}`,
         type: 'streak_risk',
@@ -137,14 +137,15 @@ export function useNotificationEngine() {
         primaryAction: { label: 'Protect Streak', link: '/reading' },
         secondaryAction: { label: 'Remind me later', action: 'snooze' },
       })
-    } else if (studiedToday) {
+    } else if (hasStudiedToday) {
       remove(`streak-risk-${todayKey()}`)
     }
-  }, [streak, settings.streakAlert, dailyGoals.lesson, dailyGoals.review, dailyGoals.kanji, dailyGoals.chat, upsert, remove])
+  }, [streak, settings.streakAlert, hasStudiedToday, upsert, remove])
 
   // ── 4. Streak Milestones (One-shot, deduplicated) ──────────────────────────
   useEffect(() => {
-    if (!settings.streakAlert || streak <= 0) return
+    // Only celebrate a new streak milestone if the user has actually studied today
+    if (!settings.streakAlert || streak <= 0 || !hasStudiedToday) return
     const hit = [...STREAK_MILESTONES].reverse().find((m) => streak >= m && !hasSeenStreak(m))
     if (hit) {
       markStreakSeen(hit)
@@ -163,7 +164,7 @@ export function useNotificationEngine() {
         primaryAction: { label: 'View Dashboard', link: '/dashboard' },
       })
     }
-  }, [streak, settings.streakAlert, upsert, hasSeenStreak, markStreakSeen])
+  }, [streak, settings.streakAlert, hasStudiedToday, upsert, hasSeenStreak, markStreakSeen])
 
   // ── 5. New Badges Earned (One-shot, deduplicated) ──────────────────────────
   useEffect(() => {

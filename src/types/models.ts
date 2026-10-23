@@ -88,6 +88,7 @@ export interface UserProgress {
   totalXP: number;
   streakDays: number;
   longestStreak?: number;
+  isActiveToday?: boolean;
   userLevel: number;
   jlptLevel: JLPTLevel;
   lessonsCompleted: number;

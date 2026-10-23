@@ -124,6 +124,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     } catch (err) {
       console.warn('Logout API error:', err);
     } finally {
+      try {
+        localStorage.removeItem('nihongo_daily_xp');
+        localStorage.removeItem('nihongo_last_streak_date');
+        localStorage.removeItem('nihongo_streak_frozen_today');
+      } catch {}
       set({ user: null, profile: null });
       useProgressStore.getState().reset();
       useNotificationStore.getState().clearAll();
