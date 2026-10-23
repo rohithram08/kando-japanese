@@ -1,15 +1,12 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
-  MessageCircle,
   Volume2,
   VolumeX,
   Send,
   Map,
   Square,
-  Sparkles,
-  ChevronDown,
   Minimize2,
   Maximize2,
   ExternalLink
@@ -17,7 +14,6 @@ import {
 import { useSenseiStore } from '../../store/senseiStore';
 import { useNavigate, useLocation } from 'react-router-dom';
 const SenseiCharacter = React.lazy(() => import('./SenseiCharacter'));
-import { useSenseiTarget } from './useSenseiTarget';
 import { SenseiSpeechBubble } from './SenseiSpeechBubble';
 import { useSenseiPageContext } from '../../hooks/useSenseiPageContext';
 import { SenseiGuidedTour } from './SenseiGuidedTour';
@@ -35,23 +31,17 @@ export default function SenseiCompanion() {
     isOpen,
     toggleOpen,
     setOpen,
-    companionMode,
-    setCompanionMode,
     messages,
     isTyping,
     speechEnabled,
     toggleSpeech,
     speechState,
     animationState,
-    setAnimationState,
     stopSpeech,
     sendMessage,
     fetchHistory,
     executeAction,
-    position,
-    setPosition,
     targetId,
-    targetMessage,
     clearTarget,
     greet,
     triggerCelebration
@@ -67,9 +57,6 @@ export default function SenseiCompanion() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Target hook for pointing & guidance
-  const { targetRect } = useSenseiTarget(targetId);
-  
   // Proactive page context guidance
   useSenseiPageContext();
 
@@ -172,8 +159,8 @@ export default function SenseiCompanion() {
               role="dialog"
               aria-label="AI Sensei Companion Dialog"
             >
-              {/* Header with Drag Handle */}
-              <div className="p-3.5 border-b border-border bg-muted/60 flex justify-between items-center cursor-grab active:cursor-grabbing">
+              {/* Header */}
+              <div className="p-3.5 border-b border-border bg-muted/60 flex justify-between items-center select-none">
                 <div className="flex items-center gap-2.5">
                   <div
                     onClick={handleWandSparkle}
@@ -273,12 +260,6 @@ export default function SenseiCompanion() {
                     reducedMotion={reducedMotion}
                   />
                 </React.Suspense>
-
-                {/* Drag Grip Indicator */}
-                <div className="absolute top-2 left-2 text-[10px] text-muted-foreground/60 flex items-center gap-1 pointer-events-none">
-                  <GripHorizontal className="w-3.5 h-3.5" />
-                  <span className="hidden sm:inline">Drag to move</span>
-                </div>
               </div>
 
               {/* Chat Message History */}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Outlet } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ErrorBoundary } from 'react-error-boundary'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 import MobileNav from './MobileNav'
@@ -121,9 +122,11 @@ const Layout = () => {
         )}
       </AnimatePresence>
 
-      <React.Suspense fallback={null}>
-        <SenseiCompanion />
-      </React.Suspense>
+      <ErrorBoundary fallback={null}>
+        <React.Suspense fallback={null}>
+          <SenseiCompanion />
+        </React.Suspense>
+      </ErrorBoundary>
 
       {/* ── Global 2D Celebration Portal (Level Up, XP Gain, Streak Step) ── */}
       <CelebrationPortal />
