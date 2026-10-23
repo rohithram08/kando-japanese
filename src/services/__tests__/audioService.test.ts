@@ -295,7 +295,7 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(clean).toContain('Particle Meaning');
     });
 
-    it('sanitizes text before passing to SpeechSynthesisUtterance', async () => {
+    it('sanitizes text before passing to SpeechSynthesisUtterance with youthful 16-18 female pitch and snappy rate', async () => {
       let captured: any = null;
       mockSynthesis.speak.mockImplementation((u: any) => {
         captured = u;
@@ -307,7 +307,16 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(captured.text).not.toContain('#');
       expect(captured.text).not.toContain('🌸');
       expect(captured.text).not.toContain('*');
-      expect(captured.pitch).toBe(1.0); // Natural human pitch
+      expect(captured.pitch).toBe(1.18); // 16-18 year old female pitch
+      expect(captured.rate).toBe(1.05);  // Snappy, energetic rate
+    });
+
+    it('omits standalone Romaji lines following Japanese lines from speech synthesis', () => {
+      const input = `私は猫が好きです。\nWatashi wa neko ga suki desu.\nThis means I like cats.`;
+      const clean = sanitizeForSpeech(input);
+      expect(clean).toContain('私は猫が好きです。');
+      expect(clean).toContain('This means I like cats.');
+      expect(clean).not.toContain('Watashi wa neko ga suki desu');
     });
   });
 
@@ -350,6 +359,15 @@ describe('audioService — Web Speech API wrapper', () => {
       expect(segments.length).toBe(1);
       expect(segments[0].lang).toBe('en-US');
       expect(segments[0].text).toBe('You will see how we use wa to talk about family as a topic.');
+    });
+
+    it('expands particle が to phonetic "gah" in English sentences so it is never pronounced "g - a"', () => {
+      const sentence = 'In Japanese, が marks the specific subject or object.';
+      const segments = segmentMultilingualText(sentence, 'en-US');
+      expect(segments.length).toBe(1);
+      expect(segments[0].lang).toBe('en-US');
+      expect(segments[0].text).toContain('gah');
+      expect(segments[0].text).not.toContain('が');
     });
 
     it('speaks code-switched segments sequentially with Japanese voice for Japanese words without skipping', async () => {

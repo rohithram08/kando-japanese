@@ -112,16 +112,16 @@ export function detectBaseLanguage(text, userPreferredLocale = 'en') {
 
 export const INLINE_PARTICLE_MAP = {
   'は': 'wa',
-  'が': 'ga',
-  'を': 'o',
-  'に': 'ni',
-  'で': 'de',
-  'と': 'to',
-  'も': 'mo',
-  'へ': 'e',
-  'の': 'no',
-  'ね': 'ne',
-  'よ': 'yo',
+  'が': 'gah',
+  'を': 'oh',
+  'に': 'nee',
+  'で': 'deh',
+  'と': 'toh',
+  'も': 'moh',
+  'へ': 'eh',
+  'の': 'noh',
+  'ね': 'neh',
+  'よ': 'yoh',
   'から': 'kara',
   'まで': 'made',
   'です': 'desu',
@@ -260,12 +260,51 @@ export function sanitizeForSpeech(raw) {
   // 13. Strip any stray markdown symbols remaining: #, *, ~, _, ^, \
   text = text.replace(/[#*~\\^]/g, '')
 
-  // 14. Split into lines, trim, add natural sentence-ending pauses for lines that lack them
-  const lines = text.split(/\r?\n/)
+  // 14. Split into lines, filter out standalone Romaji lines following Japanese lines,
+  // and add natural sentence-ending pauses for lines that lack them.
+  const rawLines = text.split(/\r?\n/)
     .map(line => line.trim())
     .filter(Boolean)
 
-  const punctuatedLines = lines.map(line => {
+  const englishStopWords = new Set([
+    'the', 'is', 'are', 'was', 'were', 'have', 'has', 'had', 'do', 'does', 'did',
+    'will', 'would', 'can', 'could', 'should', 'may', 'might', 'must', 'this',
+    'that', 'these', 'those', 'which', 'what', 'where', 'when', 'why', 'how',
+    'because', 'about', 'with', 'from', 'into', 'for', 'you', 'your', 'we', 'our',
+    'they', 'their', 'she', 'her', 'he', 'his', 'it', 'its'
+  ])
+
+  const spokenLines = []
+  for (let i = 0; i < rawLines.length; i++) {
+    const line = rawLines[i]
+    const lineHasJapanese = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(line)
+    const prevLine = spokenLines[spokenLines.length - 1] || ''
+    const prevHasJapanese = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(prevLine)
+
+    // If the previous line had Japanese (e.g. "私は 猫 が 好きです。"):
+    // and this line has NO Japanese and is a standalone Romaji reading (e.g. "Watashi wa neko ga suki desu."):
+    if (!lineHasJapanese && prevHasJapanese) {
+      if (/^(?:romaji|reading|kana|furigana):\s*/i.test(line)) {
+        continue // Skip explicit Romaji line
+      }
+
+      const words = line.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/).filter(Boolean)
+      const hasEnglishStopWord = words.some(w => englishStopWords.has(w))
+
+      if (words.length > 0 && !hasEnglishStopWord) {
+        // Japanese Romaji words end in vowels (a, i, u, e, o) or 'n'
+        const vowelEndCount = words.filter(w => /[aiueon]$/.test(w)).length
+        if (vowelEndCount >= words.length * 0.7) {
+          // This is a pure Romaji line right after Japanese text; omit from speech synthesis!
+          continue
+        }
+      }
+    }
+
+    spokenLines.push(line)
+  }
+
+  const punctuatedLines = spokenLines.map(line => {
     if (!/[.,!?;:。！？…]$/.test(line)) {
       return line + '.'
     }
@@ -449,8 +488,9 @@ class AudioService {
     if (!cleanText.trim()) return Promise.resolve()
 
     const prefs = useSettingsStore.getState()
-    const baseRate = options.rate ?? prefs.speechRate ?? 0.88
-    const effectiveRate = options.rate == null && prefs.slowMode ? Math.min(baseRate, 0.6) : baseRate
+    // 16-18 year old female voice: fast, snappy conversational rate (1.05) instead of slow 0.88
+    const baseRate = options.rate ?? prefs.speechRate ?? 1.05
+    const effectiveRate = options.rate == null && prefs.slowMode ? Math.min(baseRate, 0.7) : baseRate
 
     // Detect actual language from text contents so numbers in English sentences are never spoken in Tamil!
     const baseLang = options.lang || detectBaseLanguage(cleanText, prefs.explanationLanguage || prefs.displayLanguage || 'en')
@@ -489,8 +529,8 @@ class AudioService {
         const utterance = new SpeechSynthesisUtterance(segment.text)
         utterance.lang = segment.lang
         utterance.rate = effectiveRate
-        // Authentic human pitch (1.0 default)
-        utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.0
+        // 16-18 year old female anime tutor pitch (1.18 bright, youthful tone)
+        utterance.pitch = options.pitch ?? prefs.speechPitch ?? 1.18
         utterance.volume = options.volume || 1.0
 
         let bestVoice = findBestVoice(this.voices, segment.lang) || this.japaneseVoice

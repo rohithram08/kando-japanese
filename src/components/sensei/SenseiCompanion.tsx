@@ -7,17 +7,18 @@ import {
   Send,
   Map,
   Square,
-  Minimize2,
-  Maximize2,
+  Mic,
+  MicOff,
   ExternalLink
 } from 'lucide-react';
 import { useSenseiStore } from '../../store/senseiStore';
 import { useNavigate, useLocation } from 'react-router-dom';
-const SenseiCharacter = React.lazy(() => import('./SenseiCharacter'));
 import { SenseiSpeechBubble } from './SenseiSpeechBubble';
 import SenseiMarkdown from './SenseiMarkdown';
 import { useSenseiPageContext } from '../../hooks/useSenseiPageContext';
 import { SenseiGuidedTour } from './SenseiGuidedTour';
+import { useSpeechToText } from '../../hooks/useSpeechToText';
+import { useSettingsStore } from '../../store/settingsStore';
 
 const QUICK_ACTIONS = [
   { label: "Today's Lesson", message: "What is my lesson for today?" },
@@ -37,21 +38,22 @@ export default function SenseiCompanion() {
     speechEnabled,
     toggleSpeech,
     speechState,
-    animationState,
     stopSpeech,
     sendMessage,
     fetchHistory,
     executeAction,
     targetId,
     clearTarget,
-    greet,
     triggerCelebration
   } = useSenseiStore();
 
   const [input, setInput] = useState('');
   const [isHovered, setIsHovered] = useState(false);
-  const [isExpanded3D, setIsExpanded3D] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+
+  const explanationLang = useSettingsStore(s => s.explanationLanguage || 'en');
+  const speechLang = explanationLang === 'ta' ? 'ta-IN' : explanationLang === 'hi' ? 'hi-IN' : 'en-US';
+  const { isListening, transcript, isSupported: isSttSupported, startListening, stopListening } = useSpeechToText(speechLang);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,13 @@ export default function SenseiCompanion() {
 
   // Proactive page context guidance
   useSenseiPageContext();
+
+  // Sync Speech-to-Text transcript into input field
+  useEffect(() => {
+    if (transcript) {
+      setInput(transcript);
+    }
+  }, [transcript]);
 
   // Check prefers-reduced-motion
   useEffect(() => {
@@ -102,8 +111,13 @@ export default function SenseiCompanion() {
   const handleSend = async (userMsg: string) => {
     if (!userMsg.trim() || isTyping) return;
 
+    if (isListening) {
+      stopListening();
+    }
+
     const response = await sendMessage(userMsg);
-    if (response?.action) {
+    // Only execute navigation action if it is an explicit modal or specific tool
+    if (response?.action && response.action.type === 'navigate' && !response.action.payload?.path?.includes('sensei')) {
       executeAction(response.action, navigate);
     }
   };
@@ -116,22 +130,29 @@ export default function SenseiCompanion() {
     handleSend(msg);
   };
 
-  const handleCharacterClick = (e: React.MouseEvent) => {
-    // Avoid triggering click when finishing a drag
-    if (e.detail === 1) {
-      toggleOpen();
-    } else if (e.detail === 2) {
-      // Double click triggers voice greeting & wave
-      greet();
+  const toggleMic = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening(speechLang, (finalText) => {
+        if (finalText.trim()) {
+          setInput(finalText);
+        }
+      });
     }
+  };
+
+  const handleCharacterClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleOpen();
   };
 
   const handleWandSparkle = (e: React.MouseEvent) => {
     e.stopPropagation();
-    triggerCelebration("Great curiosity!");
+    triggerCelebration("Magic sparkle! 🌸✨");
   };
 
-  // Hide floating companion when viewing dedicated full Sensei page
+  // Hide floating widget if user is currently in the dedicated /sensei 3D Studio page
   if (location.pathname.startsWith('/sensei')) {
     return null;
   }
@@ -148,73 +169,75 @@ export default function SenseiCompanion() {
         {/* ─── GUIDED TOUR MODE ─── */}
         <SenseiGuidedTour />
 
-        {/* ─── CHAT WINDOW MODE ─── */}
+        {/* ─── PURE CHAT MODE COMPANION (Fast, lightweight, no laggy 3D canvas) ─── */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.92, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              exit={{ opacity: 0, scale: 0.92, y: 16 }}
               transition={{ duration: reducedMotion ? 0.05 : 0.2 }}
-              className="mb-4 w-[calc(100vw-32px)] sm:w-[420px] h-[580px] max-h-[calc(100vh-120px)] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+              className="mb-3 w-[calc(100vw-32px)] sm:w-[410px] h-[520px] max-h-[calc(100vh-100px)] bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-primary/20"
               role="dialog"
-              aria-label="AI Sensei Companion Dialog"
+              aria-label="Hana-sensei AI Chat Companion"
             >
               {/* Header */}
-              <div className="p-3.5 border-b border-border bg-muted/60 flex justify-between items-center select-none">
+              <div className="p-3.5 border-b border-border/60 bg-muted/40 flex justify-between items-center select-none backdrop-blur-md">
                 <div className="flex items-center gap-2.5">
                   <div
                     onClick={handleWandSparkle}
-                    className="w-8 h-8 rounded-full bg-primary/20 hover:bg-primary/30 cursor-pointer flex items-center justify-center transition-transform hover:scale-110"
+                    className="w-9 h-9 rounded-full bg-gradient-to-tr from-pink-500/20 via-purple-500/20 to-amber-500/20 border border-primary/30 flex items-center justify-center text-base cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-xs"
                     title="Click for sparkles! ✨"
                     aria-label="Trigger Sensei Sparkles"
                   >
                     🌸
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sm leading-none flex items-center gap-1.5">
+                    <h3 className="font-bold text-sm leading-none flex items-center gap-1.5 text-foreground">
                       Hana-sensei
-                      <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-normal">
-                        AI Teacher
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium border border-primary/20 font-japanese">
+                        花先生
                       </span>
                     </h3>
-                    <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">
-                      {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'Here to guide you'}
+                    <p className="text-[11px] text-muted-foreground leading-tight mt-1 flex items-center gap-1.5">
+                      {isListening ? (
+                        <span className="text-pink-500 font-semibold flex items-center gap-1 animate-pulse">
+                          <Mic className="w-3 h-3" /> Listening to you...
+                        </span>
+                      ) : speechState === 'speaking' ? (
+                        <span className="text-primary font-medium flex items-center gap-1">
+                          <Volume2 className="w-3 h-3 animate-pulse" /> Speaking...
+                        </span>
+                      ) : isTyping ? (
+                        <span className="text-amber-500 font-medium">Composing reply...</span>
+                      ) : (
+                        <span>AI Japanese Tutor</span>
+                      )}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-1">
-                  {/* Open Full Studio Page */}
+                  {/* Open Full 3D Studio Page */}
                   <button
                     onClick={() => {
                       setOpen(false);
                       navigate('/sensei');
                     }}
-                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-lg transition-colors"
-                    aria-label="Open Full Studio"
-                    title="Open Full Sensei Studio Page"
+                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-xl transition-colors"
+                    aria-label="Open Full 3D Studio"
+                    title="Enter Full 3D Studio Stage"
                   >
                     <ExternalLink className="w-4 h-4" />
-                  </button>
-
-                  {/* Toggle 3D View Height */}
-                  <button
-                    onClick={() => setIsExpanded3D(!isExpanded3D)}
-                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-lg transition-colors"
-                    aria-label={isExpanded3D ? "Compact 3D View" : "Expand 3D View"}
-                    title={isExpanded3D ? "Shrink 3D" : "Expand 3D"}
-                  >
-                    {isExpanded3D ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
                   </button>
 
                   {/* Stop Speech */}
                   {speechState === 'speaking' && (
                     <button
                       onClick={stopSpeech}
-                      className="p-1.5 hover:bg-destructive/20 text-destructive rounded-lg transition-colors"
+                      className="p-1.5 hover:bg-destructive/20 text-destructive rounded-xl transition-colors"
                       aria-label="Stop Speaking"
-                      title="Stop Speaking"
+                      title="Stop Voice"
                     >
                       <Square className="w-4 h-4 fill-current" />
                     </button>
@@ -223,9 +246,9 @@ export default function SenseiCompanion() {
                   {/* Speech Toggle */}
                   <button
                     onClick={toggleSpeech}
-                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-lg transition-colors"
+                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-xl transition-colors"
                     aria-label={speechEnabled ? "Mute Speech" : "Enable Speech"}
-                    title={speechEnabled ? "Mute" : "Unmute"}
+                    title={speechEnabled ? "Mute Voice" : "Unmute Voice"}
                   >
                     {speechEnabled ? <Volume2 className="w-4 h-4 text-primary" /> : <VolumeX className="w-4 h-4" />}
                   </button>
@@ -233,34 +256,13 @@ export default function SenseiCompanion() {
                   {/* Close Dialog */}
                   <button
                     onClick={toggleOpen}
-                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-lg transition-colors ml-1"
+                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-xl transition-colors ml-0.5"
                     aria-label="Minimize Sensei"
-                    title="Close / Minimize"
+                    title="Close Chat"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
-              </div>
-
-              {/* 3D Character Viewport Area */}
-              <div
-                className={`relative transition-all duration-300 bg-gradient-to-b from-primary/10 via-background to-background border-b border-border flex items-center justify-center overflow-hidden ${
-                  isExpanded3D ? 'h-56' : 'h-36'
-                }`}
-              >
-                <React.Suspense
-                  fallback={
-                    <div className="flex flex-col items-center justify-center p-4">
-                      <div className="w-6 h-6 rounded-full border-2 border-primary/20 border-t-primary animate-spin mb-1.5" />
-                      <span className="text-[11px] text-muted-foreground font-medium">Summoning Hana-sensei...</span>
-                    </div>
-                  }
-                >
-                  <SenseiCharacter
-                    state={animationState}
-                    reducedMotion={reducedMotion}
-                  />
-                </React.Suspense>
               </div>
 
               {/* Chat Message History */}
@@ -271,11 +273,13 @@ export default function SenseiCompanion() {
                 aria-label="Conversation with Sensei"
               >
                 {messages.length === 0 && !isTyping && (
-                  <div className="text-center text-muted-foreground text-sm my-6 space-y-2">
-                    <div className="text-2xl">🌸</div>
-                    <p className="font-medium text-foreground">Konnichiwa! I am your AI Sensei.</p>
-                    <p className="text-xs max-w-[260px] mx-auto">
-                      Ask me about Japanese grammar, vocabulary, kanji, or platform lessons!
+                  <div className="text-center text-muted-foreground text-sm my-8 space-y-2.5">
+                    <div className="w-12 h-12 mx-auto rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-2xl shadow-xs">
+                      🌸
+                    </div>
+                    <p className="font-semibold text-foreground">Konnichiwa! I am Hana-sensei.</p>
+                    <p className="text-xs max-w-[280px] mx-auto text-muted-foreground leading-relaxed">
+                      Ask me any Japanese grammar or vocabulary question, or use the mic to speak with me directly!
                     </p>
                   </div>
                 )}
@@ -286,7 +290,7 @@ export default function SenseiCompanion() {
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[85%] rounded-2xl p-3.5 text-sm shadow-sm leading-relaxed ${
+                      className={`max-w-[85%] rounded-2xl p-3.5 text-sm shadow-xs leading-relaxed ${
                         msg.role === 'user'
                           ? 'bg-primary text-primary-foreground rounded-tr-xs'
                           : 'bg-muted/80 text-foreground border border-border/40 rounded-tl-xs'
@@ -300,7 +304,7 @@ export default function SenseiCompanion() {
                       {msg.action && (
                         <div className="mt-2 text-xs opacity-80 flex items-center gap-1.5 border-t border-border/30 pt-1.5">
                           <Map className="w-3.5 h-3.5 text-primary" />
-                          Guided to: <span className="font-semibold">{msg.action.payload?.path || 'new activity'}</span>
+                          Activity: <span className="font-semibold">{msg.action.payload?.path || 'guided lesson'}</span>
                         </div>
                       )}
                     </div>
@@ -310,7 +314,7 @@ export default function SenseiCompanion() {
                 {isTyping && (
                   <div className="flex justify-start" aria-label="Sensei is thinking">
                     <div className="bg-muted/80 border border-border/40 max-w-[85%] rounded-2xl rounded-tl-xs p-3.5 text-sm flex gap-1.5 items-center">
-                      <span className="text-xs text-muted-foreground mr-1">Sensei is thinking</span>
+                      <span className="text-xs text-muted-foreground mr-1">Sensei is composing</span>
                       <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                       <span className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -335,25 +339,45 @@ export default function SenseiCompanion() {
                 </div>
               )}
 
-              {/* Chat Input Field */}
+              {/* Chat Input Field with Speech-to-Text Mic */}
               <form onSubmit={handleSubmit} className="p-3 border-t border-border bg-background">
                 <div className="flex items-center gap-2 relative">
                   <input
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask Sensei in Japanese or English..."
+                    placeholder={isListening ? "Listening to your voice..." : "Ask in English, Tamil or Japanese..."}
                     disabled={isTyping}
                     aria-label="Message input for AI Sensei"
-                    className="flex-1 bg-muted/60 border border-border rounded-full py-2.5 px-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background transition-all disabled:opacity-50 text-foreground placeholder:text-muted-foreground"
+                    className={`flex-1 bg-muted/60 border rounded-full py-2.5 pl-4 pr-20 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:bg-background transition-all disabled:opacity-50 text-foreground placeholder:text-muted-foreground ${
+                      isListening ? 'border-pink-500 ring-2 ring-pink-500/20 animate-pulse' : 'border-border'
+                    }`}
                   />
+
+                  {/* Speech-to-Text Microphone Button */}
+                  {isSttSupported && (
+                    <button
+                      type="button"
+                      onClick={toggleMic}
+                      className={`absolute right-10 w-7 h-7 flex items-center justify-center rounded-full transition-all active:scale-95 ${
+                        isListening
+                          ? 'bg-pink-500 text-white shadow-md animate-bounce'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      }`}
+                      title={isListening ? "Stop listening" : "Speak via microphone"}
+                    >
+                      {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+                    </button>
+                  )}
+
+                  {/* Send Button */}
                   <button
                     type="submit"
                     disabled={!input.trim() || isTyping}
                     aria-label="Send message"
-                    className="absolute right-1.5 w-8 h-8 flex items-center justify-center bg-primary text-primary-foreground rounded-full hover:opacity-90 disabled:opacity-40 transition-opacity active:scale-95 shadow-sm"
+                    className="absolute right-1.5 w-8 h-8 flex items-center justify-center bg-primary text-primary-foreground rounded-full hover:opacity-90 disabled:opacity-40 transition-opacity active:scale-95 shadow-xs"
                   >
-                    <Send className="w-4 h-4 -ml-0.5" />
+                    <Send className="w-3.5 h-3.5 -ml-0.5" />
                   </button>
                 </div>
               </form>
