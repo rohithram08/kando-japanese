@@ -14,6 +14,17 @@ const AVAILABLE_MODELS = [
   'openai/gpt-oss-20b'
 ];
 
+const GREETING_FALLBACKS: Record<string, string> = {
+  ta: "こんにちは！(Konnichiwa!) வணக்கம்! 🌸 வகுப்பறைக்கு உங்களை அன்புடன் வரவேற்கிறேன்! இன்று நாம் ஜப்பானிய மொழியில் எதைப் பற்றி படிக்கலாம்? இலக்கணம், புதிய சொற்கள் அல்லது உரையாடல் பயிற்சி செய்யலாமா? ✨",
+  hi: "こんにちは！(Konnichiwa!) नमस्ते! 🌸 जापानी कक्षा में आपका बहुत-बहुत स्वागत है! आज आप क्या सीखना चाहते हैं—व्याकरण, नए शब्द या वाक्य अभ्यास? ✨",
+  es: "こんにちは！(Konnichiwa!) ¡Hola! 🌸 ¡Bienvenido a clase! ¿Qué te gustaría practicar hoy: gramática, vocabulario o kanji? ✨",
+  fr: "こんにちは！(Konnichiwa!) Bonjour ! 🌸 Bienvenue en classe ! Que souhaites-tu pratiquer aujourd'hui : grammaire, vocabulaire ou kanji ? ✨",
+  de: "こんにちは！(Konnichiwa!) Hallo! 🌸 Willkommen im Unterricht! Was möchtest du heute üben: Grammatik, Vokabeln oder Kanji? ✨",
+  ko: "こんにちは！(Konnichiwa!) 안녕하세요! 🌸 교실에 오신 것을 환영해요! 오늘 어떤 것을 함께 공부해볼까요? ✨",
+  zh: "こんにちは！(Konnichiwa!) 你好！🌸 欢迎来到日语教室！今天想一起练习什么呢？✨",
+  en: "こんにちは！(Konnichiwa!) Hello! 🌸 Welcome to class! I am so happy to study with you today. What would you like to practice—grammar, vocabulary, kanji, or conversation? ✨"
+};
+
 export class SenseiService {
   /**
    * Send a message to Sensei and get a response.
@@ -102,8 +113,11 @@ export class SenseiService {
       recentVocabIds: uContext?.recentVocabIds || [],
     };
 
-    // 4. Platform Knowledge RAG
-    const retrievedItems = senseiKnowledge.search(cleanInput, safeContext.jlptLevel, 5);
+    // Check if input is a conversational greeting
+    const isGreeting = /^(kon+i?chiwa|kon+banwa|ohayou?(\s*gozaimasu)?|hello|hi|hey|greetings|namaste|vanakkam|வணக்கம்|नमस्ते|வணக்கம் சென்சே|नमस्ते टीचर)(\s+(sensei|hana|there|everyone|teacher))?[.!?🌸✨\s]*$/i.test(cleanInput.trim());
+
+    // 4. Platform Knowledge RAG (Skipped for pure greetings to avoid false lesson bias)
+    const retrievedItems = isGreeting ? [] : senseiKnowledge.search(cleanInput, safeContext.jlptLevel, 5);
 
     // 5. System Prompt Construction
     const systemPrompt = buildSenseiSystemPrompt(safeContext, retrievedItems);
@@ -113,7 +127,7 @@ export class SenseiService {
         type: "function",
         function: {
           name: "navigate_to",
-          description: "Navigate the user to a specific page in the Kando Japanese app.",
+          description: "Navigate the user to a specific page ONLY when they explicitly ask to go there (e.g. 'take me to kanji', 'open flashcards'). NEVER call this for greetings.",
           parameters: {
             type: "object",
             properties: {
@@ -130,7 +144,7 @@ export class SenseiService {
         type: "function",
         function: {
           name: "suggest_lesson",
-          description: "Suggest a specific lesson for the user to study.",
+          description: "Suggest a specific lesson ONLY when the user explicitly asks for a recommendation or what to study next (e.g. 'what should I study next?', 'which lesson should I do?'). NEVER call this for greetings or general questions.",
           parameters: {
             type: "object",
             properties: {
@@ -138,9 +152,13 @@ export class SenseiService {
                 type: "string",
                 description: "The ID of the lesson (e.g. n5l001)",
               },
+              lessonTitle: {
+                type: "string",
+                description: "Human-readable topic title of the lesson (e.g. 'Lesson 1: Basic Greetings')",
+              },
               reason: {
                 type: "string",
-                description: "Why you are suggesting this lesson.",
+                description: "Why you are suggesting this lesson in the student's designated explanation language.",
               }
             },
             required: ["lessonId", "reason"],
@@ -151,7 +169,7 @@ export class SenseiService {
         type: "function",
         function: {
           name: "recommend_srs",
-          description: "Point toward and recommend reviewing pending SRS flashcards.",
+          description: "Point toward and recommend reviewing pending SRS flashcards ONLY when asked.",
           parameters: {
             type: "object",
             properties: {
@@ -165,7 +183,7 @@ export class SenseiService {
         type: "function",
         function: {
           name: "recommend_kanji",
-          description: "Point toward and recommend practicing Kanji stroke order or radicals.",
+          description: "Point toward and recommend practicing Kanji stroke order or radicals ONLY when asked.",
           parameters: {
             type: "object",
             properties: {
@@ -202,6 +220,39 @@ export class SenseiService {
       }
     ];
 
+    // Contextual recent history (last 4 turns)
+    let recentTurns: any[] = [];
+    try {
+      const historyRows = await db.query.senseiConversations.findMany({
+        where: eq(senseiConversations.userId, userId),
+        orderBy: [desc(senseiConversations.createdAt)],
+        limit: 5,
+      });
+      recentTurns = historyRows
+        .reverse()
+        .filter(r => r.content && r.content !== cleanInput)
+        .slice(-4)
+        .map(r => ({
+          role: r.role === 'assistant' ? 'assistant' : 'user',
+          content: r.content
+        }));
+    } catch (e) {
+      // ignore
+    }
+
+    const apiMessages: any[] = [
+      { role: 'system', content: systemPrompt },
+      ...recentTurns,
+      { role: 'user', content: cleanInput }
+    ];
+
+    if (isGreeting) {
+      apiMessages.push({
+        role: 'system',
+        content: `Note: The student just greeted you with "${cleanInput}". Reply warmly as Hana-sensei with a joyful, enthusiastic Japanese greeting ("こんにちは！" / "Konnichiwa!") and welcome them to class. Ask what Japanese topic they would like to practice today. Keep it friendly, encouraging, and natural.`
+      });
+    }
+
     // 6. Generate response from Groq API with robust model fallback & native fetch
     let rawContent = '';
     let toolCalls: any[] = [];
@@ -217,13 +268,9 @@ export class SenseiService {
           },
           body: JSON.stringify({
             model,
-            messages: [
-              { role: 'system', content: systemPrompt },
-              { role: 'user', content: cleanInput }
-            ],
-            temperature: 0.6,
-            tools,
-            tool_choice: "auto"
+            messages: apiMessages,
+            temperature: isGreeting ? 0.7 : 0.6,
+            ...(isGreeting ? {} : { tools, tool_choice: "auto" })
           }),
           signal: AbortSignal.timeout(30000)
         });
@@ -321,7 +368,8 @@ export class SenseiService {
           parsedAnimation = 'teaching';
           parsedEmotion = 'encouraging';
           if (!parsedMessage) {
-            parsedMessage = `I recommend starting lesson ${args?.lessonId || 'next'}! Let's do our best! ✨`;
+            const lessonTitle = args?.lessonTitle || 'the next lesson in your curriculum';
+            parsedMessage = `I recommend starting ${lessonTitle}! Let's do our best! ✨`;
           }
         } else if (fnName === 'recommend_srs') {
           action = {
@@ -364,6 +412,22 @@ export class SenseiService {
         }
       } catch (e) {
         console.error('[SenseiService] Failed to parse tool call arguments:', e);
+      }
+    }
+
+    // Special handling for conversational greetings
+    if (isGreeting) {
+      const langKey = (safeContext.explanationLanguage || safeContext.nativeLanguage || 'en').toLowerCase().slice(0, 2);
+      const greetingFallback = GREETING_FALLBACKS[langKey] || GREETING_FALLBACKS['en'];
+
+      if (!parsedMessage) {
+        parsedMessage = greetingFallback;
+      }
+      if (parsedEmotion === 'neutral') {
+        parsedEmotion = 'happy';
+      }
+      if (parsedAnimation === 'talking') {
+        parsedAnimation = 'waving';
       }
     }
 
