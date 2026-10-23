@@ -373,25 +373,26 @@ export default function SenseiCharacter({
         >
           <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
           
-          {/* 1. Stationary 3D Japanese Classroom Background (Never rotates, stays fixed) */}
-          <SenseiBackground />
-          
           {/* General Room Illumination */}
           <ambientLight intensity={1.4} color="#f5f0fa" />
           <directionalLight position={[1.8, 2.8, 3.2]} intensity={2.2} color="#ffffff" castShadow />
           <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
           <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
 
-          {/* 2. Interactive Character Turntable Group (Hana, Slime & 3D Dialogue Bubbles rotate 360° inside classroom) */}
+          {/* ─── COMPLETE 360° JAPANESE CLASSROOM UNIFIED WORLD ─── */}
+          {/* The entire Japanese Classroom (Walls, Blackboard, Desk, Floor, Hana, and Slime) rotates together 360° as ONE world! */}
           <group rotation={[0, dioramaRotation, 0]}>
-            {/* Grounding Contact Shadows pinned under Hana and Slime */}
+            {/* 1. Complete 3D Japanese Classroom Environment */}
+            <SenseiBackground />
+
+            {/* 2. Grounding Contact Shadows pinned under Hana and Slime */}
             <ClassroomContactShadows
               characterPos={characterPos}
               slimePos={slimePos}
               showSlime={isLeft && showSlime}
             />
 
-            {/* Dedicated Wand Specular & Emissive Light for Hana on Left */}
+            {/* 3. Dedicated Wand Specular & Emissive Light for Hana on Left */}
             <pointLight position={[-1.70, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
             {/* Dedicated Ambient Keylight for 3D Slime on Right */}
             {isLeft && showSlime && (

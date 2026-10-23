@@ -175,9 +175,9 @@ export function SenseiBackground({
 
   return (
     <group>
-      {/* ── 1. Classroom Parquet Wood Floor (Extends across entire room) ── */}
+      {/* ── 1. Classroom Parquet Wood Floor (Extends across entire 360 room) ── */}
       <mesh position={[0, -0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <planeGeometry args={[16, 12]} />
+        <planeGeometry args={[16, 16]} />
         <meshStandardMaterial
           map={floorTexture || undefined}
           color="#d2a679"
@@ -187,7 +187,7 @@ export function SenseiBackground({
       </mesh>
 
       {/* ── 2. Classroom Back Wall (Warm Anime Cream Aesthetic) ── */}
-      <mesh position={[0, 2.4, -3.2]} receiveShadow>
+      <mesh position={[0, 2.4, -3.5]} receiveShadow>
         <planeGeometry args={[16, 5.2]} />
         <meshStandardMaterial
           color="#f4eee4"
@@ -197,18 +197,18 @@ export function SenseiBackground({
       </mesh>
 
       {/* ── 3. Lower Wood Wainscoting / Baseboard Along Back Wall ── */}
-      <mesh position={[0, 0.45, -3.18]}>
+      <mesh position={[0, 0.45, -3.48]}>
         <boxGeometry args={[16, 0.9, 0.04]} />
         <meshStandardMaterial color="#8b5a2b" roughness={0.4} />
       </mesh>
       {/* Wainscoting Top Molding Rail */}
-      <mesh position={[0, 0.92, -3.16]}>
+      <mesh position={[0, 0.92, -3.46]}>
         <boxGeometry args={[16, 0.05, 0.06]} />
         <meshStandardMaterial color="#5c3818" roughness={0.3} />
       </mesh>
 
       {/* ── 4. Japanese Classroom Blackboard (黒板 - Kokuban) ── */}
-      <group position={[0, 2.05, -3.14]}>
+      <group position={[0, 2.05, -3.44]}>
         {/* Outer Dark Teak Wood Frame */}
         <mesh position={[0, 0, 0]}>
           <boxGeometry args={[5.7, 1.7, 0.05]} />
@@ -256,15 +256,15 @@ export function SenseiBackground({
       <group position={[-6.2, 2.4, 0]} rotation={[0, Math.PI / 2, 0]}>
         {/* Wall Surface */}
         <mesh position={[0, 0, 0]}>
-          <planeGeometry args={[12, 5.2]} />
+          <planeGeometry args={[14, 5.2]} />
           <meshStandardMaterial color="#eae4d6" roughness={0.8} />
         </mesh>
         {/* Wood Window Frame 1 */}
-        <mesh position={[-1.6, 0.2, 0.02]}>
+        <mesh position={[-1.8, 0.2, 0.02]}>
           <boxGeometry args={[2.4, 2.2, 0.04]} />
           <meshStandardMaterial color="#6d4320" roughness={0.4} />
         </mesh>
-        <mesh position={[-1.6, 0.2, 0.04]}>
+        <mesh position={[-1.8, 0.2, 0.04]}>
           <planeGeometry args={[2.2, 2.0]} />
           <meshBasicMaterial color="#ffffff" transparent opacity={0.65} />
         </mesh>
@@ -308,6 +308,109 @@ export function SenseiBackground({
         <mesh position={[0.2, 0.45, 0.02]} rotation={[0, -0.3, 0]}>
           <cylinderGeometry args={[0.008, 0.008, 0.18, 8]} />
           <meshStandardMaterial color="#e11d48" />
+        </mesh>
+      </group>
+
+      {/* ── 7. Right Classroom Wall with Sliding Hallway Doors & Clock ── */}
+      <group position={[6.2, 2.4, 0]} rotation={[0, -Math.PI / 2, 0]}>
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[14, 5.2]} />
+          <meshStandardMaterial color="#eae4d6" roughness={0.8} />
+        </mesh>
+        {/* Baseboard */}
+        <mesh position={[0, -1.95, 0.02]}>
+          <boxGeometry args={[14, 0.9, 0.04]} />
+          <meshStandardMaterial color="#8b5a2b" roughness={0.4} />
+        </mesh>
+
+        {/* Sliding Classroom Wooden Door */}
+        <group position={[-2.4, -0.2, 0.04]}>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[1.8, 3.4, 0.06]} />
+            <meshStandardMaterial color="#8b5a2b" roughness={0.45} />
+          </mesh>
+          <mesh position={[0, 0.5, 0.04]}>
+            <planeGeometry args={[1.4, 1.6]} />
+            <meshStandardMaterial color="#e2e8f0" roughness={0.2} transparent opacity={0.7} />
+          </mesh>
+        </group>
+
+        {/* Notice Board */}
+        <group position={[1.4, 0.4, 0.04]}>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[2.8, 1.6, 0.05]} />
+            <meshStandardMaterial color="#a07855" roughness={0.6} />
+          </mesh>
+          <mesh position={[-0.8, 0.3, 0.03]}>
+            <planeGeometry args={[0.45, 0.55]} />
+            <meshStandardMaterial color="#fef08a" />
+          </mesh>
+          <mesh position={[-0.2, 0.25, 0.03]}>
+            <planeGeometry args={[0.5, 0.65]} />
+            <meshStandardMaterial color="#bae6fd" />
+          </mesh>
+          <mesh position={[0.5, 0.2, 0.03]}>
+            <planeGeometry args={[0.55, 0.7]} />
+            <meshStandardMaterial color="#fbcfe8" />
+          </mesh>
+        </group>
+
+        {/* Wall Clock */}
+        <group position={[1.4, 1.8, 0.04]}>
+          <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[0.32, 0.32, 0.04, 32]} />
+            <meshStandardMaterial color="#334155" metalness={0.5} roughness={0.3} />
+          </mesh>
+          <mesh position={[0, 0, 0.025]}>
+            <circleGeometry args={[0.29, 32]} />
+            <meshBasicMaterial color="#ffffff" />
+          </mesh>
+          <mesh position={[-0.05, 0.08, 0.03]} rotation={[0, 0, Math.PI / 3]}>
+            <boxGeometry args={[0.015, 0.16, 0.005]} />
+            <meshBasicMaterial color="#0f172a" />
+          </mesh>
+          <mesh position={[0.07, 0.06, 0.03]} rotation={[0, 0, -Math.PI / 4]}>
+            <boxGeometry args={[0.012, 0.22, 0.005]} />
+            <meshBasicMaterial color="#0f172a" />
+          </mesh>
+        </group>
+      </group>
+
+      {/* ── 8. Rear Classroom Wall with Student Cubbies / Lockers ── */}
+      <group position={[0, 2.4, 4.8]} rotation={[0, Math.PI, 0]}>
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[16, 5.2]} />
+          <meshStandardMaterial color="#f4eee4" roughness={0.85} />
+        </mesh>
+        <mesh position={[0, -1.95, 0.02]}>
+          <boxGeometry args={[16, 0.9, 0.04]} />
+          <meshStandardMaterial color="#8b5a2b" roughness={0.4} />
+        </mesh>
+        {/* Student Storage Lockers */}
+        <group position={[0, -1.1, 0.35]}>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[8.0, 1.4, 0.65]} />
+            <meshStandardMaterial color="#7a4f2b" roughness={0.4} />
+          </mesh>
+        </group>
+        {/* Rear Bulletin Board */}
+        <group position={[0, 0.9, 0.04]}>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[4.2, 1.1, 0.04]} />
+            <meshStandardMaterial color="#5c3818" />
+          </mesh>
+          <mesh position={[0, 0, 0.025]}>
+            <planeGeometry args={[4.0, 0.95]} />
+            <meshStandardMaterial color="#fef3c7" roughness={0.7} />
+          </mesh>
+        </group>
+      </group>
+
+      {/* ── 9. Classroom Ceiling with Recessed Lighting Fixtures ── */}
+      <group position={[0, 4.8, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[16, 16]} />
+          <meshStandardMaterial color="#f8fafc" roughness={0.9} />
         </mesh>
       </group>
     </group>
