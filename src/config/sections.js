@@ -255,16 +255,6 @@ export const SECTIONS = [
     description: 'Pronunciation practice out loud',
   },
   {
-    id: 'progress',
-    label: 'Progress',
-    shortLabel: 'Progress',
-    path: '/progress',
-    icon: BarChart2,
-    tint: 'purple',
-    group: 'journey',
-    description: 'Track your study trends over time',
-  },
-  {
     id: 'achievements',
     label: 'Achievements',
     shortLabel: 'Awards',
@@ -272,7 +262,7 @@ export const SECTIONS = [
     icon: Trophy,
     tint: 'yellow',
     group: 'journey',
-    description: 'Badges & milestones you have earned',
+    description: 'Personal records & Slime Sticker awards',
   },
   {
     id: 'settings',

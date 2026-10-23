@@ -52,7 +52,6 @@ const SRSReview         = lazyWithRetry(() => import('./components/srs/SRSReview
 const VocabularyPage    = lazyWithRetry(() => import('./pages/VocabularyPage'))
 const ProfilePage       = lazyWithRetry(() => import('./pages/ProfilePage'))
 const UserProfilePage   = lazyWithRetry(() => import('./pages/UserProfilePage'))
-const ProgressPage      = lazyWithRetry(() => import('./pages/ProgressPage'))
 const SpeechPage        = lazyWithRetry(() => import('./pages/SpeechPage'))
 const SettingsPage      = lazyWithRetry(() => import('./pages/SettingsPage'))
 const AchievementsPage  = lazyWithRetry(() => import('./pages/AchievementsPage'))
@@ -136,7 +135,7 @@ export default function App() {
           <Route path="/profile/:userId"     element={<LazyRoute Component={UserProfilePage} message="Loading user profile..." />} />
 
           {/* ── Other ── */}
-          <Route path="/progress"            element={<LazyRoute Component={ProgressPage} message="Loading progress analytics..." />} />
+          <Route path="/progress"            element={<Navigate to="/dashboard" replace />} />
           <Route path="/speech"              element={<LazyRoute Component={SpeechPage} message="Loading speech engine..." />} />
           <Route path="/settings"            element={<LazyRoute Component={SettingsPage} message="Loading settings..." />} />
           <Route path="/achievements"        element={<LazyRoute Component={AchievementsPage} message="Loading achievements..." />} />

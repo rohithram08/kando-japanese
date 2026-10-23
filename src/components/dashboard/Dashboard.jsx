@@ -18,6 +18,7 @@ import { sectionsByGroup, TINTS } from '../../config/sections'
 import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
+import StudyProgressAnalytics from './StudyProgressAnalytics'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
@@ -378,6 +379,9 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* ── Comprehensive Study Progress & Skills Analytics ── */}
+      <StudyProgressAnalytics />
 
       {/* ── Level Progress Chart ── */}
       <ProgressChart level={currentLevel} />

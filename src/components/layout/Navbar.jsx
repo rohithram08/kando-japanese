@@ -254,7 +254,6 @@ const Navbar = ({ onMobileMenuToggle }) => {
                   <div className="p-2">
                     {[
                       { label: t('nav.my_profile', displayLanguage, 'My Profile'), emoji: '👤', path: '/profile' },
-                      { label: t('nav.progress', displayLanguage, 'Progress'), emoji: '📈', path: '/progress' },
                       { label: t('nav.achievements', displayLanguage, 'Achievements'), emoji: '🏆', path: '/achievements' },
                       { label: t('nav.settings', displayLanguage, 'Settings'), emoji: '⚙️', path: '/settings' },
                     ].map((item) => (
