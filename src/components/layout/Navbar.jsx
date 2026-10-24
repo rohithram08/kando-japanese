@@ -9,30 +9,13 @@ import ThemeToggle from '../ui/ThemeToggle'
 import LanguageSelector from '../common/LanguageSelector'
 import { useSettingsStore } from '../../store/settingsStore'
 import { useI18n } from '../../i18n'
+import UserAvatar from '../common/UserAvatar'
+import { normalizeProfile } from '../../utils/userIdentity'
 import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
 import NotificationCenter from '../notifications/NotificationCenter'
-
-// ── Avatar data (same as ProfilePage) ───────────────────────
-const AVATARS = [
-  { id: 'avatar-1', emoji: '🥷', bg: 'from-gray-700 to-gray-900' },
-  { id: 'avatar-2', emoji: '🎌', bg: 'from-red-400 to-red-600' },
-  { id: 'avatar-3', emoji: '🌸', bg: 'from-pink-400 to-pink-600' },
-  { id: 'avatar-4', emoji: '⛩️', bg: 'from-orange-400 to-red-500' },
-  { id: 'avatar-5', emoji: '🐉', bg: 'from-green-500 to-emerald-700' },
-  { id: 'avatar-6', emoji: '🗻', bg: 'from-blue-400 to-indigo-600' },
-  { id: 'avatar-7', emoji: '🎎', bg: 'from-rose-400 to-rose-600' },
-  { id: 'avatar-8', emoji: '🍣', bg: 'from-amber-400 to-orange-500' },
-  { id: 'avatar-9', emoji: '🎋', bg: 'from-emerald-400 to-teal-600' },
-  { id: 'avatar-10', emoji: '🏯', bg: 'from-yellow-500 to-amber-600' },
-  { id: 'avatar-11', emoji: '🎐', bg: 'from-cyan-400 to-blue-500' },
-  { id: 'avatar-12', emoji: '🐱', bg: 'from-violet-400 to-purple-600' },
-  { id: 'avatar-13', emoji: '👺', bg: 'from-red-600 to-red-800' },
-  { id: 'avatar-14', emoji: '🦊', bg: 'from-orange-400 to-amber-500' },
-  { id: 'avatar-15', emoji: '🎴', bg: 'from-indigo-500 to-purple-700' },
-]
 
 function getLevelColor(lvl) {
   if (lvl < 5) return 'from-gray-400 to-gray-600'
@@ -57,21 +40,9 @@ const Navbar = ({ onMobileMenuToggle }) => {
   const notifications = useNotificationStore((s) => s.notifications)
   const unreadCount = notifications.filter((n) => n.unread).length
 
-  // ── Get user avatar ─────────────────────────────────────
-  const getNavAvatar = () => {
-    if (profile?.avatar_url) {
-      return { type: 'image', src: profile.avatar_url }
-    }
-    if (profile?.avatar_id) {
-      const av = AVATARS.find((a) => a.id === profile.avatar_id)
-      if (av) return { type: 'emoji', emoji: av.emoji, bg: av.bg }
-    }
-    const letter = (profile?.username?.[0] || user?.email?.[0] || 'U').toUpperCase()
-    return { type: 'letter', letter }
-  }
-
-  const navAvatar = getNavAvatar()
-  const displayName = profile?.username || user?.email?.split('@')[0] || 'User'
+  // One normalized identity (handles camelCase/snake_case) shared with every other screen
+  const identity = normalizeProfile(profile, user)
+  const displayName = identity.username
 
   // Close on route change
   useEffect(() => {
@@ -204,19 +175,9 @@ const Navbar = ({ onMobileMenuToggle }) => {
               whileTap={{ scale: 0.95 }}
               onClick={() => { setShowProfileMenu(!showProfileMenu); setShowNotifications(false) }}
               className="relative w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0 border-2 border-transparent hover:border-primary/40 transition-all"
-              aria-label="Profile menu"
+              aria-label={t('nav.profile_menu', displayLanguage, 'Profile menu')}
             >
-              {navAvatar.type === 'image' ? (
-                <img src={navAvatar.src} alt="Profile" className="w-full h-full object-cover rounded-xl" />
-              ) : navAvatar.type === 'emoji' ? (
-                <div className={`w-full h-full flex items-center justify-center text-lg bg-gradient-to-br ${navAvatar.bg} rounded-xl`}>
-                  {navAvatar.emoji}
-                </div>
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-sm font-bold text-white bg-gradient-to-br from-red-500 to-pink-600 rounded-xl">
-                  {navAvatar.letter}
-                </div>
-              )}
+              <UserAvatar profile={identity} size="sm" className="!w-full !h-full" label={displayName} />
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-surface" />
             </motion.button>
 
@@ -231,22 +192,12 @@ const Navbar = ({ onMobileMenuToggle }) => {
                 >
                   <div className="p-4 border-b border-border">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0">
-                        {navAvatar.type === 'image' ? (
-                          <img src={navAvatar.src} alt="Profile" className="w-full h-full object-cover" />
-                        ) : navAvatar.type === 'emoji' ? (
-                          <div className={`w-full h-full flex items-center justify-center text-xl bg-gradient-to-br ${navAvatar.bg}`}>
-                            {navAvatar.emoji}
-                          </div>
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-base font-bold text-white bg-gradient-to-br from-red-500 to-pink-600">
-                            {navAvatar.letter}
-                          </div>
-                        )}
-                      </div>
+                      <UserAvatar profile={identity} size="md" className="!w-11 !h-11" label={displayName} />
                       <div className="min-w-0 flex-1">
-                        <p className="font-semibold text-sm truncate text-foreground">{displayName}</p>
-                        <p className="text-xs truncate text-muted-foreground">{user?.email}</p>
+                        <p className="font-semibold text-sm truncate text-foreground" data-testid="profile-menu-username">{displayName}</p>
+                        <p className="text-xs truncate text-muted-foreground" data-testid="profile-menu-level">
+                          {identity.jlptLevel} · {t('common.level', displayLanguage, 'Level')} {userLevel}
+                        </p>
                       </div>
                     </div>
                   </div>

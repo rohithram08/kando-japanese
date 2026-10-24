@@ -1,7 +1,7 @@
 // ─── Avatar collection – single source of truth ──────────
 export const AVATARS = [
   { id: 'avatar-1',  emoji: '🥷', label: 'Ninja',       bg: 'from-gray-700 to-gray-900'     },
-  { id: 'avatar-2',  emoji: '🇯🇵', label: 'Japan Flag',  bg: 'from-red-400 to-red-600'        },
+  { id: 'avatar-2',  emoji: '🎌', label: 'Japan Flag',  bg: 'from-red-400 to-red-600'        },
   { id: 'avatar-3',  emoji: '🌸', label: 'Sakura',      bg: 'from-pink-400 to-pink-600'      },
   { id: 'avatar-4',  emoji: '⛩️', label: 'Torii Gate',  bg: 'from-orange-400 to-red-500'     },
   { id: 'avatar-5',  emoji: '🐉', label: 'Dragon',      bg: 'from-green-500 to-emerald-700'  },
@@ -16,3 +16,5 @@ export const AVATARS = [
   { id: 'avatar-14', emoji: '🦊', label: 'Fox',         bg: 'from-orange-400 to-amber-500'   },
   { id: 'avatar-15', emoji: '🎴', label: 'Hanafuda',    bg: 'from-indigo-500 to-purple-700'  },
 ]
+
+export const getAvatarPreset = (id) => AVATARS.find((a) => a.id === id) || null

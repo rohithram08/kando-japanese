@@ -14,31 +14,15 @@ import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { updateProfile, deleteAccount } from '../api/users'
 import { uploadAvatar } from '../api/upload'
+import { AVATARS } from '../data/avatarData'
+import { APP_CONFIG } from '../config/appConfig'
+import UserAvatar from '../components/common/UserAvatar'
+import { validateUsername, USERNAME_MAX } from '../utils/userIdentity'
 import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
 import toast from 'react-hot-toast'
-import { useNotificationStore } from '../store/notificationStore'
-import { requestNotificationPermission, sendBrowserNotification } from '../services/browserNotificationService'
 
-// ── Avatar Collection ──────────────────────────────────────
-const AVATARS = [
-  { id: 'avatar-1',  emoji: '🥷',  label: 'Ninja',       bg: 'from-gray-700 to-gray-900' },
-  { id: 'avatar-2',  emoji: '🎌',  label: 'Japan Flag',  bg: 'from-red-400 to-red-600' },
-  { id: 'avatar-3',  emoji: '🌸',  label: 'Sakura',      bg: 'from-pink-400 to-pink-600' },
-  { id: 'avatar-4',  emoji: '⛩️',  label: 'Torii Gate',  bg: 'from-orange-400 to-red-500' },
-  { id: 'avatar-5',  emoji: '🐉',  label: 'Dragon',      bg: 'from-green-500 to-emerald-700' },
-  { id: 'avatar-6',  emoji: '🗻',  label: 'Mt. Fuji',    bg: 'from-blue-400 to-indigo-600' },
-  { id: 'avatar-7',  emoji: '🎎',  label: 'Dolls',       bg: 'from-rose-400 to-rose-600' },
-  { id: 'avatar-8',  emoji: '🍣',  label: 'Sushi',       bg: 'from-amber-400 to-orange-500' },
-  { id: 'avatar-9',  emoji: '🎋',  label: 'Tanabata',    bg: 'from-emerald-400 to-teal-600' },
-  { id: 'avatar-10', emoji: '🏯',  label: 'Castle',      bg: 'from-yellow-500 to-amber-600' },
-  { id: 'avatar-11', emoji: '🎐',  label: 'Wind Chime',  bg: 'from-cyan-400 to-blue-500' },
-  { id: 'avatar-12', emoji: '🐱',  label: 'Cat',         bg: 'from-violet-400 to-purple-600' },
-  { id: 'avatar-13', emoji: '👺',  label: 'Tengu',       bg: 'from-red-600 to-red-800' },
-  { id: 'avatar-14', emoji: '🦊',  label: 'Fox',         bg: 'from-orange-400 to-amber-500' },
-  { id: 'avatar-15', emoji: '🎴',  label: 'Hanafuda',    bg: 'from-indigo-500 to-purple-700' },
-]
 
 // id / label / icon / tint / search keywords — keywords power the settings search box
 const SECTIONS = [
@@ -177,6 +161,7 @@ export default function SettingsPage() {
 
   // ── Profile state (saved via backend API / authStore) ──
   const [username, setUsername]             = useState(profile?.username || user?.username || 'Learner')
+  const [usernameError, setUsernameError]   = useState(null)
   const [nativeLanguage, setNativeLanguage]  = useState(normalizeLocale(profile?.nativeLanguage || profile?.native_language || settings.nativeLanguage || 'en'))
   const [profileSaving, setProfileSaving]    = useState(false)
 
@@ -198,23 +183,13 @@ export default function SettingsPage() {
     }
   }, [profile, settings.nativeLanguage])
 
-  const getDisplayAvatar = () => {
-    if (previewUrl) return { type: 'image', src: previewUrl }
-    if (avatarUrl)  return { type: 'image', src: avatarUrl }
-    if (selectedAvatar) {
-      const av = AVATARS.find(a => a.id === selectedAvatar)
-      if (av) return { type: 'emoji', ...av }
-    }
-    return { type: 'default' }
-  }
-  const displayAvatar = getDisplayAvatar()
 
   // ── File upload ────────────────────────────────────────
   const handleFileSelect = async (e) => {
     const file = e.target.files?.[0]
     if (!file) return
     if (!file.type.startsWith('image/')) { toast.error(t('toast.select_image_error', 'Please select an image file')); return }
-    if (file.size > 5 * 1024 * 1024)    { toast.error(t('toast.image_size_error', 'Image must be less than 5MB')); return }
+    if (file.size > APP_CONFIG.AVATAR_MAX_SIZE_BYTES) { toast.error(t('toast.image_size_error', 'Image must be less than 2MB')); return }
 
     const reader = new FileReader()
     reader.onload = (ev) => setPreviewUrl(ev.target.result)
@@ -289,7 +264,24 @@ export default function SettingsPage() {
   }
 
   const handleSaveProfile = async () => {
-    if (!username.trim()) { toast.error(t('toast.name_required', 'Display name cannot be empty')); return }
+    // Existing accounts may have an older, free-form name (e.g. with a space).
+    // Only enforce the username rules when the learner actually changes it.
+    const stored = (profile?.username || user?.username || '').trim()
+    if (username.trim() !== stored) {
+      const problem = validateUsername(username)
+      if (problem) {
+        const msg = t(problem.key, problem.params || problem.fallback, problem.fallback)
+        setUsernameError(msg)
+        toast.error(msg)
+        return
+      }
+    } else if (!username.trim()) {
+      const msg = t('toast.name_required', 'Username cannot be empty')
+      setUsernameError(msg)
+      toast.error(msg)
+      return
+    }
+    setUsernameError(null)
     setProfileSaving(true)
     try {
       if (user) {
@@ -402,19 +394,18 @@ export default function SettingsPage() {
                     className={`
                       w-20 h-20 rounded-2xl border-2 shadow-lg overflow-hidden cursor-pointer
                       border-border
-                      ${displayAvatar.type === 'emoji' ? `bg-gradient-to-br ${displayAvatar.bg}` : displayAvatar.type === 'image' ? '' : 'bg-muted'}
                     `}
                     onClick={() => setShowAvatarPicker(true)}
                   >
-                    {displayAvatar.type === 'image' ? (
-                      <img src={displayAvatar.src} alt="Profile" className="w-full h-full object-cover" />
-                    ) : displayAvatar.type === 'emoji' ? (
-                      <div className="w-full h-full flex items-center justify-center text-3xl">{displayAvatar.emoji}</div>
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <User className="w-8 h-8 text-muted-foreground" />
-                      </div>
-                    )}
+                    <UserAvatar
+                      avatarUrl={avatarUrl}
+                      avatarId={selectedAvatar}
+                      username={username}
+                      previewSrc={previewUrl}
+                      size="xl"
+                      rounded="rounded-2xl"
+                      className="!w-full !h-full"
+                    />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center justify-center rounded-2xl">
                       <Camera className="w-5 h-5 text-white" />
                     </div>
@@ -430,7 +421,7 @@ export default function SettingsPage() {
                     onClick={() => setShowAvatarPicker(true)}
                     className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border bg-surface border-border text-foreground/80 hover:bg-muted"
                   >
-                    <Pencil className="w-3.5 h-3.5" /> Change Avatar
+                    <Pencil className="w-3.5 h-3.5" /> {t('settings.change_avatar', 'Change Avatar')}
                   </button>
                   {(selectedAvatar || avatarUrl) && (
                     <button
@@ -438,28 +429,38 @@ export default function SettingsPage() {
                       disabled={uploadLoading}
                       className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-colors text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10 disabled:opacity-50"
                     >
-                      <X className="w-3 h-3" /> Remove
+                      <X className="w-3 h-3" /> {t('settings.remove_avatar', 'Remove')}
                     </button>
                   )}
                 </div>
               </div>
             </SectionCard>
 
-            <SectionCard title={t('settings.display_name_title', 'Display Name')} emoji="✏️">
+            <SectionCard title={t('settings.display_name_title', 'Username')} emoji="✏️">
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                 <input
                   type="text"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className={`${fieldBase} pl-11`}
-                  placeholder={t('settings.display_name_placeholder', 'Your display name')}
-                  maxLength={30}
+                  onChange={(e) => { setUsername(e.target.value); if (usernameError) setUsernameError(null) }}
+                  className={`${fieldBase} pl-11 ${usernameError ? 'border-red-400' : ''}`}
+                  placeholder={t('settings.display_name_placeholder', 'Your username')}
+                  maxLength={USERNAME_MAX}
+                  autoComplete="username"
+                  aria-invalid={Boolean(usernameError)}
+                  aria-describedby="username-help"
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground">
-                  {username.length}/30
+                  {username.length}/{USERNAME_MAX}
                 </span>
               </div>
+              <p
+                id="username-help"
+                data-testid="username-help"
+                className={`mt-2 text-xs ${usernameError ? 'text-red-500' : 'text-muted-foreground'}`}
+              >
+                {usernameError || t('settings.username_hint', 'This is the name shown across the app. Letters, numbers, "_", "." and "-" only (3–30 characters).')}
+              </p>
             </SectionCard>
 
             <SectionCard title={t('settings.display_lang_title', 'Display & Interface Language')} emoji="🌐">
@@ -634,15 +635,7 @@ export default function SettingsPage() {
         return (
           <SectionCard>
             <SettingRow label={t('settings.reminder', 'Daily Study Reminder')} description={t('settings.reminder_desc', 'A real browser notification while the app is open, at the time below')}>
-              <Toggle
-                enabled={settings.dailyReminder}
-                onChange={async (v) => {
-                  updateSettings({ dailyReminder: v })
-                  if (v) {
-                    await requestNotificationPermission()
-                  }
-                }}
-              />
+              <Toggle enabled={settings.dailyReminder} onChange={(v) => updateSettings({ dailyReminder: v })} />
             </SettingRow>
             <SettingRow label={t('settings.reminder_time', 'Reminder Time')} description={t('settings.reminder_time_desc', 'When to send your daily reminder')}>
               <input
@@ -659,45 +652,8 @@ export default function SettingsPage() {
             <SettingRow label={t('settings.achievement_alerts', 'Achievement Alerts')} description={t('settings.achievement_alerts_desc', 'Notify you when you unlock a badge')}>
               <Toggle enabled={settings.achievementAlert} onChange={(v) => updateSettings({ achievementAlert: v })} />
             </SettingRow>
-            <SettingRow label={t('settings.weekly_report', 'Weekly Progress Report')} description={t('settings.weekly_report_desc', 'An in-app summary of your week, every 7 days')}>
+            <SettingRow label={t('settings.weekly_report', 'Weekly Progress Report')} description={t('settings.weekly_report_desc', 'An in-app summary of your week, every 7 days')} noBorder>
               <Toggle enabled={settings.weeklyReport} onChange={(v) => updateSettings({ weeklyReport: v })} />
-            </SettingRow>
-            <SettingRow label={t('settings.test_slime_notif', 'Test Slime Notification')} description={t('settings.test_slime_notif_desc', 'Preview a Duolingo-style slime notification in the bell center and desktop')} noBorder>
-              <button
-                type="button"
-                onClick={() => {
-                  const name = profile?.username || user?.email?.split('@')[0] || 'Learner'
-                  useNotificationStore.getState().upsert({
-                    id: `test-reminder-${Date.now()}`,
-                    type: 'daily_reminder',
-                    category: 'reminders',
-                    slimeMood: 'daily',
-                    greeting: `Hi ${name}! It's Slime.`,
-                    title: "It's time for your daily Japanese lesson",
-                    text: '⏰ Take 3 minutes now to complete a quick story or lesson.',
-                    link: '/reading',
-                    primaryAction: { label: 'Start Lesson', link: '/reading' },
-                    secondaryAction: { label: 'Remind me later', action: 'snooze' },
-                  })
-                  sendBrowserNotification({
-                    title: `Hi ${name}! It's Slime 🟢`,
-                    body: "⏰ Time for your daily Japanese lesson. Take 3 minutes now to complete it!",
-                    url: '/reading',
-                  })
-                  toast.success('Slime notification sent! Check the bell icon above 🔔', {
-                    icon: '🟢',
-                    style: {
-                      borderRadius: '16px',
-                      background: '#1a2419',
-                      color: '#bef264',
-                      border: '1px solid rgba(190, 242, 100, 0.2)',
-                    },
-                  })
-                }}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-lime-400/20 text-lime-400 hover:bg-lime-400/30 border border-lime-400/30 transition-colors"
-              >
-                Send Test Alert
-              </button>
             </SettingRow>
           </SectionCard>
         )
@@ -818,7 +774,7 @@ export default function SettingsPage() {
             className="w-full max-w-sm rounded-3xl p-6 border shadow-2xl bg-surface border-border"
           >
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-foreground">Choose Avatar</h3>
+              <h3 className="text-lg font-bold text-foreground">{t('settings.choose_avatar', 'Choose Avatar')}</h3>
               <button onClick={() => setShowAvatarPicker(false)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground">
                 <X className="w-4 h-4" />
               </button>
@@ -830,10 +786,10 @@ export default function SettingsPage() {
               className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium border mb-4 transition-colors bg-muted border-border text-foreground/80 hover:bg-muted/70"
             >
               <Upload className="w-4 h-4 text-indigo-400" />
-              Upload a Photo
+              {t('settings.upload_photo', 'Upload a Photo')}
             </button>
 
-            <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-muted-foreground">Or pick an emoji</p>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-muted-foreground">{t('settings.pick_emoji', 'Or pick an emoji')}</p>
             <div className="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto">
               {AVATARS.map((av) => (
                 <motion.button

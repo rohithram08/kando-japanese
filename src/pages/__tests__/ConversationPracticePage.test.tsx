@@ -53,7 +53,23 @@ vi.mock('../../services/aiService', () => ({
   },
 }))
 
-describe('ConversationPracticePage Component', () => {
+const GREETING = 'いらっしゃいませ！何にしますか？'
+
+const renderPage = () =>
+  render(
+    <MemoryRouter>
+      <ConversationPracticePage />
+    </MemoryRouter>
+  )
+
+const openScenario = async (id = 'greetings') => {
+  const card = document.querySelector(`[data-scenario-id="${id}"]`) as HTMLElement
+  expect(card).not.toBeNull()
+  fireEvent.click(card)
+  await waitFor(() => expect(screen.getByText(GREETING)).toBeDefined())
+}
+
+describe('ConversationPracticePage — hub → chat', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     localStorage.clear()
@@ -80,132 +96,153 @@ describe('ConversationPracticePage Component', () => {
     cleanup()
   })
 
-  it('renders workspace title, mode switcher, and loads initial scenario', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
+  describe('hub', () => {
+    it('opens on a calm hub — title, two modes, picks — and does NOT start an AI chat until you choose', () => {
+      renderPage()
+      expect(screen.getByRole('heading', { level: 1, name: 'Conversation Practice' })).toBeDefined()
+      expect(screen.getByText('会話練習')).toBeDefined()
+      expect(screen.getByRole('tab', { name: /Role-play/i })).toBeDefined()
+      expect(screen.getByRole('tab', { name: /Free talk/i })).toBeDefined()
+      expect(screen.getByText(/Picked for you · N5/i)).toBeDefined()
+      expect(screen.getByTestId('quick-start-btn')).toBeDefined()
+      expect(aiService.startChat).not.toHaveBeenCalled()
+    })
 
-    expect(screen.getByText('Conversation Practice')).toBeDefined()
-    expect(screen.getByText('会話練習')).toBeDefined()
-    expect(screen.getByText(/Scenario Roleplay/i)).toBeDefined()
-    expect(screen.getByText(/Free Talk/i)).toBeDefined()
+    it('filters scenarios by search, category and difficulty', () => {
+      renderPage()
+      const total = screen.getAllByTestId('scenario-card').length
+      fireEvent.change(screen.getByPlaceholderText(/Search scenarios/i), { target: { value: 'restaurant' } })
+      const filtered = screen.getAllByTestId('scenario-card')
+      expect(filtered.length).toBeLessThan(total)
+      expect(document.querySelector('[data-scenario-id="restaurant"]')).not.toBeNull()
+      fireEvent.change(screen.getByPlaceholderText(/Search scenarios/i), { target: { value: 'zzzz-nothing' } })
+      expect(screen.getByText(/No scenarios match/i)).toBeDefined()
+      fireEvent.click(screen.getByRole('button', { name: /Clear filters/i }))
+      expect(screen.getAllByTestId('scenario-card').length).toBeGreaterThan(10)
+      fireEvent.click(screen.getByRole('button', { name: 'Advanced' }))
+      expect(document.querySelector('[data-scenario-id="debate"]')).not.toBeNull()
+      expect(document.querySelector('[data-scenario-id="greetings"]')).toBeNull()
+    })
 
-    // Verifies startChat is invoked for scenario
-    await waitFor(() => {
+    it('shows locked scenarios as disabled with a way to unlock them, and unlocks after enough completions', () => {
+      const { unmount } = renderPage()
+      const locked = document.querySelector('[data-scenario-id="keigo"]') as HTMLButtonElement
+      expect(locked.disabled).toBe(true)
+      expect(locked.textContent).toMatch(/Complete 5 more scenarios to unlock/i)
+      unmount()
+
+      localStorage.setItem('nihongo_completed_scenarios', JSON.stringify(['a', 'b', 'c', 'd', 'e']))
+      renderPage()
+      expect((document.querySelector('[data-scenario-id="keigo"]') as HTMLButtonElement).disabled).toBe(false)
+    })
+
+    it('offers "Continue" for a conversation that is already under way', () => {
+      localStorage.setItem(
+        'nihongo_conv_scenario_restaurant',
+        JSON.stringify([
+          { id: 'm1', role: 'assistant', content: 'いらっしゃいませ', timestamp: '2026-10-20T10:00:00Z' },
+          { id: 'm2', role: 'user', content: 'メニューをください', timestamp: '2026-10-20T10:01:00Z' },
+        ])
+      )
+      renderPage()
+      expect(screen.getByTestId('resume-btn').textContent).toMatch(/At the Restaurant/)
+    })
+
+    it('Free talk tab shows level pills and topics, and starting a topic opens the chat', async () => {
+      renderPage()
+      fireEvent.click(screen.getByRole('tab', { name: /Free talk/i }))
+      expect(screen.getByRole('button', { name: 'N5' })).toBeDefined()
+      expect(screen.getByRole('button', { name: 'N1' })).toBeDefined()
+      expect(screen.getByText(/Daily Life & Routines/i)).toBeDefined()
+
+      fireEvent.click(screen.getByTestId('free-open-chat'))
+      // free talk opens with Hana-sensei's own greeting (no AI round-trip needed)
+      await waitFor(() => expect(screen.getByText(/私は花先生/)).toBeDefined())
+      expect(screen.getByTestId('conversation-chat')).toBeDefined()
+      expect(screen.getByTestId('chat-title').textContent).toMatch(/Free talk with Hana-sensei/i)
+    })
+  })
+
+  describe('chat', () => {
+    it('choosing a scenario starts the chat with the greeting and its translation', async () => {
+      renderPage()
+      await openScenario()
       expect(aiService.startChat).toHaveBeenCalled()
+      expect(screen.getByText('Welcome! What will you have?')).toBeDefined()
+      expect(screen.getByTestId('chat-title').textContent).toBe('Greetings & Introductions')
     })
 
-    expect(screen.getByText('いらっしゃいませ！何にしますか？')).toBeDefined()
-    expect(screen.getByText('Welcome! What will you have?')).toBeDefined()
-  })
+    it('back returns to the hub; the conversation is kept so the hub offers Continue', async () => {
+      renderPage()
+      await openScenario()
+      fireEvent.click(screen.getAllByTestId('quick-reply-btn')[0])
+      await waitFor(() => expect(aiService.chat).toHaveBeenCalled())
+      await waitFor(() => expect(screen.getAllByTestId('chat-message').length).toBeGreaterThanOrEqual(3))
 
-  it('displays quick reply buttons and clicking one sends a message', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
-
-    await waitFor(() => {
-      expect(screen.getByText('いらっしゃいませ！何にしますか？')).toBeDefined()
+      fireEvent.click(screen.getByRole('button', { name: /Back to scenarios/i }))
+      expect(screen.getByTestId('conversation-hub')).toBeDefined()
+      expect(screen.getByTestId('resume-btn').textContent).toMatch(/Greetings & Introductions/)
     })
 
-    // Find a quick reply button by test id
-    const quickButtons = screen.getAllByTestId('quick-reply-btn')
-    expect(quickButtons.length).toBeGreaterThan(0)
-
-    fireEvent.click(quickButtons[0])
-
-    await waitFor(() => {
-      expect(aiService.chat).toHaveBeenCalled()
-      expect(mockAddChat).toHaveBeenCalled()
-      expect(mockAddXP).toHaveBeenCalledWith(15)
-    })
-  })
-
-  it('renders grammar correction card when AI identifies a learner mistake', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
-
-    await waitFor(() => {
-      expect(screen.getByText('いらっしゃいませ！何にしますか？')).toBeDefined()
+    it('quick replies send a message, award XP and count towards the daily goal', async () => {
+      renderPage()
+      await openScenario()
+      const quickButtons = screen.getAllByTestId('quick-reply-btn')
+      expect(quickButtons.length).toBeGreaterThan(0)
+      fireEvent.click(quickButtons[0])
+      await waitFor(() => {
+        expect(aiService.chat).toHaveBeenCalled()
+        expect(mockAddChat).toHaveBeenCalled()
+        expect(mockAddXP).toHaveBeenCalledWith(15)
+      })
     })
 
-    const input = screen.getByPlaceholderText(/Type your response in Japanese/i)
-    fireEvent.change(input, { target: { value: 'これ ください' } })
-
-    const sendBtn = screen.getByRole('button', { name: /Send message/i })
-    fireEvent.click(sendBtn)
-
-    await waitFor(() => {
-      expect(screen.getByText(/Grammar Tip & Correction/i)).toBeDefined()
-      expect(screen.getByText(/これをお願いします/i)).toBeDefined()
-    })
-  })
-
-  it('allows switching to Free Talk mode and displays level selector', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
-
-    const freeTalkTab = screen.getByRole('button', { name: /Free Talk/i })
-    fireEvent.click(freeTalkTab)
-
-    expect(screen.getByText(/Hana-sensei \(花先生\)/i)).toBeDefined()
-    expect(screen.getByRole('button', { name: 'N5' })).toBeDefined()
-    expect(screen.getByRole('button', { name: 'N1' })).toBeDefined()
-    expect(screen.getByText(/Daily Life & Routines/i)).toBeDefined()
-  })
-
-  it('plays Japanese audio when clicking voice button', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
-
-    await waitFor(() => {
-      expect(screen.getByText('いらっしゃいませ！何にしますか？')).toBeDefined()
+    it('renders the grammar correction card when the AI spots a mistake', async () => {
+      renderPage()
+      await openScenario()
+      fireEvent.change(screen.getByPlaceholderText(/Type in Japanese/i), { target: { value: 'これ ください' } })
+      fireEvent.click(screen.getByRole('button', { name: /Send message/i }))
+      await waitFor(() => {
+        expect(screen.getByText(/Grammar Tip & Correction/i)).toBeDefined()
+        expect(screen.getByText(/これをお願いします/i)).toBeDefined()
+      })
     })
 
-    const audioBtns = screen.getAllByRole('button', { name: /Listen audio/i })
-    expect(audioBtns.length).toBeGreaterThan(0)
-
-    fireEvent.click(audioBtns[0])
-    expect(window.speechSynthesis.speak).toHaveBeenCalled()
-  })
-
-  it('supports scenario completion, awards XP, and updates completed status', async () => {
-    render(
-      <MemoryRouter>
-        <ConversationPracticePage />
-      </MemoryRouter>
-    )
-
-    await waitFor(() => {
-      expect(screen.getByText('いらっしゃいませ！何にしますか？')).toBeDefined()
+    it('plays Japanese audio from the message actions', async () => {
+      renderPage()
+      await openScenario()
+      fireEvent.click(screen.getAllByRole('button', { name: /Listen audio/i })[0])
+      expect(window.speechSynthesis.speak).toHaveBeenCalled()
     })
 
-    // Send a quick reply message so messages.length >= 2
-    const quickReply = screen.getByText('こんにちは！')
-    fireEvent.click(quickReply)
-
-    await waitFor(() => {
-      expect(screen.getByTestId('complete-scenario-btn')).toBeDefined()
+    it('keeps display options in one menu: translation can be switched off', async () => {
+      renderPage()
+      await openScenario()
+      expect(screen.getByText('Welcome! What will you have?')).toBeDefined()
+      fireEvent.click(screen.getByRole('button', { name: /Display & audio/i }))
+      fireEvent.click(screen.getByRole('menuitemcheckbox', { name: /English translation/i }))
+      expect(screen.queryByText('Welcome! What will you have?')).toBeNull()
     })
 
-    const completeBtn = screen.getByTestId('complete-scenario-btn')
-    fireEvent.click(completeBtn)
+    it('Coach panel: tapping a useful phrase drops it into the message box', async () => {
+      renderPage()
+      await openScenario()
+      if (!screen.queryByTestId('coach-panel')) fireEvent.click(screen.getByRole('button', { name: 'Coach' }))
+      const panel = screen.getByTestId('coach-panel')
+      const phrase = panel.querySelector('ul button') as HTMLButtonElement
+      fireEvent.click(phrase)
+      const input = screen.getByTestId('conversation-input') as HTMLInputElement
+      expect(input.value.length).toBeGreaterThan(0)
+    })
 
-    // Verify localStorage has completed scenario
-    const stored = JSON.parse(localStorage.getItem('nihongo_completed_scenarios') || '[]')
-    expect(stored).toContain('greetings')
+    it('can finish a scenario: awards XP once and records it as completed', async () => {
+      renderPage()
+      await openScenario()
+      fireEvent.click(screen.getByText('こんにちは！'))
+      await waitFor(() => expect(screen.getByTestId('complete-scenario-btn')).toBeDefined())
+      fireEvent.click(screen.getByTestId('complete-scenario-btn'))
+      const stored = JSON.parse(localStorage.getItem('nihongo_completed_scenarios') || '[]')
+      expect(stored).toContain('greetings')
+    })
   })
 })

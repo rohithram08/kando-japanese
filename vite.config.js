@@ -34,6 +34,13 @@ export default defineConfig(({ mode }) => {
         changeOrigin: true,
         secure: false,
       },
+      // Uploaded avatars were being requested from the Vite server itself
+      // (→ index.html → broken image). Forward legacy "/storage/…" URLs too.
+      '/storage': {
+        target: apiTarget,
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 

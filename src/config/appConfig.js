@@ -5,8 +5,8 @@ export const APP_CONFIG = {
   LOCAL_STORAGE_KEY: 'nihongo_settings',
 
   // File upload limits
-  AVATAR_MAX_SIZE_MB: 5,
-  AVATAR_MAX_SIZE_BYTES: 5 * 1024 * 1024,
+  AVATAR_MAX_SIZE_MB: 2, // must match backend/src/routes/upload.ts MAX_FILE_SIZE
+  AVATAR_MAX_SIZE_BYTES: 2 * 1024 * 1024,
   AVATAR_BUCKET: 'avatars',
   AVATAR_ALLOWED_TYPES: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
 

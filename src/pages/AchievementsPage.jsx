@@ -294,6 +294,43 @@ export const SLIME_AWARDS = [
   },
 ]
 
+const STICKER_EMOJI_MAP = {
+  samurai: '⚔️',
+  scholar: '📚',
+  flame: '🔥',
+  crown: '👑',
+  ninja: '🥷',
+  sakura: '🌸',
+  bookworm: '📖',
+  zen: '🧘',
+  sparkle: '⭐',
+  trophy: '🏆',
+  target: '🎯',
+  dragon: '🐉',
+}
+
+export const ACHIEVEMENTS = SLIME_AWARDS.map((award) => ({
+  ...award,
+  emoji: award.emoji || STICKER_EMOJI_MAP[award.sticker] || '🏆',
+  category: award.category || 'general',
+}))
+
+export function computeUnlockedIds(progress, readingProgressMap = {}) {
+  const s = progress || {}
+  const pMap = readingProgressMap || {}
+  const unlocked = new Set()
+  ACHIEVEMENTS.forEach((a) => {
+    try {
+      if (typeof a.condition === 'function' && a.condition(s, pMap)) {
+        unlocked.add(a.id)
+      }
+    } catch {
+      // ignore
+    }
+  })
+  return unlocked
+}
+
 export default function AchievementsPage() {
   const { t } = useI18n()
   const progress = useProgressStore()

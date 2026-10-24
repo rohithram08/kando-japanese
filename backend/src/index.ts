@@ -28,7 +28,11 @@ app.use(cors({
 app.use(generalLimiter);
 
 // ─── Static Storage ──────────────────────────────────────────────────────────
-app.use('/storage', express.static(path.resolve(process.cwd(), 'uploads')));
+// Same files under /api/storage so dev proxies / reverse proxies that only forward
+// "/api" can serve uploaded avatars (the frontend resolves "/storage/…" to this).
+const uploadsDir = path.resolve(process.cwd(), 'uploads');
+app.use('/storage', express.static(uploadsDir));
+app.use('/api/storage', express.static(uploadsDir));
 
 // ─── Parsing ─────────────────────────────────────────────────────────────────
 app.use(express.json({ limit: '1mb' }));
