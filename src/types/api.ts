@@ -6,6 +6,7 @@
 import type {
   User,
   JLPTLevel,
+  AvatarConfig,
   LessonSummary,
   Lesson,
   LessonProgress,
@@ -93,6 +94,7 @@ export interface UpdateProfileRequest {
   studyLevel?: JLPTLevel;
   avatarUrl?: string | null;
   avatarId?: string | null;
+  avatarConfig?: AvatarConfig | null;
 }
 
 export interface UserProfileResponse extends User {}

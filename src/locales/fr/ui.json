@@ -65,7 +65,8 @@
     "curated": "Traduction vérifiée",
     "fallback_en": "Anglais (Secours)",
     "day": "Jour",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "Leçons",
@@ -243,5 +244,18 @@
     "voice_unavailable": "Aucune voix japonaise disponible sur cet appareil",
     "playback_failed": "Échec de la lecture audio",
     "default_voice": "Voix par défaut"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

@@ -14,6 +14,8 @@ export const users = mysqlTable('users', {
   // Changed only by the user (Settings / level-up), never by XP.
   studyLevel: varchar('study_level', { length: 10 }).default('N5').notNull(),
   avatarUrl: text('avatar_url'),
+  // JSON recipe for the customizable cartoon avatar (see services/avatarConfig.ts). TEXT keeps MariaDB/MySQL/TiDB behaviour identical.
+  avatarConfig: text('avatar_config'),
   avatarId: varchar('avatar_id', { length: 100 }),
   xpPoints: int('xp_points').default(0).notNull(),
   streakDays: int('streak_days').default(0).notNull(),

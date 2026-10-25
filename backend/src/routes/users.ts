@@ -7,6 +7,8 @@ import { users, userLessonProgress, userKanjiProgress, userVocabularyProgress } 
 import { eq, sql } from 'drizzle-orm';
 import { AppError } from '../middleware/errorHandler.js';
 import { computeLevelStatus, getStudyLevel } from '../services/levelService.js';
+import { avatarConfigSchema, parseAvatarConfig, serializeAvatarConfig, type AvatarConfig } from '../services/avatarConfig.js';
+import { serializeProfile } from '../services/userSerializer.js';
 
 export const usersRouter = Router();
 
@@ -18,8 +20,7 @@ usersRouter.get('/profile', requireAuth, async (req, res, next) => {
     
     if (!user) throw new AppError(404, 'User not found');
     
-    const { passwordHash, ...profile } = user;
-    res.json(profile);
+    res.json(serializeProfile(user));
   } catch (err) {
     next(err);
   }
@@ -33,6 +34,7 @@ export const updateProfileSchema = z.object({
     nativeLanguage: z.string().max(50).optional(),
     currentLevel: z.enum(['N1', 'N2', 'N3', 'N4', 'N5']).optional(),
     studyLevel: z.enum(['N1', 'N2', 'N3', 'N4', 'N5']).optional(),
+    avatarConfig: avatarConfigSchema.nullable().optional(),
     timezone: z.string().max(100).optional(),
     avatarUrl: z
       .string()
@@ -87,6 +89,16 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
     const userId = req.user!.userId;
     const updates = req.body;
     
+    // Exactly one avatar kind may be set at a time: uploaded photo, preset, or custom cartoon.
+    const avatarKindsSet = [updates.avatarUrl, updates.avatarId, updates.avatarConfig].filter(Boolean).length;
+    if (avatarKindsSet > 1 && !(updates.avatarUrl && updates.avatarId)) {
+      throw new AppError(
+        400,
+        'Provide only one of avatarUrl, avatarId or avatarConfig.',
+        'AMBIGUOUS_AVATAR_UPDATE'
+      );
+    }
+
     // Reject ambiguous contradictory avatar updates
     if (updates.avatarUrl && updates.avatarId) {
       throw new AppError(
@@ -118,6 +130,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
       timezone?: string;
       avatarUrl?: string | null;
       avatarId?: string | null;
+      avatarConfig?: string | null;
     } = {};
 
     if (updates.username !== undefined) dbUpdates.username = updates.username;
@@ -143,6 +156,18 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
       }
     }
 
+    // A custom cartoon avatar replaces photo/preset; choosing a photo/preset replaces the cartoon.
+    if (updates.avatarConfig !== undefined) {
+      dbUpdates.avatarConfig = serializeAvatarConfig(updates.avatarConfig as AvatarConfig | null);
+      if (updates.avatarConfig !== null) {
+        dbUpdates.avatarUrl = null;
+        dbUpdates.avatarId = null;
+      }
+    }
+    if ((updates.avatarUrl || updates.avatarId) && updates.avatarConfig === undefined) {
+      dbUpdates.avatarConfig = null;
+    }
+
     await db.update(users)
       .set(dbUpdates)
       .where(eq(users.id, userId));
@@ -152,9 +177,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
     });
     
     if (!updatedUser) throw new AppError(404, 'User not found after update');
-    const { passwordHash, ...profile } = updatedUser;
-    
-    res.json(profile);
+    res.json(serializeProfile(updatedUser));
   } catch (err) {
     next(err);
   }
@@ -225,6 +248,7 @@ usersRouter.get('/:userId', async (req, res, next) => {
       currentLevel: user.currentLevel,
       avatarUrl: user.avatarUrl,
       avatarId: user.avatarId,
+      avatarConfig: parseAvatarConfig(user.avatarConfig),
       xpPoints: user.xpPoints,
       streakDays: user.streakDays,
       createdAt: user.createdAt,

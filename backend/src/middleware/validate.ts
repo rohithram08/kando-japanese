@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
+import { AppError } from './errorHandler.js';
 
 export function validate(schema: ZodSchema) {
   return (req: Request, _res: Response, next: NextFunction): void => {
@@ -14,13 +15,9 @@ export function validate(schema: ZodSchema) {
       next();
     } catch (error) {
       if (error instanceof ZodError) {
-        next({
-          statusCode: 400,
-          message: 'Validation error',
-          code: 'VALIDATION_ERROR',
-          details: error.flatten(),
-          name: 'AppError',
-        } as unknown as Error);
+        // Must be a real AppError: errorHandler only maps `instanceof AppError` to its status code,
+        // so a plain object here used to surface as a 500 INTERNAL_ERROR.
+        next(new AppError(400, 'Validation error', 'VALIDATION_ERROR', error.flatten()));
         return;
       }
       next(error);

@@ -7,6 +7,8 @@
 
 import React, { useEffect, useState } from 'react'
 import { getAvatarDescriptor, normalizeProfile } from '../../utils/userIdentity'
+import { normalizeAvatarConfig } from '../../utils/avatarConfig'
+import { useAvatarSvg } from '../../hooks/useAvatarSvg'
 
 const SIZES = {
   xs: { box: 'w-6 h-6', text: 'text-xs' },
@@ -21,6 +23,7 @@ export default function UserAvatar({
   profile,
   avatarUrl,
   avatarId,
+  avatarConfig, // customizable cartoon avatar recipe (object); wins over photo/preset
   username,
   previewSrc = null, // a local blob/data URL shown while an upload is in flight
   size = 'md',
@@ -29,9 +32,13 @@ export default function UserAvatar({
   label,
 }) {
   const normalized = profile ? normalizeProfile(profile) : null
+  const cartoonConfig = avatarConfig !== undefined ? normalizeAvatarConfig(avatarConfig) : normalized?.avatarConfig
+  const cartoonSrc = useAvatarSvg(cartoonConfig) // null until the (lazy) renderer has loaded
   const descriptor = previewSrc
     ? { type: 'image', src: previewSrc }
-    : getAvatarDescriptor({
+    : cartoonSrc
+      ? { type: 'image', src: cartoonSrc }
+      : getAvatarDescriptor({
         avatarUrl: avatarUrl !== undefined ? avatarUrl : normalized?.avatarUrl,
         avatarId: avatarId !== undefined ? avatarId : normalized?.avatarId,
         username: username !== undefined ? username : normalized?.username,

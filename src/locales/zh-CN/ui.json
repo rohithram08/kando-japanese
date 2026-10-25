@@ -65,7 +65,8 @@
     "curated": "精校翻译",
     "fallback_en": "英文 (后备)",
     "day": "天",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "课程",
@@ -243,5 +244,18 @@
     "voice_unavailable": "此设备上无可用的日语语音",
     "playback_failed": "音频播放失败",
     "default_voice": "默认语音"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

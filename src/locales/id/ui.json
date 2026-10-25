@@ -65,7 +65,8 @@
     "curated": "Terjemahan Terpilih",
     "fallback_en": "Inggris (Cadangan)",
     "day": "Hari",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "Pelajaran",
@@ -243,5 +244,18 @@
     "voice_unavailable": "Tidak ada suara bahasa Jepang di perangkat ini",
     "playback_failed": "Pemutaran audio gagal",
     "default_voice": "Suara Default"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

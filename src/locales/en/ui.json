@@ -72,7 +72,8 @@
     "item": "Item",
     "no_results": "No words found",
     "try_different_search": "Try a different search term",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "Graded Reader",
@@ -547,5 +548,18 @@
     "review_toast": "Practice review completed! +10 Wave XP",
     "mastered": "Roleplay Mastered! 🎉",
     "proud": "Hana-sensei is proud of your conversational progress!"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

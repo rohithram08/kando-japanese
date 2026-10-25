@@ -65,7 +65,8 @@
     "curated": "검수된 번역",
     "fallback_en": "영어 (기본 대체)",
     "day": "일",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "레슨",
@@ -243,5 +244,18 @@
     "voice_unavailable": "이 기기에서 사용할 수 있는 일본어 음성이 없습니다",
     "playback_failed": "오디오 재생에 실패했습니다",
     "default_voice": "기본 음성"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

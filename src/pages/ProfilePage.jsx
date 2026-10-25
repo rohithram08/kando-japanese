@@ -1,12 +1,12 @@
 // src/pages/ProfilePage.jsx
-import React, { useState, useRef, useEffect, useMemo } from 'react'
+import React, { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Camera, Upload, X, User, Trophy, Flame,
   Star, Calendar, Award, Target, BookOpen, TrendingUp,
   BarChart3, GraduationCap, UserPlus, UserCheck, Settings, Zap,
   Eye, Pen, BookMarked, Brain, Shield, Medal,
-  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft,
+  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile,
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
@@ -19,6 +19,8 @@ import { useI18n } from '../i18n'
 import { getStreakHistory } from '../api/progress'
 import { AVATARS } from '../data/avatarData'
 import UserAvatar from '../components/common/UserAvatar'
+// Lazy: pulls in DiceBear only when someone opens the creator.
+const AvatarCreator = lazy(() => import('../components/avatar/AvatarCreator'))
 import ProfileBannerScene from '../components/profile/ProfileBannerScene'
 import { normalizeProfile } from '../utils/userIdentity'
 import { buildWeeklyActivity, buildSkillProgress } from '../utils/profileStats'
@@ -275,6 +277,8 @@ export default function ProfilePage() {
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const [selectedAvatar, setSelectedAvatar]   = useState(identity.avatarId)
   const [avatarUrl, setAvatarUrl]             = useState(identity.avatarUrl)
+  const [avatarConfig, setAvatarConfig]     = useState(identity.avatarConfig)
+  const [showAvatarCreator, setShowAvatarCreator] = useState(false)
   const [weeklyRows, setWeeklyRows]           = useState([])
   const [previewUrl, setPreviewUrl]           = useState(null)
   const [showFollowersModal, setShowFollowersModal] = useState(false)
@@ -290,6 +294,7 @@ export default function ProfilePage() {
       const next = normalizeProfile(profile)
       setSelectedAvatar(next.avatarId)
       setAvatarUrl(next.avatarUrl)
+      setAvatarConfig(next.avatarConfig)
     }
   }, [profile])
 
@@ -374,7 +379,7 @@ export default function ProfilePage() {
       const response = await uploadAvatar(file)
       const publicUrl = response.url
       await updateProfile({ avatarUrl: publicUrl, avatarId: null })
-      setAvatarUrl(publicUrl); setSelectedAvatar(null); setPreviewUrl(null); setShowAvatarPicker(false)
+      setAvatarUrl(publicUrl); setSelectedAvatar(null); setAvatarConfig(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
       toast.success(t('toast.photo_updated', 'Profile photo updated! 📸'))
     } catch (err) {
@@ -386,9 +391,20 @@ export default function ProfilePage() {
     setUploadLoading(true)
     try {
       await updateProfile({ avatarId: avatar.id, avatarUrl: null })
-      setSelectedAvatar(avatar.id); setAvatarUrl(null); setPreviewUrl(null); setShowAvatarPicker(false)
+      setSelectedAvatar(avatar.id); setAvatarUrl(null); setAvatarConfig(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
       toast.success(t('toast.avatar_updated', { name: avatar.label, emoji: avatar.emoji }, `Avatar set to ${avatar.label}! ${avatar.emoji}`))
+    } catch (err) { console.error(err); toast.error(t('toast.avatar_update_failed', 'Failed to update avatar')) }
+    finally { setUploadLoading(false) }
+  }
+
+  const handleAvatarCreate = async (config) => {
+    setUploadLoading(true)
+    try {
+      await updateProfile({ avatarConfig: config, avatarUrl: null, avatarId: null })
+      setAvatarConfig(config); setAvatarUrl(null); setSelectedAvatar(null); setPreviewUrl(null); setShowAvatarCreator(false)
+      if (refreshProfile) refreshProfile()
+      toast.success(t('avatar.saved', 'Avatar saved!'))
     } catch (err) { console.error(err); toast.error(t('toast.avatar_update_failed', 'Failed to update avatar')) }
     finally { setUploadLoading(false) }
   }
@@ -396,8 +412,8 @@ export default function ProfilePage() {
   const handleRemoveAvatar = async () => {
     setUploadLoading(true)
     try {
-      await updateProfile({ avatarId: null, avatarUrl: null })
-      setSelectedAvatar(null); setAvatarUrl(null); setPreviewUrl(null); setShowAvatarPicker(false)
+      await updateProfile({ avatarId: null, avatarUrl: null, avatarConfig: null })
+      setSelectedAvatar(null); setAvatarUrl(null); setAvatarConfig(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
       toast.success(t('toast.avatar_removed', 'Avatar removed'))
     } catch (err) { toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar')) }
@@ -465,6 +481,7 @@ export default function ProfilePage() {
                   <UserAvatar
                     avatarUrl={avatarUrl}
                     avatarId={selectedAvatar}
+                    avatarConfig={avatarConfig}
                     username={identity.username}
                     previewSrc={previewUrl}
                     size="2xl"
@@ -806,6 +823,11 @@ export default function ProfilePage() {
                   <X className="w-4 h-4" />
                 </button>
               </div>
+              <button onClick={() => { setShowAvatarPicker(false); setShowAvatarCreator(true) }}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold mb-2 transition-colors bg-primary text-white hover:opacity-90"
+              >
+                <Smile className="w-4 h-4" aria-hidden /> {t('avatar.create_cta', 'Create your own avatar')}
+              </button>
               <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
               <button onClick={() => fileInputRef.current?.click()}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium border mb-4 transition-colors bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700`}
@@ -821,7 +843,7 @@ export default function ProfilePage() {
                   >{av.emoji}</motion.button>
                 ))}
               </div>
-              {(selectedAvatar || avatarUrl) && (
+              {(selectedAvatar || avatarUrl || avatarConfig) && (
                 <button onClick={handleRemoveAvatar} disabled={uploadLoading}
                   className={`w-full mt-3 flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-medium transition-colors text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10 disabled:opacity-50`}
                 >
@@ -832,6 +854,17 @@ export default function ProfilePage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {showAvatarCreator && (
+        <Suspense fallback={null}>
+          <AvatarCreator
+            initialConfig={avatarConfig}
+            saving={uploadLoading}
+            onSave={handleAvatarCreate}
+            onClose={() => setShowAvatarCreator(false)}
+          />
+        </Suspense>
+      )}
 
       {/* ── FOLLOWERS MODAL ──────────────────────────── */}
       <AnimatePresence>

@@ -15,6 +15,8 @@ export interface User {
   /** Highest JLPT level the user may open; content is cumulative (N3 => N5+N4+N3). */
   studyLevel?: JLPTLevel;
   avatarUrl: string | null;
+  /** Customizable cartoon avatar recipe; wins over avatarUrl/avatarId when set. */
+  avatarConfig?: AvatarConfig | null;
   avatarId: string | null;
   xpPoints: number;
   streakDays: number;
@@ -23,6 +25,12 @@ export interface User {
 }
 
 export type JLPTLevel = 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
+
+export interface AvatarConfig {
+  style: 'avataaars' | 'lorelei' | 'openPeeps' | 'notionists';
+  seed: string;
+  options: Record<string, string | number>;
+}
 
 export interface CategoryCoverage {
   done: number;

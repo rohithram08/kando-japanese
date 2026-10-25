@@ -72,7 +72,8 @@
     "item": "आइटम",
     "no_results": "कोई शब्द नहीं मिला",
     "try_different_search": "कोई दूसरा खोज शब्द आज़माएँ",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "सहेज रहे हैं…"
   },
   "lessons": {
     "title": "ग्रेडेड रीडर (Graded Reader)",
@@ -547,5 +548,18 @@
     "review_toast": "अभ्यास समीक्षा पूरी हुई! +10 Wave XP",
     "mastered": "रोल-प्ले में महारत! 🎉",
     "proud": "हना-सेंसेई को आपकी बातचीत की प्रगति पर गर्व है!"
+  },
+  "avatar": {
+    "title": "अपना अवतार बनाएं",
+    "preview": "अवतार पूर्वावलोकन",
+    "surprise": "सरप्राइज़ करें",
+    "reset": "रीसेट",
+    "style": "कला शैली",
+    "features": "विशेषताएँ",
+    "none": "कोई नहीं",
+    "no_background": "कोई पृष्ठभूमि नहीं",
+    "save": "अवतार सहेजें",
+    "saved": "अवतार सहेजा गया!",
+    "create_cta": "अपना खुद का अवतार बनाएं"
   }
 }

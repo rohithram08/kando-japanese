@@ -13,6 +13,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { getAvatarPreset } from '../data/avatarData'
+import { normalizeAvatarConfig } from './avatarConfig'
 
 const API_BASE = String(import.meta.env?.VITE_API_URL || '/api').replace(/\/+$/, '')
 
@@ -28,6 +29,14 @@ const pick = (obj, ...keys) => {
   return null
 }
 
+// The API returns an object; tolerate a JSON string (older cached profiles / guests).
+function parseAvatarConfigValue(value) {
+  if (typeof value === 'string') {
+    try { return normalizeAvatarConfig(JSON.parse(value)) } catch { return null }
+  }
+  return normalizeAvatarConfig(value)
+}
+
 export function normalizeProfile(profile, fallbackUser) {
   const src = profile || fallbackUser || {}
   const username = String(pick(src, 'username') ?? pick(fallbackUser, 'username') ?? '').trim()
@@ -37,6 +46,7 @@ export function normalizeProfile(profile, fallbackUser) {
     username: username || 'Learner',
     hasUsername: Boolean(username),
     avatarId: pick(src, 'avatarId', 'avatar_id'),
+    avatarConfig: parseAvatarConfigValue(pick(src, 'avatarConfig', 'avatar_config')),
     avatarUrl: resolveAvatarUrl(pick(src, 'avatarUrl', 'avatar_url')),
     jlptLevel: pick(src, 'currentLevel', 'current_level') || 'N5',
     xp: Number(pick(src, 'xpPoints', 'xp_points')) || 0,

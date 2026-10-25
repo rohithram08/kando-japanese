@@ -65,7 +65,8 @@
     "curated": "Bản dịch tuyển chọn",
     "fallback_en": "Tiếng Anh (Dự phòng)",
     "day": "Ngày",
-    "your_levels": "Your levels"
+    "your_levels": "Your levels",
+    "saving": "Saving…"
   },
   "lessons": {
     "title": "Bài học",
@@ -243,5 +244,18 @@
     "voice_unavailable": "Không có giọng nói tiếng Nhật trên thiết bị này",
     "playback_failed": "Phát âm thanh thất bại",
     "default_voice": "Giọng nói mặc định"
+  },
+  "avatar": {
+    "title": "Create your avatar",
+    "preview": "Avatar preview",
+    "surprise": "Surprise me",
+    "reset": "Reset",
+    "style": "Art style",
+    "features": "Features",
+    "none": "None",
+    "no_background": "No background",
+    "save": "Save avatar",
+    "saved": "Avatar saved!",
+    "create_cta": "Create your own avatar"
   }
 }

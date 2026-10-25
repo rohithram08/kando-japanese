@@ -11,6 +11,7 @@ import { validate } from '../middleware/validate.js';
 import { requireAuth } from '../middleware/auth.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { authLimiter } from '../middleware/rateLimit.js';
+import { serializeProfile } from '../services/userSerializer.js';
 
 export const authRouter = Router();
 
@@ -128,9 +129,8 @@ authRouter.get('/me', requireAuth, async (req, res, next) => {
       throw new AppError(404, 'User not found', 'USER_NOT_FOUND');
     }
     
-    // Omit password hash
-    const { passwordHash, ...profile } = user;
-    res.json(profile);
+    // Omit password hash, parse avatarConfig
+    res.json(serializeProfile(user));
   } catch (err) {
     next(err);
   }
