@@ -39,11 +39,24 @@ describe('grammarContentService', () => {
     expect(isValidGrammarId('12345')).toBe(false);
   });
 
+  it('accepts every grammar pattern that exists in the content files (regression: 334 were rejected)', () => {
+    // These were rejected by the old hardcoded 130-ID list.
+    expect(isValidGrammarId('n4_g016')).toBe(true);
+    expect(isValidGrammarId('n4_g156')).toBe(true);
+    expect(isValidGrammarId('n3_g198')).toBe(true);
+    expect(isValidGrammarId('n2g025')).toBe(true);
+    expect(isValidGrammarId('n1g025')).toBe(true);
+    // ...but ids past the end of each level are still rejected
+    expect(isValidGrammarId('n4_g157')).toBe(false);
+    expect(isValidGrammarId('n5_g061')).toBe(false);
+  });
+
   it('reports canonical grammar count and list', () => {
     const count = getCanonicalGrammarCount();
-    expect(count).toBe(130);
+    expect(count).toBe(464);
     const list = getAllCanonicalGrammarIds();
-    expect(list).toHaveLength(130);
+    expect(list).toHaveLength(464);
+    expect(new Set(list).size).toBe(464);
     expect(list).toContain('n5_g001');
     expect(list).toContain('n1g001');
   });

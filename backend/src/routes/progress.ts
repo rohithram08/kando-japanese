@@ -13,6 +13,7 @@ import {
   userReadingProgress,
   srsCards,
   userStreaks,
+  xpEvents,
   userBadges,
   senseiConversations,
   senseiTourProgress,
@@ -39,6 +40,7 @@ import {
 import { isValidLessonId } from '../services/lessonContentService.js';
 import { isValidGrammarId } from '../services/grammarContentService.js';
 import { assertContentUnlocked } from '../services/levelService.js';
+import { recordXpEvent, getRecentXpEvents } from '../services/xpLedger.js';
 
 export const progressRouter = Router();
 
@@ -335,6 +337,10 @@ const handleLessonProgress = async (req: any, res: any, next: any) => {
         .where(eq(users.id, userId));
     }
 
+    // Ledger (after the XP is applied)
+    await recordXpEvent(userId, xpGained, 'lesson', { refId: lessonId, minutes: Math.round((timeSpentSeconds || 0) / 60) });
+    await recordXpEvent(userId, streakBonus, 'streak_bonus', { refId: lessonId });
+
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
     });
@@ -514,6 +520,7 @@ progressRouter.post('/kanji', requireAuth, validate(kanjiProgressSchema), async 
         streakDays: streakResult.currentStreak,
       })
       .where(eq(users.id, userId));
+    await recordXpEvent(userId, xpGained, 'kanji', { refId: kanjiId });
 
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -677,6 +684,7 @@ progressRouter.post('/vocabulary', requireAuth, validate(vocabularyProgressSchem
         streakDays: streakResult.currentStreak,
       })
       .where(eq(users.id, userId));
+    await recordXpEvent(userId, xpGained, 'vocabulary', { refId: vocabularyId });
 
     const updatedUser = await db.query.users.findFirst({
       where: eq(users.id, userId),
@@ -830,6 +838,7 @@ progressRouter.post('/grammar', requireAuth, validate(grammarProgressSchema), as
       await db.update(users)
         .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
         .where(eq(users.id, userId));
+      await recordXpEvent(userId, xpGained, 'grammar', { refId: grammarId });
 
       await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
     }
@@ -1077,6 +1086,7 @@ const handleXPIncrement = async (req: any, res: any, next: any) => {
       await db.update(users)
         .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
         .where(eq(users.id, userId));
+      await recordXpEvent(userId, xpGained, 'event', { refId: cardId || lessonId || quizId || event });
 
       await recordActivity(userId, todayStr, { xp: xpGained, timezone: tz });
     }
@@ -1317,6 +1327,20 @@ progressRouter.post('/badges', requireAuth, validate(awardBadgeSchema), async (r
 });
 
 /**
+ * GET /api/progress/xp-history?limit=50
+ * Most recent XP ledger entries for the signed-in user (newest first).
+ */
+progressRouter.get('/xp-history', requireAuth, async (req, res, next) => {
+  try {
+    const limit = Number.parseInt(String(req.query.limit ?? '50'), 10);
+    const events = await getRecentXpEvents(req.user!.userId, Number.isFinite(limit) ? limit : 50);
+    res.json({ events });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
  * DELETE /api/progress/reset
  * Atomically reset all user learning progress across tables.
  */
@@ -1332,6 +1356,7 @@ progressRouter.delete('/reset', requireAuth, async (req, res, next) => {
       await tx.delete(userReadingProgress).where(eq(userReadingProgress.userId, userId));
       await tx.delete(srsCards).where(eq(srsCards.userId, userId));
       await tx.delete(userStreaks).where(eq(userStreaks.userId, userId));
+      await tx.delete(xpEvents).where(eq(xpEvents.userId, userId));
       await tx.delete(userBadges).where(eq(userBadges.userId, userId));
       await tx.delete(senseiConversations).where(eq(senseiConversations.userId, userId));
       await tx.delete(senseiTourProgress).where(eq(senseiTourProgress.userId, userId));

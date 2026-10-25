@@ -10,9 +10,6 @@
  * `users.currentLevel`, which the progress routes overwrite from total XP.
  */
 
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { and, eq } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import {
@@ -23,6 +20,7 @@ import {
   userReadingProgress,
 } from '../db/schema.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { LEVEL_TOTALS } from '../data/contentIndex.js';
 
 export const LEVEL_ORDER = ['N5', 'N4', 'N3', 'N2', 'N1'] as const;
 export type StudyLevel = (typeof LEVEL_ORDER)[number];
@@ -92,42 +90,20 @@ export async function assertContentUnlocked(userId: string, contentId: string): 
 // ─── Coverage ────────────────────────────────────────────────────────────────
 
 type Totals = Record<StudyLevel, Record<Category, number>>;
-let totalsCache: Totals | null = null;
 
-const here = path.dirname(fileURLToPath(import.meta.url));
-const REPO_ROOT = path.resolve(here, '..', '..', '..'); // backend/{src|dist}/services -> repo root
-
-function countJson(file: string): number {
-  try {
-    const raw = JSON.parse(fs.readFileSync(file, 'utf-8'));
-    if (Array.isArray(raw)) return raw.length;
-    const list = raw?.items ?? raw?.stories ?? raw?.entries;
-    return Array.isArray(list) ? list.length : 0;
-  } catch {
-    return 0;
-  }
-}
-
-/** Item counts per level and category, read once from the content files. */
+/** Item counts per level and category, from the generated content index. */
 export function getLevelTotals(): Totals {
-  if (totalsCache) return totalsCache;
   const totals = {} as Totals;
   for (const level of LEVEL_ORDER) {
-    const n = level.toLowerCase();
+    const t = LEVEL_TOTALS[level];
     totals[level] = {
-      vocabulary: countJson(path.join(REPO_ROOT, 'content', 'vocabulary', `${n}.json`)),
-      kanji: countJson(path.join(REPO_ROOT, 'content', 'kanji', `${n}.json`)),
-      grammar: countJson(path.join(REPO_ROOT, 'content', 'grammar', `${n}.json`)),
-      reading: countJson(path.join(REPO_ROOT, 'src', 'data', 'reading', `${n}_stories.json`)),
+      vocabulary: t?.vocabulary ?? 0,
+      kanji: t?.kanji ?? 0,
+      grammar: t?.grammar ?? 0,
+      reading: t?.reading ?? 0,
     };
   }
-  totalsCache = totals;
   return totals;
-}
-
-/** Test hook. */
-export function _resetLevelTotalsCache(): void {
-  totalsCache = null;
 }
 
 export interface CategoryCoverage {

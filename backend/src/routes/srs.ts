@@ -6,6 +6,7 @@ import { requireAuth } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { db } from '../db/index.js';
+import { recordXpEvent } from '../services/xpLedger.js';
 import { srsCards, users, userKanjiProgress, userVocabularyProgress } from '../db/schema.js';
 import { calculateSRSReviewXP, getUserLevel } from '../services/progressCalculator.js';
 import { calculateStreak, recordActivity, getLocalDateString, resolveTimezone } from '../services/streakService.js';
@@ -254,6 +255,7 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
         await db.update(users)
           .set({ xpPoints: sql`${users.xpPoints} + ${xpGained}` })
           .where(eq(users.id, userId));
+        await recordXpEvent(userId, xpGained, 'srs_review', { refId: card.cardRefId, minutes: 1 });
 
         await recordActivity(userId, todayStr, {
           xp: xpGained,

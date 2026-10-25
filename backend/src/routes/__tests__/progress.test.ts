@@ -1,7 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { recordXpEvent } from '../../services/xpLedger.js';
 import { progressRouter } from '../progress.js';
 import { db } from '../../db/index.js';
 import * as streakService from '../../services/streakService.js';
+
+vi.mock('../../services/xpLedger.js', () => ({
+  recordXpEvent: vi.fn().mockResolvedValue(undefined),
+  getRecentXpEvents: vi.fn().mockResolvedValue([]),
+}));
 
 vi.mock('../../db/index.js', () => ({
   db: {
@@ -622,6 +628,8 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
       expect(result.xpResult.totalXP).toBe(110);
       expect(result.progress.grammarId).toBe('n5_g001');
       expect(result.progress.status).toBe('studied');
+      // The award is written to the XP ledger with its source and content id
+      expect(recordXpEvent).toHaveBeenCalledWith('user-123', 6, 'grammar', { refId: 'n5_g001' });
     });
 
     it('POST /grammar rejects content above the study level with LEVEL_LOCKED', async () => {

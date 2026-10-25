@@ -87,6 +87,21 @@ export const userStreaks = mysqlTable('user_streaks', {
   pk: primaryKey({ columns: [table.userId, table.date] }),
 }));
 
+// XP ledger: append-only record of every XP award. users.xp_points stays the fast total;
+// this table is the auditable source for weekly leagues, rival battles and anti-cheat.
+export const xpEvents = mysqlTable('xp_events', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  amount: int('amount').notNull(),
+  source: varchar('source', { length: 32 }).notNull(),
+  refId: varchar('ref_id', { length: 100 }),
+  minutes: int('minutes').notNull().default(0),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  userTimeIdx: index('xp_events_user_time_idx').on(table.userId, table.createdAt),
+  timeIdx: index('xp_events_time_idx').on(table.createdAt),
+}));
+
 // ─── Badges ──────────────────────────────────────────────────────────────────
 export const userBadges = mysqlTable('user_badges', {
   id: varchar('id', { length: 36 }).primaryKey(),

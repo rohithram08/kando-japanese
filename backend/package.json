@@ -12,6 +12,7 @@
     "db:migrate": "tsx src/db/migrate.ts",
     "db:migrate:reading": "tsx migrate-reading.ts",
     "db:push": "drizzle-kit push",
+    "content:index": "tsx scripts/generate-content-index.ts",
     "test": "vitest run"
   },
   "dependencies": {

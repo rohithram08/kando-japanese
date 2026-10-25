@@ -9,6 +9,7 @@ import { userReadingProgress, users } from '../db/schema.js';
 import { recordActivity, resolveTimezone, getLocalDateString } from '../services/streakService.js';
 import { calculateStoryRewards, getJLPTLevel, getUserLevel } from '../services/progressCalculator.js';
 import { assertContentUnlocked } from '../services/levelService.js';
+import { recordXpEvent } from '../services/xpLedger.js';
 
 export const readingRouter = Router();
 
@@ -168,6 +169,8 @@ readingRouter.post(
             .update(users)
             .set({ xpPoints: sql`${users.xpPoints} + ${rewards.total}` })
             .where(eq(users.id, userId));
+          await recordXpEvent(userId, storyXp, 'reading', { refId: storyId });
+          await recordXpEvent(userId, quizXp, 'reading_quiz', { refId: storyId });
         }
 
         // 4) Jelly Streak for today — completion of the quiz is what counts.

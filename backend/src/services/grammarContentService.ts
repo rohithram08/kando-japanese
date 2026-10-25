@@ -5,19 +5,12 @@
  * across JLPT levels N5 through N1.
  */
 
-// Canonical grammar IDs defined in the curriculum data files (src/data/grammar/*.js)
-const CANONICAL_GRAMMAR_IDS = [
-  // N5 Grammar (60 items: n5_g001 to n5_g060)
-  ...Array.from({ length: 60 }, (_, i) => `n5_g${String(i + 1).padStart(3, '0')}`),
-  // N4 Grammar (15 items: n4_g001 to n4_g015)
-  ...Array.from({ length: 15 }, (_, i) => `n4_g${String(i + 1).padStart(3, '0')}`),
-  // N3 Grammar (15 items: n3_g001 to n3_g015)
-  ...Array.from({ length: 15 }, (_, i) => `n3_g${String(i + 1).padStart(3, '0')}`),
-  // N2 Grammar (20 items: n2g001 to n2g020)
-  ...Array.from({ length: 20 }, (_, i) => `n2g${String(i + 1).padStart(3, '0')}`),
-  // N1 Grammar (20 items: n1g001 to n1g020)
-  ...Array.from({ length: 20 }, (_, i) => `n1g${String(i + 1).padStart(3, '0')}`),
-];
+import { GRAMMAR_IDS } from '../data/contentIndex.js';
+
+// Canonical grammar IDs come from the generated content index (see `npm run content:index`),
+// which is built from content/grammar/*.json - the same files the frontend serves.
+// (Previously a hardcoded 130-ID list rejected 334 of the 464 real patterns.)
+const CANONICAL_GRAMMAR_IDS: string[] = [...GRAMMAR_IDS];
 
 // Pre-build a lookup set that tolerates both underscore and non-underscore variations (e.g. n5_g001 and n5g001)
 const ALL_GRAMMAR_IDS = new Set<string>();
