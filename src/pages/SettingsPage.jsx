@@ -21,6 +21,7 @@ import { validateUsername, USERNAME_MAX } from '../utils/userIdentity'
 import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
+import { useStudyLevel } from '../hooks/useStudyLevel'
 import toast from 'react-hot-toast'
 
 
@@ -151,6 +152,7 @@ export default function SettingsPage() {
   const { theme, setTheme } = useThemeStore()
   const settings = useSettingsStore()
   const { updateSettings, resetToDefaults } = settings
+  const { studyLevel, setStudyLevel } = useStudyLevel()
   const { t, setLocale: setDisplayLanguage } = useI18n()
 
   const [activeSection, setActiveSection]         = useState('profile')
@@ -493,12 +495,28 @@ export default function SettingsPage() {
         return (
           <SectionCard>
             <SettingRow
-              label={t('settings.jlpt_target', 'JLPT Target Level')}
-              description={t('settings.jlpt_desc', 'Lessons, Grammar, Vocabulary & Kanji will open to this level by default')}
+              label={t('settings.study_level', 'Study Level')}
+              description={t(
+                'settings.study_level_desc',
+                'Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.',
+              )}
             >
               <div className="flex gap-1.5 flex-wrap justify-end">
                 {JLPT_LEVELS.map((lvl) => (
-                  <ChoicePill key={lvl} active={settings.jlptLevel === lvl} onClick={() => updateSettings({ jlptLevel: lvl })}>
+                  <ChoicePill
+                    key={lvl}
+                    active={studyLevel === lvl}
+                    onClick={async () => {
+                      if (lvl === studyLevel) return
+                      try {
+                        await setStudyLevel(lvl)
+                        toast.success(`Study level set to ${lvl}`)
+                      } catch (err) {
+                        console.error(err)
+                        toast.error('Could not change study level')
+                      }
+                    }}
+                  >
                     {lvl}
                   </ChoicePill>
                 ))}

@@ -71,7 +71,8 @@
     "close": "மூடு",
     "item": "உருப்படி",
     "no_results": "சொற்கள் எதுவும் கிடைக்கவில்லை",
-    "try_different_search": "வேறு தேடல் சொல்லை முயற்சிக்கவும்"
+    "try_different_search": "வேறு தேடல் சொல்லை முயற்சிக்கவும்",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "கிரேடட் ரீடர் (Graded Reader)",
@@ -233,7 +234,10 @@
     "audio_recorded": "பதிவு செய்யப்பட்ட ஆடியோ",
     "audio_browser_tts": "உலாவி பேச்சு உருவாக்கம் (ja-JP)",
     "audio_no_voice": "ja-JP குரல் இல்லை",
-    "audio_no_voice_detail": "ஜப்பானிய குரல் OS/உலாவியில் நிறுவப்படவில்லை; இயல்புநிலை synthesizer பயன்படுத்தப்படுகிறது"
+    "audio_no_voice_detail": "ஜப்பானிய குரல் OS/உலாவியில் நிறுவப்படவில்லை; இயல்புநிலை synthesizer பயன்படுத்தப்படுகிறது",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "கானா ஸ்டுடியோ",
@@ -397,7 +401,9 @@
     "username_hint": "இதுவே செயலி முழுவதும் காட்டப்படும் பெயர். எழுத்துகள், எண்கள், \"_\", \".\" மற்றும் \"-\" மட்டும் (3–30 எழுத்துகள்).",
     "username_too_short": "பயனர்பெயர் குறைந்தது {min} எழுத்துகள் இருக்க வேண்டும்",
     "username_too_long": "பயனர்பெயர் அதிகபட்சம் {max} எழுத்துகள்",
-    "username_invalid": "எழுத்துகள், எண்கள், \"_\", \".\" அல்லது \"-\" மட்டும் பயன்படுத்தவும் (இடைவெளி கூடாது)"
+    "username_invalid": "எழுத்துகள், எண்கள், \"_\", \".\" அல்லது \"-\" மட்டும் பயன்படுத்தவும் (இடைவெளி கூடாது)",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "மின்னஞ்சல் தேவை",

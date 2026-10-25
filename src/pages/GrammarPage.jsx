@@ -12,6 +12,7 @@ import { useAuthStore } from '../store/authStore'
 import { useProgressStore } from '../store/progressStore'
 import { audioService } from '../services/audioService'
 import LevelSelector from '../components/common/LevelSelector'
+import { useLevelState } from '../hooks/useStudyLevel'
 import ParticleStudio from '../components/grammar/ParticleStudio'
 import {
   getCurriculumMeaning,
@@ -255,8 +256,7 @@ const GrammarCard = React.forwardRef(function GrammarCard(
 // ── Page ──────────────────────────────────────────────────────
 export default function GrammarPage() {
   const { t } = useI18n()
-  const targetLevel = useSettingsStore((s) => s.jlptLevel)
-  const [level, setLevel] = useState(targetLevel || 'N5')
+  const [level, setLevel, { unlocked }] = useLevelState()
   const [search, setSearch] = useState('')
   const [activeTag, setActiveTag] = useState(null)
   const [openId, setOpenId] = useState(null)
@@ -346,7 +346,7 @@ export default function GrammarPage() {
     setSearch('')
     setActiveTag(null)
     setOpenId(null)
-  }, [])
+  }, [setLevel])
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
@@ -423,7 +423,7 @@ export default function GrammarPage() {
       </AnimatePresence>
 
       <div className="space-y-3">
-        <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.grammar} />
+        <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.grammar} levels={unlocked} />
 
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
           <Search className="w-4 h-4 shrink-0 text-muted-foreground" />

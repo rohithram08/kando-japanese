@@ -64,7 +64,8 @@
     "guest_mode": "Mode tamu (hanya lokal)",
     "curated": "Terjemahan Terpilih",
     "fallback_en": "Inggris (Cadangan)",
-    "day": "Hari"
+    "day": "Hari",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "Pelajaran",
@@ -141,7 +142,10 @@
     "take_quiz": "Mulai Kuis",
     "lookup_title": "Pencarian Kata",
     "add_word_srs": "Tambah ke Dek Ulasan SRS",
-    "story_complete": "Cerita Selesai!"
+    "story_complete": "Cerita Selesai!",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "Studio Kana",
@@ -198,7 +202,9 @@
     "save_profile": "Simpan Profil",
     "theme_light": "Terang",
     "theme_dark": "Gelap",
-    "theme_system": "Sistem"
+    "theme_system": "Sistem",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "Email wajib diisi",

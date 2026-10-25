@@ -1,5 +1,7 @@
 // src/components/common/LevelSelector.jsx
 // Reusable JLPT level tab bar used on Grammar, Kanji, Vocab, Lessons pages.
+// Pass `levels` (the user's unlocked levels) so locked levels and their counts
+// are never shown. With a single level there is nothing to choose, so it renders nothing.
 // Resolves its own theme — callers don't need to compute/pass isDark.
 
 import React from 'react'
@@ -7,13 +9,15 @@ import { motion } from 'framer-motion'
 import { LEVEL_META, LEVELS } from '../../data/levels'
 import { useThemeStore } from '../../store/themeStore'
 
-export default function LevelSelector({ selected, onChange, counts = {} }) {
+export default function LevelSelector({ selected, onChange, counts = {}, levels = LEVELS }) {
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
 
+  if (levels.length <= 1) return null
+
   return (
     <div className="flex gap-2 flex-wrap">
-      {LEVELS.map((level) => {
+      {levels.map((level) => {
         const meta = LEVEL_META[level]
         const active = selected === level
         const count = counts[level]

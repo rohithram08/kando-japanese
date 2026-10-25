@@ -6,6 +6,7 @@ import { validate } from '../middleware/validate.js';
 import { users, userLessonProgress, userKanjiProgress, userVocabularyProgress } from '../db/schema.js';
 import { eq, sql } from 'drizzle-orm';
 import { AppError } from '../middleware/errorHandler.js';
+import { computeLevelStatus, getStudyLevel } from '../services/levelService.js';
 
 export const usersRouter = Router();
 
@@ -31,6 +32,7 @@ export const updateProfileSchema = z.object({
     username: z.string().min(2).max(100).optional(),
     nativeLanguage: z.string().max(50).optional(),
     currentLevel: z.enum(['N1', 'N2', 'N3', 'N4', 'N5']).optional(),
+    studyLevel: z.enum(['N1', 'N2', 'N3', 'N4', 'N5']).optional(),
     timezone: z.string().max(100).optional(),
     avatarUrl: z
       .string()
@@ -112,6 +114,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
       username?: string;
       nativeLanguage?: string;
       currentLevel?: string;
+      studyLevel?: string;
       timezone?: string;
       avatarUrl?: string | null;
       avatarId?: string | null;
@@ -120,6 +123,7 @@ usersRouter.put('/profile', requireAuth, validate(updateProfileSchema), async (r
     if (updates.username !== undefined) dbUpdates.username = updates.username;
     if (updates.nativeLanguage !== undefined) dbUpdates.nativeLanguage = updates.nativeLanguage;
     if (updates.currentLevel !== undefined) dbUpdates.currentLevel = updates.currentLevel;
+    if (updates.studyLevel !== undefined) dbUpdates.studyLevel = updates.studyLevel;
     if (updates.timezone !== undefined) dbUpdates.timezone = updates.timezone;
     
     // Handle avatarUrl and avatarId coordination deterministically
@@ -170,6 +174,21 @@ usersRouter.delete('/account', requireAuth, async (req, res, next) => {
     res.clearCookie('auth_token');
     
     res.json({ message: 'Account deleted successfully' });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * GET /api/users/level-status
+ * Study level, unlocked levels and coverage of the current level.
+ * Declared before '/:userId' so it is not captured by that route.
+ */
+usersRouter.get('/level-status', requireAuth, async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const studyLevel = (await getStudyLevel(userId)) ?? 'N5';
+    res.json(await computeLevelStatus(userId, studyLevel));
   } catch (err) {
     next(err);
   }

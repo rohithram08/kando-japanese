@@ -11,6 +11,7 @@ import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useThemeStore } from '../../store/themeStore'
 import { useI18n } from '../../i18n'
+import { useStudyLevel } from '../../hooks/useStudyLevel'
 
 const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
 
@@ -56,7 +57,8 @@ export default function StudyProgressAnalytics() {
   const progress = useProgressStore()
   const { profile } = useAuthStore()
 
-  const currentLevel = progress.jlptLevel || profile?.currentLevel || 'N5'
+  // Access level (user-controlled), not the XP-derived rank, so this card agrees with what is unlocked.
+  const { studyLevel: currentLevel } = useStudyLevel()
   const currentXP = progress.totalXP || profile?.xpPoints || 0
   const kanjiLearned = progress.kanjiLearned || 0
   const vocabLearned = progress.vocabLearned || 0

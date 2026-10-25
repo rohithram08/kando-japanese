@@ -19,12 +19,14 @@ const registerSchema = z.object({
     email: z.string().email(),
     password: z.string().min(8),
     username: z.string().min(2).max(100),
+    // Self-declared starting level from the sign-up wizard; sets the initial study level.
+    currentLevel: z.enum(['N5', 'N4', 'N3', 'N2', 'N1']).optional(),
   }),
 });
 
 authRouter.post('/register', authLimiter, validate(registerSchema), async (req, res, next) => {
   try {
-    const { email, password, username } = req.body;
+    const { email, password, username, currentLevel } = req.body;
     
     // Check if user exists
     const existing = await db.query.users.findFirst({
@@ -44,6 +46,7 @@ authRouter.post('/register', authLimiter, validate(registerSchema), async (req, 
       email,
       username,
       passwordHash,
+      ...(currentLevel ? { currentLevel, studyLevel: currentLevel } : {}),
     });
 
     const token = jwt.sign(

@@ -64,7 +64,8 @@
     "guest_mode": "Gastmodus (nur lokal)",
     "curated": "Geprüfte Übersetzung",
     "fallback_en": "Englisch (Ersatz)",
-    "day": "Tag"
+    "day": "Tag",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "Lektionen",
@@ -141,7 +142,10 @@
     "take_quiz": "Quiz starten",
     "lookup_title": "Wort nachschlagen",
     "add_word_srs": "Zum SRS-Deck hinzufügen",
-    "story_complete": "Geschichte abgeschlossen!"
+    "story_complete": "Geschichte abgeschlossen!",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "Kana-Studio",
@@ -198,7 +202,9 @@
     "save_profile": "Profil speichern",
     "theme_light": "Hell",
     "theme_dark": "Dunkel",
-    "theme_system": "System"
+    "theme_system": "System",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "E-Mail ist erforderlich",

@@ -96,8 +96,8 @@ describe('Dashboard Component', () => {
       </MemoryRouter>
     );
 
-    // 1 completed story (mocked saved progress) out of the real catalogue size
-    expect(screen.getByTestId('stories-of-total').textContent).toMatch(/^1 of 250 stories completed$/);
+    // 1 completed story (mocked saved progress) out of the stories unlocked at the default N5 level
+    expect(screen.getByTestId('stories-of-total').textContent).toMatch(/^1 of 50 stories completed$/);
     // Quiz performance comes from the saved quiz score, not a placeholder
     const perf = screen.getByTestId('quiz-performance');
     expect(perf.textContent).toMatch(/100%/);

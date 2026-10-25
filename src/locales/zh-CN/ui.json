@@ -64,7 +64,8 @@
     "guest_mode": "访客模式 (仅本地)",
     "curated": "精校翻译",
     "fallback_en": "英文 (后备)",
-    "day": "天"
+    "day": "天",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "课程",
@@ -141,7 +142,10 @@
     "take_quiz": "阅读理解测验",
     "lookup_title": "查词字典",
     "add_word_srs": "加入SRS复习卡组",
-    "story_complete": "故事阅读完成！"
+    "story_complete": "故事阅读完成！",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "假名工坊",
@@ -198,7 +202,9 @@
     "save_profile": "保存个人资料",
     "theme_light": "浅色",
     "theme_dark": "深色",
-    "theme_system": "跟随系统"
+    "theme_system": "跟随系统",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "请输入电子邮箱",

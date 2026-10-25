@@ -64,7 +64,8 @@
     "guest_mode": "Chế độ Khách (chỉ cục bộ)",
     "curated": "Bản dịch tuyển chọn",
     "fallback_en": "Tiếng Anh (Dự phòng)",
-    "day": "Ngày"
+    "day": "Ngày",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "Bài học",
@@ -141,7 +142,10 @@
     "take_quiz": "Làm trắc nghiệm đọc hiểu",
     "lookup_title": "Tra từ nhanh",
     "add_word_srs": "Thêm vào bộ thẻ SRS",
-    "story_complete": "Hoàn thành câu chuyện!"
+    "story_complete": "Hoàn thành câu chuyện!",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "Xưởng Kana",
@@ -198,7 +202,9 @@
     "save_profile": "Lưu hồ sơ",
     "theme_light": "Sáng",
     "theme_dark": "Tối",
-    "theme_system": "Theo hệ thống"
+    "theme_system": "Theo hệ thống",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "Vui lòng nhập email",

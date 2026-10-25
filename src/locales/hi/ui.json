@@ -71,7 +71,8 @@
     "close": "बंद करें",
     "item": "आइटम",
     "no_results": "कोई शब्द नहीं मिला",
-    "try_different_search": "कोई दूसरा खोज शब्द आज़माएँ"
+    "try_different_search": "कोई दूसरा खोज शब्द आज़माएँ",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "ग्रेडेड रीडर (Graded Reader)",
@@ -233,7 +234,10 @@
     "audio_recorded": "रिकॉर्डेड ऑडियो",
     "audio_browser_tts": "ब्राउज़र स्पीच सिंथेसिस (ja-JP)",
     "audio_no_voice": "ja-JP आवाज़ नहीं",
-    "audio_no_voice_detail": "जापानी आवाज़ OS/ब्राउज़र में इंस्टॉल नहीं है; डिफ़ॉल्ट सिंथेसाइज़र उपयोग हो रहा है"
+    "audio_no_voice_detail": "जापानी आवाज़ OS/ब्राउज़र में इंस्टॉल नहीं है; डिफ़ॉल्ट सिंथेसाइज़र उपयोग हो रहा है",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "काना स्टूडियो",
@@ -397,7 +401,9 @@
     "username_hint": "यही नाम पूरे ऐप में दिखता है। केवल अक्षर, अंक, \"_\", \".\" और \"-\" (3–30 अक्षर)।",
     "username_too_short": "उपयोगकर्ता नाम कम से कम {min} अक्षर का होना चाहिए",
     "username_too_long": "उपयोगकर्ता नाम अधिकतम {max} अक्षर का हो सकता है",
-    "username_invalid": "केवल अक्षर, अंक, \"_\", \".\" या \"-\" का उपयोग करें (स्पेस नहीं)"
+    "username_invalid": "केवल अक्षर, अंक, \"_\", \".\" या \"-\" का उपयोग करें (स्पेस नहीं)",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "ईमेल आवश्यक है",

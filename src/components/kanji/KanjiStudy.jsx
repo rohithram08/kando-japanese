@@ -7,11 +7,11 @@ import { Volume2, Search, ChevronLeft, ChevronRight, Layers, RotateCcw } from 'l
 import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useDailyGoalsStore } from '../../store/dailyGoalsStore'
-import { useSettingsStore } from '../../store/settingsStore'
 import { useAuthStore } from '../../store/authStore'
 import { audioService } from '../../services/audioService'
 import { KANJI, LEVEL_META, LEVELS, DATA_COUNTS } from '../../data/index'
 import LevelSelector from '../common/LevelSelector'
+import { useLevelState } from '../../hooks/useStudyLevel'
 
 // ── Flash-card style study view ───────────────────────────────
 function FlashCard({ item, isDark, flipped, onFlip }) {
@@ -82,9 +82,7 @@ export default function KanjiStudy() {
   const { user }   = useAuthStore()
   const { awardKanjiXP } = useProgressStore()
   const addKanjiGoal = useDailyGoalsStore((s) => s.addKanji)
-  const targetLevel = useSettingsStore((s) => s.jlptLevel)
-
-  const [level,    setLevel]    = useState(targetLevel || 'N5')
+  const [level, setLevel, { unlocked }] = useLevelState()
   const [search,   setSearch]   = useState('')
   const [mode,     setMode]     = useState('browse')  // 'browse' | 'flashcard'
   const [cardIdx,  setCardIdx]  = useState(0)
@@ -170,6 +168,7 @@ export default function KanjiStudy() {
           onChange={(l) => { setLevel(l); setCardIdx(0); setFlipped(false); setLearned(new Set()) }}
           counts={DATA_COUNTS.kanji}
           isDark={isDark}
+          levels={unlocked}
         />
         <div className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-white border-gray-200 focus-within:border-gray-300 dark:bg-gray-900 dark:border-gray-700/60 dark:focus-within:border-gray-500`}>
           <Search className={`w-4 h-4 shrink-0 text-muted-foreground`} />

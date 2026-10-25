@@ -19,6 +19,8 @@ import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
 import StudyProgressAnalytics from './StudyProgressAnalytics'
+import LevelProgressCard from '../levels/LevelProgressCard'
+import { useStudyLevel } from '../../hooks/useStudyLevel'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
@@ -98,7 +100,13 @@ export default function Dashboard() {
 
   const progressMap = useReadingStore((s) => s.progressMap) || {}
   const loadAllReadingProgress = useReadingStore((s) => s.loadAllProgress)
-  const storySummary = useMemo(() => summarizeReadingProgress(progressMap, allStories), [progressMap])
+  const { unlocked: unlockedLevelList } = useStudyLevel()
+  // Story totals only cover levels the user has unlocked.
+  const availableStories = useMemo(
+    () => allStories.filter((s) => unlockedLevelList.includes(s.level)),
+    [unlockedLevelList],
+  )
+  const storySummary = useMemo(() => summarizeReadingProgress(progressMap, availableStories), [progressMap, availableStories])
   const completedStories = storySummary.completedCount
 
   const [loading, setLoading] = useState(true)

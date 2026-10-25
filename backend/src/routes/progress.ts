@@ -38,6 +38,7 @@ import {
 } from '../services/progressCalculator.js';
 import { isValidLessonId } from '../services/lessonContentService.js';
 import { isValidGrammarId } from '../services/grammarContentService.js';
+import { assertContentUnlocked } from '../services/levelService.js';
 
 export const progressRouter = Router();
 
@@ -459,6 +460,7 @@ progressRouter.post('/kanji', requireAuth, validate(kanjiProgressSchema), async 
   try {
     const userId = req.user!.userId;
     const { kanjiId, recognitionLevel, mastered } = req.body;
+    await assertContentUnlocked(userId, kanjiId);
     const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
     const todayStr = getLocalDateString(new Date(), tz);
 
@@ -621,6 +623,7 @@ progressRouter.post('/vocabulary', requireAuth, validate(vocabularyProgressSchem
   try {
     const userId = req.user!.userId;
     const { vocabularyId, masteryLevel, mastered } = req.body;
+    await assertContentUnlocked(userId, vocabularyId);
     const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
     const todayStr = getLocalDateString(new Date(), tz);
 
@@ -783,6 +786,7 @@ progressRouter.post('/grammar', requireAuth, validate(grammarProgressSchema), as
   try {
     const userId = req.user!.userId;
     const { grammarId, status, mastered } = req.body;
+    await assertContentUnlocked(userId, grammarId);
     const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
     const todayStr = getLocalDateString(new Date(), tz);
 

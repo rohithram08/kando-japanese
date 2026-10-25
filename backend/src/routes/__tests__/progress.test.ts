@@ -593,6 +593,8 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
       };
 
       (db.query.userGrammarProgress.findFirst as any).mockResolvedValueOnce(null);
+      // 1st lookup: level-lock check (assertContentUnlocked)
+      (db.query.users.findFirst as any).mockResolvedValueOnce({ studyLevel: 'N5' });
       (db.query.users.findFirst as any).mockResolvedValueOnce({
         id: 'user-123',
         xpPoints: 110,
@@ -620,6 +622,23 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
       expect(result.xpResult.totalXP).toBe(110);
       expect(result.progress.grammarId).toBe('n5_g001');
       expect(result.progress.status).toBe('studied');
+    });
+
+    it('POST /grammar rejects content above the study level with LEVEL_LOCKED', async () => {
+      const handler = getRouteHandler('/grammar', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: { grammarId: 'n3_g001', status: 'studied' },
+        headers: {},
+      };
+      (db.query.users.findFirst as any).mockResolvedValueOnce({ studyLevel: 'N5' });
+
+      const res: any = { json: vi.fn() };
+      const next = vi.fn();
+      await handler(req, res, next);
+
+      expect(res.json).not.toHaveBeenCalled();
+      expect(next).toHaveBeenCalledWith(expect.objectContaining({ statusCode: 403, code: 'LEVEL_LOCKED' }));
     });
 
     it('POST /grammar is idempotent: repeating study of already-studied pattern awards 0 XP', async () => {

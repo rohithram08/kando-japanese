@@ -8,6 +8,7 @@ import { db } from '../db/index.js';
 import { userReadingProgress, users } from '../db/schema.js';
 import { recordActivity, resolveTimezone, getLocalDateString } from '../services/streakService.js';
 import { calculateStoryRewards, getJLPTLevel, getUserLevel } from '../services/progressCalculator.js';
+import { assertContentUnlocked } from '../services/levelService.js';
 
 export const readingRouter = Router();
 
@@ -92,6 +93,7 @@ readingRouter.post(
     try {
       const userId = req.user!.userId;
       const { storyId, lastSentenceIndex, status = 'in_progress', quizScore } = req.body;
+      await assertContentUnlocked(userId, storyId);
       const now = new Date();
       const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
       const todayStr = getLocalDateString(now, tz);

@@ -64,7 +64,8 @@
     "guest_mode": "게스트 모드 (로컬 전용)",
     "curated": "검수된 번역",
     "fallback_en": "영어 (기본 대체)",
-    "day": "일"
+    "day": "일",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "레슨",
@@ -141,7 +142,10 @@
     "take_quiz": "이해도 퀴즈 풀기",
     "lookup_title": "단어 검색",
     "add_word_srs": "SRS 복습 덱에 추가",
-    "story_complete": "스토리 완료!"
+    "story_complete": "스토리 완료!",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "가나 스튜디오",
@@ -198,7 +202,9 @@
     "save_profile": "프로필 저장",
     "theme_light": "라이트",
     "theme_dark": "다크",
-    "theme_system": "시스템"
+    "theme_system": "시스템",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "이메일을 입력해 주세요",

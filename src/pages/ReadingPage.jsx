@@ -13,6 +13,8 @@ import { allStories, getStoryById } from '../data/reading/n5_stories';
 import StoryCard from '../components/reading/StoryCard';
 import StoryReader from '../components/reading/StoryReader';
 import { useI18n } from '../i18n';
+import { useStudyLevel } from '../hooks/useStudyLevel';
+import { unlockedRangeLabel } from '../utils/levelAccess';
 
 const STORIES_PER_PAGE = 12;
 
@@ -26,9 +28,18 @@ export default function ReadingPage() {
 
   const { user } = useAuthStore();
   const isAuthenticated = !!user;
+  const { studyLevel, unlocked, isUnlocked } = useStudyLevel();
+
+  // Only stories the user has unlocked are ever listed or counted.
+  const availableStories = useMemo(
+    () => allStories.filter((s) => unlocked.includes(s.level)),
+    [unlocked],
+  );
 
   const { progressMap, loading, loadAllProgress } = useReadingStore();
-  const [selectedLevel, setSelectedLevel] = useState('ALL');
+  const [pickedLevel, setSelectedLevel] = useState('ALL');
+  // 'ALL' means every unlocked level; a stale pick of a locked level falls back to it.
+  const selectedLevel = pickedLevel === 'ALL' || unlocked.includes(pickedLevel) ? pickedLevel : 'ALL';
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -51,7 +62,7 @@ export default function ReadingPage() {
   // ── Library Overview Filtering & Pagination ──
   // (hooks must run on every render, so they live above the `storyId` early return)
   const filteredStories = useMemo(() => {
-    return allStories.filter((s) => {
+    return availableStories.filter((s) => {
       const matchLevel = selectedLevel === 'ALL' || s.level === selectedLevel;
       if (!matchLevel) return false;
       if (!searchQuery.trim()) return true;
@@ -62,7 +73,7 @@ export default function ReadingPage() {
         (s.description && s.description.toLowerCase().includes(q))
       );
     });
-  }, [selectedLevel, searchQuery]);
+  }, [availableStories, selectedLevel, searchQuery]);
 
   const totalPages = Math.ceil(filteredStories.length / STORIES_PER_PAGE) || 1;
   const paginatedStories = useMemo(() => {
@@ -85,6 +96,28 @@ export default function ReadingPage() {
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
             {t('reading.story_not_found_desc', 'The requested reading text could not be located.')}
+          </p>
+          <button
+            onClick={() => navigate('/reading')}
+            className="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-colors"
+          >
+            {t('common.back', 'Back to Library')}
+          </button>
+        </div>
+      );
+    }
+
+    if (!isUnlocked(story.level)) {
+      return (
+        <div className="max-w-4xl mx-auto px-4 py-16 text-center">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400">
+            <AlertCircle className="w-8 h-8" />
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+            {t('reading.story_locked', 'Not unlocked yet')}
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+            {t('reading.story_locked_desc', 'This story is above your current level. Keep studying and it will open up.')}
           </p>
           <button
             onClick={() => navigate('/reading')}
@@ -126,7 +159,8 @@ export default function ReadingPage() {
     (p) => p.status === 'completed'
   ).length;
 
-  const levelTabs = ['ALL', 'N5', 'N4', 'N3', 'N2', 'N1'];
+  // One unlocked level => nothing to filter, so no tabs at all.
+  const levelTabs = unlocked.length > 1 ? ['ALL', ...unlocked] : [];
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
@@ -140,7 +174,7 @@ export default function ReadingPage() {
           {t('reading.title', 'Graded Reader (多読)')}
         </h1>
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 max-w-2xl leading-relaxed">
-          {t('reading.subtitle', 'Learn vocabulary, grammar, particles, and kanji naturally through context across 250 stories. Complete each story and test your knowledge to earn Wave XP and maintain your daily Jelly Streak!')}
+          {t('reading.subtitle', 'Learn vocabulary, grammar, particles, and kanji naturally through context through short stories. Complete each story and test your knowledge to earn Wave XP and maintain your daily Jelly Streak!')}
         </p>
 
         {/* Stats Strip */}
@@ -148,7 +182,7 @@ export default function ReadingPage() {
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
             <span className="text-xs text-gray-500 dark:text-gray-400">{t('reading.all_stories', 'Available Stories')}</span>
             <div className="text-xl font-bold text-gray-900 dark:text-gray-100 mt-1">
-              {allStories.length} (50 per JLPT Level)
+              {availableStories.length}
             </div>
           </div>
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
@@ -158,9 +192,9 @@ export default function ReadingPage() {
             </div>
           </div>
           <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs col-span-2 sm:col-span-1">
-            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.level', 'JLPT Levels')}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.your_levels', 'Your levels')}</span>
             <div className="text-xl font-bold text-teal-600 dark:text-teal-400 mt-1">
-              N5, N4, N3, N2, N1
+              {unlockedRangeLabel(studyLevel)}
             </div>
           </div>
         </div>
@@ -172,7 +206,7 @@ export default function ReadingPage() {
         <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
           {levelTabs.map((lvl) => {
             const isSelected = selectedLevel === lvl;
-            const countForLevel = lvl === 'ALL' ? allStories.length : allStories.filter((s) => s.level === lvl).length;
+            const countForLevel = lvl === 'ALL' ? availableStories.length : availableStories.filter((s) => s.level === lvl).length;
 
             return (
               <button
@@ -184,7 +218,7 @@ export default function ReadingPage() {
                     : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
-                <span>{lvl}</span>
+                <span>{lvl === 'ALL' ? t('reading.all_unlocked', 'All') : lvl}</span>
                 <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
                   isSelected ? 'bg-white/20 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                 }`}>

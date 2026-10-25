@@ -10,7 +10,10 @@ export interface User {
   email: string;
   username: string;
   nativeLanguage: string;
+  /** XP-derived rank (display only). Use studyLevel for access control. */
   currentLevel: JLPTLevel;
+  /** Highest JLPT level the user may open; content is cumulative (N3 => N5+N4+N3). */
+  studyLevel?: JLPTLevel;
   avatarUrl: string | null;
   avatarId: string | null;
   xpPoints: number;
@@ -20,6 +23,24 @@ export interface User {
 }
 
 export type JLPTLevel = 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
+
+export interface CategoryCoverage {
+  done: number;
+  total: number;
+  percent: number;
+}
+
+export interface LevelStatus {
+  studyLevel: JLPTLevel;
+  unlocked: JLPTLevel[];
+  nextLevel: JLPTLevel | null;
+  coverage: {
+    percent: number;
+    threshold: number;
+    categories: Record<'vocabulary' | 'kanji' | 'grammar' | 'reading', CategoryCoverage>;
+  } | null;
+  readyToLevelUp: boolean;
+}
 
 export interface AuthSession {
   user: User;

@@ -71,7 +71,8 @@
     "close": "Close",
     "item": "Item",
     "no_results": "No words found",
-    "try_different_search": "Try a different search term"
+    "try_different_search": "Try a different search term",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "Graded Reader",
@@ -233,7 +234,10 @@
     "audio_recorded": "Recorded Audio",
     "audio_browser_tts": "Browser Speech Synthesis (ja-JP)",
     "audio_no_voice": "No ja-JP voice",
-    "audio_no_voice_detail": "Japanese speech synthesis voice not installed in OS/browser; using default synthesizer"
+    "audio_no_voice_detail": "Japanese speech synthesis voice not installed in OS/browser; using default synthesizer",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "Kana Studio",
@@ -397,7 +401,9 @@
     "username_hint": "This is the name shown across the app. Letters, numbers, \"_\", \".\" and \"-\" only (3–30 characters).",
     "username_too_short": "Username must be at least {min} characters",
     "username_too_long": "Username can be at most {max} characters",
-    "username_invalid": "Use letters, numbers, \"_\", \".\" or \"-\" only (no spaces)"
+    "username_invalid": "Use letters, numbers, \"_\", \".\" or \"-\" only (no spaces)",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "Email is required",

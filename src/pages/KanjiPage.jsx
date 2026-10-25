@@ -19,6 +19,7 @@ import { useProgressStore } from '../store/progressStore'
 import { audioService } from '../services/audioService'
 import { KANJI, LEVEL_META, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
+import { useLevelState } from '../hooks/useStudyLevel'
 import { getCurriculumMeaning, normalizeLocale, useI18n } from '../i18n'
 import toast from 'react-hot-toast'
 
@@ -1292,11 +1293,10 @@ function StrokeTab({ kanji, isDark, meta }) {
 export default function KanjiPage() {
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
-  const targetLevel = useSettingsStore((s) => s.jlptLevel)
   const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
   const activeLang = normalizeLocale(displayLanguage)
 
-  const [level,      setLevel]      = useState(targetLevel || 'N5')
+  const [level, setLevel, { unlocked }] = useLevelState()
   const [search,     setSearch]     = useState('')
   const [openId,     setOpenId]     = useState(null)
   const [selectedId, setSelectedId] = useState(null)
@@ -1343,7 +1343,7 @@ export default function KanjiPage() {
 
   const handleLevelChange = useCallback((l) => {
     setLevel(l); setSearch(''); setOpenId(null); setSelectedId(null)
-  }, [])
+  }, [setLevel])
 
   const TABS = [
     { id: 'browse',    label: 'Browse',     icon: Grid3X3 },
@@ -1388,7 +1388,7 @@ export default function KanjiPage() {
       </motion.div>
 
       {/* ── Level selector ── */}
-      <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.kanji} isDark={isDark} />
+      <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.kanji} isDark={isDark} levels={unlocked} />
 
       {/* ── Tab bar ── */}
       <div className={`flex rounded-2xl border overflow-hidden p-1 gap-1 bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700/60`}>

@@ -90,6 +90,7 @@ export interface UpdateProfileRequest {
   username?: string;
   nativeLanguage?: string;
   currentLevel?: JLPTLevel;
+  studyLevel?: JLPTLevel;
   avatarUrl?: string | null;
   avatarId?: string | null;
 }

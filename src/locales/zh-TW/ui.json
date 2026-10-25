@@ -64,7 +64,8 @@
     "guest_mode": "訪客模式 (僅本機儲存)",
     "curated": "精選翻譯",
     "fallback_en": "英文 (備用)",
-    "day": "天"
+    "day": "天",
+    "your_levels": "Your levels"
   },
   "lessons": {
     "title": "課程",
@@ -141,7 +142,10 @@
     "take_quiz": "開始測驗",
     "lookup_title": "單字查詢",
     "add_word_srs": "加入 SRS 複習卡組",
-    "story_complete": "文章閱讀完畢！"
+    "story_complete": "文章閱讀完畢！",
+    "all_unlocked": "All",
+    "story_locked": "Not unlocked yet",
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
   },
   "kana": {
     "title": "假名工作室",
@@ -198,7 +202,9 @@
     "save_profile": "儲存個人檔案",
     "theme_light": "明亮",
     "theme_dark": "深色",
-    "theme_system": "跟隨系統"
+    "theme_system": "跟隨系統",
+    "study_level": "Study Level",
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
   },
   "auth": {
     "email_required": "電子郵件為必填項",

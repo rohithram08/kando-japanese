@@ -8,7 +8,11 @@ export const users = mysqlTable('users', {
   username: varchar('username', { length: 100 }).notNull(),
   passwordHash: varchar('password_hash', { length: 255 }).notNull(),
   nativeLanguage: varchar('native_language', { length: 50 }).default('English'),
+  // XP-derived JLPT rank (auto-updated by the progress routes). Display only.
   currentLevel: varchar('current_level', { length: 10 }).default('N5'),
+  // Highest JLPT level whose content the user may open (N5 -> only N5, N3 -> N5+N4+N3).
+  // Changed only by the user (Settings / level-up), never by XP.
+  studyLevel: varchar('study_level', { length: 10 }).default('N5').notNull(),
   avatarUrl: text('avatar_url'),
   avatarId: varchar('avatar_id', { length: 100 }),
   xpPoints: int('xp_points').default(0).notNull(),

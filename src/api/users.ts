@@ -1,6 +1,7 @@
 // ─── Users API ───────────────────────────────────────────────────────────────
 
 import { get, put, del } from './client';
+import type { LevelStatus } from '../types/models';
 import type {
   UserProfileResponse,
   UpdateProfileRequest,
@@ -53,3 +54,9 @@ export function deleteAccount(): Promise<{ message: string }> {
   return del<{ message: string }>('/users/account');
 }
 
+/**
+ * Study level, unlocked levels and coverage of the current level.
+ */
+export function getLevelStatus(): Promise<LevelStatus> {
+  return get<LevelStatus>('/users/level-status');
+}

@@ -7,6 +7,7 @@ import { useSRSStore } from '../store/srsStore'
 import { audioService } from '../services/audioService'
 import { VOCABULARY, LEVEL_META, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
+import { useLevelState } from '../hooks/useStudyLevel'
 import FuriganaText from '../components/common/FuriganaText'
 import PitchContourVisualizer from '../components/pitch/PitchContourVisualizer'
 import { getPitchAccent } from '../data/pitch/pitchData'
@@ -128,10 +129,9 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
 
 // ── Page ──────────────────────────────────────────────────────
 export default function VocabularyPage() {
-  const targetLevel = useSettingsStore((s) => s.jlptLevel)
   const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
   const activeLang = normalizeLocale(displayLanguage)
-  const [selectedLevel, setSelectedLevel] = useState(targetLevel || 'N5')
+  const [selectedLevel, setSelectedLevel, { unlocked }] = useLevelState()
   const [search, setSearch] = useState('')
 
   const meta = LEVEL_META[selectedLevel]
@@ -176,7 +176,7 @@ export default function VocabularyPage() {
       </motion.div>
 
       <div className="space-y-3">
-        <LevelSelector selected={selectedLevel} onChange={(l) => { setSelectedLevel(l); setSearch('') }} counts={DATA_COUNTS.vocabulary} />
+        <LevelSelector selected={selectedLevel} onChange={(l) => { setSelectedLevel(l); setSearch('') }} counts={DATA_COUNTS.vocabulary} levels={unlocked} />
 
         <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
           <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
