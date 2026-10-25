@@ -13,6 +13,7 @@ import { randomUUID } from 'node:crypto';
 import { and, desc, eq, gte, lt, sql } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { xpEvents } from '../db/schema.js';
+import { touchLeagueQuietly } from './leagueService.js';
 
 export type XpSource =
   | 'lesson'
@@ -57,7 +58,12 @@ export async function recordXpEvent(
   const event = normalizeXpEvent(amount, source, options);
   if (!event) return;
   try {
-    await db.insert(xpEvents).values({ id: randomUUID(), userId, ...event });
+    // Explicit client-side timestamp (not the DB's now()) so ledger rows and league week windows
+    // are always interpreted in the same timezone, whatever the database server is set to.
+    const createdAt = new Date();
+    await db.insert(xpEvents).values({ id: randomUUID(), userId, ...event, createdAt });
+    // First XP of the week enters the learner into their league (cached, never throws).
+    await touchLeagueQuietly(userId, createdAt);
   } catch (err) {
     console.error('[xpLedger] failed to record xp event', { userId, source, amount: event.amount, err });
   }

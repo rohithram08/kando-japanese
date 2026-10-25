@@ -47,6 +47,8 @@ app.get('/api/health', (_req, res) => {
 // ─── Routes ──────────────────────────────────────────────────────────────────
 import { uploadRouter } from './routes/upload.js';
 import { readingRouter } from './routes/reading.js';
+import { leagueRouter } from './routes/league.js';
+import { settleDueWeeks } from './services/leagueService.js';
 import { dictionaryRouter } from './routes/dictionary.js';
 
 app.use('/api/auth', authRouter);
@@ -60,6 +62,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/sensei', senseiRouter);
 app.use('/api/reading', readingRouter);
 app.use('/api/dictionary', dictionaryRouter);
+app.use('/api/league', leagueRouter);
 
 // ─── Error Handler ───────────────────────────────────────────────────────────
 app.use(errorHandler);

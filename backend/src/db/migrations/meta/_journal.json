@@ -64,6 +64,13 @@
       "when": 1792080000000,
       "tag": "0008_avatar_config",
       "breakpoints": false
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1792090000000,
+      "tag": "0009_leagues",
+      "breakpoints": false
     }
   ]
 }

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const values = vi.fn();
+const touch = vi.fn().mockResolvedValue(undefined);
+vi.mock('../leagueService.js', () => ({ touchLeagueQuietly: (...a: unknown[]) => touch(...a) }));
 vi.mock('../../db/index.js', () => ({
   db: { insert: vi.fn(() => ({ values })), select: vi.fn() },
 }));
@@ -24,19 +26,23 @@ describe('normalizeXpEvent', () => {
 });
 
 describe('recordXpEvent', () => {
-  beforeEach(() => { values.mockReset(); (db.insert as any).mockClear(); });
+  beforeEach(() => { values.mockReset(); touch.mockClear(); (db.insert as any).mockClear(); });
 
   it('inserts a row with a generated id', async () => {
     values.mockResolvedValue(undefined);
     await recordXpEvent('u1', 10, 'grammar', { refId: 'n5_g001' });
     expect(values).toHaveBeenCalledWith(expect.objectContaining({
       userId: 'u1', amount: 10, source: 'grammar', refId: 'n5_g001', minutes: 0, id: expect.any(String),
+      createdAt: expect.any(Date), // explicit client-side timestamp, not the DB's now()
     }));
+    // the first XP of the week enters the learner into their league
+    expect(touch).toHaveBeenCalledWith('u1', expect.any(Date));
   });
 
   it('does not touch the database for zero-XP awards', async () => {
     await recordXpEvent('u1', 0, 'kanji');
     expect(db.insert).not.toHaveBeenCalled();
+    expect(touch).not.toHaveBeenCalled();
   });
 
   it('never throws when the insert fails (XP is already granted)', async () => {

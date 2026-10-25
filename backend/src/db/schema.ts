@@ -16,6 +16,8 @@ export const users = mysqlTable('users', {
   avatarUrl: text('avatar_url'),
   // JSON recipe for the customizable cartoon avatar (see services/avatarConfig.ts). TEXT keeps MariaDB/MySQL/TiDB behaviour identical.
   avatarConfig: text('avatar_config'),
+  // Privacy: true = hidden from leagues and leaderboards.
+  leagueOptOut: boolean('league_opt_out').default(false).notNull(),
   avatarId: varchar('avatar_id', { length: 100 }),
   xpPoints: int('xp_points').default(0).notNull(),
   streakDays: int('streak_days').default(0).notNull(),
@@ -102,6 +104,50 @@ export const xpEvents = mysqlTable('xp_events', {
 }, (table) => ({
   userTimeIdx: index('xp_events_user_time_idx').on(table.userId, table.createdAt),
   timeIdx: index('xp_events_time_idx').on(table.createdAt),
+}));
+
+// ─── Leagues ─────────────────────────────────────────────────────────────────
+// Weekly leagues (see services/leagueRules.ts). A learner sits on one of 15 rungs; each week they
+// are placed in a cohort of up to 30 learners on the same rung and ranked by league XP.
+
+export const leagueMembership = mysqlTable('league_membership', {
+  userId: varchar('user_id', { length: 36 }).primaryKey().references(() => users.id, { onDelete: 'cascade' }),
+  rung: int('rung').notNull().default(0),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const leagueWeeks = mysqlTable('league_weeks', {
+  /** IST Monday date, e.g. 2026-10-19 */
+  id: varchar('id', { length: 10 }).primaryKey(),
+  startsAt: timestamp('starts_at').notNull(),
+  endsAt: timestamp('ends_at').notNull(),
+  settledAt: timestamp('settled_at'),
+});
+
+export const leagueCohorts = mysqlTable('league_cohorts', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  weekId: varchar('week_id', { length: 10 }).notNull(),
+  rung: int('rung').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  weekRungIdx: index('league_cohorts_week_rung_idx').on(table.weekId, table.rung),
+}));
+
+export const leagueEntries = mysqlTable('league_entries', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  cohortId: varchar('cohort_id', { length: 36 }).notNull(),
+  weekId: varchar('week_id', { length: 10 }).notNull(),
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  rungStart: int('rung_start').notNull(),
+  /** Final league XP, rank and outcome - filled in when the week is settled. */
+  xp: int('xp'),
+  rank: int('rank'),
+  outcome: varchar('outcome', { length: 10 }),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  weekUserUnique: uniqueIndex('league_entries_week_user').on(table.weekId, table.userId),
+  cohortIdx: index('league_entries_cohort_idx').on(table.cohortId),
+  userIdx: index('league_entries_user_idx').on(table.userId, table.weekId),
 }));
 
 // ─── Badges ──────────────────────────────────────────────────────────────────
