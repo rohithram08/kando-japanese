@@ -1602,5 +1602,336 @@
         "reading": ""
       }
     ]
+  },
+  {
+    "id": "n5_g061",
+    "pattern": "〜ちゃいけない／〜じゃいけない",
+    "romaji": "cha ikenai / ja ikenai",
+    "formation": "Verb て-form (minus て) + ちゃいけない / Verb で-form (minus で) + じゃいけない",
+    "level": "N5",
+    "tags": [
+      "casual",
+      "spoken",
+      "prohibition",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "そんなことを言っちゃいけない。",
+        "reading": "そんなことをいっちゃいけない。"
+      },
+      {
+        "jp": "遅刻しちゃいけないよ。",
+        "reading": "ちこくしちゃいけないよ。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g062",
+    "pattern": "〜どうやって",
+    "romaji": "dou yatte",
+    "formation": "どうやって + Verb",
+    "level": "N5",
+    "tags": [
+      "question",
+      "manner",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "駅までどうやって行きますか。",
+        "reading": "えきまでどうやっていきますか。"
+      },
+      {
+        "jp": "この漢字はどうやって書きますか。",
+        "reading": "このかんじはどうやってかきますか。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g063",
+    "pattern": "〜がほしい",
+    "romaji": "ga hoshii",
+    "formation": "Noun + がほしい",
+    "level": "N5",
+    "tags": [
+      "desire",
+      "adjective",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "新しい車がほしいです。",
+        "reading": "あたらしいくるまがほしいです。"
+      },
+      {
+        "jp": "休みがほしい。",
+        "reading": "やすみがほしい。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g064",
+    "pattern": "〜ほうがいい",
+    "romaji": "hou ga ii",
+    "formation": "Verb た-form + ほうがいい / Verb ない-form + ほうがいい",
+    "level": "N5",
+    "tags": [
+      "advice",
+      "suggestion",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "薬を飲んだほうがいいですよ。",
+        "reading": "くすりをのんだほうがいいですよ。"
+      },
+      {
+        "jp": "無理をしないほうがいい。",
+        "reading": "むりをしないほうがいい。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g065",
+    "pattern": "〜か〜か",
+    "romaji": "ka ~ ka",
+    "formation": "Noun/Verb か Noun/Verb か",
+    "level": "N5",
+    "tags": [
+      "choice",
+      "alternative",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "お茶かコーヒーかどちらがいいですか。",
+        "reading": "おちゃかコーヒーかどちらがいいですか。"
+      },
+      {
+        "jp": "行くか行かないか決めてください。",
+        "reading": "いくかいかないかきめてください。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g066",
+    "pattern": "まだ〜ていません",
+    "romaji": "mada ~te imasen",
+    "formation": "まだ + Verb て-form + いません",
+    "level": "N5",
+    "tags": [
+      "aspect",
+      "negative",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "宿題はまだ終わっていません。",
+        "reading": "しゅくだいはまだおわっていません。"
+      },
+      {
+        "jp": "朝ご飯をまだ食べていません。",
+        "reading": "あさごはんをまだたべていません。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g067",
+    "pattern": "〜までに",
+    "romaji": "made ni",
+    "formation": "Time / Date + までに",
+    "level": "N5",
+    "tags": [
+      "time",
+      "deadline",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "明日までにレポートを出してください。",
+        "reading": "あしたまでにレポートをだしてください。"
+      },
+      {
+        "jp": "五時までに戻ります。",
+        "reading": "ごじまでもどります。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g068",
+    "pattern": "めったに〜ない",
+    "romaji": "mettani ~ nai",
+    "formation": "めったに + Verb ない-form",
+    "level": "N5",
+    "tags": [
+      "frequency",
+      "adverb",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "私はめったにお酒を飲みません。",
+        "reading": "わたしはめったにおさけをのみません。"
+      },
+      {
+        "jp": "彼はめったに怒らない。",
+        "reading": "かれはめったにおこらない。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g069",
+    "pattern": "〜ないで",
+    "romaji": "naide",
+    "formation": "Verb ない-form (minus い) + で",
+    "level": "N5",
+    "tags": [
+      "manner",
+      "negative",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "朝ご飯を食べないで学校へ行きました。",
+        "reading": "あさごはんをたべないでがっこうへいきました。"
+      },
+      {
+        "jp": "傘を持たないで出かけました。",
+        "reading": "かさをもたないででかけました。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g070",
+    "pattern": "〜つもり",
+    "romaji": "tsumori",
+    "formation": "Verb dictionary form + つもり / Verb ない-form + つもり",
+    "level": "N5",
+    "tags": [
+      "intention",
+      "plan",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "来年日本へ行くつもりです。",
+        "reading": "らいねんにほんへいくつもりです。"
+      },
+      {
+        "jp": "今日は勉強しないつもりです。",
+        "reading": "きょうはべんきょうしないつもりです。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g071",
+    "pattern": "〜ていく／〜てくる",
+    "romaji": "te iku / te kuru",
+    "formation": "Verb て-form + いく／くる",
+    "level": "N5",
+    "tags": [
+      "direction",
+      "aspect",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "鳥が飛んでいきました。",
+        "reading": "とりがとんでいきました。"
+      },
+      {
+        "jp": "雨が降ってきました。",
+        "reading": "あめがふってきました。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g072",
+    "pattern": "〜てみる",
+    "romaji": "te miru",
+    "formation": "Verb て-form + みる",
+    "level": "N5",
+    "tags": [
+      "attempt",
+      "experience",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本の料理を食べてみたいです。",
+        "reading": "にほんのりょうりをたべてみたいです。"
+      },
+      {
+        "jp": "この着物を着てみてください。",
+        "reading": "このきものをきてみてください。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g073",
+    "pattern": "〜てよかった",
+    "romaji": "te yokatta",
+    "formation": "Verb て-form + よかった",
+    "level": "N5",
+    "tags": [
+      "feeling",
+      "relief",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "日本に来てよかった。",
+        "reading": "にほんにきてよかった。"
+      },
+      {
+        "jp": "早く起きてよかった。",
+        "reading": "はやくおきてよかった。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g074",
+    "pattern": "〜と（conditional）",
+    "romaji": "to",
+    "formation": "Verb dictionary form + と",
+    "level": "N5",
+    "tags": [
+      "conditional",
+      "natural result",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "春になると桜が咲きます。",
+        "reading": "はるになるとさくらがさきます。"
+      },
+      {
+        "jp": "右へ曲がると郵便局があります。",
+        "reading": "みぎへまがるとゆうびんきょくがあります。"
+      }
+    ]
+  },
+  {
+    "id": "n5_g075",
+    "pattern": "ぜひ",
+    "romaji": "zehi",
+    "formation": "ぜひ + Request / Invitation",
+    "level": "N5",
+    "tags": [
+      "invitation",
+      "emphasis",
+      "N5"
+    ],
+    "examples": [
+      {
+        "jp": "ぜひ遊びに来てください。",
+        "reading": "ぜひあそびにきてください。"
+      },
+      {
+        "jp": "ぜひ一度日本へ行きたいです。",
+        "reading": "ぜひいちどにほんへいきたいです。"
+      }
+    ]
   }
 ]
