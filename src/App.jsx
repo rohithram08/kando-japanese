@@ -55,6 +55,7 @@ const UserProfilePage   = lazyWithRetry(() => import('./pages/UserProfilePage'))
 const SpeechPage        = lazyWithRetry(() => import('./pages/SpeechPage'))
 const SettingsPage      = lazyWithRetry(() => import('./pages/SettingsPage'))
 const AchievementsPage  = lazyWithRetry(() => import('./pages/AchievementsPage'))
+const LeaguePage       = lazyWithRetry(() => import('./pages/LeaguePage'))
 const KanaPage          = lazyWithRetry(() => import('./pages/KanaPage'))
 const DictionaryPage    = lazyWithRetry(() => import('./pages/DictionaryPage.jsx'))
 const LandingPage       = lazyWithRetry(() => import('./pages/LandingPage'))
@@ -138,6 +139,7 @@ export default function App() {
           <Route path="/progress"            element={<Navigate to="/dashboard" replace />} />
           <Route path="/speech"              element={<LazyRoute Component={SpeechPage} message="Loading speech engine..." />} />
           <Route path="/settings"            element={<LazyRoute Component={SettingsPage} message="Loading settings..." />} />
+          <Route path="/league"              element={<LazyRoute Component={LeaguePage} message="Loading leagues..." />} />
           <Route path="/achievements"        element={<LazyRoute Component={AchievementsPage} message="Loading achievements..." />} />
         </Route>
       </Route>

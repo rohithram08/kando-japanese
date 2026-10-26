@@ -1,0 +1,513 @@
+{
+  "ladder": [
+    {
+      "id": "wakaba",
+      "name": "Wakaba",
+      "jp": "若葉",
+      "color": "#84cc16",
+      "order": 0,
+      "rungs": [
+        {
+          "stage": 3,
+          "index": 0
+        },
+        {
+          "stage": 2,
+          "index": 1
+        },
+        {
+          "stage": 1,
+          "index": 2
+        }
+      ]
+    },
+    {
+      "id": "take",
+      "name": "Take",
+      "jp": "竹",
+      "color": "#10b981",
+      "order": 1,
+      "rungs": [
+        {
+          "stage": 3,
+          "index": 3
+        },
+        {
+          "stage": 2,
+          "index": 4
+        },
+        {
+          "stage": 1,
+          "index": 5
+        }
+      ]
+    },
+    {
+      "id": "ume",
+      "name": "Ume",
+      "jp": "梅",
+      "color": "#a855f7",
+      "order": 2,
+      "rungs": [
+        {
+          "stage": 3,
+          "index": 6
+        },
+        {
+          "stage": 2,
+          "index": 7
+        },
+        {
+          "stage": 1,
+          "index": 8
+        }
+      ]
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura",
+      "jp": "桜",
+      "color": "#f472b6",
+      "order": 3,
+      "rungs": [
+        {
+          "stage": 3,
+          "index": 9
+        },
+        {
+          "stage": 2,
+          "index": 10
+        },
+        {
+          "stage": 1,
+          "index": 11
+        }
+      ]
+    },
+    {
+      "id": "fuji",
+      "name": "Fuji",
+      "jp": "富士",
+      "color": "#f59e0b",
+      "order": 4,
+      "rungs": [
+        {
+          "stage": 3,
+          "index": 12
+        },
+        {
+          "stage": 2,
+          "index": 13
+        },
+        {
+          "stage": 1,
+          "index": 14
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "cohortSize": 30,
+    "minBoard": 20,
+    "promoteFraction": 0.2,
+    "demoteFraction": 0.2,
+    "minXpToPromote": 50,
+    "dailyXpCap": 1000
+  },
+  "optedOut": false,
+  "week": {
+    "id": "2026-10-26",
+    "startsAt": "2026-10-25T18:30:00.000Z",
+    "endsAt": "2026-11-01T18:30:00.000Z",
+    "secondsLeft": 579714
+  },
+  "rung": {
+    "index": 0,
+    "leagueIndex": 0,
+    "league": {
+      "id": "wakaba",
+      "name": "Wakaba",
+      "jp": "若葉",
+      "color": "#84cc16"
+    },
+    "stage": 3,
+    "label": "Wakaba III"
+  },
+  "board": {
+    "cohortId": "a62e5404-ed0d-4363-b2c9-c90dc2e37c22",
+    "size": 20,
+    "realCount": 1,
+    "promoteCount": 4,
+    "demoteCount": 0,
+    "standings": [
+      {
+        "rank": 1,
+        "userId": null,
+        "isBot": true,
+        "name": "Origami Owl",
+        "xp": 10,
+        "isYou": false,
+        "zone": "promotion",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "botbl2cxx",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 2,
+        "userId": null,
+        "isBot": true,
+        "name": "Snow Daruma",
+        "xp": 8,
+        "isYou": false,
+        "zone": "promotion",
+        "avatar": {
+          "avatarConfig": {
+            "style": "openPeeps",
+            "seed": "botub7apm",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 3,
+        "userId": null,
+        "isBot": true,
+        "name": "Paper Crane",
+        "xp": 8,
+        "isYou": false,
+        "zone": "promotion",
+        "avatar": {
+          "avatarConfig": {
+            "style": "notionists",
+            "seed": "bot1urw22r",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 4,
+        "userId": null,
+        "isBot": true,
+        "name": "Tofu Samurai",
+        "xp": 7,
+        "isYou": false,
+        "zone": "promotion",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "botgv7f5h",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 5,
+        "userId": null,
+        "isBot": true,
+        "name": "Misty Ronin",
+        "xp": 7,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "avataaars",
+            "seed": "botwsc7aw",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 6,
+        "userId": null,
+        "isBot": true,
+        "name": "Tea Kettle",
+        "xp": 7,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "avataaars",
+            "seed": "bot1qiva7k",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 7,
+        "userId": "3cb5dd17-5db0-4248-8554-65f59070eefb",
+        "isBot": false,
+        "name": "Capture5335",
+        "xp": 6,
+        "isYou": true,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "fixture1",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 8,
+        "userId": null,
+        "isBot": true,
+        "name": "Cloud Neko",
+        "xp": 6,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "notionists",
+            "seed": "bot1t88ttr",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 9,
+        "userId": null,
+        "isBot": true,
+        "name": "Matcha Mochi",
+        "xp": 5,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "avataaars",
+            "seed": "bot68fpns",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 10,
+        "userId": null,
+        "isBot": true,
+        "name": "Sakura Wind",
+        "xp": 4,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "notionists",
+            "seed": "bot1370r2n",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 11,
+        "userId": null,
+        "isBot": true,
+        "name": "River Kappa",
+        "xp": 4,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "avataaars",
+            "seed": "bot1wynozg",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 12,
+        "userId": null,
+        "isBot": true,
+        "name": "Lantern Koi",
+        "xp": 4,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "bot14gomnx",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 13,
+        "userId": null,
+        "isBot": true,
+        "name": "Ink Panda",
+        "xp": 3,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "openPeeps",
+            "seed": "bot1nzjks2",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 14,
+        "userId": null,
+        "isBot": true,
+        "name": "Moon Rabbit",
+        "xp": 3,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "notionists",
+            "seed": "botmzfmj7",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 15,
+        "userId": null,
+        "isBot": true,
+        "name": "Dojo Sparrow",
+        "xp": 3,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "bot1ujsevd",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 16,
+        "userId": null,
+        "isBot": true,
+        "name": "Bamboo Fox",
+        "xp": 2,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "avataaars",
+            "seed": "bot1khi6ss",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 17,
+        "userId": null,
+        "isBot": true,
+        "name": "Moss Tanuki",
+        "xp": 2,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "openPeeps",
+            "seed": "bot1lz9nue",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 18,
+        "userId": null,
+        "isBot": true,
+        "name": "Temple Bell",
+        "xp": 1,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "openPeeps",
+            "seed": "bot1giyx8m",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 19,
+        "userId": null,
+        "isBot": true,
+        "name": "Maple Monk",
+        "xp": 1,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "lorelei",
+            "seed": "bot1p9pk9l",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      },
+      {
+        "rank": 20,
+        "userId": null,
+        "isBot": true,
+        "name": "Fuji Falcon",
+        "xp": 1,
+        "isYou": false,
+        "zone": "safe",
+        "avatar": {
+          "avatarConfig": {
+            "style": "openPeeps",
+            "seed": "bot1t9omzm",
+            "options": {}
+          },
+          "avatarId": null,
+          "avatarUrl": null
+        }
+      }
+    ],
+    "you": {
+      "rank": 7,
+      "xp": 6,
+      "zone": "safe",
+      "xpToNextRank": 2,
+      "xpToPromotion": 2,
+      "meetsMinXp": false
+    }
+  }
+}

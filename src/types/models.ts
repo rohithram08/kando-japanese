@@ -316,3 +316,81 @@ export interface AvatarUploadResult {
   url: string;
   key: string;
 }
+
+// ─── Leagues ─────────────────────────────────────────────────────────────────
+
+export interface LeagueRung {
+  index: number;
+  leagueIndex: number;
+  league: { id: string; name: string; jp: string; color: string };
+  /** 3 (entry) -> 1 (top of the league) */
+  stage: 1 | 2 | 3;
+  label: string;
+}
+
+export interface LeagueAvatar {
+  avatarConfig: AvatarConfig | null;
+  avatarId: string | null;
+  avatarUrl: string | null;
+}
+
+export type LeagueZone = 'promotion' | 'demotion' | 'safe';
+
+export interface LeagueStanding {
+  rank: number;
+  userId: string | null;
+  /** Bots are clearly labelled pacers that keep small leagues lively. */
+  isBot: boolean;
+  name: string;
+  xp: number;
+  isYou: boolean;
+  zone: LeagueZone;
+  avatar: LeagueAvatar;
+}
+
+export interface LeagueBoard {
+  cohortId: string;
+  size: number;
+  realCount: number;
+  promoteCount: number;
+  demoteCount: number;
+  standings: LeagueStanding[];
+  you: {
+    rank: number;
+    xp: number;
+    zone: LeagueZone;
+    xpToNextRank: number | null;
+    xpToPromotion: number | null;
+    meetsMinXp: boolean;
+  };
+}
+
+export interface LeagueView {
+  optedOut: boolean;
+  week: { id: string; startsAt: string; endsAt: string; secondsLeft: number };
+  rung: LeagueRung;
+  board: LeagueBoard | null;
+  ladder: Array<{ id: string; name: string; jp: string; color: string; order: number; rungs: Array<{ stage: number; index: number }> }>;
+  rules: {
+    cohortSize: number;
+    minBoard: number;
+    promoteFraction: number;
+    demoteFraction: number;
+    minXpToPromote: number;
+    dailyXpCap: number;
+  };
+}
+
+export interface LeagueHistoryWeek {
+  weekId: string;
+  rungStart: number;
+  rank: number | null;
+  xp: number | null;
+  outcome: 'promoted' | 'demoted' | 'stayed';
+  rung: LeagueRung;
+}
+
+export interface GlobalBoard {
+  entries: Array<{ rank: number; userId: string; name: string; xp: number; isYou: boolean; avatar: LeagueAvatar }>;
+  you: { rank: number; xp: number } | null;
+}

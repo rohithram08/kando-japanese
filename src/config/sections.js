@@ -10,7 +10,7 @@
 
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
-  Swords, RefreshCw, MessageCircle, Bot, Mic,
+  Swords, RefreshCw, MessageCircle, Bot, Mic, Medal,
   Trophy, BarChart2, Settings, Sparkles, BookA,
 } from 'lucide-react'
 
@@ -253,6 +253,16 @@ export const SECTIONS = [
     tint: 'amber',
     group: 'practice',
     description: 'Pronunciation practice out loud',
+  },
+  {
+    id: 'league',
+    label: 'Leagues',
+    shortLabel: 'Leagues',
+    path: '/league',
+    icon: Medal,
+    tint: 'violet',
+    group: 'journey',
+    description: 'Weekly leagues & leaderboard',
   },
   {
     id: 'achievements',
