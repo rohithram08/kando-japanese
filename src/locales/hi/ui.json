@@ -29,7 +29,10 @@
     "logout": "लॉग आउट",
     "league": "लीग",
     "login": "लॉग इन",
-    "register": "साइन अप"
+    "register": "साइन अप",
+    "reading_short": "रीडर",
+    "slime_mail": "आपका स्लाइम मेल",
+    "conversation_short": "बातचीत"
   },
   "common": {
     "language": "प्रदर्शन और अनुवाद भाषा",
@@ -76,7 +79,8 @@
     "no_results": "कोई शब्द नहीं मिला",
     "try_different_search": "कोई दूसरा खोज शब्द आज़माएँ",
     "your_levels": "Your levels",
-    "saving": "सहेज रहे हैं…"
+    "saving": "सहेज रहे हैं…",
+    "go_back": "वापस जाएँ"
   },
   "lessons": {
     "title": "ग्रेडेड रीडर (Graded Reader)",
@@ -126,7 +130,8 @@
     "no_quizzes": "यहाँ स्कोर देखने के लिए कोई कहानी और उसका क्विज़ पूरा करें।",
     "recently_completed": "हाल ही में पूरी",
     "wave_xp_to_next": "स्तर {next} तक {xp} Wave XP",
-    "level_label": "स्तर {level}"
+    "level_label": "स्तर {level}",
+    "study_today_to_keep_streak": "अपनी {count} दिन की स्ट्रीक बनाए रखने के लिए आज कोई कहानी या क्विज़ पूरा करें!"
   },
   "quiz": {
     "title": "प्रश्नोत्तरी केंद्र",
@@ -241,7 +246,8 @@
     "audio_no_voice_detail": "जापानी आवाज़ OS/ब्राउज़र में इंस्टॉल नहीं है; डिफ़ॉल्ट सिंथेसाइज़र उपयोग हो रहा है",
     "all_unlocked": "All",
     "story_locked": "Not unlocked yet",
-    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up.",
+    "jlpt_levels": "JLPT स्तर"
   },
   "kana": {
     "title": "काना स्टूडियो",
@@ -476,7 +482,10 @@
     "all_achievements": "सभी उपलब्धियाँ",
     "show_less": "कम दिखाएँ",
     "show_all": "सभी {count} दिखाएँ",
-    "no_activity_week": "इस सप्ताह अभी कोई Wave XP नहीं — कोई कहानी और उसका क्विज़ पूरा करें।"
+    "no_activity_week": "इस सप्ताह अभी कोई Wave XP नहीं — कोई कहानी और उसका क्विज़ पूरा करें।",
+    "lessons_done": "कहानियाँ",
+    "skill_overview": "सीखने की प्रगति",
+    "total_xp": "Wave XP"
   },
   "conversation": {
     "title": "बातचीत अभ्यास",
@@ -607,5 +616,27 @@
     "opted_out": "अब आप लीग में छिपे हुए हैं।",
     "opted_in": "लीग में आपका फिर स्वागत है!",
     "opt_error": "गोपनीयता सेटिंग अपडेट नहीं हो सकी।"
+  },
+  "dictionary": {
+    "error": "शब्दकोश परिणाम नहीं मिल सके। कृपया अपना कनेक्शन जाँचें।",
+    "eyebrow": "स्मार्ट बहुभाषी शब्दकोश",
+    "no_results_desc": "कोई मेल खाती प्रविष्टि नहीं मिली। रोमाजी, अंग्रेज़ी अर्थ से खोजें या वर्तनी जाँचें।",
+    "no_results_title": "कोई शब्द नहीं मिला",
+    "placeholder": "आज़माएँ: 食べる, taberu, water, தண்ணீர், खाना…",
+    "popular_suggestions": "खोजने के लिए लोकप्रिय शब्द",
+    "recent_searches": "हाल की खोजें",
+    "search_btn": "खोजें",
+    "subtitle": "जापानी (कांजी, काना, रोमाजी) या अपनी भाषा के अर्थ से दोनों दिशाओं में खोजें।",
+    "title": "जापानी शब्दकोश"
+  },
+  "skill": {
+    "vocab": "सीखे गए शब्द"
+  },
+  "user_profile": {
+    "loading": "शिक्षार्थी प्रोफ़ाइल लोड हो रही है...",
+    "no_user": "कोई उपयोगकर्ता निर्दिष्ट नहीं",
+    "not_found": "उपयोगकर्ता नहीं मिला",
+    "not_found_desc": "यह उपयोगकर्ता प्रोफ़ाइल मौजूद नहीं है या हटा दी गई है।",
+    "not_found_title": "उपयोगकर्ता नहीं मिला"
   }
 }

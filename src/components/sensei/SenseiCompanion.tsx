@@ -161,7 +161,7 @@ export default function SenseiCompanion() {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-4 right-4 z-[100] sm:bottom-6 sm:right-6 pointer-events-none"
+      className="fixed right-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-[100] md:bottom-6 md:right-6 pointer-events-none"
     >
       <div className="pointer-events-auto flex flex-col items-end relative select-none">
         {/* ─── TEACHING / GUIDANCE POPUP MODE ─── */}
@@ -178,7 +178,7 @@ export default function SenseiCompanion() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 16 }}
               transition={{ duration: reducedMotion ? 0.05 : 0.2 }}
-              className="mb-3 w-[calc(100vw-32px)] sm:w-[410px] h-[520px] max-h-[calc(100vh-100px)] bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-primary/20"
+              className="mb-3 w-[calc(100vw-32px)] sm:w-[410px] h-[520px] max-h-[calc(100dvh-11rem)] md:max-h-[calc(100vh-100px)] bg-card/95 backdrop-blur-xl border border-border/80 rounded-3xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-primary/20"
               role="dialog"
               aria-label="Hana-sensei AI Chat Companion"
             >
@@ -408,7 +408,7 @@ export default function SenseiCompanion() {
             onMouseLeave={() => setIsHovered(false)}
             aria-label="Hana-sensei AI Companion. Click to chat."
             aria-expanded={isOpen}
-            className="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[2px] shadow-2xl relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-primary/30"
+            className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[2px] shadow-2xl relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-primary/30"
           >
             <div className="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center relative">
               {/* 2D Avatar in Minimized Floating Button */}

@@ -30,8 +30,8 @@ vi.mock('../../store/authStore', () => ({
   }),
 }));
 
-vi.mock('../../store/progressStore', () => ({
-  useProgressStore: () => ({
+vi.mock('../../store/progressStore', () => {
+  const state = {
     totalXP: 1200,
     streak: 14,
     jlptLevel: 'N5',
@@ -40,8 +40,15 @@ vi.mock('../../store/progressStore', () => ({
     vocabLearned: 150,
     cardsMastered: 40,
     grammarLearned: 12,
-  }),
-}));
+  };
+  // Honour selectors like the real zustand hook (the page reads single fields)
+  return {
+    useProgressStore: Object.assign(
+      (selector?: (s: typeof state) => unknown) => (selector ? selector(state) : state),
+      { getState: () => state, setState: () => {} }
+    ),
+  };
+});
 
 describe('ProfilePage Component', () => {
   it('renders profile username, level, streak, and XP without crashing', async () => {
@@ -68,11 +75,17 @@ describe('ProfilePage Component', () => {
 
     await waitFor(() => {
       expect(screen.getByText('All Achievements')).toBeTruthy();
+    });
+    // Achievements are derived from the learner's real progress (1,200 Wave XP, 10 lessons in this
+    // mock), not a hard-coded list — the full list is one click away.
+    fireEvent.click(screen.getByRole('button', { name: /Show All/i }));
+    await waitFor(() => {
       expect(screen.getByText('First Steps')).toBeTruthy();
+      expect(screen.getByText('Wave Awakened')).toBeTruthy();
     });
   });
 
-  it('switches to Activity tab and displays Weekly XP Activity', async () => {
+  it('switches to Activity tab and displays Weekly Wave XP Activity', async () => {
     render(
       <MemoryRouter>
         <ProfilePage />
@@ -83,7 +96,7 @@ describe('ProfilePage Component', () => {
     fireEvent.click(activityTabBtn);
 
     await waitFor(() => {
-      expect(screen.getByText('Weekly XP Activity')).toBeTruthy();
+      expect(screen.getByText(/Weekly Wave XP Activity/)).toBeTruthy();
     });
   });
 });

@@ -24,7 +24,7 @@ export default function MobileNav({ onMoreClick }) {
       return {
         id: s.id,
         to: s.path,
-        label: t('nav.' + s.id, displayLanguage, s.shortLabel || s.label),
+        label: t('nav.' + s.id + '_short', displayLanguage, t('nav.' + s.id, displayLanguage, s.shortLabel || s.label)),
         Icon: s.icon,
         badge: s.id === 'review' && srsReviewsDue > 0 ? srsReviewsDue : null,
       }
@@ -37,7 +37,7 @@ export default function MobileNav({ onMoreClick }) {
         <NavLink
           key={to}
           to={to}
-          className={({ isActive }) => `flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-medium transition-colors relative ${
+          className={({ isActive }) => `flex-1 min-w-0 flex flex-col items-center justify-center py-2 px-0.5 gap-0.5 text-[10px] font-medium transition-colors relative ${
             isActive ? 'text-primary' : 'text-muted-foreground'
           }`}
         >
@@ -51,7 +51,7 @@ export default function MobileNav({ onMoreClick }) {
                   </span>
                 )}
               </div>
-              <span>{label}</span>
+              <span className="max-w-full truncate whitespace-nowrap leading-tight">{label}</span>
             </>
           )}
         </NavLink>
@@ -59,11 +59,11 @@ export default function MobileNav({ onMoreClick }) {
       <button
         type="button"
         onClick={onMoreClick}
-        className="flex-1 flex flex-col items-center justify-center py-2 gap-0.5 text-[10px] font-medium text-muted-foreground"
+        className="flex-1 min-w-0 flex flex-col items-center justify-center py-2 px-0.5 gap-0.5 text-[10px] font-medium text-muted-foreground"
         aria-label={t('nav.more', displayLanguage, 'More')}
       >
         <Menu className="w-5 h-5" />
-        <span>{t('nav.more', displayLanguage, 'More')}</span>
+        <span className="max-w-full truncate whitespace-nowrap leading-tight">{t('nav.more', displayLanguage, 'More')}</span>
       </button>
     </nav>
   )

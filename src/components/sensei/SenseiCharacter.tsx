@@ -13,6 +13,7 @@ import SenseiMarkdown from './SenseiMarkdown';
 import { KandoSlime3D } from './KandoSlime3D';
 import { SlimeMood } from '../mascot/KandoSlime';
 import VirtualLanguageKeyboard from './VirtualLanguageKeyboard';
+import SenseiMobileDock from './SenseiMobileDock';
 import { useSettingsStore } from '../../store/settingsStore';
 
 export interface SenseiCharacterProps {
@@ -25,6 +26,8 @@ export interface SenseiCharacterProps {
   slimePersona?: 'mr' | 'mrs';
   slimeMood?: SlimeMood;
   showSlime?: boolean;
+  /** true while Hana-sensei's voice is playing (drives Stop/Replay in the phone dock) */
+  isSpeaking?: boolean;
 
   // In-Scene 3D Conversation Dialogue Props:
   latestAssistantMessage?: { id?: string; content: string; role: string } | null;
@@ -215,6 +218,7 @@ export default function SenseiCharacter({
   slimePersona = 'mr',
   slimeMood = 'idle',
   showSlime = true,
+  isSpeaking = false,
 
   // In-Scene 3D Conversation Dialogue Props:
   latestAssistantMessage,
@@ -326,9 +330,44 @@ export default function SenseiCharacter({
     cameraFov = 38;
   }
 
+  // Phones (<640px) get a chat dock BELOW the stage; the in-scene 3D bubbles are desktop-only.
+  // Only when the page provides chat handlers (the small floating widget does not).
+  const useMobileDock = isMobileScreen && !!onSubmit && mode !== 'compact';
+  const withDock = (stage: React.ReactNode) =>
+    useMobileDock ? (
+      <div className="flex h-full w-full flex-col">
+        <div className="relative min-h-0 flex-1">
+          <div className="absolute inset-0">{stage}</div>
+        </div>
+        <SenseiMobileDock
+          latestAssistantMessage={latestAssistantMessage}
+          latestUserMessage={latestUserMessage}
+          isTyping={isTyping}
+          isSpeaking={isSpeaking}
+          onReplayAudio={onReplayAudio}
+          onStopAudio={onStopAudio}
+          userName={userName}
+          userLevel={userLevel}
+          slimePersona={slimePersona}
+          slimeMood={slimeMood}
+          input={input}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+          onSend={onSend}
+          isListening={isListening}
+          isSttSupported={isSttSupported}
+          onToggleMic={onToggleMic}
+          quickPrompts={quickPrompts}
+          keyboardLanguage={currentExplLang}
+        />
+      </div>
+    ) : (
+      stage
+    );
+
   // Gracefully render 2D view if WebGL is unavailable or encountered canvas error
   if (!webGLSupported || canvasError) {
-    return (
+    return withDock(
       <Dom2DView
         state={activeState}
         mode={mode}
@@ -340,7 +379,7 @@ export default function SenseiCharacter({
     );
   }
 
-  return (
+  return withDock(
     <div
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -692,5 +731,3 @@ export default function SenseiCharacter({
     </div>
   );
 }
-
-

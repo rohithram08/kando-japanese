@@ -29,7 +29,10 @@
     "logout": "Log Out",
     "league": "Leagues",
     "login": "Log in",
-    "register": "Sign up"
+    "register": "Sign up",
+    "reading_short": "Reader",
+    "slime_mail": "Your Slime Mail",
+    "conversation_short": "Talk"
   },
   "common": {
     "language": "Display & Translation Language",
@@ -76,7 +79,8 @@
     "no_results": "No words found",
     "try_different_search": "Try a different search term",
     "your_levels": "Your levels",
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "go_back": "Go Back"
   },
   "lessons": {
     "title": "Graded Reader",
@@ -126,7 +130,8 @@
     "no_quizzes": "Finish a story and its quiz to see your scores here.",
     "recently_completed": "Recently completed",
     "wave_xp_to_next": "{xp} Wave XP to Level {next}",
-    "level_label": "Level {level}"
+    "level_label": "Level {level}",
+    "study_today_to_keep_streak": "Study a story or quiz today to keep your {count}-day streak alive!"
   },
   "quiz": {
     "title": "Quiz Center",
@@ -241,7 +246,8 @@
     "audio_no_voice_detail": "Japanese speech synthesis voice not installed in OS/browser; using default synthesizer",
     "all_unlocked": "All",
     "story_locked": "Not unlocked yet",
-    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up.",
+    "jlpt_levels": "JLPT Levels"
   },
   "kana": {
     "title": "Kana Studio",
@@ -476,7 +482,10 @@
     "all_achievements": "All Achievements",
     "show_less": "Show Less",
     "show_all": "Show All {count}",
-    "no_activity_week": "No Wave XP earned yet this week — finish a story and its quiz to light this up."
+    "no_activity_week": "No Wave XP earned yet this week — finish a story and its quiz to light this up.",
+    "lessons_done": "Stories",
+    "skill_overview": "Learning Progress",
+    "total_xp": "Wave XP"
   },
   "conversation": {
     "title": "Conversation Practice",
@@ -607,5 +616,27 @@
     "opted_out": "You're now hidden from leagues.",
     "opted_in": "Welcome back to the leagues!",
     "opt_error": "Could not update your privacy setting."
+  },
+  "dictionary": {
+    "error": "Unable to fetch dictionary results. Please check your connection.",
+    "eyebrow": "Smart Multilingual Lexicon",
+    "no_results_desc": "We couldn't find any matching entries. Try searching using Romaji, English meaning, or check spelling.",
+    "no_results_title": "No words found",
+    "placeholder": "Try 食べる, taberu, water, தண்ணீர், खाना…",
+    "popular_suggestions": "Popular Words to Explore",
+    "recent_searches": "Recent Searches",
+    "search_btn": "Search",
+    "subtitle": "Search bidirectionally using Japanese (Kanji, Kana, Romaji) or meanings in your language.",
+    "title": "Japanese Dictionary"
+  },
+  "skill": {
+    "vocab": "Vocabulary Learned"
+  },
+  "user_profile": {
+    "loading": "Loading learner profile...",
+    "no_user": "No user specified",
+    "not_found": "User not found",
+    "not_found_desc": "This user profile doesn't exist or has been removed.",
+    "not_found_title": "User Not Found"
   }
 }

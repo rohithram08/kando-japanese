@@ -229,7 +229,7 @@ export default function Dashboard() {
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3 mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
             <motion.button
               whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
               onClick={() => navigate('/reading')}
@@ -237,7 +237,7 @@ export default function Dashboard() {
                          transition-all text-sm flex items-center gap-2 shadow-lg shadow-cyan-950/20"
             >
               <BookOpen className="w-4 h-4 text-cyan-600" />
-              {t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}
+              <span className="min-w-0 truncate">{t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}</span>
               <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
             </motion.button>
 
@@ -260,7 +260,7 @@ export default function Dashboard() {
                            hover:bg-white/30 transition-all text-sm flex items-center gap-2 border border-white/20"
               >
                 <BookMarked className="w-4 h-4" />
-                {t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}
+                <span className="min-w-0 truncate">{t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
               </motion.button>
             )}

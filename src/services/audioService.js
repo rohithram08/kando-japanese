@@ -58,7 +58,7 @@ export function isHindiChar(char) {
 }
 
 export function isNeutralChar(char) {
-  return /^[\s.,!?:;'"()\[\]\/\-—~…0-9\u3000-\u303F\uFF00-\uFFEF]+$/.test(char)
+  return /^[\s.,!?:;'"()[\]/\-—~…0-9\u3000-\u303F\uFF00-\uFFEF]+$/.test(char)
 }
 
 export function localeToTtsLang(locale) {
@@ -158,7 +158,7 @@ export function segmentMultilingualText(text, baseLang = 'en-US') {
   // - Newlines
   // - Colons or dashes separating labels from content
   // - Sentence terminators followed by whitespace (., !, ?, 。, ！？)
-  const clauseDelimRegex = /(?<=[.!?。！？\n])\s+|(?<=[—\-:]\s+)|(?=\s+[—\-]\s+)/g
+  const clauseDelimRegex = /(?<=[.!?。！？\n])\s+|(?<=[—\-:]\s+)|(?=\s+[—-]\s+)/g
   const rawClauses = text
     .split(clauseDelimRegex)
     .map(c => c.trim())

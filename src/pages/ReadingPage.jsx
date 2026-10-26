@@ -163,14 +163,14 @@ export default function ReadingPage() {
   const levelTabs = unlocked.length > 1 ? ['ALL', ...unlocked] : [];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
       {/* ── Page Header ── */}
-      <div className="mb-8">
+      <div className="mb-5 sm:mb-8">
         <div className="flex items-center space-x-2 text-teal-600 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-2">
           <Sparkles className="w-4 h-4" />
           <span>Graded Reading • 多読 (Tadoku)</span>
         </div>
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
           {t('reading.title', 'Graded Reader (多読)')}
         </h1>
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 max-w-2xl leading-relaxed">
@@ -178,22 +178,22 @@ export default function ReadingPage() {
         </p>
 
         {/* Stats Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
-          <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
-            <span className="text-xs text-gray-500 dark:text-gray-400">{t('reading.all_stories', 'Available Stories')}</span>
-            <div className="text-xl font-bold text-gray-900 dark:text-gray-100 mt-1">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-4 sm:mt-6">
+          <div className="min-w-0 p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
+            <span className="block truncate text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">{t('reading.all_stories', 'Available Stories')}</span>
+            <div className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 mt-1">
               {availableStories.length}
             </div>
           </div>
-          <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
-            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.mastered', 'Mastered Stories')}</span>
-            <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
+          <div className="min-w-0 p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
+            <span className="block truncate text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">{t('common.mastered', 'Mastered Stories')}</span>
+            <div className="text-lg sm:text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
               {completedCount}
             </div>
           </div>
-          <div className="p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs col-span-2 sm:col-span-1">
-            <span className="text-xs text-gray-500 dark:text-gray-400">{t('common.your_levels', 'Your levels')}</span>
-            <div className="text-xl font-bold text-teal-600 dark:text-teal-400 mt-1">
+          <div className="min-w-0 p-3 sm:p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-2xs">
+            <span className="block truncate text-[11px] sm:text-xs text-gray-500 dark:text-gray-400">{t('common.your_levels', 'Your levels')}</span>
+            <div className="text-lg sm:text-xl font-bold text-teal-600 dark:text-teal-400 mt-1">
               {unlockedRangeLabel(studyLevel)}
             </div>
           </div>

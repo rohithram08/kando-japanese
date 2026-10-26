@@ -180,18 +180,19 @@ export default function SenseiPage() {
   const latestUserMessage = [...messages].reverse().find(m => m.role === 'user');
 
   return (
-    <div className="h-[calc(100vh-5.5rem)] min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="h-[calc(100dvh-10.25rem)] min-h-[420px] md:h-[calc(100vh-5.5rem)] md:min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       
       {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Sound/Stop, Camera) ─── */}
-      <header className="absolute top-4 right-4 z-20 flex items-center pointer-events-none">
+      <header className="absolute top-2 left-2 right-2 sm:left-auto sm:top-4 sm:right-4 z-20 flex items-center justify-end pointer-events-none">
         <div className="pointer-events-auto flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
           {/* Greet */}
           <button
             onClick={() => greet()}
             className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center gap-1.5 active:scale-95"
             title="Greet Hana-sensei"
+            aria-label="Greet Hana-sensei"
           >
-            <span>👋</span> Greet
+            <span>👋</span><span className="hidden sm:inline">Greet</span>
           </button>
 
           {/* Celebrate */}
@@ -199,8 +200,9 @@ export default function SenseiPage() {
             onClick={() => triggerCelebration()}
             className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-all flex items-center gap-1.5 active:scale-95"
             title="Celebrate Progress"
+            aria-label="Celebrate Progress"
           >
-            <Sparkles className="w-3.5 h-3.5" /> Celebrate
+            <Sparkles className="w-3.5 h-3.5" /><span className="hidden sm:inline">Celebrate</span>
           </button>
 
           {/* New Topic / Clear */}
@@ -208,8 +210,9 @@ export default function SenseiPage() {
             onClick={() => clearHistory()}
             className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-muted/70 hover:bg-muted text-muted-foreground hover:text-foreground transition-all flex items-center gap-1.5 active:scale-95"
             title="Start fresh conversation"
+            aria-label="Start fresh conversation"
           >
-            <RotateCcw className="w-3.5 h-3.5" /> New Topic
+            <RotateCcw className="w-3.5 h-3.5" /><span className="hidden sm:inline">New Topic</span>
           </button>
 
           {/* Live Speech Stop / Mute Action Button */}
@@ -218,8 +221,9 @@ export default function SenseiPage() {
               onClick={() => stopSpeech()}
               className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 transition-all flex items-center gap-1.5 active:scale-95 animate-pulse"
               title="Stop Hana-sensei speaking"
+            aria-label="Stop Hana-sensei speaking"
             >
-              <Square className="w-3.5 h-3.5 fill-current" /> Stop
+              <Square className="w-3.5 h-3.5 fill-current" /><span className="hidden sm:inline">Stop</span>
             </button>
           ) : (
             <button
@@ -230,6 +234,7 @@ export default function SenseiPage() {
                   : 'text-muted-foreground hover:bg-muted'
               }`}
               title={speechEnabled ? "Mute Voice Speech" : "Unmute Voice Speech"}
+              aria-label={speechEnabled ? "Mute Voice Speech" : "Unmute Voice Speech"}
             >
               {speechEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
             </button>
@@ -244,6 +249,7 @@ export default function SenseiPage() {
                 : 'hover:bg-muted text-muted-foreground hover:text-foreground'
             }`}
             title={cameraMode === 'portrait' ? "Full Stage Framing" : "Portrait Focus"}
+            aria-label={cameraMode === 'portrait' ? "Full Stage Framing" : "Portrait Focus"}
           >
             <Camera className="w-4 h-4" />
           </button>
@@ -262,6 +268,7 @@ export default function SenseiPage() {
             slimePersona={slimePersona}
             slimeMood={activeSlimeMood}
             showSlime={true}
+            isSpeaking={speechState === 'speaking'}
             latestAssistantMessage={latestAssistantMessage}
             latestUserMessage={latestUserMessage}
             isTyping={isTyping}
@@ -289,7 +296,7 @@ export default function SenseiPage() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 340 }}
             transition={{ duration: 0.25 }}
-            className="absolute top-0 right-0 bottom-0 w-80 sm:w-96 bg-card/95 backdrop-blur-2xl border-l border-border/80 z-30 shadow-2xl flex flex-col overflow-hidden"
+            className="absolute top-0 right-0 bottom-0 w-[88vw] max-w-sm sm:w-96 bg-card/95 backdrop-blur-2xl border-l border-border/80 z-30 shadow-2xl flex flex-col overflow-hidden"
           >
             <div className="p-4 border-b border-border flex items-center justify-between">
               <h3 className="font-bold text-sm text-foreground flex items-center gap-2">

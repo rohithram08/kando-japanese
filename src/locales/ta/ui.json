@@ -29,7 +29,10 @@
     "logout": "வெளியேறு",
     "league": "லீக்குகள்",
     "login": "உள்நுழை",
-    "register": "பதிவு செய்"
+    "register": "பதிவு செய்",
+    "reading_short": "வாசிப்பு",
+    "slime_mail": "உங்கள் ஸ்லைம் அஞ்சல்",
+    "conversation_short": "உரையாடல்"
   },
   "common": {
     "language": "காட்சி & மொழிபெயர்ப்பு மொழி",
@@ -76,7 +79,8 @@
     "no_results": "சொற்கள் எதுவும் கிடைக்கவில்லை",
     "try_different_search": "வேறு தேடல் சொல்லை முயற்சிக்கவும்",
     "your_levels": "Your levels",
-    "saving": "சேமிக்கிறது…"
+    "saving": "சேமிக்கிறது…",
+    "go_back": "பின்செல்"
   },
   "lessons": {
     "title": "கிரேடட் ரீடர் (Graded Reader)",
@@ -126,7 +130,8 @@
     "no_quizzes": "உங்கள் மதிப்பெண்களைக் காண ஒரு கதையையும் அதன் வினாடி வினாவையும் முடிக்கவும்.",
     "recently_completed": "சமீபத்தில் முடித்தவை",
     "wave_xp_to_next": "நிலை {next} க்கு {xp} Wave XP",
-    "level_label": "நிலை {level}"
+    "level_label": "நிலை {level}",
+    "study_today_to_keep_streak": "உங்கள் {count} நாள் தொடரைத் தக்கவைக்க இன்று ஒரு கதையை அல்லது வினாடி வினாவை முடிக்கவும்!"
   },
   "quiz": {
     "title": "வினாடி வினா மையம்",
@@ -241,7 +246,8 @@
     "audio_no_voice_detail": "ஜப்பானிய குரல் OS/உலாவியில் நிறுவப்படவில்லை; இயல்புநிலை synthesizer பயன்படுத்தப்படுகிறது",
     "all_unlocked": "All",
     "story_locked": "Not unlocked yet",
-    "story_locked_desc": "This story is above your current level. Keep studying and it will open up."
+    "story_locked_desc": "This story is above your current level. Keep studying and it will open up.",
+    "jlpt_levels": "JLPT நிலைகள்"
   },
   "kana": {
     "title": "கானா ஸ்டுடியோ",
@@ -476,7 +482,10 @@
     "all_achievements": "அனைத்து சாதனைகள்",
     "show_less": "குறைவாகக் காட்டு",
     "show_all": "அனைத்தையும் ({count}) காட்டு",
-    "no_activity_week": "இந்த வாரம் இன்னும் Wave XP இல்லை — ஒரு கதையையும் வினாடி வினாவையும் முடிக்கவும்."
+    "no_activity_week": "இந்த வாரம் இன்னும் Wave XP இல்லை — ஒரு கதையையும் வினாடி வினாவையும் முடிக்கவும்.",
+    "lessons_done": "கதைகள்",
+    "skill_overview": "கற்றல் முன்னேற்றம்",
+    "total_xp": "Wave XP"
   },
   "conversation": {
     "title": "உரையாடல் பயிற்சி",
@@ -607,5 +616,27 @@
     "opted_out": "நீங்கள் இப்போது லீக்குகளில் மறைக்கப்பட்டுள்ளீர்கள்.",
     "opted_in": "லீக்குகளுக்கு மீண்டும் வரவேற்கிறோம்!",
     "opt_error": "தனியுரிமை அமைப்பைப் புதுப்பிக்க முடியவில்லை."
+  },
+  "dictionary": {
+    "error": "அகராதி முடிவுகளைப் பெற முடியவில்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.",
+    "eyebrow": "ஸ்மார்ட் பன்மொழி அகராதி",
+    "no_results_desc": "பொருந்தும் பதிவுகள் எதுவும் கிடைக்கவில்லை. ரோமாஜி, ஆங்கில அர்த்தம் மூலம் தேடவும் அல்லது எழுத்துப்பிழையைச் சரிபார்க்கவும்.",
+    "no_results_title": "சொற்கள் எதுவும் கிடைக்கவில்லை",
+    "placeholder": "முயற்சிக்கவும்: 食べる, taberu, water, தண்ணீர், खाना…",
+    "popular_suggestions": "ஆராய வேண்டிய பிரபல சொற்கள்",
+    "recent_searches": "சமீபத்திய தேடல்கள்",
+    "search_btn": "தேடு",
+    "subtitle": "ஜப்பானிய (கஞ்சி, கானா, ரோமாஜி) அல்லது உங்கள் மொழி அர்த்தங்கள் மூலம் இருவழியிலும் தேடுங்கள்.",
+    "title": "ஜப்பானிய அகராதி"
+  },
+  "skill": {
+    "vocab": "கற்ற சொற்கள்"
+  },
+  "user_profile": {
+    "loading": "கற்பவர் சுயவிவரம் ஏற்றப்படுகிறது...",
+    "no_user": "பயனர் குறிப்பிடப்படவில்லை",
+    "not_found": "பயனர் கிடைக்கவில்லை",
+    "not_found_desc": "இந்தப் பயனர் சுயவிவரம் இல்லை அல்லது நீக்கப்பட்டுவிட்டது.",
+    "not_found_title": "பயனர் கிடைக்கவில்லை"
   }
 }

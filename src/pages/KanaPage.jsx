@@ -210,29 +210,29 @@ export default function KanaPage() {
         </div>
 
         {/* Script Switcher */}
-        <div className="flex items-center p-1.5 rounded-2xl bg-muted/60 border border-border shrink-0">
+        <div className="flex items-center p-1.5 rounded-2xl bg-muted/60 border border-border w-full sm:w-auto sm:shrink-0">
           <button
             onClick={() => setScript('hiragana')}
-            className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
+            className={`flex-1 sm:flex-none justify-center whitespace-nowrap px-3 sm:px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
               script === 'hiragana'
                 ? 'bg-rose-600 text-white shadow-md'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
             <span className="font-japanese text-lg">あ</span>
-            Hiragana ひらがな
+            Hiragana<span className="hidden sm:inline"> ひらがな</span>
           </button>
 
           <button
             onClick={() => setScript('katakana')}
-            className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
+            className={`flex-1 sm:flex-none justify-center whitespace-nowrap px-3 sm:px-5 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
               script === 'katakana'
                 ? 'bg-rose-600 text-white shadow-md'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
             <span className="font-japanese text-lg">ア</span>
-            Katakana カタカナ
+            Katakana<span className="hidden sm:inline"> カタカナ</span>
           </button>
         </div>
       </div>

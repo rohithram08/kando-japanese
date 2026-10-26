@@ -48,15 +48,15 @@ describe('grammarContentService', () => {
     expect(isValidGrammarId('n1g025')).toBe(true);
     // ...but ids past the end of each level are still rejected
     expect(isValidGrammarId('n4_g157')).toBe(false);
-    expect(isValidGrammarId('n5_g061')).toBe(false);
+    expect(isValidGrammarId('n5_g076')).toBe(false);
   });
 
   it('reports canonical grammar count and list', () => {
     const count = getCanonicalGrammarCount();
-    expect(count).toBe(464);
+    expect(count).toBe(479);
     const list = getAllCanonicalGrammarIds();
-    expect(list).toHaveLength(464);
-    expect(new Set(list).size).toBe(464);
+    expect(list).toHaveLength(479);
+    expect(new Set(list).size).toBe(479);
     expect(list).toContain('n5_g001');
     expect(list).toContain('n1g001');
   });
