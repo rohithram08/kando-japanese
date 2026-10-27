@@ -14,6 +14,7 @@ import { getUserLevelProgress } from '../../utils/progressCalculator'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import { AnimatedLiquidWaveIcon } from '../common/WaveXPBadge'
+import UserAvatar from '../common/UserAvatar'
 
 const GROUPS = [
   { key: 'learn', label: 'Learn' },
@@ -182,17 +183,27 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                 />
               </div>
 
-              {/* Row 1: JLPT level badge + Name + Streak Pill */}
-              <div className="relative flex items-center justify-between gap-1.5 mb-2">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <span className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black bg-gradient-to-br ${levelMeta.gradient} text-white shrink-0 shadow-xs`}>
-                    {jlptLevel}
-                  </span>
+              {/* Row 1: User Avatar + JLPT badge + Name + Streak Pill */}
+              <div className="relative flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <div className="relative shrink-0">
+                    <UserAvatar
+                      profile={profile}
+                      size="sm"
+                      rounded="rounded-lg"
+                      className="w-8 h-8 ring-1 ring-border shadow-xs"
+                    />
+                    <span
+                      className={`absolute -bottom-1 -right-1 px-1 rounded text-[8px] font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs leading-tight`}
+                    >
+                      {jlptLevel}
+                    </span>
+                  </div>
                   <div className="min-w-0">
                     <p className={`text-xs font-bold truncate leading-tight group-hover:text-primary transition-colors ${isDark ? levelMeta.darkText : levelMeta.lightText}`}>
                       {profile?.display_name || profile?.username || 'Student'}
                     </p>
-                    <p className="text-[10px] text-muted-foreground font-medium leading-none">
+                    <p className="text-[10px] text-muted-foreground font-medium leading-none mt-0.5">
                       Lv.{userLevel} Adventurer
                     </p>
                   </div>
@@ -247,10 +258,13 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
           <div className="p-2 border-t border-border/40 flex justify-center">
             <NavLink
               to="/profile"
-              className={`w-9 h-9 rounded-xl flex items-center justify-center text-xs font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs hover:scale-105 transition-transform`}
-              title={`${profile?.display_name || 'Student'} · Lv.${userLevel} (${totalXP} Wave XP)`}
+              className="relative w-9 h-9 rounded-xl flex items-center justify-center shadow-xs hover:scale-105 transition-transform"
+              title={`${profile?.display_name || profile?.username || 'Student'} · Lv.${userLevel} (${totalXP} Wave XP)`}
             >
-              {jlptLevel}
+              <UserAvatar profile={profile} size="sm" rounded="rounded-xl" className="w-9 h-9" />
+              <span className={`absolute -bottom-1 -right-1 px-1 rounded text-[7px] font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs leading-tight`}>
+                {jlptLevel}
+              </span>
             </NavLink>
           </div>
         )}

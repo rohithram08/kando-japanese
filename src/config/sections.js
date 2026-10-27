@@ -11,7 +11,7 @@
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
   Swords, RefreshCw, MessageCircle, Bot, Mic, Medal,
-  Trophy, BarChart2, Settings, Sparkles, BookA,
+  Trophy, BarChart2, Settings, Sparkles, BookA, User,
 } from 'lucide-react'
 
 // ── Tint palette ─────────────────────────────────────────────
@@ -255,6 +255,16 @@ export const SECTIONS = [
     description: 'Pronunciation practice out loud',
   },
   {
+    id: 'my_profile',
+    label: 'My Profile',
+    shortLabel: 'Profile',
+    path: '/profile',
+    icon: User,
+    tint: 'cyan',
+    group: 'journey',
+    description: 'Your learning stats, personal records & avatar',
+  },
+  {
     id: 'league',
     label: 'Leagues',
     shortLabel: 'Leagues',
@@ -288,6 +298,7 @@ export const SECTIONS = [
 
 export const getSection = (id) => {
   if (id === 'chat' || id === 'chat-dojo') return SECTIONS.find((s) => s.id === 'conversation')
+  if (id === 'profile') return SECTIONS.find((s) => s.id === 'my_profile')
   return SECTIONS.find((s) => s.id === id)
 }
 export const getSectionByPath = (path) =>

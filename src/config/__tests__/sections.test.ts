@@ -38,4 +38,23 @@ describe('Navigation Sections Configuration', () => {
     expect(hasLegacyChat).toBe(false)
     expect(hasLegacyDojo).toBe(false)
   })
+
+  it('includes the my_profile section under journey group and resolves legacy profile ID', () => {
+    const section = SECTIONS.find((s) => s.id === 'my_profile')
+    expect(section).toBeDefined()
+    expect(section?.path).toBe('/profile')
+    expect(section?.group).toBe('journey')
+
+    const fromProfile = getSection('profile')
+    const fromMyProfile = getSection('my_profile')
+    expect(fromProfile).toBeDefined()
+    expect(fromProfile?.id).toBe('my_profile')
+    expect(fromMyProfile?.id).toBe('my_profile')
+  })
+
+  it('matches /profile via getSectionByPath', () => {
+    const section = getSectionByPath('/profile')
+    expect(section).toBeDefined()
+    expect(section?.id).toBe('my_profile')
+  })
 })
