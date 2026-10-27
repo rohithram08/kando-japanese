@@ -7,7 +7,7 @@ import { useAuthStore } from '../../../store/authStore'
 
 const profile = {
   id: 'u1',
-  email: 'rohithram5467@gmail.com',
+  email: 'learner@example.com',
   username: 'rohith_ram',
   avatarId: 'avatar-1',
   avatarUrl: null,
@@ -32,7 +32,7 @@ describe('Navbar profile menu', () => {
   it('shows the username — and never the email address', () => {
     openMenu()
     expect(screen.getByTestId('profile-menu-username').textContent).toBe('rohith_ram')
-    expect(document.body.textContent).not.toContain('rohithram5467@gmail.com')
+    expect(document.body.textContent).not.toContain('learner@example.com')
   })
 
   it('shows the learner\'s chosen avatar (camelCase avatarId), not just the first letter', () => {
@@ -51,6 +51,6 @@ describe('Navbar profile menu', () => {
     setAuth({ ...profile, username: '', avatarId: null })
     openMenu()
     expect(screen.getByTestId('profile-menu-username').textContent).toBe('Learner')
-    expect(document.body.textContent).not.toContain('rohithram5467')
+    expect(document.body.textContent).not.toContain('learner@')
   })
 })

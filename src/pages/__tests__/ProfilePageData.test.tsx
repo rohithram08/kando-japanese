@@ -20,7 +20,7 @@ import { useProgressStore } from '../../store/progressStore'
 import { useReadingStore } from '../../store/readingStore'
 import { allStories } from '../../data/reading/n5_stories'
 
-const profile = { id: 'u1', email: 'rohithram5467@gmail.com', username: 'rohith_ram', avatarId: 'avatar-1', avatarUrl: null, currentLevel: 'N5', createdAt: '2026-08-01T00:00:00Z' }
+const profile = { id: 'u1', email: 'learner@example.com', username: 'rohith_ram', avatarId: 'avatar-1', avatarUrl: null, currentLevel: 'N5', createdAt: '2026-08-01T00:00:00Z' }
 
 const progressMap = Object.fromEntries(
   allStories.slice(0, 5).map((s: any) => [s.id, { storyId: s.id, status: 'completed', quizScore: 80, completedAt: '2026-10-20T10:00:00Z', lastSentenceIndex: 7 }])
@@ -51,7 +51,7 @@ describe('Profile page — real data, correct avatar, animated banner', () => {
   it('shows the username (never the email) and the chosen avatar instead of the empty placeholder', () => {
     renderPage()
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('rohith_ram')
-    expect(document.body.textContent).not.toContain('rohithram5467')
+    expect(document.body.textContent).not.toContain('learner@')
     expect(screen.getAllByRole('img').some((el) => el.textContent === '🥷')).toBe(true)
   })
 

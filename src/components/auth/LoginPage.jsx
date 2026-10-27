@@ -57,7 +57,7 @@ export default function LoginPage() {
     } catch (err) {
       const msg = err?.message || 'Login failed'
       if (msg.toLowerCase().includes('invalid')) {
-        setErrors({ form: t('auth.invalid_credentials', 'Invalid email or password. Use Rohith Ram demo login or click Forgot Password to reset.') })
+        setErrors({ form: t('auth.invalid_credentials', 'Invalid email or password. Use Forgot Password if you need to reset it.') })
       } else {
         toast.error(t('auth.login_failed', msg))
       }
@@ -66,15 +66,22 @@ export default function LoginPage() {
     }
   }
 
-  // ── Instant Demo Login (Rohith Ram) ──────────────────────
+  // ── Dev-only demo login ───────────────────────────────────
+  // Credentials are NEVER stored in the source. For local development put
+  //   VITE_DEV_DEMO_EMAIL / VITE_DEV_DEMO_PASSWORD
+  // in a git-ignored `.env.local`. `import.meta.env.DEV` is false in production
+  // builds, so this whole branch (and the values) are stripped from the bundle.
+  const devDemo =
+    import.meta.env.DEV && import.meta.env.VITE_DEV_DEMO_EMAIL && import.meta.env.VITE_DEV_DEMO_PASSWORD
+      ? { email: import.meta.env.VITE_DEV_DEMO_EMAIL, password: import.meta.env.VITE_DEV_DEMO_PASSWORD }
+      : null
+
   const handleDemoLogin = async () => {
+    if (!devDemo) return
     setLoading(true)
     try {
-      if (!localStorage.getItem('kando_user_gender')) {
-        localStorage.setItem('kando_user_gender', 'male')
-      }
-      await signIn({ email: 'rohithram5467@gmail.com', password: 'Kando@2026' })
-      toast.success('Welcome back, Rohith Ram! 🎌')
+      await signIn(devDemo)
+      toast.success(t('auth.welcome_back', 'Welcome back! 🎌'))
       navigate('/dashboard')
     } catch (err) {
       toast.error(err?.message || 'Demo sign in failed')
@@ -83,16 +90,13 @@ export default function LoginPage() {
     }
   }
 
-  // ── Google sign-in ────────────────────────────────────────
-  const handleGoogleSignIn = async () => {
+  // ── Google sign-in (real OAuth redirect handled by the backend) ──
+  const handleGoogleSignIn = () => {
     setGoogleLoading(true)
     try {
-      // In local dev without OAuth keys, automatically fall back to instant demo sign-in
-      toast.success('Signing in as Demo Learner (Rohith Ram)...')
-      await handleDemoLogin()
+      signInWithGoogle()
     } catch (err) {
       toast.error(err?.message || t('auth.google_login_failed', 'Google sign-in failed'))
-    } finally {
       setGoogleLoading(false)
     }
   }
@@ -452,7 +456,8 @@ export default function LoginPage() {
                     )}
                   </motion.button>
 
-                  {/* 1-Click Instant Demo Login (Rohith Ram) */}
+                  {/* Dev-only demo login (hidden in production, see devDemo above) */}
+                  {devDemo && (
                   <motion.button
                     type="button"
                     onClick={handleDemoLogin}
@@ -462,8 +467,9 @@ export default function LoginPage() {
                     className="w-full py-2.5 rounded-xl font-semibold text-xs border-2 border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-500/40 dark:text-emerald-300 dark:hover:bg-emerald-900/50 transition-all flex items-center justify-center gap-2 shadow-sm"
                   >
                     <Sparkles className="w-4 h-4 text-emerald-500" />
-                    ⚡ Instant Demo Sign In (Rohith Ram · 736 XP)
+                    ⚡ Dev demo sign-in
                   </motion.button>
+                  )}
                 </form>
 
                 {/* Divider */}
@@ -502,16 +508,6 @@ export default function LoginPage() {
                     </>
                   )}
                 </motion.button>
-
-                {/* Account helper badge */}
-                <div className="mt-4 p-3 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 text-center">
-                  <p className="text-[11px] text-muted-foreground font-mono">
-                    <span className="font-semibold text-foreground">Active Account:</span> rohithram5467@gmail.com
-                  </p>
-                  <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
-                    <span className="font-semibold text-foreground">Password:</span> Kando@2026
-                  </p>
-                </div>
 
                 {/* Footer */}
                 <p className={`text-center text-sm mt-6 text-muted-foreground`}>
