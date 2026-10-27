@@ -2318,5 +2318,80 @@
     "meaning": "apiece; each; at a time",
     "explanation": "Used to express apiece; each; at a time.",
     "example": "Expresses apiece; each; at a time in context."
+  },
+  "n5_g061": {
+    "meaning": "must not do (spoken Japanese)",
+    "explanation": "Casual spoken form of 〜てはいけない, used to express prohibition or that one must not do something.",
+    "example": "そんなことを言っちゃいけない。"
+  },
+  "n5_g062": {
+    "meaning": "how; in what way; by what means",
+    "explanation": "Used to ask how to do something or by what method/means.",
+    "example": "駅までどうやって行きますか。"
+  },
+  "n5_g063": {
+    "meaning": "to want (something)",
+    "explanation": "Expresses the speaker's desire to possess a noun/object.",
+    "example": "新しい車がほしいです。"
+  },
+  "n5_g064": {
+    "meaning": "had better; should; it's better to",
+    "explanation": "Used to give advice or suggestions to someone.",
+    "example": "薬を飲んだほうがいいですよ。"
+  },
+  "n5_g065": {
+    "meaning": "either ... or ...",
+    "explanation": "Presents two alternatives or options.",
+    "example": "お茶かコーヒーかどちらがいいですか。"
+  },
+  "n5_g066": {
+    "meaning": "have not done yet",
+    "explanation": "Indicates that an action has not yet been performed or completed.",
+    "example": "宿題はまだ終わっていません。"
+  },
+  "n5_g067": {
+    "meaning": "by; before (a deadline)",
+    "explanation": "Specifies a time limit or deadline before which an action must occur.",
+    "example": "明日までにレポートを出してください。"
+  },
+  "n5_g068": {
+    "meaning": "rarely; seldom; hardly ever",
+    "explanation": "Expresses that an action almost never happens.",
+    "example": "私はめったにお酒を飲みません。"
+  },
+  "n5_g069": {
+    "meaning": "without doing",
+    "explanation": "Indicates doing one action without doing another.",
+    "example": "朝ご飯を食べないで学校へ行きました。"
+  },
+  "n5_g070": {
+    "meaning": "plan to; intend to",
+    "explanation": "Expresses the speaker's intention or plan.",
+    "example": "来年日本へ行くつもりです。"
+  },
+  "n5_g071": {
+    "meaning": "to go on doing; to start to / come to",
+    "explanation": "Describes physical movement or temporal progression.",
+    "example": "鳥が飛んでいきました。"
+  },
+  "n5_g072": {
+    "meaning": "try to; try doing",
+    "explanation": "Used when attempting an action to see what it is like.",
+    "example": "日本の料理を食べてみたいです。"
+  },
+  "n5_g073": {
+    "meaning": "glad that; I'm happy that",
+    "explanation": "Expresses happiness or satisfaction with an outcome.",
+    "example": "日本に来てよかった。"
+  },
+  "n5_g074": {
+    "meaning": "whenever; when; if (natural consequence)",
+    "explanation": "States an inevitable or natural result when a condition is met.",
+    "example": "春になると桜が咲きます。"
+  },
+  "n5_g075": {
+    "meaning": "by all means; definitely",
+    "explanation": "Used to add heartfelt emphasis to an invitation or strong personal wish.",
+    "example": "ぜひ遊びに来てください。"
   }
 }

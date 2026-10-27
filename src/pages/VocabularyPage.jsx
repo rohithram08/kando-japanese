@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Volume2, ChevronDown, ChevronUp, Layers, BookmarkPlus, Check } from 'lucide-react'
 import { useThemeStore } from '../store/themeStore'
@@ -12,6 +12,9 @@ import FuriganaText from '../components/common/FuriganaText'
 import PitchContourVisualizer from '../components/pitch/PitchContourVisualizer'
 import { getPitchAccent } from '../data/pitch/pitchData'
 import { getCurriculumMeaning, getCurriculumTranslation, normalizeLocale, t } from '../i18n'
+import { VOCAB_CATEGORIES, categorizeItems, getCategoryDefs } from '../data/categories'
+import CategoryGrid from '../components/curriculum/CategoryGrid'
+import CategoryView from '../components/curriculum/CategoryView'
 
 // ── Single vocab card ─────────────────────────────────────────
 // (LEVEL_META carries precomputed light/dark class pairs, so this one
@@ -133,10 +136,12 @@ export default function VocabularyPage() {
   const activeLang = normalizeLocale(displayLanguage)
   const [selectedLevel, setSelectedLevel, { unlocked }] = useLevelState()
   const [search, setSearch] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const meta = LEVEL_META[selectedLevel]
   const vocab = useMemo(() => VOCABULARY[selectedLevel] || [], [selectedLevel])
 
+  // ── Global search (across all categories) ──
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     if (!q) return vocab
@@ -152,6 +157,45 @@ export default function VocabularyPage() {
       )
     })
   }, [vocab, search, activeLang])
+
+  // ── Categorize items ──
+  const getMeaning = useCallback(
+    (item) => getCurriculumMeaning(item, activeLang),
+    [activeLang]
+  )
+
+  const categorizedMap = useMemo(
+    () => categorizeItems(filtered, VOCAB_CATEGORIES, getMeaning, 'vocabulary'),
+    [filtered, getMeaning]
+  )
+
+  // ── Category search function for CategoryView ──
+  const categorySearchFn = useCallback(
+    (item, q) => {
+      const locMeaning = getCurriculumMeaning(item, activeLang).toLowerCase()
+      return (
+        item.word.includes(q) ||
+        item.reading.includes(q) ||
+        item.meaning.toLowerCase().includes(q) ||
+        locMeaning.includes(q)
+      )
+    },
+    [activeLang]
+  )
+
+  // ── Find current category definition ──
+  const currentCategoryDef = selectedCategory
+    ? VOCAB_CATEGORIES.find((c) => c.id === selectedCategory) || null
+    : null
+
+  const handleLevelChange = useCallback(
+    (l) => {
+      setSelectedLevel(l)
+      setSearch('')
+      setSelectedCategory(null)
+    },
+    [setSelectedLevel]
+  )
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
@@ -176,36 +220,64 @@ export default function VocabularyPage() {
       </motion.div>
 
       <div className="space-y-3">
-        <LevelSelector selected={selectedLevel} onChange={(l) => { setSelectedLevel(l); setSearch('') }} counts={DATA_COUNTS.vocabulary} levels={unlocked} />
+        <LevelSelector selected={selectedLevel} onChange={handleLevelChange} counts={DATA_COUNTS.vocabulary} levels={unlocked} />
 
-        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
-          <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder={t('common.search', 'Search word, reading, or meaning…')}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
-          />
-          {search && <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">{t('common.clear', 'Clear')}</button>}
-        </div>
-      </div>
-
-      <p className="text-sm text-muted-foreground">{filtered.length} {t('nav.vocabulary', 'words')}</p>
-
-      <div className="space-y-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((item) => <VocabCard key={item.id} item={item} />)}
-        </AnimatePresence>
-
-        {filtered.length === 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
-            <Layers className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-medium">{t('common.no_results', 'No words found')}</p>
-            <p className="text-sm mt-1">{t('common.try_different_search', 'Try a different search term')}</p>
-          </motion.div>
+        {/* Global search — only visible when NOT drilled into a category */}
+        {!selectedCategory && (
+          <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
+            <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder={t('common.search', 'Search word, reading, or meaning…')}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
+            />
+            {search && <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">{t('common.clear', 'Clear')}</button>}
+          </div>
         )}
       </div>
+
+      {/* ── Category Grid or Category Detail View ── */}
+      {selectedCategory ? (
+        <CategoryView
+          category={currentCategoryDef}
+          items={categorizedMap.get(selectedCategory) || []}
+          onBack={() => setSelectedCategory(null)}
+          renderCard={(item) => <VocabCard key={item.id} item={item} />}
+          searchFn={categorySearchFn}
+          searchPlaceholder={t('common.search', 'Search in this category…')}
+        />
+      ) : search ? (
+        /* When searching globally, show flat results */
+        <>
+          <p className="text-sm text-muted-foreground">{filtered.length} {t('nav.vocabulary', 'words')}</p>
+          <div className="space-y-3">
+            <AnimatePresence mode="popLayout">
+              {filtered.slice(0, 50).map((item) => <VocabCard key={item.id} item={item} />)}
+            </AnimatePresence>
+            {filtered.length > 50 && (
+              <p className="text-center text-sm text-muted-foreground py-4">
+                Showing first 50 results. Refine your search to see more.
+              </p>
+            )}
+            {filtered.length === 0 && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
+                <Layers className="w-10 h-10 mx-auto mb-3 opacity-30" />
+                <p className="font-medium">{t('common.no_results', 'No words found')}</p>
+                <p className="text-sm mt-1">{t('common.try_different_search', 'Try a different search term')}</p>
+              </motion.div>
+            )}
+          </div>
+        </>
+      ) : (
+        /* Default: show category grid */
+        <CategoryGrid
+          categories={VOCAB_CATEGORIES}
+          categorizedMap={categorizedMap}
+          onSelect={setSelectedCategory}
+        />
+      )}
     </div>
   )
 }

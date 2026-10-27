@@ -21,6 +21,9 @@ import {
   normalizeLocale,
   useI18n,
 } from '../i18n'
+import { GRAMMAR_CATEGORIES, categorizeItems } from '../data/categories'
+import CategoryGrid from '../components/curriculum/CategoryGrid'
+import CategoryView from '../components/curriculum/CategoryView'
 
 // ── Tag filter chip ───────────────────────────────────────────
 function TagChip({ tag, active, onClick }) {
@@ -261,6 +264,7 @@ export default function GrammarPage() {
   const [activeTag, setActiveTag] = useState(null)
   const [openId, setOpenId] = useState(null)
   const [showParticleStudio, setShowParticleStudio] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const user = useAuthStore((s) => s.user)
   const isGuest = !user?.id
@@ -341,12 +345,56 @@ export default function GrammarPage() {
     })
   }, [levelGrammar, search, activeTag, activeLang])
 
+  // ── Categorize grammar items ──
+  const getMeaning = useCallback(
+    (item) => getCurriculumMeaning(item, activeLang),
+    [activeLang]
+  )
+
+  const categorizedMap = useMemo(
+    () => categorizeItems(filtered, GRAMMAR_CATEGORIES, getMeaning, 'grammar'),
+    [filtered, getMeaning]
+  )
+
+  const categorySearchFn = useCallback(
+    (item, q) => {
+      const localizedMeaning = getCurriculumMeaning(item, activeLang).toLowerCase()
+      return (
+        item.pattern.toLowerCase().includes(q) ||
+        item.meaning.toLowerCase().includes(q) ||
+        localizedMeaning.includes(q)
+      )
+    },
+    [activeLang]
+  )
+
+  const currentCategoryDef = selectedCategory
+    ? GRAMMAR_CATEGORIES.find((c) => c.id === selectedCategory) || null
+    : null
+
   const handleLevelChange = useCallback((l) => {
     setLevel(l)
     setSearch('')
     setActiveTag(null)
     setOpenId(null)
+    setSelectedCategory(null)
   }, [setLevel])
+
+  const renderGrammarCard = useCallback(
+    (item) => (
+      <GrammarCard
+        key={item.id}
+        item={item}
+        isOpen={openId === item.id}
+        onToggle={() => setOpenId(openId === item.id ? null : item.id)}
+        progress={grammarProgress[item.id]}
+        onToggleStudied={handleToggleStudied}
+        isSaving={Boolean(savingMap[item.id])}
+        isGuest={isGuest}
+      />
+    ),
+    [openId, grammarProgress, handleToggleStudied, savingMap, isGuest]
+  )
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
@@ -425,61 +473,77 @@ export default function GrammarPage() {
       <div className="space-y-3">
         <LevelSelector selected={level} onChange={handleLevelChange} counts={DATA_COUNTS.grammar} levels={unlocked} />
 
-        <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
-          <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder={t('common.search', 'Search pattern, meaning, or explanation…')}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
-          />
-          {search && (
-            <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">
-              {t('kana.clear', 'Clear')}
-            </button>
-          )}
-        </div>
+        {/* Global search — only when NOT drilled into a category */}
+        {!selectedCategory && (
+          <>
+            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
+              <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder={t('common.search', 'Search pattern, meaning, or explanation…')}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
+              />
+              {search && (
+                <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">
+                  {t('kana.clear', 'Clear')}
+                </button>
+              )}
+            </div>
 
-        {allTags.length > 0 && (
-          <div className="flex gap-2 flex-wrap items-center">
-            <Tag className="w-3.5 h-3.5 shrink-0 text-muted-foreground/60" />
-            <TagChip tag={t('common.all', 'All')} active={!activeTag} onClick={() => setActiveTag(null)} />
-            {allTags.map((tTag) => (
-              <TagChip key={tTag} tag={tTag} active={activeTag === tTag} onClick={() => setActiveTag(activeTag === tTag ? null : tTag)} />
-            ))}
-          </div>
+            {allTags.length > 0 && (
+              <div className="flex gap-2 flex-wrap items-center">
+                <Tag className="w-3.5 h-3.5 shrink-0 text-muted-foreground/60" />
+                <TagChip tag={t('common.all', 'All')} active={!activeTag} onClick={() => setActiveTag(null)} />
+                {allTags.map((tTag) => (
+                  <TagChip key={tTag} tag={tTag} active={activeTag === tTag} onClick={() => setActiveTag(activeTag === tTag ? null : tTag)} />
+                ))}
+              </div>
+            )}
+          </>
         )}
       </div>
 
-      <p className="text-sm text-muted-foreground">
-        {filtered.length === 0 ? t('common.error', 'No patterns found') : `${filtered.length} ${t('common.pattern', 'patterns')}`}
-      </p>
+      {/* ── Category Grid or Category Detail View ── */}
+      {selectedCategory ? (
+        <CategoryView
+          category={currentCategoryDef}
+          items={categorizedMap.get(selectedCategory) || []}
+          onBack={() => setSelectedCategory(null)}
+          renderCard={renderGrammarCard}
+          searchFn={categorySearchFn}
+          searchPlaceholder={t('common.search', 'Search in this category…')}
+        />
+      ) : search || activeTag ? (
+        /* When searching/filtering globally, show flat results */
+        <>
+          <p className="text-sm text-muted-foreground">
+            {filtered.length === 0 ? t('common.error', 'No patterns found') : `${filtered.length} ${t('common.pattern', 'patterns')}`}
+          </p>
 
-      <motion.div layout className="space-y-3">
-        <AnimatePresence mode="popLayout">
-          {filtered.map((item) => (
-            <GrammarCard
-              key={item.id}
-              item={item}
-              isOpen={openId === item.id}
-              onToggle={() => setOpenId(openId === item.id ? null : item.id)}
-              progress={grammarProgress[item.id]}
-              onToggleStudied={handleToggleStudied}
-              isSaving={Boolean(savingMap[item.id])}
-              isGuest={isGuest}
-            />
-          ))}
-        </AnimatePresence>
+          <motion.div layout className="space-y-3">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((item) => renderGrammarCard(item))}
+            </AnimatePresence>
 
-        {filtered.length === 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
-            <BookMarked className="w-10 h-10 mx-auto mb-3 opacity-30" />
-            <p className="font-medium">{t('common.error', 'No patterns found')}</p>
-            <p className="text-sm mt-1">{t('common.retry', 'Try adjusting your search or tag filter')}</p>
+            {filtered.length === 0 && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
+                <BookMarked className="w-10 h-10 mx-auto mb-3 opacity-30" />
+                <p className="font-medium">{t('common.error', 'No patterns found')}</p>
+                <p className="text-sm mt-1">{t('common.retry', 'Try adjusting your search or tag filter')}</p>
+              </motion.div>
+            )}
           </motion.div>
-        )}
-      </motion.div>
+        </>
+      ) : (
+        /* Default: show category grid */
+        <CategoryGrid
+          categories={GRAMMAR_CATEGORIES}
+          categorizedMap={categorizedMap}
+          onSelect={setSelectedCategory}
+        />
+      )}
     </div>
   )
 }

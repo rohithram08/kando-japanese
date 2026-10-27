@@ -22,6 +22,9 @@ import LevelSelector from '../components/common/LevelSelector'
 import { useLevelState } from '../hooks/useStudyLevel'
 import { getCurriculumMeaning, normalizeLocale, useI18n } from '../i18n'
 import toast from 'react-hot-toast'
+import { KANJI_CATEGORIES, categorizeItems } from '../data/categories'
+import CategoryGrid from '../components/curriculum/CategoryGrid'
+import CategoryView from '../components/curriculum/CategoryView'
 
 
 // ─────────────────────────────────────────────────────────────────────
@@ -1300,8 +1303,9 @@ export default function KanjiPage() {
   const [search,     setSearch]     = useState('')
   const [openId,     setOpenId]     = useState(null)
   const [selectedId, setSelectedId] = useState(null)
-  const [view,       setView]       = useState('grid')
+  const [view,       setView]       = useState('categories')
   const [tab,        setTab]        = useState('browse')
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const meta     = LEVEL_META[level]
   const allKanji = KANJI[level] || []
@@ -1342,8 +1346,47 @@ export default function KanjiPage() {
   }, [filtered])
 
   const handleLevelChange = useCallback((l) => {
-    setLevel(l); setSearch(''); setOpenId(null); setSelectedId(null)
+    setLevel(l); setSearch(''); setOpenId(null); setSelectedId(null); setSelectedCategory(null)
   }, [setLevel])
+
+  // ── Categorize kanji items ──
+  const getMeaning = useCallback(
+    (item) => getCurriculumMeaning(item, activeLang),
+    [activeLang]
+  )
+
+  const categorizedMap = useMemo(
+    () => categorizeItems(allKanji, KANJI_CATEGORIES, getMeaning, 'kanji'),
+    [allKanji, getMeaning]
+  )
+
+  const currentCategoryDef = selectedCategory
+    ? KANJI_CATEGORIES.find((c) => c.id === selectedCategory) || null
+    : null
+
+  const kanjiCategorySearchFn = useCallback(
+    (item, q) => {
+      const locMeaning = getCurriculumMeaning(item, activeLang).toLowerCase()
+      const onR  = (item.readings?.on  || []).join(' ').toLowerCase()
+      const kunR = (item.readings?.kun || []).join(' ').toLowerCase()
+      return (
+        item.kanji.includes(q) ||
+        item.meaning.toLowerCase().includes(q) ||
+        locMeaning.includes(q) ||
+        onR.includes(q) || kunR.includes(q)
+      )
+    },
+    [activeLang]
+  )
+
+  const renderKanjiCardForCategory = useCallback(
+    (item) => (
+      <KanjiCard key={item.id} item={item} isDark={isDark}
+        isOpen={openId === item.id}
+        onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
+    ),
+    [isDark, openId]
+  )
 
   const TABS = [
     { id: 'browse',    label: 'Browse',     icon: Grid3X3 },
@@ -1415,92 +1458,115 @@ export default function KanjiPage() {
         {tab === 'browse' && (
           <motion.div key="browse" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="space-y-4">
-            <div className="flex gap-2">
-              <div className={`flex-1 flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-colors bg-white border-gray-200 focus-within:border-gray-400 dark:bg-gray-900 dark:border-gray-700/60 dark:focus-within:border-gray-500`}>
-                <Search className={`w-4 h-4 shrink-0 text-muted-foreground`} />
-                <input type="text" placeholder="Search kanji, meaning, or reading…"
-                  value={search}
-                  onChange={(e) => { setSearch(e.target.value); setSelectedId(null) }}
-                  className={`flex-1 bg-transparent outline-none text-sm text-gray-800 placeholder-gray-400 dark:text-white dark:placeholder-gray-600`} />
-                {search && (
-                  <button onClick={() => setSearch('')}
-                    className={`text-xs px-1.5 py-0.5 rounded text-muted-foreground hover:text-foreground`}>
-                    Clear
-                  </button>
-                )}
-              </div>
-
-              <div className={`flex rounded-xl border overflow-hidden border-border`}>
-                {[['grid', Grid3X3, 'Grid'], ['list', List, 'List']].map(([v, Icon, label]) => (
-                  <button key={v} onClick={() => setView(v)}
-                    className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors ${
-                      view === v
-                        ? `bg-gradient-to-r ${meta.gradient} text-white`
-                        : 'bg-white text-gray-500 hover:text-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:text-white'}`}>
-                    <Icon className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">{label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <p className={`text-xs text-muted-foreground`}>
-              {filtered.length} character{filtered.length !== 1 ? 's' : ''}
-              {search && ` matching "${search}"`}
-            </p>
-
-            {filtered.length === 0 ? (
-              <div className={`text-center py-20 rounded-2xl border border-border text-muted-foreground`}>
-                <span className="text-5xl block mb-4">漢</span>
-                <p className="font-semibold">No kanji found</p>
-                <p className="text-sm mt-1 opacity-70">Try a different search term or level</p>
-              </div>
-            ) : view === 'list' ? (
-              <div className="space-y-2">
-                <AnimatePresence mode="popLayout">
-                  {filtered.map(item => (
-                    <KanjiCard key={item.id} item={item} isDark={isDark}
-                      isOpen={openId === item.id}
-                      onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
-                  ))}
-                </AnimatePresence>
-              </div>
+            {selectedCategory ? (
+              <CategoryView
+                category={currentCategoryDef}
+                items={categorizedMap.get(selectedCategory) || []}
+                onBack={() => { setSelectedCategory(null); setSelectedId(null) }}
+                renderCard={renderKanjiCardForCategory}
+                searchFn={kanjiCategorySearchFn}
+                searchPlaceholder="Search in this category…"
+              />
             ) : (
-              <div>
-                {search ? (
-                  <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
-                    <AnimatePresence>
-                      {filtered.map(item => {
-                        const isSel = selectedId === item.id
-                        return (
-                          <motion.button key={item.id} layout whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }}
-                            onClick={() => setSelectedId(isSel ? null : item.id)} title={item.meaning}
-                            className={`aspect-square rounded-xl border flex flex-col items-center justify-center gap-0.5 transition-all text-center p-1 ${
-                              isSel ? `bg-gradient-to-br ${meta.gradient} text-white border-transparent shadow-lg scale-105`
-                              : 'bg-white border-gray-200 hover:border-gray-300 text-gray-800 dark:bg-gray-900 dark:border-gray-700/60 dark:hover:border-gray-500 dark:text-white'}`}>
-                            <span className="text-xl font-bold leading-none">{item.kanji}</span>
-                            <span className={`text-[9px] leading-tight truncate w-full text-center px-0.5 ${isSel ? 'text-white/80' : 'text-muted-foreground'}`}>
-                              {item.meaning.split('/')[0]}
-                            </span>
-                          </motion.button>
-                        )
-                      })}
+              <>
+                <div className="flex gap-2">
+                  <div className={`flex-1 flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-colors bg-white border-gray-200 focus-within:border-gray-400 dark:bg-gray-900 dark:border-gray-700/60 dark:focus-within:border-gray-500`}>
+                    <Search className={`w-4 h-4 shrink-0 text-muted-foreground`} />
+                    <input type="text" placeholder="Search kanji, meaning, or reading…"
+                      value={search}
+                      onChange={(e) => { setSearch(e.target.value); setSelectedId(null) }}
+                      className={`flex-1 bg-transparent outline-none text-sm text-gray-800 placeholder-gray-400 dark:text-white dark:placeholder-gray-600`} />
+                    {search && (
+                      <button onClick={() => setSearch('')}
+                        className={`text-xs px-1.5 py-0.5 rounded text-muted-foreground hover:text-foreground`}>
+                        Clear
+                      </button>
+                    )}
+                  </div>
+
+                  <div className={`flex rounded-xl border overflow-hidden border-border`}>
+                    {[
+                      ['categories', Layers, 'Topics'],
+                      ['grid', Grid3X3, 'Sets'],
+                      ['list', List, 'List'],
+                    ].map(([v, Icon, label]) => (
+                      <button key={v} onClick={() => setView(v)}
+                        className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors ${
+                          view === v
+                            ? `bg-gradient-to-r ${meta.gradient} text-white`
+                            : 'bg-white text-gray-500 hover:text-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:text-white'}`}>
+                        <Icon className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">{label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <p className={`text-xs text-muted-foreground`}>
+                  {filtered.length} character{filtered.length !== 1 ? 's' : ''}
+                  {search && ` matching "${search}"`}
+                </p>
+
+                {filtered.length === 0 ? (
+                  <div className={`text-center py-20 rounded-2xl border border-border text-muted-foreground`}>
+                    <span className="text-5xl block mb-4">漢</span>
+                    <p className="font-semibold">No kanji found</p>
+                    <p className="text-sm mt-1 opacity-70">Try a different search term or level</p>
+                  </div>
+                ) : view === 'categories' && !search ? (
+                  <CategoryGrid
+                    categories={KANJI_CATEGORIES}
+                    categorizedMap={categorizedMap}
+                    onSelect={(catId) => setSelectedCategory(catId)}
+                  />
+                ) : view === 'list' ? (
+                  <div className="space-y-2">
+                    <AnimatePresence mode="popLayout">
+                      {filtered.map(item => (
+                        <KanjiCard key={item.id} item={item} isDark={isDark}
+                          isOpen={openId === item.id}
+                          onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
+                      ))}
                     </AnimatePresence>
                   </div>
                 ) : (
-                  groups.map((gk, i) => (
-                    <StudyGroup key={i} kanji={gk} groupIndex={i} isDark={isDark} meta={meta}
-                      selectedId={selectedId} onSelect={id => setSelectedId(id)} />
-                  ))
-                )}
+                  <div>
+                    {search ? (
+                      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+                        <AnimatePresence>
+                          {filtered.map(item => {
+                            const isSel = selectedId === item.id
+                            return (
+                              <motion.button key={item.id} layout whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }}
+                                onClick={() => setSelectedId(isSel ? null : item.id)} title={item.meaning}
+                                className={`aspect-square rounded-xl border flex flex-col items-center justify-center gap-0.5 transition-all text-center p-1 ${
+                                  isSel ? `bg-gradient-to-br ${meta.gradient} text-white border-transparent shadow-lg scale-105`
+                                  : 'bg-white border-gray-200 hover:border-gray-300 text-gray-800 dark:bg-gray-900 dark:border-gray-700/60 dark:hover:border-gray-500 dark:text-white'}`}>
+                                <span className="text-xl font-bold leading-none">{item.kanji}</span>
+                                <span className={`text-[9px] leading-tight truncate w-full text-center px-0.5 ${isSel ? 'text-white/80' : 'text-muted-foreground'}`}>
+                                  {item.meaning.split('/')[0]}
+                                </span>
+                              </motion.button>
+                            )
+                          })}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      groups.map((gk, i) => (
+                        <StudyGroup key={i} kanji={gk} groupIndex={i} isDark={isDark} meta={meta}
+                          selectedId={selectedId} onSelect={id => setSelectedId(id)} />
+                      ))
+                    )}
 
-                <AnimatePresence>
-                  {selectedItem && (
-                    <DetailPanel key={selectedItem.id} item={selectedItem} isDark={isDark}
-                      meta={meta} onClose={() => setSelectedId(null)} />
-                  )}
-                </AnimatePresence>
-              </div>
+                    <AnimatePresence>
+                      {selectedItem && (
+                        <DetailPanel key={selectedItem.id} item={selectedItem} isDark={isDark}
+                          meta={meta} onClose={() => setSelectedId(null)} />
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
+              </>
             )}
           </motion.div>
         )}

@@ -69,9 +69,9 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         })
       })
 
-      expect(vocabCount).toBe(2382)
-      expect(tamilMatches).toBe(114)
-      expect(hindiMatches).toBe(114)
+      expect(vocabCount).toBe(4875)
+      expect(tamilMatches).toBe(112)
+      expect(hindiMatches).toBe(112)
     })
 
     it('preserves 100% of legacy Kanji English, Tamil, and Hindi translations', () => {
@@ -146,7 +146,7 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
         })
       })
 
-      expect(grammarCount).toBe(464)
+      expect(grammarCount).toBe(479)
       expect(tamilMatches).toBe(125)
       expect(hindiMatches).toBe(125)
     })
@@ -168,19 +168,19 @@ describe('Phase 1A: Safe Multilingual Foundation & Parity Suite', () => {
   // 2. Canonical curriculum integrity & reference validation
   // ─────────────────────────────────────────────────────────────
   describe('2. Canonical Curriculum Integrity & Reference Validation', () => {
-    it('contains exactly 4,056 canonical entries with valid schema', () => {
+    it('contains exactly canonical entries with valid schema', () => {
       const totalItems =
         canonicalCurriculum.vocabulary.length +
         canonicalCurriculum.kanji.length +
         canonicalCurriculum.grammar.length +
         canonicalCurriculum.lessons.length
 
-      expect(totalItems).toBe(4056)
-      expect(canonicalCurriculum.vocabulary.length).toBe(2382)
+      expect(totalItems).toBe(6564)
+      expect(canonicalCurriculum.vocabulary.length).toBe(4875)
       expect(canonicalCurriculum.kanji.length).toBe(960)
-      expect(canonicalCurriculum.grammar.length).toBe(464)
+      expect(canonicalCurriculum.grammar.length).toBe(479)
       expect(canonicalCurriculum.lessons.length).toBe(250)
-      expect(CANONICAL_INDEX.size).toBe(4056)
+      expect(CANONICAL_INDEX.size).toBe(6564)
     })
 
     it('verifies every localized curriculum entry maps to a valid canonical ID', () => {

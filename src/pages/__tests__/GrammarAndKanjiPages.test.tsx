@@ -4,8 +4,19 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import GrammarPage from '../GrammarPage';
 import KanjiPage from '../KanjiPage';
+import VocabularyPage from '../VocabularyPage';
 
-describe('GrammarPage & KanjiPage Rendering', () => {
+describe('Curriculum Study Pages Rendering', () => {
+  it('renders VocabularyPage with thematic categories without crashing', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <VocabularyPage />
+      </MemoryRouter>
+    );
+    expect(container).toBeDefined();
+    expect(container.textContent).toContain('Vocabulary');
+  });
+
   it('renders GrammarPage without crashing', () => {
     const { container } = render(
       <MemoryRouter>
@@ -13,6 +24,7 @@ describe('GrammarPage & KanjiPage Rendering', () => {
       </MemoryRouter>
     );
     expect(container).toBeDefined();
+    expect(container.textContent).toContain('Grammar');
   });
 
   it('renders KanjiPage without crashing', () => {
@@ -22,5 +34,6 @@ describe('GrammarPage & KanjiPage Rendering', () => {
       </MemoryRouter>
     );
     expect(container).toBeDefined();
+    expect(container.textContent).toContain('Kanji Study');
   });
 });

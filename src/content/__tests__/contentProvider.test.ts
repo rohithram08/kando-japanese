@@ -93,7 +93,7 @@ describe('ContentProvider Architecture Suite', () => {
   describe('4. Grammar Operations', () => {
     it('retrieves grammar points with structure and formation', () => {
       const n5Grammar = contentProvider.getGrammar('N5', 'en');
-      expect(n5Grammar.length).toBe(60);
+      expect(n5Grammar.length).toBe(75);
 
       const firstG = n5Grammar[0];
       expect(firstG.pattern).toBe('〜は〜です');
