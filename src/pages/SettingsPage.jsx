@@ -6,18 +6,15 @@ import {
   Globe, Bell, Shield, Palette, Volume2, BookOpen,
   Monitor, Moon, Sun, ChevronRight, RotateCcw, Search,
   Trash2, Download,
-  User, Pencil, Camera, Upload, X, Save,
+  User, Pencil, Lock,
   RefreshCcw, CheckCircle2,
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
-import { updateProfile, deleteAccount } from '../api/users'
-import { uploadAvatar } from '../api/upload'
-import { AVATARS } from '../data/avatarData'
-import { APP_CONFIG } from '../config/appConfig'
+import { deleteAccount } from '../api/users'
 import UserAvatar from '../components/common/UserAvatar'
-import { validateUsername, USERNAME_MAX } from '../utils/userIdentity'
+import { normalizeProfile } from '../utils/userIdentity'
 import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
@@ -27,13 +24,13 @@ import toast from 'react-hot-toast'
 
 // id / label / icon / tint / search keywords — keywords power the settings search box
 const SECTIONS = [
-  { id: 'profile',       label: 'Profile',           icon: User,     emoji: '👤', tint: 'red',    keywords: 'name avatar photo username' },
-  { id: 'general',       label: 'General',           icon: Globe,    emoji: '🌐', tint: 'blue',   keywords: 'jlpt target level' },
-  { id: 'appearance',    label: 'Appearance',        icon: Palette,  emoji: '🎨', tint: 'violet', keywords: 'theme dark light font size furigana romaji compact animations' },
+  { id: 'account',       label: 'Account & Security', icon: Shield,   emoji: '🔒', tint: 'red',    keywords: 'account email password profile security login credentials' },
+  { id: 'general',       label: 'General',            icon: Globe,    emoji: '🌐', tint: 'blue',   keywords: 'display language jlpt study target level' },
+  { id: 'appearance',    label: 'Appearance',         icon: Palette,  emoji: '🎨', tint: 'violet', keywords: 'theme dark light font size furigana romaji compact animations' },
   { id: 'study',         label: 'Study Preferences', icon: BookOpen, emoji: '📖', tint: 'emerald',keywords: 'daily goal xp srs interval translation autoplay' },
   { id: 'notifications', label: 'Notifications',     icon: Bell,     emoji: '🔔', tint: 'orange', keywords: 'reminder streak achievement weekly report' },
   { id: 'audio',         label: 'Audio & Speech',    icon: Volume2,  emoji: '🔊', tint: 'cyan',   keywords: 'speech rate pitch slow autospeak voice' },
-  { id: 'privacy',       label: 'Privacy & Data',    icon: Shield,   emoji: '🔒', tint: 'gray',   keywords: 'export delete reset analytics' },
+  { id: 'privacy',       label: 'Privacy & Data',    icon: Lock,     emoji: '🛡️', tint: 'gray',   keywords: 'export delete reset analytics' },
 ]
 
 const SECTION_TINT = {
@@ -147,7 +144,7 @@ const ChoicePill = ({ active, onClick, children, title }) => (
 // ── MAIN COMPONENT ────────────────────────────────────────
 // ══════════════════════════════════════════════════════════
 export default function SettingsPage() {
-  const { user, profile, refreshProfile, logout, updateProfile: authUpdateProfile } = useAuthStore()
+  const { user, profile, logout } = useAuthStore()
   const navigate = useNavigate()
   const { theme, setTheme } = useThemeStore()
   const settings = useSettingsStore()
@@ -155,152 +152,22 @@ export default function SettingsPage() {
   const { studyLevel, setStudyLevel } = useStudyLevel()
   const { t, setLocale: setDisplayLanguage } = useI18n()
 
-  const [activeSection, setActiveSection]         = useState('profile')
+  const [activeSection, setActiveSection]         = useState('account')
   const [settingsQuery, setSettingsQuery]          = useState('')
   const [showDeleteConfirm, setShowDeleteConfirm]  = useState(false)
   const [showResetConfirm, setShowResetConfirm]    = useState(false)
   const [showResetSettingsConfirm, setShowResetSettingsConfirm] = useState(false)
 
-  // ── Profile state (saved via backend API / authStore) ──
-  const [username, setUsername]             = useState(profile?.username || user?.username || 'Learner')
-  const [usernameError, setUsernameError]   = useState(null)
-  const [nativeLanguage, setNativeLanguage]  = useState(normalizeLocale(profile?.nativeLanguage || profile?.native_language || settings.nativeLanguage || 'en'))
-  const [profileSaving, setProfileSaving]    = useState(false)
+  const identity = normalizeProfile(profile, user)
+  const [nativeLanguage, setNativeLanguage] = useState(
+    normalizeLocale(identity.nativeLanguage || settings.nativeLanguage || 'en')
+  )
 
-  // ── Avatar state ───────────────────────────────────────
-  const [showAvatarPicker, setShowAvatarPicker] = useState(false)
-  const [selectedAvatar, setSelectedAvatar]     = useState(profile?.avatarId || profile?.avatar_id || null)
-  const [avatarUrl, setAvatarUrl]               = useState(profile?.avatarUrl || profile?.avatar_url || null)
-  const [previewUrl, setPreviewUrl]             = useState(null)
-  const [uploadLoading, setUploadLoading]       = useState(false)
-  const fileInputRef = useRef(null)
-
-  // Sync profile on load
   useEffect(() => {
     if (profile) {
-      setUsername(profile.username || '')
-      setNativeLanguage(normalizeLocale(profile.nativeLanguage || profile.native_language || settings.nativeLanguage || 'en'))
-      setSelectedAvatar(profile.avatarId || profile.avatar_id || null)
-      setAvatarUrl(profile.avatarUrl || profile.avatar_url || null)
+      setNativeLanguage(normalizeLocale(identity.nativeLanguage || settings.nativeLanguage || 'en'))
     }
   }, [profile, settings.nativeLanguage])
-
-
-  // ── File upload ────────────────────────────────────────
-  const handleFileSelect = async (e) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    if (!file.type.startsWith('image/')) { toast.error(t('toast.select_image_error', 'Please select an image file')); return }
-    if (file.size > APP_CONFIG.AVATAR_MAX_SIZE_BYTES) { toast.error(t('toast.image_size_error', 'Image must be less than 2MB')); return }
-
-    const reader = new FileReader()
-    reader.onload = (ev) => setPreviewUrl(ev.target.result)
-    reader.readAsDataURL(file)
-
-    setUploadLoading(true)
-    try {
-      const response = await uploadAvatar(file)
-      const publicUrl = response.url
-
-      if (user) {
-        if (refreshProfile) await refreshProfile()
-      } else {
-        await authUpdateProfile({ avatarUrl: publicUrl, avatarId: null })
-      }
-
-      setAvatarUrl(publicUrl)
-      setSelectedAvatar(null)
-      setPreviewUrl(null)
-      setShowAvatarPicker(false)
-      toast.success(t('toast.photo_updated', 'Profile photo updated! 📸'))
-    } catch (err) {
-      console.error(err)
-      toast.error(t('toast.photo_upload_failed', 'Failed to upload photo'))
-      setPreviewUrl(null)
-    } finally {
-      setUploadLoading(false)
-    }
-  }
-
-  const handleAvatarSelect = async (avatar) => {
-    setUploadLoading(true)
-    try {
-      if (user) {
-        await updateProfile({ avatarId: avatar.id, avatarUrl: null })
-        if (refreshProfile) await refreshProfile()
-      } else {
-        await authUpdateProfile({ avatarId: avatar.id, avatarUrl: null })
-      }
-      setSelectedAvatar(avatar.id)
-      setAvatarUrl(null)
-      setPreviewUrl(null)
-      setShowAvatarPicker(false)
-      toast.success(t('toast.avatar_updated', { name: avatar.label, emoji: avatar.emoji }, `Avatar set to ${avatar.label}! ${avatar.emoji}`))
-    } catch (err) {
-      console.error(err)
-      toast.error(t('toast.avatar_update_failed', 'Failed to update avatar'))
-    } finally {
-      setUploadLoading(false)
-    }
-  }
-
-  const handleRemoveAvatar = async () => {
-    setUploadLoading(true)
-    try {
-      if (user) {
-        await updateProfile({ avatarId: null, avatarUrl: null })
-        if (refreshProfile) await refreshProfile()
-      } else {
-        await authUpdateProfile({ avatarId: null, avatarUrl: null })
-      }
-      setSelectedAvatar(null)
-      setAvatarUrl(null)
-      setPreviewUrl(null)
-      toast.success(t('toast.avatar_removed', 'Avatar removed'))
-    } catch (err) {
-      console.error('Remove avatar failed:', err)
-      toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar'))
-    } finally {
-      setUploadLoading(false)
-    }
-  }
-
-  const handleSaveProfile = async () => {
-    // Existing accounts may have an older, free-form name (e.g. with a space).
-    // Only enforce the username rules when the learner actually changes it.
-    const stored = (profile?.username || user?.username || '').trim()
-    if (username.trim() !== stored) {
-      const problem = validateUsername(username)
-      if (problem) {
-        const msg = t(problem.key, problem.params || problem.fallback, problem.fallback)
-        setUsernameError(msg)
-        toast.error(msg)
-        return
-      }
-    } else if (!username.trim()) {
-      const msg = t('toast.name_required', 'Username cannot be empty')
-      setUsernameError(msg)
-      toast.error(msg)
-      return
-    }
-    setUsernameError(null)
-    setProfileSaving(true)
-    try {
-      if (user) {
-        await updateProfile({ username: username.trim(), nativeLanguage: nativeLanguage })
-        if (refreshProfile) await refreshProfile()
-      } else {
-        await authUpdateProfile({ username: username.trim(), nativeLanguage: nativeLanguage })
-      }
-      updateSettings({ nativeLanguage: nativeLanguage })
-      toast.success(t('toast.profile_updated', 'Profile updated! ✅'))
-    } catch (err) {
-      console.error(err)
-      toast.error(t('toast.profile_save_failed', 'Failed to save profile'))
-    } finally {
-      setProfileSaving(false)
-    }
-  }
 
   const handleExportData = async () => {
     try {
@@ -348,17 +215,14 @@ export default function SettingsPage() {
     }
   }
 
-  const fieldBase = `
-    w-full px-4 py-3 rounded-xl border text-sm
-    focus:outline-none focus:ring-2 focus:ring-red-400/50 focus:border-red-400
-    transition-all duration-200
-    bg-muted/40 border-border text-foreground placeholder:text-muted-foreground focus:bg-surface
-  `
-
   // Module-level option arrays hold English fallbacks only; labels are resolved
   // through t() on every render so they follow the active display language.
   const localizedSections = useMemo(
-    () => SECTIONS.map((s) => ({ ...s, label: t(`settings.nav_${s.id}`, s.label) })),
+    () =>
+      SECTIONS.map((s) => ({
+        ...s,
+        label: s.id === 'account' ? t('settings.account_security', s.label) : t(`settings.nav_${s.id}`, s.label),
+      })),
     [t]
   )
   const localizedFontSizes = FONT_SIZES.map((o) => ({ ...o, label: t(`settings.font_${o.value}`, o.label) }))
@@ -384,31 +248,29 @@ export default function SettingsPage() {
   const renderSection = () => {
     switch (activeSection) {
 
-      // ── ACCOUNT & SECURITY (LEARNER PROFILE MANAGED ON PROFILE PAGE) ──
+      // ── ACCOUNT & SECURITY (LEARNER IDENTITY MANAGED ON PROFILE PAGE) ──
       case 'account':
       case 'profile':
         return (
           <div className="space-y-6">
             {/* 1. Public Learner Profile Direct Link */}
             <SectionCard title={t('settings.profile_card_title', 'Learner Profile')} emoji="👤">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-muted/30 border border-border/60">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-muted/30 border border-border/60">
                 <div className="flex items-center gap-3.5">
                   <UserAvatar
-                    avatarUrl={avatarUrl}
-                    avatarId={selectedAvatar}
-                    username={username}
+                    profile={identity}
                     size="xl"
                     rounded="rounded-2xl"
                   />
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="text-base font-bold text-foreground">{username}</p>
+                      <p className="text-base font-bold text-foreground">{identity.username}</p>
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                        {profile?.currentLevel || 'N5'}
+                        {identity.jlptLevel || 'N5'}
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      Your avatar, mascot, and public bio are managed directly on your Profile.
+                      Your avatar, mascot, username, and learning identity are managed directly on your Profile.
                     </p>
                   </div>
                 </div>
@@ -423,49 +285,7 @@ export default function SettingsPage() {
               </div>
             </SectionCard>
 
-            {/* 2. Account Username (for quick handle updates) */}
-            <SectionCard title={t('settings.display_name_title', 'Username')} emoji="✏️">
-              <div className="relative">
-                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => { setUsername(e.target.value); if (usernameError) setUsernameError(null) }}
-                  className={`${fieldBase} pl-11 ${usernameError ? 'border-red-400' : ''}`}
-                  placeholder={t('settings.display_name_placeholder', 'Your username')}
-                  maxLength={USERNAME_MAX}
-                  autoComplete="username"
-                  aria-invalid={Boolean(usernameError)}
-                  aria-describedby="username-help"
-                />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground">
-                  {username.length}/{USERNAME_MAX}
-                </span>
-              </div>
-              <p
-                id="username-help"
-                data-testid="username-help"
-                className={`mt-2 text-xs ${usernameError ? 'text-red-500' : 'text-muted-foreground'}`}
-              >
-                {usernameError || t('settings.username_hint', 'This is the name shown across the app. Letters, numbers, "_", "." and "-" only (3–30 characters).')}
-              </p>
-              <div className="mt-4 flex items-center gap-3">
-                <button
-                  onClick={handleSaveProfile}
-                  disabled={profileSaving}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-red-500 to-rose-600 text-white hover:shadow-lg hover:shadow-red-500/25 transition-all disabled:opacity-60 shadow-xs"
-                >
-                  {profileSaving ? (
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <Save className="w-4 h-4" />
-                  )}
-                  {t('settings.save_profile', 'Save Profile')}
-                </button>
-              </div>
-            </SectionCard>
-
-            {/* 3. Account Email & Credentials */}
+            {/* 2. Account Email & Credentials */}
             <SectionCard title={t('settings.account_security', 'Account & Security')} emoji="🔒">
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
@@ -790,63 +610,6 @@ export default function SettingsPage() {
     }
   }
 
-  // ── Avatar Picker Modal ────────────────────────────────
-  const AvatarPickerModal = () => (
-    <AnimatePresence>
-      {showAvatarPicker && (
-        <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          onClick={() => setShowAvatarPicker(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-sm rounded-3xl p-6 border shadow-2xl bg-surface border-border"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-foreground">{t('settings.choose_avatar', 'Choose Avatar')}</h3>
-              <button onClick={() => setShowAvatarPicker(false)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium border mb-4 transition-colors bg-muted border-border text-foreground/80 hover:bg-muted/70"
-            >
-              <Upload className="w-4 h-4 text-indigo-400" />
-              {t('settings.upload_photo', 'Upload a Photo')}
-            </button>
-
-            <p className="text-xs font-semibold uppercase tracking-wider mb-3 text-muted-foreground">{t('settings.pick_emoji', 'Or pick an emoji')}</p>
-            <div className="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto">
-              {AVATARS.map((av) => (
-                <motion.button
-                  key={av.id}
-                  whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}
-                  onClick={() => handleAvatarSelect(av)}
-                  title={av.label}
-                  className={`
-                    w-12 h-12 rounded-xl bg-gradient-to-br ${av.bg}
-                    flex items-center justify-center text-xl
-                    border-2 transition-all
-                    ${selectedAvatar === av.id ? 'border-red-500 shadow-lg shadow-red-500/30' : 'border-transparent hover:border-white/20'}
-                  `}
-                >
-                  {av.emoji}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
-
   // ── Confirm Modals ─────────────────────────────────────
   const ConfirmModal = ({ show, onClose, onConfirm, title, message, confirmLabel, confirmColor }) => (
     <AnimatePresence>
@@ -880,7 +643,6 @@ export default function SettingsPage() {
   // ── Layout ─────────────────────────────────────────────
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <AvatarPickerModal />
       <ConfirmModal
         show={showResetConfirm}
         onClose={() => setShowResetConfirm(false)}
