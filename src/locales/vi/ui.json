@@ -413,7 +413,9 @@
     "username_hint": "Đây là tên hiển thị trong toàn bộ ứng dụng. Chỉ gồm chữ cái, số, \"_\", \".\" và \"-\" (3–30 ký tự).",
     "username_too_short": "Tên người dùng phải có ít nhất {min} ký tự",
     "username_too_long": "Tên người dùng có tối đa {max} ký tự",
-    "username_invalid": "Chỉ dùng chữ cái, số, \"_\", \".\" hoặc \"-\" (không có khoảng trắng)"
+    "username_invalid": "Chỉ dùng chữ cái, số, \"_\", \".\" hoặc \"-\" (không có khoảng trắng)",
+    "account_security": "Tài khoản & Bảo mật",
+    "profile_card_title": "Hồ sơ người học"
   },
   "auth": {
     "email_required": "Vui lòng nhập email",
@@ -541,7 +543,8 @@
     "no_activity_week": "Tuần này bạn chưa có Wave XP — hãy hoàn thành một truyện và bài kiểm tra của nó để biểu đồ sáng lên.",
     "lessons_done": "Truyện",
     "skill_overview": "Tiến độ học tập",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "Chỉnh sửa hồ sơ"
   },
   "conversation": {
     "title": "Luyện hội thoại",

@@ -280,6 +280,8 @@
   "settings": {
     "title": "Settings",
     "profile_section": "Profile & Identity",
+    "account_security": "Account & Security",
+    "profile_card_title": "Learner Profile",
     "general_section": "General",
     "appearance_section": "Appearance",
     "study_section": "Study Preferences",
@@ -485,7 +487,8 @@
     "no_activity_week": "No Wave XP earned yet this week — finish a story and its quiz to light this up.",
     "lessons_done": "Stories",
     "skill_overview": "Learning Progress",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "Edit Profile"
   },
   "conversation": {
     "title": "Conversation Practice",

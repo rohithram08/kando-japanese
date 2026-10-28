@@ -413,7 +413,9 @@
     "username_hint": "這是整個應用程式中顯示的名稱。僅限字母、數字、「_」、「.」和「-」（3–30 個字元）。",
     "username_too_short": "使用者名稱至少需要 {min} 個字元",
     "username_too_long": "使用者名稱最多 {max} 個字元",
-    "username_invalid": "僅使用字母、數字、「_」、「.」或「-」（不可有空格）"
+    "username_invalid": "僅使用字母、數字、「_」、「.」或「-」（不可有空格）",
+    "account_security": "帳號與安全",
+    "profile_card_title": "學員個人檔案"
   },
   "auth": {
     "email_required": "電子郵件為必填項",
@@ -541,7 +543,8 @@
     "no_activity_week": "本週還沒有獲得 Wave XP——完成一個故事及其測驗，讓這裡亮起來。",
     "lessons_done": "故事",
     "skill_overview": "學習進度",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "編輯個人檔案"
   },
   "conversation": {
     "title": "會話練習",

@@ -413,7 +413,9 @@
     "username_hint": "앱 전체에 표시되는 이름입니다. 문자, 숫자, \"_\", \".\", \"-\"만 사용할 수 있습니다 (3~30자).",
     "username_too_short": "사용자 이름은 {min}자 이상이어야 합니다",
     "username_too_long": "사용자 이름은 최대 {max}자까지 가능합니다",
-    "username_invalid": "문자, 숫자, \"_\", \".\" 또는 \"-\"만 사용하세요 (공백 불가)"
+    "username_invalid": "문자, 숫자, \"_\", \".\" 또는 \"-\"만 사용하세요 (공백 불가)",
+    "account_security": "계정 및 보안",
+    "profile_card_title": "학습자 프로필"
   },
   "auth": {
     "email_required": "이메일을 입력해 주세요",
@@ -541,7 +543,8 @@
     "no_activity_week": "이번 주에는 아직 Wave XP가 없어요 — 스토리와 퀴즈를 마치면 이 그래프가 채워져요.",
     "lessons_done": "스토리",
     "skill_overview": "학습 진행 상황",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "프로필 수정"
   },
   "conversation": {
     "title": "회화 연습",

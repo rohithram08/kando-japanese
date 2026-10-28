@@ -384,60 +384,46 @@ export default function SettingsPage() {
   const renderSection = () => {
     switch (activeSection) {
 
-      // ── PROFILE ───────────────────────────────────────
+      // ── ACCOUNT & SECURITY (LEARNER PROFILE MANAGED ON PROFILE PAGE) ──
+      case 'account':
       case 'profile':
         return (
           <div className="space-y-6">
-            <SectionCard title={t('settings.avatar_title', 'Avatar')} emoji="🖼️">
-              <div className="flex items-center gap-4">
-                <div className="relative group">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}
-                    className={`
-                      w-20 h-20 rounded-2xl border-2 shadow-lg overflow-hidden cursor-pointer
-                      border-border
-                    `}
-                    onClick={() => setShowAvatarPicker(true)}
-                  >
-                    <UserAvatar
-                      avatarUrl={avatarUrl}
-                      avatarId={selectedAvatar}
-                      username={username}
-                      previewSrc={previewUrl}
-                      size="xl"
-                      rounded="rounded-2xl"
-                      className="!w-full !h-full"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center justify-center rounded-2xl">
-                      <Camera className="w-5 h-5 text-white" />
+            {/* 1. Public Learner Profile Direct Link */}
+            <SectionCard title={t('settings.profile_card_title', 'Learner Profile')} emoji="👤">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-muted/30 border border-border/60">
+                <div className="flex items-center gap-3.5">
+                  <UserAvatar
+                    avatarUrl={avatarUrl}
+                    avatarId={selectedAvatar}
+                    username={username}
+                    size="xl"
+                    rounded="rounded-2xl"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-base font-bold text-foreground">{username}</p>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                        {profile?.currentLevel || 'N5'}
+                      </span>
                     </div>
-                  </motion.div>
-                  {uploadLoading && (
-                    <div className="absolute inset-0 bg-black/50 rounded-2xl flex items-center justify-center">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    </div>
-                  )}
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Your avatar, mascot, and public bio are managed directly on your Profile.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <button
-                    onClick={() => setShowAvatarPicker(true)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all border bg-surface border-border text-foreground/80 hover:bg-muted"
-                  >
-                    <Pencil className="w-3.5 h-3.5" /> {t('settings.change_avatar', 'Change Avatar')}
-                  </button>
-                  {(selectedAvatar || avatarUrl) && (
-                    <button
-                      onClick={handleRemoveAvatar}
-                      disabled={uploadLoading}
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium transition-colors text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10 disabled:opacity-50"
-                    >
-                      <X className="w-3 h-3" /> {t('settings.remove_avatar', 'Remove')}
-                    </button>
-                  )}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => navigate('/profile?edit=true')}
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-xs shrink-0"
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                  <span>Edit on My Profile →</span>
+                </button>
               </div>
             </SectionCard>
 
+            {/* 2. Account Username (for quick handle updates) */}
             <SectionCard title={t('settings.display_name_title', 'Username')} emoji="✏️">
               <div className="relative">
                 <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
@@ -463,8 +449,57 @@ export default function SettingsPage() {
               >
                 {usernameError || t('settings.username_hint', 'This is the name shown across the app. Letters, numbers, "_", "." and "-" only (3–30 characters).')}
               </p>
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  onClick={handleSaveProfile}
+                  disabled={profileSaving}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-red-500 to-rose-600 text-white hover:shadow-lg hover:shadow-red-500/25 transition-all disabled:opacity-60 shadow-xs"
+                >
+                  {profileSaving ? (
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <Save className="w-4 h-4" />
+                  )}
+                  {t('settings.save_profile', 'Save Profile')}
+                </button>
+              </div>
             </SectionCard>
 
+            {/* 3. Account Email & Credentials */}
+            <SectionCard title={t('settings.account_security', 'Account & Security')} emoji="🔒">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
+                  <div>
+                    <p className="text-xs font-bold text-foreground">Registered Email</p>
+                    <p className="text-sm font-medium text-muted-foreground mt-0.5">{user?.email || 'OAuth Account'}</p>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    Verified
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
+                  <div>
+                    <p className="text-xs font-bold text-foreground">Password & Access</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Change your password or request a secure reset link</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/reset-password')}
+                    className="px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-border bg-surface hover:bg-muted text-foreground transition-colors"
+                  >
+                    Change Password
+                  </button>
+                </div>
+              </div>
+            </SectionCard>
+          </div>
+        )
+
+      // ── GENERAL ──────────────────────────────────────
+      case 'general':
+        return (
+          <div className="space-y-6">
             <SectionCard title={t('settings.display_lang_title', 'Display & Interface Language')} emoji="🌐">
               <p className="text-xs text-muted-foreground mb-3 -mt-2">
                 {t('settings.display_lang_desc', 'Language used for platform interface labels and menus.')}
@@ -472,83 +507,63 @@ export default function SettingsPage() {
               <LanguageSelector onLanguageChange={(code) => setDisplayLanguage(code)} />
             </SectionCard>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleSaveProfile}
-                disabled={profileSaving}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-red-500 to-rose-600 text-white hover:shadow-lg hover:shadow-red-500/25 transition-all disabled:opacity-60"
-              >
-                {profileSaving ? (
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                ) : (
-                  <Save className="w-4 h-4" />
+            <SectionCard>
+              <SettingRow
+                label={t('settings.study_level', 'Study Level')}
+                description={t(
+                  'settings.study_level_desc',
+                  'Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.',
                 )}
-                {t('settings.save_profile', 'Save Profile')}
-              </button>
-              <p className="text-xs text-muted-foreground">{user?.email}</p>
-            </div>
+              >
+                <div className="flex gap-1.5 flex-wrap justify-end">
+                  {JLPT_LEVELS.map((lvl) => (
+                    <ChoicePill
+                      key={lvl}
+                      active={studyLevel === lvl}
+                      onClick={async () => {
+                        if (lvl === studyLevel) return
+                        try {
+                          await setStudyLevel(lvl)
+                          toast.success(`Study level set to ${lvl}`)
+                        } catch (err) {
+                          console.error(err)
+                          toast.error('Could not change study level')
+                        }
+                      }}
+                    >
+                      {lvl}
+                    </ChoicePill>
+                  ))}
+                </div>
+              </SettingRow>
+
+              <SettingRow
+                label={t('settings.explanation_lang_title', 'Learning Support & Explanation Language')}
+                description={t('settings.explanation_lang_desc', 'Language Hana-sensei and lesson cards use to explain Japanese.')}
+              >
+                <SelectField
+                  value={settings.explanationLanguage || 'en'}
+                  onChange={(v) => updateSettings({ explanationLanguage: v })}
+                  options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
+                />
+              </SettingRow>
+
+              <SettingRow
+                label={t('settings.native_lang_title', 'Native Language (Mother Tongue)')}
+                description={t('settings.native_lang_desc', 'Your mother tongue for demographic and profile records')}
+                noBorder
+              >
+                <SelectField
+                  value={nativeLanguage}
+                  onChange={(v) => {
+                    setNativeLanguage(v)
+                    updateSettings({ nativeLanguage: v })
+                  }}
+                  options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
+                />
+              </SettingRow>
+            </SectionCard>
           </div>
-        )
-
-      // ── GENERAL ──────────────────────────────────────
-      case 'general':
-        return (
-          <SectionCard>
-            <SettingRow
-              label={t('settings.study_level', 'Study Level')}
-              description={t(
-                'settings.study_level_desc',
-                'Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.',
-              )}
-            >
-              <div className="flex gap-1.5 flex-wrap justify-end">
-                {JLPT_LEVELS.map((lvl) => (
-                  <ChoicePill
-                    key={lvl}
-                    active={studyLevel === lvl}
-                    onClick={async () => {
-                      if (lvl === studyLevel) return
-                      try {
-                        await setStudyLevel(lvl)
-                        toast.success(`Study level set to ${lvl}`)
-                      } catch (err) {
-                        console.error(err)
-                        toast.error('Could not change study level')
-                      }
-                    }}
-                  >
-                    {lvl}
-                  </ChoicePill>
-                ))}
-              </div>
-            </SettingRow>
-
-            <SettingRow
-              label={t('settings.explanation_lang_title', 'Learning Support & Explanation Language')}
-              description={t('settings.explanation_lang_desc', 'Language Hana-sensei and lesson cards use to explain Japanese.')}
-            >
-              <SelectField
-                value={settings.explanationLanguage || 'en'}
-                onChange={(v) => updateSettings({ explanationLanguage: v })}
-                options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
-              />
-            </SettingRow>
-
-            <SettingRow
-              label={t('settings.native_lang_title', 'Native Language (Mother Tongue)')}
-              description={t('settings.native_lang_desc', 'Your mother tongue for demographic and profile records')}
-              noBorder
-            >
-              <SelectField
-                value={nativeLanguage}
-                onChange={(v) => {
-                  setNativeLanguage(v)
-                  updateSettings({ nativeLanguage: v })
-                }}
-                options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
-              />
-            </SettingRow>
-          </SectionCard>
         )
 
       // ── APPEARANCE ────────────────────────────────────

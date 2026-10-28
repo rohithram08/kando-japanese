@@ -413,7 +413,9 @@
     "username_hint": "Este é o nome exibido em todo o app. Apenas letras, números, \"_\", \".\" e \"-\" (3 a 30 caracteres).",
     "username_too_short": "O nome de usuário deve ter pelo menos {min} caracteres",
     "username_too_long": "O nome de usuário pode ter no máximo {max} caracteres",
-    "username_invalid": "Use apenas letras, números, \"_\", \".\" ou \"-\" (sem espaços)"
+    "username_invalid": "Use apenas letras, números, \"_\", \".\" ou \"-\" (sem espaços)",
+    "account_security": "Conta e Segurança",
+    "profile_card_title": "Perfil do Estudante"
   },
   "auth": {
     "email_required": "O e-mail é obrigatório",
@@ -541,7 +543,8 @@
     "no_activity_week": "Nenhum Wave XP ganho nesta semana — termine uma história e seu questionário para animar isto.",
     "lessons_done": "Histórias",
     "skill_overview": "Progresso de aprendizado",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "Editar perfil"
   },
   "conversation": {
     "title": "Prática de conversação",

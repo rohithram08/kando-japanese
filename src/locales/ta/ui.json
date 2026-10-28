@@ -413,7 +413,9 @@
     "username_too_long": "பயனர்பெயர் அதிகபட்சம் {max} எழுத்துகள்",
     "username_invalid": "எழுத்துகள், எண்கள், \"_\", \".\" அல்லது \"-\" மட்டும் பயன்படுத்தவும் (இடைவெளி கூடாது)",
     "study_level": "Study Level",
-    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
+    "account_security": "கணக்கு & பாதுகாப்பு",
+    "profile_card_title": "கற்கும் பயனர் சுயவிவரம்"
   },
   "auth": {
     "email_required": "மின்னஞ்சல் தேவை",
@@ -485,7 +487,8 @@
     "no_activity_week": "இந்த வாரம் இன்னும் Wave XP இல்லை — ஒரு கதையையும் வினாடி வினாவையும் முடிக்கவும்.",
     "lessons_done": "கதைகள்",
     "skill_overview": "கற்றல் முன்னேற்றம்",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "சுயவிவரத்தைத் திருத்து"
   },
   "conversation": {
     "title": "உரையாடல் பயிற்சி",

@@ -413,7 +413,9 @@
     "username_too_long": "उपयोगकर्ता नाम अधिकतम {max} अक्षर का हो सकता है",
     "username_invalid": "केवल अक्षर, अंक, \"_\", \".\" या \"-\" का उपयोग करें (स्पेस नहीं)",
     "study_level": "Study Level",
-    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
+    "account_security": "खाता और सुरक्षा",
+    "profile_card_title": "शिक्षार्थी प्रोफ़ाइल"
   },
   "auth": {
     "email_required": "ईमेल आवश्यक है",
@@ -485,7 +487,8 @@
     "no_activity_week": "इस सप्ताह अभी कोई Wave XP नहीं — कोई कहानी और उसका क्विज़ पूरा करें।",
     "lessons_done": "कहानियाँ",
     "skill_overview": "सीखने की प्रगति",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "प्रोफ़ाइल संपादित करें"
   },
   "conversation": {
     "title": "बातचीत अभ्यास",

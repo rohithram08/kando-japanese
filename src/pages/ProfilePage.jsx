@@ -5,24 +5,24 @@ import {
   Camera, Upload, X, User, Trophy, Flame,
   Star, Calendar, Award, Target, BookOpen, TrendingUp,
   BarChart3, GraduationCap, UserPlus, UserCheck, Settings, Zap,
-  Eye, Pen, BookMarked, Brain, Shield, Medal,
+  Eye, Pen, BookMarked, Brain, Shield, Medal, Pencil,
   Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile,
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { getProgress } from '../api/progress'
 import { updateProfile } from '../api/users'
 import { uploadAvatar } from '../api/upload'
 import { APP_CONFIG } from '../config/appConfig'
-import { useI18n } from '../i18n'
+import { useI18n, normalizeLocale } from '../i18n'
 import { getStreakHistory } from '../api/progress'
 import { AVATARS } from '../data/avatarData'
 import UserAvatar from '../components/common/UserAvatar'
 // Lazy: pulls in DiceBear only when someone opens the creator.
 const AvatarCreator = lazy(() => import('../components/avatar/AvatarCreator'))
 import ProfileBannerScene from '../components/profile/ProfileBannerScene'
-import { normalizeProfile } from '../utils/userIdentity'
+import { normalizeProfile, validateUsername, USERNAME_MAX } from '../utils/userIdentity'
 import { buildWeeklyActivity, buildSkillProgress } from '../utils/profileStats'
 import { summarizeReadingProgress } from '../utils/storyProgress'
 import { allStories } from '../data/reading/n5_stories'
@@ -275,6 +275,18 @@ export default function ProfilePage() {
   const [showAvatarPicker, setShowAvatarPicker] = useState(false)
   const identity = normalizeProfile(profile, user)
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
+
+
+  // The progress store is the live source (updated on every reward); the profile
+  // record is only fetched at login, so it is just the fallback.
+  const storeXP       = useProgressStore((s) => s.totalXP)
+  const storeStreak   = useProgressStore((s) => s.streak)
+  const storeJlpt     = useProgressStore((s) => s.jlptLevel)
+  const progressState = useProgressStore()
+  const currentLevel  = storeJlpt || identity.jlptLevel
+  const xp            = storeXP > 0 ? storeXP : identity.xp
+  const streakDays    = storeStreak > 0 ? storeStreak : identity.streak
+
   const [selectedAvatar, setSelectedAvatar]   = useState(identity.avatarId)
   const [avatarUrl, setAvatarUrl]             = useState(identity.avatarUrl)
   const [avatarConfig, setAvatarConfig]     = useState(identity.avatarConfig)
@@ -288,6 +300,70 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab]             = useState('overview')
   const [showAllAchievements, setShowAllAchievements] = useState(false)
   const [followingIds, setFollowingIds]       = useState(['user-2', 'user-3', 'user-5'])
+
+  // ── Edit Profile State (Direct Profile Customization) ─────
+  const [searchParams, setSearchParams]       = useSearchParams()
+  const [showEditProfileModal, setShowEditProfileModal] = useState(searchParams.get('edit') === 'true')
+  const [editUsername, setEditUsername]       = useState(identity.username || '')
+  const [editNativeLang, setEditNativeLang]   = useState(normalizeLocale(identity.nativeLanguage || 'en'))
+  const [editLevel, setEditLevel]             = useState('N5')
+  const [usernameError, setUsernameError]     = useState(null)
+  const [isSavingProfile, setIsSavingProfile] = useState(false)
+
+  useEffect(() => {
+    if (searchParams.get('edit') === 'true') {
+      setShowEditProfileModal(true)
+    }
+  }, [searchParams])
+
+  useEffect(() => {
+    if (showEditProfileModal) {
+      setEditUsername(identity.username || '')
+      setEditNativeLang(normalizeLocale(identity.nativeLanguage || 'en'))
+      setEditLevel(currentLevel || 'N5')
+      setUsernameError(null)
+    }
+  }, [showEditProfileModal, identity.username, identity.nativeLanguage, currentLevel])
+
+  const handleSaveProfileDetails = async () => {
+    const stored = (identity.username || '').trim()
+    if (editUsername.trim() !== stored) {
+      const problem = validateUsername(editUsername)
+      if (problem) {
+        const msg = t(problem.key, problem.params || problem.fallback, problem.fallback)
+        setUsernameError(msg)
+        toast.error(msg)
+        return
+      }
+    } else if (!editUsername.trim()) {
+      const msg = t('toast.name_required', 'Username cannot be empty')
+      setUsernameError(msg)
+      toast.error(msg)
+      return
+    }
+
+    setUsernameError(null)
+    setIsSavingProfile(true)
+    try {
+      await updateProfile({
+        username: editUsername.trim(),
+        nativeLanguage: editNativeLang,
+        currentLevel: editLevel,
+      })
+      if (refreshProfile) await refreshProfile()
+      toast.success(t('toast.profile_updated', 'Profile updated! ✅'))
+      setShowEditProfileModal(false)
+      if (searchParams.get('edit')) {
+        searchParams.delete('edit')
+        setSearchParams(searchParams, { replace: true })
+      }
+    } catch (err) {
+      console.error(err)
+      toast.error(t('toast.profile_save_failed', err?.message || 'Failed to save profile'))
+    } finally {
+      setIsSavingProfile(false)
+    }
+  }
 
   useEffect(() => {
     if (profile) {
@@ -324,15 +400,6 @@ export default function ProfilePage() {
     }
   }
 
-  // The progress store is the live source (updated on every reward); the profile
-  // record is only fetched at login, so it is just the fallback.
-  const storeXP       = useProgressStore((s) => s.totalXP)
-  const storeStreak   = useProgressStore((s) => s.streak)
-  const storeJlpt     = useProgressStore((s) => s.jlptLevel)
-  const progressState = useProgressStore()
-  const currentLevel  = storeJlpt || identity.jlptLevel
-  const xp            = storeXP > 0 ? storeXP : identity.xp
-  const streakDays    = storeStreak > 0 ? storeStreak : identity.streak
 
   // Stories read: the same persisted reading progress the dashboard uses
   const readingProgress = useReadingStore((s) => s.progressMap)
@@ -458,12 +525,25 @@ export default function ProfilePage() {
           {/* Animated 2D banner */}
           <div className="relative h-44 sm:h-52 overflow-hidden bg-purple-700">
             <ProfileBannerScene />
-            <div className="relative z-10 flex justify-end p-4">
-              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/settings')}
-                aria-label={t('nav.settings', 'Settings')}
-                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white/80 hover:text-white transition-colors backdrop-blur-sm"
+            <div className="relative z-10 flex items-center justify-end gap-2 p-4">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setShowEditProfileModal(true)}
+                aria-label={t('profile.edit_profile', 'Edit Profile')}
+                className="px-3.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center gap-1.5 backdrop-blur-md transition-all shadow-sm border border-white/25"
               >
-                <Settings className="w-5 h-5" />
+                <Pencil className="w-3.5 h-3.5" />
+                <span>{t('profile.edit_profile', 'Edit Profile')}</span>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/settings')}
+                aria-label={t('nav.settings', 'Settings')}
+                className="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white/90 hover:text-white transition-colors backdrop-blur-md border border-white/20"
+              >
+                <Settings className="w-4 h-4" />
               </motion.button>
             </div>
           </div>
@@ -502,9 +582,20 @@ export default function ProfilePage() {
 
               {/* Info */}
               <div className="flex-1 min-w-0 text-center sm:text-left sm:pt-3">
-                <h1 className={`text-2xl font-bold truncate text-foreground`}>
-                  {identity.username}
-                </h1>
+                <div className="flex items-center justify-center sm:justify-start gap-2">
+                  <h1 className={`text-2xl font-bold truncate text-foreground`}>
+                    {identity.username}
+                  </h1>
+                  <button
+                    type="button"
+                    onClick={() => setShowEditProfileModal(true)}
+                    title={t('profile.edit_profile', 'Edit Profile')}
+                    aria-label={t('profile.edit_profile', 'Edit Profile')}
+                    className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                  >
+                    <Pencil className="w-4 h-4" />
+                  </button>
+                </div>
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-1">
                   <span className={`inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-300`}>
                     <GraduationCap className="w-3 h-3" />{currentLevel} · {levelInfo.label}
@@ -900,6 +991,164 @@ export default function ProfilePage() {
                     onViewProfile={handleViewProfile}
                   />
                 ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── EDIT PROFILE MODAL ───────────────────────── */}
+      <AnimatePresence>
+        {showEditProfileModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowEditProfileModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-lg rounded-3xl p-6 sm:p-7 border shadow-2xl bg-surface border-border space-y-5 max-h-[90vh] overflow-y-auto"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-3 border-b border-border">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
+                    <Pencil className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">Edit Profile</h3>
+                    <p className="text-xs text-muted-foreground">Customize your public learner identity</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowEditProfileModal(false)}
+                  className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Avatar Section */}
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-muted/30 border border-border/60">
+                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shadow-sm shrink-0 border-2 border-border">
+                  <UserAvatar
+                    avatarUrl={avatarUrl}
+                    avatarId={selectedAvatar}
+                    avatarConfig={avatarConfig}
+                    username={editUsername || identity.username}
+                    previewSrc={previewUrl}
+                    size="xl"
+                    rounded="rounded-2xl"
+                    className="!w-full !h-full"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-bold text-foreground">Profile Picture & Mascot</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">
+                    Choose an emoji preset, customize a cartoon mascot, or upload a photo
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2 mt-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setShowAvatarPicker(true)}
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-600 text-white hover:bg-purple-700 transition-colors flex items-center gap-1.5 shadow-xs"
+                    >
+                      <Camera className="w-3.5 h-3.5" />
+                      <span>Change Avatar</span>
+                    </button>
+                    {(selectedAvatar || avatarUrl || avatarConfig) && (
+                      <button
+                        type="button"
+                        onClick={handleRemoveAvatar}
+                        disabled={uploadLoading}
+                        className="px-3 py-1.5 rounded-lg text-xs font-semibold text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10 transition-colors"
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Username Input */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-foreground">Username</label>
+                  <span className="text-[10px] text-muted-foreground">
+                    {editUsername.length}/{USERNAME_MAX}
+                  </span>
+                </div>
+                <div className="relative">
+                  <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                  <input
+                    type="text"
+                    value={editUsername}
+                    onChange={(e) => {
+                      setEditUsername(e.target.value)
+                      if (usernameError) setUsernameError(null)
+                    }}
+                    maxLength={USERNAME_MAX}
+                    placeholder="Your username"
+                    className={`w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm bg-muted/40 border-border text-foreground focus:bg-surface focus:outline-none focus:ring-2 focus:ring-purple-400/50 transition-all ${
+                      usernameError ? 'border-red-400 ring-1 ring-red-400' : ''
+                    }`}
+                  />
+                </div>
+                <p className={`text-[11px] ${usernameError ? 'text-red-500' : 'text-muted-foreground'}`}>
+                  {usernameError || 'Letters, numbers, "_", "." and "-" only (3–30 characters).'}
+                </p>
+              </div>
+
+              {/* Target Study Level */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-bold text-foreground">Current Study Level</label>
+                <div className="grid grid-cols-5 gap-2">
+                  {['N5', 'N4', 'N3', 'N2', 'N1'].map((lvl) => (
+                    <button
+                      key={lvl}
+                      type="button"
+                      onClick={() => setEditLevel(lvl)}
+                      className={`py-2 rounded-xl text-xs font-bold border transition-all ${
+                        editLevel === lvl
+                          ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
+                          : 'bg-muted/40 border-border text-muted-foreground hover:text-foreground hover:bg-muted'
+                      }`}
+                    >
+                      {lvl}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer Actions */}
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-border">
+                <button
+                  type="button"
+                  onClick={() => setShowEditProfileModal(false)}
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSaveProfileDetails}
+                  disabled={isSavingProfile}
+                  className="px-5 py-2 rounded-xl text-xs font-bold bg-purple-600 text-white hover:bg-purple-700 transition-colors flex items-center gap-2 shadow-sm disabled:opacity-60"
+                >
+                  {isSavingProfile ? (
+                    <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  )}
+                  <span>Save Changes</span>
+                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -413,7 +413,9 @@
     "username_hint": "这是整个应用中显示的名称。只能使用字母、数字、“_”、“.”和“-”（3–30 个字符）。",
     "username_too_short": "用户名至少需要 {min} 个字符",
     "username_too_long": "用户名最多 {max} 个字符",
-    "username_invalid": "仅使用字母、数字、“_”、“.”或“-”（不能有空格）"
+    "username_invalid": "仅使用字母、数字、“_”、“.”或“-”（不能有空格）",
+    "account_security": "账号与安全",
+    "profile_card_title": "学员个人档案"
   },
   "auth": {
     "email_required": "请输入电子邮箱",
@@ -541,7 +543,8 @@
     "no_activity_week": "本周还没有获得 Wave XP——完成一个故事及其测验，让这里亮起来。",
     "lessons_done": "故事",
     "skill_overview": "学习进度",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "编辑个人资料"
   },
   "conversation": {
     "title": "会话练习",

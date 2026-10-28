@@ -413,7 +413,9 @@
     "username_hint": "Ini adalah nama yang tampil di seluruh aplikasi. Hanya huruf, angka, \"_\", \".\" dan \"-\" (3–30 karakter).",
     "username_too_short": "Nama pengguna minimal {min} karakter",
     "username_too_long": "Nama pengguna maksimal {max} karakter",
-    "username_invalid": "Gunakan hanya huruf, angka, \"_\", \".\" atau \"-\" (tanpa spasi)"
+    "username_invalid": "Gunakan hanya huruf, angka, \"_\", \".\" atau \"-\" (tanpa spasi)",
+    "account_security": "Akun & Keamanan",
+    "profile_card_title": "Profil Pembelajar"
   },
   "auth": {
     "email_required": "Email wajib diisi",
@@ -541,7 +543,8 @@
     "no_activity_week": "Belum ada Wave XP minggu ini — selesaikan cerita dan kuisnya agar ini menyala.",
     "lessons_done": "Cerita",
     "skill_overview": "Kemajuan belajar",
-    "total_xp": "Wave XP"
+    "total_xp": "Wave XP",
+    "edit_profile": "Edit Profil"
   },
   "conversation": {
     "title": "Latihan percakapan",
