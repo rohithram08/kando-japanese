@@ -1,5 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { usersRouter, updateProfileSchema } from '../users.js';
+import {
+  usersRouter,
+  updateProfileSchema,
+  sendAlertSchema,
+  alertCooldowns,
+} from '../users.js';
 import { db } from '../../db/index.js';
 import { AppError } from '../../middleware/errorHandler.js';
 
@@ -310,6 +315,126 @@ describe('Users Routes — Backend API', () => {
       expect(err).toBeInstanceOf(AppError);
       expect(err.statusCode).toBe(404);
       expect(err.message).toBe('User not found');
+    });
+  });
+
+  describe('sendAlertSchema and Peer Study Alerts', () => {
+    it('accepts only predefined alert types: study, streak, cheer, league', () => {
+      for (const alertType of ['study', 'streak', 'cheer', 'league']) {
+        const result = sendAlertSchema.safeParse({ body: { alertType } });
+        expect(result.success).toBe(true);
+      }
+    });
+
+    it('rejects custom free-form chat messages and invalid alert types', () => {
+      const invalidCases = [
+        { alertType: 'custom_message', message: 'Hello meet me at...' },
+        { alertType: 'free_chat' },
+        { alertType: 'random' },
+        {},
+      ];
+      for (const c of invalidCases) {
+        const result = sendAlertSchema.safeParse({ body: c });
+        expect(result.success).toBe(false);
+      }
+    });
+
+    it('rejects sending an alert to oneself', async () => {
+      const handler = getRouteHandler('/:userId/alert', 'post');
+      const req: any = {
+        user: { userId: 'u-123' },
+        params: { userId: 'u-123' },
+        body: { alertType: 'study' },
+      };
+      const res: any = { json: vi.fn() };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).toHaveBeenCalledTimes(1);
+      const err = next.mock.calls[0][0];
+      expect(err).toBeInstanceOf(AppError);
+      expect(err.statusCode).toBe(400);
+      expect(err.code).toBe('SELF_ALERT_FORBIDDEN');
+    });
+
+    it('returns 404 when target recipient is not found', async () => {
+      const handler = getRouteHandler('/:userId/alert', 'post');
+      const req: any = {
+        user: { userId: 'u-123' },
+        params: { userId: 'non-existent' },
+        body: { alertType: 'streak' },
+      };
+      const res: any = { json: vi.fn() };
+      const next = vi.fn();
+
+      vi.mocked(db.query.users.findFirst).mockResolvedValue(null as any);
+
+      await handler(req, res, next);
+
+      expect(next).toHaveBeenCalledTimes(1);
+      const err = next.mock.calls[0][0];
+      expect(err).toBeInstanceOf(AppError);
+      expect(err.statusCode).toBe(404);
+    });
+
+    it('sends canned alert with sender username and predefined text', async () => {
+      const handler = getRouteHandler('/:userId/alert', 'post');
+      alertCooldowns.clear();
+      const req: any = {
+        user: { userId: 'u-sender' },
+        params: { userId: 'u-target' },
+        body: { alertType: 'cheer' },
+      };
+      let jsonResult: any;
+      const res: any = {
+        json: vi.fn((data) => {
+          jsonResult = data;
+        }),
+      };
+      const next = vi.fn();
+
+      vi.mocked(db.query.users.findFirst)
+        .mockResolvedValueOnce({ id: 'u-target', username: 'Sakura' } as any)
+        .mockResolvedValueOnce({ id: 'u-sender', username: 'Rohith' } as any);
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(jsonResult).toBeDefined();
+      expect(jsonResult.success).toBe(true);
+      expect(jsonResult.alert.type).toBe('cheer');
+      expect(jsonResult.alert.text).toBe('Ganbatte! You can do it! 🌸');
+      expect(jsonResult.alert.senderName).toBe('Rohith');
+      expect(jsonResult.alert.recipientId).toBe('u-target');
+    });
+
+    it('enforces cooldown on rapid duplicate alerts to the same user', async () => {
+      const handler = getRouteHandler('/:userId/alert', 'post');
+      alertCooldowns.clear();
+      const req: any = {
+        user: { userId: 'u-sender-rate' },
+        params: { userId: 'u-target-rate' },
+        body: { alertType: 'study' },
+      };
+      const res: any = { json: vi.fn() };
+      const next = vi.fn();
+
+      vi.mocked(db.query.users.findFirst)
+        .mockResolvedValue({ id: 'u-target-rate', username: 'Target' } as any);
+
+      // First call succeeds
+      await handler(req, res, next);
+      expect(res.json).toHaveBeenCalled();
+
+      // Second immediate call must be rate limited (429)
+      const next2 = vi.fn();
+      await handler(req, res, next2);
+      expect(next2).toHaveBeenCalledTimes(1);
+      const err = next2.mock.calls[0][0];
+      expect(err).toBeInstanceOf(AppError);
+      expect(err.statusCode).toBe(429);
+      expect(err.code).toBe('ALERT_COOLDOWN');
     });
   });
 });

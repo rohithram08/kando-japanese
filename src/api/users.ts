@@ -1,6 +1,6 @@
 // ─── Users API ───────────────────────────────────────────────────────────────
 
-import { get, put, del } from './client';
+import { get, post, put, del } from './client';
 import type { LevelStatus } from '../types/models';
 import type {
   UserProfileResponse,
@@ -59,4 +59,28 @@ export function deleteAccount(): Promise<{ message: string }> {
  */
 export function getLevelStatus(): Promise<LevelStatus> {
   return get<LevelStatus>('/users/level-status');
+}
+
+export type StudyAlertType = 'study' | 'streak' | 'cheer' | 'league';
+
+export interface SendAlertResponse {
+  success: boolean;
+  message: string;
+  alert: {
+    type: StudyAlertType;
+    label: string;
+    text: string;
+    icon: string;
+    senderName: string;
+    recipientId: string;
+    sentAt: string;
+  };
+}
+
+/**
+ * Send a predefined, confidential study alert to a fellow learner.
+ * Free-text messaging is strictly disallowed.
+ */
+export function sendUserAlert(userId: string, alertType: StudyAlertType): Promise<SendAlertResponse> {
+  return post<SendAlertResponse>(`/users/${encodeURIComponent(userId)}/alert`, { alertType });
 }

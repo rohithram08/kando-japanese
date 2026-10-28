@@ -260,3 +260,99 @@ usersRouter.get('/:userId', async (req, res, next) => {
     next(err);
   }
 });
+
+// ─── Predefined Study Alerts (Confidential & Harassment-Free) ────────────────
+export const STUDY_ALERT_TYPES = {
+  study: {
+    type: 'study',
+    label: "Let's start studying!",
+    text: "Let's start studying! 📚",
+    icon: '📚',
+  },
+  streak: {
+    type: 'streak',
+    label: 'Keep your streak alive!',
+    text: 'Keep your streak alive today! 🔥',
+    icon: '🔥',
+  },
+  cheer: {
+    type: 'cheer',
+    label: 'Ganbatte! You can do it!',
+    text: 'Ganbatte! You can do it! 🌸',
+    icon: '🌸',
+  },
+  league: {
+    type: 'league',
+    label: 'Great job in the league!',
+    text: 'Great job in the league! Keep climbing! 🏆',
+    icon: '🏆',
+  },
+} as const;
+
+export type StudyAlertType = keyof typeof STUDY_ALERT_TYPES;
+
+export const sendAlertSchema = z.object({
+  body: z.object({
+    alertType: z.enum(['study', 'streak', 'cheer', 'league']),
+  }),
+});
+
+// Cooldown tracker: `${senderId}:${targetUserId}:${alertType}` -> timestamp
+export const alertCooldowns = new Map<string, number>();
+export const ALERT_COOLDOWN_MS = 60_000; // 1 minute cooldown per pair
+
+usersRouter.post('/:userId/alert', requireAuth, validate(sendAlertSchema), async (req, res, next) => {
+  try {
+    const senderId = req.user!.userId;
+    const targetUserId = req.params.userId;
+    const { alertType } = req.body;
+
+    if (senderId === targetUserId) {
+      throw new AppError(400, 'Cannot send a study alert to yourself', 'SELF_ALERT_FORBIDDEN');
+    }
+
+    const targetUser = await db.query.users.findFirst({
+      where: eq(users.id, targetUserId),
+    });
+
+    if (!targetUser) {
+      throw new AppError(404, 'User not found');
+    }
+
+    const cooldownKey = `${senderId}:${targetUserId}:${alertType}`;
+    const lastSent = alertCooldowns.get(cooldownKey);
+    const now = Date.now();
+    if (lastSent && now - lastSent < ALERT_COOLDOWN_MS) {
+      const waitSeconds = Math.ceil((ALERT_COOLDOWN_MS - (now - lastSent)) / 1000);
+      throw new AppError(
+        429,
+        `Please wait ${waitSeconds}s before sending this alert again`,
+        'ALERT_COOLDOWN'
+      );
+    }
+
+    alertCooldowns.set(cooldownKey, now);
+
+    const sender = await db.query.users.findFirst({
+      where: eq(users.id, senderId),
+    });
+
+    const template = STUDY_ALERT_TYPES[alertType as StudyAlertType];
+
+    res.json({
+      success: true,
+      message: 'Study alert sent successfully',
+      alert: {
+        type: template.type,
+        label: template.label,
+        text: template.text,
+        icon: template.icon,
+        senderName: sender?.username || 'A fellow learner',
+        recipientId: targetUser.id,
+        sentAt: new Date().toISOString(),
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});

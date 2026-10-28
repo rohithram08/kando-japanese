@@ -66,30 +66,6 @@ export default function LoginPage() {
     }
   }
 
-  // ── Dev-only demo login ───────────────────────────────────
-  // Credentials are NEVER stored in the source. For local development put
-  //   VITE_DEV_DEMO_EMAIL / VITE_DEV_DEMO_PASSWORD
-  // in a git-ignored `.env.local`. `import.meta.env.DEV` is false in production
-  // builds, so this whole branch (and the values) are stripped from the bundle.
-  const devDemo =
-    import.meta.env.DEV && import.meta.env.VITE_DEV_DEMO_EMAIL && import.meta.env.VITE_DEV_DEMO_PASSWORD
-      ? { email: import.meta.env.VITE_DEV_DEMO_EMAIL, password: import.meta.env.VITE_DEV_DEMO_PASSWORD }
-      : null
-
-  const handleDemoLogin = async () => {
-    if (!devDemo) return
-    setLoading(true)
-    try {
-      await signIn(devDemo)
-      toast.success(t('auth.welcome_back', 'Welcome back! 🎌'))
-      navigate('/dashboard')
-    } catch (err) {
-      toast.error(err?.message || 'Demo sign in failed')
-    } finally {
-      setLoading(false)
-    }
-  }
-
   // ── Google sign-in (real OAuth redirect handled by the backend) ──
   const handleGoogleSignIn = () => {
     setGoogleLoading(true)
@@ -455,21 +431,6 @@ export default function LoginPage() {
                       'Sign In'
                     )}
                   </motion.button>
-
-                  {/* Dev-only demo login (hidden in production, see devDemo above) */}
-                  {devDemo && (
-                  <motion.button
-                    type="button"
-                    onClick={handleDemoLogin}
-                    disabled={loading || googleLoading}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-2.5 rounded-xl font-semibold text-xs border-2 border-emerald-500/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:border-emerald-500/40 dark:text-emerald-300 dark:hover:bg-emerald-900/50 transition-all flex items-center justify-center gap-2 shadow-sm"
-                  >
-                    <Sparkles className="w-4 h-4 text-emerald-500" />
-                    ⚡ Dev demo sign-in
-                  </motion.button>
-                  )}
                 </form>
 
                 {/* Divider */}

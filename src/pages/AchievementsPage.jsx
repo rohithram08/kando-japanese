@@ -1,5 +1,6 @@
 // src/pages/AchievementsPage.jsx
 import React, { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Trophy, Flame, Zap, Target, BookOpen, Star,
@@ -11,19 +12,23 @@ import { useAuthStore } from '../store/authStore'
 import { useReadingStore } from '../store/readingStore'
 import { useThemeStore } from '../store/themeStore'
 import { useI18n } from '../i18n'
+import { useLeague, useLeagueHistory } from '../hooks/useLeague'
+import { LEAGUES, getRungDetails } from '../utils/league'
+import LeagueBadge from '../components/league/LeagueBadge'
 import SlimeSticker from '../components/mascot/SlimeSticker'
 
-// ─── Competitive League System ──────────────────────────────────────────────
-export const LEAGUE_TIERS = [
-  { id: 'bronze',   label: 'Bronze League',   minXP: 0,     icon: '🥉', color: 'from-amber-700 to-amber-900',  badge: 'bg-amber-800/15 text-amber-700 dark:text-amber-400' },
-  { id: 'silver',   label: 'Silver League',   minXP: 250,   icon: '🥈', color: 'from-slate-400 to-slate-600',  badge: 'bg-slate-500/15 text-slate-700 dark:text-slate-300' },
-  { id: 'gold',     label: 'Gold League',     minXP: 750,   icon: '🥇', color: 'from-amber-400 to-yellow-600', badge: 'bg-yellow-500/15 text-yellow-700 dark:text-yellow-400' },
-  { id: 'sapphire', label: 'Sapphire League', minXP: 1500,  icon: '💎', color: 'from-blue-500 to-indigo-600',  badge: 'bg-blue-500/15 text-blue-700 dark:text-blue-400' },
-  { id: 'ruby',     label: 'Ruby League',     minXP: 3000,  icon: '🔴', color: 'from-rose-500 to-red-600',     badge: 'bg-rose-500/15 text-rose-700 dark:text-rose-400' },
-  { id: 'emerald',  label: 'Emerald League',  minXP: 6000,  icon: '🟢', color: 'from-emerald-400 to-teal-600', badge: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400' },
-  { id: 'diamond',  label: 'Diamond League',  minXP: 10000, icon: '💠', color: 'from-cyan-400 to-blue-600',    badge: 'bg-cyan-500/15 text-cyan-700 dark:text-cyan-400' },
-  { id: 'master',   label: 'Master League',   minXP: 20000, icon: '👑', color: 'from-purple-500 to-pink-600',  badge: 'bg-purple-500/15 text-purple-700 dark:text-purple-400' },
-]
+// ─── Authentic Competitive League Ladder (Wakaba, Take, Ume, Sakura, Fuji) ───
+export const LEAGUE_TIERS = LEAGUES.map((l, idx) => ({
+  id: l.id,
+  label: `${l.name} League`,
+  name: l.name,
+  jp: l.jp,
+  color: l.color,
+  badge: l.badge,
+  minRung: idx * 3,
+  minXP: [0, 250, 750, 1500, 3000][idx] || 0,
+  icon: ['🌱', '🎍', '🌸', '👑', '🗻'][idx] || '🏆',
+}))
 
 export const RARITY = {
   common:    { label: 'Common',    badge: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300',      border: 'border-gray-200 dark:border-gray-800' },
@@ -195,7 +200,7 @@ export const SLIME_AWARDS = [
     },
   },
 
-  // WAVE XP & LEAGUES
+  // WAVE XP & COMPETITIVE LEAGUES
   {
     id: 'xp_seeker_100',
     title: 'Wave Awakened',
@@ -207,34 +212,64 @@ export const SLIME_AWARDS = [
     progress: (s) => ({ current: safeNum(s.totalXP), target: 100 }),
   },
   {
-    id: 'silver_tier_reach',
-    title: 'Silver League Victor',
-    japaneseTitle: 'シルバーリーグ (Gin no Shou)',
-    sticker: 'crown',
-    desc: 'Promoted to the Silver Competitive League (250+ Wave XP).',
+    id: 'wakaba_challenger',
+    title: 'Wakaba Challenger',
+    japaneseTitle: '若葉の挑戦者 (Wakaba no Chousensha)',
+    sticker: 'sparkle',
+    desc: 'Entered the competitive weekly leagues in Wakaba League.',
+    rarity: 'common',
+    condition: (s, pMap, l) => Boolean(l?.isEnrolled || (l?.highestRung ?? 0) >= 0 || safeNum(s?.totalXP) >= 50),
+    progress: (s, pMap, l) => ({ current: (l?.isEnrolled || (l?.highestRung ?? 0) >= 0 || safeNum(s?.totalXP) >= 50) ? 1 : 0, target: 1 }),
+  },
+  {
+    id: 'take_ascendant',
+    title: 'Take Ascendant',
+    japaneseTitle: '竹の昇格者 (Take no Shoukakusha)',
+    sticker: 'scholar',
+    desc: 'Climbed the ladder and earned promotion to Take (Bamboo) League.',
     rarity: 'uncommon',
-    condition: (s) => safeNum(s.totalXP) >= 250,
-    progress: (s) => ({ current: safeNum(s.totalXP), target: 250 }),
+    condition: (s, pMap, l) => (l?.highestRung ?? 0) >= 3 || safeNum(s?.totalXP) >= 250,
+    progress: (s, pMap, l) => ({ current: Math.min(l?.highestRung ?? Math.floor(safeNum(s?.totalXP) / 80), 3), target: 3 }),
   },
   {
-    id: 'gold_tier_reach',
-    title: 'Gold League Sovereign',
-    japaneseTitle: '黄金の栄光 (Ougon no Eikou)',
-    sticker: 'crown',
-    desc: 'Ascended to the Gold League (750+ Wave XP).',
+    id: 'ume_blossom',
+    title: 'Ume Blossom',
+    japaneseTitle: '梅の開花 (Ume no Kaika)',
+    sticker: 'zen',
+    desc: 'Ascended to the esteemed Ume (Plum Blossom) League.',
     rarity: 'rare',
-    condition: (s) => safeNum(s.totalXP) >= 750,
-    progress: (s) => ({ current: safeNum(s.totalXP), target: 750 }),
+    condition: (s, pMap, l) => (l?.highestRung ?? 0) >= 6 || safeNum(s?.totalXP) >= 750,
+    progress: (s, pMap, l) => ({ current: Math.min(l?.highestRung ?? Math.floor(safeNum(s?.totalXP) / 125), 6), target: 6 }),
   },
   {
-    id: 'sapphire_tier_reach',
-    title: 'Sapphire Crown',
-    japaneseTitle: '蒼穹の王 (Soukyuu no Ou)',
-    sticker: 'crown',
-    desc: 'Conquered the Sapphire League (1,500+ Wave XP).',
+    id: 'sakura_sovereign',
+    title: 'Sakura Sovereign',
+    japaneseTitle: '桜の覇者 (Sakura no Hasha)',
+    sticker: 'sakura',
+    desc: 'Reached the prestigious Sakura (Cherry Blossom) League.',
     rarity: 'epic',
-    condition: (s) => safeNum(s.totalXP) >= 1500,
-    progress: (s) => ({ current: safeNum(s.totalXP), target: 1500 }),
+    condition: (s, pMap, l) => (l?.highestRung ?? 0) >= 9 || safeNum(s?.totalXP) >= 1500,
+    progress: (s, pMap, l) => ({ current: Math.min(l?.highestRung ?? Math.floor(safeNum(s?.totalXP) / 160), 9), target: 9 }),
+  },
+  {
+    id: 'fuji_summit',
+    title: 'Fuji Summit Master',
+    japaneseTitle: '富士頂上 (Fuji Choujou)',
+    sticker: 'crown',
+    desc: 'Conquered the summit and reached the legendary Fuji League.',
+    rarity: 'legendary',
+    condition: (s, pMap, l) => (l?.highestRung ?? 0) >= 12 || safeNum(s?.totalXP) >= 3000,
+    progress: (s, pMap, l) => ({ current: Math.min(l?.highestRung ?? Math.floor(safeNum(s?.totalXP) / 250), 12), target: 12 }),
+  },
+  {
+    id: 'league_podium',
+    title: 'League Podium',
+    japaneseTitle: '表彰台 (Hyoushoudai)',
+    sticker: 'trophy',
+    desc: 'Finished in the Top 3 of your weekly league cohort.',
+    rarity: 'epic',
+    condition: (s, pMap, l) => Boolean((l?.podiumCount ?? 0) >= 1 || (l?.currentRank && l.currentRank <= 3 && l.meetsMinXp) || safeNum(s?.totalXP) >= 1000),
+    progress: (s, pMap, l) => ({ current: (l?.podiumCount ?? 0) >= 1 ? 1 : 0, target: 1 }),
   },
 
   // REVIEWS & ZEN
@@ -315,13 +350,14 @@ export const ACHIEVEMENTS = SLIME_AWARDS.map((award) => ({
   category: award.category || 'general',
 }))
 
-export function computeUnlockedIds(progress, readingProgressMap = {}) {
+export function computeUnlockedIds(progress, readingProgressMap = {}, leagueInfo = null) {
   const s = progress || {}
   const pMap = readingProgressMap || {}
+  const l = leagueInfo || {}
   const unlocked = new Set()
   ACHIEVEMENTS.forEach((a) => {
     try {
-      if (typeof a.condition === 'function' && a.condition(s, pMap)) {
+      if (typeof a.condition === 'function' && a.condition(s, pMap, l)) {
         unlocked.add(a.id)
       }
     } catch {
@@ -354,14 +390,36 @@ export default function AchievementsPage() {
     ).length
   }, [progressMap])
 
-  // Current & Highest League
-  const currentLeague = useMemo(() => {
-    return [...LEAGUE_TIERS].reverse().find((l) => currentXP >= l.minXP) || LEAGUE_TIERS[0]
-  }, [currentXP])
+  // Current & Highest League (Dynamically connected to real weekly league ladder)
+  const user = useAuthStore((s) => s.user)
+  const { data: leagueData } = useLeague({ enabled: !!user, poll: false })
+  const { data: leagueHistory } = useLeagueHistory({ enabled: !!user })
 
-  const nextLeague = useMemo(() => {
-    return LEAGUE_TIERS.find((l) => currentXP < l.minXP) || null
-  }, [currentXP])
+  const currentRung = leagueData?.rung
+  const highestRungIndex = useMemo(() => {
+    const historyRungs = (leagueHistory?.weeks || []).map((w) => w.rung?.index ?? w.rungStart ?? 0)
+    // If not loaded from server yet, fall back gracefully to XP estimate
+    const currentIdx = currentRung?.index ?? (currentXP >= 1500 ? 9 : currentXP >= 750 ? 6 : currentXP >= 250 ? 3 : 0)
+    return Math.max(currentIdx, ...historyRungs, 0)
+  }, [currentRung, leagueHistory, currentXP])
+
+  const highestLeague = useMemo(() => {
+    return getRungDetails(highestRungIndex)
+  }, [highestRungIndex])
+
+  const nextRung = useMemo(() => {
+    return highestRungIndex < 14 ? getRungDetails(highestRungIndex + 1) : null
+  }, [highestRungIndex])
+
+  const leagueContext = useMemo(() => ({
+    highestRung: highestRungIndex,
+    currentRung: currentRung?.index ?? 0,
+    podiumCount: (leagueHistory?.weeks || []).filter((w) => typeof w.rank === 'number' && w.rank >= 1 && w.rank <= 3).length,
+    currentRank: leagueData?.board?.you?.rank,
+    meetsMinXp: leagueData?.board?.you?.meetsMinXp,
+    isEnrolled: Boolean(leagueData?.rung),
+    rung: currentRung,
+  }), [highestRungIndex, currentRung, leagueHistory, leagueData])
 
   // ── 2. Evaluate Obtained Awards (ONLY OBTAINED AWARDS ARE SHOWN) ──
   const { obtainedAwards, upcomingAwards } = useMemo(() => {
@@ -369,11 +427,11 @@ export default function AchievementsPage() {
     const unobtained = []
 
     SLIME_AWARDS.forEach((award) => {
-      const isEarned = award.condition(progress, progressMap)
+      const isEarned = award.condition(progress, progressMap, leagueContext)
       if (isEarned) {
         obtained.push({ ...award, obtained: true })
       } else {
-        const prog = award.progress(progress, progressMap)
+        const prog = award.progress(progress, progressMap, leagueContext)
         unobtained.push({ ...award, obtained: false, prog })
       }
     })
@@ -386,7 +444,7 @@ export default function AchievementsPage() {
     })
 
     return { obtainedAwards: obtained, upcomingAwards: unobtained }
-  }, [progress, progressMap])
+  }, [progress, progressMap, leagueContext])
 
   // Highest rarity among obtained
   const topRarity = obtainedAwards.reduce((top, a) => {
@@ -456,7 +514,7 @@ export default function AchievementsPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
 
           {/* 1. Longest Streak */}
           <motion.div
@@ -488,22 +546,28 @@ export default function AchievementsPage() {
             whileHover={{ y: -3, transition: { duration: 0.15 } }}
             className="card p-4.5 rounded-2xl border border-border bg-surface flex flex-col justify-between relative overflow-hidden group shadow-xs"
           >
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full -translate-y-8 translate-x-8 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full -translate-y-8 translate-x-8 pointer-events-none" />
             <div className="flex items-center justify-between mb-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-xl">
-                {currentLeague.icon}
+              <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                <LeagueBadge league={highestLeague?.league} stage={highestLeague?.stage} size={28} />
               </div>
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${currentLeague.badge}`}>
-                Rank Tier
-              </span>
+              <Link
+                to="/league"
+                className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors flex items-center gap-1"
+              >
+                View League →
+              </Link>
             </div>
             <div>
-              <div className="text-xl md:text-2xl font-black text-foreground truncate">
-                {currentLeague.label.replace(' League', '')}
+              <div className="text-xl md:text-2xl font-black text-foreground truncate flex items-center gap-2">
+                <span>{highestLeague?.label || 'Wakaba'}</span>
+                <span className="text-xs font-semibold px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                  {highestLeague?.league?.jp}
+                </span>
               </div>
               <div className="text-xs font-bold text-foreground mt-0.5">Highest League</div>
               <div className="text-[11px] text-muted-foreground mt-1 truncate">
-                {nextLeague ? `Next: ${nextLeague.label.replace(' League', '')} (${nextLeague.minXP} XP)` : 'Top League Master! 👑'}
+                {nextRung ? `Next: ${nextRung.label}` : 'Top of Fuji Summit! 🗻'}
               </div>
             </div>
           </motion.div>
@@ -555,62 +619,6 @@ export default function AchievementsPage() {
               <div className="text-[11px] text-muted-foreground mt-1">
                 Flawless quiz completions
               </div>
-            </div>
-          </motion.div>
-
-          {/* 5. Kanji Mastered */}
-          <motion.div
-            whileHover={{ y: -3, transition: { duration: 0.15 } }}
-            className="card p-4 rounded-2xl border border-border bg-surface flex items-center gap-3 shadow-xs"
-          >
-            <div className="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-500 flex items-center justify-center font-bold text-lg">
-              漢
-            </div>
-            <div>
-              <div className="text-lg font-bold text-foreground">{kanjiLearned}</div>
-              <div className="text-xs text-muted-foreground font-medium">Kanji Learned</div>
-            </div>
-          </motion.div>
-
-          {/* 6. Vocabulary Mastered */}
-          <motion.div
-            whileHover={{ y: -3, transition: { duration: 0.15 } }}
-            className="card p-4 rounded-2xl border border-border bg-surface flex items-center gap-3 shadow-xs"
-          >
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-500 flex items-center justify-center font-bold text-lg">
-              📝
-            </div>
-            <div>
-              <div className="text-lg font-bold text-foreground">{vocabLearned}</div>
-              <div className="text-xs text-muted-foreground font-medium">Vocabulary Mastered</div>
-            </div>
-          </motion.div>
-
-          {/* 7. Lessons Finished */}
-          <motion.div
-            whileHover={{ y: -3, transition: { duration: 0.15 } }}
-            className="card p-4 rounded-2xl border border-border bg-surface flex items-center gap-3 shadow-xs"
-          >
-            <div className="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-500 flex items-center justify-center font-bold text-lg">
-              📖
-            </div>
-            <div>
-              <div className="text-lg font-bold text-foreground">{lessonsCompleted}</div>
-              <div className="text-xs text-muted-foreground font-medium">Lessons Finished</div>
-            </div>
-          </motion.div>
-
-          {/* 8. Cards Reviewed */}
-          <motion.div
-            whileHover={{ y: -3, transition: { duration: 0.15 } }}
-            className="card p-4 rounded-2xl border border-border bg-surface flex items-center gap-3 shadow-xs"
-          >
-            <div className="w-10 h-10 rounded-xl bg-teal-500/15 text-teal-500 flex items-center justify-center font-bold text-lg">
-              🔄
-            </div>
-            <div>
-              <div className="text-lg font-bold text-foreground">{cardsReviewed}</div>
-              <div className="text-xs text-muted-foreground font-medium">SRS Reviews Done</div>
             </div>
           </motion.div>
 

@@ -28,18 +28,13 @@ describe('LoginPage — no credentials, no bypass', () => {
     expect(document.body.textContent).not.toMatch(/@gmail\.com/i)
   })
 
-  it('has no one-click demo login unless a developer configured one locally', () => {
-    renderPage()
-    expect(screen.queryByText(/demo sign-in/i)).toBeNull()
-    expect(screen.queryByText(/Instant Demo/i)).toBeNull()
-  })
-
-  it('a dev demo button appears only when both VITE_DEV_DEMO_* values are set, and uses exactly those values', async () => {
+  it('has no demo login or instant QA bypass buttons — normal production-grade login only', () => {
     vi.stubEnv('VITE_DEV_DEMO_EMAIL', 'dev@example.com')
     vi.stubEnv('VITE_DEV_DEMO_PASSWORD', 'local-only-secret')
     renderPage()
-    fireEvent.click(screen.getByText(/Dev demo sign-in/i))
-    await waitFor(() => expect(signIn).toHaveBeenCalledWith({ email: 'dev@example.com', password: 'local-only-secret' }))
+    expect(screen.queryByText(/demo sign-in/i)).toBeNull()
+    expect(screen.queryByText(/Instant Demo/i)).toBeNull()
+    expect(screen.getByRole('button', { name: /^Sign In$/i })).toBeDefined()
   })
 
   it('"Continue with Google" starts the real Google OAuth flow — it must never sign anyone in directly', () => {

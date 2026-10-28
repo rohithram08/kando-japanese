@@ -1,6 +1,34 @@
 // src/utils/league.js
 // Small, pure helpers for the league UI.
 
+export const LEAGUES = [
+  { id: 'wakaba', name: 'Wakaba', jp: '若葉', color: '#84cc16', gradient: 'from-lime-500 to-emerald-600', badge: 'bg-lime-500/15 text-lime-700 dark:text-lime-400' },
+  { id: 'take',   name: 'Take',   jp: '竹',   color: '#10b981', gradient: 'from-emerald-500 to-teal-600', badge: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400' },
+  { id: 'ume',    name: 'Ume',    jp: '梅',   color: '#a855f7', gradient: 'from-purple-500 to-indigo-600', badge: 'bg-purple-500/15 text-purple-700 dark:text-purple-400' },
+  { id: 'sakura', name: 'Sakura', jp: '桜',   color: '#f472b6', gradient: 'from-pink-500 to-rose-600', badge: 'bg-pink-500/15 text-pink-700 dark:text-pink-400' },
+  { id: 'fuji',   name: 'Fuji',   jp: '富士', color: '#f59e0b', gradient: 'from-amber-500 to-yellow-600', badge: 'bg-amber-500/15 text-amber-700 dark:text-amber-400' },
+]
+
+export const STAGES_PER_LEAGUE = 3
+export const RUNG_COUNT = LEAGUES.length * STAGES_PER_LEAGUE // 15
+export const TOP_RUNG = RUNG_COUNT - 1
+
+const ROMAN = { 3: 'III', 2: 'II', 1: 'I' }
+
+export function getRungDetails(rungIndex = 0) {
+  const i = Math.min(Math.max(0, Math.floor(Number(rungIndex) || 0)), TOP_RUNG)
+  const leagueIndex = Math.min(Math.floor(i / STAGES_PER_LEAGUE), LEAGUES.length - 1)
+  const stage = (STAGES_PER_LEAGUE - (i % STAGES_PER_LEAGUE))
+  const league = LEAGUES[leagueIndex]
+  return {
+    index: i,
+    leagueIndex,
+    league,
+    stage,
+    label: `${league.name} ${ROMAN[stage] || stage}`,
+  }
+}
+
 /** 3 -> 1 filled pip, 2 -> 2, 1 -> 3: more pips = closer to the top of the league. */
 export function stagePips(stage) {
   return Math.min(3, Math.max(1, 4 - Number(stage || 3)))

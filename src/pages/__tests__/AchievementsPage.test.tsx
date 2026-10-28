@@ -22,17 +22,20 @@ vi.mock('../../store/progressStore', () => ({
 }))
 
 vi.mock('../../store/authStore', () => ({
-  useAuthStore: () => ({
-    user: { id: 'test-user', email: 'rohith@example.com' },
-    profile: {
-      username: 'Rohith Ram',
-      displayName: 'Rohith Ram',
-      currentLevel: 'N5',
-      streakDays: 4,
-      longestStreak: 7,
-      xpPoints: 740,
-    },
-  }),
+  useAuthStore: (selector?: any) => {
+    const state = {
+      user: { id: 'test-user', email: 'rohith@example.com' },
+      profile: {
+        username: 'Rohith Ram',
+        displayName: 'Rohith Ram',
+        currentLevel: 'N5',
+        streakDays: 4,
+        longestStreak: 7,
+        xpPoints: 740,
+      },
+    }
+    return typeof selector === 'function' ? selector(state) : state
+  },
 }))
 
 vi.mock('../../store/readingStore', () => ({
@@ -45,6 +48,22 @@ vi.mock('../../store/readingStore', () => ({
     }
     return typeof selector === 'function' ? selector(state) : state
   },
+}))
+
+vi.mock('../../hooks/useLeague', () => ({
+  useLeague: () => ({
+    data: {
+      rung: { index: 3, id: 'take_iii', name: 'Take III', league: 'take' },
+      board: { you: { rank: 2, meetsMinXp: true } },
+    },
+  }),
+  useLeagueHistory: () => ({
+    data: {
+      weeks: [
+        { weekId: '2026-W16', rank: 2, rungStart: 2, outcome: 'promoted', rung: { index: 3 } },
+      ],
+    },
+  }),
 }))
 
 describe('AchievementsPage Component', () => {
@@ -63,20 +82,25 @@ describe('AchievementsPage Component', () => {
     expect(screen.getAllByText(/Personal Records/i).length).toBeGreaterThan(0)
     expect(screen.getByText(/All-Time Records/i)).toBeDefined()
 
-    // Longest streak
+    // 1. Longest streak
     expect(screen.getByText(/Longest Streak/i)).toBeDefined()
     expect(screen.getByText('Days')).toBeDefined()
 
-    // Highest league
+    // 2. Highest league (connected dynamically to ladder: Take III / 竹)
     expect(screen.getByText(/Highest League/i)).toBeDefined()
-    expect(screen.getAllByText(/Silver/i).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/Take III/i).length).toBeGreaterThan(0)
+    expect(screen.getByText('View League →')).toBeDefined()
 
-    // Most Wave XP
+    // 3. Most Wave XP
     expect(screen.getByText(/Most Wave XP/i)).toBeDefined()
     expect(screen.getAllByText(/740/i).length).toBeGreaterThan(0)
 
-    // Perfect Lessons
+    // 4. Perfect Lessons
     expect(screen.getByText(/Perfect Lessons/i)).toBeDefined()
+
+    // Extraneous progress cards should NOT be in Personal Records
+    expect(screen.queryByText(/SRS Reviews Done/i)).toBeNull()
+    expect(screen.queryByText(/Vocabulary Mastered/i)).toBeNull()
   })
 
   it('shows ONLY obtained Slime Awards and Slime Stickers', () => {
@@ -99,7 +123,8 @@ describe('AchievementsPage Component', () => {
     // Walking Dictionary is earned (vocabLearned >= 25)
     expect(screen.getByText(/Walking Dictionary/i)).toBeDefined()
 
-    // Silver League Victor is earned (XP >= 250)
-    expect(screen.getByText(/Silver League Victor/i)).toBeDefined()
+    // Authentic League award: Wakaba Challenger & Take Ascendant are earned
+    expect(screen.getByText(/Wakaba Challenger/i)).toBeDefined()
+    expect(screen.getByText(/Take Ascendant/i)).toBeDefined()
   })
 })

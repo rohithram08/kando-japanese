@@ -1,9 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2 } from 'lucide-react'
-import { getUserProfile } from '../api/users'
+import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2, Sparkles, Shield, Send, CheckCircle2 } from 'lucide-react'
+import toast from 'react-hot-toast'
+import { getUserProfile, sendUserAlert } from '../api/users'
+import { useAuthStore } from '../store/authStore'
 import { useI18n } from '../i18n'
+
+const ALERT_OPTIONS = [
+  {
+    type: 'study',
+    icon: '📚',
+    title: "Let's start studying!",
+    desc: 'Invite them to jump in and practice Japanese',
+    color: 'hover:border-indigo-500/50 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/20',
+  },
+  {
+    type: 'streak',
+    icon: '🔥',
+    title: 'Keep your streak alive!',
+    desc: 'Remind them not to lose their study streak',
+    color: 'hover:border-orange-500/50 hover:bg-orange-50/50 dark:hover:bg-orange-950/20',
+  },
+  {
+    type: 'cheer',
+    icon: '🌸',
+    title: 'Ganbatte! You can do it!',
+    desc: 'Send cheerful Japanese encouragement',
+    color: 'hover:border-pink-500/50 hover:bg-pink-50/50 dark:hover:bg-pink-950/20',
+  },
+  {
+    type: 'league',
+    icon: '🏆',
+    title: 'Great job in the league!',
+    desc: 'Cheer them on in their weekly ladder climbing',
+    color: 'hover:border-amber-500/50 hover:bg-amber-50/50 dark:hover:bg-amber-950/20',
+  },
+]
 
 // Fallback mock directory for legacy demo links
 const ALL_USERS = {
@@ -23,6 +56,25 @@ export default function UserProfilePage() {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [sendingAlert, setSendingAlert] = useState(null)
+  const [sentAlerts, setSentAlerts] = useState({})
+
+  const currentUser = useAuthStore((s) => s.user)
+  const isSelf = Boolean(currentUser?.id && profile?.id && currentUser.id === profile.id)
+
+  const handleSendAlert = async (alertType) => {
+    if (!profile?.id || isSelf) return
+    setSendingAlert(alertType)
+    try {
+      const res = await sendUserAlert(profile.id, alertType)
+      toast.success(res.alert?.text ? `Alert sent: "${res.alert.text}"` : (res.message || 'Alert sent! 🚀'))
+      setSentAlerts((prev) => ({ ...prev, [alertType]: Date.now() }))
+    } catch (err) {
+      toast.error(err?.message || 'Could not send alert')
+    } finally {
+      setSendingAlert(null)
+    }
+  }
 
   useEffect(() => {
     let isMounted = true
@@ -245,6 +297,76 @@ export default function UserProfilePage() {
           ))}
         </div>
       </motion.div>
+
+      {/* ── Friendly Study Alert & Nudge System (Confidential & Harassment-Free) ── */}
+      {!isSelf && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45 }}
+          className="rounded-2xl border p-5 shadow-sm bg-surface border-border space-y-4"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span>Send a Study Motivation Alert</span>
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Encourage {profile.name} with a friendly Japanese study ping!
+              </p>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-medium self-start sm:self-auto">
+              <Shield className="w-3 h-3" />
+              <span>Safe & Confidential</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {ALERT_OPTIONS.map((opt) => {
+              const isRecent = Boolean(sentAlerts[opt.type] && Date.now() - sentAlerts[opt.type] < 60000)
+              const isSending = sendingAlert === opt.type
+              return (
+                <button
+                  key={opt.type}
+                  type="button"
+                  disabled={isSending || isRecent}
+                  onClick={() => handleSendAlert(opt.type)}
+                  className={`p-3 rounded-xl border border-border/80 bg-background/50 text-left transition-all flex items-start gap-3 group disabled:opacity-60 disabled:cursor-not-allowed ${opt.color}`}
+                >
+                  <span className="text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                    {opt.icon}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="text-xs font-bold text-foreground truncate">
+                        {opt.title}
+                      </span>
+                      {isRecent ? (
+                        <span className="inline-flex items-center gap-0.5 text-[10px] text-emerald-500 font-semibold shrink-0">
+                          <CheckCircle2 className="w-3 h-3" /> Sent
+                        </span>
+                      ) : (
+                        <Send className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-1">
+                      {opt.desc}
+                    </p>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          <div className="p-3 rounded-xl bg-muted/40 border border-border/50 text-[11px] text-muted-foreground flex items-center gap-2">
+            <span className="text-xs">🔒</span>
+            <span>
+              <strong>Privacy Protection:</strong> Direct free-text chat and personal contact information are kept strictly confidential to protect all learners.
+            </span>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }
