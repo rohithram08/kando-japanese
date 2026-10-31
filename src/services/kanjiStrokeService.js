@@ -1,10 +1,27 @@
 /**
  * Kanji Stroke Service
- * Fetches, parses, and caches official KanjiVG stroke order vector data
- * for all 2,136+ Joyo kanji.
+ * Provides authentic, verified KanjiVG stroke order vector data
+ * for all 2,136+ Joyo kanji, with pre-bundled curriculum stroke data.
  */
 
+import verifiedKanjiStrokes from '../data/kanji/verifiedKanjiStrokes.json';
+
 const strokeCache = new Map();
+
+/**
+ * Synchronous lookup for pre-bundled verified stroke data
+ */
+export function getKanjiStrokes(character) {
+  if (!character || typeof character !== 'string') return null;
+  const hex = getKanjiHex(character);
+  if (hex && strokeCache.has(hex)) return strokeCache.get(hex);
+  if (verifiedKanjiStrokes && verifiedKanjiStrokes[character]) {
+    const data = verifiedKanjiStrokes[character];
+    if (hex) strokeCache.set(hex, data);
+    return data;
+  }
+  return null;
+}
 
 /**
  * Convert a kanji character to 5-character lowercase hex code
@@ -95,7 +112,14 @@ export async function fetchKanjiStrokes(character) {
     return strokeCache.get(hex);
   }
 
-  // 2. Check localStorage cache
+  // 2. Check bundled verified database (100% verified Joyo/JLPT data, zero latency, offline-ready)
+  if (verifiedKanjiStrokes && verifiedKanjiStrokes[character]) {
+    const data = verifiedKanjiStrokes[character];
+    strokeCache.set(hex, data);
+    return data;
+  }
+
+  // 3. Check localStorage cache
   try {
     if (typeof localStorage !== 'undefined') {
       const cached = localStorage.getItem(`kvg_${hex}`);

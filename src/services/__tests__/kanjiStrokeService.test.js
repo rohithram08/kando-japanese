@@ -1,9 +1,51 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getKanjiHex, parseKanjiVgSvg, fetchKanjiStrokes } from '../kanjiStrokeService';
+import { getKanjiHex, parseKanjiVgSvg, fetchKanjiStrokes, getKanjiStrokes } from '../kanjiStrokeService';
+import n5Kanji from '../../../content/kanji/n5.json';
+import n4Kanji from '../../../content/kanji/n4.json';
 
 describe('kanjiStrokeService', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+  });
+
+  describe('getKanjiStrokes (verified bundled data)', () => {
+    it('returns authentic 4-stroke order for 五 (not 5 strokes)', () => {
+      const data = getKanjiStrokes('五');
+      expect(data).toBeDefined();
+      expect(data.strokeCount).toBe(4);
+      expect(data.strokes.length).toBe(4);
+      expect(data.numbers.length).toBe(4);
+      expect(data.viewBox).toBe('0 0 109 109');
+    });
+
+    it('returns authentic stroke counts for basic kanji', () => {
+      expect(getKanjiStrokes('一').strokeCount).toBe(1);
+      expect(getKanjiStrokes('二').strokeCount).toBe(2);
+      expect(getKanjiStrokes('三').strokeCount).toBe(3);
+      expect(getKanjiStrokes('四').strokeCount).toBe(5);
+      expect(getKanjiStrokes('日').strokeCount).toBe(4);
+      expect(getKanjiStrokes('月').strokeCount).toBe(4);
+      expect(getKanjiStrokes('口').strokeCount).toBe(3);
+      expect(getKanjiStrokes('山').strokeCount).toBe(3);
+    });
+
+    it('verifies 100% of N5 kanji have authentic stroke data matching curriculum', () => {
+      n5Kanji.forEach((item) => {
+        const data = getKanjiStrokes(item.kanji);
+        expect(data, `Missing stroke data for N5 kanji: ${item.kanji}`).toBeDefined();
+        expect(data.strokes.length).toBe(item.strokeCount);
+        expect(data.numbers.length).toBe(item.strokeCount);
+      });
+    });
+
+    it('verifies 100% of N4 kanji have authentic stroke data matching curriculum', () => {
+      n4Kanji.forEach((item) => {
+        const data = getKanjiStrokes(item.kanji);
+        expect(data, `Missing stroke data for N4 kanji: ${item.kanji}`).toBeDefined();
+        expect(data.strokes.length).toBe(item.strokeCount);
+        expect(data.numbers.length).toBe(item.strokeCount);
+      });
+    });
   });
 
   describe('getKanjiHex', () => {

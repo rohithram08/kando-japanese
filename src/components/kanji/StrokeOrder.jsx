@@ -12,66 +12,14 @@ import {
   ChevronRight,
   CheckCircle,
 } from "lucide-react";
-import { fetchKanjiStrokes } from "../../services/kanjiStrokeService";
+import { fetchKanjiStrokes, getKanjiStrokes } from "../../services/kanjiStrokeService";
 
-// ── Stroke Data ───────────────────────────────────────────────────
-const KANJI_STROKES = {
-  一: { strokes: ["M 20 50 L 80 50"], tips: ["Single horizontal stroke from left to right"] },
-  二: { strokes: ["M 25 35 L 75 35", "M 20 65 L 80 65"], tips: ["Top horizontal stroke", "Bottom horizontal stroke (longer)"] },
-  三: { strokes: ["M 30 25 L 70 25", "M 20 50 L 80 50", "M 25 75 L 75 75"], tips: ["Top short stroke", "Middle longer stroke", "Bottom stroke"] },
-  四: { strokes: ["M 25 20 L 75 20", "M 25 20 L 25 80", "M 75 20 L 75 80", "M 25 80 L 75 80", "M 45 20 L 45 80"], tips: ["Top horizontal", "Left vertical", "Right vertical", "Bottom horizontal", "Inner vertical divider"] },
-  五: { strokes: ["M 25 20 L 75 20", "M 30 20 L 30 55", "M 30 55 L 70 55", "M 70 55 L 70 75 L 30 75", "M 20 75 L 80 75"], tips: ["Top horizontal", "Left vertical down", "Middle horizontal", "Right curve and bottom", "Final horizontal"] },
-  六: { strokes: ["M 50 15 L 50 30", "M 30 30 L 70 30", "M 30 50 L 20 80", "M 70 50 L 80 80"], tips: ["Top dot/short stroke", "Horizontal stroke", "Left diagonal down", "Right diagonal down"] },
-  七: { strokes: ["M 20 35 L 75 35", "M 60 35 L 45 80"], tips: ["Horizontal stroke left to right", "Diagonal stroke curving down-left"] },
-  八: { strokes: ["M 45 20 L 25 75", "M 55 20 L 75 75"], tips: ["Left diagonal stroke", "Right diagonal stroke"] },
-  九: { strokes: ["M 45 20 L 60 50", "M 60 20 L 60 55 L 30 80"], tips: ["Short diagonal stroke", "Curved stroke going down and left"] },
-  十: { strokes: ["M 20 50 L 80 50", "M 50 15 L 50 85"], tips: ["Horizontal stroke", "Vertical stroke through center"] },
-  百: { strokes: ["M 40 15 L 60 15", "M 20 30 L 80 30", "M 20 30 L 20 80", "M 80 30 L 80 80", "M 20 55 L 80 55", "M 20 80 L 80 80"], tips: ["Top short horizontal", "Long horizontal", "Left vertical", "Right vertical", "Middle horizontal", "Bottom horizontal"] },
-  千: { strokes: ["M 30 25 L 70 25", "M 20 45 L 80 45", "M 50 45 L 50 85"], tips: ["Short top horizontal", "Long middle horizontal", "Vertical stroke down"] },
-  万: { strokes: ["M 25 25 L 75 25", "M 50 25 L 35 55", "M 35 55 L 70 70 L 55 85"], tips: ["Top horizontal", "Left diagonal", "Curved stroke to bottom"] },
-  年: { strokes: ["M 35 15 L 50 30", "M 20 30 L 80 30", "M 50 15 L 50 85", "M 20 50 L 80 50", "M 20 70 L 80 70", "M 20 85 L 80 85"], tips: ["Top left diagonal", "First horizontal", "Center vertical", "Second horizontal", "Third horizontal", "Bottom horizontal"] },
-  月: { strokes: ["M 35 15 L 35 85", "M 35 15 L 65 25", "M 65 25 L 65 85", "M 35 85 L 65 85", "M 35 45 L 65 45", "M 35 65 L 65 65"], tips: ["Left vertical", "Top curve right", "Right vertical", "Bottom horizontal", "First inner horizontal", "Second inner horizontal"] },
-  日: { strokes: ["M 30 15 L 70 15", "M 70 15 L 70 85", "M 70 85 L 30 85", "M 30 85 L 30 15", "M 30 50 L 70 50"], tips: ["Top horizontal", "Right vertical down", "Bottom horizontal left", "Left vertical up", "Middle horizontal"] },
-  時: { strokes: ["M 15 20 L 15 80", "M 15 50 L 35 50", "M 35 15 L 35 85", "M 45 25 L 85 25", "M 55 25 L 55 45", "M 45 45 L 85 45", "M 45 60 L 85 60", "M 85 25 L 85 80", "M 45 80 L 85 80", "M 65 60 L 65 80"], tips: ["Left radical vertical", "Left radical horizontal", "Left radical right vertical", "Top horizontal of 寺", "Middle vertical of 寺", "Second horizontal", "Third horizontal", "Right vertical", "Bottom horizontal", "Inner vertical"] },
-  分: { strokes: ["M 35 15 L 50 35", "M 65 15 L 50 35", "M 50 35 L 50 85", "M 25 60 L 75 60"], tips: ["Left top diagonal", "Right top diagonal", "Center vertical down", "Horizontal through center"] },
-  山: { strokes: ["M 50 20 L 50 80", "M 20 50 L 20 80", "M 80 50 L 80 80", "M 15 80 L 85 80"], tips: ["Center vertical (tallest peak)", "Left vertical (shorter)", "Right vertical (shorter)", "Bottom horizontal base"] },
-  川: { strokes: ["M 25 15 L 20 85", "M 50 10 L 50 90", "M 75 15 L 80 85"], tips: ["Left flowing stroke", "Center straight stroke", "Right flowing stroke"] },
-  木: { strokes: ["M 20 40 L 80 40", "M 50 15 L 50 85", "M 50 60 L 25 85", "M 50 60 L 75 85"], tips: ["Horizontal stroke", "Vertical stroke through center", "Left diagonal root", "Right diagonal root"] },
-  火: { strokes: ["M 50 15 L 50 55", "M 30 35 L 20 70", "M 70 35 L 80 70", "M 35 65 L 50 85 L 65 65"], tips: ["Center vertical stroke", "Left diagonal stroke", "Right diagonal stroke", "Bottom flame stroke"] },
-  水: { strokes: ["M 50 15 L 50 85", "M 50 40 L 25 65", "M 50 40 L 75 65", "M 35 25 L 50 40", "M 65 25 L 50 40"], tips: ["Central vertical stroke", "Lower-left diagonal", "Lower-right diagonal", "Upper-left short stroke", "Upper-right short stroke"] },
-  土: { strokes: ["M 25 40 L 75 40", "M 50 40 L 50 80", "M 20 80 L 80 80"], tips: ["Top horizontal", "Vertical stroke down", "Bottom horizontal (longer)"] },
-  金: { strokes: ["M 50 10 L 50 35", "M 25 35 L 75 35", "M 35 35 L 20 55", "M 65 35 L 80 55", "M 20 60 L 80 60", "M 35 60 L 35 85", "M 65 60 L 65 85", "M 35 85 L 65 85"], tips: ["Top point stroke", "Wide horizontal", "Left diagonal", "Right diagonal", "Middle horizontal", "Lower-left vertical", "Lower-right vertical", "Bottom horizontal"] },
-  空: { strokes: ["M 30 15 L 70 15", "M 50 15 L 50 40", "M 25 30 L 75 30", "M 20 50 L 80 50", "M 35 50 L 20 75", "M 50 50 L 50 85", "M 65 50 L 80 75", "M 20 85 L 80 85"], tips: ["Top horizontal of 穴", "Center vertical", "Second horizontal", "Main horizontal of 工", "Left diagonal", "Center vertical of 工", "Right diagonal", "Bottom horizontal of 工"] },
-  雨: { strokes: ["M 20 20 L 80 20", "M 20 20 L 20 80", "M 80 20 L 80 80", "M 20 40 L 80 40", "M 35 55 L 35 65", "M 55 55 L 55 65", "M 35 70 L 35 80", "M 55 70 L 55 80"], tips: ["Top horizontal", "Left vertical", "Right vertical", "Horizontal divider", "First drop left", "First drop right", "Second drop left", "Second drop right"] },
-  花: { strokes: ["M 50 10 L 50 30", "M 30 20 L 70 20", "M 20 35 L 80 35", "M 35 35 L 35 60", "M 50 35 L 50 85", "M 65 35 L 65 60", "M 35 60 L 65 60"], tips: ["Top vertical of 艹", "Horizontal of 艹", "Second horizontal", "Left inner vertical", "Center vertical", "Right inner vertical", "Bottom connector"] },
-  人: { strokes: ["M 50 15 L 30 75", "M 50 15 L 75 85"], tips: ["Left diagonal stroke", "Right diagonal stroke"] },
-  子: { strokes: ["M 50 15 L 50 50 L 30 75", "M 25 35 L 75 35", "M 50 60 L 50 85"], tips: ["Main curve stroke", "Horizontal through top", "Bottom short vertical"] },
-  女: { strokes: ["M 65 20 L 35 55", "M 20 40 L 80 55", "M 50 55 L 50 85 L 20 85"], tips: ["Top diagonal", "Crossing horizontal", "Bottom vertical and base"] },
-  男: { strokes: ["M 25 15 L 75 15", "M 25 15 L 25 50", "M 75 15 L 75 50", "M 25 35 L 75 35", "M 25 50 L 75 50", "M 50 50 L 50 65", "M 25 65 L 75 65"], tips: ["Top of 田 horizontal", "Left of 田", "Right of 田", "Inner horizontal of 田", "Bottom of 田", "Top of 力", "Main of 力"] },
-  目: { strokes: ["M 25 15 L 75 15", "M 75 15 L 75 85", "M 75 85 L 25 85", "M 25 85 L 25 15", "M 25 40 L 75 40", "M 25 60 L 75 60"], tips: ["Top horizontal", "Right vertical", "Bottom horizontal", "Left vertical", "First inner horizontal", "Second inner horizontal"] },
-  口: { strokes: ["M 25 20 L 75 20", "M 75 20 L 75 80", "M 75 80 L 25 80", "M 25 80 L 25 20"], tips: ["Top horizontal", "Right vertical", "Bottom horizontal", "Left vertical (closes the box)"] },
-  手: { strokes: ["M 20 25 L 80 25", "M 20 45 L 80 45", "M 50 10 L 50 60", "M 50 60 L 30 85"], tips: ["Top horizontal", "Middle horizontal", "Vertical through center", "Curved base stroke"] },
-  足: { strokes: ["M 25 15 L 75 15", "M 25 15 L 25 45", "M 75 15 L 75 45", "M 25 30 L 75 30", "M 25 45 L 75 45", "M 50 45 L 50 65", "M 25 65 L 75 65"], tips: ["Top horizontal", "Left vertical", "Right vertical", "Inner horizontal", "Bottom of box", "Connecting vertical", "Base horizontal"] },
-  耳: { strokes: ["M 25 15 L 75 15", "M 25 15 L 25 85", "M 25 35 L 70 35", "M 25 55 L 70 55", "M 70 15 L 70 55", "M 25 85 L 75 85"], tips: ["Top horizontal", "Left vertical", "First inner horizontal", "Second inner horizontal", "Right vertical (short)", "Bottom horizontal"] },
-  上: { strokes: ["M 50 15 L 50 65", "M 25 65 L 75 65", "M 20 85 L 80 85"], tips: ["Vertical stroke up", "Middle horizontal", "Bottom horizontal (longer)"] },
-  下: { strokes: ["M 20 25 L 80 25", "M 50 25 L 50 65", "M 35 65 L 65 65", "M 50 65 L 50 85"], tips: ["Top horizontal", "Vertical down", "Short horizontal", "Final vertical dot"] },
-  中: { strokes: ["M 25 15 L 75 15", "M 25 15 L 25 85", "M 75 15 L 75 85", "M 25 85 L 75 85", "M 50 10 L 50 90"], tips: ["Top horizontal", "Left vertical", "Right vertical", "Bottom horizontal", "Center vertical through"] },
-  右: { strokes: ["M 35 15 L 75 35", "M 20 35 L 80 35", "M 35 35 L 35 85", "M 35 60 L 75 60", "M 75 35 L 75 85", "M 35 85 L 75 85"], tips: ["Top diagonal", "Horizontal", "Left vertical", "Inner horizontal", "Right vertical", "Bottom horizontal"] },
-  左: { strokes: ["M 25 15 L 60 35", "M 20 35 L 80 35", "M 35 35 L 35 85", "M 35 60 L 65 60", "M 65 35 L 65 85", "M 35 85 L 65 85"], tips: ["Top left diagonal", "Horizontal", "Left vertical", "Inner horizontal", "Right vertical", "Bottom horizontal"] },
-  学: { strokes: ["M 30 15 L 50 30", "M 70 15 L 50 30", "M 35 25 L 65 25", "M 50 30 L 50 50", "M 25 50 L 75 50", "M 35 50 L 35 85", "M 50 50 L 50 85", "M 65 50 L 65 85"], tips: ["Left top of 爻", "Right top of 爻", "Horizontal connector", "Center vertical", "Wide horizontal of 子", "Left vertical", "Center vertical", "Right vertical"] },
-  本: { strokes: ["M 20 40 L 80 40", "M 50 15 L 50 85", "M 50 65 L 25 85", "M 50 65 L 75 85", "M 35 55 L 65 55"], tips: ["Main horizontal", "Vertical through center", "Left root diagonal", "Right root diagonal", "Short horizontal mark (origin)"] },
-  車: { strokes: ["M 50 10 L 50 30", "M 20 30 L 80 30", "M 20 30 L 20 70", "M 80 30 L 80 70", "M 20 50 L 80 50", "M 20 70 L 80 70", "M 50 70 L 50 90"], tips: ["Top vertical", "Top horizontal", "Left vertical", "Right vertical", "Middle horizontal", "Bottom horizontal", "Bottom vertical"] },
-  円: { strokes: ["M 25 15 L 75 15", "M 25 15 L 25 85", "M 75 15 L 75 85", "M 25 85 L 75 85", "M 35 45 L 65 45"], tips: ["Top horizontal", "Left vertical", "Right vertical", "Bottom horizontal", "Inner horizontal (yen mark)"] },
-  白: { strokes: ["M 50 10 L 50 25", "M 25 25 L 75 25", "M 25 25 L 25 80", "M 75 25 L 75 80", "M 25 80 L 75 80", "M 25 52 L 75 52"], tips: ["Top dot", "Horizontal", "Left vertical", "Right vertical", "Bottom horizontal", "Inner horizontal"] },
-  大: { strokes: ["M 20 40 L 80 40", "M 50 15 L 50 85", "M 50 60 L 20 85", "M 50 60 L 80 85"], tips: ["Horizontal stroke", "Vertical through center", "Left diagonal", "Right diagonal"] },
-  小: { strokes: ["M 50 15 L 50 85", "M 50 45 L 25 70", "M 50 45 L 75 70"], tips: ["Center vertical", "Left diagonal stroke", "Right diagonal stroke"] },
-  今: { strokes: ["M 35 15 L 50 30", "M 65 15 L 50 30", "M 25 40 L 75 40", "M 50 40 L 50 60", "M 35 60 L 65 60", "M 35 60 L 35 85"], tips: ["Left top diagonal", "Right top diagonal", "Horizontal", "Short vertical", "Short horizontal", "Final vertical"] },
-  天: { strokes: ["M 30 25 L 70 25", "M 20 45 L 80 45", "M 50 45 L 30 80", "M 50 45 L 70 80"], tips: ["Short top horizontal", "Long horizontal", "Left diagonal", "Right diagonal"] },
-}
-
+// Fallback single stroke on standard 109x109 KanjiVG grid
 const FALLBACK_STROKES = {
-  strokes: ["M 20 50 L 80 50"],
+  strokes: ["M 15 54.5 L 94 54.5"],
   tips: ["Horizontal stroke — trace following stroke order guide"],
+  numbers: [{ x: 15, y: 54.5, num: 1 }],
+  viewBox: "0 0 109 109",
 }
 
 const StrokeOrder = ({
@@ -87,14 +35,13 @@ const StrokeOrder = ({
   const isDrawingRef  = useRef(false)
   const lastPosRef    = useRef({ x: 0, y: 0 })
 
-  const [activeStrokeData, setActiveStrokeData] = useState(() => KANJI_STROKES[character] || FALLBACK_STROKES)
-  const [loadingKanji, setLoadingKanji] = useState(false)
+  const [activeStrokeData, setActiveStrokeData] = useState(() => getKanjiStrokes(character) || FALLBACK_STROKES)
+  const [loadingKanji, setLoadingKanji] = useState(() => !getKanjiStrokes(character))
 
   const strokeData   = activeStrokeData
   const totalStrokes = strokeData.strokes.length
   const canvasSize   = compact ? 200 : 240
-  const isKvg        = strokeData.viewBox === '0 0 109 109' || strokeData.numbers?.length > 0
-  const scale        = canvasSize / (isKvg ? 109 : 100)
+  const scale        = canvasSize / 109
 
   const [currentStroke,  setCurrentStroke]  = useState(0)
   const [isAnimating,    setIsAnimating]    = useState(false)
@@ -126,8 +73,10 @@ const StrokeOrder = ({
   // ── Dynamically load authentic KanjiVG stroke data for any Joyo Kanji ──
   useEffect(() => {
     let isMounted = true
-    if (KANJI_STROKES[character]) {
-      setActiveStrokeData(KANJI_STROKES[character])
+    const bundled = getKanjiStrokes(character)
+    if (bundled && bundled.strokes && bundled.strokes.length > 0) {
+      setActiveStrokeData(bundled)
+      setLoadingKanji(false)
       return
     }
 
