@@ -205,44 +205,211 @@ export function parseKanjiExample(
 }
 
 /**
- * Converts a Japanese example sentence to clean, spaced Hepburn Romaji.
- * Requires a kana reading (or kana-only text). If the input still contains
- * unresolved Kanji, returns empty string to prevent displaying garbled mixed text.
+ * Converts a grammar pattern formula (e.g. "〜は〜です", "〜は〜ではありません", "〜を〜します")
+ * to authentic, localized Hepburn Romaji with correct particle pronunciations
+ * ("は" -> "wa", "を" -> "o", "へ" -> "e", "では" -> "dewa").
+ */
+export function toGrammarPatternRomaji(pattern: string): string {
+  if (!pattern || typeof pattern !== 'string') return '';
+  let p = pattern;
+
+  // Normalize Japanese tildes to standard ~
+  p = p.replace(/[〜～]/g, '~');
+
+  // Grammar particles & copulas
+  p = p.replace(/ではありません/g, 'dewa arimasen');
+  p = p.replace(/じゃありません/g, 'ja arimasen');
+  p = p.replace(/じゃないです/g, 'ja nai desu');
+  p = p.replace(/じゃない/g, 'ja nai');
+  p = p.replace(/ではない/g, 'dewa nai');
+  p = p.replace(/です/g, 'desu');
+  p = p.replace(/でした/g, 'deshita');
+  p = p.replace(/てはいけない/g, 'te wa ikenai');
+  p = p.replace(/てはいけません/g, 'te wa ikemasen');
+  p = p.replace(/てはならない/g, 'te wa naranai');
+  p = p.replace(/ては/g, 'te wa');
+  p = p.replace(/では/g, 'de wa');
+  p = p.replace(/たいです/g, 'tai desu');
+  p = p.replace(/ましょう/g, 'mashou');
+  p = p.replace(/てください/g, 'te kudasai');
+  p = p.replace(/ている/g, 'te iru');
+  p = p.replace(/ないでください/g, 'naide kudasai');
+  p = p.replace(/から/g, 'kara');
+  p = p.replace(/まで/g, 'made');
+
+  // Topic marker & grammatical particles surrounded by pattern anchors
+  p = p.replace(/(~|\b|\s)は(~|\b|\s|$)/g, '$1wa$2');
+  p = p.replace(/(~|\b|\s)を(~|\b|\s|$)/g, '$1o$2');
+  p = p.replace(/(~|\b|\s)へ(~|\b|\s|$)/g, '$1e$2');
+  p = p.replace(/(~|\b|\s)が(~|\b|\s|$)/g, '$1ga$2');
+  p = p.replace(/(~|\b|\s)に(~|\b|\s|$)/g, '$1ni$2');
+  p = p.replace(/(~|\b|\s)で(~|\b|\s|$)/g, '$1de$2');
+
+  return toRomaji(p);
+}
+
+const PARTICLE_STARTS = /^(は|が|を|に|へ|で|と|から|まで|より|の|も|や|など|です|でした|だ|だった|ではありません|じゃありません|じゃないです)/;
+
+function formatKanaChunk(text: string, afterNoun: boolean): string {
+  let s = text;
+  // Polite copulas & negatives (evaluate before generic te/de replace)
+  s = s.replace(/ではありません/g, ' dewa arimasen');
+  s = s.replace(/じゃありません/g, ' ja arimasen');
+  s = s.replace(/じゃないです/g, ' ja nai desu');
+  s = s.replace(/じゃない/g, ' ja nai');
+  s = s.replace(/ではない/g, ' dewa nai');
+  s = s.replace(/です/g, ' desu');
+  s = s.replace(/でした/g, ' deshita');
+
+  // Demonstratives and pronouns followed by particle は (wa)
+  s = s.replace(/^(これ|それ|あれ|どれ|ここ|そこ|あそこ|どこ|わたし|あなた|かれ|かのじょ|だれ|ぼく|おれ)は/g, '$1 wa ');
+  // Honorifics followed by は
+  s = s.replace(/(さん|くん|ちゃん|さま|様)は/g, '$1 wa ');
+  // Verb te-form / de-form followed by は
+  s = s.replace(/([てで])は/g, '$1 wa ');
+  // Topic marker は directly after noun
+  if (afterNoun && s.startsWith('は')) {
+    s = s.replace(/^は/, 'wa ');
+  }
+  // Standalone は is topic marker
+  if (s === 'は') {
+    s = 'wa';
+  }
+  // Particle を (o)
+  s = s.replace(/([^\s])を/g, '$1 o ');
+  s = s.replace(/^を/g, 'o ');
+
+  return toRomaji(s);
+}
+
+function formatKanaSentence(text: string): string {
+  let s = text;
+  // Polite copulas & negatives (evaluate before generic te/de replace)
+  s = s.replace(/ではありません/g, ' dewa arimasen');
+  s = s.replace(/じゃありません/g, ' ja arimasen');
+  s = s.replace(/じゃないです/g, ' ja nai desu');
+  s = s.replace(/じゃない/g, ' ja nai');
+  s = s.replace(/ではない/g, ' dewa nai');
+  s = s.replace(/です/g, ' desu');
+  s = s.replace(/でした/g, ' deshita');
+
+  s = s.replace(/(これ|それ|あれ|どれ|ここ|そこ|あそこ|どこ|わたし|あなた|かれ|かのじょ|だれ|ぼく|おれ)は/g, '$1 wa ');
+  s = s.replace(/(さん|くん|ちゃん|さま|様)は/g, '$1 wa ');
+  s = s.replace(/([てで])は/g, '$1 wa ');
+  s = s.replace(/([^\s])を/g, '$1 o ');
+  s = s.replace(/^を/g, 'o ');
+  return cleanSentence(toRomaji(s));
+}
+
+function cleanSentence(s: string): string {
+  return s
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([.,!?:;])/g, '$1')
+    .trim();
+}
+
+/**
+ * Converts a Japanese example sentence to clean, natural, spaced Hepburn Romaji.
+ * Intelligently aligns Kanji words with their phonetic Kana readings so that
+ * multi-syllable words (e.g. 学生 -> gakusei, です -> desu) are never split,
+ * and authentic particle pronunciations (は -> wa, を -> o, へ -> e) are respected.
  */
 export function toSentenceRomaji(japaneseText: string, reading?: string): string {
-  const source = (reading || japaneseText || '').trim();
-  if (!source) return '';
+  const jp = (japaneseText || '').trim();
+  const r = (reading || jp).trim();
+  if (!jp && !r) return '';
 
-  // If text still contains raw Kanji, cannot reliably romanize without phonetic reading
-  if (/[\u4e00-\u9faf]/.test(source)) {
+  // If text still contains raw Kanji and no phonetic reading is available, do not output broken text
+  if (!reading && /[\u4e00-\u9faf]/.test(jp)) {
     return '';
   }
 
-  // Insert natural spacing around common grammatical particles
-  const spaced = source
-    .replace(/([^\s])を/g, '$1 を ')
-    .replace(/([^\s])が/g, '$1 が ')
-    .replace(/([^\s])に/g, '$1 に ')
-    .replace(/([^\s])で/g, '$1 で ')
-    .replace(/([^\s])へ/g, '$1 へ ')
-    .replace(/([^\s])と/g, '$1 と ')
-    .replace(/([^\s])から/g, '$1 から ')
-    .replace(/([^\s])まで/g, '$1 まで ')
-    .replace(/([^\s])は/g, '$1 は ')
-    .replace(/([^\s])の/g, '$1 の ');
+  // If sentence has no Kanji, use phonetic kana formatting directly
+  if (!/[\u4e00-\u9faf]/.test(jp)) {
+    return formatKanaSentence(r);
+  }
 
-  let raw = toRomaji(spaced);
+  // Segment Kanji chunks vs non-Kanji chunks
+  const chunks: { text: string; isKanji: boolean }[] = [];
+  let current = '';
+  let isK: boolean | null = null;
+  for (const ch of jp) {
+    const kanji = /[\u4e00-\u9faf]/.test(ch);
+    if (isK === null) {
+      current = ch;
+      isK = kanji;
+    } else if (kanji === isK) {
+      current += ch;
+    } else {
+      chunks.push({ text: current, isKanji: isK });
+      current = ch;
+      isK = kanji;
+    }
+  }
+  if (current && isK !== null) chunks.push({ text: current, isKanji: isK });
 
-  // Particle transliteration adjustments for natural readability
-  raw = raw
-    .replace(/\bwo\b/g, 'o')
-    .replace(/\s+/g, ' ')
-    .trim();
+  let rIdx = 0;
+  const segments: { text: string; reading: string; isKanji: boolean }[] = [];
 
-  // If raw still has any Kanji, do not show
-  if (/[\u4e00-\u9faf]/.test(raw)) {
+  for (let c = 0; c < chunks.length; c++) {
+    const chunk = chunks[c];
+    if (chunk.isKanji) {
+      const nextKanaChunk = chunks[c + 1];
+      if (nextKanaChunk) {
+        const found = r.indexOf(nextKanaChunk.text, rIdx);
+        if (found !== -1) {
+          const chunkReading = r.slice(rIdx, found);
+          segments.push({ text: chunk.text, reading: chunkReading, isKanji: true });
+          rIdx = found;
+        } else {
+          segments.push({ text: chunk.text, reading: '', isKanji: true });
+        }
+      } else {
+        const chunkReading = r.slice(rIdx);
+        segments.push({ text: chunk.text, reading: chunkReading, isKanji: true });
+        rIdx = r.length;
+      }
+    } else {
+      segments.push({ text: chunk.text, reading: chunk.text, isKanji: false });
+      rIdx += chunk.text.length;
+    }
+  }
+
+  // Assemble into clean, spaced Hepburn Romaji
+  let result = '';
+  for (let s = 0; s < segments.length; s++) {
+    const seg = segments[s];
+    if (seg.isKanji) {
+      const rom = toRomaji(seg.reading);
+      result += (result && !result.endsWith(' ') ? ' ' : '') + rom;
+    } else {
+      let kText = seg.reading;
+      const isOkurigana =
+        s > 0 &&
+        segments[s - 1].isKanji &&
+        !PARTICLE_STARTS.test(kText) &&
+        !kText.startsWith('さん') &&
+        !kText.startsWith('くん') &&
+        !kText.startsWith('ちゃん');
+
+      kText = formatKanaChunk(kText, s > 0 && segments[s - 1].isKanji && !isOkurigana);
+
+      const needsSpace =
+        !isOkurigana &&
+        Boolean(result) &&
+        !result.endsWith(' ') &&
+        !kText.startsWith('.') &&
+        !kText.startsWith(',') &&
+        !kText.startsWith('!') &&
+        !kText.startsWith('?');
+      result += (needsSpace ? ' ' : '') + kText;
+    }
+  }
+
+  const finalRomaji = cleanSentence(result);
+  if (/[\u4e00-\u9faf]/.test(finalRomaji)) {
     return '';
   }
 
-  return raw;
+  return finalRomaji;
 }

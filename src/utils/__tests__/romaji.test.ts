@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { toRomaji, parseKanjiExample, toSentenceRomaji } from '../romaji';
+import {
+  toRomaji,
+  parseKanjiExample,
+  toSentenceRomaji,
+  toGrammarPatternRomaji,
+} from '../romaji';
 
 describe('Hepburn Kana-to-Romaji Engine', () => {
   it('converts basic hiragana and katakana', () => {
@@ -40,7 +45,21 @@ describe('Hepburn Kana-to-Romaji Engine', () => {
     expect(ex.meaning).toBe('water');
   });
 
+  it('toGrammarPatternRomaji converts grammar patterns with correct particle pronunciations', () => {
+    expect(toGrammarPatternRomaji('〜は〜です')).toBe('~wa~desu');
+    expect(toGrammarPatternRomaji('〜は〜ではありません')).toBe('~wa~dewa arimasen');
+    expect(toGrammarPatternRomaji('〜が〜です')).toBe('~ga~desu');
+    expect(toGrammarPatternRomaji('〜を〜します')).toBe('~o~shimasu');
+    expect(toGrammarPatternRomaji('〜てはいけません')).toBe('~te wa ikemasen');
+    expect(toGrammarPatternRomaji('〜から〜まで')).toBe('~kara~made');
+  });
+
   it('toSentenceRomaji formats example sentences with clean spacing and no raw kanji', () => {
+    expect(toSentenceRomaji('私は学生です。', 'わたしはがくせいです。')).toBe('watashi wa gakusei desu.');
+    expect(toSentenceRomaji('これは本です。', 'これはほんです。')).toBe('kore wa hon desu.');
+    expect(toSentenceRomaji('田中さんは先生です。', 'たなかさんはせんせいです。')).toBe('tanaka san wa sensei desu.');
+    expect(toSentenceRomaji('田中さんは学生ではありません。', 'たなかさんはがくせいではありません。')).toBe('tanaka san wa gakusei dewa arimasen.');
+    expect(toSentenceRomaji('これはペンじゃないです。', 'これはペンじゃないです。')).toBe('kore wa pen ja nai desu.');
     expect(toSentenceRomaji('荷物を持ってあげました。', 'にもつをもってあげました。')).toBe('nimotsu o motteagemashita.');
     expect(toSentenceRomaji('先生が教えてくれました。', 'せんせいがおしえてくれました。')).toBe('sensei ga oshietekuremashita.');
     expect(toSentenceRomaji('旅行の準備をしています。', 'りょこうのじゅんびをしています。')).toBe('ryokou no junbi o shiteimasu.');

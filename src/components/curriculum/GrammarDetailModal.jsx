@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { useSettingsStore } from '../../store/settingsStore';
 import { useI18n, normalizeLocale, getCurriculumMeaning, getCurriculumExplanation } from '../../i18n';
-import { toRomaji, toSentenceRomaji } from '../../utils/romaji';
+import { toSentenceRomaji, toGrammarPatternRomaji } from '../../utils/romaji';
 import { audioService } from '../../services/audioService';
 
 const LEVEL_GRADIENTS = {
@@ -53,7 +53,7 @@ export default function GrammarDetailModal({
 
   const localizedMeaning = getCurriculumMeaning(grammar, activeLang);
   const localizedExplanation = getCurriculumExplanation(grammar, activeLang);
-  const romaji = grammar.romaji || toRomaji(grammar.pattern);
+  const romaji = grammar.romaji || toGrammarPatternRomaji(grammar.pattern);
   const gradient = LEVEL_GRADIENTS[grammar.level] || LEVEL_GRADIENTS.N5;
 
   const speak = (text) => audioService.speak(text);
