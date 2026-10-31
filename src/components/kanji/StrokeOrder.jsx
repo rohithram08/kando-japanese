@@ -13,6 +13,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { fetchKanjiStrokes, getKanjiStrokes } from "../../services/kanjiStrokeService";
+import { evaluateKanjiDrawing } from "../../utils/strokeEvaluator";
 
 // Fallback single stroke on standard 109x109 KanjiVG grid
 const FALLBACK_STROKES = {
@@ -394,17 +395,34 @@ const StrokeOrder = ({
     setPracticeResult(null)
   }
 
-  // ✅ Check practice result
+  // ✅ Check practice result with authentic KanjiVG stroke verification
   const checkPractice = () => {
     if (userStrokes.length === 0) {
-      setPracticeResult('empty')
-      setTimeout(() => setPracticeResult(null), 2000)
-      return
+      setPracticeResult({ status: 'empty', message: '✏️ Draw something first!' });
+      setTimeout(() => setPracticeResult(null), 2500);
+      return;
     }
-    const isGood = userStrokes.length >= totalStrokes
-    setPracticeResult(isGood ? 'good' : 'try-again')
-    setTimeout(() => setPracticeResult(null), 3000)
-  }
+
+    const evalResult = evaluateKanjiDrawing(
+      userStrokes,
+      strokeData?.strokes || [],
+      { canvasWidth: canvasSize, canvasHeight: canvasSize, targetCount: totalStrokes }
+    );
+
+    if (evalResult.status === 'perfect') {
+      setPracticeResult({ status: 'good', message: `⭐ Great job! (${evalResult.score}%)` });
+    } else if (evalResult.status === 'warning') {
+      setPracticeResult({ status: 'warning', message: `⚠️ Check stroke shape & position (${evalResult.score}%)` });
+    } else if (evalResult.status === 'incomplete') {
+      setPracticeResult({ status: 'try-again', message: `💪 Draw all ${totalStrokes} stroke${totalStrokes > 1 ? 's' : ''}! (${userStrokes.length}/${totalStrokes})` });
+    } else if (evalResult.status === 'over') {
+      setPracticeResult({ status: 'try-again', message: `⚠️ Too many strokes (${userStrokes.length}). Target is ${totalStrokes}.` });
+    } else {
+      setPracticeResult({ status: 'incorrect', message: '❌ Strokes do not match. Follow the guide!' });
+    }
+
+    setTimeout(() => setPracticeResult(null), 3500);
+  };
 
   // ── Render ────────────────────────────────────────────────────
   return (
@@ -512,20 +530,22 @@ const StrokeOrder = ({
 
         {/* ✅ Practice result overlay on canvas */}
         <AnimatePresence>
-          {practiceResult && practiceResult !== 'empty' && (
+          {practiceResult && practiceResult.status !== 'empty' && (
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.5 }}
               className={`absolute inset-0 flex items-center justify-center
                          rounded-xl pointer-events-none ${
-                practiceResult === 'good'
+                practiceResult.status === 'good'
                   ? 'bg-green-500/20'
+                  : practiceResult.status === 'warning'
+                  ? 'bg-amber-500/20'
                   : 'bg-orange-500/10'
               }`}
             >
               <span className="text-6xl drop-shadow-lg">
-                {practiceResult === 'good' ? '⭐' : '💪'}
+                {practiceResult.status === 'good' ? '⭐' : practiceResult.status === 'warning' ? '⚠️' : '💪'}
               </span>
             </motion.div>
           )}
@@ -744,18 +764,16 @@ const StrokeOrder = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 className={`rounded-xl px-4 py-3 text-center text-sm font-semibold ${
-                  practiceResult === 'good'
+                  practiceResult.status === 'good'
                     ? 'bg-green-500/20 border border-green-500/30 text-green-400'
-                  : practiceResult === 'empty'
+                  : practiceResult.status === 'warning'
+                    ? 'bg-amber-500/20 border border-amber-500/30 text-amber-400'
+                  : practiceResult.status === 'empty'
                     ? 'bg-muted border border-border text-muted-foreground'
                   : 'bg-orange-500/20 border border-orange-500/30 text-orange-400'
                 }`}
               >
-                {practiceResult === 'good'      && '⭐ Great job! Keep practicing!'}
-                {practiceResult === 'empty'     && '✏️ Draw something first!'}
-                {practiceResult === 'try-again' &&
-                  `💪 Try drawing all ${totalStrokes} stroke${totalStrokes > 1 ? 's' : ''}!`
-                }
+                {practiceResult.message}
               </motion.div>
             )}
           </AnimatePresence>

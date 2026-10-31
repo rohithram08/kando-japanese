@@ -25,6 +25,8 @@ import { KANJI_CATEGORIES, categorizeItems } from '../data/categories'
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
 import KanjiDetailModal from '../components/kanji/KanjiDetailModal'
+import { getKanjiStrokes } from '../services/kanjiStrokeService'
+import { evaluateKanjiDrawing } from '../utils/strokeEvaluator'
 
 
 // ─────────────────────────────────────────────────────────────────────
@@ -800,13 +802,28 @@ function PracticeTab({ kanji, isDark, meta }) {
     setCardIndex(i => (i + dir + kanji.length) % kanji.length)
   }
 
-  const targetStrokes = card?.strokeCount || 0
-  const strokeStatus  = targetStrokes === 0
-    ? null
-    : strokeCount === 0   ? 'empty'
-    : strokeCount <  targetStrokes ? 'under'
-    : strokeCount === targetStrokes ? 'exact'
-    : 'over'
+  const strokeData = useMemo(() => {
+    return card?.kanji ? getKanjiStrokes(card.kanji) : null
+  }, [card?.kanji])
+
+  const targetStrokes = strokeData?.strokes?.length || card?.strokeCount || 0
+
+  const evaluation = useMemo(() => {
+    if (strokeCount === 0 && (!allStrokes.current || allStrokes.current.length === 0)) {
+      return {
+        status: 'empty',
+        score: 0,
+        isValid: false,
+        message: targetStrokes > 0 ? `0 / ${targetStrokes} strokes` : '',
+        strokeFeedback: [],
+      }
+    }
+    return evaluateKanjiDrawing(
+      allStrokes.current,
+      strokeData?.strokes || [],
+      { canvasWidth: 400, canvasHeight: 400, targetCount: targetStrokes }
+    )
+  }, [strokeCount, strokeData, targetStrokes])
 
   return (
     <div className="space-y-5">
@@ -857,17 +874,22 @@ function PracticeTab({ kanji, isDark, meta }) {
             {/* Stroke dots visualiser */}
             {targetStrokes > 0 && (
               <div className="flex flex-wrap gap-1 justify-center max-w-xs">
-                {Array.from({ length: targetStrokes }).map((_, i) => (
-                  <div key={i}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      i < strokeCount
-                        ? strokeStatus === 'over'
-                          ? 'bg-amber-500'
-                          : `bg-gradient-to-br ${meta.gradient}`
-                        : 'bg-muted'
-                    }`}
-                  />
-                ))}
+                {Array.from({ length: targetStrokes }).map((_, i) => {
+                  const feedback = evaluation.strokeFeedback?.[i]
+                  const isDrawn = i < strokeCount
+                  const isMatch = feedback ? feedback.isMatch : false
+                  return (
+                    <div key={i}
+                      className={`w-3 h-3 rounded-full transition-all ${
+                        isDrawn
+                          ? isMatch
+                            ? `bg-gradient-to-br ${meta.gradient}`
+                            : 'bg-rose-500'
+                          : 'bg-muted'
+                      }`}
+                    />
+                  )
+                })}
               </div>
             )}
 
@@ -885,12 +907,15 @@ function PracticeTab({ kanji, isDark, meta }) {
               <p className={`text-sm font-semibold text-foreground`}>Writing Practice</p>
               {targetStrokes > 0 && (
                 <p className={`text-xs mt-0.5 font-medium ${
-                  strokeStatus === 'exact' ? 'text-emerald-600 dark:text-emerald-400'
-                  : strokeStatus === 'over' ? 'text-amber-600 dark:text-amber-400'
-                  : 'text-muted-foreground'}`}>
-                  {strokeCount} / {targetStrokes} strokes
-                  {strokeStatus === 'exact' && ' ✓ Perfect!'}
-                  {strokeStatus === 'over'  && ' — too many strokes'}
+                  evaluation.status === 'perfect'
+                    ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
+                    : evaluation.status === 'warning'
+                    ? 'text-amber-600 dark:text-amber-400 font-medium'
+                    : evaluation.status === 'incorrect' || evaluation.status === 'over'
+                    ? 'text-rose-600 dark:text-rose-400 font-medium'
+                    : 'text-muted-foreground'
+                }`}>
+                  {evaluation.message}
                 </p>
               )}
             </div>
