@@ -420,7 +420,8 @@
     "username_too_long": "Tên người dùng có tối đa {max} ký tự",
     "username_invalid": "Chỉ dùng chữ cái, số, \"_\", \".\" hoặc \"-\" (không có khoảng trắng)",
     "account_security": "Tài khoản & Bảo mật",
-    "profile_card_title": "Hồ sơ người học"
+    "profile_card_title": "Hồ sơ người học",
+    "platform_version_title": "Phiên bản nền tảng & Hệ thống"
   },
   "auth": {
     "email_required": "Vui lòng nhập email",

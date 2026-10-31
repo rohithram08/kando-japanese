@@ -420,7 +420,8 @@
     "username_too_long": "Der Benutzername darf höchstens {max} Zeichen lang sein",
     "username_invalid": "Verwende nur Buchstaben, Zahlen, „_“, „.“ oder „-“ (keine Leerzeichen)",
     "account_security": "Konto & Sicherheit",
-    "profile_card_title": "Lernenden-Profil"
+    "profile_card_title": "Lernenden-Profil",
+    "platform_version_title": "Plattformversion & System"
   },
   "auth": {
     "email_required": "E-Mail ist erforderlich",

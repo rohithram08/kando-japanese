@@ -420,7 +420,8 @@
     "username_too_long": "使用者名稱最多 {max} 個字元",
     "username_invalid": "僅使用字母、數字、「_」、「.」或「-」（不可有空格）",
     "account_security": "帳號與安全",
-    "profile_card_title": "學員個人檔案"
+    "profile_card_title": "學員個人檔案",
+    "platform_version_title": "平台版本與系統"
   },
   "auth": {
     "email_required": "電子郵件為必填項",

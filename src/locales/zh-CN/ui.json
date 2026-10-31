@@ -420,7 +420,8 @@
     "username_too_long": "用户名最多 {max} 个字符",
     "username_invalid": "仅使用字母、数字、“_”、“.”或“-”（不能有空格）",
     "account_security": "账号与安全",
-    "profile_card_title": "学员个人档案"
+    "profile_card_title": "学员个人档案",
+    "platform_version_title": "平台版本与系统"
   },
   "auth": {
     "email_required": "请输入电子邮箱",

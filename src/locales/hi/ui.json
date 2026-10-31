@@ -420,7 +420,8 @@
     "study_level": "Study Level",
     "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
     "account_security": "खाता और सुरक्षा",
-    "profile_card_title": "शिक्षार्थी प्रोफ़ाइल"
+    "profile_card_title": "शिक्षार्थी प्रोफ़ाइल",
+    "platform_version_title": "प्लेटफ़ॉर्म संस्करण और प्रणाली"
   },
   "auth": {
     "email_required": "ईमेल आवश्यक है",

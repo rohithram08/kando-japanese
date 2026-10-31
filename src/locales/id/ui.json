@@ -420,7 +420,8 @@
     "username_too_long": "Nama pengguna maksimal {max} karakter",
     "username_invalid": "Gunakan hanya huruf, angka, \"_\", \".\" atau \"-\" (tanpa spasi)",
     "account_security": "Akun & Keamanan",
-    "profile_card_title": "Profil Pembelajar"
+    "profile_card_title": "Profil Pembelajar",
+    "platform_version_title": "Versi Platform & Sistem"
   },
   "auth": {
     "email_required": "Email wajib diisi",

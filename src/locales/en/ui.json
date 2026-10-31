@@ -420,7 +420,8 @@
     "username_too_long": "Username can be at most {max} characters",
     "username_invalid": "Use letters, numbers, \"_\", \".\" or \"-\" only (no spaces)",
     "study_level": "Study Level",
-    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available."
+    "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
+    "platform_version_title": "Platform Version & System"
   },
   "auth": {
     "email_required": "Email is required",

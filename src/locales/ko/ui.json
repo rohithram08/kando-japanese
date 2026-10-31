@@ -420,7 +420,8 @@
     "username_too_long": "사용자 이름은 최대 {max}자까지 가능합니다",
     "username_invalid": "문자, 숫자, \"_\", \".\" 또는 \"-\"만 사용하세요 (공백 불가)",
     "account_security": "계정 및 보안",
-    "profile_card_title": "학습자 프로필"
+    "profile_card_title": "학습자 프로필",
+    "platform_version_title": "플랫폼 버전 및 시스템"
   },
   "auth": {
     "email_required": "이메일을 입력해 주세요",

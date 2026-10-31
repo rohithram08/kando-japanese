@@ -420,7 +420,8 @@
     "username_too_long": "O nome de usuário pode ter no máximo {max} caracteres",
     "username_invalid": "Use apenas letras, números, \"_\", \".\" ou \"-\" (sem espaços)",
     "account_security": "Conta e Segurança",
-    "profile_card_title": "Perfil do Estudante"
+    "profile_card_title": "Perfil do Estudante",
+    "platform_version_title": "Versão da plataforma e sistema"
   },
   "auth": {
     "email_required": "O e-mail é obrigatório",
