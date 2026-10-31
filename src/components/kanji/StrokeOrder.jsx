@@ -74,7 +74,13 @@ const FALLBACK_STROKES = {
   tips: ["Horizontal stroke — trace following stroke order guide"],
 }
 
-const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
+const StrokeOrder = ({
+  character = "日",
+  onComplete,
+  isDark = true,
+  compact = false,
+  embedded = false,
+}) => {
   const canvasRef     = useRef(null)
   const drawCanvasRef = useRef(null)
   const animationRef  = useRef(null)
@@ -86,7 +92,7 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
   const strokeData   = activeStrokeData
   const totalStrokes = strokeData.strokes.length
-  const canvasSize   = 240
+  const canvasSize   = compact ? 200 : 240
   const isKvg        = strokeData.viewBox === '0 0 109 109' || strokeData.numbers?.length > 0
   const scale        = canvasSize / (isKvg ? 109 : 100)
 
@@ -195,14 +201,14 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
     // Grid lines
     ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(55,65,81,0.35)"
     ctx.lineWidth = 0.5
-    ctx.setLineDash([4, 4])
+    if (ctx.setLineDash) ctx.setLineDash([4, 4])
     ctx.beginPath()
     ctx.moveTo(canvasSize / 2, 0)
     ctx.lineTo(canvasSize / 2, canvasSize)
     ctx.moveTo(0, canvasSize / 2)
     ctx.lineTo(canvasSize, canvasSize / 2)
     ctx.stroke()
-    ctx.setLineDash([])
+    if (ctx.setLineDash) ctx.setLineDash([])
 
     // Completed strokes
     ctx.save()
@@ -339,9 +345,15 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
     animationRef.current = requestAnimationFrame(animate);
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
-      if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
     };
   }, [isAnimating, animSpeed, currentStroke, totalStrokes, onComplete]);
+
+  // Clean up autoPlayTimer on unmount
+  useEffect(() => {
+    return () => {
+      if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
+    };
+  }, []);
 
   // ── Controls ──────────────────────────────────────────────────
   const playNext = () => {
@@ -447,7 +459,7 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
   // ── Render ────────────────────────────────────────────────────
   return (
-    <div className="bg-surface border border-border rounded-2xl p-6 space-y-4">
+    <div className={embedded ? "space-y-2.5 flex flex-col justify-between h-full" : "bg-surface border border-border rounded-2xl p-6 space-y-4"}>
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -486,7 +498,7 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
       </div>
 
       {/* Canvas area */}
-      <div className="relative w-60 h-60 mx-auto">
+      <div className={`relative ${compact ? "w-[200px] h-[200px]" : "w-60 h-60"} mx-auto rounded-2xl border border-border bg-muted/20 overflow-hidden shadow-inner`}>
 
         {/* Loading overlay */}
         {loadingKanji && (
@@ -499,8 +511,7 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
         {showGuide && (
           <div className="absolute inset-0 flex items-center justify-center
                           pointer-events-none">
-            <span className="text-[140px] text-foreground/10 font-bold
-                             select-none leading-none">
+            <span className={`${compact ? "text-[115px]" : "text-[140px]"} text-foreground/10 font-bold select-none leading-none`}>
               {character}
             </span>
           </div>
@@ -617,8 +628,8 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
       {mode === "watch" ? (
 
         // Watch mode controls
-        <div className="space-y-3">
-          <div className="flex items-center justify-center gap-3">
+        <div className={compact ? "space-y-2" : "space-y-3"}>
+          <div className={`flex items-center justify-center ${compact ? "gap-2" : "gap-3"}`}>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => {
@@ -629,25 +640,25 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
                 }
               }}
               disabled={currentStroke === 0 || isAnimating || isAutoPlaying}
-              className="w-10 h-10 rounded-xl bg-muted hover:bg-muted/70
+              className={`${compact ? "w-8 h-8 rounded-lg" : "w-10 h-10 rounded-xl"} bg-muted hover:bg-muted/70
                          disabled:opacity-40 flex items-center justify-center
-                         text-foreground/80 transition-colors"
+                         text-foreground/80 transition-colors`}
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className={compact ? "w-4 h-4" : "w-5 h-5"} />
             </motion.button>
 
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={(isAnimating || isAutoPlaying) ? pause : playAll}
-              className="flex items-center gap-2 px-5 py-2.5
+              className={`flex items-center gap-1.5 ${compact ? "px-4 py-2 text-xs" : "px-5 py-2.5 text-sm"}
                          bg-gradient-to-r from-blue-500 to-blue-600
-                         text-white rounded-xl font-semibold text-sm
-                         shadow-lg shadow-blue-500/20 hover:opacity-90
-                         transition-opacity"
+                         text-white rounded-xl font-semibold
+                         shadow-md shadow-blue-500/20 hover:opacity-90
+                         transition-opacity`}
             >
               {(isAnimating || isAutoPlaying)
-                ? <><Pause className="w-4 h-4" /> Pause</>
-                : <><Play  className="w-4 h-4" /> Play All</>
+                ? <><Pause className="w-3.5 h-3.5" /> Pause</>
+                : <><Play  className="w-3.5 h-3.5" /> Play All</>
               }
             </motion.button>
 
@@ -655,53 +666,52 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
               whileTap={{ scale: 0.9 }}
               onClick={playNext}
               disabled={currentStroke >= totalStrokes || isAnimating || isAutoPlaying}
-              className="w-10 h-10 rounded-xl bg-muted hover:bg-muted/70
+              className={`${compact ? "w-8 h-8 rounded-lg" : "w-10 h-10 rounded-xl"} bg-muted hover:bg-muted/70
                          disabled:opacity-40 flex items-center justify-center
-                         text-foreground/80 transition-colors"
+                         text-foreground/80 transition-colors`}
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className={compact ? "w-4 h-4" : "w-5 h-5"} />
             </motion.button>
 
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={reset}
-              className="w-10 h-10 rounded-xl bg-muted hover:bg-muted/70
+              className={`${compact ? "w-8 h-8 rounded-lg" : "w-10 h-10 rounded-xl"} bg-muted hover:bg-muted/70
                          flex items-center justify-center text-foreground/80
-                         transition-colors"
+                         transition-colors`}
             >
-              <RotateCcw className="w-4 h-4" />
+              <RotateCcw className={compact ? "w-3.5 h-3.5" : "w-4 h-4"} />
             </motion.button>
           </div>
 
-          {/* Speed */}
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-xs text-muted-foreground">Speed:</span>
-            {[0.5, 1, 1.5, 2].map(speed => (
-              <button
-                key={speed}
-                onClick={() => setAnimSpeed(speed)}
-                className={`text-xs px-2.5 py-1 rounded-lg font-medium
-                            transition-colors ${
-                  animSpeed === speed
-                    ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {speed}x
-              </button>
-            ))}
-          </div>
+          {/* Speed & Guide */}
+          <div className={`flex items-center ${compact ? "justify-between px-1" : "justify-center gap-6"} text-xs text-muted-foreground`}>
+            <div className="flex items-center gap-1.5">
+              <span>Speed:</span>
+              {[0.5, 1, 1.5, 2].map(speed => (
+                <button
+                  key={speed}
+                  onClick={() => setAnimSpeed(speed)}
+                  className={`text-[11px] px-1.5 py-0.5 rounded font-medium
+                             transition-colors ${
+                    animSpeed === speed
+                      ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {speed}x
+                </button>
+              ))}
+            </div>
 
-          {/* Guide toggle */}
-          <div className="flex items-center justify-center">
             <button
               onClick={() => setShowGuide(!showGuide)}
-              className="text-xs text-muted-foreground hover:text-foreground
-                         flex items-center gap-1.5 transition-colors"
+              className="text-[11px] text-muted-foreground hover:text-foreground
+                         flex items-center gap-1 transition-colors"
             >
               {showGuide
-                ? <><Eye    className="w-3.5 h-3.5" /> Hide guide numbers</>
-                : <><EyeOff className="w-3.5 h-3.5" /> Show guide numbers</>
+                ? <><Eye    className="w-3.5 h-3.5" /> Guide</>
+                : <><EyeOff className="w-3.5 h-3.5" /> Guide</>
               }
             </button>
           </div>
@@ -710,15 +720,14 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
       ) : (
 
         // ✅ Practice mode controls
-        <div className="space-y-3">
+        <div className={compact ? "space-y-2" : "space-y-3"}>
 
           {/* Instruction banner */}
-          <div className="bg-purple-500/10 border border-purple-500/20
-                          rounded-xl px-4 py-2.5">
+          <div className={`bg-purple-500/10 border border-purple-500/20 rounded-xl ${compact ? "px-3 py-1.5" : "px-4 py-2.5"}`}>
             <p className="text-xs text-purple-400 font-semibold mb-0.5">
               ✏️ Draw in the box above
             </p>
-            <p className="text-sm text-foreground/80">
+            <p className={`${compact ? "text-xs" : "text-sm"} text-foreground/80`}>
               {totalStrokes === 1
                 ? "Draw 1 stroke following the guide."
                 : `Draw ${totalStrokes} strokes in order. Lift between each stroke.`
@@ -746,9 +755,9 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
             {/* Clear */}
             <button
               onClick={clearDrawing}
-              className="flex items-center justify-center gap-1.5 py-3
+              className={`flex items-center justify-center gap-1.5 ${compact ? "py-2" : "py-3"}
                          bg-muted hover:bg-muted/70 text-foreground/80
-                         rounded-xl text-xs font-medium transition-colors"
+                         rounded-xl text-xs font-medium transition-colors`}
             >
               <Trash2 className="w-3.5 h-3.5" />
               Clear
@@ -757,10 +766,10 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
             {/* Watch */}
             <button
               onClick={() => { clearDrawing(); setMode("watch"); reset() }}
-              className="flex items-center justify-center gap-1.5 py-3
+              className={`flex items-center justify-center gap-1.5 ${compact ? "py-2" : "py-3"}
                          bg-purple-500/20 hover:bg-purple-500/30
                          text-purple-400 border border-purple-500/30
-                         rounded-xl text-xs font-medium transition-colors"
+                         rounded-xl text-xs font-medium transition-colors`}
             >
               <Eye className="w-3.5 h-3.5" />
               Watch
@@ -769,14 +778,12 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
             {/* ✅ Check */}
             <button
               onClick={checkPractice}
-              className="flex items-center justify-center gap-1.5 py-3
-                         bg-gradient-to-r from-green-500 to-emerald-600
-                         text-white rounded-xl text-xs font-semibold
-                         shadow-lg shadow-green-500/20 hover:opacity-90
-                         transition-opacity"
+              className={`flex items-center justify-center gap-1.5 ${compact ? "py-2" : "py-3"}
+                         bg-purple-600 hover:bg-purple-700 text-white
+                         rounded-xl text-xs font-semibold transition-colors shadow-sm`}
             >
               <CheckCircle className="w-3.5 h-3.5" />
-              Check ✓
+              Check
             </button>
           </div>
 

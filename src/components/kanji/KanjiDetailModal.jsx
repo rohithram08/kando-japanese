@@ -3,10 +3,13 @@
 // Interactive Pop-Up Learning Modal for Kanji
 // Features:
 // - Comprehensive layout matching student workflow:
-//   * Left Pane: Prominent Kanji, On'yomi, Kun'yomi, Romaji, and 5-6 authentic vocabulary examples
-//   * Right Pane: Animated interactive Stroke Order viewer & practice tracing canvas
-// - Sequential navigation: Previous / Next kanji controls with keyboard arrow support
-// - SRS deck integration (Add / Remove)
+//   * Left Column:
+//     - Top Card: "This The Kanji" (Character, pronunciation audio, meaning, level, strokes, radical, On'yomi, Kun'yomi, Romaji)
+//     - Bottom Card: "Examples (Min 5 to 6)" (5-6 vocabulary examples with readings, audio, romaji, localized meanings)
+//   * Right Column:
+//     - "Stroke Order & Draw" (Full-height view: interactive player with Play All, Pause, speed, guide numbers, and tracing canvas)
+//     - Fits 100% in full view with ZERO vertical scrolling!
+// - Bottom Bar: [Add to SRS], [< Previous], [Next >], [Done] controls with arrow key navigation
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect, useState } from 'react';
@@ -16,7 +19,6 @@ import {
   Volume2,
   BookmarkPlus,
   Check,
-  Sparkles,
   BookOpen,
   Layers,
   GraduationCap,
@@ -101,84 +103,41 @@ export default function KanjiDetailModal({
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          initial={{ opacity: 0, scale: 0.96, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 15 }}
+          exit={{ opacity: 0, scale: 0.96, y: 12 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           role="dialog"
           aria-modal="true"
-          className="relative w-full max-w-4xl lg:max-w-5xl bg-surface border border-border rounded-3xl shadow-2xl overflow-hidden max-h-[94vh] flex flex-col"
+          className="relative w-full max-w-4xl lg:max-w-5xl bg-surface border border-border rounded-3xl shadow-2xl overflow-hidden h-[92vh] max-h-[700px] flex flex-col"
         >
-          {/* ── Top Header Banner: "This The Kanji" ── */}
-          <div className={`relative px-6 py-6 sm:py-7 bg-gradient-to-br ${gradient} text-white flex flex-col items-center justify-center text-center shadow-inner shrink-0`}>
-            <button
-              onClick={onClose}
-              aria-label={t('common.close', 'Close')}
-              className="absolute top-4 right-4 p-2 rounded-full bg-black/20 hover:bg-black/35 text-white transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md mb-1.5">
-              <GraduationCap className="w-3.5 h-3.5" />
-              {kanji.level || 'N5'} Kanji
-            </span>
-
-            {/* Kanji Character + Pronunciation Audio Button */}
-            <div className="flex items-center justify-center gap-3 my-1">
-              <span className="text-6xl sm:text-7xl font-extrabold tracking-tight drop-shadow-md select-none text-white">
-                {kanji.kanji}
-              </span>
-              <button
-                onClick={() => speak(kanji.kanji)}
-                title={t('audio.listen', 'Listen Pronunciation')}
-                className="p-3 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md shadow-md hover:scale-105 active:scale-95 transition-all shrink-0"
-              >
-                <Volume2 className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Meaning Title */}
-            <h2 className="text-xl sm:text-2xl font-bold mt-1 capitalize text-white">
-              {localizedMeaning}
-            </h2>
-            {activeLang !== 'en' && kanji.meaning && kanji.meaning !== localizedMeaning && (
-              <p className="text-xs text-white/80 mt-0.5">({kanji.meaning})</p>
-            )}
-
-            {/* Stroke Count & Radical Meta Badges */}
-            <div className="flex items-center gap-3 mt-2.5 text-xs text-white/90">
-              {kanji.strokeCount > 0 && (
-                <span className="px-2.5 py-0.5 rounded-full bg-black/20 font-medium">
-                  {kanji.strokeCount} {t('kanji.strokes', 'Strokes')}
-                </span>
-              )}
-              {kanji.radical && (
-                <span className="px-2.5 py-0.5 rounded-full bg-black/20 font-medium">
-                  {t('kanji.radical', 'Radical')}: {kanji.radical}
-                </span>
-              )}
-            </div>
-          </div>
+          {/* Close button on top-right */}
+          <button
+            onClick={onClose}
+            aria-label={t('common.close', 'Close')}
+            className="absolute top-3.5 right-3.5 z-20 p-2 rounded-full bg-muted/80 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors border border-border/50 shadow-xs"
+          >
+            <X className="w-4 h-4" />
+          </button>
 
           {/* Mobile Tab Switcher (< md screens) */}
-          <div className="flex md:hidden border-b border-border bg-muted/40 p-1.5 gap-1.5 shrink-0">
+          <div className="flex md:hidden border-b border-border bg-muted/40 p-1.5 gap-1.5 shrink-0 pr-12">
             <button
               onClick={() => setMobileTab('overview')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all ${
                 mobileTab === 'overview'
                   ? 'bg-surface text-foreground shadow-xs border border-border'
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>{t('kanji.tab_overview', 'Readings & Examples')}</span>
+              <span>{t('kanji.tab_overview', 'Kanji & Examples')}</span>
             </button>
             <button
               onClick={() => setMobileTab('stroke')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
+              className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl text-xs font-bold transition-all ${
                 mobileTab === 'stroke'
                   ? 'bg-surface text-foreground shadow-xs border border-border'
                   : 'text-muted-foreground hover:text-foreground'
@@ -189,84 +148,106 @@ export default function KanjiDetailModal({
             </button>
           </div>
 
-          {/* ── Main Content: Two Columns on Desktop (Side-by-Side), Tabs on Mobile ── */}
-          <div className="flex-1 overflow-y-auto grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+          {/* ── Main Two-Column Body: Side-by-Side on Desktop ── */}
+          <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border overflow-hidden">
             
-            {/* ── Left Column: Readings & 5-6 Vocabulary Examples ── */}
-            <div className={`p-4 sm:p-6 space-y-5 overflow-y-auto max-h-[60vh] md:max-h-[65vh] ${mobileTab !== 'overview' ? 'hidden md:block' : ''}`}>
-              {/* Readings Section (On'yomi & Kun'yomi) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {/* On'yomi */}
-                <div className="p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 mb-1.5 uppercase tracking-wider">
-                    <Layers className="w-3.5 h-3.5" />
-                    <span>{t('kanji.onyomi', "On'yomi (音読み)")}</span>
+            {/* ── Left Column: "This The Kanji" Banner + 5-6 Vocabulary Examples ── */}
+            <div className={`flex flex-col h-full overflow-hidden ${mobileTab !== 'overview' ? 'hidden md:flex' : 'flex'}`}>
+              
+              {/* Top: "This The Kanji" card */}
+              <div className={`p-4 sm:p-5 bg-gradient-to-br ${gradient} text-white shrink-0 shadow-inner`}>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md">
+                    <GraduationCap className="w-3.5 h-3.5" />
+                    {kanji.level || 'N5'} Kanji
+                  </span>
+                  <div className="flex items-center gap-1.5 text-xs text-white/90">
+                    {kanji.strokeCount > 0 && (
+                      <span className="px-2 py-0.5 rounded-full bg-black/20 font-medium text-[11px]">
+                        {kanji.strokeCount} {t('kanji.strokes', 'Strokes')}
+                      </span>
+                    )}
+                    {kanji.radical && (
+                      <span className="px-2 py-0.5 rounded-full bg-black/20 font-medium text-[11px]">
+                        {t('kanji.radical', 'Radical')}: {kanji.radical}
+                      </span>
+                    )}
                   </div>
-                  {onReadings.length > 0 ? (
-                    <div className="space-y-1">
-                      {onReadings.map((reading, i) => (
-                        <div key={i} className="flex items-baseline gap-2">
-                          <button
-                            onClick={() => speak(reading)}
-                            className="text-base font-bold text-foreground hover:text-blue-600 transition-colors"
-                          >
-                            {reading}
-                          </button>
-                          <span className="text-xs font-mono text-muted-foreground">
-                            {toRomaji(reading)}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-xs text-muted-foreground">—</p>
-                  )}
                 </div>
 
-                {/* Kun'yomi */}
-                <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-1.5 uppercase tracking-wider">
-                    <Sparkles className="w-3.5 h-3.5" />
-                    <span>{t('kanji.kunyomi', "Kun'yomi (訓読み)")}</span>
-                  </div>
-                  {kunReadings.length > 0 ? (
-                    <div className="space-y-1">
-                      {kunReadings.map((reading, i) => (
-                        <div key={i} className="flex items-baseline gap-2">
-                          <button
-                            onClick={() => speak(reading)}
-                            className="text-base font-bold text-foreground hover:text-emerald-600 transition-colors"
-                          >
-                            {reading}
-                          </button>
-                          <span className="text-xs font-mono text-muted-foreground">
-                            {toRomaji(reading)}
-                          </span>
-                        </div>
-                      ))}
+                {/* Character + Pronounce + Meaning */}
+                <div className="flex items-center gap-3.5 my-1">
+                  <span className="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-md select-none text-white leading-none">
+                    {kanji.kanji}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-xl sm:text-2xl font-bold capitalize text-white truncate">
+                        {localizedMeaning}
+                      </h2>
+                      <button
+                        onClick={() => speak(kanji.kanji)}
+                        title={t('audio.listen', 'Listen Pronunciation')}
+                        className="p-1.5 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-md shadow-xs hover:scale-105 active:scale-95 transition-all shrink-0"
+                      >
+                        <Volume2 className="w-4 h-4" />
+                      </button>
                     </div>
-                  ) : (
-                    <p className="text-xs text-muted-foreground">—</p>
-                  )}
+                    {activeLang !== 'en' && kanji.meaning && kanji.meaning !== localizedMeaning && (
+                      <p className="text-xs text-white/80 truncate">({kanji.meaning})</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* On'yomi & Kun'yomi Readings side-by-side */}
+                <div className="grid grid-cols-2 gap-2 mt-2.5 pt-2.5 border-t border-white/20 text-xs">
+                  <div className="bg-black/15 rounded-xl px-2.5 py-1.5 min-w-0">
+                    <span className="text-[10px] uppercase font-bold text-white/70 block flex items-center gap-1">
+                      <Layers className="w-3 h-3" />
+                      {t('kanji.onyomi', "On'yomi (音)")}
+                    </span>
+                    <span className="font-bold text-white text-sm truncate block mt-0.5">
+                      {onReadings.join('、') || '—'}
+                    </span>
+                    {onReadings.length > 0 && (
+                      <span className="text-[10px] text-white/80 block font-mono truncate">
+                        {onReadings.map(toRomaji).join(', ')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="bg-black/15 rounded-xl px-2.5 py-1.5 min-w-0">
+                    <span className="text-[10px] uppercase font-bold text-white/70 block flex items-center gap-1">
+                      <BookOpen className="w-3 h-3" />
+                      {t('kanji.kunyomi', "Kun'yomi (訓)")}
+                    </span>
+                    <span className="font-bold text-white text-sm truncate block mt-0.5">
+                      {kunReadings.join('、') || '—'}
+                    </span>
+                    {kunReadings.length > 0 && (
+                      <span className="text-[10px] text-white/80 block font-mono truncate">
+                        {kunReadings.map(toRomaji).join(', ')}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              {/* Vocabulary Examples List (5 to 6 words) */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
+              {/* Bottom: "Example Need min 5 to 6" */}
+              <div className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-4 space-y-2">
+                <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
                     <BookOpen className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-                    <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
+                    <h3 className="text-xs font-bold text-foreground uppercase tracking-wider">
                       {t('kanji.examples', 'Vocabulary Examples')}
                     </h3>
                   </div>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
                     {kanji.examples?.length || 0} {t('kanji.words', 'words')}
                   </span>
                 </div>
 
                 {kanji.examples && kanji.examples.length > 0 ? (
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {kanji.examples.map((ex, i) => {
                       const parsed = parseKanjiExample(ex);
                       const dictEntry = KANJI_EXAMPLE_MEANINGS[parsed.word] || KANJI_EXAMPLE_MEANINGS[parsed.reading];
@@ -277,17 +258,16 @@ export default function KanjiDetailModal({
                         parsed.meaning ||
                         kanji.meaning ||
                         '';
-
                       const romaji = parsed.romaji || dictEntry?.romaji || toRomaji(parsed.reading || parsed.word);
 
                       return (
                         <div
                           key={i}
-                          className="p-3 rounded-2xl bg-muted/50 border border-border flex items-center justify-between gap-3 hover:bg-muted/80 transition-colors"
+                          className="p-2.5 rounded-xl bg-muted/40 border border-border flex items-center justify-between gap-2.5 hover:bg-muted/70 transition-colors"
                         >
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-baseline gap-2 flex-wrap">
-                              <span className="text-base font-bold text-foreground">
+                            <div className="flex items-baseline gap-1.5 flex-wrap">
+                              <span className="text-sm font-bold text-foreground">
                                 {parsed.word}
                               </span>
                               {parsed.reading && parsed.reading !== parsed.word && (
@@ -295,12 +275,12 @@ export default function KanjiDetailModal({
                                   【{parsed.reading}】
                                 </span>
                               )}
-                              <span className="text-xs font-mono text-muted-foreground">
+                              <span className="text-[11px] font-mono text-muted-foreground">
                                 {romaji}
                               </span>
                             </div>
                             {activeMeaning && (
-                              <p className="text-xs font-medium text-muted-foreground mt-0.5 truncate">
+                              <p className="text-xs text-muted-foreground truncate mt-0.5">
                                 {activeMeaning}
                               </p>
                             )}
@@ -309,9 +289,9 @@ export default function KanjiDetailModal({
                           <button
                             onClick={() => speak(parsed.word)}
                             title={t('audio.listen', 'Pronounce')}
-                            className="p-2 rounded-xl bg-surface hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-950 dark:hover:text-purple-300 text-muted-foreground transition-colors shrink-0 shadow-xs border border-border"
+                            className="p-1.5 rounded-lg bg-surface hover:bg-purple-100 hover:text-purple-600 dark:hover:bg-purple-950 dark:hover:text-purple-300 text-muted-foreground transition-colors shrink-0 shadow-xs border border-border"
                           >
-                            <Volume2 className="w-4 h-4" />
+                            <Volume2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       );
@@ -325,27 +305,22 @@ export default function KanjiDetailModal({
               </div>
             </div>
 
-            {/* ── Right Column: Interactive Stroke Order & Practice Drawing ── */}
-            <div className={`p-4 sm:p-6 overflow-y-auto max-h-[60vh] md:max-h-[65vh] flex flex-col justify-start ${mobileTab !== 'stroke' ? 'hidden md:block' : ''}`}>
-              <div className="flex items-center gap-2 mb-3">
-                <PenTool className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
-                  {t('kanji.tab_stroke', 'Stroke Order & Practice')}
-                </h3>
-              </div>
-
+            {/* ── Right Column: Full-Height "Stroke Order" Viewer & Draw Canvas ── */}
+            <div className={`flex flex-col h-full overflow-hidden p-3 sm:p-4 bg-surface/50 justify-between ${mobileTab !== 'stroke' ? 'hidden md:flex' : 'flex'}`}>
               <StrokeOrder
                 key={kanji.kanji}
                 character={kanji.kanji}
                 isDark={isDark}
+                compact={true}
+                embedded={true}
                 onComplete={() => toast.success(t('kanji.stroke_complete', 'Great job! Stroke order practiced!'))}
               />
             </div>
 
           </div>
 
-          {/* ── Modal Footer: [add to SRS] [Previous] [Next] [Done] ── */}
-          <div className="p-4 bg-muted/40 border-t border-border flex items-center justify-between gap-3 shrink-0 flex-wrap">
+          {/* ── Bottom Bar: [Add to SRS] [Previous] [Next] [Done] ── */}
+          <div className="p-3 sm:p-4 bg-muted/40 border-t border-border flex items-center justify-between gap-3 shrink-0 flex-wrap">
             {/* Left: Add to SRS */}
             <button
               onClick={handleToggleSRS}

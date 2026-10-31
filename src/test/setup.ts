@@ -58,6 +58,8 @@ if (typeof window !== 'undefined') {
     HTMLCanvasElement.prototype.getContext = vi.fn().mockImplementation(() => ({
       fillRect: vi.fn(),
       clearRect: vi.fn(),
+      setLineDash: vi.fn(),
+      getLineDash: vi.fn(() => []),
       getImageData: vi.fn(() => ({ data: [] })),
       putImageData: vi.fn(),
       createImageData: vi.fn(() => []),

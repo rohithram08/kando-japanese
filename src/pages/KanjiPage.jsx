@@ -4,13 +4,12 @@ import React, {
 } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Search, Volume2, Layers, ChevronDown, ChevronUp,
+  Search, Volume2, Layers,
   BookOpen, Grid3X3, List, X, Pen, RotateCcw,
   ChevronLeft, ChevronRight, Award, RefreshCw,
   Eraser, Lightbulb, Shuffle, Eye, EyeOff,
-  CheckCircle2, XCircle, Target, PenTool, BookmarkPlus, Check
+  CheckCircle2, XCircle, Target, BookmarkPlus, Check
 } from 'lucide-react'
-import StrokeOrder from '../components/kanji/StrokeOrder'
 import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { useSRSStore } from '../store/srsStore'
@@ -404,22 +403,11 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark: _isDark, onOpenM
           <button
             onClick={(e) => {
               e.stopPropagation()
-              onOpenModal?.(item, 'stroke')
+              onOpenModal?.(item)
             }}
-            title={t('kanji.tab_stroke', 'Stroke Order & Draw')}
-            className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+            className="text-xs font-semibold px-3 py-1.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
           >
-            <PenTool className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{t('kanji.strokes_action', 'Strokes')}</span>
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation()
-              onOpenModal?.(item, 'overview')
-            }}
-            className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
-          >
-            View
+            {t('common.details', 'View')}
           </button>
         </div>
       </div>
@@ -1195,90 +1183,6 @@ function QuizTab({ kanji, isDark: _isDark, meta }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────
-//  SHARED: Stroke Order practice tab
-// ─────────────────────────────────────────────────────────────────────
-function StrokeTab({ kanji, isDark, meta }) {
-  const [index, setIndex] = useState(0)
-  const [done, setDone] = useState(new Set())
-  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
-  const activeLang = normalizeLocale(displayLanguage)
-
-  const card = kanji[index]
-
-  const goNext = () => setIndex((i) => Math.min(i + 1, kanji.length - 1))
-  const goPrev = () => setIndex((i) => Math.max(i - 1, 0))
-
-  const handleComplete = useCallback(() => {
-    if (card) setDone((prev) => new Set([...prev, card.id]))
-  }, [card])
-
-  if (!card) return null
-
-  const displayMeaning = getCurriculumMeaning(card, activeLang)
-
-  return (
-    <div className="space-y-4">
-      {/* Kanji selector strip */}
-      <div className="flex items-center gap-2">
-        <button
-          onClick={goPrev}
-          disabled={index === 0}
-          className="w-9 h-9 rounded-xl flex items-center justify-center bg-muted hover:bg-muted/70 disabled:opacity-40 text-foreground/80 transition-colors shrink-0"
-        >
-          <ChevronLeft className="w-4 h-4" />
-        </button>
-
-        <div className="flex-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
-          {kanji.map((k, i) => (
-            <button
-              key={k.id}
-              onClick={() => setIndex(i)}
-              className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold border transition-all ${
-                i === index
-                  ? `bg-gradient-to-br ${meta.gradient} text-white border-transparent shadow-md`
-                  : done.has(k.id)
-                    ? 'bg-green-50 dark:bg-green-500/10 border-green-200 dark:border-green-500/20 text-green-600 dark:text-green-400'
-                    : 'bg-surface border-border text-foreground/70 hover:border-foreground/20'
-              }`}
-            >
-              {k.kanji}
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={goNext}
-          disabled={index === kanji.length - 1}
-          className="w-9 h-9 rounded-xl flex items-center justify-center bg-muted hover:bg-muted/70 disabled:opacity-40 text-foreground/80 transition-colors shrink-0"
-        >
-          <ChevronRight className="w-4 h-4" />
-        </button>
-      </div>
-
-      <p className="text-xs text-center text-muted-foreground">
-        {index + 1} of {kanji.length} · {done.size} practiced this session
-      </p>
-
-      <StrokeOrder
-        key={card.id}
-        character={card.kanji}
-        isDark={isDark}
-        onComplete={handleComplete}
-      />
-
-      <div className="text-center">
-        <p className="text-sm font-medium text-foreground">{displayMeaning}</p>
-        {(card.readings?.on?.length > 0 || card.readings?.kun?.length > 0) && (
-          <p className="text-xs text-muted-foreground mt-0.5">
-            {[...(card.readings?.on || []), ...(card.readings?.kun || [])].filter(Boolean).join('　')}
-          </p>
-        )}
-      </div>
-    </div>
-  )
-}
-
-// ─────────────────────────────────────────────────────────────────────
 //  MAIN PAGE
 // ─────────────────────────────────────────────────────────────────────
 export default function KanjiPage() {
@@ -1289,7 +1193,6 @@ export default function KanjiPage() {
 
   const [level, setLevel, { unlocked }] = useLevelState()
   const [search,     setSearch]     = useState('')
-  const [openId,     setOpenId]     = useState(null)
   const [selectedId, setSelectedId] = useState(null)
   const [modalKanji, setModalKanji] = useState(null)
   const [modalTab,   setModalTab]   = useState('overview')
@@ -1361,7 +1264,7 @@ export default function KanjiPage() {
   }, [filtered])
 
   const handleLevelChange = useCallback((l) => {
-    setLevel(l); setSearch(''); setOpenId(null); setSelectedId(null); setSelectedCategory(null)
+    setLevel(l); setSearch(''); setSelectedId(null); setSelectedCategory(null)
   }, [setLevel])
 
   // ── Categorize kanji items ──
@@ -1407,7 +1310,6 @@ export default function KanjiPage() {
     { id: 'flashcard', label: 'Flashcards', icon: BookOpen },
     { id: 'practice',  label: 'Practice',  icon: Pen     },
     { id: 'quiz',      label: 'Quiz',      icon: Target  },
-    { id: 'stroke',    label: 'Stroke Order', icon: PenTool },
   ]
 
   return (
@@ -1602,13 +1504,6 @@ export default function KanjiPage() {
         {tab === 'quiz' && (
           <motion.div key={`qz-${level}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <QuizTab kanji={allKanji} isDark={isDark} meta={meta} />
-          </motion.div>
-        )}
-
-        {/* ─── STROKE ORDER ─── */}
-        {tab === 'stroke' && (
-          <motion.div key={`so-${level}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <StrokeTab kanji={allKanji} isDark={isDark} meta={meta} />
           </motion.div>
         )}
 
