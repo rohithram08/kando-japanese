@@ -34,27 +34,33 @@ describe('StreakCard — Treasury & Broken Streak Freeze', () => {
     expect(screen.getByRole('dialog', { name: /Treasury Challenge Modal/i })).toBeTruthy();
   });
 
-  it('displays the broken streak recovery banner when brokenStreakInfo exists', async () => {
+  it('displays the broken streak recovery banner when brokenStreakInfo exists and freezes yesterday', async () => {
     useProgressStore.setState({
       streak: 0,
       streakFreezes: 2,
       brokenStreakInfo: { count: 6, missedDate: '2026-10-30' },
+      frozenDates: [],
     });
 
     render(<StreakCard streak={0} />);
 
     expect(screen.getByText(/Streak Ended \(6 Days\)!/i)).toBeTruthy();
-    expect(screen.getByText(/Restore Streak/i)).toBeTruthy();
+    expect(screen.getByText(/Freeze Yesterday/i)).toBeTruthy();
 
-    // Click Restore Streak
-    const restoreBtn = screen.getByText(/Restore Streak/i);
-    fireEvent.click(restoreBtn);
+    // Click Freeze Yesterday
+    const freezeBtn = screen.getByText(/Freeze Yesterday/i);
+    fireEvent.click(freezeBtn);
 
-    // Streak should be restored
+    // Streak should be preserved at 6 (not incremented prematurely!)
     const state = useProgressStore.getState();
     expect(state.streak).toBe(6);
     expect(state.streakFreezes).toBe(1);
     expect(state.isStreakFrozen).toBe(true);
     expect(state.brokenStreakInfo).toBeNull();
+    expect(state.frozenDates).toContain('2026-10-30');
+
+    // When the user completes a quiz today, streak continues to 7
+    await useProgressStore.getState().updateStreak();
+    expect(useProgressStore.getState().streak).toBe(7);
   });
 });

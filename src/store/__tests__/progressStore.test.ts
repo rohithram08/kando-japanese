@@ -356,24 +356,32 @@ describe('ProgressStore (Zustand + API layer)', () => {
   });
 
   describe('Streak Freezes & Treasury Repair', () => {
-    it('repairs ended streak using 1 Jelly Freeze and restores active streak', async () => {
+    it('repairs ended streak using 1 Jelly Freeze and restores active streak without incrementing prematurely', async () => {
       vi.spyOn(progressApi, 'recordStreakActivity').mockResolvedValueOnce({ streakDays: 7 });
 
       useProgressStore.setState({
         streak: 0,
         streakFreezes: 2,
         brokenStreakInfo: { count: 7, missedDate: '2026-10-30' },
+        frozenDates: [],
       });
 
-      const result = await useProgressStore.getState().repairStreakWithFreeze('user-123');
+      const result = await useProgressStore.getState().freezeMissedDay('user-123');
 
       expect(result.success).toBe(true);
       expect(result.restoredStreak).toBe(7);
+      expect(result.date).toBe('2026-10-30');
       const state = useProgressStore.getState();
-      expect(state.streak).toBe(7);
+      expect(state.streak).toBe(7); // Preserved at 7, NOT incremented to 8!
       expect(state.streakFreezes).toBe(1);
       expect(state.isStreakFrozen).toBe(true);
       expect(state.brokenStreakInfo).toBeNull();
+      expect(state.frozenDates).toContain('2026-10-30');
+
+      // Now user completes a quiz today: streak increments 7 -> 8
+      const finalStreak = await useProgressStore.getState().updateStreak();
+      expect(finalStreak).toBe(8);
+      expect(useProgressStore.getState().streak).toBe(8);
     });
 
     it('rejects repair when no streak freezes are available', async () => {

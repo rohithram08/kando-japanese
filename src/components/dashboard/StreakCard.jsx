@@ -26,8 +26,9 @@ export default function StreakCard({ streak = 0 }) {
   const {
     streakFreezes = 2,
     isStreakFrozen = false,
+    frozenDates = [],
     brokenStreakInfo = null,
-    equipStreakFreeze,
+    freezeMissedDay,
     repairStreakWithFreeze,
     dailyXP = 0,
     isActiveToday = false,
@@ -37,21 +38,24 @@ export default function StreakCard({ streak = 0 }) {
   const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
   const hasStudiedToday = Boolean(isActiveToday || dailyXP > 0);
 
+  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const lastDate = typeof window !== 'undefined' ? localStorage.getItem('nihongo_last_streak_date') : null;
+  const isYesterdayActive = lastDate === yesterday;
+  const isYesterdayFrozen = Boolean(isStreakFrozen || (frozenDates && frozenDates.includes(yesterday)));
+  const isYesterdayMissed = Boolean(
+    brokenStreakInfo ||
+    (!isYesterdayActive && !isYesterdayFrozen && lastDate && lastDate < yesterday && streak > 0)
+  );
+
   const lastClaimed = typeof window !== 'undefined'
     ? localStorage.getItem(TREASURY_STORAGE_KEYS.LAST_CLAIMED)
     : null;
   const isAvailableThisWeek = isTreasuryChallengeAvailable(lastClaimed);
   const resetTimer = getTimeUntilTreasuryReset();
 
-  const handleEquipFreeze = () => {
-    equipStreakFreeze(1);
-    toast.success('Equipped 1 Jelly Freeze! Your streak is shielded! ❄️', {
-      icon: '🛡️',
-    });
-  };
-
-  const handleRepairStreak = async () => {
-    const res = await repairStreakWithFreeze();
+  const handleFreezeYesterday = async () => {
+    const fn = freezeMissedDay || repairStreakWithFreeze;
+    const res = await fn();
     if (res.success) {
       playFanfare();
       toast.success(res.message, { icon: '❄️' });
@@ -151,9 +155,16 @@ export default function StreakCard({ streak = 0 }) {
           {WEEK_DAYS.map((day, i) => {
             const isToday = i === todayIndex;
             const isPast = i < todayIndex;
+            const dayOffset = todayIndex - i;
+            const dayDate = new Date(Date.now() - dayOffset * 86400000).toISOString().split('T')[0];
+            const isDayFrozen = Boolean(
+              (frozenDates && frozenDates.includes(dayDate)) ||
+              (isPast && dayOffset === 1 && isStreakFrozen)
+            );
+
             const isStudied = isToday
               ? hasStudiedToday
-              : isPast && i >= todayIndex - (streak - (hasStudiedToday ? 1 : 0));
+              : isPast && !isDayFrozen && i >= todayIndex - (streak - (hasStudiedToday ? 1 : 0));
 
             return (
               <div key={day} className="flex flex-col items-center gap-1.5">
@@ -163,15 +174,25 @@ export default function StreakCard({ streak = 0 }) {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: i * 0.04, type: 'spring', stiffness: 320 }}
                   className={`w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center transition-all ${
-                    isStudied
+                    isDayFrozen
+                      ? 'bg-gradient-to-br from-sky-400 to-cyan-500 text-white shadow-xs shadow-sky-500/25 border border-sky-300 dark:border-sky-600'
+                      : isStudied
                       ? 'bg-gradient-to-br from-cyan-400 to-blue-500 text-white shadow-xs shadow-cyan-500/25'
                       : isToday
                       ? 'border-2 border-dashed border-cyan-400 bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 animate-pulse'
                       : 'border border-border/80 bg-muted/40 text-muted-foreground/60'
                   }`}
-                  title={`${day}: ${isStudied ? 'Jelly Streak recorded!' : isToday ? 'Read a story today!' : 'Pending'}`}
+                  title={`${day}: ${isDayFrozen ? 'Frozen with Jelly Freeze ❄️' : isStudied ? 'Jelly Streak recorded! 💧' : isToday ? 'Read a story or quiz today!' : 'Pending'}`}
                 >
-                  {isStudied ? (
+                  {isDayFrozen ? (
+                    <motion.div
+                      animate={{ scale: [1, 1.08, 1] }}
+                      transition={{ repeat: Infinity, duration: 2.8 }}
+                      className="text-center"
+                    >
+                      <span className="text-base select-none">❄️</span>
+                    </motion.div>
+                  ) : isStudied ? (
                     <motion.div
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ repeat: Infinity, duration: 2.5 }}
@@ -209,8 +230,8 @@ export default function StreakCard({ streak = 0 }) {
           </span>
         </div>
 
-        {/* ── Broken Streak Recovery Banner (if streak ended) ── */}
-        {brokenStreakInfo && (
+        {/* ── Missed Day / Broken Streak Recovery Banner ── */}
+        {(isYesterdayMissed || brokenStreakInfo) && (
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -220,27 +241,29 @@ export default function StreakCard({ streak = 0 }) {
               <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-amber-700 dark:text-amber-300">
-                  Streak Ended ({brokenStreakInfo.count} Days)!
+                  {brokenStreakInfo
+                    ? `Streak Ended (${brokenStreakInfo.count} Days)!`
+                    : `Forgot to study yesterday? Freeze Yesterday!`}
                 </p>
                 <p className="text-[11px] text-muted-foreground mt-0.5">
                   {streakFreezes > 0
-                    ? `Use 1 Jelly Freeze to freeze ${brokenStreakInfo.missedDate} and restore your streak!`
-                    : 'Complete the Weekly Treasury Challenge to earn freezes and repair your streak!'}
+                    ? `Use 1 Jelly Freeze to protect yesterday (${yesterday}) and keep your streak safe. Then complete a quiz today to continue!`
+                    : 'Complete the Weekly Treasury Challenge to earn freezes and protect your streak!'}
                 </p>
               </div>
             </div>
             {streakFreezes > 0 ? (
               <button
-                onClick={handleRepairStreak}
-                className="px-3 py-1.5 rounded-xl font-bold bg-amber-500 hover:bg-amber-600 text-white shrink-0 shadow-xs transition-transform active:scale-95 flex items-center justify-center gap-1.5"
+                onClick={handleFreezeYesterday}
+                className="px-3 py-1.5 rounded-xl font-bold bg-amber-500 hover:bg-amber-600 text-white shrink-0 shadow-xs transition-transform active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Snowflake className="w-3.5 h-3.5" />
-                <span>Restore Streak</span>
+                <span>Freeze Yesterday</span>
               </button>
             ) : (
               <button
                 onClick={() => setIsTreasuryOpen(true)}
-                className="px-3 py-1.5 rounded-xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 text-white shrink-0 shadow-xs flex items-center justify-center gap-1.5"
+                className="px-3 py-1.5 rounded-xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 text-white shrink-0 shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Gift className="w-3.5 h-3.5" />
                 <span>Play Challenge</span>
@@ -261,7 +284,7 @@ export default function StreakCard({ streak = 0 }) {
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => setIsTreasuryOpen(true)}
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all shadow-xs ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer ${
                 isAvailableThisWeek
                   ? 'text-amber-950 dark:text-amber-100 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-300 dark:border-amber-600 animate-pulse'
                   : 'text-muted-foreground bg-muted hover:bg-muted/80 border border-border'
@@ -272,16 +295,8 @@ export default function StreakCard({ streak = 0 }) {
                   : `Opened this week (Resets in ${resetTimer.formatted})`
               }
             >
-              <Gift className="w-3 h-3 text-amber-900 dark:text-amber-200" />
-              <span>{isAvailableThisWeek ? '🎁 Treasury Box' : '🎁 Treasury (Claimed)'}</span>
-            </button>
-
-            <button
-              onClick={handleEquipFreeze}
-              className="inline-flex items-center gap-1 px-2 py-1 rounded-xl text-[11px] font-semibold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-300 dark:border-sky-800 transition-colors"
-            >
-              <Snowflake className="w-3 h-3 text-sky-500" />
-              <span>+ Equip</span>
+              <Gift className="w-3.5 h-3.5 text-amber-900 dark:text-amber-200" />
+              <span>{isAvailableThisWeek ? '🎁 Treasury Box (1x/week)' : '🎁 Treasury (Claimed)'}</span>
             </button>
           </div>
         </div>

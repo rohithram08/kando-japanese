@@ -91,10 +91,12 @@ export interface ProgressState {
   applyServerReward: (r: { totalXP: number; userLevel?: number; streakDays?: number; xpGained?: number }) => void;
   streakFreezes: number;
   isStreakFrozen: boolean;
+  frozenDates: string[];
   brokenStreakInfo: { count: number; missedDate: string } | null;
   equipStreakFreeze: (count?: number) => void;
   useStreakFreeze: () => boolean;
-  repairStreakWithFreeze: (userId?: string) => Promise<{ success: boolean; restoredStreak: number; message: string }>;
+  freezeMissedDay: (userId?: string) => Promise<{ success: boolean; restoredStreak: number; message: string; date: string }>;
+  repairStreakWithFreeze: (userId?: string) => Promise<{ success: boolean; restoredStreak: number; message: string; date?: string }>;
   claimTreasuryFreezeReward: (count: number) => void;
   checkAndMaintainStreak: () => { streak: number; preservedWithFreeze: boolean };
   updateStreak: (userId?: string) => Promise<number>;
@@ -122,7 +124,7 @@ function getDayDiff(dateStr1: string, dateStr2: string): number {
   }
 }
 
-function getLocalDayString(): string {
+export function getLocalDayString(): string {
   try {
     return new Intl.DateTimeFormat('en-CA').format(new Date());
   } catch {
@@ -146,6 +148,14 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       return localStorage.getItem('nihongo_streak_frozen_today') === 'true';
     } catch {
       return false;
+    }
+  })(),
+  frozenDates: (() => {
+    try {
+      const stored = localStorage.getItem('nihongo_frozen_dates');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
     }
   })(),
   brokenStreakInfo: (() => {
@@ -711,12 +721,14 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       if (get().streakFreezes > 0) {
         const remaining = get().streakFreezes - 1;
         const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+        const updatedFrozen = Array.from(new Set([...(get().frozenDates || []), yesterday]));
         try {
           localStorage.setItem('nihongo_streak_freezes', String(remaining));
           localStorage.setItem('nihongo_last_streak_date', yesterday);
           localStorage.setItem('nihongo_streak_frozen_today', 'true');
+          localStorage.setItem('nihongo_frozen_dates', JSON.stringify(updatedFrozen));
         } catch {}
-        set({ streakFreezes: remaining, isStreakFrozen: true });
+        set({ streakFreezes: remaining, isStreakFrozen: true, frozenDates: updatedFrozen });
         return { streak: get().streak, preservedWithFreeze: true };
       }
     }
@@ -739,29 +751,33 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
     return { streak: 0, preservedWithFreeze: false };
   },
 
-  repairStreakWithFreeze: async (userId?: string) => {
-    const { streakFreezes, brokenStreakInfo, streak } = get();
+  freezeMissedDay: async (userId?: string) => {
+    const { streakFreezes, brokenStreakInfo, streak, frozenDates } = get();
     if (streakFreezes < 1) {
-      return { success: false, restoredStreak: streak, message: 'No Jelly Freezes available!' };
+      return { success: false, restoredStreak: streak, message: 'No Jelly Freezes available!', date: '' };
     }
 
-    const restoredCount = brokenStreakInfo?.count || (streak > 0 ? streak : 1);
+    // Preserve the streak count: do not increment or arbitrarily change it!
+    const preservedCount = brokenStreakInfo ? brokenStreakInfo.count : streak;
     const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-    const frozenDate = brokenStreakInfo?.missedDate || yesterday;
+    const missedDate = brokenStreakInfo?.missedDate || yesterday;
 
     const remainingFreezes = streakFreezes - 1;
+    const updatedFrozenDates = Array.from(new Set([...(frozenDates || []), missedDate]));
 
     try {
       localStorage.setItem('nihongo_streak_freezes', String(remainingFreezes));
-      localStorage.setItem('nihongo_last_streak_date', frozenDate);
+      localStorage.setItem('nihongo_last_streak_date', missedDate);
       localStorage.setItem('nihongo_streak_frozen_today', 'true');
+      localStorage.setItem('nihongo_frozen_dates', JSON.stringify(updatedFrozenDates));
       localStorage.removeItem('nihongo_broken_streak');
     } catch {}
 
     set({
-      streak: restoredCount,
+      streak: preservedCount,
       streakFreezes: remainingFreezes,
       isStreakFrozen: true,
+      frozenDates: updatedFrozenDates,
       brokenStreakInfo: null,
     });
 
@@ -773,15 +789,16 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       }
     }
 
-    try {
-      useCelebrationStore.getState().triggerStreakClaim(0, restoredCount);
-    } catch {}
-
     return {
       success: true,
-      restoredStreak: restoredCount,
-      message: `Streak repaired! Your ${restoredCount}-day Jelly Streak is restored and frozen for ${frozenDate}! ❄️💧`,
+      restoredStreak: preservedCount,
+      date: missedDate,
+      message: `Missed day ${missedDate} is now frozen with 1 Jelly Freeze! Complete a quiz or story today to continue your streak! ❄️`,
     };
+  },
+
+  repairStreakWithFreeze: async (userId?: string) => {
+    return get().freezeMissedDay(userId);
   },
 
   claimTreasuryFreezeReward: (count: number) => {
@@ -902,6 +919,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       cardsMastered: 0,
       srsReviewsDue: 0,
       brokenStreakInfo: null,
+      frozenDates: [],
       loading: false,
       initialized: false,
     }),
