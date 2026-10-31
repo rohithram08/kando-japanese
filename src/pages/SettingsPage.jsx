@@ -19,6 +19,7 @@ import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
 import { useStudyLevel } from '../hooks/useStudyLevel'
+import { APP_VERSION, APP_NAME, APP_CODENAME, APP_RELEASE_DATE } from '../config/version'
 import toast from 'react-hot-toast'
 
 
@@ -382,6 +383,25 @@ export default function SettingsPage() {
                   options={SUPPORTED_LOCALES.map((l) => ({ value: l.code, label: `${l.label} (${l.nativeLabel})`, flag: l.flag }))}
                 />
               </SettingRow>
+            </SectionCard>
+
+            <SectionCard title={t('settings.platform_version_title', 'Platform Version & System')} emoji="🚀">
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-bold text-foreground">{APP_NAME}</p>
+                    <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                      v{APP_VERSION}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Release {APP_CODENAME} · Built {APP_RELEASE_DATE}
+                  </p>
+                </div>
+                <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Up to Date
+                </span>
+              </div>
             </SectionCard>
           </div>
         )

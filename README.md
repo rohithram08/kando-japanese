@@ -7,6 +7,7 @@
 
 **The modern, interactive, and pedagogically authentic platform for mastering the Japanese Language Proficiency Test (JLPT N5 → N1).**
 
+[![Platform Version](https://img.shields.io/badge/version-2.1.16-blue?style=flat-square&logo=semver)](package.json)
 [![Build Status](https://img.shields.io/badge/Vite%20Build-Passing-emerald?style=flat-square&logo=vite)](https://vitejs.dev/)
 [![Test Suite](https://img.shields.io/badge/Vitest-78%20Files%20%2F%201605%20Tests%20Passing-brightgreen?style=flat-square&logo=vitest)](https://vitest.dev/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=flat-square&logo=react)](https://react.dev/)
