@@ -15,7 +15,6 @@ import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import { AnimatedLiquidWaveIcon } from '../common/WaveXPBadge'
 import UserAvatar from '../common/UserAvatar'
-import { APP_VERSION } from '../../config/version'
 
 const GROUPS = [
   { key: 'learn', label: 'Learn' },
@@ -104,7 +103,6 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
             >
               <p className="font-bold text-sm leading-tight text-foreground flex items-center gap-1.5">
                 Kando Japanese <span className="text-xs font-normal text-primary">感動</span>
-                <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-primary/10 text-primary border border-primary/20">v{APP_VERSION}</span>
               </p>
               <p className="text-xs text-muted-foreground">JLPT Mastery Platform</p>
             </motion.div>

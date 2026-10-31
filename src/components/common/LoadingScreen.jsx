@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
+import { APP_VERSION, APP_CODENAME } from '../../config/version'
 
 export default function LoadingScreen() {
   return (
@@ -15,7 +16,13 @@ export default function LoadingScreen() {
       >
         <KandoSlimeLogo size={84} showBlossom />
       </motion.div>
-      <h1 className="text-2xl font-bold text-foreground mb-2">Kando Japanese</h1>
+      <div className="flex items-center gap-2 mb-1">
+        <h1 className="text-2xl font-bold text-foreground">Kando Japanese</h1>
+        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+          v{APP_VERSION}
+        </span>
+      </div>
+      <p className="text-xs text-muted-foreground/80 font-medium">Release {APP_CODENAME}</p>
       <div className="flex gap-1 mt-4">
         {[0, 1, 2].map(i => (
           <motion.div

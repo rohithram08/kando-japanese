@@ -26,7 +26,7 @@ import toast from 'react-hot-toast'
 // id / label / icon / tint / search keywords — keywords power the settings search box
 const SECTIONS = [
   { id: 'account',       label: 'Account & Security', icon: Shield,   emoji: '🔒', tint: 'red',    keywords: 'account email password profile security login credentials' },
-  { id: 'general',       label: 'General',            icon: Globe,    emoji: '🌐', tint: 'blue',   keywords: 'display language jlpt study target level' },
+  { id: 'general',       label: 'General',            icon: Globe,    emoji: '🌐', tint: 'blue',   keywords: 'display language jlpt study target level platform version system release' },
   { id: 'appearance',    label: 'Appearance',         icon: Palette,  emoji: '🎨', tint: 'violet', keywords: 'theme dark light font size furigana romaji compact animations' },
   { id: 'study',         label: 'Study Preferences', icon: BookOpen, emoji: '📖', tint: 'emerald',keywords: 'daily goal xp srs interval translation autoplay' },
   { id: 'notifications', label: 'Notifications',     icon: Bell,     emoji: '🔔', tint: 'orange', keywords: 'reminder streak achievement weekly report' },
@@ -386,21 +386,38 @@ export default function SettingsPage() {
             </SectionCard>
 
             <SectionCard title={t('settings.platform_version_title', 'Platform Version & System')} emoji="🚀">
-              <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm font-bold text-foreground">{APP_NAME}</p>
-                    <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                      v{APP_VERSION}
-                    </span>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3.5 rounded-xl bg-muted/20 border border-border">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-bold text-foreground">{APP_NAME}</p>
+                      <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                        v{APP_VERSION}
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Release {APP_CODENAME} · Built {APP_RELEASE_DATE}
+                    </p>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Release {APP_CODENAME} · Built {APP_RELEASE_DATE}
-                  </p>
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Up to Date
+                  </span>
                 </div>
-                <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Up to Date
-                </span>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1 text-xs">
+                  <div className="p-2.5 rounded-lg bg-surface border border-border">
+                    <p className="text-[11px] text-muted-foreground">Version</p>
+                    <p className="font-mono font-semibold text-foreground mt-0.5">{APP_VERSION}</p>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-surface border border-border">
+                    <p className="text-[11px] text-muted-foreground">Release</p>
+                    <p className="font-semibold text-foreground mt-0.5">{APP_CODENAME}</p>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-surface border border-border col-span-2 sm:col-span-1">
+                    <p className="text-[11px] text-muted-foreground">Status</p>
+                    <p className="font-semibold text-emerald-600 dark:text-emerald-400 mt-0.5">Production Ready</p>
+                  </div>
+                </div>
               </div>
             </SectionCard>
           </div>
