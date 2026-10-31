@@ -91,8 +91,11 @@ export interface ProgressState {
   applyServerReward: (r: { totalXP: number; userLevel?: number; streakDays?: number; xpGained?: number }) => void;
   streakFreezes: number;
   isStreakFrozen: boolean;
+  brokenStreakInfo: { count: number; missedDate: string } | null;
   equipStreakFreeze: (count?: number) => void;
   useStreakFreeze: () => boolean;
+  repairStreakWithFreeze: (userId?: string) => Promise<{ success: boolean; restoredStreak: number; message: string }>;
+  claimTreasuryFreezeReward: (count: number) => void;
   checkAndMaintainStreak: () => { streak: number; preservedWithFreeze: boolean };
   updateStreak: (userId?: string) => Promise<number>;
   loadSRSDue: (userId?: string) => Promise<number>;
@@ -143,6 +146,14 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       return localStorage.getItem('nihongo_streak_frozen_today') === 'true';
     } catch {
       return false;
+    }
+  })(),
+  brokenStreakInfo: (() => {
+    try {
+      const stored = localStorage.getItem('nihongo_broken_streak');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
     }
   })(),
   totalXP: 0,
@@ -710,12 +721,76 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       }
     }
 
+    const previousStreak = get().streak;
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    let brokenInfo = get().brokenStreakInfo;
+    if (previousStreak > 0) {
+      brokenInfo = { count: previousStreak, missedDate: yesterday };
+      try {
+        localStorage.setItem('nihongo_broken_streak', JSON.stringify(brokenInfo));
+      } catch {}
+    }
+
     try {
       localStorage.removeItem('nihongo_last_streak_date');
       localStorage.setItem('nihongo_streak_frozen_today', 'false');
     } catch {}
-    set({ streak: 0, isStreakFrozen: false });
+    set({ streak: 0, isStreakFrozen: false, brokenStreakInfo: brokenInfo });
     return { streak: 0, preservedWithFreeze: false };
+  },
+
+  repairStreakWithFreeze: async (userId?: string) => {
+    const { streakFreezes, brokenStreakInfo, streak } = get();
+    if (streakFreezes < 1) {
+      return { success: false, restoredStreak: streak, message: 'No Jelly Freezes available!' };
+    }
+
+    const restoredCount = brokenStreakInfo?.count || (streak > 0 ? streak : 1);
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+    const frozenDate = brokenStreakInfo?.missedDate || yesterday;
+
+    const remainingFreezes = streakFreezes - 1;
+
+    try {
+      localStorage.setItem('nihongo_streak_freezes', String(remainingFreezes));
+      localStorage.setItem('nihongo_last_streak_date', frozenDate);
+      localStorage.setItem('nihongo_streak_frozen_today', 'true');
+      localStorage.removeItem('nihongo_broken_streak');
+    } catch {}
+
+    set({
+      streak: restoredCount,
+      streakFreezes: remainingFreezes,
+      isStreakFrozen: true,
+      brokenStreakInfo: null,
+    });
+
+    if (userId) {
+      try {
+        await recordStreakActivity();
+      } catch (err) {
+        console.debug('Failed to sync restored streak with API:', err);
+      }
+    }
+
+    try {
+      useCelebrationStore.getState().triggerStreakClaim(0, restoredCount);
+    } catch {}
+
+    return {
+      success: true,
+      restoredStreak: restoredCount,
+      message: `Streak repaired! Your ${restoredCount}-day Jelly Streak is restored and frozen for ${frozenDate}! ❄️💧`,
+    };
+  },
+
+  claimTreasuryFreezeReward: (count: number) => {
+    const updated = Math.max(0, get().streakFreezes + count);
+    try {
+      localStorage.setItem('nihongo_streak_freezes', String(updated));
+      localStorage.setItem('nihongo_treasury_last_claimed', new Date().toISOString());
+    } catch {}
+    set({ streakFreezes: updated });
   },
 
   updateStreak: async (userId) => {
@@ -826,6 +901,7 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       cardsReviewed: 0,
       cardsMastered: 0,
       srsReviewsDue: 0,
+      brokenStreakInfo: null,
       loading: false,
       initialized: false,
     }),

@@ -4,12 +4,19 @@
 // Features 2D Animated Jelly Slime Mascot, Daily Drops & Streak Freeze Shield
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Snowflake } from 'lucide-react';
+import { Shield, Snowflake, Gift, AlertTriangle } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { useProgressStore } from '../../store/progressStore';
 import JellyStreakSlime from '../mascot/JellyStreakSlime';
+import TreasuryChallengeModal from '../streak/TreasuryChallengeModal';
+import {
+  isTreasuryChallengeAvailable,
+  getTimeUntilTreasuryReset,
+  TREASURY_STORAGE_KEYS,
+} from '../../services/treasuryService';
+import { playFanfare } from '../../utils/soundEffects';
 import toast from 'react-hot-toast';
 
 const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -19,19 +26,38 @@ export default function StreakCard({ streak = 0 }) {
   const {
     streakFreezes = 2,
     isStreakFrozen = false,
+    brokenStreakInfo = null,
     equipStreakFreeze,
+    repairStreakWithFreeze,
     dailyXP = 0,
     isActiveToday = false,
   } = useProgressStore();
+  const [isTreasuryOpen, setIsTreasuryOpen] = useState(false);
   const jsDay = new Date().getDay();
   const todayIndex = jsDay === 0 ? 6 : jsDay - 1;
   const hasStudiedToday = Boolean(isActiveToday || dailyXP > 0);
+
+  const lastClaimed = typeof window !== 'undefined'
+    ? localStorage.getItem(TREASURY_STORAGE_KEYS.LAST_CLAIMED)
+    : null;
+  const isAvailableThisWeek = isTreasuryChallengeAvailable(lastClaimed);
+  const resetTimer = getTimeUntilTreasuryReset();
 
   const handleEquipFreeze = () => {
     equipStreakFreeze(1);
     toast.success('Equipped 1 Jelly Freeze! Your streak is shielded! ❄️', {
       icon: '🛡️',
     });
+  };
+
+  const handleRepairStreak = async () => {
+    const res = await repairStreakWithFreeze();
+    if (res.success) {
+      playFanfare();
+      toast.success(res.message, { icon: '❄️' });
+    } else {
+      toast.error(res.message);
+    }
   };
 
   const getMotivation = (val) => {
@@ -183,8 +209,48 @@ export default function StreakCard({ streak = 0 }) {
           </span>
         </div>
 
-        {/* ── Streak Freeze Protection Module ── */}
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-border/50 text-xs">
+        {/* ── Broken Streak Recovery Banner (if streak ended) ── */}
+        {brokenStreakInfo && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
+          >
+            <div className="flex items-start gap-2.5">
+              <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-amber-700 dark:text-amber-300">
+                  Streak Ended ({brokenStreakInfo.count} Days)!
+                </p>
+                <p className="text-[11px] text-muted-foreground mt-0.5">
+                  {streakFreezes > 0
+                    ? `Use 1 Jelly Freeze to freeze ${brokenStreakInfo.missedDate} and restore your streak!`
+                    : 'Complete the Weekly Treasury Challenge to earn freezes and repair your streak!'}
+                </p>
+              </div>
+            </div>
+            {streakFreezes > 0 ? (
+              <button
+                onClick={handleRepairStreak}
+                className="px-3 py-1.5 rounded-xl font-bold bg-amber-500 hover:bg-amber-600 text-white shrink-0 shadow-xs transition-transform active:scale-95 flex items-center justify-center gap-1.5"
+              >
+                <Snowflake className="w-3.5 h-3.5" />
+                <span>Restore Streak</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setIsTreasuryOpen(true)}
+                className="px-3 py-1.5 rounded-xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 text-white shrink-0 shadow-xs flex items-center justify-center gap-1.5"
+              >
+                <Gift className="w-3.5 h-3.5" />
+                <span>Play Challenge</span>
+              </button>
+            )}
+          </motion.div>
+        )}
+
+        {/* ── Streak Freeze Protection & Treasury Module ── */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border/50 text-xs">
           <div className="flex items-center gap-1.5 text-muted-foreground">
             <Shield className="w-3.5 h-3.5 text-sky-500" />
             <span>
@@ -192,15 +258,40 @@ export default function StreakCard({ streak = 0 }) {
             </span>
           </div>
 
-          <button
-            onClick={handleEquipFreeze}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-semibold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-300 dark:border-sky-800 transition-colors"
-          >
-            <Snowflake className="w-3 h-3 text-sky-500" />
-            <span>+ Equip Freeze</span>
-          </button>
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setIsTreasuryOpen(true)}
+              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all shadow-xs ${
+                isAvailableThisWeek
+                  ? 'text-amber-950 dark:text-amber-100 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-300 dark:border-amber-600 animate-pulse'
+                  : 'text-muted-foreground bg-muted hover:bg-muted/80 border border-border'
+              }`}
+              title={
+                isAvailableThisWeek
+                  ? 'Play Treasury Challenge to open the weekly Treasury Box!'
+                  : `Opened this week (Resets in ${resetTimer.formatted})`
+              }
+            >
+              <Gift className="w-3 h-3 text-amber-900 dark:text-amber-200" />
+              <span>{isAvailableThisWeek ? '🎁 Treasury Box' : '🎁 Treasury (Claimed)'}</span>
+            </button>
+
+            <button
+              onClick={handleEquipFreeze}
+              className="inline-flex items-center gap-1 px-2 py-1 rounded-xl text-[11px] font-semibold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/50 hover:bg-sky-100 dark:hover:bg-sky-900/60 border border-sky-300 dark:border-sky-800 transition-colors"
+            >
+              <Snowflake className="w-3 h-3 text-sky-500" />
+              <span>+ Equip</span>
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* ── Treasury Challenge Modal ── */}
+      <TreasuryChallengeModal
+        isOpen={isTreasuryOpen}
+        onClose={() => setIsTreasuryOpen(false)}
+      />
     </motion.div>
   );
 }

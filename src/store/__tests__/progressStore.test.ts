@@ -354,4 +354,47 @@ describe('ProgressStore (Zustand + API layer)', () => {
       expect(state.grammarProgress['n5_g001']?.userId).toBe('guest');
     });
   });
+
+  describe('Streak Freezes & Treasury Repair', () => {
+    it('repairs ended streak using 1 Jelly Freeze and restores active streak', async () => {
+      vi.spyOn(progressApi, 'recordStreakActivity').mockResolvedValueOnce({ streakDays: 7 });
+
+      useProgressStore.setState({
+        streak: 0,
+        streakFreezes: 2,
+        brokenStreakInfo: { count: 7, missedDate: '2026-10-30' },
+      });
+
+      const result = await useProgressStore.getState().repairStreakWithFreeze('user-123');
+
+      expect(result.success).toBe(true);
+      expect(result.restoredStreak).toBe(7);
+      const state = useProgressStore.getState();
+      expect(state.streak).toBe(7);
+      expect(state.streakFreezes).toBe(1);
+      expect(state.isStreakFrozen).toBe(true);
+      expect(state.brokenStreakInfo).toBeNull();
+    });
+
+    it('rejects repair when no streak freezes are available', async () => {
+      useProgressStore.setState({
+        streak: 0,
+        streakFreezes: 0,
+        brokenStreakInfo: { count: 5, missedDate: '2026-10-30' },
+      });
+
+      const result = await useProgressStore.getState().repairStreakWithFreeze();
+
+      expect(result.success).toBe(false);
+      expect(result.message).toContain('No Jelly Freezes');
+      expect(useProgressStore.getState().streak).toBe(0);
+    });
+
+    it('claimTreasuryFreezeReward increments streakFreezes and records claim', () => {
+      useProgressStore.setState({ streakFreezes: 1 });
+      useProgressStore.getState().claimTreasuryFreezeReward(3);
+
+      expect(useProgressStore.getState().streakFreezes).toBe(4);
+    });
+  });
 });
