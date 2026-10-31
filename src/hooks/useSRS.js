@@ -25,7 +25,7 @@ export function useSRS() {
     } finally {
       setLoading(false)
     }
-  }, [user])
+  }, [])
 
   const reviewCard = useCallback(async (card, quality, intervalMode = 'balanced') => {
     const cardId = typeof card === 'string' ? card : card?.id

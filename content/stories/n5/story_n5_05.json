@@ -1,0 +1,578 @@
+{
+  "id": "story_n5_05",
+  "titleFurigana": "文房具屋[ぶんぼうぐや]での 買[か]い物[もの]",
+  "englishTitle": "Shopping at the Stationery Store",
+  "description": "Ken's pen is old and his notebook is full, so he visits the stationery shop near the station: he asks where things are, compares prices, counts what he needs, adds up the total, receives change and plans to study with his new things.",
+  "sentences": [
+    [
+      "ケンさんは 日本語[にほんご]の クラスで 毎日[まいにち] 漢字[かんじ]を 書[か]いて います。",
+      "At his Japanese class Ken writes kanji every day."
+    ],
+    [
+      "でも、ペンが ふるいですから、字[じ]が きれいではありません。",
+      "But his pen is old, so his handwriting is not neat.",
+      "字 = a written character / handwriting. きれいでは ありません = is not neat."
+    ],
+    [
+      "ノートも もう ありません。",
+      "He has no notebooks left either.",
+      "もう + negative = no more / not any more."
+    ],
+    [
+      "ですから、今日[きょう]は 文房具屋[ぶんぼうぐや]へ 行[い]きます。",
+      "So today he is going to the stationery shop."
+    ],
+    [
+      "文房具屋[ぶんぼうぐや]は 駅[えき]の 前[まえ]に あります。",
+      "The stationery shop is in front of the station."
+    ],
+    [
+      "駅[えき]から 歩[ある]いて 三分[さんぷん]です。",
+      "It is three minutes on foot from the station."
+    ],
+    [
+      "店[みせ]の 前[まえ]に 大[おお]きい かんばんが あります。",
+      "There is a big sign in front of the shop."
+    ],
+    [
+      "ドアを 開[あ]けて、店[みせ]に 入[はい]ります。",
+      "He opens the door and goes into the shop."
+    ],
+    [
+      "店[みせ]の 中[なか]には ペンや ノートや けしゴムが たくさん あります。",
+      "Inside the shop there are lots of pens, notebooks, erasers and more.",
+      "や lists a few typical examples (and so on); と lists everything."
+    ],
+    [
+      "ケンさんは 黒[くろ]い ペンを さがします。",
+      "Ken looks for a black pen."
+    ],
+    [
+      "「すみません、ペンは どこですか」と 店員[てんいん]さんに 聞[き]きます。",
+      "He asks a shop assistant, \"Excuse me, where are the pens?\""
+    ],
+    [
+      "「ペンは あの たなの 右[みぎ]に あります」と 店員[てんいん]さんは 言[い]います。",
+      "The assistant says, \"The pens are on the right of that shelf.\""
+    ],
+    [
+      "たなの 右[みぎ]には 黒[くろ]い ペンと あかい ペンが あります。",
+      "On the right of the shelf there are black pens and red pens."
+    ],
+    [
+      "「この 黒[くろ]い ペンは いくらですか。」",
+      "\"How much is this black pen?\"",
+      "いくら asks the price; the answer is a number + 円."
+    ],
+    [
+      "「それは 百五十円[ひゃくごじゅうえん]です」と 店員[てんいん]さんは 言[い]います。",
+      "\"That one is 150 yen,\" says the assistant."
+    ],
+    [
+      "ケンさんは ペンを 二本[にほん]、買[か]います。",
+      "Ken buys two pens.",
+      "二本: 本 counts long, thin objects such as pens and bottles."
+    ],
+    [
+      "「ノートは どこに ありますか」と ケンさんは 聞[き]きます。",
+      "\"Where are the notebooks?\" Ken asks."
+    ],
+    [
+      "ノートの たなは ペンの たなの 左[ひだり]です。",
+      "The notebook shelf is on the left of the pen shelf."
+    ],
+    [
+      "大[おお]きい ノートと 小[ちい]さい ノートが あります。",
+      "There are big notebooks and small notebooks."
+    ],
+    [
+      "ケンさんは 大[おお]きい ノートが 一冊[いっさつ] ほしいです。",
+      "Ken wants one big notebook.",
+      "冊 counts bound things (books, notebooks)."
+    ],
+    [
+      "ノートは 一冊[いっさつ] 二百円[にひゃくえん]です。",
+      "A notebook is 200 yen each."
+    ],
+    [
+      "それから、けしゴムも 一[ひと]つ 買[か]います。",
+      "After that he buys one eraser, too."
+    ],
+    [
+      "けしゴムは 八十円[はちじゅうえん]です。",
+      "The eraser is 80 yen."
+    ],
+    [
+      "「全部[ぜんぶ]で いくらですか」と ケンさんは 聞[き]きます。",
+      "\"How much is it altogether?\" Ken asks."
+    ],
+    [
+      "「ペン 二本[にほん]、ノート 一冊[いっさつ]、けしゴム 一[ひと]つで、五百八十円[ごひゃくはちじゅうえん]です」と 店員[てんいん]さんは 言[い]います。",
+      "\"Two pens, one notebook and one eraser come to 580 yen,\" the assistant says."
+    ],
+    [
+      "ケンさんは 千円[せんえん]を 出[だ]します。",
+      "Ken hands over a 1,000-yen note."
+    ],
+    [
+      "「おつりは 四百二十円[よんひゃくにじゅうえん]です」と 店員[てんいん]さんは 言[い]います。",
+      "\"Your change is 420 yen,\" says the assistant."
+    ],
+    [
+      "ケンさんは 「ありがとうございます」と 言[い]って、店[みせ]を 出[で]ます。",
+      "Ken says \"Thank you\" and leaves the shop."
+    ],
+    [
+      "明日[あした]から 新[あたら]しい ノートで 勉強[べんきょう]します。",
+      "From tomorrow he will study with the new notebook.",
+      "から = starting from (a time); で = using (a tool)."
+    ],
+    [
+      "ペンも 新[あたら]しいですから、きれいな 字[じ]を 書[か]きたいです。",
+      "The pen is new, too, so he wants to write neat characters.",
+      "ます-stem + たいです = want to …."
+    ]
+  ],
+  "vocab": [
+    [
+      "書く",
+      "かく",
+      "to write",
+      "verb",
+      [
+        "書い",
+        "書き"
+      ]
+    ],
+    [
+      "字",
+      "じ",
+      "character; handwriting",
+      "noun"
+    ],
+    [
+      "文房具屋",
+      "ぶんぼうぐや",
+      "stationery shop",
+      "noun"
+    ],
+    [
+      "駅",
+      "えき",
+      "station",
+      "noun"
+    ],
+    [
+      "店",
+      "みせ",
+      "shop; store",
+      "noun"
+    ],
+    [
+      "前",
+      "まえ",
+      "front; before",
+      "noun"
+    ],
+    [
+      "黒い",
+      "くろい",
+      "black",
+      "i-adjective",
+      [
+        "黒"
+      ]
+    ],
+    [
+      "店員",
+      "てんいん",
+      "shop assistant",
+      "noun"
+    ],
+    [
+      "聞く",
+      "きく",
+      "to ask; to listen",
+      "verb",
+      [
+        "聞き"
+      ]
+    ],
+    [
+      "右",
+      "みぎ",
+      "right (side)",
+      "noun"
+    ],
+    [
+      "左",
+      "ひだり",
+      "left (side)",
+      "noun"
+    ],
+    [
+      "ノート",
+      "ノート",
+      "notebook",
+      "noun"
+    ],
+    [
+      "ペン",
+      "ペン",
+      "pen",
+      "noun"
+    ],
+    [
+      "買う",
+      "かう",
+      "to buy",
+      "verb",
+      [
+        "買い"
+      ]
+    ],
+    [
+      "全部",
+      "ぜんぶ",
+      "all; in total",
+      "noun / adverb"
+    ],
+    [
+      "出す",
+      "だす",
+      "to hand over; to take out",
+      "verb",
+      [
+        "出し"
+      ]
+    ],
+    [
+      "おつり",
+      "おつり",
+      "change (money returned)",
+      "noun"
+    ],
+    [
+      "新しい",
+      "あたらしい",
+      "new",
+      "i-adjective",
+      [
+        "新"
+      ]
+    ],
+    [
+      "勉強",
+      "べんきょう",
+      "study",
+      "noun / suru-verb"
+    ]
+  ],
+  "elements": [
+    {
+      "type": "vocabulary",
+      "text": "文房具屋",
+      "reading": "ぶんぼうぐや",
+      "meaning": "stationery shop",
+      "role": "The destination: the shop where Ken solves both of his problems — an old pen and no notebook.",
+      "mech": "文房具 = 文 (writing) + 房 (room) + 具 (tools): the tools of a study room. Add 屋 (shop) for the shop. 〜屋 makes shops: 本屋 (bookshop), 花屋 (florist). 文房具 alone means stationery.",
+      "ex": [
+        "文房具屋[ぶんぼうぐや]で ペンを 買[か]います。",
+        "I buy a pen at the stationery shop."
+      ],
+      "in": [
+        4,
+        5
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "おつり",
+      "reading": "おつり",
+      "meaning": "change (money returned)",
+      "role": "Ken pays 1,000 yen and gets 420 yen back.",
+      "mech": "おつり is the money you get back after paying more than the price. Staff say おつりは 〜円です. If you want to ask 'is this my change?' say おつりですか. Do not confuse it with お金 (money in general).",
+      "ex": [
+        "おつりは 三十円[さんじゅうえん]です。",
+        "Your change is 30 yen."
+      ],
+      "in": [
+        27
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "字",
+      "reading": "じ",
+      "meaning": "character; handwriting",
+      "role": "Ken's problem: his old pen makes his characters messy.",
+      "mech": "字 is a written character (漢字 = Chinese characters). きれいな 字 means neat handwriting and 字が 上手です means good handwriting. Do not mix it up with 文 (a sentence).",
+      "ex": [
+        "先生[せんせい]の 字[じ]は とても きれいです。",
+        "The teacher's handwriting is very neat."
+      ],
+      "in": [
+        2,
+        30
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "いくらですか",
+      "meaning": "How much is it?",
+      "role": "Ken asks the price twice: for the pen and for everything together.",
+      "mech": "いくら = how much (money). A は いくらですか asks the price of A; the answer is [number] + 円. 全部で いくらですか asks the total. 'How many' is いくつ, not いくら.",
+      "ex": [
+        "この ノートは いくらですか。",
+        "How much is this notebook?"
+      ],
+      "in": [
+        14,
+        24
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "二本",
+      "meaning": "two (long, thin things): counter 本",
+      "role": "Counting purchases: 二本 for pens, 一冊 for notebooks, 一つ for the eraser.",
+      "mech": "Japanese needs a counter after the number. 本 (ほん) counts pens, bottles, trains tickets… but its sound changes: 一本 いっぽん, 二本 にほん, 三本 さんぼん. 冊 counts books; つ is the general counter.",
+      "ex": [
+        "ペンを 三本[さんぼん] ください。",
+        "Three pens, please."
+      ],
+      "in": [
+        16,
+        25
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "たいです",
+      "meaning": "I want to …",
+      "role": "The last line: Ken wants to write neat characters with his new pen.",
+      "mech": "ます-stem + たいです: 書きたいです (want to write). The thing you want to do to can use を (字を 書きたいです). For wanting a THING, use ほしいです instead.",
+      "ex": [
+        "この ペンで 漢字[かんじ]を 書[か]きたいです。",
+        "I want to write kanji with this pen."
+      ],
+      "in": [
+        30
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "や",
+      "meaning": "and (a partial list: A and B, among others)",
+      "role": "The shop contains ペンや ノートや けしゴム — and more besides.",
+      "mech": "A や B lists examples and implies there are other things. A と B is a complete list. 〜や〜や is common in descriptions: ペンや ノートや けしゴムが あります.",
+      "ex": [
+        "りんごや バナナが あります。",
+        "There are apples, bananas and so on."
+      ],
+      "in": [
+        9
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "で",
+      "meaning": "in total (amount); by means of",
+      "role": "で appears in the price (全部で), the sum (一つで) and the tool (新しい ノートで 勉強します).",
+      "mech": "After a total, で means 'altogether': 全部で 五百八十円. After a tool or means, で means 'using': ノートで 勉強します. After a place it marks where an action happens. Context tells you which.",
+      "ex": [
+        "全部[ぜんぶ]で 三百円[さんびゃくえん]です。",
+        "It is 300 yen altogether."
+      ],
+      "in": [
+        24,
+        25,
+        29
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "円",
+      "reading": "えん",
+      "meaning": "yen; circle",
+      "role": "Every price in the story ends in 円.",
+      "mech": "円 (えん) is the Japanese currency; the old, round yen coins gave it the shape of a circle (円). Numbers come before it: 百五十円, 二百円, 八十円. Compare 千円 (せんえん, a 1,000-yen note).",
+      "ex": [
+        "これは 百円[ひゃくえん]です。",
+        "This is 100 yen."
+      ],
+      "in": [
+        15,
+        21,
+        23,
+        25,
+        26,
+        27
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "type": "vocabulary",
+      "q": "「おつり」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "change (money returned)",
+        "receipt",
+        "discount",
+        "tax"
+      ],
+      "ans": 0,
+      "expl": "Sentence 27: おつりは 四百二十円です — the money Ken gets back.",
+      "wrong": {
+        "1": "A receipt is レシート and is not mentioned.",
+        "2": "A discount is 割引[わりびき].",
+        "3": "Tax is 税[ぜい]; the total of 580 yen already settles the price."
+      },
+      "ref": 26
+    },
+    {
+      "type": "kanji",
+      "q": "「円」の 読[よ]み方[かた]は どれですか？",
+      "opts": [
+        "えん",
+        "ねん",
+        "ぶん",
+        "まん"
+      ],
+      "ans": 0,
+      "expl": "円 is えん: 百五十円, 二百円 and so on.",
+      "wrong": {
+        "1": "ねん is 年 (year).",
+        "2": "ぶん is 分 (minute / part).",
+        "3": "まん is 万 (ten thousand)."
+      },
+      "ref": 14
+    },
+    {
+      "type": "grammar",
+      "q": "「この 黒[くろ]い ペンは ＿＿＿＿ですか。」(How much is this black pen?)",
+      "opts": [
+        "いくら",
+        "いつ",
+        "どこ",
+        "だれ"
+      ],
+      "ans": 0,
+      "expl": "いくら asks the price (sentence 14).",
+      "wrong": {
+        "1": "いつ asks 'when'.",
+        "2": "どこ asks 'where' — Ken used it for locating the pens.",
+        "3": "だれ asks 'who'."
+      },
+      "ref": 13
+    },
+    {
+      "type": "grammar",
+      "q": "「ノートを 一＿＿ ほしいです。」(I want one notebook.)",
+      "opts": [
+        "冊",
+        "本",
+        "枚",
+        "個"
+      ],
+      "ans": 0,
+      "expl": "冊 (さつ) counts bound things such as notebooks and books (sentence 20).",
+      "wrong": {
+        "1": "本 counts long thin objects such as pens (sentence 16).",
+        "2": "枚 counts flat objects such as sheets of paper or tickets.",
+        "3": "個 counts small compact objects such as erasers in general."
+      },
+      "ref": 19
+    },
+    {
+      "type": "grammar",
+      "q": "「きれいな 字[じ]を 書[か]き＿＿＿。」(I want to write neat characters.)",
+      "opts": [
+        "たいです",
+        "ましょう",
+        "ました",
+        "ません"
+      ],
+      "ans": 0,
+      "expl": "ます-stem + たいです = want to … (sentence 30).",
+      "wrong": {
+        "1": "ましょう invites others: 'Let's write'.",
+        "2": "ました is the past: 'wrote'.",
+        "3": "ません is the negative: 'do not write'."
+      },
+      "ref": 29
+    },
+    {
+      "type": "particle",
+      "q": "「全部[ぜんぶ]＿＿ いくらですか。」",
+      "opts": [
+        "で",
+        "を",
+        "に",
+        "が"
+      ],
+      "ans": 0,
+      "expl": "で after a total means 'altogether' (sentence 24).",
+      "wrong": {
+        "1": "を would mark an object, but 全部 here is the sum.",
+        "2": "に marks time or destination and does not make 'total'.",
+        "3": "が would make 全部 the subject; the question is about the price."
+      },
+      "ref": 23
+    },
+    {
+      "type": "comprehension",
+      "q": "ケンさんは どうして 文房具屋[ぶんぼうぐや]へ 行[い]きましたか？",
+      "opts": [
+        "ペンが ふるくて、ノートも なかったから",
+        "友達に 会う ため",
+        "お金を 出す ため",
+        "先生に 会う ため"
+      ],
+      "ans": 0,
+      "expl": "Sentences 2–4: the pen is old, he has no notebooks, so he goes to the shop.",
+      "wrong": {
+        "1": "No friend is mentioned.",
+        "2": "He pays money at the shop but did not go to withdraw any.",
+        "3": "No teacher appears in this story."
+      },
+      "ref": 1
+    },
+    {
+      "type": "comprehension",
+      "q": "全部[ぜんぶ]で いくらでしたか？",
+      "opts": [
+        "五百八十円",
+        "百五十円",
+        "八十円",
+        "千円"
+      ],
+      "ans": 0,
+      "expl": "Sentence 25: 五百八十円 (300 + 200 + 80).",
+      "wrong": {
+        "1": "150 yen is the price of ONE pen (sentence 15).",
+        "2": "80 yen is the eraser alone (sentence 23).",
+        "3": "1,000 yen is the note Ken hands over (sentence 26)."
+      },
+      "ref": 24
+    },
+    {
+      "type": "comprehension",
+      "q": "ケンさんの おつりは いくらでしたか？",
+      "opts": [
+        "四百二十円",
+        "五百八十円",
+        "二百円",
+        "百円"
+      ],
+      "ans": 0,
+      "expl": "Sentences 26–27: 1,000 − 580 = 420 yen.",
+      "wrong": {
+        "1": "580 yen is the price, not the change.",
+        "2": "200 yen is the price of the notebook (sentence 21).",
+        "3": "100 yen does not appear in the story."
+      },
+      "ref": 26
+    }
+  ]
+}

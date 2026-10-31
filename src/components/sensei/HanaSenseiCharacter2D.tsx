@@ -1,6 +1,6 @@
 // src/components/sensei/HanaSenseiCharacter2D.tsx
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Volume2, Heart, Award, HelpCircle } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import './hanaSensei2D.css';
 
 export type HanaAnimationState =

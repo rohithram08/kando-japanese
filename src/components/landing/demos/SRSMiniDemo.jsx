@@ -1,7 +1,7 @@
 // src/components/landing/demos/SRSMiniDemo.jsx
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { RefreshCw, RotateCcw, Volume2, Sparkles, Check } from 'lucide-react'
+import { RefreshCw, RotateCcw, Volume2 } from 'lucide-react'
 import { playPop } from '../../../utils/soundEffects'
 
 const SRS_INTERVALS = [

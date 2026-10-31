@@ -7,7 +7,6 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, CheckCircle, Sparkles, Award, ArrowRight, ArrowLeft } from 'lucide-react';
-import { useThemeStore } from '../store/themeStore';
 import { useI18n } from '../i18n';
 import { useAuthStore } from '../store/authStore';
 import { useReadingStore } from '../store/readingStore';
@@ -17,9 +16,7 @@ import FuriganaText from '../components/common/FuriganaText';
 
 export default function QuizPage() {
   const navigate = useNavigate();
-  const { resolvedTheme } = useThemeStore();
   const { t } = useI18n();
-  const isDark = resolvedTheme === 'dark';
 
   const { user } = useAuthStore();
   const isAuthenticated = !!user;

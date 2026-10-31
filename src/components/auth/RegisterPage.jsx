@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { User, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 
@@ -68,9 +67,7 @@ export default function RegisterPage() {
   })
 
   const { signUp }        = useAuthStore()
-  const { resolvedTheme } = useThemeStore()
   const navigate          = useNavigate()
-  const isDark            = resolvedTheme === 'dark'
 
   const update = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }))

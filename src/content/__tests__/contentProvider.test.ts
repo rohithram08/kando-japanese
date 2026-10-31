@@ -1,7 +1,6 @@
 // src/content/__tests__/contentProvider.test.ts
 import { describe, it, expect, beforeEach } from 'vitest';
 import { contentProvider } from '../provider';
-import type { JLPTLevel } from '../types';
 
 describe('ContentProvider Architecture Suite', () => {
   beforeEach(() => {

@@ -247,7 +247,7 @@ export function useNotificationEngine() {
         primaryAction: { label: 'View Dashboard', link: '/dashboard' },
       })
     }
-  }, [dailyGoals.lesson, dailyGoals.review, dailyGoals.kanji, dailyGoals.chat, upsert])
+  }, [dailyGoals, upsert])
 
   // ── 8. Weekly Progress Report ──────────────────────────────────────────────
   useEffect(() => {

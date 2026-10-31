@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { Clock, Zap, BookOpen, ChevronRight, Lock } from 'lucide-react'
 import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
-import { LESSONS, LEVEL_META, LEVELS, DATA_COUNTS } from '../../data/index'
+import { LESSONS, LEVEL_META, DATA_COUNTS } from '../../data/index'
 import LevelSelector from '../common/LevelSelector'
 
 export default function LessonList() {

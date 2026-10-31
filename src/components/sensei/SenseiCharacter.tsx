@@ -2,7 +2,6 @@ import React, { useState, Suspense, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useThree } from '@react-three/fiber';
 import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
-import { motion } from 'framer-motion';
 import { RotateCcw, Send, Mic, MicOff, Keyboard, Square } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
@@ -211,7 +210,7 @@ function CameraController({
 export default function SenseiCharacter({
   speechState,
   state: propState,
-  reducedMotion = false,
+  reducedMotion: _reducedMotion = false,
   mode = 'compact',
   targetDirection = null,
   stageSide = 'center',

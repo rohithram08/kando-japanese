@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, ChevronUp, ArrowRight, Clock, Check, X } from 'lucide-react'
+import { ChevronDown, ChevronUp, ArrowRight, Clock } from 'lucide-react'
 import SlimeNotificationMascot from './SlimeNotificationMascot'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useAuthStore } from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useDailyGoalsStore } from '../../store/dailyGoalsStore'
-import { normalizeLocale, useI18n } from '../../i18n'
+import { useI18n } from '../../i18n'
 import { getLesson } from '../../api/lessons'
 import { completeLesson as apiCompleteLesson } from '../../api/progress'
 import { XP_REWARDS } from '../../utils/progressCalculator'
@@ -14,16 +12,13 @@ import GrammarCard from './GrammarCard'
 import KanjiCard from './KanjiCard'
 import toast from 'react-hot-toast'
 import {
-  ArrowLeft, ArrowRight, BookOpen, CheckCircle, Clock,
-  Zap, ChevronLeft, X, Star, Trophy, Sparkles,
+  ArrowLeft, ArrowRight, CheckCircle, Clock,
+  Zap, ChevronLeft,
   GraduationCap, Target
 } from 'lucide-react'
 
 export default function LessonViewer() {
   const { level, day } = useParams()
-  const { user, profile, updateProfile } = useAuthStore()
-  const { resolvedTheme } = useThemeStore()
-  const isDark = resolvedTheme === 'dark'
   const { incrementLessons } = useProgressStore()
   const addLessonGoal = useDailyGoalsStore((s) => s.addLesson)
   const navigate = useNavigate()
@@ -35,21 +30,7 @@ export default function LessonViewer() {
   const [completing, setCompleting] = useState(false)
   const [startTime] = useState(Date.now())
 
-  useEffect(() => {
-    loadLesson()
-  }, [level, day])
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'ArrowLeft') goBack()
-      if (e.key === 'ArrowRight') goForward()
-    }
-    window.addEventListener('keydown', handleKey)
-    return () => window.removeEventListener('keydown', handleKey)
-  }, [currentSection])
-
-  const loadLesson = async () => {
+  const loadLesson = useCallback(async () => {
     try {
       setLoading(true)
       const dayNum = parseInt(day, 10) || 1
@@ -62,7 +43,11 @@ export default function LessonViewer() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [day, level])
+
+  useEffect(() => {
+    loadLesson()
+  }, [loadLesson])
 
   const buildSections = () => {
     if (!lesson) return []
@@ -113,9 +98,7 @@ export default function LessonViewer() {
 
   const sections = buildSections()
   const currentSec = sections[currentSection]
-  const progress = ((currentSection + 1) / sections.length) * 100
   const lang = locale
-  const timeElapsed = Math.floor((Date.now() - startTime) / 1000)
 
   const goBack = useCallback(() => {
     setCurrentSection(prev => Math.max(0, prev - 1))
@@ -124,6 +107,16 @@ export default function LessonViewer() {
   const goForward = useCallback(() => {
     setCurrentSection(prev => Math.min(sections.length - 1, prev + 1))
   }, [sections.length])
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowLeft') goBack()
+      if (e.key === 'ArrowRight') goForward()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [goBack, goForward])
 
   const completeLesson = async () => {
     if (completing || !lesson) return

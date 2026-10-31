@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Sparkles, Snowflake, Check } from 'lucide-react';
+import { Shield, Snowflake } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { useProgressStore } from '../../store/progressStore';
 import JellyStreakSlime from '../mascot/JellyStreakSlime';

@@ -82,6 +82,8 @@ export interface GradedStory {
     license: string;
     curationNotes: string;
     verified: boolean;
+    /** 'ai_draft_pending_review' for AI-drafted content that has not been reviewed by a native speaker */
+    reviewStatus?: string;
   };
   sentences: StorySentence[];
   vocabulary: VocabularyAnnotation[];

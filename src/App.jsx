@@ -15,7 +15,7 @@ function lazyWithRetry(importer) {
   return lazy(async () => {
     try {
       return await importer()
-    } catch (err) {
+    } catch (_err) {
       try {
         await new Promise((resolve) => setTimeout(resolve, 300))
         return await importer()
@@ -39,14 +39,9 @@ const LoginPage         = lazyWithRetry(() => import('./components/auth/LoginPag
 const RegisterPage      = lazyWithRetry(() => import('./components/auth/RegisterPage'))
 const ResetPasswordPage = lazyWithRetry(() => import('./pages/ResetPasswordPage'))
 const Dashboard         = lazyWithRetry(() => import('./components/dashboard/Dashboard'))
-const LessonsPage       = lazyWithRetry(() => import('./pages/LessonsPage'))
-const LessonList        = lazyWithRetry(() => import('./components/lessons/LessonList'))
-const LessonViewer      = lazyWithRetry(() => import('./components/lessons/LessonViewer'))
 const GrammarPage       = lazyWithRetry(() => import('./pages/GrammarPage'))
 const KanjiPage         = lazyWithRetry(() => import('./pages/KanjiPage'))
 const KanjiStudy        = lazyWithRetry(() => import('./components/kanji/KanjiStudy'))
-const QuizPage          = lazyWithRetry(() => import('./pages/QuizPage'))
-const QuizEngine        = lazyWithRetry(() => import('./components/quiz/QuizEngine'))
 const SenseiPage        = lazyWithRetry(() => import('./pages/SenseiPage'))
 const SRSReview         = lazyWithRetry(() => import('./components/srs/SRSReview'))
 const VocabularyPage    = lazyWithRetry(() => import('./pages/VocabularyPage'))
@@ -79,7 +74,7 @@ export default function App() {
     if (typeof window.__dismissLoader === 'function') {
       window.__dismissLoader()
     }
-  }, [])
+  }, [initialize])
 
   return (
     <Routes>

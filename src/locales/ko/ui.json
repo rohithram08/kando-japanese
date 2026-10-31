@@ -80,7 +80,10 @@
     "item": "항목",
     "no_results": "단어를 찾을 수 없습니다",
     "try_different_search": "다른 검색어를 시도해 보세요",
-    "go_back": "뒤로"
+    "go_back": "뒤로",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "레슨",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "지금까지 카드 {completed}장을 정확도 {accuracy}%로 복습했어요.",
     "checkpoint_title": "배치 체크포인트 도달!",
     "continue_batch": "다음 배치 계속하기",
-    "finish_session": "지금은 세션 마무리하기"
+    "finish_session": "지금은 세션 마무리하기",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "단계별 일본어 리더",
@@ -454,7 +459,8 @@
     "not_supported": "이 브라우저에서는 음성 합성을 지원하지 않습니다",
     "voice_unavailable": "이 기기에서 사용할 수 있는 일본어 음성이 없습니다",
     "playback_failed": "오디오 재생에 실패했습니다",
-    "default_voice": "기본 음성"
+    "default_voice": "기본 음성",
+    "listen": "Listen"
   },
   "avatar": {
     "title": "Create your avatar",
@@ -544,7 +550,10 @@
     "lessons_done": "스토리",
     "skill_overview": "학습 진행 상황",
     "total_xp": "Wave XP",
-    "edit_profile": "프로필 수정"
+    "edit_profile": "프로필 수정",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "회화 연습",
@@ -641,5 +650,44 @@
     "not_found": "사용자를 찾을 수 없습니다",
     "not_found_desc": "이 사용자 프로필이 없거나 삭제되었습니다.",
     "not_found_title": "사용자를 찾을 수 없습니다"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

@@ -1,7 +1,7 @@
 // src/components/landing/JLPTLevelPicker.jsx
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Volume2, ArrowRight, Compass, Sparkles, Check } from 'lucide-react'
+import { Volume2, ArrowRight, Compass, Check } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { playPop } from '../../utils/soundEffects'
 import { triggerRateLimitedConfetti } from '../../utils/confettiHelper'

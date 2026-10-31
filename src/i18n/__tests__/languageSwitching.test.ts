@@ -2,8 +2,6 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import {
   t,
   normalizeLocale,
-  getLocaleDirection,
-  applyLocaleDirection,
   getMissingKeys,
   clearMissingKeys,
   getCurriculumMeaning,

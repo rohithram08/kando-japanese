@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
-export default function FillBlank({ question, onAnswer, showFeedback }) {
+export default function FillBlank({ question, onAnswer, showFeedback: _showFeedback }) {
   const [input, setInput] = useState('')
   const [submitted, setSubmitted] = useState(false)
 

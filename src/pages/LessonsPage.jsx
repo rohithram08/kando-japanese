@@ -8,7 +8,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
-import { LESSONS, LEVEL_META, LEVELS, DATA_COUNTS } from '../data/index'
+import { LESSONS, LEVEL_META, DATA_COUNTS } from '../data/index'
 import LevelSelector from '../components/common/LevelSelector'
 import { useI18n } from '../i18n'
 import { audioService } from '../services/audioService'

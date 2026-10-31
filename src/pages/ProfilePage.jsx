@@ -3,10 +3,10 @@ import React, { useState, useRef, useEffect, useMemo, lazy, Suspense } from 'rea
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Camera, Upload, X, User, Trophy, Flame,
-  Star, Calendar, Award, Target, BookOpen, TrendingUp,
+  Star, Award, Target, BookOpen, TrendingUp,
   BarChart3, GraduationCap, UserPlus, UserCheck, Settings, Zap,
   Eye, Pen, BookMarked, Brain, Shield, Medal, Pencil,
-  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile,
+  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile, Sparkles,
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
@@ -31,6 +31,7 @@ import { useReadingStore } from '../store/readingStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { ACHIEVEMENTS, computeUnlockedIds } from './AchievementsPage'
 import toast from 'react-hot-toast'
+import LevelPlacementModal from '../components/placement/LevelPlacementModal'
 
 
 // ── Level Data ─────────────────────────────────────────────
@@ -163,7 +164,7 @@ function WeeklyActivityChart({ data, locale }) {
 }
 
 // ── Streak Calendar ───────────────────────────────────────
-function StreakCalendar({ isDark, streakDays }) {
+function StreakCalendar({ isDark: _isDark, streakDays }) {
   const count = 28
   const days = useMemo(() => {
     const today = new Date()
@@ -217,47 +218,6 @@ function ProgressBar({ value, max, color = 'purple', height = 'h-2' }) {
   )
 }
 
-// ── Mock Social Data ──────────────────────────────────────
-const MOCK_FOLLOWERS = [
-  { id: 'user-1', name: 'SakuraChan',   emoji: '🌸', bg: 'from-pink-400 to-pink-600',      level: 'N4', xp: 2400 },
-  { id: 'user-2', name: 'KanjiMaster',  emoji: '⛩️', bg: 'from-green-500 to-emerald-700',  level: 'N3', xp: 5200 },
-  { id: 'user-3', name: 'TokyoDrifter', emoji: '🗻', bg: 'from-orange-400 to-red-500',      level: 'N5', xp: 800  },
-  { id: 'user-4', name: 'NihonGoGo',   emoji: '🎌', bg: 'from-blue-400 to-indigo-600',     level: 'N4', xp: 1900 },
-  { id: 'user-6', name: 'SushiLover',  emoji: '🍣', bg: 'from-amber-400 to-orange-500',    level: 'N5', xp: 450  },
-]
-const MOCK_FOLLOWING = [
-  { id: 'user-2', name: 'KanjiMaster',  emoji: '⛩️', bg: 'from-green-500 to-emerald-700',  level: 'N3', xp: 5200 },
-  { id: 'user-3', name: 'TokyoDrifter', emoji: '🗻', bg: 'from-orange-400 to-red-500',      level: 'N5', xp: 800  },
-  { id: 'user-5', name: 'SenseiMode',  emoji: '🥷', bg: 'from-gray-700 to-gray-900',        level: 'N2', xp: 8100 },
-]
-
-// ── User List Item ────────────────────────────────────────
-function UserListItem({ u, isDark, isFollowing, onToggleFollow, onViewProfile }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-      className={`flex items-center gap-3 p-3 rounded-xl transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50`}
-    >
-      <div className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer" onClick={() => onViewProfile(u.id)}>
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg bg-gradient-to-br ${u.bg} flex-shrink-0`}>{u.emoji}</div>
-        <div className="flex-1 min-w-0">
-          <div className={`text-sm font-semibold truncate hover:underline text-foreground`}>{u.name}</div>
-          <div className={`text-xs truncate text-muted-foreground`}>{u.level} · {u.xp.toLocaleString()} Wave XP</div>
-        </div>
-      </div>
-      <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-        onClick={() => onToggleFollow(u.id)}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all flex-shrink-0 ${
-          isFollowing
-            ? 'bg-gray-100 text-gray-500 border border-gray-200 hover:border-red-300 hover:text-red-500 dark:bg-gray-800 dark:text-gray-400 dark:border dark:border-gray-700 dark:hover:border-red-500/50 dark:hover:text-red-400'
-            : 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-sm shadow-purple-500/20'
-        }`}
-      >
-        {isFollowing ? <><UserCheck className="w-3.5 h-3.5" /> Following</> : <><UserPlus className="w-3.5 h-3.5" /> Follow</>}
-      </motion.button>
-    </motion.div>
-  )
-}
-
 // ══════════════════════════════════════════════════════════
 // ── MAIN COMPONENT ────────────────────────────────────────
 // ══════════════════════════════════════════════════════════
@@ -286,6 +246,10 @@ export default function ProfilePage() {
   const currentLevel  = storeJlpt || identity.jlptLevel
   const xp            = storeXP > 0 ? storeXP : identity.xp
   const streakDays    = storeStreak > 0 ? storeStreak : identity.streak
+  const levelInfo     = LEVEL_DATA[currentLevel] || LEVEL_DATA.N5
+  const xpInLevel     = Math.max(0, xp - levelInfo.min)
+  const xpNeeded      = Math.max(1, levelInfo.max - levelInfo.min)
+  const levelProgress = Math.min(100, Math.round((xpInLevel / xpNeeded) * 100))
 
   const [selectedAvatar, setSelectedAvatar]   = useState(identity.avatarId)
   const [avatarUrl, setAvatarUrl]             = useState(identity.avatarUrl)
@@ -293,22 +257,19 @@ export default function ProfilePage() {
   const [showAvatarCreator, setShowAvatarCreator] = useState(false)
   const [weeklyRows, setWeeklyRows]           = useState([])
   const [previewUrl, setPreviewUrl]           = useState(null)
-  const [showFollowersModal, setShowFollowersModal] = useState(false)
-  const [followersTab, setFollowersTab]       = useState('followers')
   const [stats, setStats]                     = useState(null)
-  const [loadingStats, setLoadingStats]       = useState(true)
+  const [_loadingStats, setLoadingStats]       = useState(true)
   const [activeTab, setActiveTab]             = useState('overview')
   const [showAllAchievements, setShowAllAchievements] = useState(false)
-  const [followingIds, setFollowingIds]       = useState(['user-2', 'user-3', 'user-5'])
 
   // ── Edit Profile State (Direct Profile Customization) ─────
   const [searchParams, setSearchParams]       = useSearchParams()
   const [showEditProfileModal, setShowEditProfileModal] = useState(searchParams.get('edit') === 'true')
   const [editUsername, setEditUsername]       = useState(identity.username || '')
   const [editNativeLang, setEditNativeLang]   = useState(normalizeLocale(identity.nativeLanguage || 'en'))
-  const [editLevel, setEditLevel]             = useState('N5')
   const [usernameError, setUsernameError]     = useState(null)
   const [isSavingProfile, setIsSavingProfile] = useState(false)
+  const [showPlacementModal, setShowPlacementModal] = useState(false)
 
   useEffect(() => {
     if (searchParams.get('edit') === 'true') {
@@ -320,10 +281,9 @@ export default function ProfilePage() {
     if (showEditProfileModal) {
       setEditUsername(identity.username || '')
       setEditNativeLang(normalizeLocale(identity.nativeLanguage || 'en'))
-      setEditLevel(currentLevel || 'N5')
       setUsernameError(null)
     }
-  }, [showEditProfileModal, identity.username, identity.nativeLanguage, currentLevel])
+  }, [showEditProfileModal, identity.username, identity.nativeLanguage])
 
   const handleSaveProfileDetails = async () => {
     const stored = (identity.username || '').trim()
@@ -348,7 +308,6 @@ export default function ProfilePage() {
       await updateProfile({
         username: editUsername.trim(),
         nativeLanguage: editNativeLang,
-        currentLevel: editLevel,
       })
       if (refreshProfile) await refreshProfile()
       toast.success(t('toast.profile_updated', 'Profile updated! ✅'))
@@ -419,12 +378,7 @@ export default function ProfilePage() {
       .sort((x, y) => Number(y.unlocked) - Number(x.unlocked) || y.weight - x.weight),
     [unlockedIds]
   )
-  const levelInfo     = LEVEL_DATA[currentLevel] || LEVEL_DATA.N5
-  const xpInLevel     = xp - levelInfo.min
-  const xpNeeded      = levelInfo.max - levelInfo.min
-  const levelProgress = Math.min(Math.max((xpInLevel / xpNeeded) * 100, 0), 100)
   const rank          = RANKS.reduce((acc, r) => xp >= r.xp ? r : acc, RANKS[0])
-  const nextRank      = RANKS.find(r => xp < r.xp)
 
   const skillData = useMemo(
     () => buildSkillProgress({ storiesCompleted: storiesRead, totalStories: storySummary.totalStories, kanji: stats?.kanji, vocab: stats?.vocab, jlpt: currentLevel }),
@@ -483,12 +437,10 @@ export default function ProfilePage() {
       setSelectedAvatar(null); setAvatarUrl(null); setAvatarConfig(null); setPreviewUrl(null); setShowAvatarPicker(false)
       if (refreshProfile) refreshProfile()
       toast.success(t('toast.avatar_removed', 'Avatar removed'))
-    } catch (err) { toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar')) }
+    } catch (_err) { toast.error(t('toast.avatar_remove_failed', 'Failed to remove avatar')) }
     finally { setUploadLoading(false) }
   }
 
-  const handleToggleFollow = (id) => setFollowingIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
-  const handleViewProfile  = (id) => { setShowFollowersModal(false); navigate(`/profile/${id}`) }
 
   const memberSince = identity.createdAt
     ? new Date(identity.createdAt).toLocaleDateString(displayLanguage || undefined, { year: 'numeric', month: 'long' })
@@ -611,19 +563,20 @@ export default function ProfilePage() {
                 )}
               </div>
 
-              {/* Social counts */}
-              <div className="flex gap-4 text-center">
-                {[
-                  { label: 'Following', count: MOCK_FOLLOWING.length, tab: 'following' },
-                  { label: 'Followers', count: MOCK_FOLLOWERS.length, tab: 'followers' },
-                ].map(({ label, count, tab }) => (
-                  <button key={tab} onClick={() => { setFollowersTab(tab); setShowFollowersModal(true) }}
-                    className={`hover:opacity-80 transition-opacity`}
-                  >
-                    <div className={`text-xl font-bold text-foreground`}>{count}</div>
-                    <div className={`text-xs text-muted-foreground`}>{label}</div>
-                  </button>
-                ))}
+              {/* Learner Progress Stats */}
+              <div className="flex gap-4 sm:gap-6 text-center">
+                <div>
+                  <div className="text-xl font-bold text-foreground">{streakDays}</div>
+                  <div className="text-xs text-muted-foreground">{t('profile.header_streak', 'Streak')}</div>
+                </div>
+                <div>
+                  <div className="text-xl font-bold text-foreground">{storiesRead}</div>
+                  <div className="text-xs text-muted-foreground">{t('profile.header_stories', 'Stories')}</div>
+                </div>
+                <div>
+                  <div className="text-xl font-bold text-foreground">{stats?.kanji || 0}</div>
+                  <div className="text-xs text-muted-foreground">{t('profile.header_kanji', 'Kanji')}</div>
+                </div>
               </div>
             </div>
 
@@ -673,7 +626,6 @@ export default function ProfilePage() {
             { id: 'overview',      label: '📊 Overview' },
             { id: 'achievements',  label: '🏆 Achievements' },
             { id: 'activity',      label: '📅 Activity' },
-            { id: 'social',        label: '👥 Social' },
           ].map(({ id, label }) => (
             <button key={id} onClick={() => setActiveTab(id)}
               className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-semibold transition-all border ${
@@ -867,31 +819,7 @@ export default function ProfilePage() {
             </motion.div>
           )}
 
-          {/* ── SOCIAL TAB ───────────────────────────── */}
-          {activeTab === 'social' && (
-            <motion.div key="social" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <Card>
-                <div className="flex border-b border-inherit">
-                  {['followers', 'following'].map(tab => (
-                    <button key={tab} onClick={() => setFollowersTab(tab)}
-                      className={`flex-1 py-3 text-sm font-semibold capitalize transition-colors ${
-                        followersTab === tab ? 'text-purple-500 border-b-2 border-purple-500' : 'text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white'
-                      }`}
-                    >{tab} {tab === 'followers' ? `(${MOCK_FOLLOWERS.length})` : `(${MOCK_FOLLOWING.length})`}</button>
-                  ))}
-                </div>
-                <div className="p-3">
-                  {(followersTab === 'followers' ? MOCK_FOLLOWERS : MOCK_FOLLOWING).map(u => (
-                    <UserListItem key={u.id} u={u} isDark={isDark}
-                      isFollowing={followingIds.includes(u.id)}
-                      onToggleFollow={handleToggleFollow}
-                      onViewProfile={handleViewProfile}
-                    />
-                  ))}
-                </div>
-              </Card>
-            </motion.div>
-          )}
+
         </AnimatePresence>
       </div>
 
@@ -957,45 +885,6 @@ export default function ProfilePage() {
         </Suspense>
       )}
 
-      {/* ── FOLLOWERS MODAL ──────────────────────────── */}
-      <AnimatePresence>
-        {showFollowersModal && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-            onClick={() => setShowFollowersModal(false)}
-          >
-            <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
-              onClick={e => e.stopPropagation()}
-              className={`w-full max-w-sm rounded-3xl border shadow-2xl overflow-hidden bg-surface border-border`}
-            >
-              <div className="flex items-center justify-between px-5 py-4 border-b border-inherit">
-                <h3 className={`text-lg font-bold text-foreground`}>
-                  {followersTab === 'followers' ? 'Followers' : 'Following'}
-                </h3>
-                <button onClick={() => setShowFollowersModal(false)} className={`p-1.5 rounded-lg hover:bg-muted text-muted-foreground`}>
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="flex border-b border-inherit">
-                {['followers', 'following'].map(tab => (
-                  <button key={tab} onClick={() => setFollowersTab(tab)}
-                    className={`flex-1 py-2.5 text-sm font-semibold capitalize transition-colors ${followersTab === tab ? 'text-purple-500 border-b-2 border-purple-500' : 'text-gray-400'}`}
-                  >{tab}</button>
-                ))}
-              </div>
-              <div className="p-3 max-h-80 overflow-y-auto">
-                {(followersTab === 'followers' ? MOCK_FOLLOWERS : MOCK_FOLLOWING).map(u => (
-                  <UserListItem key={u.id} u={u} isDark={isDark}
-                    isFollowing={followingIds.includes(u.id)}
-                    onToggleFollow={handleToggleFollow}
-                    onViewProfile={handleViewProfile}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ── EDIT PROFILE MODAL ───────────────────────── */}
       <AnimatePresence>
@@ -1106,24 +995,37 @@ export default function ProfilePage() {
                 </p>
               </div>
 
-              {/* Target Study Level */}
+              {/* Verified Study Level */}
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-foreground">Current Study Level</label>
-                <div className="grid grid-cols-5 gap-2">
-                  {['N5', 'N4', 'N3', 'N2', 'N1'].map((lvl) => (
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-foreground">Current Study Level</label>
+                  {levelInfo.next && (
                     <button
-                      key={lvl}
                       type="button"
-                      onClick={() => setEditLevel(lvl)}
-                      className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                        editLevel === lvl
-                          ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
-                          : 'bg-muted/40 border-border text-muted-foreground hover:text-foreground hover:bg-muted'
-                      }`}
+                      onClick={() => {
+                        setShowEditProfileModal(false)
+                        setShowPlacementModal(true)
+                      }}
+                      className="text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline flex items-center gap-1"
                     >
-                      {lvl}
+                      <Sparkles className="w-3.5 h-3.5" />
+                      Take {levelInfo.next} Placement Test
                     </button>
-                  ))}
+                  )}
+                </div>
+                <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                    <div>
+                      <span className="text-sm font-bold text-foreground">{currentLevel} · {levelInfo.label}</span>
+                      <p className="text-[11px] text-muted-foreground">
+                        Automatically updated via placement test & curriculum progress
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">
+                    Verified
+                  </span>
                 </div>
               </div>
 
@@ -1154,6 +1056,17 @@ export default function ProfilePage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Level Placement Qualification Modal */}
+      <LevelPlacementModal
+        isOpen={showPlacementModal}
+        targetLevel={levelInfo.next || 'N4'}
+        onClose={() => setShowPlacementModal(false)}
+        onQualified={async () => {
+          setShowPlacementModal(false)
+          if (refreshProfile) await refreshProfile()
+        }}
+      />
     </div>
   )
 }

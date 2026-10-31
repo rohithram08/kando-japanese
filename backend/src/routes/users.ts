@@ -217,6 +217,52 @@ usersRouter.get('/level-status', requireAuth, async (req, res, next) => {
   }
 });
 
+/**
+ * POST /api/users/qualify-placement
+ * Qualifies a user for a higher level (N4..N1) if they achieve >= 80% on the qualification test.
+ */
+const qualifyPlacementSchema = z.object({
+  body: z.object({
+    targetLevel: z.enum(['N4', 'N3', 'N2', 'N1']),
+    score: z.number().int().min(0),
+    totalQuestions: z.number().int().min(1),
+  }),
+});
+
+usersRouter.post(
+  '/qualify-placement',
+  requireAuth,
+  validate(qualifyPlacementSchema),
+  async (req, res, next) => {
+    try {
+      const userId = req.user!.userId;
+      const { targetLevel, score, totalQuestions } = req.body;
+
+      const ratio = score / totalQuestions;
+      if (ratio < 0.8) {
+        throw new AppError(400, 'Score below 80% passing threshold for qualification. Beginning at N5.');
+      }
+
+      await db
+        .update(users)
+        .set({
+          studyLevel: targetLevel,
+          currentLevel: targetLevel,
+          updatedAt: new Date(),
+        })
+        .where(eq(users.id, userId));
+
+      res.json({
+        success: true,
+        qualifiedLevel: targetLevel,
+        message: `Successfully qualified and unlocked JLPT ${targetLevel}!`,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 usersRouter.get('/:userId', async (req, res, next) => {
   try {
     const { userId } = req.params;

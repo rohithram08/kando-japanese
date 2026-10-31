@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { SenseiAnimationController, SenseiAnimationState } from '../controllers/SenseiAnimationController';
 import { SenseiExpressionController } from '../controllers/SenseiExpressionController';
 import { SenseiLipSyncController, JapaneseVowel } from '../controllers/SenseiLipSyncController';

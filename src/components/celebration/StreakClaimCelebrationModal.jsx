@@ -7,7 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Sparkles, Check, Flame } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { playPop } from '../../utils/soundEffects';
 
 export default function StreakClaimCelebrationModal({

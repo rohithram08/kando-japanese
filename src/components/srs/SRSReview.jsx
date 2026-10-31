@@ -6,7 +6,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuthStore } from '../../store/authStore';
-import { useThemeStore } from '../../store/themeStore';
 import { useSettingsStore } from '../../store/settingsStore';
 import { useProgressStore } from '../../store/progressStore';
 import { getDueCards, reviewCard } from '../../api/srs';
@@ -15,13 +14,13 @@ import { useDailyGoalsStore } from '../../store/dailyGoalsStore';
 import { resolveCardContent } from '../../utils/srsCardResolver';
 import SRSReviewCard from './SRSReviewCard';
 import { useI18n, getCurriculumMeaning } from '../../i18n';
-import { BookOpen, Sparkles, Compass, CheckCircle2 } from 'lucide-react';
+import { BookOpen, Sparkles, Compass } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { playSuccess, playError, playFanfare, playSwoosh, playClick } from '../../utils/soundEffects';
 
 export default function SRSReview() {
   const navigate = useNavigate();
-  const { user, profile, updateProfile } = useAuthStore();
+  const { user } = useAuthStore();
   const { awardSRSReviewXP, incrementCards, incrementMastered } = useProgressStore();
   const addReview = useDailyGoalsStore((s) => s.addReview);
   const { t, locale } = useI18n();

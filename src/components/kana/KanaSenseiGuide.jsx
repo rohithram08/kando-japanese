@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Sparkles,
   Volume2,
-  ChevronDown,
-  ChevronUp,
-  Lightbulb,
   BookOpen,
-  ArrowRight,
-  HelpCircle,
 } from 'lucide-react';
 import { audioService } from '../../services/audioService';
 import { CONFUSABLE_PAIRS } from '../../data/kana/kanaData';
 import HanaSenseiCharacter2D from '../sensei/HanaSenseiCharacter2D';
 
-export default function KanaSenseiGuide({ onStartQuiz, onSelectScript }) {
+export default function KanaSenseiGuide({ onStartQuiz: _onStartQuiz, onSelectScript: _onSelectScript }) {
   const [selectedPairIndex, setSelectedPairIndex] = useState(0);
-  const [showExplanation, setShowExplanation] = useState(true);
 
   const handleSpeak = (text) => {
     audioService.speak(text);

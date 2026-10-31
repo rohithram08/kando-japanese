@@ -25,6 +25,7 @@ import toast from 'react-hot-toast'
 import { KANJI_CATEGORIES, categorizeItems } from '../data/categories'
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
+import KanjiDetailModal from '../components/kanji/KanjiDetailModal'
 
 
 // ─────────────────────────────────────────────────────────────────────
@@ -42,7 +43,7 @@ const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
 // ─────────────────────────────────────────────────────────────────────
 //  SHARED: Reading Badge
 // ─────────────────────────────────────────────────────────────────────
-function ReadingBadge({ label, readings, type, isDark }) {
+function ReadingBadge({ label, readings, type, isDark: _isDark }) {
   if (!readings || !readings.length) return null
   const cls = type === 'on'
     ? 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/15 dark:text-blue-300 dark:border-blue-500/25'
@@ -347,7 +348,7 @@ function DetailPanel({ item, isDark, onClose, meta }) {
 // ─────────────────────────────────────────────────────────────────────
 //  BROWSE — Kanji Card (list view)
 // ─────────────────────────────────────────────────────────────────────
-const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle }) {
+const KanjiCard = React.memo(function KanjiCard({ item, isDark: _isDark, onOpenModal }) {
   const meta = LEVEL_META[item.level]
   const onR  = item.readings?.on?.filter(Boolean) || []
   const kunR = item.readings?.kun?.filter(r => r && r !== '-') || []
@@ -356,15 +357,16 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
   const displayMeaning = getCurriculumMeaning(item, activeLang)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
   const inDeck = isCardInSRS(item.id || item.kanji)
+  const { t } = useI18n()
 
   return (
     <motion.div layout
       initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }}
-      className={`rounded-2xl border overflow-hidden cursor-pointer transition-shadow bg-white border-gray-100 hover:border-gray-300 hover:shadow-md dark:bg-gray-900 dark:border-gray-700/60 dark:hover:border-gray-600 shadow-sm`}
-      onClick={onToggle}>
+      className={`rounded-2xl border overflow-hidden cursor-pointer transition-all bg-white border-gray-100 hover:border-purple-300 hover:shadow-md dark:bg-gray-900 dark:border-gray-700/60 dark:hover:border-purple-500/50 shadow-sm group`}
+      onClick={() => onOpenModal?.(item, 'overview')}>
 
       <div className="flex items-center gap-4 p-4">
-        <div className={`w-14 h-14 shrink-0 rounded-xl flex items-center justify-center text-3xl font-bold bg-gradient-to-br ${meta.gradient} text-white shadow-md select-none`}>
+        <div className={`w-14 h-14 shrink-0 rounded-xl flex items-center justify-center text-3xl font-bold bg-gradient-to-br ${meta.gradient} text-white shadow-md select-none group-hover:scale-105 transition-transform`}>
           {item.kanji}
         </div>
         <div className="flex-1 min-w-0">
@@ -380,7 +382,7 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
             {item.strokeCount > 0 && <span className={`text-xs text-muted-foreground`}>{item.strokeCount}画</span>}
           </div>
         </div>
-        <div className="flex items-center gap-1.5 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -399,42 +401,28 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
             className={`p-1.5 rounded-lg transition-colors hover:bg-red-50 hover:text-red-500 text-gray-400 dark:hover:bg-red-500/10 dark:hover:text-red-400 dark:text-gray-600`}>
             <Volume2 className="w-4 h-4" />
           </button>
-          {isOpen
-            ? <ChevronUp   className={`w-4 h-4 text-muted-foreground`} />
-            : <ChevronDown className={`w-4 h-4 text-muted-foreground`} />}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpenModal?.(item, 'stroke')
+            }}
+            title={t('kanji.tab_stroke', 'Stroke Order & Draw')}
+            className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+          >
+            <PenTool className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{t('kanji.strokes_action', 'Strokes')}</span>
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpenModal?.(item, 'overview')
+            }}
+            className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
+          >
+            View
+          </button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {isOpen && item.examples?.length > 0 && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
-            className="overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className={`px-4 pb-4 border-t border-border`}>
-              <p className={`text-xs font-semibold uppercase tracking-wide mt-3 mb-2 text-muted-foreground`}>Example Words</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {item.examples.filter(ex => ex.word || typeof ex === 'string').map((ex, i) => {
-                  const word = ex.word || ex, reading = ex.reading || '', meaning = ex.meaning || ''
-                  return (
-                    <div key={i} className={`flex items-center gap-2 px-3 py-2 rounded-xl bg-muted`}>
-                      <button onClick={() => speak(word)} className={`p-1 rounded shrink-0 hover:text-red-500 text-gray-400 dark:hover:text-red-400 dark:text-gray-600`}>
-                        <Volume2 className="w-3.5 h-3.5" />
-                      </button>
-                      <div>
-                        <div className="flex items-baseline gap-1.5">
-                          <span className={`font-medium text-sm text-foreground`}>{word}</span>
-                          {reading && <span className={`text-xs text-muted-foreground`}>{reading}</span>}
-                        </div>
-                        {meaning && <p className={`text-xs text-muted-foreground`}>{meaning}</p>}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   )
 })
@@ -442,7 +430,7 @@ const KanjiCard = React.memo(function KanjiCard({ item, isDark, isOpen, onToggle
 // ─────────────────────────────────────────────────────────────────────
 //  BROWSE — Study Group (grid)
 // ─────────────────────────────────────────────────────────────────────
-function StudyGroup({ kanji, groupIndex, isDark, meta, selectedId, onSelect }) {
+function StudyGroup({ kanji, groupIndex, isDark: _isDark, meta, selectedId, onSelect }) {
   const start = groupIndex * GROUPS_PER_PAGE + 1
   const end   = start + kanji.length - 1
   const isCardInSRS = useSRSStore((s) => s.isCardInSRS)
@@ -961,7 +949,7 @@ function PracticeTab({ kanji, isDark, meta }) {
 // ─────────────────────────────────────────────────────────────────────
 //  QUIZ TAB
 // ─────────────────────────────────────────────────────────────────────
-function QuizTab({ kanji, isDark, meta }) {
+function QuizTab({ kanji, isDark: _isDark, meta }) {
   const [mode,      setMode]      = useState(null)
   const [qCount,    setQCount]    = useState(10)
   const [questions, setQuestions] = useState([])
@@ -1303,12 +1291,19 @@ export default function KanjiPage() {
   const [search,     setSearch]     = useState('')
   const [openId,     setOpenId]     = useState(null)
   const [selectedId, setSelectedId] = useState(null)
+  const [modalKanji, setModalKanji] = useState(null)
+  const [modalTab,   setModalTab]   = useState('overview')
   const [view,       setView]       = useState('categories')
   const [tab,        setTab]        = useState('browse')
   const [selectedCategory, setSelectedCategory] = useState(null)
 
+  const handleOpenModal = useCallback((item, initialTab = 'overview') => {
+    setModalKanji(item)
+    setModalTab(initialTab)
+  }, [])
+
   const meta     = LEVEL_META[level]
-  const allKanji = KANJI[level] || []
+  const allKanji = useMemo(() => KANJI[level] || [], [level])
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
@@ -1332,6 +1327,26 @@ export default function KanjiPage() {
       )
     })
   }, [search, allKanji, activeLang])
+
+  const modalIndex = useMemo(() => {
+    if (!modalKanji) return -1
+    return filtered.findIndex(k => (k.id && k.id === modalKanji.id) || k.kanji === modalKanji.kanji)
+  }, [modalKanji, filtered])
+
+  const hasPrev = modalIndex > 0
+  const hasNext = modalIndex >= 0 && modalIndex < filtered.length - 1
+
+  const handlePrevKanji = useCallback(() => {
+    if (modalIndex > 0) {
+      setModalKanji(filtered[modalIndex - 1])
+    }
+  }, [modalIndex, filtered])
+
+  const handleNextKanji = useCallback(() => {
+    if (modalIndex >= 0 && modalIndex < filtered.length - 1) {
+      setModalKanji(filtered[modalIndex + 1])
+    }
+  }, [modalIndex, filtered])
 
   const selectedItem = useMemo(
     () => filtered.find(k => k.id === selectedId) || null,
@@ -1382,10 +1397,9 @@ export default function KanjiPage() {
   const renderKanjiCardForCategory = useCallback(
     (item) => (
       <KanjiCard key={item.id} item={item} isDark={isDark}
-        isOpen={openId === item.id}
-        onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
+        onOpenModal={handleOpenModal} />
     ),
-    [isDark, openId]
+    [isDark, handleOpenModal]
   )
 
   const TABS = [
@@ -1524,8 +1538,7 @@ export default function KanjiPage() {
                     <AnimatePresence mode="popLayout">
                       {filtered.map(item => (
                         <KanjiCard key={item.id} item={item} isDark={isDark}
-                          isOpen={openId === item.id}
-                          onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
+                          onOpenModal={handleOpenModal} />
                       ))}
                     </AnimatePresence>
                   </div>
@@ -1538,7 +1551,7 @@ export default function KanjiPage() {
                             const isSel = selectedId === item.id
                             return (
                               <motion.button key={item.id} layout whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.94 }}
-                                onClick={() => setSelectedId(isSel ? null : item.id)} title={item.meaning}
+                                onClick={() => handleOpenModal(item, 'overview')} title={item.meaning}
                                 className={`aspect-square rounded-xl border flex flex-col items-center justify-center gap-0.5 transition-all text-center p-1 ${
                                   isSel ? `bg-gradient-to-br ${meta.gradient} text-white border-transparent shadow-lg scale-105`
                                   : 'bg-white border-gray-200 hover:border-gray-300 text-gray-800 dark:bg-gray-900 dark:border-gray-700/60 dark:hover:border-gray-500 dark:text-white'}`}>
@@ -1600,6 +1613,18 @@ export default function KanjiPage() {
         )}
 
       </AnimatePresence>
+
+      {/* Pop-up Kanji Detail Learning Modal */}
+      <KanjiDetailModal
+        kanji={modalKanji}
+        isOpen={Boolean(modalKanji)}
+        initialTab={modalTab}
+        onClose={() => setModalKanji(null)}
+        onPrev={handlePrevKanji}
+        onNext={handleNextKanji}
+        hasPrev={hasPrev}
+        hasNext={hasNext}
+      />
     </div>
   )
 }

@@ -10,7 +10,6 @@ import { useNotificationStore } from '../../../store/notificationStore'
 import {
   isNotificationSupported,
   getNotificationPermission,
-  sendBrowserNotification,
 } from '../../../services/browserNotificationService'
 
 describe('SlimeNotificationMascot Component', () => {

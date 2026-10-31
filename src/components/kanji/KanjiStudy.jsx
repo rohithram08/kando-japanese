@@ -9,12 +9,12 @@ import { useProgressStore } from '../../store/progressStore'
 import { useDailyGoalsStore } from '../../store/dailyGoalsStore'
 import { useAuthStore } from '../../store/authStore'
 import { audioService } from '../../services/audioService'
-import { KANJI, LEVEL_META, LEVELS, DATA_COUNTS } from '../../data/index'
+import { KANJI, LEVEL_META, DATA_COUNTS } from '../../data/index'
 import LevelSelector from '../common/LevelSelector'
 import { useLevelState } from '../../hooks/useStudyLevel'
 
 // ── Flash-card style study view ───────────────────────────────
-function FlashCard({ item, isDark, flipped, onFlip }) {
+function FlashCard({ item, isDark: _isDark, flipped, onFlip }) {
   const meta = LEVEL_META[item.level]
   const onR   = item.readings?.on?.filter(Boolean)  || []
   const kunR  = item.readings?.kun?.filter(Boolean) || []

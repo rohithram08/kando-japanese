@@ -68,8 +68,8 @@ export function ClassroomContactShadows({
 }
 
 export function SenseiBackground({
-  daisPosition = [-1.70, 0, 0],
-  slimeDaisPosition = [1.70, 0, 0],
+  daisPosition: _daisPosition = [-1.70, 0, 0],
+  slimeDaisPosition: _slimeDaisPosition = [1.70, 0, 0],
 }: SenseiBackgroundProps) {
 
   // 1. High-Resolution Japanese Classroom Blackboard (黒板 - Kokuban) Texture

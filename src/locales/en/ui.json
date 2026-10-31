@@ -80,7 +80,10 @@
     "try_different_search": "Try a different search term",
     "your_levels": "Your levels",
     "saving": "Saving…",
-    "go_back": "Go Back"
+    "go_back": "Go Back",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "Graded Reader",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "You have reviewed {completed} cards so far with {accuracy}% accuracy.",
     "checkpoint_title": "Batch Checkpoint Reached!",
     "continue_batch": "Continue Next Batch",
-    "finish_session": "Wrap Up Session for Now"
+    "finish_session": "Wrap Up Session for Now",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "Graded Japanese Reader",
@@ -454,7 +459,8 @@
     "not_supported": "Speech synthesis is not supported in this browser",
     "voice_unavailable": "No Japanese voice available on this device",
     "playback_failed": "Audio playback failed",
-    "default_voice": "Default Voice"
+    "default_voice": "Default Voice",
+    "listen": "Listen"
   },
   "speech": {
     "listen_normal": "Listen Normal",
@@ -488,7 +494,10 @@
     "lessons_done": "Stories",
     "skill_overview": "Learning Progress",
     "total_xp": "Wave XP",
-    "edit_profile": "Edit Profile"
+    "edit_profile": "Edit Profile",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "Conversation Practice",
@@ -641,5 +650,44 @@
     "not_found": "User not found",
     "not_found_desc": "This user profile doesn't exist or has been removed.",
     "not_found_title": "User Not Found"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

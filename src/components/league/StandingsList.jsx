@@ -1,6 +1,6 @@
 // src/components/league/StandingsList.jsx
 import React, { useEffect, useRef, useState } from 'react'
-import { Bot, ChevronUp, ChevronDown, Sparkles } from 'lucide-react'
+import { Bot, ChevronUp, ChevronDown } from 'lucide-react'
 import toast from 'react-hot-toast'
 import UserAvatar from '../common/UserAvatar'
 import { useI18n } from '../../i18n'

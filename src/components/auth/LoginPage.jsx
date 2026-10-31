@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft, Sparkles, Key } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft, Key } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import { authApi }       from '../../api'
 import { useI18n }         from '../../i18n'
 import toast from 'react-hot-toast'
@@ -26,10 +25,8 @@ export default function LoginPage() {
   const [resetUrl, setResetUrl]             = useState('')
 
   const { signIn, signInWithGoogle } = useAuthStore()
-  const { resolvedTheme }            = useThemeStore()
   const { t }                        = useI18n()
   const navigate                     = useNavigate()
-  const isDark                       = resolvedTheme === 'dark'
 
   // ── Validation ────────────────────────────────────────────
   const validate = () => {

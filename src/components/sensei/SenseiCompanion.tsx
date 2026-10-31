@@ -85,7 +85,7 @@ export default function SenseiCompanion() {
     if (isOpen && messages.length === 0) {
       fetchHistory();
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length, fetchHistory]);
 
   useEffect(() => {
     if (isOpen) {
@@ -106,7 +106,7 @@ export default function SenseiCompanion() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, targetId]);
+  }, [isOpen, targetId, clearTarget, setOpen]);
 
   const handleSend = async (userMsg: string) => {
     if (!userMsg.trim() || isTyping) return;

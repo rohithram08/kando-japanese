@@ -108,7 +108,9 @@ export async function touchLeagueQuietly(userId: string, now: Date = new Date())
     if (enteredCache.has(`${userId}:${getWeekWindow(now).id}`)) return;
     await touchLeague(userId, now);
   } catch (err) {
-    console.error('[league] failed to enter learner', { userId, err });
+    if (process.env.NODE_ENV !== 'test') {
+      console.error('[league] failed to enter learner', { userId, err });
+    }
   }
 }
 

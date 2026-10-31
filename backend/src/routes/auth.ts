@@ -47,7 +47,9 @@ authRouter.post('/register', authLimiter, validate(registerSchema), async (req, 
       email,
       username,
       passwordHash,
-      ...(currentLevel ? { currentLevel, studyLevel: currentLevel } : {}),
+      // Initial verified study level is always N5. Higher levels require passing placement qualification test.
+      studyLevel: 'N5',
+      currentLevel: 'N5',
     });
 
     const token = jwt.sign(

@@ -1,0 +1,600 @@
+{
+  "id": "story_n5_04",
+  "titleFurigana": "公園[こうえん]へ 散歩[さんぽ]に 行[い]く",
+  "englishTitle": "A Walk in the Park",
+  "description": "Join Daiki on a sunny Saturday morning: a ten-minute walk to the park, cherry blossoms in full bloom, a friendly girl with a big white dog, a photo, a cold tea on the bench, and a promise to come back.",
+  "sentences": [
+    [
+      "土曜日[どようび]の 朝[あさ]、とても いい 天気[てんき]です。",
+      "On Saturday morning the weather is very nice."
+    ],
+    [
+      "私[わたし]の 名前[なまえ]は ダイキです。",
+      "My name is Daiki."
+    ],
+    [
+      "空[そら]は 青[あお]くて、風[かぜ]が 少[すこ]し あたたかいです。",
+      "The sky is blue and the wind is a little warm.",
+      "い-adjective: drop い, add くて to link adjectives: 青くて、あたたかい."
+    ],
+    [
+      "天気[てんき]が いいですから、散歩[さんぽ]に 行[い]きます。",
+      "The weather is good, so I will go for a walk.",
+      "散歩に 行きます = go for a walk (に = purpose)."
+    ],
+    [
+      "近[ちか]くの 公園[こうえん]まで 歩[ある]いて 十分[じゅっぷん]です。",
+      "It is ten minutes on foot to the park nearby.",
+      "まで = as far as / up to."
+    ],
+    [
+      "公園[こうえん]に 来[き]ました。",
+      "I have come to the park."
+    ],
+    [
+      "桜[さくら]の 花[はな]が たくさん 咲[さ]いて います。",
+      "Many cherry blossoms are in bloom.",
+      "咲いて います describes a state that continues after the change: the flowers have opened and are open."
+    ],
+    [
+      "白[しろ]と ピンクの 花[はな]は とても きれいです。",
+      "The white and pink flowers are very beautiful."
+    ],
+    [
+      "木[き]の 下[した]に 家族[かぞく]が います。",
+      "There is a family under the tree."
+    ],
+    [
+      "おじいさんと おばあさんが ベンチに すわって います。",
+      "An old man and an old woman are sitting on a bench."
+    ],
+    [
+      "子[こ]どもたちが 元気[げんき]に 走[はし]って います。",
+      "Children are running around energetically."
+    ],
+    [
+      "犬[いぬ]と いっしょに あそんで います。",
+      "They are playing together with a dog."
+    ],
+    [
+      "犬[いぬ]は 白[しろ]くて、とても 大[おお]きいです。",
+      "The dog is white and very big."
+    ],
+    [
+      "私[わたし]は 犬[いぬ]が 好[す]きです。",
+      "I like dogs."
+    ],
+    [
+      "でも、うちには 犬[いぬ]が いません。",
+      "But there is no dog at my home."
+    ],
+    [
+      "ひとりの 女[おんな]の 子[こ]が 私[わたし]に 「こんにちは」と 言[い]います。",
+      "A little girl says \"Hello\" to me."
+    ],
+    [
+      "「この 犬[いぬ]の 名前[なまえ]は 何[なん]ですか」と 私[わたし]は 聞[き]きます。",
+      "\"What is this dog's name?\" I ask."
+    ],
+    [
+      "「コロです。三[さん]さいです」と 女[おんな]の 子[こ]は 言[い]います。",
+      "\"It's Koro. He is three years old,\" the girl says."
+    ],
+    [
+      "「写真[しゃしん]を 撮[と]っても いいですか」と 私[わたし]は 聞[き]きます。",
+      "\"May I take a photo?\" I ask.",
+      "て-form + も いいですか = May I …? (asking permission)."
+    ],
+    [
+      "女[おんな]の 子[こ]は 「はい、いいですよ」と 言[い]います。",
+      "The girl says, \"Yes, that's fine.\""
+    ],
+    [
+      "私[わたし]は スマホで 犬[いぬ]と 桜[さくら]の 写真[しゃしん]を 撮[と]ります。",
+      "I take a photo of the dog and the cherry blossoms with my smartphone.",
+      "で marks the tool you use: スマホで 撮ります."
+    ],
+    [
+      "少[すこ]し つかれましたから、ベンチに すわります。",
+      "I am a little tired, so I sit on a bench."
+    ],
+    [
+      "店[みせ]で 冷[つめ]たい お茶[ちゃ]を 買[か]います。",
+      "I buy a cold tea at a shop."
+    ],
+    [
+      "お茶[ちゃ]を 飲[の]んで、桜[さくら]を 見[み]ます。",
+      "I drink the tea and look at the cherry blossoms."
+    ],
+    [
+      "風[かぜ]が ふいて、花[はな]が ひらひらと 落[お]ちます。",
+      "The wind blows and the petals flutter down."
+    ],
+    [
+      "とても しずかで、気持[きも]ちが いいです。",
+      "It is very quiet and feels wonderful.",
+      "気持ちが いい = to feel good / pleasant."
+    ],
+    [
+      "十一時[じゅういちじ]に 家[いえ]へ 帰[かえ]ります。",
+      "At eleven o'clock I go home."
+    ],
+    [
+      "来週[らいしゅう]も また 来[き]たいです。",
+      "I want to come again next week, too.",
+      "ます-stem + たいです = I want to …; も = also."
+    ],
+    [
+      "いい 土曜日[どようび]でした。",
+      "It was a good Saturday."
+    ]
+  ],
+  "vocab": [
+    [
+      "朝",
+      "あさ",
+      "morning",
+      "noun"
+    ],
+    [
+      "天気",
+      "てんき",
+      "weather",
+      "noun"
+    ],
+    [
+      "散歩",
+      "さんぽ",
+      "walk; stroll",
+      "noun / suru-verb"
+    ],
+    [
+      "公園",
+      "こうえん",
+      "park",
+      "noun"
+    ],
+    [
+      "歩く",
+      "あるく",
+      "to walk",
+      "verb",
+      [
+        "歩い"
+      ]
+    ],
+    [
+      "桜",
+      "さくら",
+      "cherry blossom; cherry tree",
+      "noun"
+    ],
+    [
+      "花",
+      "はな",
+      "flower",
+      "noun"
+    ],
+    [
+      "咲く",
+      "さく",
+      "to bloom",
+      "verb",
+      [
+        "咲い"
+      ]
+    ],
+    [
+      "家族",
+      "かぞく",
+      "family",
+      "noun"
+    ],
+    [
+      "子ども",
+      "こども",
+      "child",
+      "noun"
+    ],
+    [
+      "元気",
+      "げんき",
+      "energetic; well",
+      "na-adjective"
+    ],
+    [
+      "走る",
+      "はしる",
+      "to run",
+      "verb",
+      [
+        "走っ"
+      ]
+    ],
+    [
+      "犬",
+      "いぬ",
+      "dog",
+      "noun"
+    ],
+    [
+      "好き",
+      "すき",
+      "liked; favourite",
+      "na-adjective"
+    ],
+    [
+      "写真",
+      "しゃしん",
+      "photograph",
+      "noun"
+    ],
+    [
+      "撮る",
+      "とる",
+      "to take (a photo)",
+      "verb",
+      [
+        "撮っ",
+        "撮り"
+      ]
+    ],
+    [
+      "冷たい",
+      "つめたい",
+      "cold (to the touch)",
+      "i-adjective",
+      [
+        "冷た"
+      ]
+    ],
+    [
+      "飲む",
+      "のむ",
+      "to drink",
+      "verb",
+      [
+        "飲ん"
+      ]
+    ],
+    [
+      "気持ち",
+      "きもち",
+      "feeling",
+      "noun"
+    ],
+    [
+      "帰る",
+      "かえる",
+      "to return; to go home",
+      "verb",
+      [
+        "帰り"
+      ]
+    ],
+    [
+      "来週",
+      "らいしゅう",
+      "next week",
+      "noun"
+    ]
+  ],
+  "elements": [
+    {
+      "type": "vocabulary",
+      "text": "散歩",
+      "reading": "さんぽ",
+      "meaning": "walk; stroll",
+      "role": "The reason for the trip: Daiki goes out for a relaxed stroll because the weather is good.",
+      "mech": "散歩 is a leisurely walk without a fixed goal. Use 散歩に 行きます (go for a walk) or 散歩を します (take a walk). A walk to a destination is 歩いて 行きます instead.",
+      "ex": [
+        "毎朝[まいあさ]、犬[いぬ]と 散歩[さんぽ]を します。",
+        "Every morning I take a walk with my dog."
+      ],
+      "in": [
+        4
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "公園",
+      "reading": "こうえん",
+      "meaning": "park",
+      "role": "The setting for the entire story.",
+      "mech": "公園 = 公 (public) + 園 (garden). Japanese parks have benches, playgrounds and often cherry trees. 公園で 遊びます (play in the park) uses で for the place of an action.",
+      "ex": [
+        "日曜日[にちようび]に 公園[こうえん]で あそびます。",
+        "On Sundays we play in the park."
+      ],
+      "in": [
+        5,
+        6
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "桜",
+      "reading": "さくら",
+      "meaning": "cherry blossom; cherry tree",
+      "role": "The cherry blossoms are the star of the walk; Daiki photographs them and watches the petals fall.",
+      "mech": "桜 is Japan's national flower. 桜が 咲きます (the blossoms bloom) and 花見 (はなみ, 'flower viewing') is the tradition of picnicking under them in spring. Falling petals are 桜吹雪 (a cherry-blossom snowstorm).",
+      "ex": [
+        "春[はる]に 桜[さくら]が 咲[さ]きます。",
+        "The cherry blossoms bloom in spring."
+      ],
+      "in": [
+        7,
+        21,
+        24
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "てもいいですか",
+      "meaning": "May I …?",
+      "role": "Daiki politely asks the girl for permission before photographing her dog.",
+      "mech": "Verb て-form + も いいですか = 'Is it all right if I …?'. The answer is はい、いいですよ (yes, fine) or すみません、ちょっと… (sorry, it's a little difficult) — in Japan a soft 'no' is normal.",
+      "ex": [
+        "ここに すわっても いいですか。",
+        "May I sit here?"
+      ],
+      "in": [
+        19
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "たいです",
+      "meaning": "I want to …",
+      "role": "The story ends with a wish: 来週も また 来たいです.",
+      "mech": "ます-stem + たいです says what YOU want to do: 行きたいです, 食べたいです. It behaves like an い-adjective (行きたくないです = I don't want to go). Use it only for your own wishes or in questions to others.",
+      "ex": [
+        "日本[にほん]へ 行[い]きたいです。",
+        "I want to go to Japan."
+      ],
+      "in": [
+        28
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "くて",
+      "meaning": "and (links い-adjectives)",
+      "role": "Daiki describes the scene in flowing phrases: 青くて、あたたかい; 白くて、大きい.",
+      "mech": "To link い-adjectives, drop い and add くて: 白い → 白くて. The adjectives can describe one thing or two things. The final adjective carries the tense: 白くて、大きいです / 白くて、大きかったです.",
+      "ex": [
+        "この 店[みせ]は 安[やす]くて、おいしいです。",
+        "This shop is cheap and tasty."
+      ],
+      "in": [
+        3,
+        13
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "まで",
+      "meaning": "as far as; up to; until",
+      "role": "The distance to the park: 公園まで 歩いて 十分です.",
+      "mech": "まで marks the end point of a distance or time: 駅まで (to the station), 五時まで (until five). Its partner is から (from): 家から 公園まで 十分です.",
+      "ex": [
+        "駅[えき]まで 十分[じゅっぷん]です。",
+        "It is ten minutes to the station."
+      ],
+      "in": [
+        5
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "も",
+      "meaning": "also; too; again",
+      "role": "来週も — Daiki wants to come next week as well.",
+      "mech": "も replaces は or が when you add 'also': 私は 学生です → 私も 学生です. With time words it means 'again / as well': 来週も 来たいです. It never appears together with は or が.",
+      "ex": [
+        "友達[ともだち]も 来[き]ます。",
+        "My friend is coming, too."
+      ],
+      "in": [
+        28
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "天",
+      "reading": "てん",
+      "meaning": "sky; heaven",
+      "role": "天気 (weather) starts the story and explains the walk.",
+      "mech": "天 = 大 (big) with a line above it: 'the big thing above' = sky. On-reading てん in 天気 (てんき), the 'spirit of the sky' = weather. 天気が いいですから is a natural way to give a reason for going out.",
+      "ex": [
+        "今日[きょう]は いい 天気[てんき]です。",
+        "Today the weather is nice."
+      ],
+      "in": [
+        1,
+        4
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "花",
+      "reading": "はな / か",
+      "meaning": "flower",
+      "role": "桜の 花 — the blossoms fill the story's main images.",
+      "mech": "Kun-reading はな (花, お花見 はなみ, 花火 はなび). The on-reading か is rare in everyday words (e.g. 花粉 かふん, pollen). The grass radical on top tells you it is a plant; the lower part hints at change — a plant that changes into a flower.",
+      "ex": [
+        "きれいな 花[はな]ですね。",
+        "What a beautiful flower!"
+      ],
+      "in": [
+        7,
+        8,
+        25
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "type": "vocabulary",
+      "q": "「散歩[さんぽ]」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "a walk; a stroll",
+        "a picnic",
+        "a photograph",
+        "a bench"
+      ],
+      "ans": 0,
+      "expl": "Sentence 4: 散歩に 行きます — Daiki goes for a walk.",
+      "wrong": {
+        "1": "A picnic (お花見 or ピクニック) is not mentioned; he only sits on a bench.",
+        "2": "A photograph is 写真[しゃしん] (sentence 19).",
+        "3": "A bench is ベンチ (sentence 10)."
+      },
+      "ref": 3
+    },
+    {
+      "type": "kanji",
+      "q": "「花」の 読[よ]み方[かた]は どれですか？",
+      "opts": [
+        "はな",
+        "はる",
+        "き",
+        "そら"
+      ],
+      "ans": 0,
+      "expl": "花 is はな: 桜の 花 (sentence 7).",
+      "wrong": {
+        "1": "はる is 春 (spring) — the season of the cherry blossoms.",
+        "2": "き is 木 (tree) from sentence 9.",
+        "3": "そら is 空 (sky) from sentence 3."
+      },
+      "ref": 6
+    },
+    {
+      "type": "grammar",
+      "q": "「写真[しゃしん]を 撮[と]って＿＿ いいですか。」(May I take a photo?)",
+      "opts": [
+        "も",
+        "が",
+        "を",
+        "は"
+      ],
+      "ans": 0,
+      "expl": "て-form + も いいですか = May I …? (sentence 19).",
+      "wrong": {
+        "1": "て-form + が would mean 'but'; it cannot ask permission.",
+        "2": "を marks an object and cannot follow a verb's て-form here.",
+        "3": "ては いけません means 'must not'; for permission you need も."
+      },
+      "ref": 18
+    },
+    {
+      "type": "grammar",
+      "q": "「来週[らいしゅう]も また 来[き]＿＿＿。」(I want to come again next week.)",
+      "opts": [
+        "たいです",
+        "ましょう",
+        "ました",
+        "ませんか"
+      ],
+      "ans": 0,
+      "expl": "ます-stem + たいです = I want to … (sentence 28).",
+      "wrong": {
+        "1": "ましょう means 'Let's …', an invitation, not Daiki's own wish.",
+        "2": "ました is the past: 'came'.",
+        "3": "ませんか invites someone: 'Won't you come?'."
+      },
+      "ref": 27
+    },
+    {
+      "type": "particle",
+      "q": "「公園[こうえん]＿＿ 歩[ある]いて 十分[じゅっぷん]です。」",
+      "opts": [
+        "まで",
+        "から",
+        "で",
+        "を"
+      ],
+      "ans": 0,
+      "expl": "まで marks the destination end-point: 公園まで (sentence 5).",
+      "wrong": {
+        "1": "から would mark the starting point (家から); here the park is the goal.",
+        "2": "で marks place or means of an action; 歩いて already carries the means.",
+        "3": "を marks an object, but 公園 is not being acted on."
+      },
+      "ref": 4
+    },
+    {
+      "type": "comprehension",
+      "q": "ダイキさんは どうして 散歩に 行[い]きましたか？",
+      "opts": [
+        "天気が いいから",
+        "犬を 買いたいから",
+        "友達に 会うから",
+        "仕事が あるから"
+      ],
+      "ans": 0,
+      "expl": "Sentence 4: 天気がいいですから、散歩に行きます.",
+      "wrong": {
+        "1": "Daiki has no dog (sentence 15) but the story never says he wants to buy one.",
+        "2": "He meets a girl by chance; he did not plan to meet a friend.",
+        "3": "Nothing about work is mentioned."
+      },
+      "ref": 3
+    },
+    {
+      "type": "comprehension",
+      "q": "犬[いぬ]の 名前[なまえ]は 何[なん]ですか？",
+      "opts": [
+        "コロ",
+        "シロ",
+        "ポチ",
+        "ハチ"
+      ],
+      "ans": 0,
+      "expl": "Sentence 18: コロです。三さいです。",
+      "wrong": {
+        "1": "シロ ('white') would fit the dog's colour, but the girl says コロ.",
+        "2": "ポチ is a classic dog name, but it is not mentioned.",
+        "3": "ハチ is famous from a statue in Tokyo, but not in this story."
+      },
+      "ref": 17
+    },
+    {
+      "type": "comprehension",
+      "q": "つかれた あと、ダイキさんは 何[なに]を しましたか？",
+      "opts": [
+        "ベンチで お茶を 飲んで 桜を 見た",
+        "すぐ 家に 帰った",
+        "犬と 走った",
+        "写真を 友達に 送った"
+      ],
+      "ans": 0,
+      "expl": "Sentences 22–24: he sits on a bench, buys a cold tea, drinks it and looks at the blossoms.",
+      "wrong": {
+        "1": "He goes home only at eleven (sentence 27), after relaxing.",
+        "2": "He does not run; the children and the dog run (sentences 11–12).",
+        "3": "He takes the photo earlier and does not send it to anyone."
+      },
+      "ref": 21
+    },
+    {
+      "type": "vocabulary",
+      "q": "「気持[きも]ちが いいです」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "It feels good.",
+        "I feel sad.",
+        "I am hungry.",
+        "I am sleepy."
+      ],
+      "ans": 0,
+      "expl": "気持ち = feeling; 気持ちが いい = to feel pleasant (sentence 26).",
+      "wrong": {
+        "1": "Sad would be かなしい / 気持ちが 悪[わる]い is 'feeling bad'.",
+        "2": "Hungry is おなかが すきました.",
+        "3": "Sleepy is ねむい."
+      },
+      "ref": 25
+    }
+  ]
+}

@@ -4,17 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   Sparkles, BookOpen, MessageCircle, RefreshCw, Languages,
-  Award, ArrowRight, CheckCircle2, Volume2, VolumeX, Shield, Compass,
-  ChevronRight, Star, Heart, Flame, Layers, Bot, Zap, Play
+  Award, ArrowRight, CheckCircle2, Volume2, VolumeX,
+  ChevronRight, Flame, Bot
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
-import { useThemeStore } from '../store/themeStore'
 import ThemeToggle from '../components/ui/ThemeToggle'
 import SakuraPetals2D from '../components/landing/SakuraPetals2D'
 import AnimatedCharacterHero from '../components/landing/AnimatedCharacterHero'
 import KandoSlimeLogo from '../components/mascot/KandoSlimeLogo'
 import LearningJourneyPath from '../components/landing/LearningJourneyPath'
-import JLPTLevelPicker, { JLPT_DETAILS } from '../components/landing/JLPTLevelPicker'
+import JLPTLevelPicker from '../components/landing/JLPTLevelPicker'
 import StatCounters from '../components/landing/StatCounters'
 import {
   HEADLINE_CONTAINER,
@@ -93,7 +92,7 @@ export default function LandingPage() {
   const navigate = useNavigate()
   const [selectedLevel, setSelectedLevel] = useState('N5')
   const [isPlayingAudio, setIsPlayingAudio] = useState(false)
-  const [heroCtaVisible, setHeroCtaVisible] = useState(true)
+  const [_heroCtaVisible, setHeroCtaVisible] = useState(true)
   const [soundOn, setSoundOn] = useState(() => isSoundEnabled())
   const heroCtaRef = useRef(null)
 

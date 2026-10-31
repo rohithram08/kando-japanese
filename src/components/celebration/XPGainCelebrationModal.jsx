@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SlimeCheerRig, { CHEER_META } from './SlimeCheerRig';
 import { AnimatedLiquidWaveIcon } from '../common/WaveXPBadge';
 import { Sparkles, X } from 'lucide-react';
@@ -84,6 +84,11 @@ export default function XPGainCelebrationModal({
             <div className="text-2xl font-black font-mono text-cyan-600 dark:text-cyan-300 leading-none">
               +{amount} Wave XP
             </div>
+            {reason && (
+              <p className="text-[10px] text-muted-foreground font-medium truncate max-w-[200px]">
+                {reason}
+              </p>
+            )}
             {currentXP > 0 && (
               <span className="text-[10px] text-muted-foreground font-semibold">
                 Total: {currentXP.toLocaleString()} Wave XP

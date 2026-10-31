@@ -101,6 +101,18 @@ export default function KandoSlimeLogo({
           strokeLinecap="round"
           fill="none"
         />
+
+        {/* Optional Sakura Blossom */}
+        {showBlossom && (
+          <g transform="translate(62, 28) scale(0.65)">
+            <circle cx="10" cy="10" r="3" fill="#f43f5e" />
+            <path d="M10,4 Q12,1 14,4 Q15,7 10,10" fill="#fbcfe8" />
+            <path d="M16,10 Q19,12 16,14 Q13,15 10,10" fill="#fbcfe8" />
+            <path d="M10,16 Q8,19 6,16 Q5,13 10,10" fill="#fbcfe8" />
+            <path d="M4,10 Q1,8 4,6 Q7,5 10,10" fill="#fbcfe8" />
+            <path d="M10,4 Q8,1 6,4 Q5,7 10,10" fill="#fbcfe8" />
+          </g>
+        )}
       </svg>
     </div>
   )

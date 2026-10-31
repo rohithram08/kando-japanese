@@ -134,7 +134,7 @@ export function useProgress() {
     } catch (err) {
       console.error('Error completing lesson via API:', err);
     }
-  }, [user, profile, stats, progressStore]);
+  }, [user, profile, stats, progressStore, updateProfile]);
 
   // ── Badge Checker ───────────────────────────────────────
   const checkAndAwardBadges = useCallback(async () => {

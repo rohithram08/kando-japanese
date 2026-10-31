@@ -10,8 +10,8 @@
 
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
-  Swords, RefreshCw, MessageCircle, Bot, Mic, Medal,
-  Trophy, BarChart2, Settings, Sparkles, BookA, User,
+  RefreshCw, MessageCircle, Mic, Medal,
+  Trophy, Settings, Sparkles, BookA, User,
 } from 'lucide-react'
 
 // ── Tint palette ─────────────────────────────────────────────

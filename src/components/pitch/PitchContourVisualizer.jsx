@@ -6,8 +6,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Volume2, Info, ChevronDown, CheckCircle2, AlertCircle } from 'lucide-react';
-import { getPitchAccent, PITCH_PATTERN_META } from '../../data/pitch/pitchData';
+import { Volume2, Info, AlertCircle } from 'lucide-react';
+import { getPitchAccent } from '../../data/pitch/pitchData';
 import { audioService } from '../../services/audioService';
 
 export default function PitchContourVisualizer({
@@ -41,7 +41,6 @@ export default function PitchContourVisualizer({
   }
 
   const { morae, pitchHeights, particlePitch, pattern, dropPosition, patternMeta } = data;
-  const isHeiban = pattern === 'heiban';
 
   // SVG Geometry Settings
   const stepX = compact ? 36 : 48;

@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect, useState, useRef } from 'react';
-import { X, BookmarkPlus, Check, AlertCircle, RefreshCw, BookOpen, Sparkles } from 'lucide-react';
+import { X, BookmarkPlus, Check, AlertCircle, RefreshCw } from 'lucide-react';
 import { useSRSStore } from '../../store/srsStore';
 import FuriganaText from '../common/FuriganaText';
 import AudioButton from '../common/AudioButton';

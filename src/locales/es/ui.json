@@ -80,7 +80,10 @@
     "item": "Elemento",
     "no_results": "No se encontraron palabras",
     "try_different_search": "Prueba con otro término de búsqueda",
-    "go_back": "Volver"
+    "go_back": "Volver",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "Lecciones",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "Has repasado {completed} tarjetas hasta ahora con un {accuracy}% de precisión.",
     "checkpoint_title": "¡Punto de control del lote alcanzado!",
     "continue_batch": "Continuar con el siguiente lote",
-    "finish_session": "Terminar la sesión por ahora"
+    "finish_session": "Terminar la sesión por ahora",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "Lector Japonés Graduado",
@@ -454,7 +459,8 @@
     "not_supported": "La síntesis de voz no es compatible con este navegador",
     "voice_unavailable": "No hay voz japonesa disponible en este dispositivo",
     "playback_failed": "Error en la reproducción de audio",
-    "default_voice": "Voz predeterminada"
+    "default_voice": "Voz predeterminada",
+    "listen": "Listen"
   },
   "avatar": {
     "title": "Create your avatar",
@@ -544,7 +550,10 @@
     "lessons_done": "Historias",
     "skill_overview": "Progreso de aprendizaje",
     "total_xp": "Wave XP",
-    "edit_profile": "Editar perfil"
+    "edit_profile": "Editar perfil",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "Práctica de conversación",
@@ -641,5 +650,44 @@
     "not_found": "Usuario no encontrado",
     "not_found_desc": "Este perfil de usuario no existe o fue eliminado.",
     "not_found_title": "Usuario no encontrado"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

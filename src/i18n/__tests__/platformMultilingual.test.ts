@@ -1,14 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import {
   SUPPORTED_LOCALES,
-  DEFAULT_LOCALE,
-  normalizeLocale,
   getLocaleDirection,
   applyLocaleDirection,
   t,
   registerUiLocale,
   getCurriculumMeaning,
-  getCurriculumExplanation,
 } from '../index'
 import { useSettingsStore, sanitizeLanguage } from '../../store/settingsStore'
 

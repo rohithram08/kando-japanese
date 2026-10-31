@@ -80,7 +80,10 @@
     "item": "Mục",
     "no_results": "Không tìm thấy từ nào",
     "try_different_search": "Hãy thử từ khóa tìm kiếm khác",
-    "go_back": "Quay lại"
+    "go_back": "Quay lại",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "Bài học",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "Bạn đã ôn {completed} thẻ cho đến nay với độ chính xác {accuracy}%.",
     "checkpoint_title": "Đã đến điểm kiểm tra của lượt!",
     "continue_batch": "Tiếp tục lượt tiếp theo",
-    "finish_session": "Kết thúc phiên lúc này"
+    "finish_session": "Kết thúc phiên lúc này",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "Đọc truyện Nhật Bản Phân cấp",
@@ -454,7 +459,8 @@
     "not_supported": "Trình duyệt này không hỗ trợ tổng hợp giọng nói",
     "voice_unavailable": "Không có giọng nói tiếng Nhật trên thiết bị này",
     "playback_failed": "Phát âm thanh thất bại",
-    "default_voice": "Giọng nói mặc định"
+    "default_voice": "Giọng nói mặc định",
+    "listen": "Listen"
   },
   "avatar": {
     "title": "Create your avatar",
@@ -544,7 +550,10 @@
     "lessons_done": "Truyện",
     "skill_overview": "Tiến độ học tập",
     "total_xp": "Wave XP",
-    "edit_profile": "Chỉnh sửa hồ sơ"
+    "edit_profile": "Chỉnh sửa hồ sơ",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "Luyện hội thoại",
@@ -641,5 +650,44 @@
     "not_found": "Không tìm thấy người dùng",
     "not_found_desc": "Hồ sơ người dùng này không tồn tại hoặc đã bị xóa.",
     "not_found_title": "Không tìm thấy người dùng"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

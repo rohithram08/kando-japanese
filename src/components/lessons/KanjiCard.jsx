@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Volume2, Star, BookOpen, Zap, Eye, RotateCcw, ChevronDown } from 'lucide-react'
+import { Volume2, Star, Zap, Eye, RotateCcw, ChevronDown } from 'lucide-react'
 import { useAudio } from '../../hooks/useAudio'
-import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useI18n, getCurriculumMeaning } from '../../i18n'
 
@@ -19,9 +18,7 @@ const KanjiCard = ({
   const [expanded, setExpanded] = useState(false)
   const { playAudio } = useAudio()
   const { addXP } = useProgressStore()
-  const { resolvedTheme } = useThemeStore()
-  const isDark = resolvedTheme === 'dark'
-  const { t, locale } = useI18n()
+  const { locale } = useI18n()
 
   const {
     character = '漢', meaning = 'Chinese characters',

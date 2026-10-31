@@ -1,6 +1,6 @@
 // src/components/mascot/KandoSlime.tsx
 import React, { useState, useEffect, useRef } from 'react'
-import { Sparkles, Volume2, Heart, RefreshCw } from 'lucide-react'
+import { Sparkles, Volume2 } from 'lucide-react'
 import { playPop } from '../../utils/soundEffects'
 import './kandoSlime.css'
 
@@ -171,8 +171,6 @@ export default function KandoSlime({
   const activeSpeech = customSpeech || DEFAULT_SPEECHES[currentMood]
   const pixelSize = typeof size === 'number' ? `${size}px` : size
   const isMrs = slimeType === 'mrs'
-  const bodyGradientId = isMrs ? 'kandoSlimeBodyMrs' : 'kandoSlimeBodyMr'
-  const baseGradientId = isMrs ? 'kandoSlimeBaseMrs' : 'kandoSlimeBaseMr'
 
   // When listening to Sensei on the left, shift eyes left towards Sensei
   const effectiveEyeOffset = currentMood === 'listening'

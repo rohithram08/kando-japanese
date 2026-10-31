@@ -33,7 +33,7 @@ if os.path.exists(n5_existing_path):
     with open(n5_existing_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
         # Keep only the original 4 handcrafted stories
-        n5_existing = [s for s in data if s['id'] in ['story_n5_01', 'story_n5_02', 'story_n5_03', 'story_n5_04']]
+        n5_existing = [s for s in data if s['id'] in ['story_n5_01', 'story_n5_02', 'story_n5_03', 'story_n5_04']]  # long-form versions are preserved below
 print(f"Loaded {len(n5_existing)} existing N5 base stories.")
 
 # 2. Load existing N4 stories (2 stories)
@@ -48,6 +48,19 @@ print(f"Loaded {len(n4_existing)} existing N4 base stories.")
 
 # 3. Generate 50 stories for each level
 n5_all = generate_n5_stories(n5_existing)
+
+# Long-form (~10 min) stories are authored in content/stories/<level>/*.json and built by
+# scripts/stories/build_expanded_stories.mjs. Never let this template generator overwrite them.
+def _preserve_longform(path, generated):
+    if not os.path.exists(path):
+        return generated
+    with open(path, 'r', encoding='utf-8') as fh:
+        keep = {x['id']: x for x in json.load(fh) if x.get('provenance', {}).get('reviewStatus') == 'ai_draft_pending_review'}
+    if keep:
+        print(f"Preserving {len(keep)} long-form stories from {os.path.basename(path)}")
+    return [keep.get(x['id'], x) for x in generated]
+
+n5_all = _preserve_longform(n5_existing_path, n5_all)
 n4_all = generate_n4_stories(n4_existing)
 n3_all = generate_n3_stories()
 n2_all = generate_n2_stories()

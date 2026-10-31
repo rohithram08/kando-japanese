@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import {
-  RotateCcw,
   Eraser,
   Eye,
   EyeOff,

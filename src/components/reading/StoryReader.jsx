@@ -16,11 +16,9 @@ import {
   Sparkles,
   CheckCircle,
   AlertCircle,
-  HelpCircle,
   Pause,
   Volume2,
 } from 'lucide-react';
-import { useSettingsStore } from '../../store/settingsStore';
 import { useAuthStore } from '../../store/authStore';
 import { useReadingStore } from '../../store/readingStore';
 import { useSRSStore } from '../../store/srsStore';

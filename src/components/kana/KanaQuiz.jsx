@@ -1,16 +1,14 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Volume2,
   CheckCircle2,
   XCircle,
-  Award,
   RefreshCw,
   BookmarkPlus,
   ArrowRight,
   Headphones,
   Eye,
-  SlidersHorizontal,
 } from 'lucide-react';
 import { audioService } from '../../services/audioService';
 import { useSRSStore } from '../../store/srsStore';

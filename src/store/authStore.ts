@@ -4,6 +4,8 @@ import type { User, JLPTLevel } from '../types/models';
 import type { LoginRequest, RegisterRequest, UpdateProfileRequest } from '../types/api';
 import { useProgressStore } from './progressStore';
 import { useNotificationStore } from './notificationStore';
+import { useSettingsStore } from './settingsStore';
+import { normalizeLocale } from '../i18n/languageUtils';
 
 export interface AuthState {
   user: User | null;
@@ -43,6 +45,27 @@ function saveGuestProfile(profile: User) {
   }
 }
 
+function syncUserSettings(user: User | null) {
+  if (!user) return;
+  try {
+    const patch: Record<string, any> = {};
+    if (user.nativeLanguage) {
+      const code = normalizeLocale(user.nativeLanguage);
+      patch.nativeLanguage = code;
+      patch.displayLanguage = code;
+      patch.explanationLanguage = code;
+    }
+    if (user.currentLevel) {
+      patch.jlptLevel = user.currentLevel;
+    }
+    if (Object.keys(patch).length > 0) {
+      useSettingsStore.getState().updateSettings(patch);
+    }
+  } catch (err) {
+    console.warn('Failed to sync user settings on login:', err);
+  }
+}
+
 export const useAuthStore = create<AuthState>((set, get) => ({
   user: null,
   profile: null,
@@ -54,6 +77,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     try {
       const user = await authApi.getMe();
       set({ user, profile: user, loading: false, initialized: true });
+
+      // Synchronize language and level settings on startup
+      syncUserSettings(user);
 
       // Initialize progress store with user profile data
       if (user) {
@@ -77,6 +103,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const user = await authApi.getMe();
     set({ user, profile: user });
 
+    // Instantly activate user's preferred language and study level
+    syncUserSettings(user);
+
     try {
       await useProgressStore.getState().initializeProgress(user.id, user);
     } catch {
@@ -91,6 +120,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     // Fetch authenticated user profile
     const user = await authApi.getMe();
     set({ user, profile: user });
+
+    // Instantly activate user's preferred language and study level
+    syncUserSettings(user);
 
     try {
       await useProgressStore.getState().initializeProgress(user.id, user);

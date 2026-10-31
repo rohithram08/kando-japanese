@@ -80,7 +80,10 @@
     "item": "Item",
     "no_results": "Tidak ada kata ditemukan",
     "try_different_search": "Coba kata pencarian lain",
-    "go_back": "Kembali"
+    "go_back": "Kembali",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "Pelajaran",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "Anda sudah meninjau {completed} kartu sejauh ini dengan akurasi {accuracy}%.",
     "checkpoint_title": "Titik pemeriksaan kelompok tercapai!",
     "continue_batch": "Lanjut ke kelompok berikutnya",
-    "finish_session": "Akhiri sesi untuk sekarang"
+    "finish_session": "Akhiri sesi untuk sekarang",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "Bacaan Bahasa Jepang Berjenjang",
@@ -454,7 +459,8 @@
     "not_supported": "Sintesis suara tidak didukung di browser ini",
     "voice_unavailable": "Tidak ada suara bahasa Jepang di perangkat ini",
     "playback_failed": "Pemutaran audio gagal",
-    "default_voice": "Suara Default"
+    "default_voice": "Suara Default",
+    "listen": "Listen"
   },
   "avatar": {
     "title": "Create your avatar",
@@ -544,7 +550,10 @@
     "lessons_done": "Cerita",
     "skill_overview": "Kemajuan belajar",
     "total_xp": "Wave XP",
-    "edit_profile": "Edit Profil"
+    "edit_profile": "Edit Profil",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "Latihan percakapan",
@@ -641,5 +650,44 @@
     "not_found": "Pengguna tidak ditemukan",
     "not_found_desc": "Profil pengguna ini tidak ada atau telah dihapus.",
     "not_found_title": "Pengguna tidak ditemukan"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

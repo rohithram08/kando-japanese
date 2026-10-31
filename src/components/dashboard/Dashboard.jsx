@@ -19,8 +19,6 @@ import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
 import StudyProgressAnalytics from './StudyProgressAnalytics'
-import LevelProgressCard from '../levels/LevelProgressCard'
-import LeagueSummaryCard from '../league/LeagueSummaryCard'
 import { useStudyLevel } from '../../hooks/useStudyLevel'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
@@ -99,7 +97,8 @@ export default function Dashboard() {
     checkAndMaintainStreak,
   } = useProgressStore()
 
-  const progressMap = useReadingStore((s) => s.progressMap) || {}
+  const rawProgressMap = useReadingStore((s) => s.progressMap)
+  const progressMap = useMemo(() => rawProgressMap || {}, [rawProgressMap])
   const loadAllReadingProgress = useReadingStore((s) => s.loadAllProgress)
   const { unlocked: unlockedLevelList } = useStudyLevel()
   // Story totals only cover levels the user has unlocked.
@@ -136,7 +135,7 @@ export default function Dashboard() {
     })
 
     return () => clearTimeout(timeout)
-  }, [user])
+  }, [user, checkAndMaintainStreak, loadSRSDue])
 
   const getTimeGreeting = () => {
     const hour = new Date().getHours()

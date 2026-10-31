@@ -245,7 +245,7 @@ describe('useStoryAudio Hook', () => {
 
   it('ignores stale onEnd callback from cancelled previous utterance', () => {
     let firstOptions: any = null;
-    let secondOptions: any = null;
+    let _secondOptions: any = null;
 
     vi.mocked(audioService.speak)
       .mockImplementationOnce((_text: string, options: any) => {
@@ -253,7 +253,7 @@ describe('useStoryAudio Hook', () => {
         return Promise.resolve();
       })
       .mockImplementationOnce((_text: string, options: any) => {
-        secondOptions = options;
+        _secondOptions = options;
         return Promise.resolve();
       });
 

@@ -81,6 +81,7 @@ export function useStoryAudio({
   // Track request generation ID and component mount state to eliminate race conditions
   const requestIdRef = useRef<number>(0);
   const isMountedRef = useRef<boolean>(true);
+  const handleAudioEndRef = useRef<(finishedIndex: number) => void>(() => {});
 
   // Sync with external settings changes (e.g. settings page / reset)
   useEffect(() => {
@@ -92,7 +93,7 @@ export function useStoryAudio({
         audioElementRef.current.playbackRate = safeSpeed;
       }
     }
-  }, [storeSpeed]);
+  }, [storeSpeed, playbackSpeed]);
 
   useEffect(() => {
     const safeAutoPlay = Boolean(storeAutoPlay);
@@ -100,7 +101,7 @@ export function useStoryAudio({
       setAutoPlayNext(safeAutoPlay);
       autoPlayNextRef.current = safeAutoPlay;
     }
-  }, [storeAutoPlay]);
+  }, [storeAutoPlay, autoPlayNext]);
 
   // Detect capability on mount & subscribe to dynamic voice changes
   useEffect(() => {
@@ -159,7 +160,7 @@ export function useStoryAudio({
         audio.onended = () => {
           if (currentRequestId !== requestIdRef.current || !isMountedRef.current) return;
           audioElementRef.current = null;
-          handleAudioEnd(index);
+          handleAudioEndRef.current(index);
         };
 
         audio.onerror = () => {
@@ -195,7 +196,7 @@ export function useStoryAudio({
       },
       onEnd: () => {
         if (currentRequestId !== requestIdRef.current || !isMountedRef.current) return;
-        handleAudioEnd(index);
+        handleAudioEndRef.current(index);
       },
       onError: () => {
         if (currentRequestId !== requestIdRef.current || !isMountedRef.current) return;
@@ -220,6 +221,8 @@ export function useStoryAudio({
       if (isMountedRef.current) setIsPlaying(false);
     }
   }, [playSentence]);
+
+  handleAudioEndRef.current = handleAudioEnd;
 
   // Public Play function
   const play = useCallback((index?: number) => {

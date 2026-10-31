@@ -9,7 +9,6 @@ import {
   PenTool,
   Lightbulb,
   AlertCircle,
-  HelpCircle,
   BookOpen,
 } from 'lucide-react';
 import { audioService } from '../../services/audioService';

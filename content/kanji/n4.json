@@ -14,7 +14,38 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "開始",
+        "reading": "かいし",
+        "romaji": "kaishi",
+        "meaning": "start,commencement,beginning"
+      },
+      {
+        "word": "開く",
+        "reading": "ひらく",
+        "romaji": "hiraku",
+        "meaning": "to open; to hold (an event)"
+      },
+      {
+        "word": "開ける",
+        "reading": "あける",
+        "romaji": "akeru",
+        "meaning": "to open"
+      },
+      {
+        "word": "開けます",
+        "reading": "あけます",
+        "romaji": "akemasu",
+        "meaning": "open"
+      },
+      {
+        "word": "開発します",
+        "reading": "かいはつします",
+        "romaji": "kaihatsushimasu",
+        "meaning": "develop, create"
+      }
+    ]
   },
   {
     "id": "n4k002",
@@ -31,7 +62,38 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "閉じる",
+        "reading": "とじる",
+        "romaji": "tojiru",
+        "meaning": "to close (e.g. book, eyes),to shut"
+      },
+      {
+        "word": "閉まる",
+        "reading": "しまる",
+        "romaji": "shimaru",
+        "meaning": "to close, to be closed"
+      },
+      {
+        "word": "閉める",
+        "reading": "しめる",
+        "romaji": "shimeru",
+        "meaning": "to close something"
+      },
+      {
+        "word": "閉めます",
+        "reading": "しめます",
+        "romaji": "shimemasu",
+        "meaning": "close, shut"
+      },
+      {
+        "word": "閉じます",
+        "reading": "とじます",
+        "romaji": "tojimasu",
+        "meaning": "close"
+      }
+    ]
   },
   {
     "id": "n4k003",
@@ -47,7 +109,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "使用",
+        "reading": "しよう",
+        "romaji": "shiyou",
+        "meaning": "use,application,employment,utilization"
+      },
+      {
+        "word": "大使",
+        "reading": "たいし",
+        "romaji": "taishi",
+        "meaning": "ambassador"
+      },
+      {
+        "word": "使う",
+        "reading": "つかう",
+        "romaji": "tsukau",
+        "meaning": "to use"
+      },
+      {
+        "word": "大使館",
+        "reading": "たいしかん",
+        "romaji": "taishikan",
+        "meaning": "embassy"
+      },
+      {
+        "word": "使います",
+        "reading": "つかいます",
+        "romaji": "tsukaimasu",
+        "meaning": "use"
+      },
+      {
+        "word": "使用禁止",
+        "reading": "しようきんし",
+        "romaji": "shiyōkinshi",
+        "meaning": "Do Not Use"
+      }
+    ]
   },
   {
     "id": "n4k004",
@@ -64,7 +163,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "開始",
+        "reading": "かいし",
+        "romaji": "kaishi",
+        "meaning": "start,commencement,beginning"
+      },
+      {
+        "word": "始まり",
+        "reading": "はじまり",
+        "romaji": "hajimari",
+        "meaning": "origin,beginning"
+      },
+      {
+        "word": "始める",
+        "reading": "はじめる",
+        "romaji": "hajimeru",
+        "meaning": "to start, to begin"
+      },
+      {
+        "word": "始まる",
+        "reading": "はじまる",
+        "romaji": "hajimaru",
+        "meaning": "to begin"
+      },
+      {
+        "word": "初め/始め",
+        "reading": "はじめ",
+        "romaji": "hajime",
+        "meaning": "beginning"
+      },
+      {
+        "word": "初め;始め",
+        "reading": "はじめ",
+        "romaji": "hajime",
+        "meaning": "beginning, start"
+      }
+    ]
   },
   {
     "id": "n4k005",
@@ -81,7 +217,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "終",
+        "reading": "おわり",
+        "romaji": "owari",
+        "meaning": "the end"
+      },
+      {
+        "word": "最終",
+        "reading": "さいしゅう",
+        "romaji": "saishuu",
+        "meaning": "last,final,closing"
+      },
+      {
+        "word": "終る",
+        "reading": "おわる",
+        "romaji": "owaru",
+        "meaning": "to finish"
+      },
+      {
+        "word": "終わります",
+        "reading": "おわります",
+        "romaji": "owarimasu",
+        "meaning": "finish"
+      },
+      {
+        "word": "終わり",
+        "reading": "おわり",
+        "romaji": "owari",
+        "meaning": "the end of ～, The End"
+      },
+      {
+        "word": "終える",
+        "reading": "おえる",
+        "romaji": "oeru",
+        "meaning": "to finish"
+      }
+    ]
   },
   {
     "id": "n4k006",
@@ -97,7 +270,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "維持",
+        "reading": "いじ",
+        "romaji": "iji",
+        "meaning": "maintenance / preservation / sustaining"
+      },
+      {
+        "word": "持つ",
+        "reading": "もつ",
+        "romaji": "motsu",
+        "meaning": "to hold"
+      },
+      {
+        "word": "金持ち",
+        "reading": "かねもち",
+        "romaji": "kanemochi",
+        "meaning": "rich man"
+      },
+      {
+        "word": "持ちます",
+        "reading": "もちます",
+        "romaji": "mochimasu",
+        "meaning": "hold"
+      },
+      {
+        "word": "持って来ます",
+        "reading": "もってきます",
+        "romaji": "motte kimasu",
+        "meaning": "bring (something)"
+      },
+      {
+        "word": "気持ち",
+        "reading": "きもち",
+        "romaji": "kimochi",
+        "meaning": "feeling, sensation, mood"
+      }
+    ]
   },
   {
     "id": "n4k007",
@@ -113,7 +323,38 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "期待",
+        "reading": "きたい",
+        "romaji": "kitai",
+        "meaning": "expectation,anticipation,hope"
+      },
+      {
+        "word": "招待",
+        "reading": "しょうたい",
+        "romaji": "shoutai",
+        "meaning": "invitation"
+      },
+      {
+        "word": "待つ",
+        "reading": "まつ",
+        "romaji": "matsu",
+        "meaning": "to wait"
+      },
+      {
+        "word": "待ちます",
+        "reading": "まちます",
+        "romaji": "machimasu",
+        "meaning": "wait"
+      },
+      {
+        "word": "招待します",
+        "reading": "しょうたいします",
+        "romaji": "shōtaishimasu",
+        "meaning": "invite"
+      }
+    ]
   },
   {
     "id": "n4k008",
@@ -129,7 +370,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "承知",
+        "reading": "しょうち",
+        "romaji": "shouchi",
+        "meaning": "consent,acceptance,assent,admitting"
+      },
+      {
+        "word": "知恵",
+        "reading": "ちえ",
+        "romaji": "chie",
+        "meaning": "wisdom,wit,sagacity,sense,intelligence,advice"
+      },
+      {
+        "word": "知事",
+        "reading": "ちじ",
+        "romaji": "chiji",
+        "meaning": "prefectural governor"
+      },
+      {
+        "word": "知る",
+        "reading": "しる",
+        "romaji": "shiru",
+        "meaning": "to know"
+      },
+      {
+        "word": "知ります",
+        "reading": "しります",
+        "romaji": "shirimasu",
+        "meaning": "get to know"
+      },
+      {
+        "word": "知っています",
+        "reading": "しっています",
+        "romaji": "shitte imasu",
+        "meaning": "know"
+      }
+    ]
   },
   {
     "id": "n4k009",
@@ -145,7 +423,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "意思",
+        "reading": "いし",
+        "romaji": "ishi",
+        "meaning": "intention,purpose"
+      },
+      {
+        "word": "思想",
+        "reading": "しそう",
+        "romaji": "shisou",
+        "meaning": "thought,idea"
+      },
+      {
+        "word": "思う",
+        "reading": "おもう",
+        "romaji": "omou",
+        "meaning": "to think, to feel"
+      },
+      {
+        "word": "思い出します",
+        "reading": "おもいだします",
+        "romaji": "omoidashimasu",
+        "meaning": "remember, recollect"
+      },
+      {
+        "word": "思います",
+        "reading": "おもいます",
+        "romaji": "omoimasu",
+        "meaning": "think"
+      },
+      {
+        "word": "思い出す",
+        "reading": "おもいだす",
+        "romaji": "omoidasu",
+        "meaning": "to recall, to remember"
+      }
+    ]
   },
   {
     "id": "n4k010",
@@ -161,7 +476,38 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "考え",
+        "reading": "かんがえ",
+        "romaji": "kangae",
+        "meaning": "thinking,thought,ideas,intention"
+      },
+      {
+        "word": "考慮",
+        "reading": "こうりょ",
+        "romaji": "kouryo",
+        "meaning": "consideration,taking into account"
+      },
+      {
+        "word": "参考",
+        "reading": "さんこう",
+        "romaji": "sankou",
+        "meaning": "reference,consultation"
+      },
+      {
+        "word": "考えます",
+        "reading": "かんがえます",
+        "romaji": "kangaemasu",
+        "meaning": "think, consider"
+      },
+      {
+        "word": "考える",
+        "reading": "かんがえる",
+        "romaji": "kangaeru",
+        "meaning": "to think (about); to consider"
+      }
+    ]
   },
   {
     "id": "n4k011",
@@ -177,7 +523,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "教師",
+        "reading": "きょうし",
+        "romaji": "kyoushi",
+        "meaning": "teacher (classroom)"
+      },
+      {
+        "word": "教授",
+        "reading": "きょうじゅ",
+        "romaji": "kyouju",
+        "meaning": "teaching,instruction,professor"
+      },
+      {
+        "word": "宗教",
+        "reading": "しゅうきょう",
+        "romaji": "shuukyou",
+        "meaning": "religion"
+      },
+      {
+        "word": "教える",
+        "reading": "おしえる",
+        "romaji": "oshieru",
+        "meaning": "to teach, to tell"
+      },
+      {
+        "word": "教室",
+        "reading": "きょうしつ",
+        "romaji": "kyoushitsu",
+        "meaning": "Classroom"
+      },
+      {
+        "word": "教えます",
+        "reading": "おしえます",
+        "romaji": "oshiemasu",
+        "meaning": "teach"
+      }
+    ]
   },
   {
     "id": "n4k012",
@@ -193,7 +576,38 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "働き",
+        "reading": "はたらき",
+        "romaji": "hataraki",
+        "meaning": "work,labor"
+      },
+      {
+        "word": "労働",
+        "reading": "ろうどう",
+        "romaji": "roudou",
+        "meaning": "manual labor,toil,work"
+      },
+      {
+        "word": "働く",
+        "reading": "はたらく",
+        "romaji": "hataraku",
+        "meaning": "to work"
+      },
+      {
+        "word": "働きます",
+        "reading": "はたらきます",
+        "romaji": "hatarakimasu",
+        "meaning": "work"
+      },
+      {
+        "word": "働きすぎ",
+        "reading": "はたらきすぎ",
+        "romaji": "hatarakisugi",
+        "meaning": "overworking"
+      }
+    ]
   },
   {
     "id": "n4k013",
@@ -209,7 +623,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "急",
+        "reading": "きゅう",
+        "romaji": "kyuu",
+        "meaning": "urgent, sudden; steep"
+      },
+      {
+        "word": "急激",
+        "reading": "きゅうげき",
+        "romaji": "kyuugeki",
+        "meaning": "sudden,precipitous,radical"
+      },
+      {
+        "word": "急速",
+        "reading": "きゅうそく",
+        "romaji": "kyuusoku",
+        "meaning": "rapid (e.g. progress)"
+      },
+      {
+        "word": "急行",
+        "reading": "きゅうこう",
+        "romaji": "kyūkō",
+        "meaning": "rapid"
+      },
+      {
+        "word": "特急",
+        "reading": "とっきゅう",
+        "romaji": "tokkyū",
+        "meaning": "express"
+      },
+      {
+        "word": "急ぎます",
+        "reading": "いそぎます",
+        "romaji": "isogimasu",
+        "meaning": "hurry"
+      }
+    ]
   },
   {
     "id": "n4k014",
@@ -225,7 +676,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "泳ぎ",
+        "reading": "およぎ",
+        "romaji": "oyogi",
+        "meaning": "swimming"
+      },
+      {
+        "word": "水泳",
+        "reading": "すいえい",
+        "romaji": "suiei",
+        "meaning": "swimming"
+      },
+      {
+        "word": "泳ぐ",
+        "reading": "およぐ",
+        "romaji": "oyogu",
+        "meaning": "to swim"
+      },
+      {
+        "word": "泳ぎます",
+        "reading": "およぎます",
+        "romaji": "oyogimasu",
+        "meaning": "swim"
+      },
+      {
+        "word": "背泳ぎ",
+        "reading": "せおよぎ",
+        "romaji": "seoyogi",
+        "meaning": "backstroke"
+      },
+      {
+        "word": "平泳ぎ",
+        "reading": "ひらおよぎ",
+        "romaji": "hiraoyogi",
+        "meaning": "breaststroke"
+      }
+    ]
   },
   {
     "id": "n4k015",
@@ -241,7 +729,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "走る",
+        "reading": "はしる",
+        "romaji": "hashiru",
+        "meaning": "to run"
+      },
+      {
+        "word": "競走します",
+        "reading": "きょうそうします",
+        "romaji": "kyōsōshimasu",
+        "meaning": "race"
+      },
+      {
+        "word": "競走",
+        "reading": "きょうそう",
+        "romaji": "kyousou",
+        "meaning": "race, running match"
+      },
+      {
+        "word": "走行",
+        "reading": "そうこう",
+        "romaji": "soukou",
+        "meaning": "running, traveling, driving"
+      },
+      {
+        "word": "脱走",
+        "reading": "だっそう",
+        "romaji": "dassou",
+        "meaning": "escape, desertion"
+      },
+      {
+        "word": "逃走",
+        "reading": "とうそう",
+        "romaji": "tousou",
+        "meaning": "flight, escape, getaway"
+      }
+    ]
   },
   {
     "id": "n4k016",
@@ -259,7 +784,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "散歩",
+        "reading": "さんぽ",
+        "romaji": "sanpo",
+        "meaning": "walk,stroll"
+      },
+      {
+        "word": "進歩",
+        "reading": "しんぽ",
+        "romaji": "shinpo",
+        "meaning": "progress,development"
+      },
+      {
+        "word": "歩道",
+        "reading": "ほどう",
+        "romaji": "hodou",
+        "meaning": "footpath,walkway,sidewalk"
+      },
+      {
+        "word": "歩く",
+        "reading": "あるく",
+        "romaji": "aruku",
+        "meaning": "to walk"
+      },
+      {
+        "word": "歩いて",
+        "reading": "あるいて",
+        "romaji": "aruite",
+        "meaning": "on foot"
+      },
+      {
+        "word": "歩きます",
+        "reading": "あるきます",
+        "romaji": "arukimasu",
+        "meaning": "walk"
+      }
+    ]
   },
   {
     "id": "n4k017",
@@ -275,7 +837,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "乗客",
+        "reading": "じょうきゃく",
+        "romaji": "joukyaku",
+        "meaning": "passenger"
+      },
+      {
+        "word": "乗る",
+        "reading": "のる",
+        "romaji": "noru",
+        "meaning": "to get on,to ride"
+      },
+      {
+        "word": "乗せる",
+        "reading": "のせる",
+        "romaji": "noseru",
+        "meaning": "to place on (something),to take on board,to give a ride"
+      },
+      {
+        "word": "乗り場",
+        "reading": "のりば",
+        "romaji": "noriba",
+        "meaning": "a fixed place to catch taxis, trains, etc."
+      },
+      {
+        "word": "乗り換えます",
+        "reading": "のりかえます",
+        "romaji": "norikaemasu",
+        "meaning": "change (trains, etc.)"
+      },
+      {
+        "word": "乗り物",
+        "reading": "のりもの",
+        "romaji": "norimono",
+        "meaning": "vehicle"
+      }
+    ]
   },
   {
     "id": "n4k018",
@@ -292,7 +891,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "降る",
+        "reading": "ふる",
+        "romaji": "furu",
+        "meaning": "to fall, e.g. rain or snow"
+      },
+      {
+        "word": "降ろす",
+        "reading": "おろす",
+        "romaji": "orosu",
+        "meaning": "to take down,to launch,to drop"
+      },
+      {
+        "word": "降りる",
+        "reading": "おりる",
+        "romaji": "oriru",
+        "meaning": "to get off, to descend"
+      },
+      {
+        "word": "降車",
+        "reading": "こうしゃ",
+        "romaji": "kousha",
+        "meaning": "getting off a train/vehicle"
+      },
+      {
+        "word": "降水",
+        "reading": "こうすい",
+        "romaji": "kousui",
+        "meaning": "precipitation, rainfall"
+      },
+      {
+        "word": "降伏",
+        "reading": "こうふく",
+        "romaji": "koufuku",
+        "meaning": "surrender, capitulation"
+      }
+    ]
   },
   {
     "id": "n4k019",
@@ -309,7 +945,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "到着",
+        "reading": "とうちゃく",
+        "romaji": "touchaku",
+        "meaning": "arrival"
+      },
+      {
+        "word": "上着",
+        "reading": "うわぎ",
+        "romaji": "uwagi",
+        "meaning": "jacket"
+      },
+      {
+        "word": "着る",
+        "reading": "きる",
+        "romaji": "kiru",
+        "meaning": "to put on from the shoulders down"
+      },
+      {
+        "word": "着く",
+        "reading": "つく",
+        "romaji": "tsuku",
+        "meaning": "to arrive at"
+      },
+      {
+        "word": "下着",
+        "reading": "したぎ",
+        "romaji": "shitagi",
+        "meaning": "underwear"
+      },
+      {
+        "word": "着物",
+        "reading": "きもの",
+        "romaji": "kimono",
+        "meaning": "kimono (traditional Japanese attire)"
+      }
+    ]
   },
   {
     "id": "n4k020",
@@ -325,7 +998,38 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "放送",
+        "reading": "ほうそう",
+        "romaji": "housou",
+        "meaning": "broadcast,broadcasting"
+      },
+      {
+        "word": "送る",
+        "reading": "おくる",
+        "romaji": "okuru",
+        "meaning": "to send, to dispatch"
+      },
+      {
+        "word": "見送り",
+        "reading": "みおくり",
+        "romaji": "miokuri",
+        "meaning": "seeing one off,farewell,escort"
+      },
+      {
+        "word": "送ります",
+        "reading": "おくります",
+        "romaji": "okurimasu",
+        "meaning": "send"
+      },
+      {
+        "word": "放送します",
+        "reading": "ほうそうします",
+        "romaji": "hōsōshimasu",
+        "meaning": "broadcast"
+      }
+    ]
   },
   {
     "id": "n4k021",
@@ -341,7 +1045,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "受付",
+        "reading": "うけつけ",
+        "romaji": "uketsuke",
+        "meaning": "reception desk"
+      },
+      {
+        "word": "受ける",
+        "reading": "うける",
+        "romaji": "ukeru",
+        "meaning": "to take (an examination, interview, etc.); to receive"
+      },
+      {
+        "word": "受け取る",
+        "reading": "うけとる",
+        "romaji": "uketoru",
+        "meaning": "to receive,to get,to accept,to take"
+      },
+      {
+        "word": "受験",
+        "reading": "じゅけん",
+        "romaji": "juken",
+        "meaning": "taking an examination"
+      },
+      {
+        "word": "受け入れる",
+        "reading": "うけいれる",
+        "romaji": "ukeireru",
+        "meaning": "to accept, to take in"
+      },
+      {
+        "word": "受け持つ",
+        "reading": "うけもつ",
+        "romaji": "ukemotsu",
+        "meaning": "to take charge of"
+      }
+    ]
   },
   {
     "id": "n4k022",
@@ -357,7 +1098,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "貸し",
+        "reading": "かし",
+        "romaji": "kashi",
+        "meaning": "loan,lending"
+      },
+      {
+        "word": "貸す",
+        "reading": "かす",
+        "romaji": "kasu",
+        "meaning": "to lend"
+      },
+      {
+        "word": "貸します",
+        "reading": "かします",
+        "romaji": "kashimasu",
+        "meaning": "lend"
+      },
+      {
+        "word": "貸し出し",
+        "reading": "かしだし",
+        "romaji": "kashidashi",
+        "meaning": "lending, loaning (books)"
+      },
+      {
+        "word": "賃貸",
+        "reading": "ちんたい",
+        "romaji": "chintai",
+        "meaning": "lease, rental"
+      },
+      {
+        "word": "貸家",
+        "reading": "かしや",
+        "romaji": "kashiya",
+        "meaning": "house for rent"
+      }
+    ]
   },
   {
     "id": "n4k023",
@@ -373,7 +1151,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "借金",
+        "reading": "しゃっきん",
+        "romaji": "shakkin",
+        "meaning": "debt,loan,liabilities"
+      },
+      {
+        "word": "借りる",
+        "reading": "かりる",
+        "romaji": "kariru",
+        "meaning": "to borrow"
+      },
+      {
+        "word": "借ります",
+        "reading": "かります",
+        "romaji": "karimasu",
+        "meaning": "borrow"
+      },
+      {
+        "word": "借用",
+        "reading": "しゃくよう",
+        "romaji": "shakuyou",
+        "meaning": "borrowing, loan"
+      },
+      {
+        "word": "借家",
+        "reading": "しゃくや",
+        "romaji": "shakuya",
+        "meaning": "rented house"
+      },
+      {
+        "word": "貸借",
+        "reading": "たいしゃく",
+        "romaji": "taishaku",
+        "meaning": "debit and credit, lending & borrowing"
+      }
+    ]
   },
   {
     "id": "n4k024",
@@ -389,7 +1204,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "商売",
+        "reading": "しょうばい",
+        "romaji": "shoubai",
+        "meaning": "trade,business,commerce,transaction,occupation"
+      },
+      {
+        "word": "販売",
+        "reading": "はんばい",
+        "romaji": "hanbai",
+        "meaning": "sale,selling,marketing"
+      },
+      {
+        "word": "売る",
+        "reading": "うる",
+        "romaji": "uru",
+        "meaning": "to sell"
+      },
+      {
+        "word": "自動販売機",
+        "reading": "じどうはんばいき",
+        "romaji": "jidōhanbaiki",
+        "meaning": "vending machine"
+      },
+      {
+        "word": "売り場",
+        "reading": "うりば",
+        "romaji": "uriba",
+        "meaning": "department, counter (in a department store, etc.)"
+      },
+      {
+        "word": "売ります",
+        "reading": "うります",
+        "romaji": "urimasu",
+        "meaning": "sell"
+      }
+    ]
   },
   {
     "id": "n4k025",
@@ -405,7 +1257,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "取る",
+        "reading": "とる",
+        "romaji": "toru",
+        "meaning": "to take something"
+      },
+      {
+        "word": "取れる",
+        "reading": "とれる",
+        "romaji": "toreru",
+        "meaning": "to come off,to be taken off,to be removed"
+      },
+      {
+        "word": "取り組む",
+        "reading": "とりくむ",
+        "romaji": "torikumu",
+        "meaning": "to tackle / work on / address"
+      },
+      {
+        "word": "取ります",
+        "reading": "とります",
+        "romaji": "torimasu",
+        "meaning": "take, pass"
+      },
+      {
+        "word": "取り替える",
+        "reading": "とりかえる",
+        "romaji": "torikaeru",
+        "meaning": "to exchange, to replace"
+      },
+      {
+        "word": "取り替えます",
+        "reading": "とりかえます",
+        "romaji": "torikaemasu",
+        "meaning": "change"
+      }
+    ]
   },
   {
     "id": "n4k026",
@@ -422,7 +1311,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "作業",
+        "reading": "さぎょう",
+        "romaji": "sagyou",
+        "meaning": "work,operation,manufacturing,fatigue duty"
+      },
+      {
+        "word": "作品",
+        "reading": "さくひん",
+        "romaji": "sakuhin",
+        "meaning": "work,opus,performance,production"
+      },
+      {
+        "word": "作物",
+        "reading": "さくもつ",
+        "romaji": "sakumotsu",
+        "meaning": "produce (e.g. agricultural),crops"
+      },
+      {
+        "word": "作文",
+        "reading": "さくぶん",
+        "romaji": "sakubun",
+        "meaning": "composition, writing"
+      },
+      {
+        "word": "作る",
+        "reading": "つくる",
+        "romaji": "tsukuru",
+        "meaning": "to make"
+      },
+      {
+        "word": "操作",
+        "reading": "そうさ",
+        "romaji": "sōsa",
+        "meaning": "operation"
+      }
+    ]
   },
   {
     "id": "n4k027",
@@ -438,7 +1364,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "洗う",
+        "reading": "あらう",
+        "romaji": "arau",
+        "meaning": "to wash"
+      },
+      {
+        "word": "洗濯",
+        "reading": "せんたく",
+        "romaji": "sentaku",
+        "meaning": "Washing"
+      },
+      {
+        "word": "洗濯機",
+        "reading": "せんたくき",
+        "romaji": "sentakuki",
+        "meaning": "washing machine"
+      },
+      {
+        "word": "お手洗い",
+        "reading": "おてあらい",
+        "romaji": "otearai",
+        "meaning": "bathroom"
+      },
+      {
+        "word": "洗います",
+        "reading": "あらいます",
+        "romaji": "araimasu",
+        "meaning": "wash"
+      },
+      {
+        "word": "洗濯します",
+        "reading": "せんたくします",
+        "romaji": "sentakushimasu",
+        "meaning": "wash (clothes)"
+      }
+    ]
   },
   {
     "id": "n4k028",
@@ -455,7 +1418,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "切れ",
+        "reading": "きれ",
+        "romaji": "kire",
+        "meaning": "cloth,piece,cut,chop"
+      },
+      {
+        "word": "適切",
+        "reading": "てきせつ",
+        "romaji": "tekisetsu",
+        "meaning": "pertinent,appropriate,adequate,relevance"
+      },
+      {
+        "word": "親切",
+        "reading": "しんせつ",
+        "romaji": "shinsetsu",
+        "meaning": "kind / kindness"
+      },
+      {
+        "word": "切手",
+        "reading": "きって",
+        "romaji": "kitte",
+        "meaning": "postage stamp"
+      },
+      {
+        "word": "切符",
+        "reading": "きっぷ",
+        "romaji": "kippu",
+        "meaning": "Ticket"
+      },
+      {
+        "word": "切る",
+        "reading": "きる",
+        "romaji": "kiru",
+        "meaning": "to cut"
+      }
+    ]
   },
   {
     "id": "n4k029",
@@ -471,7 +1471,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "引退",
+        "reading": "いんたい",
+        "romaji": "intai",
+        "meaning": "retire"
+      },
+      {
+        "word": "引用",
+        "reading": "いんよう",
+        "romaji": "inyou",
+        "meaning": "quotation,citation"
+      },
+      {
+        "word": "割引",
+        "reading": "わりびき",
+        "romaji": "waribiki",
+        "meaning": "Discount"
+      },
+      {
+        "word": "字引",
+        "reading": "じびき",
+        "romaji": "jibiki",
+        "meaning": "Dictionary"
+      },
+      {
+        "word": "引く",
+        "reading": "ひく",
+        "romaji": "hiku",
+        "meaning": "to pull"
+      },
+      {
+        "word": "引きます",
+        "reading": "ひきます",
+        "romaji": "hikimasu",
+        "meaning": "pull"
+      }
+    ]
   },
   {
     "id": "n4k030",
@@ -487,7 +1524,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "押す",
+        "reading": "おす",
+        "romaji": "osu",
+        "meaning": "to push, to stamp something"
+      },
+      {
+        "word": "押します",
+        "reading": "おします",
+        "romaji": "oshimasu",
+        "meaning": "push, press"
+      },
+      {
+        "word": "押し入れ",
+        "reading": "おしいれ",
+        "romaji": "oshiire",
+        "meaning": "Japanese-style closet"
+      },
+      {
+        "word": "押入れ",
+        "reading": "おしいれ",
+        "romaji": "oshiire",
+        "meaning": "closet (Japanese style)"
+      },
+      {
+        "word": "押さえる",
+        "reading": "おさえる",
+        "romaji": "osaeru",
+        "meaning": "to hold down, to suppress"
+      },
+      {
+        "word": "押印",
+        "reading": "おういん",
+        "romaji": "ouin",
+        "meaning": "affixing a seal"
+      }
+    ]
   },
   {
     "id": "n4k031",
@@ -503,7 +1577,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "暑い",
+        "reading": "あつい",
+        "romaji": "atsui",
+        "meaning": "hot (weather/temperature)"
+      },
+      {
+        "word": "暑い、熱い",
+        "reading": "あつい",
+        "romaji": "atsui",
+        "meaning": "hot"
+      },
+      {
+        "word": "残暑",
+        "reading": "ざんしょ",
+        "romaji": "zansho",
+        "meaning": "late summer heat"
+      },
+      {
+        "word": "猛暑",
+        "reading": "もうしょ",
+        "romaji": "mousho",
+        "meaning": "fierce heat, heat wave"
+      },
+      {
+        "word": "暑中",
+        "reading": "しょちゅう",
+        "romaji": "shochuu",
+        "meaning": "height of summer"
+      },
+      {
+        "word": "避暑",
+        "reading": "ひしょ",
+        "romaji": "hisho",
+        "meaning": "summering, avoiding the heat"
+      }
+    ]
   },
   {
     "id": "n4k032",
@@ -519,7 +1630,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "寒い",
+        "reading": "さむい",
+        "romaji": "samui",
+        "meaning": "cold (weather)"
+      },
+      {
+        "word": "寒気",
+        "reading": "かんき",
+        "romaji": "kanki",
+        "meaning": "cold air, chill"
+      },
+      {
+        "word": "厳寒",
+        "reading": "げんかん",
+        "romaji": "genkan",
+        "meaning": "severe cold"
+      },
+      {
+        "word": "防寒",
+        "reading": "ぼうかん",
+        "romaji": "boukan",
+        "meaning": "protection against cold"
+      },
+      {
+        "word": "寒帯",
+        "reading": "かんたい",
+        "romaji": "kantai",
+        "meaning": "frigid zone, polar region"
+      },
+      {
+        "word": "寒流",
+        "reading": "かんりゅう",
+        "romaji": "kanryuu",
+        "meaning": "cold ocean current"
+      }
+    ]
   },
   {
     "id": "n4k033",
@@ -535,7 +1683,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "温暖",
+        "reading": "おんだん",
+        "romaji": "ondan",
+        "meaning": "warmth"
+      },
+      {
+        "word": "暖房",
+        "reading": "だんぼう",
+        "romaji": "danbou",
+        "meaning": "heating"
+      },
+      {
+        "word": "暖かい",
+        "reading": "あたたか(い)",
+        "romaji": "atataka(i)",
+        "meaning": "warm,mild"
+      },
+      {
+        "word": "暖冬",
+        "reading": "だんとう",
+        "romaji": "dantou",
+        "meaning": "mild winter"
+      },
+      {
+        "word": "温暖化",
+        "reading": "おんだんか",
+        "romaji": "ondanka",
+        "meaning": "global warming"
+      },
+      {
+        "word": "暖まる",
+        "reading": "あたたまる",
+        "romaji": "atatamaru",
+        "meaning": "to warm up"
+      }
+    ]
   },
   {
     "id": "n4k034",
@@ -551,7 +1736,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "涼しい",
+        "reading": "すずしい",
+        "romaji": "suzushii",
+        "meaning": "Refreshing"
+      },
+      {
+        "word": "夕涼み",
+        "reading": "ゆうすずみ",
+        "romaji": "yuusuzumi",
+        "meaning": "enjoying the evening cool"
+      },
+      {
+        "word": "清涼",
+        "reading": "せいりょう",
+        "romaji": "seiryou",
+        "meaning": "refreshing, cool"
+      },
+      {
+        "word": "涼気",
+        "reading": "りょうき",
+        "romaji": "ryouki",
+        "meaning": "cool air"
+      },
+      {
+        "word": "納涼",
+        "reading": "のうりょう",
+        "romaji": "nouryou",
+        "meaning": "cooling off in summer"
+      },
+      {
+        "word": "冷涼",
+        "reading": "れいりょう",
+        "romaji": "reiryou",
+        "meaning": "cool and crisp"
+      }
+    ]
   },
   {
     "id": "n4k035",
@@ -568,7 +1790,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "強調",
+        "reading": "きょうちょう",
+        "romaji": "kyouchou",
+        "meaning": "emphasis,stress,stressed point"
+      },
+      {
+        "word": "強力",
+        "reading": "きょうりょく",
+        "romaji": "kyouryoku",
+        "meaning": "herculean strength,mountain carrier-guide"
+      },
+      {
+        "word": "強盗",
+        "reading": "ごうとう",
+        "romaji": "goutou",
+        "meaning": "robbery,burglary"
+      },
+      {
+        "word": "勉強する",
+        "reading": "べんきょうする",
+        "romaji": "benkyousuru",
+        "meaning": "to study"
+      },
+      {
+        "word": "強い",
+        "reading": "つよい",
+        "romaji": "tsuyoi",
+        "meaning": "powerful"
+      },
+      {
+        "word": "勉強",
+        "reading": "べんきょうする",
+        "romaji": "benkyousuru",
+        "meaning": "to study"
+      }
+    ]
   },
   {
     "id": "n4k036",
@@ -584,7 +1843,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "脆弱",
+        "reading": "ぜいじゃく",
+        "romaji": "zeijaku",
+        "meaning": "fragile / vulnerable / weak"
+      },
+      {
+        "word": "弱い",
+        "reading": "よわい",
+        "romaji": "yowai",
+        "meaning": "weak"
+      },
+      {
+        "word": "弱点",
+        "reading": "じゃくてん",
+        "romaji": "jakuten",
+        "meaning": "weak point, weakness"
+      },
+      {
+        "word": "弱者",
+        "reading": "じゃくしゃ",
+        "romaji": "jakusha",
+        "meaning": "the weak, vulnerable person"
+      },
+      {
+        "word": "弱気",
+        "reading": "よわき",
+        "romaji": "yowaki",
+        "meaning": "timid, faint-hearted"
+      },
+      {
+        "word": "弱める",
+        "reading": "よわめる",
+        "romaji": "yowameru",
+        "meaning": "to weaken, to tone down"
+      }
+    ]
   },
   {
     "id": "n4k037",
@@ -602,7 +1898,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "貴重",
+        "reading": "きちょう",
+        "romaji": "kichou",
+        "meaning": "precious,valuable"
+      },
+      {
+        "word": "重視",
+        "reading": "じゅうし",
+        "romaji": "juushi",
+        "meaning": "importance,stress,serious consideration"
+      },
+      {
+        "word": "重大",
+        "reading": "じゅうだい",
+        "romaji": "juudai",
+        "meaning": "serious,important,grave,weighty"
+      },
+      {
+        "word": "重い",
+        "reading": "おもい",
+        "romaji": "omoi",
+        "meaning": "Heavy"
+      },
+      {
+        "word": "重い病気",
+        "reading": "おもいびょうき",
+        "romaji": "omoi byōki",
+        "meaning": "serious illness"
+      },
+      {
+        "word": "重さ",
+        "reading": "おもさ",
+        "romaji": "omosa",
+        "meaning": "weight"
+      }
+    ]
   },
   {
     "id": "n4k038",
@@ -618,7 +1951,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "軽い",
+        "reading": "かるい",
+        "romaji": "karui",
+        "meaning": "Light"
+      },
+      {
+        "word": "手軽",
+        "reading": "てがる",
+        "romaji": "tegaru",
+        "meaning": "easy, convenient, simple"
+      },
+      {
+        "word": "軽食",
+        "reading": "けいしょく",
+        "romaji": "keishoku",
+        "meaning": "light meal, snack"
+      },
+      {
+        "word": "身軽",
+        "reading": "みがる",
+        "romaji": "migaru",
+        "meaning": "light, nimble, unburdened"
+      },
+      {
+        "word": "軽減",
+        "reading": "けいげん",
+        "romaji": "keigen",
+        "meaning": "reduction, abatement, mitigation"
+      },
+      {
+        "word": "軽快",
+        "reading": "けいかい",
+        "romaji": "keikai",
+        "meaning": "lighthearted, nimble, brisk"
+      }
+    ]
   },
   {
     "id": "n4k039",
@@ -634,7 +2004,38 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "広告",
+        "reading": "こうこく",
+        "romaji": "koukoku",
+        "meaning": "advertisement"
+      },
+      {
+        "word": "背広",
+        "reading": "せびろ",
+        "romaji": "sebiro",
+        "meaning": "business suit"
+      },
+      {
+        "word": "広い",
+        "reading": "ひろい",
+        "romaji": "hiroi",
+        "meaning": "spacious,wide"
+      },
+      {
+        "word": "広めます",
+        "reading": "ひろめます",
+        "romaji": "hiromemasu",
+        "meaning": "spread"
+      },
+      {
+        "word": "広がる",
+        "reading": "ひろがる",
+        "romaji": "hirogaru",
+        "meaning": "to spread (out),to extend,to stretch,to reach to,to get"
+      }
+    ]
   },
   {
     "id": "n4k040",
@@ -650,7 +2051,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "狭い",
+        "reading": "せまい",
+        "romaji": "semai",
+        "meaning": "Narrow"
+      },
+      {
+        "word": "狭小",
+        "reading": "きょうしょう",
+        "romaji": "kyoushou",
+        "meaning": "narrow and small"
+      },
+      {
+        "word": "狭心症",
+        "reading": "きょうしんしょう",
+        "romaji": "kyoushinshou",
+        "meaning": "angina pectoris"
+      },
+      {
+        "word": "狭義",
+        "reading": "きょうぎ",
+        "romaji": "kyougi",
+        "meaning": "narrow sense, strict sense"
+      },
+      {
+        "word": "手狭",
+        "reading": "てぜま",
+        "romaji": "tezema",
+        "meaning": "cramped, small (room)"
+      },
+      {
+        "word": "狭まる",
+        "reading": "せばまる",
+        "romaji": "sebamaru",
+        "meaning": "to narrow, to contract"
+      }
+    ]
   },
   {
     "id": "n4k041",
@@ -666,7 +2104,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "迅速",
+        "reading": "じんそく",
+        "romaji": "jinsoku",
+        "meaning": "quick / prompt / rapid"
+      },
+      {
+        "word": "急速",
+        "reading": "きゅうそく",
+        "romaji": "kyuusoku",
+        "meaning": "rapid (e.g. progress)"
+      },
+      {
+        "word": "高速",
+        "reading": "こうそく",
+        "romaji": "kousoku",
+        "meaning": "high speed,high gear"
+      },
+      {
+        "word": "速い",
+        "reading": "はやい",
+        "romaji": "hayai",
+        "meaning": "quick"
+      },
+      {
+        "word": "早く、速く",
+        "reading": "はやく",
+        "romaji": "hayaku",
+        "meaning": "early, quickly, fast"
+      },
+      {
+        "word": "速達",
+        "reading": "そくたつ",
+        "romaji": "sokutatsu",
+        "meaning": "special delivery"
+      }
+    ]
   },
   {
     "id": "n4k042",
@@ -682,7 +2157,38 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "遅刻",
+        "reading": "ちこく",
+        "romaji": "chikoku",
+        "meaning": "lateness,late coming"
+      },
+      {
+        "word": "遅く",
+        "reading": "おそく",
+        "romaji": "osoku",
+        "meaning": "late (time)"
+      },
+      {
+        "word": "遅い",
+        "reading": "おそい",
+        "romaji": "osoi",
+        "meaning": "late, slow"
+      },
+      {
+        "word": "遅れる",
+        "reading": "おくれる",
+        "romaji": "okureru",
+        "meaning": "to be late / delayed"
+      },
+      {
+        "word": "遅刻します",
+        "reading": "ちこくします",
+        "romaji": "chikokushimasu",
+        "meaning": "be late, come late"
+      }
+    ]
   },
   {
     "id": "n4k043",
@@ -699,7 +2205,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "近代",
+        "reading": "きんだい",
+        "romaji": "kindai",
+        "meaning": "present day"
+      },
+      {
+        "word": "近頃",
+        "reading": "ちかごろ",
+        "romaji": "chikagoro",
+        "meaning": "lately,recently,nowadays"
+      },
+      {
+        "word": "近所",
+        "reading": "きんじょ",
+        "romaji": "kinjo",
+        "meaning": "neighborhood"
+      },
+      {
+        "word": "近い",
+        "reading": "ちかい",
+        "romaji": "chikai",
+        "meaning": "near"
+      },
+      {
+        "word": "近く",
+        "reading": "ちかく",
+        "romaji": "chikaku",
+        "meaning": "near"
+      },
+      {
+        "word": "最近",
+        "reading": "さいきん",
+        "romaji": "saikin",
+        "meaning": "recently, these days"
+      }
+    ]
   },
   {
     "id": "n4k044",
@@ -716,7 +2259,38 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "永遠",
+        "reading": "えいえん",
+        "romaji": "eien",
+        "meaning": "eternity,perpetuity,immortality,permanence"
+      },
+      {
+        "word": "遠慮",
+        "reading": "えんりょ",
+        "romaji": "enryo",
+        "meaning": "diffidence,restraint,reserve"
+      },
+      {
+        "word": "遠く",
+        "reading": "とおく",
+        "romaji": "tooku",
+        "meaning": "far away, distant"
+      },
+      {
+        "word": "遠い",
+        "reading": "とおい",
+        "romaji": "tooi",
+        "meaning": "far"
+      },
+      {
+        "word": "遠慮なく",
+        "reading": "えんりょなく",
+        "romaji": "enryonaku",
+        "meaning": "without reserve, without hesitation"
+      }
+    ]
   },
   {
     "id": "n4k045",
@@ -734,7 +2308,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "証明",
+        "reading": "しょうめい",
+        "romaji": "shoumei",
+        "meaning": "proof,verification"
+      },
+      {
+        "word": "発明",
+        "reading": "はつめい",
+        "romaji": "hatsumei",
+        "meaning": "invention"
+      },
+      {
+        "word": "文明",
+        "reading": "ぶんめい",
+        "romaji": "bunmei",
+        "meaning": "civilization,culture"
+      },
+      {
+        "word": "明日",
+        "reading": "あした",
+        "romaji": "ashita",
+        "meaning": "tomorrow"
+      },
+      {
+        "word": "明い",
+        "reading": "あかるい",
+        "romaji": "akarui",
+        "meaning": "bright"
+      },
+      {
+        "word": "明るい",
+        "reading": "あかるい",
+        "romaji": "akarui",
+        "meaning": "bright (in reference to personality or weather); cheerful"
+      }
+    ]
   },
   {
     "id": "n4k046",
@@ -750,7 +2361,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "暗記",
+        "reading": "あんき",
+        "romaji": "anki",
+        "meaning": "memorization,learning by heart"
+      },
+      {
+        "word": "暗い",
+        "reading": "くらい",
+        "romaji": "kurai",
+        "meaning": "Gloomy"
+      },
+      {
+        "word": "暗証番号",
+        "reading": "あんしょうばんごう",
+        "romaji": "anshōbangō",
+        "meaning": "personal identification number, PIN"
+      },
+      {
+        "word": "暗闇",
+        "reading": "くらやみ",
+        "romaji": "kurayami",
+        "meaning": "darkness"
+      },
+      {
+        "word": "暗黒",
+        "reading": "あんこく",
+        "romaji": "ankoku",
+        "meaning": "darkness, gloom"
+      },
+      {
+        "word": "暗号",
+        "reading": "あんごう",
+        "romaji": "angou",
+        "meaning": "code, cipher"
+      }
+    ]
   },
   {
     "id": "n4k047",
@@ -767,7 +2415,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "太陽",
+        "reading": "たいよう",
+        "romaji": "taiyou",
+        "meaning": "sun,solar"
+      },
+      {
+        "word": "太る",
+        "reading": "ふとる",
+        "romaji": "futoru",
+        "meaning": "to gain weight"
+      },
+      {
+        "word": "太い",
+        "reading": "ふとい",
+        "romaji": "futoi",
+        "meaning": "fat"
+      },
+      {
+        "word": "聖徳太子",
+        "reading": "しょうとくたいし",
+        "romaji": "shōtokutaishi",
+        "meaning": "Prince Shotoku (574-622)"
+      },
+      {
+        "word": "太ります",
+        "reading": "ふとります",
+        "romaji": "futorimasu",
+        "meaning": "get fat"
+      },
+      {
+        "word": "浦島太郎",
+        "reading": "うらしまたろう",
+        "romaji": "urashimatarō",
+        "meaning": "name of the main character in an old folk tale"
+      }
+    ]
   },
   {
     "id": "n4k048",
@@ -784,7 +2469,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "細い",
+        "reading": "ほそい",
+        "romaji": "hosoi",
+        "meaning": "thin"
+      },
+      {
+        "word": "細かい",
+        "reading": "こまかい",
+        "romaji": "komakai",
+        "meaning": "small; fine, minute"
+      },
+      {
+        "word": "iPS細胞",
+        "reading": "iPSさいぼう",
+        "romaji": "iPSsaibō",
+        "meaning": "induced pluripotent stem cell"
+      },
+      {
+        "word": "細かいお金",
+        "reading": "こまかいおかね",
+        "romaji": "komakai okane",
+        "meaning": "small change"
+      },
+      {
+        "word": "細部",
+        "reading": "さいぶ",
+        "romaji": "saibu",
+        "meaning": "details, particulars"
+      },
+      {
+        "word": "細菌",
+        "reading": "さいきん",
+        "romaji": "saikin",
+        "meaning": "bacteria, germ"
+      }
+    ]
   },
   {
     "id": "n4k049",
@@ -801,7 +2523,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "病院",
+        "reading": "びょういん",
+        "romaji": "byouin",
+        "meaning": "hospital"
+      },
+      {
+        "word": "病気",
+        "reading": "びょうき",
+        "romaji": "byouki",
+        "meaning": "illness"
+      },
+      {
+        "word": "重い病気",
+        "reading": "おもいびょうき",
+        "romaji": "omoi byōki",
+        "meaning": "serious illness"
+      },
+      {
+        "word": "神戸病院",
+        "reading": "こうべびょういん",
+        "romaji": "kōbebyōin",
+        "meaning": "a fictitious hospital"
+      },
+      {
+        "word": "急病",
+        "reading": "きゅうびょう",
+        "romaji": "kyuubyou",
+        "meaning": "sudden illness"
+      },
+      {
+        "word": "病人",
+        "reading": "びょうにん",
+        "romaji": "byounin",
+        "meaning": "sick person, patient"
+      }
+    ]
   },
   {
     "id": "n4k050",
@@ -817,7 +2576,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "入院",
+        "reading": "にゅういん",
+        "romaji": "nyuuin",
+        "meaning": "hospitalization"
+      },
+      {
+        "word": "退院",
+        "reading": "たいいんする",
+        "romaji": "taiinsuru",
+        "meaning": "leaving hospital"
+      },
+      {
+        "word": "病院",
+        "reading": "びょういん",
+        "romaji": "byouin",
+        "meaning": "hospital"
+      },
+      {
+        "word": "神戸病院",
+        "reading": "こうべびょういん",
+        "romaji": "kōbebyōin",
+        "meaning": "a fictitious hospital"
+      },
+      {
+        "word": "美容院",
+        "reading": "びよういん",
+        "romaji": "biyōin",
+        "meaning": "hair salon"
+      },
+      {
+        "word": "大学院",
+        "reading": "だいがくいん",
+        "romaji": "daigakuin",
+        "meaning": "graduate school"
+      }
+    ]
   },
   {
     "id": "n4k051",
@@ -833,7 +2629,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "医師",
+        "reading": "いし",
+        "romaji": "ishi",
+        "meaning": "doctor,physician"
+      },
+      {
+        "word": "医療",
+        "reading": "いりょう",
+        "romaji": "iryou",
+        "meaning": "medical care,medical treatment"
+      },
+      {
+        "word": "医学",
+        "reading": "いがく",
+        "romaji": "igaku",
+        "meaning": "medical science"
+      },
+      {
+        "word": "医者",
+        "reading": "いしゃ",
+        "romaji": "isha",
+        "meaning": "medical doctor"
+      },
+      {
+        "word": "歯医者",
+        "reading": "はいしゃ",
+        "romaji": "haisha",
+        "meaning": "dentist, dentist's"
+      },
+      {
+        "word": "医学部",
+        "reading": "いがくぶ",
+        "romaji": "igakubu",
+        "meaning": "the medical department"
+      }
+    ]
   },
   {
     "id": "n4k052",
@@ -849,7 +2682,44 @@
     "strokeCount": 16,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "薬",
+        "reading": "くすり",
+        "romaji": "kusuri",
+        "meaning": "medicine"
+      },
+      {
+        "word": "薬屋",
+        "reading": "くすりや",
+        "romaji": "kusuriya",
+        "meaning": "pharmacy"
+      },
+      {
+        "word": "薬局",
+        "reading": "やっきょく",
+        "romaji": "yakkyoku",
+        "meaning": "pharmacy, drugstore"
+      },
+      {
+        "word": "風邪薬",
+        "reading": "かぜぐすり",
+        "romaji": "kazegusuri",
+        "meaning": "cold medicine"
+      },
+      {
+        "word": "目薬",
+        "reading": "めぐすり",
+        "romaji": "megusuri",
+        "meaning": "eye drops"
+      },
+      {
+        "word": "頭痛薬",
+        "reading": "ずつうやく",
+        "romaji": "zutsuuyaku",
+        "meaning": "headache medicine"
+      }
+    ]
   },
   {
     "id": "n4k053",
@@ -865,7 +2735,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "痛み",
+        "reading": "いたみ",
+        "romaji": "itami",
+        "meaning": "pain,ache,sore,grief,distress"
+      },
+      {
+        "word": "苦痛",
+        "reading": "くつう",
+        "romaji": "kutsuu",
+        "meaning": "pain,agony"
+      },
+      {
+        "word": "頭痛",
+        "reading": "ずつう",
+        "romaji": "zutsuu",
+        "meaning": "headache"
+      },
+      {
+        "word": "痛い",
+        "reading": "いたい",
+        "romaji": "itai",
+        "meaning": "painful"
+      },
+      {
+        "word": "腹痛",
+        "reading": "ふくつう",
+        "romaji": "fukutsuu",
+        "meaning": "stomachache"
+      },
+      {
+        "word": "腰痛",
+        "reading": "ようつう",
+        "romaji": "youtsuu",
+        "meaning": "lower back pain"
+      }
+    ]
   },
   {
     "id": "n4k054",
@@ -882,7 +2789,44 @@
     "strokeCount": 16,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "頭",
+        "reading": "あたま",
+        "romaji": "atama",
+        "meaning": "head"
+      },
+      {
+        "word": "頭痛",
+        "reading": "ずつう",
+        "romaji": "zutsuu",
+        "meaning": "headache"
+      },
+      {
+        "word": "頭がいい",
+        "reading": "あたまがいい",
+        "romaji": "atamaga ii",
+        "meaning": "clever, smart"
+      },
+      {
+        "word": "頭痛薬",
+        "reading": "ずつうやく",
+        "romaji": "zutsuuyaku",
+        "meaning": "headache medicine"
+      },
+      {
+        "word": "先頭",
+        "reading": "せんとう",
+        "romaji": "sentou",
+        "meaning": "head, lead, forefront"
+      },
+      {
+        "word": "口頭",
+        "reading": "こうとう",
+        "romaji": "koutou",
+        "meaning": "oral, verbal"
+      }
+    ]
   },
   {
     "id": "n4k055",
@@ -898,7 +2842,44 @@
     "strokeCount": 18,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "顔",
+        "reading": "かお",
+        "romaji": "kao",
+        "meaning": "face (body part)"
+      },
+      {
+        "word": "笑顔",
+        "reading": "えがお",
+        "romaji": "egao",
+        "meaning": "smiling face"
+      },
+      {
+        "word": "顔色",
+        "reading": "かおいろ",
+        "romaji": "kaoiro",
+        "meaning": "complexion, expression"
+      },
+      {
+        "word": "洗顔",
+        "reading": "せんがん",
+        "romaji": "sengan",
+        "meaning": "face washing"
+      },
+      {
+        "word": "素顔",
+        "reading": "すがお",
+        "romaji": "sugao",
+        "meaning": "bare face, natural face"
+      },
+      {
+        "word": "顔写真",
+        "reading": "かおじゃしん",
+        "romaji": "kaojashin",
+        "meaning": "facial portrait, ID photo"
+      }
+    ]
   },
   {
     "id": "n4k056",
@@ -914,7 +2895,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "首",
+        "reading": "くび",
+        "romaji": "kubi",
+        "meaning": "neck"
+      },
+      {
+        "word": "首相",
+        "reading": "しゅしょう",
+        "romaji": "shushou",
+        "meaning": "Prime Minister"
+      },
+      {
+        "word": "首都",
+        "reading": "しゅと",
+        "romaji": "shuto",
+        "meaning": "capital city"
+      },
+      {
+        "word": "手首",
+        "reading": "てくび",
+        "romaji": "tekubi",
+        "meaning": "wrist"
+      },
+      {
+        "word": "足首",
+        "reading": "あしくび",
+        "romaji": "ashikubi",
+        "meaning": "ankle"
+      },
+      {
+        "word": "首長",
+        "reading": "しゅちょう",
+        "romaji": "shuchou",
+        "meaning": "chief, head"
+      }
+    ]
   },
   {
     "id": "n4k057",
@@ -931,7 +2949,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "背",
+        "reading": "せい",
+        "romaji": "sei",
+        "meaning": "height,stature"
+      },
+      {
+        "word": "背中",
+        "reading": "せなか",
+        "romaji": "senaka",
+        "meaning": "back (of body)"
+      },
+      {
+        "word": "背広",
+        "reading": "せびろ",
+        "romaji": "sebiro",
+        "meaning": "business suit"
+      },
+      {
+        "word": "背が高い",
+        "reading": "せがたかい",
+        "romaji": "sega takai",
+        "meaning": "tall (referring to person)"
+      },
+      {
+        "word": "背景",
+        "reading": "はいけい",
+        "romaji": "haikei",
+        "meaning": "background, scenery"
+      },
+      {
+        "word": "背骨",
+        "reading": "せぼね",
+        "romaji": "sebone",
+        "meaning": "spine, backbone"
+      }
+    ]
   },
   {
     "id": "n4k058",
@@ -948,7 +3003,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "体",
+        "reading": "からだ",
+        "romaji": "karada",
+        "meaning": "Body"
+      },
+      {
+        "word": "一体",
+        "reading": "いったい",
+        "romaji": "ittai",
+        "meaning": "(1) one object,one body,(2) what on earth?,really?,(3)"
+      },
+      {
+        "word": "具体",
+        "reading": "ぐたい",
+        "romaji": "gutai",
+        "meaning": "concrete,tangible,material"
+      },
+      {
+        "word": "体にいい",
+        "reading": "からだにいい",
+        "romaji": "karadani ii",
+        "meaning": "good for one's health"
+      },
+      {
+        "word": "大体",
+        "reading": "だいたい",
+        "romaji": "daitai",
+        "meaning": "approximately; in most cases; in general; to begin with (same as もともと)"
+      },
+      {
+        "word": "体育館",
+        "reading": "たいいくかん",
+        "romaji": "taiikukan",
+        "meaning": "gymnasium"
+      }
+    ]
   },
   {
     "id": "n4k059",
@@ -964,7 +3056,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "心",
+        "reading": "こころ",
+        "romaji": "kokoro",
+        "meaning": "heart, mind"
+      },
+      {
+        "word": "感心",
+        "reading": "かんしん",
+        "romaji": "kanshin",
+        "meaning": "admiration,Well done!"
+      },
+      {
+        "word": "関心",
+        "reading": "かんしん",
+        "romaji": "kanshin",
+        "meaning": "concern,interest"
+      },
+      {
+        "word": "心配します",
+        "reading": "しんぱいします",
+        "romaji": "shinpaishimasu",
+        "meaning": "worry"
+      },
+      {
+        "word": "心配",
+        "reading": "しんぱい",
+        "romaji": "shinpai",
+        "meaning": "worry / concern"
+      },
+      {
+        "word": "熱心",
+        "reading": "ねっしん",
+        "romaji": "nesshin",
+        "meaning": "enthusiasm"
+      }
+    ]
   },
   {
     "id": "n4k060",
@@ -981,7 +3110,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "声",
+        "reading": "こえ",
+        "romaji": "koe",
+        "meaning": "Voice"
+      },
+      {
+        "word": "大声",
+        "reading": "おおごえ",
+        "romaji": "oogoe",
+        "meaning": "loud voice"
+      },
+      {
+        "word": "小声",
+        "reading": "こごえ",
+        "romaji": "kogoe",
+        "meaning": "low voice, whisper"
+      },
+      {
+        "word": "名声",
+        "reading": "めいせい",
+        "romaji": "meisei",
+        "meaning": "fame, reputation"
+      },
+      {
+        "word": "声援",
+        "reading": "せいえん",
+        "romaji": "seien",
+        "meaning": "cheering, support"
+      },
+      {
+        "word": "鳴き声",
+        "reading": "なきごえ",
+        "romaji": "nakigoe",
+        "meaning": "animal cry/chirp"
+      }
+    ]
   },
   {
     "id": "n4k061",
@@ -997,7 +3163,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "血",
+        "reading": "ち",
+        "romaji": "chi",
+        "meaning": "blood"
+      },
+      {
+        "word": "血液",
+        "reading": "けつえき",
+        "romaji": "ketsueki",
+        "meaning": "blood, blood stream"
+      },
+      {
+        "word": "血圧",
+        "reading": "けつあつ",
+        "romaji": "ketsuatsu",
+        "meaning": "blood pressure"
+      },
+      {
+        "word": "流血",
+        "reading": "りゅうけつ",
+        "romaji": "ryuuketsu",
+        "meaning": "bloodshed"
+      },
+      {
+        "word": "冷血",
+        "reading": "れいけつ",
+        "romaji": "reiketsu",
+        "meaning": "cold-blooded"
+      },
+      {
+        "word": "輸血",
+        "reading": "ゆけつ",
+        "romaji": "yuketsu",
+        "meaning": "blood transfusion"
+      }
+    ]
   },
   {
     "id": "n4k062",
@@ -1013,7 +3216,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "骨",
+        "reading": "ほね",
+        "romaji": "hone",
+        "meaning": "bone"
+      },
+      {
+        "word": "骨折",
+        "reading": "こっせつ",
+        "romaji": "kossetsu",
+        "meaning": "bone fracture"
+      },
+      {
+        "word": "軟骨",
+        "reading": "なんこつ",
+        "romaji": "nankotsu",
+        "meaning": "cartilage"
+      },
+      {
+        "word": "接骨",
+        "reading": "せっこつ",
+        "romaji": "sekkotsu",
+        "meaning": "bone-setting"
+      },
+      {
+        "word": "背骨",
+        "reading": "せぼね",
+        "romaji": "sebone",
+        "meaning": "spine, backbone"
+      },
+      {
+        "word": "骨格",
+        "reading": "こっかく",
+        "romaji": "kokkaku",
+        "meaning": "skeleton, skeletal framework"
+      }
+    ]
   },
   {
     "id": "n4k063",
@@ -1029,7 +3269,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "皮",
+        "reading": "かわ",
+        "romaji": "kawa",
+        "meaning": "skin,hide,leather,fur,pelt,bark,shell"
+      },
+      {
+        "word": "毛皮",
+        "reading": "けがわ",
+        "romaji": "kegawa",
+        "meaning": "fur, pelt"
+      },
+      {
+        "word": "皮膚",
+        "reading": "ひふ",
+        "romaji": "hifu",
+        "meaning": "skin, epidermis"
+      },
+      {
+        "word": "皮肉",
+        "reading": "ひにく",
+        "romaji": "hiniku",
+        "meaning": "cynicism, sarcasm"
+      },
+      {
+        "word": "果皮",
+        "reading": "かひ",
+        "romaji": "kahi",
+        "meaning": "fruit peel, rind"
+      },
+      {
+        "word": "樹皮",
+        "reading": "じゅひ",
+        "romaji": "juhi",
+        "meaning": "bark (of tree)"
+      }
+    ]
   },
   {
     "id": "n4k064",
@@ -1046,7 +3323,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "所",
+        "reading": "ところ",
+        "romaji": "tokoro",
+        "meaning": "place"
+      },
+      {
+        "word": "所為",
+        "reading": "せい",
+        "romaji": "sei",
+        "meaning": "cause,reason,fault"
+      },
+      {
+        "word": "場所",
+        "reading": "ばしょ",
+        "romaji": "basho",
+        "meaning": "place, location"
+      },
+      {
+        "word": "台所",
+        "reading": "だいどころ",
+        "romaji": "daidokoro",
+        "meaning": "kitchen"
+      },
+      {
+        "word": "事務所",
+        "reading": "じむしょ",
+        "romaji": "jimusho",
+        "meaning": "office"
+      },
+      {
+        "word": "市役所",
+        "reading": "しやくしょ",
+        "romaji": "shiyakusho",
+        "meaning": "municipal office, city hall"
+      }
+    ]
   },
   {
     "id": "n4k065",
@@ -1062,7 +3376,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "場",
+        "reading": "ば",
+        "romaji": "ba",
+        "meaning": "place,field (physics)"
+      },
+      {
+        "word": "場合",
+        "reading": "ばあい",
+        "romaji": "baai",
+        "meaning": "case / situation / occasion"
+      },
+      {
+        "word": "市場",
+        "reading": "いちば",
+        "romaji": "ichiba",
+        "meaning": "(the) market (as a concept)"
+      },
+      {
+        "word": "売り場",
+        "reading": "うりば",
+        "romaji": "uriba",
+        "meaning": "department, counter (in a department store, etc.)"
+      },
+      {
+        "word": "乗り場",
+        "reading": "のりば",
+        "romaji": "noriba",
+        "meaning": "a fixed place to catch taxis, trains, etc."
+      },
+      {
+        "word": "牧場",
+        "reading": "ぼくじょう",
+        "romaji": "bokujō",
+        "meaning": "ranch, stock farm"
+      }
+    ]
   },
   {
     "id": "n4k066",
@@ -1078,7 +3429,38 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "教室",
+        "reading": "きょうしつ",
+        "romaji": "kyoushitsu",
+        "meaning": "Classroom"
+      },
+      {
+        "word": "和室",
+        "reading": "わしつ",
+        "romaji": "washitsu",
+        "meaning": "Japanese-style room"
+      },
+      {
+        "word": "研究室",
+        "reading": "けんきゅうしつ",
+        "romaji": "kenkyuushitsu",
+        "meaning": "the professor's office; laboratory"
+      },
+      {
+        "word": "会議室",
+        "reading": "かいぎしつ",
+        "romaji": "kaigishitsu",
+        "meaning": "conference room, meeting room"
+      },
+      {
+        "word": "～教室",
+        "reading": "～きょうしつ",
+        "romaji": "~kyōshitsu",
+        "meaning": "～ class"
+      }
+    ]
   },
   {
     "id": "n4k067",
@@ -1094,7 +3476,44 @@
     "strokeCount": 16,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "旅館",
+        "reading": "りょかん",
+        "romaji": "ryokan",
+        "meaning": "a Japanese inn"
+      },
+      {
+        "word": "博物館",
+        "reading": "はくぶつかん",
+        "romaji": "hakubutsukan",
+        "meaning": "museum"
+      },
+      {
+        "word": "体育館",
+        "reading": "たいいくかん",
+        "romaji": "taiikukan",
+        "meaning": "gymnasium"
+      },
+      {
+        "word": "映画館",
+        "reading": "えいがかん",
+        "romaji": "eigakan",
+        "meaning": "cinema"
+      },
+      {
+        "word": "大使館",
+        "reading": "たいしかん",
+        "romaji": "taishikan",
+        "meaning": "embassy"
+      },
+      {
+        "word": "図書館",
+        "reading": "としょかん",
+        "romaji": "toshokan",
+        "meaning": "library"
+      }
+    ]
   },
   {
     "id": "n4k068",
@@ -1110,7 +3529,44 @@
     "strokeCount": 16,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "橋",
+        "reading": "はし",
+        "romaji": "hashi",
+        "meaning": "bridge"
+      },
+      {
+        "word": "日本橋",
+        "reading": "にっぽんばし",
+        "romaji": "nipponbashi",
+        "meaning": "a shopping district in Osaka"
+      },
+      {
+        "word": "歩道橋",
+        "reading": "ほどうきょう",
+        "romaji": "hodoukyou",
+        "meaning": "pedestrian bridge"
+      },
+      {
+        "word": "鉄橋",
+        "reading": "てっきょう",
+        "romaji": "tekkyou",
+        "meaning": "railway bridge"
+      },
+      {
+        "word": "桟橋",
+        "reading": "さんばし",
+        "romaji": "sanbashi",
+        "meaning": "pier, jetty"
+      },
+      {
+        "word": "吊り橋",
+        "reading": "つりばし",
+        "romaji": "tsuribashi",
+        "meaning": "suspension bridge"
+      }
+    ]
   },
   {
     "id": "n4k069",
@@ -1126,7 +3582,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "港",
+        "reading": "みなと",
+        "romaji": "minato",
+        "meaning": "harbor, port"
+      },
+      {
+        "word": "空港",
+        "reading": "くうこう",
+        "romaji": "kūkō",
+        "meaning": "airport"
+      },
+      {
+        "word": "香港",
+        "reading": "ホンコン",
+        "romaji": "honkon",
+        "meaning": "Hong Kong (香港)"
+      },
+      {
+        "word": "関西空港",
+        "reading": "かんさいくうこう",
+        "romaji": "kansaikūkō",
+        "meaning": "Kansai International Airport"
+      },
+      {
+        "word": "港町",
+        "reading": "みなとまち",
+        "romaji": "minatomachi",
+        "meaning": "port city"
+      },
+      {
+        "word": "出港",
+        "reading": "しゅっこう",
+        "romaji": "shukkou",
+        "meaning": "departure from port"
+      }
+    ]
   },
   {
     "id": "n4k070",
@@ -1142,7 +3635,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "島",
+        "reading": "しま",
+        "romaji": "shima",
+        "meaning": "island"
+      },
+      {
+        "word": "浦島太郎",
+        "reading": "うらしまたろう",
+        "romaji": "urashimatarō",
+        "meaning": "name of the main character in an old folk tale"
+      },
+      {
+        "word": "バリ［島］",
+        "reading": "バリ［とう］",
+        "romaji": "bari [tou]",
+        "meaning": "Bali [island] (in Indonesia)"
+      },
+      {
+        "word": "半島",
+        "reading": "はんとう",
+        "romaji": "hantou",
+        "meaning": "peninsula"
+      },
+      {
+        "word": "島国",
+        "reading": "しまぐに",
+        "romaji": "shimaguni",
+        "meaning": "island country"
+      },
+      {
+        "word": "列島",
+        "reading": "れっとう",
+        "romaji": "rettou",
+        "meaning": "archipelago, chain of islands"
+      }
+    ]
   },
   {
     "id": "n4k071",
@@ -1158,7 +3688,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "池",
+        "reading": "いけ",
+        "romaji": "ike",
+        "meaning": "pond"
+      },
+      {
+        "word": "電池",
+        "reading": "でんち",
+        "romaji": "denchi",
+        "meaning": "battery"
+      },
+      {
+        "word": "水池",
+        "reading": "みずいけ",
+        "romaji": "mizuike",
+        "meaning": "water reservoir"
+      },
+      {
+        "word": "古池",
+        "reading": "ふるいけ",
+        "romaji": "furuike",
+        "meaning": "old pond"
+      },
+      {
+        "word": "蓄電池",
+        "reading": "ちくでんち",
+        "romaji": "chikudenchi",
+        "meaning": "storage battery"
+      },
+      {
+        "word": "溜池",
+        "reading": "ためいけ",
+        "romaji": "tameike",
+        "meaning": "reservoir, catchment basin"
+      }
+    ]
   },
   {
     "id": "n4k072",
@@ -1174,7 +3741,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "湖",
+        "reading": "みずうみ",
+        "romaji": "mizuumi",
+        "meaning": "lake"
+      },
+      {
+        "word": "琵琶湖",
+        "reading": "びわこ",
+        "romaji": "biwako",
+        "meaning": "Lake Biwa, the biggest lake in Japan"
+      },
+      {
+        "word": "湖畔",
+        "reading": "こはん",
+        "romaji": "kohan",
+        "meaning": "lakeside, lake shore"
+      },
+      {
+        "word": "塩湖",
+        "reading": "えんこ",
+        "romaji": "enko",
+        "meaning": "salt lake"
+      },
+      {
+        "word": "湖水",
+        "reading": "こすい",
+        "romaji": "kosui",
+        "meaning": "lake water"
+      },
+      {
+        "word": "人工湖",
+        "reading": "じんこうこ",
+        "romaji": "jinkouko",
+        "meaning": "artificial lake"
+      }
+    ]
   },
   {
     "id": "n4k073",
@@ -1190,7 +3794,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "海",
+        "reading": "うみ",
+        "romaji": "umi",
+        "meaning": "sea"
+      },
+      {
+        "word": "海外",
+        "reading": "かいがい",
+        "romaji": "kaigai",
+        "meaning": "foreign,abroad,overseas"
+      },
+      {
+        "word": "海岸",
+        "reading": "かいがん",
+        "romaji": "kaigan",
+        "meaning": "coast, seashore"
+      },
+      {
+        "word": "海水浴",
+        "reading": "かいすいよく",
+        "romaji": "kaisuiyoku",
+        "meaning": "sea bathing"
+      },
+      {
+        "word": "日本海",
+        "reading": "にほんかい",
+        "romaji": "nihonkai",
+        "meaning": "Sea of Japan"
+      },
+      {
+        "word": "航海",
+        "reading": "こうかい",
+        "romaji": "koukai",
+        "meaning": "voyage, navigation"
+      }
+    ]
   },
   {
     "id": "n4k074",
@@ -1206,7 +3847,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "公平",
+        "reading": "こうへい",
+        "romaji": "kouhei",
+        "meaning": "fairness,impartial,justice"
+      },
+      {
+        "word": "公園",
+        "reading": "こうえん",
+        "romaji": "kouen",
+        "meaning": "Park"
+      },
+      {
+        "word": "公務員",
+        "reading": "こうむいん",
+        "romaji": "koumuin",
+        "meaning": "government worker, public servant"
+      },
+      {
+        "word": "大阪城公園",
+        "reading": "おおさかじょうこうえん",
+        "romaji": "ōsakajōkōen",
+        "meaning": "Osaka Castle park"
+      },
+      {
+        "word": "奈良公園",
+        "reading": "ならこうえん",
+        "romaji": "narakōen",
+        "meaning": "Nara Park"
+      },
+      {
+        "word": "主人公",
+        "reading": "しゅじんこう",
+        "romaji": "shujinkō",
+        "meaning": "hero, heroine"
+      }
+    ]
   },
   {
     "id": "n4k075",
@@ -1222,7 +3900,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "公園",
+        "reading": "こうえん",
+        "romaji": "kouen",
+        "meaning": "Park"
+      },
+      {
+        "word": "動物園",
+        "reading": "どうぶつえん",
+        "romaji": "doubutsuen",
+        "meaning": "zoo"
+      },
+      {
+        "word": "幼稚園",
+        "reading": "ようちえん",
+        "romaji": "yōchien",
+        "meaning": "preschool, kindergarten"
+      },
+      {
+        "word": "甲子園",
+        "reading": "こうしえん",
+        "romaji": "kōshien",
+        "meaning": "name of a town near Osaka"
+      },
+      {
+        "word": "大阪城公園",
+        "reading": "おおさかじょうこうえん",
+        "romaji": "ōsakajōkōen",
+        "meaning": "Osaka Castle park"
+      },
+      {
+        "word": "奈良公園",
+        "reading": "ならこうえん",
+        "romaji": "narakōen",
+        "meaning": "Nara Park"
+      }
+    ]
   },
   {
     "id": "n4k076",
@@ -1238,7 +3953,38 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "寺",
+        "reading": "てら",
+        "romaji": "tera",
+        "meaning": "Buddhist temple"
+      },
+      {
+        "word": "東大寺",
+        "reading": "とうだいじ",
+        "romaji": "tōdaiji",
+        "meaning": "Todaiji Temple"
+      },
+      {
+        "word": "金閣寺",
+        "reading": "きんかくじ",
+        "romaji": "kinkakuji",
+        "meaning": "Kinkakuji Temple (the Golden Pavilion)"
+      },
+      {
+        "word": "［お］寺",
+        "reading": "［お］てら",
+        "romaji": "[o] tera",
+        "meaning": "Buddhist temple"
+      },
+      {
+        "word": "法隆寺",
+        "reading": "ほうりゅうじ",
+        "romaji": "hōryūji",
+        "meaning": "Horyuji Temple, a temple in Nara Prefecture built by Prince Shotoku at the beginning of the 7th century"
+      }
+    ]
   },
   {
     "id": "n4k077",
@@ -1256,7 +4002,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "神",
+        "reading": "かみ",
+        "romaji": "kami",
+        "meaning": "god"
+      },
+      {
+        "word": "神経",
+        "reading": "しんけい",
+        "romaji": "shinkei",
+        "meaning": "nerve,sensitivity"
+      },
+      {
+        "word": "精神",
+        "reading": "せいしん",
+        "romaji": "seishin",
+        "meaning": "mind,soul,heart,spirit,intention"
+      },
+      {
+        "word": "神戸病院",
+        "reading": "こうべびょういん",
+        "romaji": "kōbebyōin",
+        "meaning": "a fictitious hospital"
+      },
+      {
+        "word": "神社",
+        "reading": "じんじゃ",
+        "romaji": "jinja",
+        "meaning": "Shinto shrine"
+      },
+      {
+        "word": "天神祭",
+        "reading": "てんじんまつり",
+        "romaji": "tenjinmatsuri",
+        "meaning": "Tenjin Festival (a festival in Osaka)"
+      }
+    ]
   },
   {
     "id": "n4k078",
@@ -1272,7 +4055,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "社会",
+        "reading": "しゃかい",
+        "romaji": "shakai",
+        "meaning": "society"
+      },
+      {
+        "word": "本社",
+        "reading": "ほんしゃ",
+        "romaji": "honsha",
+        "meaning": "head office"
+      },
+      {
+        "word": "会社",
+        "reading": "かいしゃ",
+        "romaji": "kaisha",
+        "meaning": "Company"
+      },
+      {
+        "word": "会社員",
+        "reading": "かいしゃいん",
+        "romaji": "kaishain",
+        "meaning": "company employee"
+      },
+      {
+        "word": "社員",
+        "reading": "しゃいん",
+        "romaji": "shain",
+        "meaning": "employee of ～ company (used with a company's name, e.g. IMC の しゃいん)"
+      },
+      {
+        "word": "神社",
+        "reading": "じんじゃ",
+        "romaji": "jinja",
+        "meaning": "Shinto shrine"
+      }
+    ]
   },
   {
     "id": "n4k079",
@@ -1289,7 +4109,38 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "兄",
+        "reading": "あに",
+        "romaji": "ani",
+        "meaning": "(humble) older brother"
+      },
+      {
+        "word": "兄弟",
+        "reading": "きょうだい",
+        "romaji": "kyoudai",
+        "meaning": "(humble) siblings"
+      },
+      {
+        "word": "従兄弟",
+        "reading": "いとこ",
+        "romaji": "itoko",
+        "meaning": "cousin (male)"
+      },
+      {
+        "word": "お兄さん",
+        "reading": "おにいさん",
+        "romaji": "oniisan",
+        "meaning": "(honorable) older brother"
+      },
+      {
+        "word": "ライト兄弟",
+        "reading": "ライトきょうだい",
+        "romaji": "raitokyōdai",
+        "meaning": "Wright brothers, American pioneers in aviation ; Wilbur Wright (1867-1912) Orville Wright (1871-1948)"
+      }
+    ]
   },
   {
     "id": "n4k080",
@@ -1307,7 +4158,38 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "弟",
+        "reading": "おとうと",
+        "romaji": "otouto",
+        "meaning": "younger brother"
+      },
+      {
+        "word": "兄弟",
+        "reading": "きょうだい",
+        "romaji": "kyoudai",
+        "meaning": "(humble) siblings"
+      },
+      {
+        "word": "従兄弟",
+        "reading": "いとこ",
+        "romaji": "itoko",
+        "meaning": "cousin (male)"
+      },
+      {
+        "word": "弟さん",
+        "reading": "おとうとさん",
+        "romaji": "otōtosan",
+        "meaning": "(someone else's) younger brother"
+      },
+      {
+        "word": "ライト兄弟",
+        "reading": "ライトきょうだい",
+        "romaji": "raitokyōdai",
+        "meaning": "Wright brothers, American pioneers in aviation ; Wilbur Wright (1867-1912) Orville Wright (1871-1948)"
+      }
+    ]
   },
   {
     "id": "n4k081",
@@ -1323,7 +4205,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "姉",
+        "reading": "あね",
+        "romaji": "ane",
+        "meaning": "(humble) older sister"
+      },
+      {
+        "word": "姉妹",
+        "reading": "しまい",
+        "romaji": "shimai",
+        "meaning": "sisters"
+      },
+      {
+        "word": "お姉さん",
+        "reading": "おねえさん",
+        "romaji": "oneesan",
+        "meaning": "(honorable) older sister"
+      },
+      {
+        "word": "義姉",
+        "reading": "ぎし",
+        "romaji": "gishi",
+        "meaning": "sister-in-law (elder)"
+      },
+      {
+        "word": "従姉",
+        "reading": "いとこ",
+        "romaji": "itoko",
+        "meaning": "elder female cousin"
+      },
+      {
+        "word": "姉上",
+        "reading": "あねうえ",
+        "romaji": "aneue",
+        "meaning": "honored elder sister"
+      }
+    ]
   },
   {
     "id": "n4k082",
@@ -1339,7 +4258,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "妹",
+        "reading": "いもうと",
+        "romaji": "imouto",
+        "meaning": "(humble) younger sister"
+      },
+      {
+        "word": "姉妹",
+        "reading": "しまい",
+        "romaji": "shimai",
+        "meaning": "sisters"
+      },
+      {
+        "word": "妹さん",
+        "reading": "いもうとさん",
+        "romaji": "imōtosan",
+        "meaning": "(someone else's) younger sister"
+      },
+      {
+        "word": "義妹",
+        "reading": "ぎまい",
+        "romaji": "gimai",
+        "meaning": "sister-in-law, younger stepsister"
+      },
+      {
+        "word": "妹分",
+        "reading": "いもうとぶん",
+        "romaji": "imoutobun",
+        "meaning": "like a younger sister"
+      },
+      {
+        "word": "従姉妹",
+        "reading": "いとこ",
+        "romaji": "itoko",
+        "meaning": "female cousin"
+      }
+    ]
   },
   {
     "id": "n4k083",
@@ -1355,7 +4311,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "祖母",
+        "reading": "そぼ",
+        "romaji": "sobo",
+        "meaning": "grandmother"
+      },
+      {
+        "word": "祖父",
+        "reading": "そふ",
+        "romaji": "sofu",
+        "meaning": "grandfather"
+      },
+      {
+        "word": "祖先",
+        "reading": "そせん",
+        "romaji": "sosen",
+        "meaning": "ancestors"
+      },
+      {
+        "word": "先祖",
+        "reading": "せんぞ",
+        "romaji": "senzo",
+        "meaning": "ancestry, forebears"
+      },
+      {
+        "word": "祖国",
+        "reading": "そこく",
+        "romaji": "sokoku",
+        "meaning": "fatherland, native country"
+      },
+      {
+        "word": "開祖",
+        "reading": "かいそ",
+        "romaji": "kaiso",
+        "meaning": "founder (of sect, martial art)"
+      }
+    ]
   },
   {
     "id": "n4k084",
@@ -1373,7 +4366,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "夫",
+        "reading": "おっと",
+        "romaji": "otto",
+        "meaning": "husband"
+      },
+      {
+        "word": "夫婦",
+        "reading": "ふうふ",
+        "romaji": "fuufu",
+        "meaning": "married couple,husband and wife"
+      },
+      {
+        "word": "夫人",
+        "reading": "ふじん",
+        "romaji": "fujin",
+        "meaning": "wife,Mrs,madam"
+      },
+      {
+        "word": "丈夫",
+        "reading": "じょうぶ",
+        "romaji": "joubu",
+        "meaning": "strong, durable"
+      },
+      {
+        "word": "大丈夫",
+        "reading": "だいじょうぶ",
+        "romaji": "daijoubu",
+        "meaning": "all right"
+      },
+      {
+        "word": "夫／主人",
+        "reading": "おっと／しゅじん",
+        "romaji": "otto/shujin",
+        "meaning": "(my) husband"
+      }
+    ]
   },
   {
     "id": "n4k085",
@@ -1389,7 +4419,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "妻",
+        "reading": "つま",
+        "romaji": "tsuma",
+        "meaning": "wife (humble)"
+      },
+      {
+        "word": "妻／家内",
+        "reading": "つま／かない",
+        "romaji": "tsuma/kanai",
+        "meaning": "(my) wife"
+      },
+      {
+        "word": "夫妻",
+        "reading": "ふさい",
+        "romaji": "fusai",
+        "meaning": "husband and wife, Mr and Mrs"
+      },
+      {
+        "word": "愛妻",
+        "reading": "あいさい",
+        "romaji": "aisai",
+        "meaning": "beloved wife"
+      },
+      {
+        "word": "妻子",
+        "reading": "さいし",
+        "romaji": "saishi",
+        "meaning": "wife and children"
+      },
+      {
+        "word": "前妻",
+        "reading": "ぜんさい",
+        "romaji": "zensai",
+        "meaning": "former wife"
+      }
+    ]
   },
   {
     "id": "n4k086",
@@ -1405,7 +4472,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "息",
+        "reading": "いき",
+        "romaji": "iki",
+        "meaning": "breath,tone"
+      },
+      {
+        "word": "息子",
+        "reading": "むすこ",
+        "romaji": "musuko",
+        "meaning": "(humble) son"
+      },
+      {
+        "word": "息子さん",
+        "reading": "むすこさん",
+        "romaji": "musukosan",
+        "meaning": "(someone else's) son"
+      },
+      {
+        "word": "ため息",
+        "reading": "ためいき",
+        "romaji": "tameiki",
+        "meaning": "sigh"
+      },
+      {
+        "word": "息抜",
+        "reading": "いきぬき",
+        "romaji": "ikinuki",
+        "meaning": "taking a breather, relaxation"
+      },
+      {
+        "word": "休息",
+        "reading": "きゅうそく",
+        "romaji": "kyuusoku",
+        "meaning": "rest, relaxation"
+      }
+    ]
   },
   {
     "id": "n4k087",
@@ -1421,7 +4525,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "娘",
+        "reading": "むすめ",
+        "romaji": "musume",
+        "meaning": "daughter (humble)"
+      },
+      {
+        "word": "娘さん",
+        "reading": "むすめさん",
+        "romaji": "musumesan",
+        "meaning": "(someone else's) daughter"
+      },
+      {
+        "word": "一人娘",
+        "reading": "ひとりむすめ",
+        "romaji": "hitorimusume",
+        "meaning": "only daughter"
+      },
+      {
+        "word": "小娘",
+        "reading": "こむすめ",
+        "romaji": "komusume",
+        "meaning": "young girl, greenhorn"
+      },
+      {
+        "word": "愛娘",
+        "reading": "まなむすめ",
+        "romaji": "manamusume",
+        "meaning": "beloved daughter"
+      },
+      {
+        "word": "娘婿",
+        "reading": "むすめむこ",
+        "romaji": "musumemuko",
+        "meaning": "son-in-law"
+      }
+    ]
   },
   {
     "id": "n4k088",
@@ -1438,7 +4579,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "会",
+        "reading": "かい",
+        "romaji": "kai",
+        "meaning": "meeting,assembly,party,association,club"
+      },
+      {
+        "word": "機会",
+        "reading": "きかい",
+        "romaji": "kikai",
+        "meaning": "opportunity / chance"
+      },
+      {
+        "word": "会員",
+        "reading": "かいいん",
+        "romaji": "kaiin",
+        "meaning": "member,the membership"
+      },
+      {
+        "word": "会う",
+        "reading": "あう",
+        "romaji": "au",
+        "meaning": "to meet"
+      },
+      {
+        "word": "会社",
+        "reading": "かいしゃ",
+        "romaji": "kaisha",
+        "meaning": "Company"
+      },
+      {
+        "word": "会社員",
+        "reading": "かいしゃいん",
+        "romaji": "kaishain",
+        "meaning": "company employee"
+      }
+    ]
   },
   {
     "id": "n4k089",
@@ -1454,7 +4632,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "社会",
+        "reading": "しゃかい",
+        "romaji": "shakai",
+        "meaning": "society"
+      },
+      {
+        "word": "本社",
+        "reading": "ほんしゃ",
+        "romaji": "honsha",
+        "meaning": "head office"
+      },
+      {
+        "word": "会社",
+        "reading": "かいしゃ",
+        "romaji": "kaisha",
+        "meaning": "Company"
+      },
+      {
+        "word": "会社員",
+        "reading": "かいしゃいん",
+        "romaji": "kaishain",
+        "meaning": "company employee"
+      },
+      {
+        "word": "社員",
+        "reading": "しゃいん",
+        "romaji": "shain",
+        "meaning": "employee of ～ company (used with a company's name, e.g. IMC の しゃいん)"
+      },
+      {
+        "word": "神社",
+        "reading": "じんじゃ",
+        "romaji": "jinja",
+        "meaning": "Shinto shrine"
+      }
+    ]
   },
   {
     "id": "n4k090",
@@ -1470,7 +4685,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "委員",
+        "reading": "いいん",
+        "romaji": "iin",
+        "meaning": "committee member"
+      },
+      {
+        "word": "会員",
+        "reading": "かいいん",
+        "romaji": "kaiin",
+        "meaning": "member,the membership"
+      },
+      {
+        "word": "議員",
+        "reading": "ぎいん",
+        "romaji": "giin",
+        "meaning": "member of the Diet, congress or parliament"
+      },
+      {
+        "word": "会社員",
+        "reading": "かいしゃいん",
+        "romaji": "kaishain",
+        "meaning": "company employee"
+      },
+      {
+        "word": "社員",
+        "reading": "しゃいん",
+        "romaji": "shain",
+        "meaning": "employee of ～ company (used with a company's name, e.g. IMC の しゃいん)"
+      },
+      {
+        "word": "銀行員",
+        "reading": "ぎんこういん",
+        "romaji": "ginkōin",
+        "meaning": "bank employee"
+      }
+    ]
   },
   {
     "id": "n4k091",
@@ -1487,7 +4739,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "議長",
+        "reading": "ぎちょう",
+        "romaji": "gichou",
+        "meaning": "chairman"
+      },
+      {
+        "word": "身長",
+        "reading": "しんちょう",
+        "romaji": "shinchou",
+        "meaning": "height (of body),stature"
+      },
+      {
+        "word": "成長",
+        "reading": "せいちょう",
+        "romaji": "seichou",
+        "meaning": "growth,grow to adulthood"
+      },
+      {
+        "word": "長い",
+        "reading": "ながい",
+        "romaji": "nagai",
+        "meaning": "long"
+      },
+      {
+        "word": "課長",
+        "reading": "かちょう",
+        "romaji": "kachō",
+        "meaning": "section head"
+      },
+      {
+        "word": "部長",
+        "reading": "ぶちょう",
+        "romaji": "buchō",
+        "meaning": "department head"
+      }
+    ]
   },
   {
     "id": "n4k092",
@@ -1503,7 +4792,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "部分",
+        "reading": "ぶぶん",
+        "romaji": "bubun",
+        "meaning": "portion,section,part"
+      },
+      {
+        "word": "全部",
+        "reading": "ぜんぶ",
+        "romaji": "zenbu",
+        "meaning": "All"
+      },
+      {
+        "word": "部屋",
+        "reading": "へや",
+        "romaji": "heya",
+        "meaning": "room"
+      },
+      {
+        "word": "全部で",
+        "reading": "ぜんぶで",
+        "romaji": "zenbude",
+        "meaning": "in total"
+      },
+      {
+        "word": "部長",
+        "reading": "ぶちょう",
+        "romaji": "buchō",
+        "meaning": "department head"
+      },
+      {
+        "word": "～学部",
+        "reading": "～がくぶ",
+        "romaji": "gakubu",
+        "meaning": "department of a university"
+      }
+    ]
   },
   {
     "id": "n4k093",
@@ -1519,7 +4845,44 @@
     "strokeCount": 15,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "課",
+        "reading": "か",
+        "romaji": "ka",
+        "meaning": "counter for chapters (of a book)"
+      },
+      {
+        "word": "課長",
+        "reading": "かちょう",
+        "romaji": "kachō",
+        "meaning": "section head"
+      },
+      {
+        "word": "日課",
+        "reading": "にっか",
+        "romaji": "nikka",
+        "meaning": "daily routine"
+      },
+      {
+        "word": "課題",
+        "reading": "かだい",
+        "romaji": "kadai",
+        "meaning": "task, assignment, problem"
+      },
+      {
+        "word": "課税",
+        "reading": "かぜい",
+        "romaji": "kazei",
+        "meaning": "taxation"
+      },
+      {
+        "word": "人事課",
+        "reading": "じんじか",
+        "romaji": "jinjika",
+        "meaning": "human resources department"
+      }
+    ]
   },
   {
     "id": "n4k094",
@@ -1536,7 +4899,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "営業",
+        "reading": "えいぎょう",
+        "romaji": "eigyou",
+        "meaning": "business,trade,management"
+      },
+      {
+        "word": "企業",
+        "reading": "きぎょう",
+        "romaji": "kigyou",
+        "meaning": "enterprise,undertaking"
+      },
+      {
+        "word": "作業",
+        "reading": "さぎょう",
+        "romaji": "sagyou",
+        "meaning": "work,operation,manufacturing,fatigue duty"
+      },
+      {
+        "word": "授業",
+        "reading": "じゅぎょう",
+        "romaji": "jugyou",
+        "meaning": "lesson, class work"
+      },
+      {
+        "word": "残業します",
+        "reading": "ざんぎょうします",
+        "romaji": "zangyōshimasu",
+        "meaning": "work overtime"
+      },
+      {
+        "word": "産業",
+        "reading": "さんぎょう",
+        "romaji": "sangyou",
+        "meaning": "industry"
+      }
+    ]
   },
   {
     "id": "n4k095",
@@ -1553,7 +4953,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "仕方",
+        "reading": "しかた",
+        "romaji": "shikata",
+        "meaning": "way (of doing something)"
+      },
+      {
+        "word": "仕事",
+        "reading": "しごと",
+        "romaji": "shigoto",
+        "meaning": "Job"
+      },
+      {
+        "word": "仕事する",
+        "reading": "しごとする",
+        "romaji": "shigotosuru",
+        "meaning": "to work"
+      },
+      {
+        "word": "［お］仕事",
+        "reading": "［お］しごと",
+        "romaji": "[o] shigoto",
+        "meaning": "work, business (～を します : do one's job, work)"
+      },
+      {
+        "word": "仕草",
+        "reading": "しぐさ",
+        "romaji": "shigusa",
+        "meaning": "gesture, mannerism"
+      },
+      {
+        "word": "奉仕",
+        "reading": "ほうし",
+        "romaji": "houshi",
+        "meaning": "service, volunteer work"
+      }
+    ]
   },
   {
     "id": "n4k096",
@@ -1570,7 +5007,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "事",
+        "reading": "こと",
+        "romaji": "koto",
+        "meaning": "thing,matter,fact,circumstances"
+      },
+      {
+        "word": "家事",
+        "reading": "かじ",
+        "romaji": "kaji",
+        "meaning": "housework,domestic chores"
+      },
+      {
+        "word": "記事",
+        "reading": "きじ",
+        "romaji": "kiji",
+        "meaning": "article,news story,report,account"
+      },
+      {
+        "word": "仕事する",
+        "reading": "しごとする",
+        "romaji": "shigotosuru",
+        "meaning": "to work"
+      },
+      {
+        "word": "仕事",
+        "reading": "しごと",
+        "romaji": "shigoto",
+        "meaning": "Job"
+      },
+      {
+        "word": "事務所",
+        "reading": "じむしょ",
+        "romaji": "jimusho",
+        "meaning": "office"
+      }
+    ]
   },
   {
     "id": "n4k097",
@@ -1586,7 +5060,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "用",
+        "reading": "よう",
+        "romaji": "you",
+        "meaning": "errand, task, business (to take care of)"
+      },
+      {
+        "word": "引用",
+        "reading": "いんよう",
+        "romaji": "inyou",
+        "meaning": "quotation,citation"
+      },
+      {
+        "word": "活用",
+        "reading": "かつよう",
+        "romaji": "katsuyou",
+        "meaning": "conjugation,practical use"
+      },
+      {
+        "word": "用事",
+        "reading": "ようじ",
+        "romaji": "yōji",
+        "meaning": "something to do, errand"
+      },
+      {
+        "word": "利用",
+        "reading": "りよう",
+        "romaji": "riyou",
+        "meaning": "use, utilization"
+      },
+      {
+        "word": "用意",
+        "reading": "ようい",
+        "romaji": "youi",
+        "meaning": "preparation"
+      }
+    ]
   },
   {
     "id": "n4k098",
@@ -1603,7 +5114,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "品",
+        "reading": "しな",
+        "romaji": "shina",
+        "meaning": "thing,article,goods,dignity,article (goods),counter for"
+      },
+      {
+        "word": "作品",
+        "reading": "さくひん",
+        "romaji": "sakuhin",
+        "meaning": "work,opus,performance,production"
+      },
+      {
+        "word": "商品",
+        "reading": "しょうひん",
+        "romaji": "shouhin",
+        "meaning": "commodity,article of"
+      },
+      {
+        "word": "製品",
+        "reading": "せいひん",
+        "romaji": "seihin",
+        "meaning": "products"
+      },
+      {
+        "word": "品物",
+        "reading": "しなもの",
+        "romaji": "shinamono",
+        "meaning": "goods"
+      },
+      {
+        "word": "食料品",
+        "reading": "しょくりょうひん",
+        "romaji": "shokuryouhin",
+        "meaning": "foodstuff, groceries"
+      }
+    ]
   },
   {
     "id": "n4k099",
@@ -1620,7 +5168,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "物",
+        "reading": "もの",
+        "romaji": "mono",
+        "meaning": "thing"
+      },
+      {
+        "word": "穀物",
+        "reading": "こくもつ",
+        "romaji": "kokumotsu",
+        "meaning": "grain,cereal,corn"
+      },
+      {
+        "word": "作物",
+        "reading": "さくもつ",
+        "romaji": "sakumotsu",
+        "meaning": "produce (e.g. agricultural),crops"
+      },
+      {
+        "word": "買い物",
+        "reading": "かいもの",
+        "romaji": "kaimono",
+        "meaning": "Shopping"
+      },
+      {
+        "word": "果物",
+        "reading": "くだもの",
+        "romaji": "kudamono",
+        "meaning": "Fruit"
+      },
+      {
+        "word": "建物",
+        "reading": "たてもの",
+        "romaji": "tatemono",
+        "meaning": "building"
+      }
+    ]
   },
   {
     "id": "n4k100",
@@ -1637,7 +5222,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "金",
+        "reading": "かね",
+        "romaji": "kane",
+        "meaning": "(1) gold,(2) gold general (shogi) (abbr)"
+      },
+      {
+        "word": "金額",
+        "reading": "きんがく",
+        "romaji": "kingaku",
+        "meaning": "amount of money"
+      },
+      {
+        "word": "金庫",
+        "reading": "きんこ",
+        "romaji": "kinko",
+        "meaning": "safe,vault,treasury,provider of funds"
+      },
+      {
+        "word": "お金",
+        "reading": "おかね",
+        "romaji": "okane",
+        "meaning": "money"
+      },
+      {
+        "word": "金曜日",
+        "reading": "きんようび",
+        "romaji": "kinyoubi",
+        "meaning": "Friday"
+      },
+      {
+        "word": "金閣寺",
+        "reading": "きんかくじ",
+        "romaji": "kinkakuji",
+        "meaning": "Kinkakuji Temple (the Golden Pavilion)"
+      }
+    ]
   },
   {
     "id": "n4k101",
@@ -1653,7 +5275,44 @@
     "strokeCount": 14,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "銀",
+        "reading": "ぎん",
+        "romaji": "gin",
+        "meaning": "(1) silver,silver coin,silver paint"
+      },
+      {
+        "word": "銀行",
+        "reading": "ぎんこう",
+        "romaji": "ginkou",
+        "meaning": "Bank"
+      },
+      {
+        "word": "銀行員",
+        "reading": "ぎんこういん",
+        "romaji": "ginkōin",
+        "meaning": "bank employee"
+      },
+      {
+        "word": "アップル銀行",
+        "reading": "アップルぎんこう",
+        "romaji": "appuruginkō",
+        "meaning": "a fictitious bank"
+      },
+      {
+        "word": "銀色",
+        "reading": "ぎんいろ",
+        "romaji": "giniro",
+        "meaning": "silver color"
+      },
+      {
+        "word": "銀メダル",
+        "reading": "ぎんめだる",
+        "romaji": "ginmedaru",
+        "meaning": "silver medal"
+      }
+    ]
   },
   {
     "id": "n4k102",
@@ -1669,7 +5328,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "給料",
+        "reading": "きゅうりょう",
+        "romaji": "kyuuryou",
+        "meaning": "salary,wages"
+      },
+      {
+        "word": "材料",
+        "reading": "ざいりょう",
+        "romaji": "zairyou",
+        "meaning": "ingredients,material"
+      },
+      {
+        "word": "食料",
+        "reading": "しょくりょう",
+        "romaji": "shokuryou",
+        "meaning": "food"
+      },
+      {
+        "word": "料理",
+        "reading": "りょうり",
+        "romaji": "ryouri",
+        "meaning": "cuisine"
+      },
+      {
+        "word": "資料",
+        "reading": "しりょう",
+        "romaji": "shiryō",
+        "meaning": "materials, data"
+      },
+      {
+        "word": "食料品",
+        "reading": "しょくりょうひん",
+        "romaji": "shokuryouhin",
+        "meaning": "foodstuff, groceries"
+      }
+    ]
   },
   {
     "id": "n4k103",
@@ -1687,7 +5383,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "近代",
+        "reading": "きんだい",
+        "romaji": "kindai",
+        "meaning": "present day"
+      },
+      {
+        "word": "現代",
+        "reading": "げんだい",
+        "romaji": "gendai",
+        "meaning": "nowadays,modern times,present-day"
+      },
+      {
+        "word": "代金",
+        "reading": "だいきん",
+        "romaji": "daikin",
+        "meaning": "price,payment,cost,charge"
+      },
+      {
+        "word": "時代",
+        "reading": "じだい",
+        "romaji": "jidai",
+        "meaning": "age, period, epoch, era"
+      },
+      {
+        "word": "～代",
+        "reading": "～だい",
+        "romaji": "dai",
+        "meaning": "~ age; period"
+      },
+      {
+        "word": "代わり",
+        "reading": "かわり",
+        "romaji": "kawari",
+        "meaning": "substitute, replacement"
+      }
+    ]
   },
   {
     "id": "n4k104",
@@ -1703,7 +5436,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "信号",
+        "reading": "しんごう",
+        "romaji": "shingou",
+        "meaning": "traffic lights,signal,semaphore"
+      },
+      {
+        "word": "番号",
+        "reading": "ばんごう",
+        "romaji": "bangou",
+        "meaning": "number"
+      },
+      {
+        "word": "暗証番号",
+        "reading": "あんしょうばんごう",
+        "romaji": "anshōbangō",
+        "meaning": "personal identification number, PIN"
+      },
+      {
+        "word": "記号",
+        "reading": "きごう",
+        "romaji": "kigou",
+        "meaning": "symbol, sign"
+      },
+      {
+        "word": "年号",
+        "reading": "ねんごう",
+        "romaji": "nengou",
+        "meaning": "era name"
+      },
+      {
+        "word": "暗号",
+        "reading": "あんごう",
+        "romaji": "angou",
+        "meaning": "code, cipher, password"
+      }
+    ]
   },
   {
     "id": "n4k105",
@@ -1719,7 +5489,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "一番",
+        "reading": "いちばん",
+        "romaji": "ichiban",
+        "meaning": "best,first,number one"
+      },
+      {
+        "word": "順番",
+        "reading": "じゅんばん",
+        "romaji": "junban",
+        "meaning": "turn (in line),order of things"
+      },
+      {
+        "word": "番組",
+        "reading": "ばんぐみ",
+        "romaji": "bangumi",
+        "meaning": "broadcast program"
+      },
+      {
+        "word": "交番",
+        "reading": "こうばん",
+        "romaji": "kouban",
+        "meaning": "police box"
+      },
+      {
+        "word": "番号",
+        "reading": "ばんごう",
+        "romaji": "bangou",
+        "meaning": "number"
+      },
+      {
+        "word": "～番",
+        "reading": "～ばん",
+        "romaji": "ban",
+        "meaning": "~st; ~th best"
+      }
+    ]
   },
   {
     "id": "n4k106",
@@ -1735,7 +5542,44 @@
     "strokeCount": 15,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "駐車",
+        "reading": "ちゅうしゃ",
+        "romaji": "chuusha",
+        "meaning": "parking (e.g. car)"
+      },
+      {
+        "word": "駐車場",
+        "reading": "ちゅうしゃじょう",
+        "romaji": "chūshajō",
+        "meaning": "car park, parking lot"
+      },
+      {
+        "word": "駐車違反",
+        "reading": "ちゅうしゃいはん",
+        "romaji": "chūshaihan",
+        "meaning": "parking violation"
+      },
+      {
+        "word": "駐輪場",
+        "reading": "ちゅうりんじょう",
+        "romaji": "chuurinjou",
+        "meaning": "bicycle parking"
+      },
+      {
+        "word": "駐在",
+        "reading": "ちゅうざい",
+        "romaji": "chuuzai",
+        "meaning": "stationed, resident"
+      },
+      {
+        "word": "駐日",
+        "reading": "ちゅうにち",
+        "romaji": "chuunichi",
+        "meaning": "stationed in Japan"
+      }
+    ]
   },
   {
     "id": "n4k107",
@@ -1751,7 +5595,44 @@
     "strokeCount": 15,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "線",
+        "reading": "せん",
+        "romaji": "sen",
+        "meaning": "line, wire"
+      },
+      {
+        "word": "地平線",
+        "reading": "ちへいせん",
+        "romaji": "chiheisen",
+        "meaning": "horizon"
+      },
+      {
+        "word": "新幹線",
+        "reading": "しんかんせん",
+        "romaji": "shinkansen",
+        "meaning": "the Shinkansen, the bullet train"
+      },
+      {
+        "word": "直線",
+        "reading": "ちょくせん",
+        "romaji": "chokusen",
+        "meaning": "straight line"
+      },
+      {
+        "word": "曲線",
+        "reading": "きょくせん",
+        "romaji": "kyokusen",
+        "meaning": "curved line"
+      },
+      {
+        "word": "路線",
+        "reading": "ろせん",
+        "romaji": "rosen",
+        "meaning": "route, railway line"
+      }
+    ]
   },
   {
     "id": "n4k108",
@@ -1768,7 +5649,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "地",
+        "reading": "ち",
+        "romaji": "chi",
+        "meaning": "earth"
+      },
+      {
+        "word": "生地",
+        "reading": "きじ",
+        "romaji": "kiji",
+        "meaning": "birthplace"
+      },
+      {
+        "word": "地位",
+        "reading": "ちい",
+        "romaji": "chii",
+        "meaning": "(social) position,status"
+      },
+      {
+        "word": "地下鉄",
+        "reading": "ちかてつ",
+        "romaji": "chikatetsu",
+        "meaning": "underground train"
+      },
+      {
+        "word": "地図",
+        "reading": "ちず",
+        "romaji": "chizu",
+        "meaning": "map"
+      },
+      {
+        "word": "地下",
+        "reading": "ちか",
+        "romaji": "chika",
+        "meaning": "basement"
+      }
+    ]
   },
   {
     "id": "n4k109",
@@ -1784,7 +5702,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "鉄",
+        "reading": "てつ",
+        "romaji": "tetsu",
+        "meaning": "iron"
+      },
+      {
+        "word": "鉄道",
+        "reading": "てつどう",
+        "romaji": "tetsudou",
+        "meaning": "railroad"
+      },
+      {
+        "word": "地下鉄",
+        "reading": "ちかてつ",
+        "romaji": "chikatetsu",
+        "meaning": "underground train"
+      },
+      {
+        "word": "私鉄",
+        "reading": "してつ",
+        "romaji": "shitetsu",
+        "meaning": "private railway"
+      },
+      {
+        "word": "鉄橋",
+        "reading": "てっきょう",
+        "romaji": "tekkyou",
+        "meaning": "railway bridge"
+      },
+      {
+        "word": "鉄分",
+        "reading": "てつぶん",
+        "romaji": "tetsubun",
+        "meaning": "iron content"
+      }
+    ]
   },
   {
     "id": "n4k110",
@@ -1800,7 +5755,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "飛行",
+        "reading": "ひこう",
+        "romaji": "hikou",
+        "meaning": "aviation"
+      },
+      {
+        "word": "飛ぶ",
+        "reading": "とぶ",
+        "romaji": "tobu",
+        "meaning": "to fly,to hop"
+      },
+      {
+        "word": "飛ばす",
+        "reading": "とばす",
+        "romaji": "tobasu",
+        "meaning": "to skip over,to omit"
+      },
+      {
+        "word": "飛行機",
+        "reading": "ひこうき",
+        "romaji": "hikouki",
+        "meaning": "aeroplane"
+      },
+      {
+        "word": "飛行場",
+        "reading": "ひこうじょう",
+        "romaji": "hikoujou",
+        "meaning": "airport"
+      },
+      {
+        "word": "宇宙飛行士",
+        "reading": "うちゅうひこうし",
+        "romaji": "uchūhikōshi",
+        "meaning": "astronaut"
+      }
+    ]
   },
   {
     "id": "n4k111",
@@ -1816,7 +5808,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "船",
+        "reading": "ふね",
+        "romaji": "fune",
+        "meaning": "ship,boat,watercraft,shipping,vessel,steamship"
+      },
+      {
+        "word": "汽船",
+        "reading": "きせん",
+        "romaji": "kisen",
+        "meaning": "steam boat"
+      },
+      {
+        "word": "船便",
+        "reading": "ふなびん",
+        "romaji": "funabin",
+        "meaning": "sea mail"
+      },
+      {
+        "word": "宇宙船",
+        "reading": "うちゅうせん",
+        "romaji": "uchūsen",
+        "meaning": "spaceship"
+      },
+      {
+        "word": "船長",
+        "reading": "せんちょう",
+        "romaji": "senchou",
+        "meaning": "captain of a ship"
+      },
+      {
+        "word": "客船",
+        "reading": "きゃくせん",
+        "romaji": "kyakusen",
+        "meaning": "passenger ship"
+      }
+    ]
   },
   {
     "id": "n4k112",
@@ -1832,7 +5861,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "旅",
+        "reading": "たび",
+        "romaji": "tabi",
+        "meaning": "travel,trip,journey"
+      },
+      {
+        "word": "旅館",
+        "reading": "りょかん",
+        "romaji": "ryokan",
+        "meaning": "a Japanese inn"
+      },
+      {
+        "word": "旅行",
+        "reading": "りょこう",
+        "romaji": "ryokou",
+        "meaning": "travel"
+      },
+      {
+        "word": "旅行社",
+        "reading": "りょこうしゃ",
+        "romaji": "ryokōsha",
+        "meaning": "travel agency"
+      },
+      {
+        "word": "旅費",
+        "reading": "りょひ",
+        "romaji": "ryohi",
+        "meaning": "travel expenses"
+      },
+      {
+        "word": "一人旅",
+        "reading": "ひとりたび",
+        "romaji": "hitoritabi",
+        "meaning": "solo journey"
+      }
+    ]
   },
   {
     "id": "n4k113",
@@ -1848,7 +5914,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "宿泊",
+        "reading": "しゅくはく",
+        "romaji": "shukuhaku",
+        "meaning": "lodging"
+      },
+      {
+        "word": "泊まる",
+        "reading": "とまる",
+        "romaji": "tomaru",
+        "meaning": "to stay (over night) (v.i.)"
+      },
+      {
+        "word": "一泊",
+        "reading": "いっぱく",
+        "romaji": "ippaku",
+        "meaning": "one night stay"
+      },
+      {
+        "word": "外泊",
+        "reading": "がいはく",
+        "romaji": "gaihaku",
+        "meaning": "spending night away from home"
+      },
+      {
+        "word": "連泊",
+        "reading": "れんぱく",
+        "romaji": "renpaku",
+        "meaning": "consecutive nights stay"
+      },
+      {
+        "word": "素泊まり",
+        "reading": "すどまり",
+        "romaji": "sudomari",
+        "meaning": "staying without meals"
+      }
+    ]
   },
   {
     "id": "n4k114",
@@ -1864,7 +5967,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "荷物",
+        "reading": "にもつ",
+        "romaji": "nimotsu",
+        "meaning": "luggage"
+      },
+      {
+        "word": "手荷物",
+        "reading": "てにもつ",
+        "romaji": "tenimotsu",
+        "meaning": "hand luggage"
+      },
+      {
+        "word": "出荷",
+        "reading": "しゅっか",
+        "romaji": "shukka",
+        "meaning": "shipping, shipment"
+      },
+      {
+        "word": "荷造り",
+        "reading": "にづくり",
+        "romaji": "nizukuri",
+        "meaning": "packing luggage"
+      },
+      {
+        "word": "入荷",
+        "reading": "にゅうか",
+        "romaji": "nyuuka",
+        "meaning": "receipt of goods"
+      },
+      {
+        "word": "負荷",
+        "reading": "ふか",
+        "romaji": "fuka",
+        "meaning": "burden, load"
+      }
+    ]
   },
   {
     "id": "n4k115",
@@ -1882,7 +6022,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "共通",
+        "reading": "きょうつう",
+        "romaji": "kyoutsuu",
+        "meaning": "commonness,community"
+      },
+      {
+        "word": "通過",
+        "reading": "つうか",
+        "romaji": "tsuuka",
+        "meaning": "passage through,passing"
+      },
+      {
+        "word": "通学",
+        "reading": "つうがく",
+        "romaji": "tsuugaku",
+        "meaning": "commuting to school"
+      },
+      {
+        "word": "普通",
+        "reading": "ふつう",
+        "romaji": "futsū",
+        "meaning": "local (train)"
+      },
+      {
+        "word": "交通",
+        "reading": "こうつう",
+        "romaji": "kōtsū",
+        "meaning": "transport, traffic"
+      },
+      {
+        "word": "通る",
+        "reading": "とおる",
+        "romaji": "tooru",
+        "meaning": "to pass (by), to go through"
+      }
+    ]
   },
   {
     "id": "n4k116",
@@ -1898,7 +6075,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "昼",
+        "reading": "ひる",
+        "romaji": "hiru",
+        "meaning": "noon, daytime"
+      },
+      {
+        "word": "お昼",
+        "reading": "おひる",
+        "romaji": "ohiru",
+        "meaning": "lunch,noon"
+      },
+      {
+        "word": "昼食",
+        "reading": "ちゅうしょく",
+        "romaji": "chuushoku",
+        "meaning": "lunch,midday meal"
+      },
+      {
+        "word": "昼ご飯",
+        "reading": "ひるごはん",
+        "romaji": "hirugohan",
+        "meaning": "lunch"
+      },
+      {
+        "word": "昼御飯",
+        "reading": "ひるごはん",
+        "romaji": "hirugohan",
+        "meaning": "midday meal"
+      },
+      {
+        "word": "昼休み",
+        "reading": "ひるやすみ",
+        "romaji": "hiruyasumi",
+        "meaning": "lunchtime"
+      }
+    ]
   },
   {
     "id": "n4k117",
@@ -1915,7 +6129,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "夜",
+        "reading": "よ",
+        "romaji": "yo",
+        "meaning": "evening,night"
+      },
+      {
+        "word": "徹夜",
+        "reading": "てつや",
+        "romaji": "tetsuya",
+        "meaning": "all night,all night vigil,sleepless night"
+      },
+      {
+        "word": "夜中",
+        "reading": "よなか",
+        "romaji": "yonaka",
+        "meaning": "midnight,dead of night"
+      },
+      {
+        "word": "昨夜",
+        "reading": "ゆうべ",
+        "romaji": "yuube",
+        "meaning": "last night"
+      },
+      {
+        "word": "今夜",
+        "reading": "こんや",
+        "romaji": "konya",
+        "meaning": "this evening, tonight"
+      },
+      {
+        "word": "夜行バス",
+        "reading": "やこうバス",
+        "romaji": "yakōbasu",
+        "meaning": "overnight bus"
+      }
+    ]
   },
   {
     "id": "n4k118",
@@ -1931,7 +6182,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "朝",
+        "reading": "あさ",
+        "romaji": "asa",
+        "meaning": "morning"
+      },
+      {
+        "word": "今朝",
+        "reading": "けさ",
+        "romaji": "kesa",
+        "meaning": "this morning"
+      },
+      {
+        "word": "毎朝",
+        "reading": "まいあさ",
+        "romaji": "maiasa",
+        "meaning": "every morning"
+      },
+      {
+        "word": "朝ご飯",
+        "reading": "あさごはん",
+        "romaji": "asagohan",
+        "meaning": "breakfast"
+      },
+      {
+        "word": "朝御飯",
+        "reading": "あさごはん",
+        "romaji": "asagohan",
+        "meaning": "breakfast"
+      },
+      {
+        "word": "朝ごはん",
+        "reading": "あさごはん",
+        "romaji": "asagohan",
+        "meaning": "breakfast"
+      }
+    ]
   },
   {
     "id": "n4k119",
@@ -1947,7 +6235,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "晩",
+        "reading": "ばん",
+        "romaji": "ban",
+        "meaning": "evening"
+      },
+      {
+        "word": "今晩",
+        "reading": "こんばん",
+        "romaji": "konban",
+        "meaning": "this evening"
+      },
+      {
+        "word": "毎晩",
+        "reading": "まいばん",
+        "romaji": "maiban",
+        "meaning": "every night"
+      },
+      {
+        "word": "晩ご飯",
+        "reading": "ばんごはん",
+        "romaji": "bangohan",
+        "meaning": "dinner"
+      },
+      {
+        "word": "晩御飯",
+        "reading": "ばんごはん",
+        "romaji": "bangohan",
+        "meaning": "evening meal"
+      },
+      {
+        "word": "晩ごはん",
+        "reading": "ばんごはん",
+        "romaji": "bangohan",
+        "meaning": "supper"
+      }
+    ]
   },
   {
     "id": "n4k120",
@@ -1964,7 +6289,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "酒",
+        "reading": "さけ",
+        "romaji": "sake",
+        "meaning": "alcohol,sake"
+      },
+      {
+        "word": "お酒",
+        "reading": "おさけ",
+        "romaji": "osake",
+        "meaning": "alcohol, rice wine"
+      },
+      {
+        "word": "［お］酒",
+        "reading": "［お］さけ",
+        "romaji": "[o] sake",
+        "meaning": "alcohol, Japanese rice wine"
+      },
+      {
+        "word": "酒屋",
+        "reading": "さかや",
+        "romaji": "sakaya",
+        "meaning": "liquor store"
+      },
+      {
+        "word": "居酒屋",
+        "reading": "いざかや",
+        "romaji": "izakaya",
+        "meaning": "Japanese pub"
+      },
+      {
+        "word": "飲酒",
+        "reading": "いんしゅ",
+        "romaji": "inshu",
+        "meaning": "drinking alcohol"
+      }
+    ]
   },
   {
     "id": "n4k121",
@@ -1980,7 +6342,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "野",
+        "reading": "の",
+        "romaji": "no",
+        "meaning": "field"
+      },
+      {
+        "word": "分野",
+        "reading": "ぶんや",
+        "romaji": "bunya",
+        "meaning": "field,sphere,realm,division,branch"
+      },
+      {
+        "word": "野菜",
+        "reading": "やさい",
+        "romaji": "yasai",
+        "meaning": "vegetable"
+      },
+      {
+        "word": "野球",
+        "reading": "やきゅう",
+        "romaji": "yakyū",
+        "meaning": "baseball (～を します : play baseball)"
+      },
+      {
+        "word": "吉野山",
+        "reading": "よしのやま",
+        "romaji": "yoshinoyama",
+        "meaning": "Mt. Yoshino (a mountain in Nara Prefecture)"
+      },
+      {
+        "word": "上野公園",
+        "reading": "うえのこうえん",
+        "romaji": "uenokōen",
+        "meaning": "Ueno Park (in Tokyo)"
+      }
+    ]
   },
   {
     "id": "n4k122",
@@ -1996,7 +6395,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "野菜",
+        "reading": "やさい",
+        "romaji": "yasai",
+        "meaning": "vegetable"
+      },
+      {
+        "word": "菜園",
+        "reading": "さいえん",
+        "romaji": "saien",
+        "meaning": "vegetable garden"
+      },
+      {
+        "word": "白菜",
+        "reading": "はくさい",
+        "romaji": "hakusai",
+        "meaning": "Chinese cabbage"
+      },
+      {
+        "word": "菜の花",
+        "reading": "なのはな",
+        "romaji": "nanohana",
+        "meaning": "canola blossom, rapeseed"
+      },
+      {
+        "word": "青菜",
+        "reading": "あおな",
+        "romaji": "aona",
+        "meaning": "greens, green vegetables"
+      },
+      {
+        "word": "総菜",
+        "reading": "そうざい",
+        "romaji": "souzai",
+        "meaning": "side dishes, prepared food"
+      }
+    ]
   },
   {
     "id": "n4k123",
@@ -2013,7 +6449,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "結果",
+        "reading": "けっか",
+        "romaji": "kekka",
+        "meaning": "result / outcome / consequence"
+      },
+      {
+        "word": "効果",
+        "reading": "こうか",
+        "romaji": "kouka",
+        "meaning": "effect / efficacy"
+      },
+      {
+        "word": "果物",
+        "reading": "くだもの",
+        "romaji": "kudamono",
+        "meaning": "Fruit"
+      },
+      {
+        "word": "成果",
+        "reading": "せいか",
+        "romaji": "seika",
+        "meaning": "fruits of labor, outcome"
+      },
+      {
+        "word": "果汁",
+        "reading": "かじゅう",
+        "romaji": "kajuu",
+        "meaning": "fruit juice"
+      },
+      {
+        "word": "因果",
+        "reading": "いんが",
+        "romaji": "inga",
+        "meaning": "cause and effect, karma"
+      }
+    ]
   },
   {
     "id": "n4k124",
@@ -2029,7 +6502,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "味",
+        "reading": "あじ",
+        "romaji": "aji",
+        "meaning": "flavor, taste"
+      },
+      {
+        "word": "気味",
+        "reading": "きみ",
+        "romaji": "kimi",
+        "meaning": "-like,-looking,-looked"
+      },
+      {
+        "word": "味方",
+        "reading": "みかた",
+        "romaji": "mikata",
+        "meaning": "friend,ally,supporter"
+      },
+      {
+        "word": "美味しい",
+        "reading": "おいしい",
+        "romaji": "oishii",
+        "meaning": "delicious / tasty"
+      },
+      {
+        "word": "意味",
+        "reading": "いみ",
+        "romaji": "imi",
+        "meaning": "meaning"
+      },
+      {
+        "word": "趣味",
+        "reading": "しゅみ",
+        "romaji": "shumi",
+        "meaning": "hobby"
+      }
+    ]
   },
   {
     "id": "n4k125",
@@ -2045,7 +6555,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "甘い",
+        "reading": "あまい",
+        "romaji": "amai",
+        "meaning": "sweet"
+      },
+      {
+        "word": "甘やかす",
+        "reading": "あまやかす",
+        "romaji": "amayakasu",
+        "meaning": "to pamper, to spoil"
+      },
+      {
+        "word": "甘味料",
+        "reading": "かんみりょう",
+        "romaji": "kanmiryou",
+        "meaning": "sweetener"
+      },
+      {
+        "word": "甘口",
+        "reading": "あまくち",
+        "romaji": "amakuchi",
+        "meaning": "mild, sweet taste"
+      },
+      {
+        "word": "甘酒",
+        "reading": "あまざけ",
+        "romaji": "amazake",
+        "meaning": "sweet sake"
+      },
+      {
+        "word": "甘み",
+        "reading": "あまみ",
+        "romaji": "amami",
+        "meaning": "sweetness"
+      }
+    ]
   },
   {
     "id": "n4k126",
@@ -2063,7 +6610,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "辛い",
+        "reading": "つらい",
+        "romaji": "tsurai",
+        "meaning": "painful,heart-breaking"
+      },
+      {
+        "word": "辛口",
+        "reading": "からくち",
+        "romaji": "karakuchi",
+        "meaning": "dry taste, harsh (criticism)"
+      },
+      {
+        "word": "香辛料",
+        "reading": "こうしんりょう",
+        "romaji": "koushinryou",
+        "meaning": "spices, seasoning"
+      },
+      {
+        "word": "激辛",
+        "reading": "げきから",
+        "romaji": "gekikara",
+        "meaning": "super spicy, fiery hot"
+      },
+      {
+        "word": "塩辛い",
+        "reading": "しおからい",
+        "romaji": "shiokarai",
+        "meaning": "salty"
+      },
+      {
+        "word": "辛抱",
+        "reading": "しんぼう",
+        "romaji": "shinbou",
+        "meaning": "patience, endurance"
+      }
+    ]
   },
   {
     "id": "n4k127",
@@ -2080,7 +6664,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "皿",
+        "reading": "さら",
+        "romaji": "sara",
+        "meaning": "plate,dish"
+      },
+      {
+        "word": "お皿",
+        "reading": "おさら",
+        "romaji": "osara",
+        "meaning": "plate, dish"
+      },
+      {
+        "word": "灰皿",
+        "reading": "はいざら",
+        "romaji": "haizara",
+        "meaning": "ashtray"
+      },
+      {
+        "word": "［お］皿",
+        "reading": "［お］さら",
+        "romaji": "[o] sara",
+        "meaning": "plate, dish"
+      },
+      {
+        "word": "小皿",
+        "reading": "こざら",
+        "romaji": "kozara",
+        "meaning": "small plate, saucer"
+      },
+      {
+        "word": "大皿",
+        "reading": "おおざら",
+        "romaji": "oozara",
+        "meaning": "large platter"
+      }
+    ]
   },
   {
     "id": "n4k128",
@@ -2097,7 +6718,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "茶",
+        "reading": "ちゃ",
+        "romaji": "cha",
+        "meaning": "tea"
+      },
+      {
+        "word": "茶道",
+        "reading": "さどう",
+        "romaji": "sadō",
+        "meaning": "tea ceremony"
+      },
+      {
+        "word": "お茶",
+        "reading": "おちゃ",
+        "romaji": "ocha",
+        "meaning": "tea (Japanese green tea)"
+      },
+      {
+        "word": "喫茶店",
+        "reading": "きっさてん",
+        "romaji": "kissaten",
+        "meaning": "coffee lounge"
+      },
+      {
+        "word": "紅茶",
+        "reading": "こうちゃ",
+        "romaji": "koucha",
+        "meaning": "black tea"
+      },
+      {
+        "word": "茶色",
+        "reading": "ちゃいろ",
+        "romaji": "chairo",
+        "meaning": "brown"
+      }
+    ]
   },
   {
     "id": "n4k129",
@@ -2113,7 +6771,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "飯",
+        "reading": "めし",
+        "romaji": "meshi",
+        "meaning": "(sl) meals,food"
+      },
+      {
+        "word": "ご飯",
+        "reading": "ごはん",
+        "romaji": "gohan",
+        "meaning": "cooked rice / meal"
+      },
+      {
+        "word": "御飯",
+        "reading": "ごはん",
+        "romaji": "gohan",
+        "meaning": "cooked rice, meal"
+      },
+      {
+        "word": "朝ご飯",
+        "reading": "あさごはん",
+        "romaji": "asagohan",
+        "meaning": "breakfast"
+      },
+      {
+        "word": "昼ご飯",
+        "reading": "ひるごはん",
+        "romaji": "hirugohan",
+        "meaning": "lunch"
+      },
+      {
+        "word": "晩ご飯",
+        "reading": "ばんごはん",
+        "romaji": "bangohan",
+        "meaning": "dinner"
+      }
+    ]
   },
   {
     "id": "n4k130",
@@ -2129,7 +6824,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "森",
+        "reading": "もり",
+        "romaji": "mori",
+        "meaning": "forest"
+      },
+      {
+        "word": "森林",
+        "reading": "しんりん",
+        "romaji": "shinrin",
+        "meaning": "forest, woods"
+      },
+      {
+        "word": "青森",
+        "reading": "あおもり",
+        "romaji": "aomori",
+        "meaning": "Aomori prefecture"
+      },
+      {
+        "word": "森林浴",
+        "reading": "しんりんよく",
+        "romaji": "shinrinyoku",
+        "meaning": "forest bathing"
+      },
+      {
+        "word": "森閑",
+        "reading": "しんかん",
+        "romaji": "shinkan",
+        "meaning": "silent, quiet (like woods)"
+      },
+      {
+        "word": "深森",
+        "reading": "しんしん",
+        "romaji": "shinshin",
+        "meaning": "deep forest"
+      }
+    ]
   },
   {
     "id": "n4k131",
@@ -2145,7 +6877,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "林",
+        "reading": "はやし",
+        "romaji": "hayashi",
+        "meaning": "woods, forest"
+      },
+      {
+        "word": "森林",
+        "reading": "しんりん",
+        "romaji": "shinrin",
+        "meaning": "forest, woods"
+      },
+      {
+        "word": "松林",
+        "reading": "まつばやし",
+        "romaji": "matsubayashi",
+        "meaning": "pine grove"
+      },
+      {
+        "word": "林業",
+        "reading": "りんぎょう",
+        "romaji": "ringyou",
+        "meaning": "forestry"
+      },
+      {
+        "word": "雑木林",
+        "reading": "ぞうきばやし",
+        "romaji": "zoukibayashi",
+        "meaning": "thicket, copse"
+      },
+      {
+        "word": "密林",
+        "reading": "みつりん",
+        "romaji": "mitsurin",
+        "meaning": "dense jungle"
+      }
+    ]
   },
   {
     "id": "n4k132",
@@ -2163,7 +6932,38 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "石",
+        "reading": "いし",
+        "romaji": "ishi",
+        "meaning": "stone"
+      },
+      {
+        "word": "石炭",
+        "reading": "せきたん",
+        "romaji": "sekitan",
+        "meaning": "coal"
+      },
+      {
+        "word": "石油",
+        "reading": "せきゆ",
+        "romaji": "sekiyu",
+        "meaning": "oil,petroleum,kerosene"
+      },
+      {
+        "word": "石鹸",
+        "reading": "せっけん",
+        "romaji": "sekken",
+        "meaning": "soap"
+      },
+      {
+        "word": "宝石",
+        "reading": "ほうせき",
+        "romaji": "houseki",
+        "meaning": "gem,jewel"
+      }
+    ]
   },
   {
     "id": "n4k133",
@@ -2180,7 +6980,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "砂",
+        "reading": "すな",
+        "romaji": "suna",
+        "meaning": "sand"
+      },
+      {
+        "word": "砂漠",
+        "reading": "さばく",
+        "romaji": "sabaku",
+        "meaning": "desert"
+      },
+      {
+        "word": "砂糖",
+        "reading": "さとう",
+        "romaji": "satou",
+        "meaning": "Sugar"
+      },
+      {
+        "word": "砂浜",
+        "reading": "すなはま",
+        "romaji": "sunahama",
+        "meaning": "sandy beach"
+      },
+      {
+        "word": "土砂",
+        "reading": "どしゃ",
+        "romaji": "dosha",
+        "meaning": "earth and sand"
+      },
+      {
+        "word": "砂利",
+        "reading": "じゃり",
+        "romaji": "jari",
+        "meaning": "gravel, pebbles"
+      }
+    ]
   },
   {
     "id": "n4k134",
@@ -2196,7 +7033,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "岩",
+        "reading": "いわ",
+        "romaji": "iwa",
+        "meaning": "rock,crag"
+      },
+      {
+        "word": "岩石",
+        "reading": "がんせき",
+        "romaji": "ganseki",
+        "meaning": "rocks and stones"
+      },
+      {
+        "word": "溶岩",
+        "reading": "ようがん",
+        "romaji": "yougan",
+        "meaning": "lava"
+      },
+      {
+        "word": "岩場",
+        "reading": "いわば",
+        "romaji": "iwaba",
+        "meaning": "rocky area"
+      },
+      {
+        "word": "岩山",
+        "reading": "いわやま",
+        "romaji": "iwayama",
+        "meaning": "rocky mountain"
+      },
+      {
+        "word": "一枚岩",
+        "reading": "いちまいいわ",
+        "romaji": "ichimaiiwa",
+        "meaning": "monolith, unified front"
+      }
+    ]
   },
   {
     "id": "n4k135",
@@ -2212,7 +7086,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "泥",
+        "reading": "どろ",
+        "romaji": "doro",
+        "meaning": "mud"
+      },
+      {
+        "word": "泥棒",
+        "reading": "どろぼう",
+        "romaji": "dorobou",
+        "meaning": "thief; burglar"
+      },
+      {
+        "word": "泥水",
+        "reading": "どろみず",
+        "romaji": "doromizu",
+        "meaning": "muddy water"
+      },
+      {
+        "word": "泥沼",
+        "reading": "どろぬま",
+        "romaji": "doronuma",
+        "meaning": "bog, morass, quagmire"
+      },
+      {
+        "word": "泥酔",
+        "reading": "でいすい",
+        "romaji": "deisui",
+        "meaning": "dead drunk"
+      },
+      {
+        "word": "泥足",
+        "reading": "どろあし",
+        "romaji": "doroashi",
+        "meaning": "muddy feet"
+      }
+    ]
   },
   {
     "id": "n4k136",
@@ -2228,7 +7139,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "氷",
+        "reading": "こおり",
+        "romaji": "koori",
+        "meaning": "ice,hail"
+      },
+      {
+        "word": "氷水",
+        "reading": "こおりみず",
+        "romaji": "koorimizu",
+        "meaning": "ice water"
+      },
+      {
+        "word": "氷山",
+        "reading": "ひょうざん",
+        "romaji": "hyouzan",
+        "meaning": "iceberg"
+      },
+      {
+        "word": "かき氷",
+        "reading": "かきごおり",
+        "romaji": "kakigoori",
+        "meaning": "shaved ice (dessert)"
+      },
+      {
+        "word": "氷河",
+        "reading": "ひょうが",
+        "romaji": "hyouga",
+        "meaning": "glacier"
+      },
+      {
+        "word": "結氷",
+        "reading": "けっぴょう",
+        "romaji": "keppyou",
+        "meaning": "freezing over"
+      }
+    ]
   },
   {
     "id": "n4k137",
@@ -2244,7 +7192,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "波",
+        "reading": "なみ",
+        "romaji": "nami",
+        "meaning": "wave"
+      },
+      {
+        "word": "津波",
+        "reading": "つなみ",
+        "romaji": "tsunami",
+        "meaning": "tsunami, tidal wave"
+      },
+      {
+        "word": "電波",
+        "reading": "でんぱ",
+        "romaji": "denpa",
+        "meaning": "radio wave"
+      },
+      {
+        "word": "波長",
+        "reading": "はちょう",
+        "romaji": "hachou",
+        "meaning": "wavelength"
+      },
+      {
+        "word": "高波",
+        "reading": "たかなみ",
+        "romaji": "takanami",
+        "meaning": "high wave, swell"
+      },
+      {
+        "word": "大波",
+        "reading": "おおなみ",
+        "romaji": "oonami",
+        "meaning": "big wave, billow"
+      }
+    ]
   },
   {
     "id": "n4k138",
@@ -2261,7 +7246,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "星",
+        "reading": "ほし",
+        "romaji": "hoshi",
+        "meaning": "star"
+      },
+      {
+        "word": "衛星",
+        "reading": "えいせい",
+        "romaji": "eisei",
+        "meaning": "satellite"
+      },
+      {
+        "word": "星占い",
+        "reading": "ほしうらない",
+        "romaji": "hoshiuranai",
+        "meaning": "horoscope"
+      },
+      {
+        "word": "星出彰彦",
+        "reading": "ほしであきひこ",
+        "romaji": "hoshideakihiko",
+        "meaning": "Japanese astronaut (1968-)"
+      },
+      {
+        "word": "星座",
+        "reading": "せいざ",
+        "romaji": "seiza",
+        "meaning": "constellation"
+      },
+      {
+        "word": "流れ星",
+        "reading": "ながれぼし",
+        "romaji": "nagareboshi",
+        "meaning": "shooting star, meteor"
+      }
+    ]
   },
   {
     "id": "n4k139",
@@ -2278,7 +7300,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "太陽",
+        "reading": "たいよう",
+        "romaji": "taiyou",
+        "meaning": "sun,solar"
+      },
+      {
+        "word": "太る",
+        "reading": "ふとる",
+        "romaji": "futoru",
+        "meaning": "to gain weight"
+      },
+      {
+        "word": "太い",
+        "reading": "ふとい",
+        "romaji": "futoi",
+        "meaning": "fat"
+      },
+      {
+        "word": "聖徳太子",
+        "reading": "しょうとくたいし",
+        "romaji": "shōtokutaishi",
+        "meaning": "Prince Shotoku (574-622)"
+      },
+      {
+        "word": "太ります",
+        "reading": "ふとります",
+        "romaji": "futorimasu",
+        "meaning": "get fat"
+      },
+      {
+        "word": "浦島太郎",
+        "reading": "うらしまたろう",
+        "romaji": "urashimatarō",
+        "meaning": "name of the main character in an old folk tale"
+      }
+    ]
   },
   {
     "id": "n4k140",
@@ -2294,7 +7353,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "温暖",
+        "reading": "おんだん",
+        "romaji": "ondan",
+        "meaning": "warmth"
+      },
+      {
+        "word": "温度",
+        "reading": "おんど",
+        "romaji": "ondo",
+        "meaning": "temperature"
+      },
+      {
+        "word": "気温",
+        "reading": "きおん",
+        "romaji": "kion",
+        "meaning": "temperature"
+      },
+      {
+        "word": "温い",
+        "reading": "ぬるい",
+        "romaji": "nurui",
+        "meaning": "luke warm"
+      },
+      {
+        "word": "温泉",
+        "reading": "おんせん",
+        "romaji": "onsen",
+        "meaning": "hot spring, spa"
+      },
+      {
+        "word": "体温計",
+        "reading": "たいおんけい",
+        "romaji": "taionkei",
+        "meaning": "(clinical) thermometer"
+      }
+    ]
   },
   {
     "id": "n4k141",
@@ -2312,7 +7408,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "度",
+        "reading": "たび",
+        "romaji": "tabi",
+        "meaning": "counter for occurrences"
+      },
+      {
+        "word": "忖度",
+        "reading": "そんたく",
+        "romaji": "sontaku",
+        "meaning": "reading the air / inferring/guessing another's intentions"
+      },
+      {
+        "word": "態度",
+        "reading": "たいど",
+        "romaji": "taido",
+        "meaning": "attitude / manner / behavior"
+      },
+      {
+        "word": "もう一度",
+        "reading": "もういちど",
+        "romaji": "mouichido",
+        "meaning": "again"
+      },
+      {
+        "word": "丁度",
+        "reading": "ちょうど",
+        "romaji": "choudo",
+        "meaning": "just, right, exactly"
+      },
+      {
+        "word": "～度",
+        "reading": "～ど",
+        "romaji": "do",
+        "meaning": "counter for occurrences; ~ degree; ~ point"
+      }
+    ]
   },
   {
     "id": "n4k142",
@@ -2328,7 +7461,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "意見",
+        "reading": "いけん",
+        "romaji": "iken",
+        "meaning": "opinion / view"
+      },
+      {
+        "word": "意外",
+        "reading": "いがい",
+        "romaji": "igai",
+        "meaning": "unexpected,surprising"
+      },
+      {
+        "word": "意思",
+        "reading": "いし",
+        "romaji": "ishi",
+        "meaning": "intention,purpose"
+      },
+      {
+        "word": "意味",
+        "reading": "いみ",
+        "romaji": "imi",
+        "meaning": "meaning"
+      },
+      {
+        "word": "注意",
+        "reading": "ちゅうい",
+        "romaji": "chuui",
+        "meaning": "caution / attention / warning"
+      },
+      {
+        "word": "用意",
+        "reading": "ようい",
+        "romaji": "youi",
+        "meaning": "preparation"
+      }
+    ]
   },
   {
     "id": "n4k143",
@@ -2344,7 +7514,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "味",
+        "reading": "あじ",
+        "romaji": "aji",
+        "meaning": "flavor, taste"
+      },
+      {
+        "word": "気味",
+        "reading": "きみ",
+        "romaji": "kimi",
+        "meaning": "-like,-looking,-looked"
+      },
+      {
+        "word": "味方",
+        "reading": "みかた",
+        "romaji": "mikata",
+        "meaning": "friend,ally,supporter"
+      },
+      {
+        "word": "美味しい",
+        "reading": "おいしい",
+        "romaji": "oishii",
+        "meaning": "delicious / tasty"
+      },
+      {
+        "word": "意味",
+        "reading": "いみ",
+        "romaji": "imi",
+        "meaning": "meaning"
+      },
+      {
+        "word": "趣味",
+        "reading": "しゅみ",
+        "romaji": "shumi",
+        "meaning": "hobby"
+      }
+    ]
   },
   {
     "id": "n4k144",
@@ -2361,7 +7568,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "色",
+        "reading": "いろ",
+        "romaji": "iro",
+        "meaning": "colour"
+      },
+      {
+        "word": "景色",
+        "reading": "けしき",
+        "romaji": "keshiki",
+        "meaning": "scenery / landscape"
+      },
+      {
+        "word": "金色",
+        "reading": "きんいろ",
+        "romaji": "kin'iro",
+        "meaning": "golden colour"
+      },
+      {
+        "word": "黄色",
+        "reading": "きいろ",
+        "romaji": "kiiro",
+        "meaning": "yellow"
+      },
+      {
+        "word": "黄色い",
+        "reading": "きいろい",
+        "romaji": "kiiroi",
+        "meaning": "yellow"
+      },
+      {
+        "word": "茶色",
+        "reading": "ちゃいろ",
+        "romaji": "chairo",
+        "meaning": "brown"
+      }
+    ]
   },
   {
     "id": "n4k145",
@@ -2378,7 +7622,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "形",
+        "reading": "かたち",
+        "romaji": "katachi",
+        "meaning": "shape"
+      },
+      {
+        "word": "人形",
+        "reading": "にんぎょう",
+        "romaji": "ningyou",
+        "meaning": "doll, figure"
+      },
+      {
+        "word": "形式",
+        "reading": "けいしき",
+        "romaji": "keishiki",
+        "meaning": "form, format, formality"
+      },
+      {
+        "word": "三角形",
+        "reading": "さんかっけい",
+        "romaji": "sankakkei",
+        "meaning": "triangle"
+      },
+      {
+        "word": "四角形",
+        "reading": "しかくけい",
+        "romaji": "shikakukei",
+        "meaning": "quadrilateral, rectangle"
+      },
+      {
+        "word": "図形",
+        "reading": "ずけい",
+        "romaji": "zukei",
+        "meaning": "figure, graphical shape"
+      }
+    ]
   },
   {
     "id": "n4k146",
@@ -2395,7 +7676,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "諮問",
+        "reading": "しもん",
+        "romaji": "shimon",
+        "meaning": "consultation / inquiry to committee"
+      },
+      {
+        "word": "学問",
+        "reading": "がくもん",
+        "romaji": "gakumon",
+        "meaning": "scholarship,study,learning"
+      },
+      {
+        "word": "疑問",
+        "reading": "ぎもん",
+        "romaji": "gimon",
+        "meaning": "question,problem,doubt,guess"
+      },
+      {
+        "word": "質問",
+        "reading": "しつもん",
+        "romaji": "shitsumon",
+        "meaning": "Question"
+      },
+      {
+        "word": "問題",
+        "reading": "もんだい",
+        "romaji": "mondai",
+        "meaning": "problem"
+      },
+      {
+        "word": "質問します",
+        "reading": "しつもんします",
+        "romaji": "shitsumonshimasu",
+        "meaning": "ask a question"
+      }
+    ]
   },
   {
     "id": "n4k147",
@@ -2412,7 +7730,38 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "答",
+        "reading": "こたえ",
+        "romaji": "kotae",
+        "meaning": "answer, response"
+      },
+      {
+        "word": "答案",
+        "reading": "とうあん",
+        "romaji": "touan",
+        "meaning": "examination paper,examination script"
+      },
+      {
+        "word": "回答",
+        "reading": "かいとう",
+        "romaji": "kaitō",
+        "meaning": "answer, reply (～します : answer, reply)"
+      },
+      {
+        "word": "答える",
+        "reading": "こたえる",
+        "romaji": "kotaeru",
+        "meaning": "to answer"
+      },
+      {
+        "word": "答え",
+        "reading": "こたえ",
+        "romaji": "kotae",
+        "meaning": "answer"
+      }
+    ]
   },
   {
     "id": "n4k148",
@@ -2428,7 +7777,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "管理",
+        "reading": "かんり",
+        "romaji": "kanri",
+        "meaning": "control,management (e.g. of a business)"
+      },
+      {
+        "word": "修理",
+        "reading": "しゅうり",
+        "romaji": "shuuri",
+        "meaning": "repairing,mending"
+      },
+      {
+        "word": "処理",
+        "reading": "しょり",
+        "romaji": "shori",
+        "meaning": "processing,dealing with,treatment,disposition,disposal"
+      },
+      {
+        "word": "料理",
+        "reading": "りょうり",
+        "romaji": "ryouri",
+        "meaning": "cuisine"
+      },
+      {
+        "word": "無理［な］",
+        "reading": "むり［な］",
+        "romaji": "muri [na]",
+        "meaning": "excessive, impossible"
+      },
+      {
+        "word": "修理します",
+        "reading": "しゅうりします",
+        "romaji": "shūrishimasu",
+        "meaning": "repair"
+      }
+    ]
   },
   {
     "id": "n4k149",
@@ -2446,7 +7832,38 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "経由",
+        "reading": "けいゆ",
+        "romaji": "keiyu",
+        "meaning": "go by the way,via"
+      },
+      {
+        "word": "理由",
+        "reading": "りゆう",
+        "romaji": "riyuu",
+        "meaning": "reason"
+      },
+      {
+        "word": "自由",
+        "reading": "じゆう",
+        "romaji": "jiyuu",
+        "meaning": "freedom"
+      },
+      {
+        "word": "自由に",
+        "reading": "じゆうに",
+        "romaji": "jiyūni",
+        "meaning": "freely"
+      },
+      {
+        "word": "不自由",
+        "reading": "ふじゆう",
+        "romaji": "fujiyuu",
+        "meaning": "discomfort,disability,inconvenience,destitution"
+      }
+    ]
   },
   {
     "id": "n4k150",
@@ -2462,7 +7879,44 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "以前",
+        "reading": "いぜん",
+        "romaji": "izen",
+        "meaning": "ago,since,before,previous"
+      },
+      {
+        "word": "以来",
+        "reading": "いらい",
+        "romaji": "irai",
+        "meaning": "since,henceforth"
+      },
+      {
+        "word": "以下",
+        "reading": "いか",
+        "romaji": "ika",
+        "meaning": "less than, below"
+      },
+      {
+        "word": "以内",
+        "reading": "いない",
+        "romaji": "inai",
+        "meaning": "within, less (no more) than"
+      },
+      {
+        "word": "以外",
+        "reading": "いがい",
+        "romaji": "igai",
+        "meaning": "other than, with the exception of, excepting"
+      },
+      {
+        "word": "以上",
+        "reading": "いじょう",
+        "romaji": "ijou",
+        "meaning": "more than; this is all"
+      }
+    ]
   },
   {
     "id": "n4k151",
@@ -2478,7 +7932,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "別",
+        "reading": "べつ",
+        "romaji": "betsu",
+        "meaning": "distinction, different"
+      },
+      {
+        "word": "区別",
+        "reading": "くべつ",
+        "romaji": "kubetsu",
+        "meaning": "distinction,differentiation,classification"
+      },
+      {
+        "word": "差別",
+        "reading": "さべつ",
+        "romaji": "sabetsu",
+        "meaning": "discrimination,distinction,differentiation"
+      },
+      {
+        "word": "別々に",
+        "reading": "べつべつに",
+        "romaji": "betsubetsuni",
+        "meaning": "separately"
+      },
+      {
+        "word": "特別",
+        "reading": "とくべつ",
+        "romaji": "tokubetsu",
+        "meaning": "special / particular"
+      },
+      {
+        "word": "別れる",
+        "reading": "わかれる",
+        "romaji": "wakareru",
+        "meaning": "to part from, to separate"
+      }
+    ]
   },
   {
     "id": "n4k152",
@@ -2494,7 +7985,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "特徴",
+        "reading": "とくちょう",
+        "romaji": "tokuchou",
+        "meaning": "feature,characteristic"
+      },
+      {
+        "word": "独特",
+        "reading": "どくとく",
+        "romaji": "dokutoku",
+        "meaning": "peculiarity,uniqueness,characteristic"
+      },
+      {
+        "word": "特別",
+        "reading": "とくべつ",
+        "romaji": "tokubetsu",
+        "meaning": "special / particular"
+      },
+      {
+        "word": "特急",
+        "reading": "とっきゅう",
+        "romaji": "tokkyū",
+        "meaning": "express"
+      },
+      {
+        "word": "特に",
+        "reading": "とくに",
+        "romaji": "tokuni",
+        "meaning": "especially"
+      },
+      {
+        "word": "特別［な］",
+        "reading": "とくべつ［な］",
+        "romaji": "tokubetsu [na]",
+        "meaning": "special"
+      }
+    ]
   },
   {
     "id": "n4k153",
@@ -2510,7 +8038,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "共同",
+        "reading": "きょうどう",
+        "romaji": "kyoudou",
+        "meaning": "cooperation,association,collaboration,joint"
+      },
+      {
+        "word": "同一",
+        "reading": "どういつ",
+        "romaji": "douitsu",
+        "meaning": "identity,sameness,similarity"
+      },
+      {
+        "word": "同時",
+        "reading": "どうじ",
+        "romaji": "douji",
+        "meaning": "simultaneous(ly),concurrent,same time,synchronous"
+      },
+      {
+        "word": "同じ",
+        "reading": "おなじ",
+        "romaji": "onaji",
+        "meaning": "same"
+      },
+      {
+        "word": "同様",
+        "reading": "どうよう",
+        "romaji": "douyou",
+        "meaning": "identical,equal to,same (kind),like"
+      },
+      {
+        "word": "同僚",
+        "reading": "どうりょう",
+        "romaji": "douryou",
+        "meaning": "coworker,colleague,associate"
+      }
+    ]
   },
   {
     "id": "n4k154",
@@ -2529,7 +8094,44 @@
     "strokeCount": 4,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "違反",
+        "reading": "いはん",
+        "romaji": "ihan",
+        "meaning": "violation (of law),transgression,infringement,breach"
+      },
+      {
+        "word": "反抗",
+        "reading": "はんこう",
+        "romaji": "hankou",
+        "meaning": "opposition,resistance"
+      },
+      {
+        "word": "反対",
+        "reading": "はんたい",
+        "romaji": "hantai",
+        "meaning": "oppose, opposition, resistance"
+      },
+      {
+        "word": "駐車違反",
+        "reading": "ちゅうしゃいはん",
+        "romaji": "chūshaihan",
+        "meaning": "parking violation"
+      },
+      {
+        "word": "反省",
+        "reading": "はんせい",
+        "romaji": "hansei",
+        "meaning": "reflection, regret"
+      },
+      {
+        "word": "反応",
+        "reading": "はんのう",
+        "romaji": "hannou",
+        "meaning": "reaction, response"
+      }
+    ]
   },
   {
     "id": "n4k155",
@@ -2546,7 +8148,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "全",
+        "reading": "ぜん",
+        "romaji": "zen",
+        "meaning": "all,whole,entire,complete,overall,pan"
+      },
+      {
+        "word": "完全",
+        "reading": "かんぜん",
+        "romaji": "kanzen",
+        "meaning": "perfection,completeness"
+      },
+      {
+        "word": "全て",
+        "reading": "すべて",
+        "romaji": "subete",
+        "meaning": "all,the whole,entirely,in general,wholly"
+      },
+      {
+        "word": "全部",
+        "reading": "ぜんぶ",
+        "romaji": "zenbu",
+        "meaning": "All"
+      },
+      {
+        "word": "全然",
+        "reading": "ぜんぜん",
+        "romaji": "zenzen",
+        "meaning": "not at all (used with negatives)"
+      },
+      {
+        "word": "全部で",
+        "reading": "ぜんぶで",
+        "romaji": "zenbude",
+        "meaning": "in total"
+      }
+    ]
   },
   {
     "id": "n4k156",
@@ -2562,7 +8201,38 @@
     "strokeCount": 5,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "半",
+        "reading": "はん",
+        "romaji": "han",
+        "meaning": "half"
+      },
+      {
+        "word": "大半",
+        "reading": "たいはん",
+        "romaji": "taihan",
+        "meaning": "majority,mostly,generally"
+      },
+      {
+        "word": "半ば",
+        "reading": "なかば",
+        "romaji": "nakaba",
+        "meaning": "middle,half,semi,halfway,partly"
+      },
+      {
+        "word": "半分",
+        "reading": "はんぶん",
+        "romaji": "hanbun",
+        "meaning": "half minute"
+      },
+      {
+        "word": "半年",
+        "reading": "はんとし",
+        "romaji": "hantoshi",
+        "meaning": "half a year"
+      }
+    ]
   },
   {
     "id": "n4k157",
@@ -2578,7 +8248,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "両替",
+        "reading": "りょうがえ",
+        "romaji": "ryougae",
+        "meaning": "change,money exchange"
+      },
+      {
+        "word": "両方",
+        "reading": "りょうほう",
+        "romaji": "ryouhou",
+        "meaning": "both sides, both parties"
+      },
+      {
+        "word": "両親",
+        "reading": "りょうしん",
+        "romaji": "ryoushin",
+        "meaning": "both parents"
+      },
+      {
+        "word": "両手",
+        "reading": "りょうて",
+        "romaji": "ryoute",
+        "meaning": "both hands"
+      },
+      {
+        "word": "両立",
+        "reading": "りょうりつ",
+        "romaji": "ryouritsu",
+        "meaning": "compatibility, coexistence"
+      },
+      {
+        "word": "両足",
+        "reading": "りょうあし",
+        "romaji": "ryouashi",
+        "meaning": "both feet/legs"
+      }
+    ]
   },
   {
     "id": "n4k158",
@@ -2594,7 +8301,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "各自",
+        "reading": "かくじ",
+        "romaji": "kakuji",
+        "meaning": "each person / respective"
+      },
+      {
+        "word": "各地",
+        "reading": "かくち",
+        "romaji": "kakuchi",
+        "meaning": "every place / various locations"
+      },
+      {
+        "word": "各々",
+        "reading": "おのおの",
+        "romaji": "onoono",
+        "meaning": "each / respectively"
+      },
+      {
+        "word": "各国",
+        "reading": "かっこく",
+        "romaji": "kakkoku",
+        "meaning": "each country, all nations"
+      },
+      {
+        "word": "各位",
+        "reading": "かくい",
+        "romaji": "kakui",
+        "meaning": "everyone, to all concerned"
+      },
+      {
+        "word": "各駅",
+        "reading": "かくえき",
+        "romaji": "kakueki",
+        "meaning": "every station"
+      }
+    ]
   },
   {
     "id": "n4k159",
@@ -2612,7 +8356,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "次",
+        "reading": "つぎ",
+        "romaji": "tsugi",
+        "meaning": "next"
+      },
+      {
+        "word": "漸次",
+        "reading": "ぜんじ",
+        "romaji": "zenji",
+        "meaning": "gradually / step by step / progressively"
+      },
+      {
+        "word": "次第",
+        "reading": "しだい",
+        "romaji": "shidai",
+        "meaning": "(1) order,precedence,(2) circumstances,(3)"
+      },
+      {
+        "word": "次の",
+        "reading": "つぎの",
+        "romaji": "tsugino",
+        "meaning": "next"
+      },
+      {
+        "word": "次に",
+        "reading": "つぎに",
+        "romaji": "tsugini",
+        "meaning": "next, as a next step"
+      },
+      {
+        "word": "二次会",
+        "reading": "にじかい",
+        "romaji": "nijikai",
+        "meaning": "second party"
+      }
+    ]
   },
   {
     "id": "n4k160",
@@ -2630,7 +8411,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "数",
+        "reading": "かず",
+        "romaji": "kazu",
+        "meaning": "number,figure"
+      },
+      {
+        "word": "数字",
+        "reading": "すうじ",
+        "romaji": "suuji",
+        "meaning": "numeral,figure"
+      },
+      {
+        "word": "数学",
+        "reading": "すうがく",
+        "romaji": "suugaku",
+        "meaning": "mathematics"
+      },
+      {
+        "word": "数えます",
+        "reading": "かぞえます",
+        "romaji": "kazoemasu",
+        "meaning": "count"
+      },
+      {
+        "word": "御数",
+        "reading": "おかず",
+        "romaji": "okazu",
+        "meaning": "side dish"
+      },
+      {
+        "word": "数える",
+        "reading": "かぞえる",
+        "romaji": "kazoeru",
+        "meaning": "to count"
+      }
+    ]
   },
   {
     "id": "n4k161",
@@ -2646,7 +8464,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "量",
+        "reading": "りょう",
+        "romaji": "ryou",
+        "meaning": "quantity,amount,volume,portion (of food)"
+      },
+      {
+        "word": "大量",
+        "reading": "たいりょう",
+        "romaji": "tairyou",
+        "meaning": "large quantity, massive"
+      },
+      {
+        "word": "分量",
+        "reading": "ぶんりょう",
+        "romaji": "bunryou",
+        "meaning": "portion, amount"
+      },
+      {
+        "word": "重量",
+        "reading": "じゅうりょう",
+        "romaji": "juuryou",
+        "meaning": "weight"
+      },
+      {
+        "word": "少量",
+        "reading": "しょうりょう",
+        "romaji": "shouryou",
+        "meaning": "small quantity"
+      },
+      {
+        "word": "雨量",
+        "reading": "うりょう",
+        "romaji": "uryou",
+        "meaning": "rainfall amount"
+      }
+    ]
   },
   {
     "id": "n4k162",
@@ -2662,7 +8517,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "計",
+        "reading": "けい",
+        "romaji": "kei",
+        "meaning": "plan"
+      },
+      {
+        "word": "会計",
+        "reading": "かいけい",
+        "romaji": "kaikei",
+        "meaning": "account,finance,accountant"
+      },
+      {
+        "word": "計画",
+        "reading": "けいかく",
+        "romaji": "keikaku",
+        "meaning": "plan,project,schedule,scheme,program"
+      },
+      {
+        "word": "時計",
+        "reading": "とけい",
+        "romaji": "tokei",
+        "meaning": "clock / watch"
+      },
+      {
+        "word": "設計します",
+        "reading": "せっけいします",
+        "romaji": "sekkeishimasu",
+        "meaning": "design, plan"
+      },
+      {
+        "word": "計算します",
+        "reading": "けいさんします",
+        "romaji": "keisanshimasu",
+        "meaning": "calculate"
+      }
+    ]
   },
   {
     "id": "n4k163",
@@ -2678,7 +8570,38 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "点",
+        "reading": "てん",
+        "romaji": "ten",
+        "meaning": "mark, score, grade; point, dot"
+      },
+      {
+        "word": "欠点",
+        "reading": "けってん",
+        "romaji": "ketten",
+        "meaning": "faults,defect,weakness"
+      },
+      {
+        "word": "要点",
+        "reading": "ようてん",
+        "romaji": "youten",
+        "meaning": "gist,main point"
+      },
+      {
+        "word": "交差点",
+        "reading": "こうさてん",
+        "romaji": "kousaten",
+        "meaning": "intersection"
+      },
+      {
+        "word": "点く",
+        "reading": "つく",
+        "romaji": "tsuku",
+        "meaning": "to be started, to be switched on"
+      }
+    ]
   },
   {
     "id": "n4k164",
@@ -2694,7 +8617,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "位",
+        "reading": "くらい",
+        "romaji": "kurai",
+        "meaning": "grade,rank,about"
+      },
+      {
+        "word": "位置",
+        "reading": "いち",
+        "romaji": "ichi",
+        "meaning": "place,situation,position,location"
+      },
+      {
+        "word": "単位",
+        "reading": "たんい",
+        "romaji": "tani",
+        "meaning": "unit,denomination,credit (in school)"
+      },
+      {
+        "word": "地位",
+        "reading": "ちい",
+        "romaji": "chii",
+        "meaning": "(social) position,status"
+      },
+      {
+        "word": "一位",
+        "reading": "いちい",
+        "romaji": "ichii",
+        "meaning": "first place"
+      },
+      {
+        "word": "順位",
+        "reading": "じゅんい",
+        "romaji": "juni",
+        "meaning": "order, rank, standing"
+      }
+    ]
   },
   {
     "id": "n4k165",
@@ -2710,7 +8670,38 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "服",
+        "reading": "ふく",
+        "romaji": "fuku",
+        "meaning": "clothes"
+      },
+      {
+        "word": "衣服",
+        "reading": "いふく",
+        "romaji": "ifuku",
+        "meaning": "clothes"
+      },
+      {
+        "word": "克服",
+        "reading": "こくふく",
+        "romaji": "kokufuku",
+        "meaning": "subjugation,conquest"
+      },
+      {
+        "word": "洋服",
+        "reading": "ようふく",
+        "romaji": "youfuku",
+        "meaning": "western-style clothes"
+      },
+      {
+        "word": "服装",
+        "reading": "ふくそう",
+        "romaji": "fukusou",
+        "meaning": "garments"
+      }
+    ]
   },
   {
     "id": "n4k166",
@@ -2727,7 +8718,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "到着",
+        "reading": "とうちゃく",
+        "romaji": "touchaku",
+        "meaning": "arrival"
+      },
+      {
+        "word": "上着",
+        "reading": "うわぎ",
+        "romaji": "uwagi",
+        "meaning": "jacket"
+      },
+      {
+        "word": "着る",
+        "reading": "きる",
+        "romaji": "kiru",
+        "meaning": "to put on from the shoulders down"
+      },
+      {
+        "word": "着く",
+        "reading": "つく",
+        "romaji": "tsuku",
+        "meaning": "to arrive at"
+      },
+      {
+        "word": "下着",
+        "reading": "したぎ",
+        "romaji": "shitagi",
+        "meaning": "underwear"
+      },
+      {
+        "word": "着物",
+        "reading": "きもの",
+        "romaji": "kimono",
+        "meaning": "kimono (traditional Japanese attire)"
+      }
+    ]
   },
   {
     "id": "n4k167",
@@ -2743,7 +8771,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "帽子",
+        "reading": "ぼうし",
+        "romaji": "boushi",
+        "meaning": "hat"
+      },
+      {
+        "word": "脱帽",
+        "reading": "だつぼう",
+        "romaji": "datsubou",
+        "meaning": "taking off hat; taking hat off to (admiring)"
+      },
+      {
+        "word": "麦わら帽子",
+        "reading": "むぎわらぼうし",
+        "romaji": "mugiwaraboushi",
+        "meaning": "straw hat"
+      },
+      {
+        "word": "学帽",
+        "reading": "がくぼう",
+        "romaji": "gakubou",
+        "meaning": "student cap"
+      },
+      {
+        "word": "制帽",
+        "reading": "せいぼう",
+        "romaji": "seibou",
+        "meaning": "uniform cap"
+      },
+      {
+        "word": "軍帽",
+        "reading": "ぐんぼう",
+        "romaji": "gunbou",
+        "meaning": "military cap"
+      }
+    ]
   },
   {
     "id": "n4k168",
@@ -2759,7 +8824,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "靴",
+        "reading": "くつ",
+        "romaji": "kutsu",
+        "meaning": "shoes"
+      },
+      {
+        "word": "靴下",
+        "reading": "くつした",
+        "romaji": "kutsushita",
+        "meaning": "Socks"
+      },
+      {
+        "word": "靴屋",
+        "reading": "くつや",
+        "romaji": "kutsuya",
+        "meaning": "shoe shop"
+      },
+      {
+        "word": "雨靴",
+        "reading": "あまぐつ",
+        "romaji": "amagutsu",
+        "meaning": "rain boots"
+      },
+      {
+        "word": "革靴",
+        "reading": "かわぐつ",
+        "romaji": "kawagutsu",
+        "meaning": "leather shoes"
+      },
+      {
+        "word": "長靴",
+        "reading": "ながぐつ",
+        "romaji": "nagagutsu",
+        "meaning": "boots, wellingtons"
+      }
+    ]
   },
   {
     "id": "n4k169",
@@ -2775,7 +8877,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "袋",
+        "reading": "ふくろ",
+        "romaji": "fukuro",
+        "meaning": "bag,sack"
+      },
+      {
+        "word": "手袋",
+        "reading": "てぶくろ",
+        "romaji": "tebukuro",
+        "meaning": "glove(s)"
+      },
+      {
+        "word": "非常袋",
+        "reading": "ひじょうぶくろ",
+        "romaji": "hijōbukuro",
+        "meaning": "emergency kit"
+      },
+      {
+        "word": "のし袋",
+        "reading": "のしぶくろ",
+        "romaji": "noshibukuro",
+        "meaning": "envelope for a gift of money"
+      },
+      {
+        "word": "紙袋",
+        "reading": "かみぶくろ",
+        "romaji": "kamibukuro",
+        "meaning": "paper bag"
+      },
+      {
+        "word": "ビニール袋",
+        "reading": "びにーるぶくろ",
+        "romaji": "bini-rubukuro",
+        "meaning": "plastic bag"
+      }
+    ]
   },
   {
     "id": "n4k170",
@@ -2791,7 +8930,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "注",
+        "reading": "ちゅう",
+        "romaji": "chuu",
+        "meaning": "annotation,explanatory note"
+      },
+      {
+        "word": "注ぐ",
+        "reading": "そそぐ",
+        "romaji": "sosogu",
+        "meaning": "to pour (into),to irrigate,to pay,to fill,to feed (e.g. a fire)"
+      },
+      {
+        "word": "注目",
+        "reading": "ちゅうもく",
+        "romaji": "chuumoku",
+        "meaning": "notice,attention,observation"
+      },
+      {
+        "word": "注意",
+        "reading": "ちゅうい",
+        "romaji": "chuui",
+        "meaning": "caution / attention / warning"
+      },
+      {
+        "word": "注射",
+        "reading": "ちゅうしゃ",
+        "romaji": "chuusha",
+        "meaning": "injection"
+      },
+      {
+        "word": "注意します",
+        "reading": "ちゅういします",
+        "romaji": "chūishimasu",
+        "meaning": "warn, advise"
+      }
+    ]
   },
   {
     "id": "n4k171",
@@ -2807,7 +8983,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "意見",
+        "reading": "いけん",
+        "romaji": "iken",
+        "meaning": "opinion / view"
+      },
+      {
+        "word": "意外",
+        "reading": "いがい",
+        "romaji": "igai",
+        "meaning": "unexpected,surprising"
+      },
+      {
+        "word": "意思",
+        "reading": "いし",
+        "romaji": "ishi",
+        "meaning": "intention,purpose"
+      },
+      {
+        "word": "意味",
+        "reading": "いみ",
+        "romaji": "imi",
+        "meaning": "meaning"
+      },
+      {
+        "word": "注意",
+        "reading": "ちゅうい",
+        "romaji": "chuui",
+        "meaning": "caution / attention / warning"
+      },
+      {
+        "word": "用意",
+        "reading": "ようい",
+        "romaji": "youi",
+        "meaning": "preparation"
+      }
+    ]
   },
   {
     "id": "n4k172",
@@ -2823,7 +9036,44 @@
     "strokeCount": 19,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "願い",
+        "reading": "ねがい",
+        "romaji": "negai",
+        "meaning": "desire,wish,request"
+      },
+      {
+        "word": "願う",
+        "reading": "ねがう",
+        "romaji": "negau",
+        "meaning": "to desire,to wish,to request"
+      },
+      {
+        "word": "お願い",
+        "reading": "おねがい",
+        "romaji": "onegai",
+        "meaning": "request, please"
+      },
+      {
+        "word": "願書",
+        "reading": "がんしょ",
+        "romaji": "gansho",
+        "meaning": "written application"
+      },
+      {
+        "word": "祈願",
+        "reading": "きがん",
+        "romaji": "kigan",
+        "meaning": "prayer, supplication"
+      },
+      {
+        "word": "志願",
+        "reading": "しがん",
+        "romaji": "shigan",
+        "meaning": "volunteering, application"
+      }
+    ]
   },
   {
     "id": "n4k173",
@@ -2840,7 +9090,38 @@
     "strokeCount": 16,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "信頼",
+        "reading": "しんらい",
+        "romaji": "shinrai",
+        "meaning": "trust / confidence"
+      },
+      {
+        "word": "依頼",
+        "reading": "いらい",
+        "romaji": "irai",
+        "meaning": "(1) request,commission,dispatch,(2) dependence,trust"
+      },
+      {
+        "word": "頼る",
+        "reading": "たよる",
+        "romaji": "tayoru",
+        "meaning": "to rely on,to have recourse to,to depend on"
+      },
+      {
+        "word": "頼む",
+        "reading": "たのむ",
+        "romaji": "tanomu",
+        "meaning": "to ask"
+      },
+      {
+        "word": "頼みます",
+        "reading": "たのみます",
+        "romaji": "tanomimasu",
+        "meaning": "ask, request"
+      }
+    ]
   },
   {
     "id": "n4k174",
@@ -2856,7 +9137,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "困難",
+        "reading": "こんなん",
+        "romaji": "konnan",
+        "meaning": "difficulty,distress"
+      },
+      {
+        "word": "困る",
+        "reading": "こまる",
+        "romaji": "komaru",
+        "meaning": "to be troubled / in trouble"
+      },
+      {
+        "word": "困ります",
+        "reading": "こまります",
+        "romaji": "komarimasu",
+        "meaning": "be in trouble, have a problem"
+      },
+      {
+        "word": "困窮",
+        "reading": "こんきゅう",
+        "romaji": "konkyuu",
+        "meaning": "poverty, destitution"
+      },
+      {
+        "word": "貧困",
+        "reading": "ひんこん",
+        "romaji": "hinkon",
+        "meaning": "poverty"
+      },
+      {
+        "word": "困惑",
+        "reading": "こんわく",
+        "romaji": "konwaku",
+        "meaning": "bewilderment, perplexity"
+      }
+    ]
   },
   {
     "id": "n4k175",
@@ -2872,7 +9190,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "忘れ物",
+        "reading": "わすれもの",
+        "romaji": "wasuremono",
+        "meaning": "lost article, something forgotten"
+      },
+      {
+        "word": "忘年会",
+        "reading": "ぼうねんかい",
+        "romaji": "bōnenkai",
+        "meaning": "year-end party"
+      },
+      {
+        "word": "忘れる",
+        "reading": "わすれる",
+        "romaji": "wasureru",
+        "meaning": "to forget"
+      },
+      {
+        "word": "忘れます",
+        "reading": "わすれます",
+        "romaji": "wasuremasu",
+        "meaning": "forget"
+      },
+      {
+        "word": "物忘れ",
+        "reading": "ものわすれ",
+        "romaji": "monowasure",
+        "meaning": "forgetfulness"
+      },
+      {
+        "word": "度忘れ",
+        "reading": "どわすれ",
+        "romaji": "dowasure",
+        "meaning": "temporary lapse of memory"
+      }
+    ]
   },
   {
     "id": "n4k176",
@@ -2889,7 +9244,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "覚悟",
+        "reading": "かくご",
+        "romaji": "kakugo",
+        "meaning": "resolution,resignation,readiness,preparedness"
+      },
+      {
+        "word": "感覚",
+        "reading": "かんかく",
+        "romaji": "kankaku",
+        "meaning": "sense,sensation"
+      },
+      {
+        "word": "覚ます",
+        "reading": "さます",
+        "romaji": "samasu",
+        "meaning": "to awaken"
+      },
+      {
+        "word": "覚える",
+        "reading": "おぼえる",
+        "romaji": "oboeru",
+        "meaning": "to remember"
+      },
+      {
+        "word": "覚えます",
+        "reading": "おぼえます",
+        "romaji": "oboemasu",
+        "meaning": "memorise"
+      },
+      {
+        "word": "目が覚めます",
+        "reading": "めがさめます",
+        "romaji": "mega samemasu",
+        "meaning": "wake up"
+      }
+    ]
   },
   {
     "id": "n4k177",
@@ -2905,7 +9297,44 @@
     "strokeCount": 11,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "学習",
+        "reading": "がくしゅう",
+        "romaji": "gakushuu",
+        "meaning": "study,learning"
+      },
+      {
+        "word": "練習",
+        "reading": "れんしゅう",
+        "romaji": "renshuu",
+        "meaning": "practice"
+      },
+      {
+        "word": "習慣",
+        "reading": "しゅうかん",
+        "romaji": "shuukan",
+        "meaning": "habit / custom"
+      },
+      {
+        "word": "習う",
+        "reading": "ならう",
+        "romaji": "narau",
+        "meaning": "to learn"
+      },
+      {
+        "word": "習います",
+        "reading": "ならいます",
+        "romaji": "naraimasu",
+        "meaning": "learn"
+      },
+      {
+        "word": "予習",
+        "reading": "よしゅう",
+        "romaji": "yoshuu",
+        "meaning": "preparation of lessons (for class)"
+      }
+    ]
   },
   {
     "id": "n4k178",
@@ -2921,7 +9350,44 @@
     "strokeCount": 14,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "訓練",
+        "reading": "くんれん",
+        "romaji": "kunren",
+        "meaning": "practice,training"
+      },
+      {
+        "word": "練習",
+        "reading": "れんしゅう",
+        "romaji": "renshuu",
+        "meaning": "practice"
+      },
+      {
+        "word": "試練",
+        "reading": "しれん",
+        "romaji": "shiren",
+        "meaning": "trial, ordeal, test"
+      },
+      {
+        "word": "熟練",
+        "reading": "じゅくれん",
+        "romaji": "jukuren",
+        "meaning": "skill, dexterity, mastery"
+      },
+      {
+        "word": "手練",
+        "reading": "てれん",
+        "romaji": "teren",
+        "meaning": "clever tricks"
+      },
+      {
+        "word": "練達",
+        "reading": "れんたつ",
+        "romaji": "rentatsu",
+        "meaning": "expert skill"
+      }
+    ]
   },
   {
     "id": "n4k179",
@@ -2938,7 +9404,38 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "試し",
+        "reading": "ためし",
+        "romaji": "tameshi",
+        "meaning": "trial,test"
+      },
+      {
+        "word": "試す",
+        "reading": "ためす",
+        "romaji": "tamesu",
+        "meaning": "to attempt,to test"
+      },
+      {
+        "word": "試験",
+        "reading": "しけん",
+        "romaji": "shiken",
+        "meaning": "examination, test"
+      },
+      {
+        "word": "試合",
+        "reading": "しあい",
+        "romaji": "shiai",
+        "meaning": "game, match (～を します : play a game/match)"
+      },
+      {
+        "word": "入学試験",
+        "reading": "にゅうがくしけん",
+        "romaji": "nyūgakushiken",
+        "meaning": "entrance examination"
+      }
+    ]
   },
   {
     "id": "n4k180",
@@ -2955,7 +9452,44 @@
     "strokeCount": 18,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "経験",
+        "reading": "けいけん",
+        "romaji": "keiken",
+        "meaning": "experience"
+      },
+      {
+        "word": "実験",
+        "reading": "じっけん",
+        "romaji": "jikken",
+        "meaning": "experiment"
+      },
+      {
+        "word": "試験",
+        "reading": "しけん",
+        "romaji": "shiken",
+        "meaning": "examination, test"
+      },
+      {
+        "word": "入学試験",
+        "reading": "にゅうがくしけん",
+        "romaji": "nyūgakushiken",
+        "meaning": "entrance examination"
+      },
+      {
+        "word": "受験",
+        "reading": "じゅけん",
+        "romaji": "juken",
+        "meaning": "taking an entrance exam"
+      },
+      {
+        "word": "体験",
+        "reading": "たいけん",
+        "romaji": "taiken",
+        "meaning": "personal experience, hands-on"
+      }
+    ]
   },
   {
     "id": "n4k181",
@@ -2971,7 +9505,44 @@
     "strokeCount": 18,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "経験",
+        "reading": "けいけん",
+        "romaji": "keiken",
+        "meaning": "experience"
+      },
+      {
+        "word": "実験",
+        "reading": "じっけん",
+        "romaji": "jikken",
+        "meaning": "experiment"
+      },
+      {
+        "word": "試験",
+        "reading": "しけん",
+        "romaji": "shiken",
+        "meaning": "examination, test"
+      },
+      {
+        "word": "入学試験",
+        "reading": "にゅうがくしけん",
+        "romaji": "nyūgakushiken",
+        "meaning": "entrance examination"
+      },
+      {
+        "word": "受験",
+        "reading": "じゅけん",
+        "romaji": "juken",
+        "meaning": "taking an entrance exam"
+      },
+      {
+        "word": "体験",
+        "reading": "たいけん",
+        "romaji": "taiken",
+        "meaning": "personal experience, hands-on"
+      }
+    ]
   },
   {
     "id": "n4k182",
@@ -2990,7 +9561,44 @@
     "strokeCount": 6,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "場合",
+        "reading": "ばあい",
+        "romaji": "baai",
+        "meaning": "case / situation / occasion"
+      },
+      {
+        "word": "合図",
+        "reading": "あいず",
+        "romaji": "aizu",
+        "meaning": "sign,signal"
+      },
+      {
+        "word": "会合",
+        "reading": "かいごう",
+        "romaji": "kaigou",
+        "meaning": "meeting,assembly"
+      },
+      {
+        "word": "試合",
+        "reading": "しあい",
+        "romaji": "shiai",
+        "meaning": "game, match (～を します : play a game/match)"
+      },
+      {
+        "word": "都合",
+        "reading": "つごう",
+        "romaji": "tsugō",
+        "meaning": "convenience"
+      },
+      {
+        "word": "具合",
+        "reading": "ぐあい",
+        "romaji": "guai",
+        "meaning": "condition, state, health"
+      }
+    ]
   },
   {
     "id": "n4k183",
@@ -3007,7 +9615,44 @@
     "strokeCount": 12,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "集団",
+        "reading": "しゅうだん",
+        "romaji": "shuudan",
+        "meaning": "group,mass"
+      },
+      {
+        "word": "集中",
+        "reading": "しゅうちゅう",
+        "romaji": "shuuchuu",
+        "meaning": "concentration,focusing the mind"
+      },
+      {
+        "word": "集まり",
+        "reading": "あつまり",
+        "romaji": "atsumari",
+        "meaning": "gathering,meeting,assembly,collection"
+      },
+      {
+        "word": "集めます",
+        "reading": "あつめます",
+        "romaji": "atsumemasu",
+        "meaning": "collect, gather"
+      },
+      {
+        "word": "集める",
+        "reading": "あつめる",
+        "romaji": "atsumeru",
+        "meaning": "to collect / gather"
+      },
+      {
+        "word": "集まる",
+        "reading": "あつまる",
+        "romaji": "atsumaru",
+        "meaning": "to gather / come together"
+      }
+    ]
   },
   {
     "id": "n4k184",
@@ -3023,7 +9668,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "配慮",
+        "reading": "はいりょ",
+        "romaji": "hairyo",
+        "meaning": "consideration / thoughtfulness / care"
+      },
+      {
+        "word": "支配",
+        "reading": "しはい",
+        "romaji": "shihai",
+        "meaning": "rule,control,direction"
+      },
+      {
+        "word": "心配",
+        "reading": "しんぱい",
+        "romaji": "shinpai",
+        "meaning": "worry,concern,anxiety,care"
+      },
+      {
+        "word": "心配します",
+        "reading": "しんぱいします",
+        "romaji": "shinpaishimasu",
+        "meaning": "worry"
+      },
+      {
+        "word": "心配［な］",
+        "reading": "しんぱい［な］",
+        "romaji": "shinpai [na]",
+        "meaning": "worried, anxious"
+      },
+      {
+        "word": "宅配便",
+        "reading": "たくはいびん",
+        "romaji": "takuhaibin",
+        "meaning": "(package delivered by) home delivery service"
+      }
+    ]
   },
   {
     "id": "n4k185",
@@ -3040,7 +9722,44 @@
     "strokeCount": 7,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "解決",
+        "reading": "かいけつ",
+        "romaji": "kaiketsu",
+        "meaning": "resolution / solution / settlement"
+      },
+      {
+        "word": "決心",
+        "reading": "けっしん",
+        "romaji": "kesshin",
+        "meaning": "determination,resolution"
+      },
+      {
+        "word": "決定",
+        "reading": "けってい",
+        "romaji": "kettei",
+        "meaning": "decision,determination"
+      },
+      {
+        "word": "決める",
+        "reading": "きめる",
+        "romaji": "kimeru",
+        "meaning": "to decide"
+      },
+      {
+        "word": "決まる",
+        "reading": "きまる",
+        "romaji": "kimaru",
+        "meaning": "to be set; fixed (v.i.)"
+      },
+      {
+        "word": "決して",
+        "reading": "けっして",
+        "romaji": "kesshite",
+        "meaning": "never"
+      }
+    ]
   },
   {
     "id": "n4k186",
@@ -3057,7 +9776,44 @@
     "strokeCount": 8,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "安定",
+        "reading": "あんてい",
+        "romaji": "antei",
+        "meaning": "stability,equilibrium"
+      },
+      {
+        "word": "勘定",
+        "reading": "かんじょう",
+        "romaji": "kanjou",
+        "meaning": "calculation,counting,consideration"
+      },
+      {
+        "word": "決定",
+        "reading": "けってい",
+        "romaji": "kettei",
+        "meaning": "decision,determination"
+      },
+      {
+        "word": "定食",
+        "reading": "ていしょく",
+        "romaji": "teishoku",
+        "meaning": "set meal, table d'hôte"
+      },
+      {
+        "word": "予定",
+        "reading": "よてい",
+        "romaji": "yotei",
+        "meaning": "plans, arrangement, schedule"
+      },
+      {
+        "word": "予定表",
+        "reading": "よていひょう",
+        "romaji": "yoteihyō",
+        "meaning": "schedule"
+      }
+    ]
   },
   {
     "id": "n4k187",
@@ -3073,7 +9829,44 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "約",
+        "reading": "やく",
+        "romaji": "yaku",
+        "meaning": "approximately,about,some"
+      },
+      {
+        "word": "契約",
+        "reading": "けいやく",
+        "romaji": "keiyaku",
+        "meaning": "contract,compact,agreement"
+      },
+      {
+        "word": "婚約",
+        "reading": "こんやく",
+        "romaji": "konyaku",
+        "meaning": "engagement,betrothal"
+      },
+      {
+        "word": "約束",
+        "reading": "やくそく",
+        "romaji": "yakusoku",
+        "meaning": "appointment, promise (～［を］します : promise)"
+      },
+      {
+        "word": "予約します",
+        "reading": "よやくします",
+        "romaji": "yoyakushimasu",
+        "meaning": "reserve, book"
+      },
+      {
+        "word": "予約",
+        "reading": "よやく",
+        "romaji": "yoyaku",
+        "meaning": "reservation"
+      }
+    ]
   },
   {
     "id": "n4k188",
@@ -3090,7 +9883,44 @@
     "strokeCount": 10,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "関連",
+        "reading": "かんれん",
+        "romaji": "kanren",
+        "meaning": "relation,connection,relevance"
+      },
+      {
+        "word": "連れ",
+        "reading": "つれ",
+        "romaji": "tsure",
+        "meaning": "companion,company"
+      },
+      {
+        "word": "連想",
+        "reading": "れんそう",
+        "romaji": "rensou",
+        "meaning": "association (of ideas),suggestion"
+      },
+      {
+        "word": "連れて来ます",
+        "reading": "つれてきます",
+        "romaji": "tsurete kimasu",
+        "meaning": "bring (someone)"
+      },
+      {
+        "word": "連絡",
+        "reading": "れんらく",
+        "romaji": "renraku",
+        "meaning": "contact / communication"
+      },
+      {
+        "word": "連れる",
+        "reading": "つれる",
+        "romaji": "tsureru",
+        "meaning": "to lead, to take (a person)"
+      }
+    ]
   },
   {
     "id": "n4k189",
@@ -3108,7 +9938,44 @@
     "strokeCount": 13,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "相続",
+        "reading": "そうぞく",
+        "romaji": "souzoku",
+        "meaning": "succession,inheritance"
+      },
+      {
+        "word": "続き",
+        "reading": "つづき",
+        "romaji": "tsuzuki",
+        "meaning": "sequel,continuation"
+      },
+      {
+        "word": "連続",
+        "reading": "れんぞく",
+        "romaji": "renzoku",
+        "meaning": "serial,consecutive,continuity,continuing"
+      },
+      {
+        "word": "続ける",
+        "reading": "つづける",
+        "romaji": "tsuzukeru",
+        "meaning": "to continue"
+      },
+      {
+        "word": "～続ける",
+        "reading": "～つづける",
+        "romaji": "tsuzukeru",
+        "meaning": "to continue doing ~"
+      },
+      {
+        "word": "続く",
+        "reading": "つづく",
+        "romaji": "tsuzuku",
+        "meaning": "to be continued"
+      }
+    ]
   },
   {
     "id": "n4k190",
@@ -3125,6 +9992,43 @@
     "strokeCount": 9,
     "level": "N4",
     "radical": "",
-    "examples": []
+    "examples": [
+      {
+        "word": "変",
+        "reading": "へん",
+        "romaji": "hen",
+        "meaning": "strange, odd"
+      },
+      {
+        "word": "大変",
+        "reading": "たいへん",
+        "romaji": "taihen",
+        "meaning": "awful,dreadful,terrible,very"
+      },
+      {
+        "word": "変化",
+        "reading": "へんか",
+        "romaji": "henka",
+        "meaning": "goblin,ghost,apparition,bugbear"
+      },
+      {
+        "word": "大変［な］",
+        "reading": "たいへん［な］",
+        "romaji": "taihen [na]",
+        "meaning": "hard, tough, severe, awful"
+      },
+      {
+        "word": "変えます",
+        "reading": "かえます",
+        "romaji": "kaemasu",
+        "meaning": "change"
+      },
+      {
+        "word": "変える",
+        "reading": "かえる",
+        "romaji": "kaeru",
+        "meaning": "to change (something)"
+      }
+    ]
   }
 ]

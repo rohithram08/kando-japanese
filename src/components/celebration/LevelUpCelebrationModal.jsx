@@ -7,7 +7,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Sparkles, Crown, Zap } from 'lucide-react';
+import { Sparkles, Crown, Zap } from 'lucide-react';
 import { playFanfare } from '../../utils/soundEffects';
 
 export default function LevelUpCelebrationModal({

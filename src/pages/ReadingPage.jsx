@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { BookOpen, CheckCircle, Clock, Sparkles, AlertCircle, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BookOpen, Sparkles, AlertCircle, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { useReadingStore } from '../store/readingStore';
 import { allStories, getStoryById } from '../data/reading/n5_stories';

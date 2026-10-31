@@ -6,12 +6,9 @@ import {
   Swords,
   PenTool,
   BookmarkCheck,
-  RefreshCw,
   Search,
-  CheckCircle2,
   Star,
   ChevronRight,
-  Award,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useThemeStore } from '../store/themeStore';
@@ -19,9 +16,7 @@ import { useAuthStore } from '../store/authStore';
 import { useProgressStore } from '../store/progressStore';
 import { useSRSStore } from '../store/srsStore';
 import {
-  ALL_KANA,
   getKanaByScript,
-  getKanaByGroup,
 } from '../data/kana/kanaData';
 import KanaGrid from '../components/kana/KanaGrid';
 import KanaDetailModal from '../components/kana/KanaDetailModal';
@@ -151,7 +146,7 @@ export default function KanaPage() {
 
   // Handle quiz session completion (increment correct encounters & apply mastery rule)
   const handleQuizCompletion = useCallback(
-    ({ score, total, answers }) => {
+    ({ score: _score, total: _total, answers }) => {
       setMasteryMap((prev) => {
         const updated = { ...prev };
         let newMasteredCount = 0;

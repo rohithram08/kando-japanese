@@ -10,11 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCheck,
   X,
-  Bell,
   BellRing,
   Settings,
-  Sparkles,
-  Inbox,
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { useNotificationStore } from '../../store/notificationStore'

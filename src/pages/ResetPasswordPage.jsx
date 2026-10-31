@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Lock, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide-react'
-import { useThemeStore } from '../store/themeStore'
 import { authApi } from '../api'
+import { useThemeStore } from '../store/themeStore'
 import toast from 'react-hot-toast'
 
 export default function ResetPasswordPage() {

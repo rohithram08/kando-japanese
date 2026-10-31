@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import React from 'react';
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import StoryReader from '../StoryReader';
-import { n5Stories } from '../../../data/reading/n5_stories';
+import { shortStory } from './fixtures/shortStory';
 import { audioService } from '../../../services/audioService';
 
 // Mock stores & audio service
@@ -36,7 +36,7 @@ vi.mock('../../../services/audioService', () => ({
 }));
 
 describe('StoryReader Component', () => {
-  const story = n5Stories[0]; // story_n5_01: 学生の一日
+  const story = shortStory; // frozen 10-sentence fixture (independent of the real, expandable story content)
   const mockOnBack = vi.fn();
 
   beforeEach(() => {

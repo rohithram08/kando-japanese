@@ -9,7 +9,7 @@ export default function KanaGrid({
   selectedKana = null,
   onSelectKana,
   masteryMap = {},
-  isDark = false,
+  isDark: _isDark = false,
 }) {
   const { isCardInSRS, addCardToSRS } = useSRSStore();
 

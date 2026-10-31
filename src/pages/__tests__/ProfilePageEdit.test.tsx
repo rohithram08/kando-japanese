@@ -105,7 +105,7 @@ describe('ProfilePage — Direct In-Place Profile Customization', () => {
     })
   })
 
-  it('saves valid username and target level changes directly from My Profile', async () => {
+  it('saves valid username changes directly from My Profile while level is protected', async () => {
     render(
       <MemoryRouter initialEntries={['/profile?edit=true']}>
         <ProfilePage />
@@ -115,8 +115,8 @@ describe('ProfilePage — Direct In-Place Profile Customization', () => {
     const input = screen.getByPlaceholderText(/Your username/i) as HTMLInputElement
     fireEvent.change(input, { target: { value: 'KenjiMaster' } })
 
-    const n4Btn = screen.getByRole('button', { name: 'N4' })
-    fireEvent.click(n4Btn)
+    expect(screen.getByText(/Current Study Level/i)).toBeTruthy()
+    expect(screen.getByText(/Automatically updated via placement test/i)).toBeTruthy()
 
     const saveBtn = screen.getByRole('button', { name: /Save Changes/i })
     fireEvent.click(saveBtn)
@@ -125,7 +125,6 @@ describe('ProfilePage — Direct In-Place Profile Customization', () => {
       expect(updateProfileMock).toHaveBeenCalledWith(
         expect.objectContaining({
           username: 'KenjiMaster',
-          currentLevel: 'N4',
         })
       )
     })

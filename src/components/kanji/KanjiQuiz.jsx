@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCircle, XCircle, Volume2, ArrowRight, RotateCcw,
   Trophy, Zap, Target, Clock, Star,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { XP_REWARDS, calculateQuizXP } from '../../utils/progressCalculator'
 import { useAudio } from '../../hooks/useAudio'
@@ -26,9 +25,7 @@ const QuizModes = {
 
 const KanjiQuiz = ({ kanjiList = SAMPLE_QUIZ_DATA, onComplete }) => {
   const { user, profile, updateProfile } = useAuthStore()
-  const { resolvedTheme } = useThemeStore()
-  const isDark = resolvedTheme === 'dark'
-  const { awardQuizXP, awardKanjiXP } = useProgressStore()
+  const { awardQuizXP } = useProgressStore()
   const { playAudio } = useAudio()
 
   const [questions, setQuestions] = useState([])
@@ -64,30 +61,14 @@ const KanjiQuiz = ({ kanjiList = SAMPLE_QUIZ_DATA, onComplete }) => {
   }, [kanjiList])
 
   const currentQuestion = questions[currentIdx]
+  const handleAnswerRef = useRef(null)
 
-  // Timer
-  useEffect(() => {
-    if (!timerActive || !currentQuestion || showResult) return
-
-    const interval = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          handleAnswer(null)
-          return 15
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [timerActive, currentIdx, showResult])
-
-  const handleAnswer = (answer) => {
+  const handleAnswer = useCallback((answer) => {
     if (selectedAnswer !== null) return
     setTimerActive(false)
     setSelectedAnswer(answer)
 
-    const correct = answer === currentQuestion.meaning
+    const correct = answer === currentQuestion?.meaning
     setIsCorrect(correct)
     setShowExplanation(true)
 
@@ -115,7 +96,26 @@ const KanjiQuiz = ({ kanjiList = SAMPLE_QUIZ_DATA, onComplete }) => {
         timeUsed: 15 - timeLeft,
       },
     ])
-  }
+  }, [currentQuestion, maxStreak, selectedAnswer, streak, timeLeft])
+
+  handleAnswerRef.current = handleAnswer
+
+  // Timer
+  useEffect(() => {
+    if (!timerActive || !currentQuestion || showResult) return
+
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          handleAnswerRef.current?.(null)
+          return 15
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [timerActive, currentQuestion, showResult])
 
   const handleNext = async () => {
     const nextIdx = currentIdx + 1

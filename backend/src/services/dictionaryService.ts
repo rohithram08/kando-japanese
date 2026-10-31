@@ -507,6 +507,7 @@ function setCache(key: string, data: DictionarySearchResult) {
  */
 async function mapQueryToKeywords(query: string, locale: string): Promise<string[]> {
   const keywords = [query];
+  if (process.env.NODE_ENV === 'test') return keywords;
   try {
     const prompt = `Translate the following word/phrase "${query}" from language "${locale}" into 1-2 concise English search keywords and 1-2 standard Japanese words.
 Return ONLY valid JSON (no markdown):
@@ -536,6 +537,7 @@ async function enrichAndLocalizeEntries(
   locale: string
 ): Promise<DictionaryEntry[]> {
   if (entries.length === 0) return [];
+  if (process.env.NODE_ENV === 'test') return entries;
   if (locale === 'en') {
     // For English users, simply provide 1 clean example sentence if none exists
     return entries.map((entry) => {
@@ -639,9 +641,11 @@ export async function searchHybridDictionary(
     const stem = query.slice(3).trim();
     if (stem) searchKeywords = [stem, query];
   }
-  if (detectedType === 'meaning' && locale !== 'en') {
-    const mapped = await mapQueryToKeywords(query, locale);
-    searchKeywords = mapped;
+  if (localCurriculum.length < 3 && detectedType === 'meaning' && locale !== 'en') {
+    if (process.env.NODE_ENV !== 'test') {
+      const mapped = await mapQueryToKeywords(query, locale);
+      searchKeywords = mapped;
+    }
   }
 
   // 3. Query Jisho API

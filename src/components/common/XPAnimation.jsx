@@ -1,7 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Zap, Star, TrendingUp, Trophy, Flame } from 'lucide-react'
-import { useThemeStore } from '../../store/themeStore'
 
 // ── Constants ─────────────────────────────────────────────
 const XP_MILESTONES = [50, 100, 200, 500, 1000]

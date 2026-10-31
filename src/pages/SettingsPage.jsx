@@ -1,12 +1,12 @@
 // src/pages/SettingsPage.jsx
-import React, { useState, useEffect, useRef, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Globe, Bell, Shield, Palette, Volume2, BookOpen,
   Monitor, Moon, Sun, ChevronRight, RotateCcw, Search,
   Trash2, Download,
-  User, Pencil, Lock,
+  Pencil, Lock,
   RefreshCcw, CheckCircle2,
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
@@ -167,7 +167,7 @@ export default function SettingsPage() {
     if (profile) {
       setNativeLanguage(normalizeLocale(identity.nativeLanguage || settings.nativeLanguage || 'en'))
     }
-  }, [profile, settings.nativeLanguage])
+  }, [profile, identity.nativeLanguage, settings.nativeLanguage])
 
   const handleExportData = async () => {
     try {

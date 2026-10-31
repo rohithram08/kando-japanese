@@ -3,7 +3,6 @@ import {
   segmentMorae,
   computePitchHeights,
   getPitchAccent,
-  VERIFIED_PITCH_DICTIONARY,
   PITCH_PATTERN_META,
 } from '../pitchData';
 

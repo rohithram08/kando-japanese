@@ -3,17 +3,16 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  MessageCircle, Send, Bot, User, Volume2, VolumeX,
+  MessageCircle, Send, Bot, User, Volume2,
   RotateCcw, BookOpen, Copy, Check,
-  Zap, Globe, GraduationCap, Coffee,
+  Zap, GraduationCap, Coffee,
   ShoppingBag, Plane, Heart, Briefcase, UtensilsCrossed,
-  Lightbulb, Languages, Mic, MicOff,
-  Settings2, Trash2, Download, Star, ArrowLeft,
-  X, Clock, Target, Award, Bookmark, BookmarkCheck,
-  HelpCircle, Gauge, ChevronDown, ChevronUp,
-  AlertCircle, CheckCircle2, Sparkles, Timer,
+  Lightbulb, Mic, MicOff,
+  Settings2, Download, ArrowLeft,
+  X, Clock, Award, Bookmark, BookmarkCheck,
+  HelpCircle, ChevronDown, ChevronUp,
+  CheckCircle2, Sparkles, Timer,
 } from 'lucide-react'
-import { useThemeStore } from '../store/themeStore'
 import { useDailyGoalsStore } from '../store/dailyGoalsStore'
 import { useI18n } from '../i18n'
 
@@ -87,11 +86,6 @@ const AI_RESPONSES = {
   ],
 }
 
-const CORRECTIONS = [
-  { wrong: 'watashi', jp: '「わたし」をひらがなで書きましょう！', en: 'Try writing "watashi" in hiragana: わたし' },
-  { wrong: 'arigato',  jp: '「ありがとう」が正しいです。「ございます」をつけるともっと丁寧です。', en: '"Arigatou" is correct. Adding "gozaimasu" makes it more polite.' },
-]
-
 const formatDuration = (seconds) => {
   const m = Math.floor(seconds / 60)
   const s = seconds % 60
@@ -100,8 +94,6 @@ const formatDuration = (seconds) => {
 
 const ChatDojo = () => {
   const { t } = useI18n()
-  const { resolvedTheme } = useThemeStore()
-  const isDark = resolvedTheme === 'dark'
   const navigate = useNavigate()
 
   const [messages, setMessages]                 = useState([])

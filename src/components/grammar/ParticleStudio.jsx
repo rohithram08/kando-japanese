@@ -2,12 +2,8 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Sparkles,
   Volume2,
   ArrowRight,
-  BookOpen,
-  CheckCircle,
-  HelpCircle,
   RotateCcw,
   Languages,
 } from 'lucide-react'

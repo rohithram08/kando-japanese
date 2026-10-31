@@ -92,6 +92,9 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
   const [currentStroke,  setCurrentStroke]  = useState(0)
   const [isAnimating,    setIsAnimating]    = useState(false)
+  const [isAutoPlaying,  setIsAutoPlaying]  = useState(false)
+  const isAutoPlayingRef = useRef(false)
+  const autoPlayTimerRef = useRef(null)
   const [animSpeed,      setAnimSpeed]      = useState(1)
   const [mode,           setMode]           = useState("watch")
   const [userStrokes,    setUserStrokes]    = useState([])
@@ -99,6 +102,20 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
   const [completed,      setCompleted]      = useState(false)
   const [strokeProgress, setStrokeProgress] = useState(0)
   const [practiceResult, setPracticeResult] = useState(null)
+
+  // ── Reset when character changes ─────────────────────────────
+  useEffect(() => {
+    if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
+    isAutoPlayingRef.current = false;
+    setIsAutoPlaying(false);
+    setIsAnimating(false);
+    setCurrentStroke(0);
+    setStrokeProgress(0);
+    setCompleted(false);
+    setUserStrokes([]);
+    setPracticeResult(null);
+  }, [character]);
 
   // ── Dynamically load authentic KanjiVG stroke data for any Joyo Kanji ──
   useEffect(() => {
@@ -281,58 +298,88 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
   // ── Animation loop ────────────────────────────────────────────
   useEffect(() => {
-    if (!isAnimating) return
-    let start = null
-    const duration = 1200 / animSpeed
+    if (!isAnimating) return;
+    let start = null;
+    const duration = 1000 / animSpeed;
 
     const animate = (timestamp) => {
-      if (!start) start = timestamp
-      const elapsed  = timestamp - start
-      const progress = Math.min(elapsed / duration, 1)
-      setStrokeProgress(progress)
+      if (!start) start = timestamp;
+      const elapsed  = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      setStrokeProgress(progress);
 
       if (progress < 1) {
-        animationRef.current = requestAnimationFrame(animate)
+        animationRef.current = requestAnimationFrame(animate);
       } else {
-        setIsAnimating(false)
-        setStrokeProgress(0)
-        const next = currentStroke + 1
-        if (next <= totalStrokes) {
-          setCurrentStroke(next)
-          if (next === totalStrokes) {
-            setCompleted(true)
-            onComplete?.()
+        setStrokeProgress(0);
+        const next = currentStroke + 1;
+        if (next < totalStrokes) {
+          setCurrentStroke(next);
+          if (isAutoPlayingRef.current) {
+            autoPlayTimerRef.current = setTimeout(() => {
+              if (isAutoPlayingRef.current) {
+                setIsAnimating(true);
+              }
+            }, 250 / animSpeed);
+            setIsAnimating(false);
+          } else {
+            setIsAnimating(false);
           }
+        } else {
+          setCurrentStroke(totalStrokes);
+          setIsAnimating(false);
+          setIsAutoPlaying(false);
+          isAutoPlayingRef.current = false;
+          setCompleted(true);
+          onComplete?.();
         }
       }
-    }
+    };
 
-    animationRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationRef.current)
-  }, [isAnimating, animSpeed, currentStroke, totalStrokes, onComplete])
+    animationRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
+    };
+  }, [isAnimating, animSpeed, currentStroke, totalStrokes, onComplete]);
 
   // ── Controls ──────────────────────────────────────────────────
   const playNext = () => {
-    if (currentStroke < totalStrokes && !isAnimating) setIsAnimating(true)
-  }
+    if (currentStroke < totalStrokes && !isAnimating) {
+      if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
+      isAutoPlayingRef.current = false;
+      setIsAutoPlaying(false);
+      setIsAnimating(true);
+    }
+  };
 
   const playAll = () => {
+    if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
     if (currentStroke >= totalStrokes) {
-      setCurrentStroke(0)
-      setCompleted(false)
+      setCurrentStroke(0);
+      setCompleted(false);
     }
-    setIsAnimating(true)
-  }
+    isAutoPlayingRef.current = true;
+    setIsAutoPlaying(true);
+    setIsAnimating(true);
+  };
+
+  const pause = () => {
+    if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    if (autoPlayTimerRef.current) clearTimeout(autoPlayTimerRef.current);
+    isAutoPlayingRef.current = false;
+    setIsAutoPlaying(false);
+    setIsAnimating(false);
+  };
 
   const reset = () => {
-    cancelAnimationFrame(animationRef.current)
-    setCurrentStroke(0)
-    setIsAnimating(false)
-    setStrokeProgress(0)
-    setCompleted(false)
-    setUserStrokes([])
-    setPracticeResult(null)
-  }
+    pause();
+    setCurrentStroke(0);
+    setStrokeProgress(0);
+    setCompleted(false);
+    setUserStrokes([]);
+    setPracticeResult(null);
+  };
 
   // ── Practice drawing ──────────────────────────────────────────
   const getPos = (e, canvas) => {
@@ -575,12 +622,13 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => {
-                if (!isAnimating && currentStroke > 0) {
-                  setCurrentStroke(currentStroke - 1)
-                  setCompleted(false)
+                pause();
+                if (currentStroke > 0) {
+                  setCurrentStroke(currentStroke - 1);
+                  setCompleted(false);
                 }
               }}
-              disabled={currentStroke === 0 || isAnimating}
+              disabled={currentStroke === 0 || isAnimating || isAutoPlaying}
               className="w-10 h-10 rounded-xl bg-muted hover:bg-muted/70
                          disabled:opacity-40 flex items-center justify-center
                          text-foreground/80 transition-colors"
@@ -590,17 +638,14 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
 
             <motion.button
               whileTap={{ scale: 0.95 }}
-              onClick={isAnimating
-                ? () => { cancelAnimationFrame(animationRef.current); setIsAnimating(false) }
-                : playAll
-              }
+              onClick={(isAnimating || isAutoPlaying) ? pause : playAll}
               className="flex items-center gap-2 px-5 py-2.5
                          bg-gradient-to-r from-blue-500 to-blue-600
                          text-white rounded-xl font-semibold text-sm
                          shadow-lg shadow-blue-500/20 hover:opacity-90
                          transition-opacity"
             >
-              {isAnimating
+              {(isAnimating || isAutoPlaying)
                 ? <><Pause className="w-4 h-4" /> Pause</>
                 : <><Play  className="w-4 h-4" /> Play All</>
               }
@@ -609,7 +654,7 @@ const StrokeOrder = ({ character = "日", onComplete, isDark = true }) => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={playNext}
-              disabled={currentStroke >= totalStrokes || isAnimating}
+              disabled={currentStroke >= totalStrokes || isAnimating || isAutoPlaying}
               className="w-10 h-10 rounded-xl bg-muted hover:bg-muted/70
                          disabled:opacity-40 flex items-center justify-center
                          text-foreground/80 transition-colors"

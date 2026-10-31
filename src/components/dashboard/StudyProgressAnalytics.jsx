@@ -1,16 +1,13 @@
 // src/components/dashboard/StudyProgressAnalytics.jsx
 import React, { useMemo } from 'react'
-import { motion } from 'framer-motion'
 import {
   TrendingUp, GraduationCap, Activity, Eye, Pen,
   Volume2, MessageCircle, Languages, BookMarked,
   Award, Star, Shield, Medal, Trophy, Crown,
-  Clock, Zap, CheckCircle2, ChevronRight
+  Clock
 } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
-import { useI18n } from '../../i18n'
 import { useStudyLevel } from '../../hooks/useStudyLevel'
 
 const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
@@ -53,7 +50,6 @@ const WEEKLY_HABIT = [
 ]
 
 export default function StudyProgressAnalytics() {
-  const { t } = useI18n()
   const progress = useProgressStore()
   const { profile } = useAuthStore()
 
@@ -63,7 +59,6 @@ export default function StudyProgressAnalytics() {
   const kanjiLearned = progress.kanjiLearned || 0
   const vocabLearned = progress.vocabLearned || 0
   const lessonsCompleted = progress.lessonsCompleted || 0
-  const streak = progress.streak || profile?.streakDays || 0
 
   const levelDetails = LEVEL_DETAILS[currentLevel] || LEVEL_DETAILS.N5
   const currentLevelIndex = LEVELS.indexOf(currentLevel)

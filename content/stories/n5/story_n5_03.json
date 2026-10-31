@@ -1,0 +1,584 @@
+{
+  "id": "story_n5_03",
+  "titleFurigana": "スーパーで 買[か]い物[もの]",
+  "englishTitle": "Shopping at the Supermarket",
+  "description": "Join Emi on an evening trip to the supermarket: she writes a shopping list, counts onions and carrots, asks a clerk where the curry roux is, pays at the register, and cooks dinner for her family.",
+  "sentences": [
+    [
+      "私[わたし]の 名前[なまえ]は エミです。",
+      "My name is Emi."
+    ],
+    [
+      "今日[きょう]の 夕方[ゆうがた]、スーパーへ 買[か]い物[もの]に 行[い]きます。",
+      "This evening I am going shopping at the supermarket.",
+      "動詞のます形 stem + に 行きます = go in order to do (purpose). Here: 買い物に 行きます."
+    ],
+    [
+      "今晩[こんばん]は 私[わたし]が カレーを 作[つく]ります。",
+      "Tonight I will make the curry.",
+      "が here stresses WHO does it: I (not someone else)."
+    ],
+    [
+      "家族[かぞく]は 四人[よにん]です。",
+      "My family is four people.",
+      "Counting people: 一人、二人、三人、四人 (よにん)."
+    ],
+    [
+      "父[ちち]と 母[はは]と 弟[おとうと]と 私[わたし]です。",
+      "My father, my mother, my younger brother and me."
+    ],
+    [
+      "まず、買[か]う ものを メモに 書[か]きます。",
+      "First I write down what I will buy on a memo."
+    ],
+    [
+      "玉[たま]ねぎ、にんじん、じゃがいも、肉[にく]です。",
+      "Onions, carrots, potatoes and meat."
+    ],
+    [
+      "店[みせ]に 入[はい]って、かごを 持[も]ちます。",
+      "I go into the shop and pick up a basket."
+    ],
+    [
+      "野菜[やさい]は 入[い]り口[ぐち]の 近[ちか]くに あります。",
+      "The vegetables are near the entrance.",
+      "〜に あります: location of things (inanimate)."
+    ],
+    [
+      "玉[たま]ねぎを 三[みっ]つ 買[か]います。",
+      "I buy three onions.",
+      "つ counters: ひとつ、ふたつ、みっつ、よっつ… for general objects."
+    ],
+    [
+      "にんじんは 二本[にほん]、じゃがいもは 四[よっ]つ 買[か]います。",
+      "I buy two carrots and four potatoes.",
+      "本 counts long thin things (carrots, pens, bottles)."
+    ],
+    [
+      "野菜[やさい]は 新[あたら]しくて、安[やす]いです。",
+      "The vegetables are fresh and cheap."
+    ],
+    [
+      "次[つぎ]に、肉[にく]の ところへ 行[い]きます。",
+      "Next I go to the meat section."
+    ],
+    [
+      "牛肉[ぎゅうにく]は 百[ひゃく]グラム 二百円[にひゃくえん]です。",
+      "Beef is 200 yen per 100 grams."
+    ],
+    [
+      "少[すこ]し 高[たか]いですから、少[すこ]しだけ 買[か]います。",
+      "It is a bit expensive, so I buy just a little.",
+      "だけ = only / just."
+    ],
+    [
+      "カレールーは どこですか。",
+      "Where is the curry roux?"
+    ],
+    [
+      "店員[てんいん]さんに 聞[き]きます。「すみません、カレールーは どこですか。」",
+      "I ask a shop assistant: \"Excuse me, where is the curry roux?\""
+    ],
+    [
+      "「あちらの たなです。いっしょに 行[い]きましょう。」",
+      "\"It is on that shelf. Let's go together.\"",
+      "〜ましょう = Let's do … (an invitation or offer)."
+    ],
+    [
+      "店員[てんいん]さんは にこにこして、親切[しんせつ]です。",
+      "The assistant smiles and is very kind."
+    ],
+    [
+      "カレールーは からいのと あまいのが あります。",
+      "There is spicy roux and sweet roux."
+    ],
+    [
+      "家族[かぞく]は からいのが 好[す]きですから、からい ルーを 買[か]います。",
+      "My family likes spicy food, so I buy the spicy roux."
+    ],
+    [
+      "さいごに、牛乳[ぎゅうにゅう]が ほしいです。",
+      "Last of all, I want milk.",
+      "ほしい: the thing you want is marked with が (not を)."
+    ],
+    [
+      "レジの 前[まえ]に 人[ひと]が 三人[さんにん]、います。",
+      "There are three people in front of the register."
+    ],
+    [
+      "すぐ 私[わたし]の 番[ばん]です。",
+      "Soon it is my turn."
+    ],
+    [
+      "全部[ぜんぶ]で 千二百円[せんにひゃくえん]です。",
+      "In total it is 1,200 yen."
+    ],
+    [
+      "お金[かね]を 払[はら]って、ふくろに 入[い]れます。",
+      "I pay and put everything in a bag."
+    ],
+    [
+      "家[いえ]に 帰[かえ]って、カレーを 作[つく]ります。",
+      "I go home and make the curry."
+    ],
+    [
+      "夜[よる]、家族[かぞく]と いっしょに カレーを 食[た]べます。",
+      "In the evening I eat the curry together with my family."
+    ],
+    [
+      "弟[おとうと]は 「おいしい！」と 言[い]います。",
+      "My younger brother says, \"Delicious!\""
+    ],
+    [
+      "私[わたし]は うれしいです。",
+      "I am happy."
+    ]
+  ],
+  "vocab": [
+    [
+      "買い物",
+      "かいもの",
+      "shopping",
+      "noun",
+      [
+        "買い物"
+      ]
+    ],
+    [
+      "今晩",
+      "こんばん",
+      "tonight; this evening",
+      "noun / adverb"
+    ],
+    [
+      "作る",
+      "つくる",
+      "to make; to cook",
+      "verb",
+      [
+        "作り"
+      ]
+    ],
+    [
+      "家族",
+      "かぞく",
+      "family",
+      "noun"
+    ],
+    [
+      "野菜",
+      "やさい",
+      "vegetables",
+      "noun"
+    ],
+    [
+      "肉",
+      "にく",
+      "meat",
+      "noun"
+    ],
+    [
+      "入り口",
+      "いりぐち",
+      "entrance",
+      "noun"
+    ],
+    [
+      "安い",
+      "やすい",
+      "cheap",
+      "i-adjective",
+      [
+        "安"
+      ]
+    ],
+    [
+      "高い",
+      "たかい",
+      "expensive; tall",
+      "i-adjective",
+      [
+        "高"
+      ]
+    ],
+    [
+      "店員",
+      "てんいん",
+      "shop assistant",
+      "noun"
+    ],
+    [
+      "聞く",
+      "きく",
+      "to ask; to listen",
+      "verb",
+      [
+        "聞き"
+      ]
+    ],
+    [
+      "好き",
+      "すき",
+      "liked; favourite",
+      "na-adjective"
+    ],
+    [
+      "牛乳",
+      "ぎゅうにゅう",
+      "milk",
+      "noun"
+    ],
+    [
+      "全部",
+      "ぜんぶ",
+      "all; in total",
+      "noun / adverb"
+    ],
+    [
+      "払う",
+      "はらう",
+      "to pay",
+      "verb",
+      [
+        "払っ"
+      ]
+    ],
+    [
+      "帰る",
+      "かえる",
+      "to return; to go home",
+      "verb",
+      [
+        "帰っ"
+      ]
+    ],
+    [
+      "親切",
+      "しんせつ",
+      "kind; helpful",
+      "na-adjective"
+    ]
+  ],
+  "elements": [
+    {
+      "type": "vocabulary",
+      "text": "家族",
+      "reading": "かぞく",
+      "meaning": "family",
+      "role": "Emi cooks for her family — the reason for the whole shopping trip.",
+      "mech": "家族 = 家 (house) + 族 (group). Use it for your own family (わたしの 家族) and ご家族 for someone else's. Individual members: 父 (father), 母 (mother), 弟 (younger brother) — humble forms used about your own family.",
+      "ex": [
+        "私[わたし]の 家族[かぞく]は 五人[ごにん]です。",
+        "My family has five members."
+      ],
+      "in": [
+        4,
+        21,
+        28
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "野菜",
+      "reading": "やさい",
+      "meaning": "vegetables",
+      "role": "The first section Emi visits: onions, carrots and potatoes.",
+      "mech": "野菜 is the general word. Specific vegetables are usually in katakana or kana: にんじん, じゃがいも, 玉ねぎ. 野菜が 好きです = I like vegetables; 野菜は 安いです = vegetables are cheap.",
+      "ex": [
+        "野菜[やさい]を たくさん 食[た]べます。",
+        "I eat a lot of vegetables."
+      ],
+      "in": [
+        9,
+        12
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "店員",
+      "reading": "てんいん",
+      "meaning": "shop assistant",
+      "role": "The helpful assistant who walks Emi to the curry roux.",
+      "mech": "店員 = 店 (shop) + 員 (member of staff). Add さん to address them politely: 店員さん. Customers call them with すみません; the assistant answers with はい、少々お待ちください.",
+      "ex": [
+        "店員[てんいん]さんは とても 親切[しんせつ]です。",
+        "The shop assistant is very kind."
+      ],
+      "in": [
+        17,
+        19
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "に行きます",
+      "meaning": "go in order to … (purpose)",
+      "role": "Emi's trip has a purpose: 買い物に 行きます.",
+      "mech": "Noun に 行きます states the purpose of going: 買い物に 行きます (go shopping), 勉強に 行きます. With verbs, use the ます-stem: 食べに 行きます (go to eat). Do not confuse it with へ 行きます, which just names the destination.",
+      "ex": [
+        "図書館[としょかん]へ 本[ほん]を 借[か]りに 行[い]きます。",
+        "I go to the library to borrow books."
+      ],
+      "in": [
+        2
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "ましょう",
+      "meaning": "let's … / shall we …",
+      "role": "The assistant offers to guide her: いっしょに 行きましょう。",
+      "mech": "ます-stem + ましょう = 'Let's …'. It invites people to act together (行きましょう) or offers help. The question form is 〜ませんか (Won't you …?), which is gentler.",
+      "ex": [
+        "いっしょに 食[た]べましょう。",
+        "Let's eat together."
+      ],
+      "in": [
+        18
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "ほしいです",
+      "meaning": "I want (a thing)",
+      "role": "At the end of her list Emi wants milk.",
+      "mech": "ほしい is an い-adjective meaning 'wanted'. The wanted thing takes が: 牛乳が ほしいです. It is for what YOU want; use ほしいですか to ask. For wanting to DO something use 〜たいです.",
+      "ex": [
+        "新[あたら]しい かばんが ほしいです。",
+        "I want a new bag."
+      ],
+      "in": [
+        22
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "が",
+      "meaning": "marks the subject / the wanted object",
+      "role": "が appears three ways: 私が 作ります (who), あまいのが あります (what exists), 牛乳が ほしいです (what is wanted).",
+      "mech": "が marks the subject when you want to point it out or introduce something new. It also marks the thing that exists with あります/います and the thing you want with ほしい. Compare は, which marks the topic.",
+      "ex": [
+        "猫[ねこ]が います。",
+        "There is a cat."
+      ],
+      "in": [
+        3,
+        20,
+        22
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "と",
+      "meaning": "and / together with",
+      "role": "Emi lists her family (父と 母と 弟と) and eats with them (家族と いっしょに).",
+      "mech": "A と B と C lists every member of a complete group. With a person and a verb, と means 'together with': 家族と 食べます. The word いっしょに (together) often follows.",
+      "ex": [
+        "友達[ともだち]と 学校[がっこう]へ 行[い]きます。",
+        "I go to school with my friend."
+      ],
+      "in": [
+        5,
+        28
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "家",
+      "reading": "いえ / か",
+      "meaning": "house; home",
+      "role": "家 shows up in 家族 and in 家に 帰って — Emi's family and her home are the centre of the story.",
+      "mech": "Kun-reading いえ (a house) and うち as a different reading of the same word (my home). On-reading か in 家族 (かぞく). The roof radical on top covers a pig, an old symbol of wealth in a household.",
+      "ex": [
+        "家[いえ]に 帰[かえ]ります。",
+        "I go back home."
+      ],
+      "in": [
+        4,
+        21,
+        27,
+        28
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "人",
+      "reading": "ひと / にん / じん",
+      "meaning": "person",
+      "role": "Counting family members and people in the queue: 四人, 三人, 人が います.",
+      "mech": "ひと alone (a person), にん when counting (三人 さんにん), じん for nationalities (日本人). Exceptions: 一人 ひとり, 二人 ふたり. 四人 is よにん, not しにん.",
+      "ex": [
+        "日本人[にほんじん]の 友達[ともだち]が 三人[さんにん] います。",
+        "I have three Japanese friends."
+      ],
+      "in": [
+        4,
+        23
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "type": "vocabulary",
+      "q": "「店員[てんいん]」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "shop assistant",
+        "customer",
+        "teacher",
+        "family member"
+      ],
+      "ans": 0,
+      "expl": "店員 = the person who works in the shop; Emi asks one for help (sentence 17).",
+      "wrong": {
+        "1": "A customer is お客[きゃく]さん — that is Emi.",
+        "2": "A teacher is 先生[せんせい].",
+        "3": "A family member is 家族[かぞく]の 一人[ひとり]."
+      },
+      "ref": 16
+    },
+    {
+      "type": "vocabulary",
+      "q": "「ほしい」の 使[つか]い方[かた]で 正[ただ]しいのは どれですか？",
+      "opts": [
+        "牛乳が ほしいです。",
+        "牛乳を ほしいです。",
+        "牛乳に ほしいです。",
+        "牛乳で ほしいです。"
+      ],
+      "ans": 0,
+      "expl": "ほしい marks the wanted thing with が (sentence 22).",
+      "wrong": {
+        "1": "を is used with ordinary verbs; ほしい is an adjective, so を sounds unnatural.",
+        "2": "に marks places or recipients, not the wanted object.",
+        "3": "で marks place or means; it cannot mark what you want."
+      },
+      "ref": 21
+    },
+    {
+      "type": "kanji",
+      "q": "「家族[かぞく]」の 「家[か]」と 同[おな]じ 漢字[かんじ]は どれですか？",
+      "opts": [
+        "家に 帰ります",
+        "弟に 言います",
+        "夕方に 行きます",
+        "店に 入ります"
+      ],
+      "ans": 0,
+      "expl": "家 appears in 家に 帰って (sentence 27) and in 家族.",
+      "wrong": {
+        "1": "弟 (おとうと) is a different character.",
+        "2": "夕方 contains 夕 and 方 — no 家.",
+        "3": "店 (みせ) is a different character."
+      },
+      "ref": 26
+    },
+    {
+      "type": "grammar",
+      "q": "「いっしょに 食[た]べ＿＿＿。」(Let's eat together.)",
+      "opts": [
+        "ましょう",
+        "ました",
+        "ません",
+        "ます"
+      ],
+      "ans": 0,
+      "expl": "ます-stem + ましょう = 'Let's …', as in 行きましょう (sentence 18).",
+      "wrong": {
+        "1": "ました is the past: 'ate'.",
+        "2": "ません is the negative: 'do not eat'.",
+        "3": "ます is a plain statement, not an invitation."
+      },
+      "ref": 17
+    },
+    {
+      "type": "grammar",
+      "q": "「スーパー＿＿ 買[か]い物[もの]＿＿ 行[い]きます。」",
+      "opts": [
+        "へ / に",
+        "を / に",
+        "で / へ",
+        "に / を"
+      ],
+      "ans": 0,
+      "expl": "へ marks the destination (スーパーへ) and に marks the purpose (買い物に), sentence 2.",
+      "wrong": {
+        "1": "を after スーパー would make it an object, but スーパー is a place you go to.",
+        "2": "で marks where an action takes place and is not used with 行きます here.",
+        "3": "に after スーパー is possible, but を after 買い物 is not — 買い物に is the purpose."
+      },
+      "ref": 1
+    },
+    {
+      "type": "particle",
+      "q": "「家族[かぞく]＿＿ いっしょに カレーを 食[た]べます。」",
+      "opts": [
+        "と",
+        "を",
+        "が",
+        "から"
+      ],
+      "ans": 0,
+      "expl": "と = together with (a person): 家族と いっしょに (sentence 28).",
+      "wrong": {
+        "1": "を marks the object; the family is not what is eaten.",
+        "2": "が would make 'family' the subject performing the verb alone.",
+        "3": "から means 'from' or 'because'."
+      },
+      "ref": 27
+    },
+    {
+      "type": "comprehension",
+      "q": "エミさんは 玉[たま]ねぎを いくつ 買[か]いましたか？",
+      "opts": [
+        "三つ",
+        "二つ",
+        "四つ",
+        "一つ"
+      ],
+      "ans": 0,
+      "expl": "Sentence 10: 玉ねぎを 三つ 買います.",
+      "wrong": {
+        "1": "二本 is the number of carrots (sentence 11), not onions.",
+        "2": "四つ is the number of potatoes (sentence 11).",
+        "3": "Only milk is a single item; the onions are three."
+      },
+      "ref": 9
+    },
+    {
+      "type": "comprehension",
+      "q": "どうして エミさんは からい ルーを 買[か]いましたか？",
+      "opts": [
+        "家族が からい ものが 好きだから",
+        "からい ルーが 安いから",
+        "店員さんが 買って ください と 言ったから",
+        "からい ルーしか ないから"
+      ],
+      "ans": 0,
+      "expl": "Sentence 21: 家族はからいのが好きですから — her family likes spicy food.",
+      "wrong": {
+        "1": "The story does not say the spicy roux is cheaper.",
+        "2": "The assistant only shows her where the roux is.",
+        "3": "Sentence 20 says there are both spicy and sweet roux."
+      },
+      "ref": 20
+    },
+    {
+      "type": "comprehension",
+      "q": "全部[ぜんぶ]で いくらでしたか？",
+      "opts": [
+        "千二百円",
+        "二百円",
+        "百円",
+        "二千円"
+      ],
+      "ans": 0,
+      "expl": "Sentence 25: 全部で 千二百円です.",
+      "wrong": {
+        "1": "200 yen is the price of 100 g of beef (sentence 14), not the total.",
+        "2": "The story does not mention a 100-yen total.",
+        "3": "2,000 yen is not mentioned; she pays 1,200 yen."
+      },
+      "ref": 23
+    }
+  ]
+}

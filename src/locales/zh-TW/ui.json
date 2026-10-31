@@ -80,7 +80,10 @@
     "item": "項目",
     "no_results": "找不到單字",
     "try_different_search": "換個搜尋詞試試",
-    "go_back": "返回"
+    "go_back": "返回",
+    "continue_learning": "Continue Learning",
+    "details": "Details",
+    "done": "Done"
   },
   "lessons": {
     "title": "課程",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "你目前已複習 {completed} 張卡片，準確率 {accuracy}%。",
     "checkpoint_title": "已到達批次檢查點！",
     "continue_batch": "繼續下一批",
-    "finish_session": "暫時結束本次學習"
+    "finish_session": "暫時結束本次學習",
+    "add_card": "Add to SRS",
+    "in_deck": "In Deck"
   },
   "reading": {
     "title": "日語分級閱讀",
@@ -454,7 +459,8 @@
     "not_supported": "此瀏覽器不支援語音合成",
     "voice_unavailable": "此裝置上找不到可用的日語語音",
     "playback_failed": "音訊播放失敗",
-    "default_voice": "預設語音"
+    "default_voice": "預設語音",
+    "listen": "Listen"
   },
   "avatar": {
     "title": "Create your avatar",
@@ -544,7 +550,10 @@
     "lessons_done": "故事",
     "skill_overview": "學習進度",
     "total_xp": "Wave XP",
-    "edit_profile": "編輯個人檔案"
+    "edit_profile": "編輯個人檔案",
+    "header_kanji": "Kanji",
+    "header_stories": "Stories",
+    "header_streak": "Streak"
   },
   "conversation": {
     "title": "會話練習",
@@ -641,5 +650,44 @@
     "not_found": "找不到使用者",
     "not_found_desc": "此使用者資料不存在或已被刪除。",
     "not_found_title": "找不到使用者"
+  },
+  "grammar": {
+    "examples": "Examples",
+    "explanation": "Explanation",
+    "formation": "Formation",
+    "mark_studied": "Mark as Studied",
+    "no_examples": "No example sentences available.",
+    "sentences": "Sentences",
+    "studied": "Studied"
+  },
+  "kanji": {
+    "examples": "Examples",
+    "kunyomi": "Kunyomi",
+    "no_examples": "No vocabulary examples available.",
+    "onyomi": "Onyomi",
+    "radical": "Radical",
+    "strokes": "Strokes",
+    "words": "Words",
+    "tab_overview": "Readings & Examples",
+    "tab_stroke": "Stroke Order & Draw",
+    "strokes_action": "Strokes",
+    "stroke_complete": "Great job! Stroke order practiced!"
+  },
+  "placement": {
+    "congrats": "Congratulations!",
+    "congrats_desc": "You passed the qualification test!",
+    "pass_requirement": "Pass Requirement",
+    "qualified": "Qualified",
+    "question_step": "Question",
+    "start_n5_desc": "We recommend mastering N5 foundation before advancing.",
+    "start_n5_title": "Start with N5 Foundation",
+    "submit": "Submit Test",
+    "summary_breakdown": "Test Summary",
+    "try_again": "Try Again"
+  },
+  "vocab": {
+    "example_sentence": "Example Sentence",
+    "no_example": "No example sentence available.",
+    "tags": "Tags"
   }
 }

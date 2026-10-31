@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import SenseiMarkdown, { formatInlineText } from '../SenseiMarkdown';
+import SenseiMarkdown from '../SenseiMarkdown';
 
 describe('SenseiMarkdown Component', () => {
   it('renders bold and italic text properly without raw asterisks', () => {

@@ -80,7 +80,10 @@
     "try_different_search": "कोई दूसरा खोज शब्द आज़माएँ",
     "your_levels": "Your levels",
     "saving": "सहेज रहे हैं…",
-    "go_back": "वापस जाएँ"
+    "go_back": "वापस जाएँ",
+    "continue_learning": "सीखना जारी रखें",
+    "details": "विवरण",
+    "done": "हो गया"
   },
   "lessons": {
     "title": "ग्रेडेड रीडर (Graded Reader)",
@@ -208,7 +211,9 @@
     "checkpoint_desc": "आपने अब तक {completed} कार्ड {accuracy}% सटीकता के साथ दोहराए हैं।",
     "checkpoint_title": "बैच चेकपॉइंट पर पहुँच गए!",
     "continue_batch": "अगला बैच जारी रखें",
-    "finish_session": "अभी के लिए सत्र समाप्त करें"
+    "finish_session": "अभी के लिए सत्र समाप्त करें",
+    "add_card": "SRS में जोड़ें",
+    "in_deck": "डेक में है"
   },
   "reading": {
     "title": "क्रमबद्ध जापानी पाठक",
@@ -454,7 +459,8 @@
     "not_supported": "इस ब्राउज़र में स्पीच सिंथेसिस समर्थित नहीं है",
     "voice_unavailable": "इस डिवाइस पर कोई जापानी आवाज़ उपलब्ध नहीं है",
     "playback_failed": "ऑडियो प्लेबैक विफल रहा",
-    "default_voice": "डिफ़ॉल्ट आवाज़"
+    "default_voice": "डिफ़ॉल्ट आवाज़",
+    "listen": "सुनें"
   },
   "speech": {
     "listen_normal": "सामान्य गति में सुनें",
@@ -488,7 +494,10 @@
     "lessons_done": "कहानियाँ",
     "skill_overview": "सीखने की प्रगति",
     "total_xp": "Wave XP",
-    "edit_profile": "प्रोफ़ाइल संपादित करें"
+    "edit_profile": "प्रोफ़ाइल संपादित करें",
+    "header_kanji": "कांजी",
+    "header_stories": "कहानियां",
+    "header_streak": "स्ट्राइक"
   },
   "conversation": {
     "title": "बातचीत अभ्यास",
@@ -641,5 +650,44 @@
     "not_found": "उपयोगकर्ता नहीं मिला",
     "not_found_desc": "यह उपयोगकर्ता प्रोफ़ाइल मौजूद नहीं है या हटा दी गई है।",
     "not_found_title": "उपयोगकर्ता नहीं मिला"
+  },
+  "grammar": {
+    "examples": "उदाहरण",
+    "explanation": "व्याख्या",
+    "formation": "संरचना",
+    "mark_studied": "अध्ययन किया हुआ चिह्नित करें",
+    "no_examples": "कोई उदाहरण वाक्य उपलब्ध नहीं है।",
+    "sentences": "वाक्य",
+    "studied": "अध्ययन किया"
+  },
+  "kanji": {
+    "examples": "उदाहरण",
+    "kunyomi": "कुन्योमी",
+    "no_examples": "कोई शब्दावली उदाहरण उपलब्ध नहीं है।",
+    "onyomi": "ओन्योमी",
+    "radical": "मूल (Radical)",
+    "strokes": "स्ट्रोक",
+    "words": "शब्द",
+    "tab_overview": "उच्चारण और उदाहरण",
+    "tab_stroke": "स्ट्रोक क्रम और अभ्यास",
+    "strokes_action": "स्ट्रोक्स",
+    "stroke_complete": "शानदार! स्ट्रोक क्रम का अभ्यास किया गया!"
+  },
+  "placement": {
+    "congrats": "बधाई हो!",
+    "congrats_desc": "आपने योग्यता परीक्षा उत्तीर्ण कर ली है!",
+    "pass_requirement": "उत्तीर्ण होने की आवश्यकता",
+    "qualified": "योग्य",
+    "question_step": "प्रश्न",
+    "start_n5_desc": "आगे बढ़ने से पहले हम N5 बुनियादी स्तर में महारत हासिल करने की सलाह देते हैं।",
+    "start_n5_title": "N5 आधार से शुरू करें",
+    "submit": "परीक्षा जमा करें",
+    "summary_breakdown": "परीक्षा सारांश",
+    "try_again": "पुनः प्रयास करें"
+  },
+  "vocab": {
+    "example_sentence": "उदाहरण वाक्य",
+    "no_example": "कोई उदाहरण वाक्य उपलब्ध नहीं है।",
+    "tags": "टैग"
   }
 }

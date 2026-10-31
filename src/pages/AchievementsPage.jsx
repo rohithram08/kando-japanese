@@ -3,15 +3,12 @@ import React, { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Trophy, Flame, Zap, Target, BookOpen, Star,
-  Shield, CheckCircle2, Sparkles, Award, ArrowUpRight,
-  ChevronRight, Lock, Eye
+  Trophy, Target,
+  CheckCircle2, Sparkles
 } from 'lucide-react'
 import { useProgressStore } from '../store/progressStore'
 import { useAuthStore } from '../store/authStore'
 import { useReadingStore } from '../store/readingStore'
-import { useThemeStore } from '../store/themeStore'
-import { useI18n } from '../i18n'
 import { useLeague, useLeagueHistory } from '../hooks/useLeague'
 import { LEAGUES, getRungDetails } from '../utils/league'
 import LeagueBadge from '../components/league/LeagueBadge'
@@ -368,20 +365,16 @@ export function computeUnlockedIds(progress, readingProgressMap = {}, leagueInfo
 }
 
 export default function AchievementsPage() {
-  const { t } = useI18n()
   const progress = useProgressStore()
   const { profile } = useAuthStore()
-  const progressMap = useReadingStore((s) => s.progressMap) || {}
+  const rawProgressMap = useReadingStore((s) => s.progressMap)
+  const progressMap = useMemo(() => rawProgressMap || {}, [rawProgressMap])
   const [selectedAward, setSelectedAward] = useState(null)
 
   // ── 1. Calculate Personal Records ──
   const currentStreak = safeNum(progress.streak)
   const longestStreak = Math.max(currentStreak, safeNum(profile?.longestStreak), safeNum(profile?.streakDays))
   const currentXP = safeNum(progress.totalXP) || safeNum(profile?.xpPoints)
-  const lessonsCompleted = safeNum(progress.lessonsCompleted)
-  const kanjiLearned = safeNum(progress.kanjiLearned)
-  const vocabLearned = safeNum(progress.vocabLearned)
-  const cardsReviewed = safeNum(progress.cardsReviewed)
 
   // Perfect lessons / quizzes (100% accuracy)
   const perfectQuizzesCount = useMemo(() => {

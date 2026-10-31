@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Search, ChevronDown, ChevronUp, BookMarked, Tag, Volume2, Sparkles, Check,
+  Search, BookMarked, Sparkles, Check,
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { GRAMMAR, LEVEL_META, DATA_COUNTS } from '../data/index'
@@ -10,36 +10,18 @@ import { useThemeStore } from '../store/themeStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { useAuthStore } from '../store/authStore'
 import { useProgressStore } from '../store/progressStore'
-import { audioService } from '../services/audioService'
 import LevelSelector from '../components/common/LevelSelector'
 import { useLevelState } from '../hooks/useStudyLevel'
 import ParticleStudio from '../components/grammar/ParticleStudio'
 import {
   getCurriculumMeaning,
-  getCurriculumExplanation,
-  getCurriculumTranslation,
   normalizeLocale,
   useI18n,
 } from '../i18n'
 import { GRAMMAR_CATEGORIES, categorizeItems } from '../data/categories'
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
-
-// ── Tag filter chip ───────────────────────────────────────────
-function TagChip({ tag, active, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`px-2.5 py-0.5 rounded-full text-xs font-medium border transition-all ${
-        active
-          ? 'bg-red-500 border-red-500 text-white'
-          : 'bg-muted border-border text-muted-foreground hover:border-foreground/30'
-      }`}
-    >
-      {tag}
-    </button>
-  )
-}
+import GrammarDetailModal from '../components/curriculum/GrammarDetailModal'
 
 // ── Single grammar card ───────────────────────────────────────
 // LEVEL_META carries separate light/dark class strings (one literal pair
@@ -47,7 +29,7 @@ function TagChip({ tag, active, onClick }) {
 // one of the few spots that still resolves a theme flag — needed to pick
 // the right precomputed pair, not to hand-roll new color logic.
 const GrammarCard = React.forwardRef(function GrammarCard(
-  { item, isOpen, onToggle, progress, onToggleStudied, isSaving, isGuest },
+  { item, onOpenModal, progress, _onToggleStudied, _isSaving, _isGuest },
   ref
 ) {
   const { t } = useI18n()
@@ -57,11 +39,7 @@ const GrammarCard = React.forwardRef(function GrammarCard(
   const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
   const activeLang = normalizeLocale(displayLanguage)
   const displayMeaning = getCurriculumMeaning(item, activeLang)
-  const displayExplanation = getCurriculumExplanation(item, activeLang)
-  const translationEntry = getCurriculumTranslation(item.id, activeLang)
   const meta = LEVEL_META[item.level]
-
-  const speak = (text) => audioService.speak(text).catch(() => {})
 
   return (
     <motion.div
@@ -70,9 +48,10 @@ const GrammarCard = React.forwardRef(function GrammarCard(
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
-      className={`card transition-shadow ${isOpen ? 'shadow-card-md' : ''}`}
+      onClick={() => onOpenModal?.(item)}
+      className="card transition-all hover:shadow-card-md hover:border-purple-300 dark:hover:border-purple-500/40 cursor-pointer group"
     >
-      <button onClick={onToggle} className="w-full text-left p-4 flex items-start gap-3 group">
+      <div className="w-full text-left p-4 flex items-start gap-3">
         <span className={`mt-0.5 shrink-0 text-xs font-bold px-2 py-1 rounded-lg border ${
           isDark ? `${meta.darkBg} ${meta.darkBorder} ${meta.darkText}` : `${meta.lightBg} ${meta.lightBorder} ${meta.lightText}`
         }`}>
@@ -102,156 +81,28 @@ const GrammarCard = React.forwardRef(function GrammarCard(
         <div className="shrink-0 flex items-center gap-2">
           {progress?.status === 'mastered' ? (
             <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-medium flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-amber-500" />
+              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
               {t('common.mastered', 'Mastered')}
             </span>
           ) : progress?.status === 'studied' ? (
             <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-medium flex items-center gap-1">
-              <Check className="w-3 h-3 text-emerald-500" />
+              <Check className="w-3.5 h-3.5 text-emerald-500" />
               {t('common.studied', 'Studied')}
             </span>
           ) : null}
 
-          <div className="p-1.5 rounded-lg text-muted-foreground/70 group-hover:text-foreground transition-colors">
-            {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </div>
-        </div>
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.22 }}
-            className="overflow-hidden"
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpenModal?.(item)
+            }}
+            className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 hover:bg-purple-500/20 transition-colors border border-purple-500/20"
           >
-            <div className="px-4 pb-4 pt-0 space-y-3 border-t border-border">
-              {item.formation && (
-                <div className="mt-3 px-3 py-2 rounded-xl text-sm font-mono bg-muted text-foreground">
-                  <span className="text-xs font-sans font-medium uppercase tracking-wide mr-2 text-muted-foreground">
-                    {t('common.pattern', 'Formation')}
-                  </span>
-                  {item.formation}
-                </div>
-              )}
-
-              {displayExplanation && (
-                <p className="text-sm leading-relaxed text-muted-foreground">{displayExplanation}</p>
-              )}
-
-              {item.examples?.length > 0 && (
-                <div className="space-y-2">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t('common.examples', 'Examples')}</p>
-                  {item.examples.map((ex, i) => (
-                    <div key={i} className="flex items-start gap-2 p-3 rounded-xl bg-muted/60">
-                      <button
-                        onClick={() => speak(ex.jp)}
-                        className="mt-0.5 p-1 rounded-lg shrink-0 transition-colors text-muted-foreground/70 hover:bg-red-500/10 hover:text-red-500"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" />
-                      </button>
-                      <div>
-                        <p className="text-sm font-medium text-foreground">{ex.jp}</p>
-                        <p className="text-xs mt-0.5 text-muted-foreground">
-                          {(translationEntry?.examples && translationEntry.examples[i]) || ex.en}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {item.notes && (
-                <div className="flex gap-2 p-3 rounded-xl text-sm bg-yellow-50 dark:bg-yellow-500/5 border border-yellow-100 dark:border-yellow-500/10 text-yellow-800 dark:text-yellow-300/80">
-                  <Sparkles className="w-4 h-4 shrink-0 mt-0.5 opacity-70" />
-                  <p>{item.notes}</p>
-                </div>
-              )}
-
-              {/* Study Action Row */}
-              <div className="flex items-center justify-between pt-3 border-t border-border mt-3 flex-wrap gap-2">
-                <div className="flex items-center gap-2">
-                  {progress?.studyCount ? (
-                    <span className="text-xs text-muted-foreground">
-                      {t('common.studied', 'Studied')} {progress.studyCount} {progress.studyCount > 1 ? 'times' : 'time'}
-                    </span>
-                  ) : (
-                    <span className="text-xs text-muted-foreground">Not studied yet</span>
-                  )}
-                  {isGuest && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground/80 font-mono">
-                      {t('common.guest_mode', 'Guest mode (local only)')}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  {progress?.status !== 'studied' && progress?.status !== 'mastered' && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onToggleStudied(item.id, 'studied')
-                      }}
-                      disabled={isSaving}
-                      className="px-3 py-1.5 rounded-lg text-xs font-medium bg-primary text-primary-foreground hover:opacity-90 transition-all flex items-center gap-1.5 disabled:opacity-50"
-                    >
-                      <Check className="w-3.5 h-3.5" />
-                      {t('common.studied', 'Mark as Studied')}
-                    </button>
-                  )}
-
-                  {progress?.status === 'studied' && (
-                    <>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onToggleStudied(item.id, 'mastered')
-                        }}
-                        disabled={isSaving}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all flex items-center gap-1.5 disabled:opacity-50"
-                      >
-                        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                        {t('common.mastered', 'Mark Mastered')}
-                      </button>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onToggleStudied(item.id, 'not_started')
-                        }}
-                        disabled={isSaving}
-                        className="px-2.5 py-1.5 rounded-lg text-xs text-muted-foreground hover:text-foreground hover:bg-muted transition-all disabled:opacity-50"
-                      >
-                        {t('common.retry', 'Reset')}
-                      </button>
-                    </>
-                  )}
-
-                  {progress?.status === 'mastered' && (
-                    <>
-                      <span className="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center gap-1">
-                        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                        {t('common.mastered', 'Mastered')}
-                      </span>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onToggleStudied(item.id, 'studied')
-                        }}
-                        disabled={isSaving}
-                        className="px-2.5 py-1.5 rounded-lg text-xs text-muted-foreground hover:text-foreground hover:bg-muted transition-all disabled:opacity-50"
-                      >
-                        {t('common.studied', 'Mark as Studied')}
-                      </button>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {t('common.details', 'View')}
+          </button>
+        </div>
+      </div>
     </motion.div>
   )
 })
@@ -261,8 +112,7 @@ export default function GrammarPage() {
   const { t } = useI18n()
   const [level, setLevel, { unlocked }] = useLevelState()
   const [search, setSearch] = useState('')
-  const [activeTag, setActiveTag] = useState(null)
-  const [openId, setOpenId] = useState(null)
+  const [modalGrammar, setModalGrammar] = useState(null)
   const [showParticleStudio, setShowParticleStudio] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
 
@@ -320,12 +170,6 @@ export default function GrammarPage() {
     return levelGrammar.filter((g) => grammarProgress[g.id]?.status === 'mastered').length
   }, [levelGrammar, grammarProgress])
 
-  const allTags = useMemo(() => {
-    const tags = new Set()
-    levelGrammar.forEach((g) => g.tags?.forEach((t) => tags.add(t)))
-    return [...tags].sort()
-  }, [levelGrammar])
-
   const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
   const activeLang = normalizeLocale(displayLanguage)
 
@@ -339,11 +183,11 @@ export default function GrammarPage() {
         g.romaji.toLowerCase().includes(q) ||
         g.meaning.toLowerCase().includes(q) ||
         localizedMeaning.includes(q) ||
-        g.explanation.toLowerCase().includes(q)
-      const matchTag = !activeTag || g.tags?.includes(activeTag)
-      return matchSearch && matchTag
+        g.explanation.toLowerCase().includes(q) ||
+        g.tags?.some((t) => t.toLowerCase().includes(q))
+      return matchSearch
     })
-  }, [levelGrammar, search, activeTag, activeLang])
+  }, [levelGrammar, search, activeLang])
 
   // ── Categorize grammar items ──
   const getMeaning = useCallback(
@@ -375,8 +219,6 @@ export default function GrammarPage() {
   const handleLevelChange = useCallback((l) => {
     setLevel(l)
     setSearch('')
-    setActiveTag(null)
-    setOpenId(null)
     setSelectedCategory(null)
   }, [setLevel])
 
@@ -385,15 +227,14 @@ export default function GrammarPage() {
       <GrammarCard
         key={item.id}
         item={item}
-        isOpen={openId === item.id}
-        onToggle={() => setOpenId(openId === item.id ? null : item.id)}
+        onOpenModal={setModalGrammar}
         progress={grammarProgress[item.id]}
         onToggleStudied={handleToggleStudied}
         isSaving={Boolean(savingMap[item.id])}
         isGuest={isGuest}
       />
     ),
-    [openId, grammarProgress, handleToggleStudied, savingMap, isGuest]
+    [grammarProgress, handleToggleStudied, savingMap, isGuest]
   )
 
   return (
@@ -475,33 +316,21 @@ export default function GrammarPage() {
 
         {/* Global search — only when NOT drilled into a category */}
         {!selectedCategory && (
-          <>
-            <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
-              <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder={t('common.search', 'Search pattern, meaning, or explanation…')}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
-              />
-              {search && (
-                <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">
-                  {t('kana.clear', 'Clear')}
-                </button>
-              )}
-            </div>
-
-            {allTags.length > 0 && (
-              <div className="flex gap-2 flex-wrap items-center">
-                <Tag className="w-3.5 h-3.5 shrink-0 text-muted-foreground/60" />
-                <TagChip tag={t('common.all', 'All')} active={!activeTag} onClick={() => setActiveTag(null)} />
-                {allTags.map((tTag) => (
-                  <TagChip key={tTag} tag={tTag} active={activeTag === tTag} onClick={() => setActiveTag(activeTag === tTag ? null : tTag)} />
-                ))}
-              </div>
+          <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border bg-surface border-border focus-within:border-foreground/30 transition-colors">
+            <Search className="w-4 h-4 shrink-0 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder={t('common.search', 'Search pattern, meaning, or explanation…')}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-1 bg-transparent outline-none text-sm text-foreground placeholder:text-muted-foreground/70"
+            />
+            {search && (
+              <button onClick={() => setSearch('')} className="text-xs text-muted-foreground hover:text-foreground">
+                {t('kana.clear', 'Clear')}
+              </button>
             )}
-          </>
+          </div>
         )}
       </div>
 
@@ -515,8 +344,8 @@ export default function GrammarPage() {
           searchFn={categorySearchFn}
           searchPlaceholder={t('common.search', 'Search in this category…')}
         />
-      ) : search || activeTag ? (
-        /* When searching/filtering globally, show flat results */
+      ) : search ? (
+        /* When searching globally, show flat results */
         <>
           <p className="text-sm text-muted-foreground">
             {filtered.length === 0 ? t('common.error', 'No patterns found') : `${filtered.length} ${t('common.pattern', 'patterns')}`}
@@ -531,7 +360,7 @@ export default function GrammarPage() {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 rounded-2xl border border-border text-muted-foreground">
                 <BookMarked className="w-10 h-10 mx-auto mb-3 opacity-30" />
                 <p className="font-medium">{t('common.error', 'No patterns found')}</p>
-                <p className="text-sm mt-1">{t('common.retry', 'Try adjusting your search or tag filter')}</p>
+                <p className="text-sm mt-1">{t('common.retry', 'Try adjusting your search query')}</p>
               </motion.div>
             )}
           </motion.div>
@@ -544,6 +373,19 @@ export default function GrammarPage() {
           onSelect={setSelectedCategory}
         />
       )}
+
+      {/* Pop-up Grammar Detail Learning Modal */}
+      <GrammarDetailModal
+        grammar={modalGrammar}
+        isOpen={Boolean(modalGrammar)}
+        onClose={() => setModalGrammar(null)}
+        isStudied={
+          modalGrammar &&
+          (grammarProgress[modalGrammar.id]?.status === 'studied' ||
+            grammarProgress[modalGrammar.id]?.status === 'mastered')
+        }
+        onToggleStudied={() => modalGrammar && handleToggleStudied(modalGrammar.id, 'studied')}
+      />
     </div>
   )
 }

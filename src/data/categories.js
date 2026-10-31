@@ -541,6 +541,18 @@ export const KANJI_CATEGORIES = [
   },
 ]
 
+// ── KEYWORD MATCHER ──────────────────────────────────────────────────────────
+function matchKeyword(meaning, keyword) {
+  if (!meaning || !keyword) return false
+  const parts = keyword.split('/').map(p => p.trim().toLowerCase()).filter(Boolean)
+  return parts.some(part => {
+    // If the keyword contains multiple words (e.g. "ten thousand"), test with word boundaries on the phrase
+    const escaped = part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp('(^|[^a-zA-Z0-9])' + escaped + '([^a-zA-Z0-9]|$)', 'i')
+    return regex.test(meaning)
+  })
+}
+
 // ── CATEGORIZATION ENGINE ────────────────────────────────────────────────────
 
 /**
@@ -570,9 +582,9 @@ export function categorizeItems(items, categories, getMeaning, type = 'vocabular
     for (const cat of categories) {
       let matched = false
 
-      // Check keyword matches (vocab & kanji)
+      // Check keyword matches (vocab & kanji) with whole-word boundary matching
       if (cat.keywords) {
-        matched = cat.keywords.some(kw => meaning.includes(kw.toLowerCase()))
+        matched = cat.keywords.some(kw => matchKeyword(meaning, kw))
       }
 
       // Check POS matches (vocab)

@@ -1,7 +1,7 @@
 // src/components/celebration/__tests__/celebrationSystem.test.tsx
 import React from 'react';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { render, screen, act } from '@testing-library/react';
 import { useCelebrationStore, CHEER_TYPES } from '../../../store/celebrationStore';
 import CelebrationPortal from '../CelebrationPortal';
 import SidebarWaveXPBox from '../../layout/SidebarWaveXPBox';

@@ -26,7 +26,11 @@ describe('Graded Reading — Content Expansion & Dataset Validation', () => {
         expect(['N5', 'N4', 'N3', 'N2', 'N1']).toContain(story.level);
         expect(story.estimatedMinutes).toBeGreaterThan(0);
         expect(story.published).toBe(true);
-        expect(story.provenance.verified).toBe(true);
+        // Human-reviewed stories are `verified`. AI-drafted long-form stories must say so explicitly
+        // (never silently claim a review that has not happened).
+        if (!story.provenance.verified) {
+          expect(story.provenance.reviewStatus).toBe('ai_draft_pending_review');
+        }
         expect(story.provenance.author).toBeTruthy();
       });
 

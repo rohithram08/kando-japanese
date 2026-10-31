@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   RotateCcw, ThumbsUp, ThumbsDown, Minus, Volume2,
-  ChevronLeft, ChevronRight, Shuffle, Filter, Star,
+  ChevronLeft, ChevronRight, Shuffle,
   BookOpen, PenTool, Brain, Award
 } from 'lucide-react';
 

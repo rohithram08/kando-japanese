@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Volume2, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { Volume2, Sparkles, BookOpen } from 'lucide-react';
 import { audioService } from '../../services/audioService';
 import { useSettingsStore } from '../../store/settingsStore';
 import FuriganaText from '../common/FuriganaText';
@@ -17,7 +17,6 @@ export default function SRSReviewCard({
   getLangMeaning,
 }) {
   const showRomaji = useSettingsStore((s) => s.romaji);
-  const showFurigana = useSettingsStore((s) => s.furigana);
 
   if (!card) return null;
 

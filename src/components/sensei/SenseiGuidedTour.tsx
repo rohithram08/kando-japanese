@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Sparkles, ArrowRight, X } from 'lucide-react';
 import { useSenseiStore } from '../../store/senseiStore';
 import { useSenseiTarget } from './useSenseiTarget';

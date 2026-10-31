@@ -1,0 +1,587 @@
+{
+  "id": "story_n5_02",
+  "titleFurigana": "喫茶店[きっさてん]へ 行[い]く",
+  "englishTitle": "Visiting a Café",
+  "description": "Follow Yui on a rainy Sunday: from a lonely afternoon at home to a cosy café called Hidamari, matcha cake, a good book, paying the bill, and a rainbow after the rain.",
+  "sentences": [
+    [
+      "日曜日[にちようび]の 午後[ごご]、雨[あめ]が 降[ふ]って います。",
+      "On Sunday afternoon it is raining.",
+      "て-form + います: an action in progress (rain is falling right now)."
+    ],
+    [
+      "私[わたし]の 名前[なまえ]は ユイです。",
+      "My name is Yui."
+    ],
+    [
+      "今日[きょう]は 学校[がっこう]が ありませんから、家[いえ]に います。",
+      "There is no school today, so I am at home.",
+      "〜ませんから: the reason can be negative too (ありません + から)."
+    ],
+    [
+      "でも、ひとりですから、少[すこ]し さびしいです。",
+      "But I am alone, so I feel a little lonely."
+    ],
+    [
+      "ですから、駅[えき]の 近[ちか]くの 喫茶店[きっさてん]へ 行[い]きます。",
+      "So I will go to the café near the station.",
+      "ですから at the start of a sentence = 'therefore'."
+    ],
+    [
+      "かさを 持[も]って、家[いえ]を 出[で]ます。",
+      "I take an umbrella and leave the house."
+    ],
+    [
+      "雨[あめ]ですから、道[みち]に 人[ひと]が あまり いません。",
+      "Because it is raining, there are not many people on the street.",
+      "あまり + negative = not very / not many."
+    ],
+    [
+      "五分[ごふん]ぐらい 歩[ある]いて、喫茶店[きっさてん]の 前[まえ]に 来[き]ました。",
+      "I walk for about five minutes and arrive in front of the café.",
+      "〜ぐらい = about (a length of time)."
+    ],
+    [
+      "店[みせ]の 名前[なまえ]は 「ひだまり」です。",
+      "The café is called \"Hidamari\" (a sunny spot)."
+    ],
+    [
+      "ドアを 開[あ]けて、中[なか]に 入[はい]ります。",
+      "I open the door and go inside."
+    ],
+    [
+      "店[みせ]の 中[なか]は 静[しず]かで、あたたかいです。",
+      "Inside the shop it is quiet and warm.",
+      "な-adjective + で links adjectives: 静かで、あたたかい."
+    ],
+    [
+      "まどの 近[ちか]くの 席[せき]に すわります。",
+      "I sit at a seat near the window."
+    ],
+    [
+      "店員[てんいん]さんが メニューと お水[みず]を 持[も]って 来[き]ます。",
+      "A staff member brings a menu and water."
+    ],
+    [
+      "「いらっしゃいませ。ご 注文[ちゅうもん]は 何[なん]ですか。」",
+      "\"Welcome. What would you like to order?\""
+    ],
+    [
+      "「あたたかい お茶[ちゃ]と 抹茶[まっちゃ]ケーキを お願[ねが]いします。」",
+      "\"A warm tea and a matcha cake, please.\"",
+      "〜を お願いします = polite request when ordering."
+    ],
+    [
+      "「はい。少[すこ]し 待[ま]って ください。」",
+      "\"Yes. Please wait a moment.\"",
+      "て-form + ください = please do (a request)."
+    ],
+    [
+      "まどの 外[そと]を 見[み]ます。雨[あめ]は まだ 降[ふ]って います。",
+      "I look outside the window. It is still raining."
+    ],
+    [
+      "ひとりの お客[きゃく]さんが 本[ほん]を 読[よ]んで います。",
+      "One customer is reading a book."
+    ],
+    [
+      "私[わたし]も かばんから 本[ほん]を 出[だ]します。",
+      "I also take a book out of my bag.",
+      "も = also."
+    ],
+    [
+      "五分[ごふん]ぐらいで、お茶[ちゃ]と ケーキが 来[き]ました。",
+      "In about five minutes the tea and the cake arrive."
+    ],
+    [
+      "ケーキは あまくて、とても おいしいです。",
+      "The cake is sweet and very tasty."
+    ],
+    [
+      "お茶[ちゃ]は あたたかくて、いい においです。",
+      "The tea is warm and smells good."
+    ],
+    [
+      "私[わたし]は コーヒーより お茶[ちゃ]が 好[す]きです。",
+      "I like tea more than coffee.",
+      "Aより Bが 好きです = I like B more than A."
+    ],
+    [
+      "一時間[いちじかん]、本[ほん]を 読[よ]みます。",
+      "I read my book for one hour.",
+      "Duration words such as 一時間 take no particle."
+    ],
+    [
+      "全部[ぜんぶ]で 八百円[はっぴゃくえん]です。",
+      "In total it is 800 yen.",
+      "で after an amount = in total / altogether."
+    ],
+    [
+      "お金[かね]を 払[はら]って、「ごちそうさまでした」と 言[い]います。",
+      "I pay and say \"Thank you for the meal.\""
+    ],
+    [
+      "外[そと]に 出[で]ました。雨[あめ]は もう 降[ふ]って いません。",
+      "I go outside. It is no longer raining.",
+      "もう + 〜て いません = not any more."
+    ],
+    [
+      "空[そら]に きれいな にじが あります。",
+      "There is a beautiful rainbow in the sky."
+    ],
+    [
+      "いい 日曜日[にちようび]でした。",
+      "It was a good Sunday."
+    ]
+  ],
+  "vocab": [
+    [
+      "雨",
+      "あめ",
+      "rain",
+      "noun"
+    ],
+    [
+      "降る",
+      "ふる",
+      "to fall (rain, snow)",
+      "verb",
+      [
+        "降っ"
+      ]
+    ],
+    [
+      "午後",
+      "ごご",
+      "afternoon",
+      "noun"
+    ],
+    [
+      "駅",
+      "えき",
+      "station",
+      "noun"
+    ],
+    [
+      "喫茶店",
+      "きっさてん",
+      "café; coffee shop",
+      "noun"
+    ],
+    [
+      "歩く",
+      "あるく",
+      "to walk",
+      "verb",
+      [
+        "歩い"
+      ]
+    ],
+    [
+      "静か",
+      "しずか",
+      "quiet",
+      "na-adjective"
+    ],
+    [
+      "席",
+      "せき",
+      "seat",
+      "noun"
+    ],
+    [
+      "店員",
+      "てんいん",
+      "shop assistant; staff member",
+      "noun"
+    ],
+    [
+      "注文",
+      "ちゅうもん",
+      "order (food, goods)",
+      "noun / suru-verb"
+    ],
+    [
+      "お願いします",
+      "おねがいします",
+      "please (polite request)",
+      "expression"
+    ],
+    [
+      "待つ",
+      "まつ",
+      "to wait",
+      "verb",
+      [
+        "待っ"
+      ]
+    ],
+    [
+      "本",
+      "ほん",
+      "book",
+      "noun"
+    ],
+    [
+      "読む",
+      "よむ",
+      "to read",
+      "verb",
+      [
+        "読ん"
+      ]
+    ],
+    [
+      "好き",
+      "すき",
+      "liked; favourite",
+      "na-adjective"
+    ],
+    [
+      "全部",
+      "ぜんぶ",
+      "all; in total",
+      "noun / adverb"
+    ],
+    [
+      "お金",
+      "おかね",
+      "money",
+      "noun"
+    ],
+    [
+      "払う",
+      "はらう",
+      "to pay",
+      "verb",
+      [
+        "払っ"
+      ]
+    ],
+    [
+      "空",
+      "そら",
+      "sky",
+      "noun"
+    ]
+  ],
+  "elements": [
+    {
+      "type": "vocabulary",
+      "text": "喫茶店",
+      "reading": "きっさてん",
+      "meaning": "café; coffee shop (traditional Japanese-style)",
+      "role": "The café is the destination of the whole story — Yui's cure for a lonely rainy Sunday.",
+      "mech": "喫茶 means 'tea-drinking' and 店 means 'shop'. A 喫茶店 is a quiet, old-style coffee shop, different from a modern チェーンのカフェ. Pattern: 喫茶店へ 行きます / 喫茶店で 本を 読みます.",
+      "ex": [
+        "日曜日[にちようび]に 喫茶店[きっさてん]で 本[ほん]を 読[よ]みます。",
+        "On Sundays I read books at a café."
+      ],
+      "in": [
+        5,
+        8
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "注文",
+      "reading": "ちゅうもん",
+      "meaning": "order (in a restaurant or shop)",
+      "role": "The server asks 「ご注文は 何ですか」 — the moment Yui asks for tea and cake.",
+      "mech": "ご注文 is the polite form (ご + word) that staff use about YOUR order. Customers say 注文を お願いします. Do not confuse it with 予約 (a reservation).",
+      "ex": [
+        "すみません、注文[ちゅうもん]を お願[ねが]いします。",
+        "Excuse me, I'd like to order, please."
+      ],
+      "in": [
+        14
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "text": "全部",
+      "reading": "ぜんぶ",
+      "meaning": "all; the whole amount",
+      "role": "The bill: 全部で 八百円です.",
+      "mech": "全部で + amount = 'altogether'. 全部 also works alone: 全部 食べました (I ate everything). Ask 全部で いくらですか to get a total.",
+      "ex": [
+        "全部[ぜんぶ]で いくらですか。",
+        "How much is it altogether?"
+      ],
+      "in": [
+        25
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "ています",
+      "meaning": "〜ing: an action in progress",
+      "role": "The opening line — 雨が 降っています — sets the scene: the rain is falling right now.",
+      "mech": "Verb て-form + います describes what is happening at this moment: 降っています (it is raining), 読んでいます (is reading). The negative is 〜て いません: もう 降っていません (it has stopped).",
+      "ex": [
+        "今[いま]、本[ほん]を 読[よ]んで います。",
+        "I am reading a book now."
+      ],
+      "in": [
+        1,
+        17
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "ください",
+      "meaning": "please (do something)",
+      "role": "The staff politely ask Yui to wait: 少し 待って ください.",
+      "mech": "Verb て-form + ください = 'Please do …'. 待って ください (please wait), 見て ください (please look). It is a request, not an order, but customers should add お願いします for even more politeness.",
+      "ex": [
+        "ここに 名前[なまえ]を 書[か]いて ください。",
+        "Please write your name here."
+      ],
+      "in": [
+        16
+      ]
+    },
+    {
+      "type": "grammar",
+      "text": "より",
+      "meaning": "than (comparison)",
+      "role": "Yui explains her taste: she prefers tea to coffee.",
+      "mech": "A より B が 好きです = 'I like B more than A'. The word after より is the one that LOSES. For questions use どちらが: コーヒーと お茶と、どちらが 好きですか。",
+      "ex": [
+        "電車[でんしゃ]より バスが 好[す]きです。",
+        "I like buses more than trains."
+      ],
+      "in": [
+        23
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "の",
+      "meaning": "of / 's (links two nouns)",
+      "role": "Place and time are built with の: 駅の 近くの 喫茶店, 日曜日の 午後.",
+      "mech": "A の B: A describes or locates B. 駅の 近く (near the station), 駅の 近くの 喫茶店 (a café near the station). Chains of の are common but usually stop at two or three.",
+      "ex": [
+        "学校[がっこう]の 前[まえ]の 店[みせ]です。",
+        "It is the shop in front of the school."
+      ],
+      "in": [
+        1,
+        5,
+        9
+      ]
+    },
+    {
+      "type": "particle",
+      "text": "を",
+      "meaning": "marks the direct object",
+      "role": "Yui does things TO objects: かさを 持って, ドアを 開けて, 本を 読みます.",
+      "mech": "を follows the thing a verb acts on: ケーキを 食べます, 本を 読みます. A different use: を marks the place you leave: 家を 出ます (sentence 6).",
+      "ex": [
+        "お茶[ちゃ]を 飲[の]みます。",
+        "I drink tea."
+      ],
+      "in": [
+        6,
+        10,
+        19,
+        24
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "雨",
+      "reading": "あめ / う",
+      "meaning": "rain",
+      "role": "雨 opens the story and ends it: it is raining at the start, and the rain has stopped at the end.",
+      "mech": "Kun-reading あめ (雨が 降ります). The four dots inside the frame are raindrops falling from a cloud. 雨 is a radical for weather kanji such as 雪 (snow) and 電 (lightning, electricity).",
+      "ex": [
+        "雨[あめ]の 日[ひ]は 家[いえ]に います。",
+        "On rainy days I stay at home."
+      ],
+      "in": [
+        1,
+        7
+      ]
+    },
+    {
+      "type": "kanji",
+      "text": "水",
+      "reading": "みず / すい",
+      "meaning": "water",
+      "role": "The staff bring お水 together with the menu.",
+      "mech": "Kun-reading みず (お水). On-reading すい in 水曜日 (Wednesday). In Japan a free glass of お水 comes with most meals — you can simply say お水を ください.",
+      "ex": [
+        "お水[みず]を ください。",
+        "Water, please."
+      ],
+      "in": [
+        13
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "type": "vocabulary",
+      "q": "「注文[ちゅうもん]」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "order (in a shop)",
+        "reservation",
+        "receipt",
+        "menu"
+      ],
+      "ans": 0,
+      "expl": "「ご注文は 何ですか」 — the server asks what Yui would like to order (sentence 14).",
+      "wrong": {
+        "1": "A reservation is 予約[よやく]; Yui just walks in.",
+        "2": "A receipt is レシート — it does not appear in the story.",
+        "3": "The menu is メニュー; the server brings it in sentence 13."
+      },
+      "ref": 13
+    },
+    {
+      "type": "kanji",
+      "q": "「雨」の 読[よ]み方[かた]は どれですか？",
+      "opts": [
+        "あめ",
+        "かぜ",
+        "ゆき",
+        "そら"
+      ],
+      "ans": 0,
+      "expl": "雨 is あめ. The story starts with 雨が 降っています.",
+      "wrong": {
+        "1": "かぜ is 風 (wind).",
+        "2": "ゆき is 雪 (snow).",
+        "3": "そら is 空 (sky) — the place where the rainbow appears at the end."
+      },
+      "ref": 0
+    },
+    {
+      "type": "grammar",
+      "q": "「雨[あめ]は まだ 降[ふ]って ＿＿＿。」(It is still raining.)",
+      "opts": [
+        "います",
+        "いません",
+        "ありません",
+        "ました"
+      ],
+      "ans": 0,
+      "expl": "降って います = it is raining (action in progress); まだ = still (sentence 17).",
+      "wrong": {
+        "1": "いません would mean 'is not raining'; the story says the rain continues.",
+        "2": "ありません is for objects that do not exist; with a te-form verb you need います.",
+        "3": "降って ました is not a correct form; the past is 降りました."
+      },
+      "ref": 16
+    },
+    {
+      "type": "grammar",
+      "q": "「私[わたし]は コーヒー＿＿ お茶[ちゃ]が 好[す]きです。」",
+      "opts": [
+        "より",
+        "から",
+        "まで",
+        "ので"
+      ],
+      "ans": 0,
+      "expl": "A より B が 好きです = I like B more than A (sentence 23).",
+      "wrong": {
+        "1": "から means 'from' or 'because', not 'than'.",
+        "2": "まで means 'until/as far as'.",
+        "3": "ので is a reason connector and does not fit a comparison."
+      },
+      "ref": 22
+    },
+    {
+      "type": "particle",
+      "q": "「お金[かね]＿＿ 払[はら]って、「ごちそうさまでした」と 言[い]います。」",
+      "opts": [
+        "を",
+        "に",
+        "で",
+        "へ"
+      ],
+      "ans": 0,
+      "expl": "を marks the direct object of 払う — what Yui pays (sentence 26).",
+      "wrong": {
+        "1": "に would mark a person or a place of arrival, not the thing being paid.",
+        "2": "で marks the place or means of an action; it does not mark the object here.",
+        "3": "へ marks a direction of movement."
+      },
+      "ref": 25
+    },
+    {
+      "type": "comprehension",
+      "q": "ユイさんは どうして 喫茶店[きっさてん]へ 行[い]きましたか？",
+      "opts": [
+        "ひとりで 少し さびしかったから",
+        "友達と 会う 約束が あったから",
+        "学校の 宿題が あったから",
+        "お金が たくさん あったから"
+      ],
+      "ans": 0,
+      "expl": "Sentences 3–5: no school, alone at home and a little lonely, so she goes to the café.",
+      "wrong": {
+        "1": "She is alone; no appointment with a friend is mentioned.",
+        "2": "There is no school today, so no homework is mentioned.",
+        "3": "Money is only mentioned when she pays the 800-yen bill."
+      },
+      "ref": 3
+    },
+    {
+      "type": "comprehension",
+      "q": "ユイさんは 何[なに]を 注文[ちゅうもん]しましたか？",
+      "opts": [
+        "お茶と 抹茶ケーキ",
+        "コーヒーと サンドイッチ",
+        "ジュースと パン",
+        "水だけ"
+      ],
+      "ans": 0,
+      "expl": "Sentence 15: あたたかい お茶と 抹茶ケーキ.",
+      "wrong": {
+        "1": "Yui says she likes tea more than coffee (sentence 23).",
+        "2": "Juice and bread are not on her order.",
+        "3": "She does get water, but only as a free extra (sentence 13)."
+      },
+      "ref": 14
+    },
+    {
+      "type": "comprehension",
+      "q": "お店[みせ]を 出[で]た とき、どう なって いましたか？",
+      "opts": [
+        "雨が やんで、にじが ありました",
+        "もっと 雨が 強く なりました",
+        "夜に なって いました",
+        "雪が 降って いました"
+      ],
+      "ans": 0,
+      "expl": "Sentences 27–28: the rain has stopped and there is a rainbow in the sky.",
+      "wrong": {
+        "1": "The story says もう 降っていません — the rain has stopped.",
+        "2": "Nothing says it was night; she was out for roughly two hours in the afternoon.",
+        "3": "The story never mentions snow."
+      },
+      "ref": 26
+    },
+    {
+      "type": "vocabulary",
+      "q": "「全部[ぜんぶ]で 八百円[はっぴゃくえん]です」は どんな 意味[いみ]ですか？",
+      "opts": [
+        "It is 800 yen in total.",
+        "Each item is 800 yen.",
+        "It is 800 yen per hour.",
+        "It was 800 yen yesterday."
+      ],
+      "ans": 0,
+      "expl": "全部で + amount = altogether (sentence 25).",
+      "wrong": {
+        "1": "'Each' would be ひとつ 八百円.",
+        "2": "'Per hour' would be 一時間 八百円.",
+        "3": "'Yesterday' would need きのう and a past form."
+      },
+      "ref": 24
+    }
+  ]
+}

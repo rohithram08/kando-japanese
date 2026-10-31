@@ -12,6 +12,16 @@ import React, { useState } from 'react';
 import { useSettingsStore } from '../../store/settingsStore';
 import { parseFuriganaSegments, getAdaptiveFuriganaMode } from '../../utils/furiganaUtils';
 
+const SIZE_CLASSES = {
+  xs: 'text-xs',
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl',
+  '2xl': 'text-2xl',
+  '3xl': 'text-3xl',
+};
+
 export default function FuriganaText({
   text,
   word,
@@ -51,6 +61,8 @@ export default function FuriganaText({
   return (
     <span
       className={`inline-flex items-baseline flex-wrap select-text group/furi relative ${
+        SIZE_CLASSES[size] || ''
+      } ${
         adaptiveState.canReveal ? 'cursor-pointer' : ''
       } ${className}`}
       onClick={handleToggle}

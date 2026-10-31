@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuthStore } from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import { useProgressStore } from '../../store/progressStore'
 import { LESSONS, VOCABULARY, KANJI, GRAMMAR } from '../../data/index'
-import { calculateQuizXP, XP_REWARDS } from '../../utils/progressCalculator'
+import { calculateQuizXP } from '../../utils/progressCalculator'
 import MultipleChoice from './MultipleChoice'
 import FillBlank from './FillBlank'
 import { useI18n, getCurriculumMeaning } from '../../i18n'
@@ -16,9 +15,7 @@ import { playSuccess, playError, playFanfare } from '../../utils/soundEffects'
 export default function QuizEngine() {
   const { lessonId } = useParams()
   const { user, profile, updateProfile } = useAuthStore()
-  const { resolvedTheme } = useThemeStore()
   const { t, locale } = useI18n()
-  const isDark = resolvedTheme === 'dark'
   const { awardQuizXP } = useProgressStore()
   const navigate = useNavigate()
 
@@ -35,6 +32,7 @@ export default function QuizEngine() {
   const timerRef = useRef(null)
   const feedbackTimeoutRef = useRef(null)
   const scoreRef = useRef(0)
+  const finishQuizRef = useRef(null)
   scoreRef.current = score
 
   useEffect(() => {
@@ -43,6 +41,7 @@ export default function QuizEngine() {
       clearInterval(timerRef.current)
       clearTimeout(feedbackTimeoutRef.current)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lessonId])
 
   useEffect(() => {
@@ -51,7 +50,7 @@ export default function QuizEngine() {
         setTimeLeft(prev => {
           if (prev <= 1) {
             clearInterval(timerRef.current)
-            finishQuiz(scoreRef.current)
+            finishQuizRef.current?.(scoreRef.current)
             return 0
           }
           return prev - 1
@@ -104,7 +103,7 @@ export default function QuizEngine() {
 
     // If lesson has predefined exercises, add them first
     if (lesson?.exercises && Array.isArray(lesson.exercises)) {
-      lesson.exercises.forEach((ex, idx) => {
+      lesson.exercises.forEach((ex) => {
         if (ex.type === 'multiple' && ex.options && ex.answer) {
           questions.push({
             type: 'multiple_choice',
@@ -290,6 +289,8 @@ export default function QuizEngine() {
       console.error('Error awarding quiz XP:', err)
     }
   }
+
+  finishQuizRef.current = finishQuiz
 
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60).toString().padStart(2, '0')

@@ -15,23 +15,21 @@ import { getCurriculumMeaning, getCurriculumTranslation, normalizeLocale, t } fr
 import { VOCAB_CATEGORIES, categorizeItems, getCategoryDefs } from '../data/categories'
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
+import VocabularyDetailModal from '../components/curriculum/VocabularyDetailModal'
 
 // ── Single vocab card ─────────────────────────────────────────
 // (LEVEL_META carries precomputed light/dark class pairs, so this one
 // still resolves isDark — see the note on GrammarCard for why.)
-const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
+const VocabCard = React.forwardRef(function VocabCard({ item, onOpenModal }, ref) {
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme === 'dark'
   const showRomaji = useSettingsStore((s) => s.romaji)
   const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage)
   const activeLang = normalizeLocale(displayLanguage)
   const displayMeaning = getCurriculumMeaning(item, activeLang)
-  const translationEntry = getCurriculumTranslation(item.id, activeLang)
   const { isCardInSRS, addCardToSRS } = useSRSStore()
-  const [expanded, setExpanded] = useState(false)
   const meta = LEVEL_META[item.level] || LEVEL_META['N5']
   const pitchInfo = getPitchAccent(item.word, item.reading)
-  const hasExpandableContent = Boolean(item.example?.jp || pitchInfo)
 
   const inDeck = isCardInSRS(item.id || item.word)
 
@@ -43,7 +41,14 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
   }
 
   return (
-    <motion.div ref={ref} layout initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="card p-4 hover:shadow-card-md transition-shadow">
+    <motion.div
+      ref={ref}
+      layout
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      onClick={() => onOpenModal?.(item)}
+      className="card p-4 hover:shadow-card-md hover:border-purple-300 dark:hover:border-purple-500/40 transition-all cursor-pointer group"
+    >
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
@@ -89,43 +94,27 @@ const VocabCard = React.forwardRef(function VocabCard({ item }, ref) {
               </>
             )}
           </button>
-          <button onClick={() => speak(item.word)} className="p-2 rounded-xl transition-colors bg-muted hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-500 dark:hover:text-red-400 text-muted-foreground">
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              speak(item.word)
+            }}
+            className="p-2 rounded-xl transition-colors bg-muted hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-500 dark:hover:text-red-400 text-muted-foreground"
+          >
             <Volume2 className="w-4 h-4" />
           </button>
-          {hasExpandableContent && (
-            <button onClick={() => setExpanded(!expanded)} className="p-2 rounded-xl transition-colors bg-muted hover:bg-muted/70 text-muted-foreground">
-              {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpenModal?.(item)
+            }}
+            className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 hover:bg-purple-500/20 transition-colors border border-purple-500/20"
+          >
+            {t('common.details', 'View')}
+          </button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {expanded && hasExpandableContent && (
-          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="mt-3 pt-3 border-t border-border space-y-3">
-            {item.example?.jp && (
-              <div className="flex items-start gap-2">
-                <button onClick={() => speak(item.example.jp)} className="mt-0.5 p-1 rounded-lg flex-shrink-0 transition-colors text-muted-foreground/70 hover:bg-red-50 dark:hover:bg-red-500/10 hover:text-red-500 dark:hover:text-red-400">
-                  <Volume2 className="w-3.5 h-3.5" />
-                </button>
-                <div>
-                  <p className="text-sm font-medium text-foreground">{item.example.jp}</p>
-                  <p className="text-xs mt-0.5 text-muted-foreground">{translationEntry?.example_trans || item.example.en}</p>
-                </div>
-              </div>
-            )}
-
-            {pitchInfo && (
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider mb-2 text-muted-foreground">
-                  Tokyo Pitch Accent
-                </p>
-                <PitchContourVisualizer word={item.word} reading={item.reading} showParticle={true} />
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   )
 })
@@ -137,6 +126,7 @@ export default function VocabularyPage() {
   const [selectedLevel, setSelectedLevel, { unlocked }] = useLevelState()
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [modalVocab, setModalVocab] = useState(null)
 
   const meta = LEVEL_META[selectedLevel]
   const vocab = useMemo(() => VOCABULARY[selectedLevel] || [], [selectedLevel])
@@ -244,7 +234,7 @@ export default function VocabularyPage() {
           category={currentCategoryDef}
           items={categorizedMap.get(selectedCategory) || []}
           onBack={() => setSelectedCategory(null)}
-          renderCard={(item) => <VocabCard key={item.id} item={item} />}
+          renderCard={(item) => <VocabCard key={item.id} item={item} onOpenModal={setModalVocab} />}
           searchFn={categorySearchFn}
           searchPlaceholder={t('common.search', 'Search in this category…')}
         />
@@ -254,7 +244,9 @@ export default function VocabularyPage() {
           <p className="text-sm text-muted-foreground">{filtered.length} {t('nav.vocabulary', 'words')}</p>
           <div className="space-y-3">
             <AnimatePresence mode="popLayout">
-              {filtered.slice(0, 50).map((item) => <VocabCard key={item.id} item={item} />)}
+              {filtered.slice(0, 50).map((item) => (
+                <VocabCard key={item.id} item={item} onOpenModal={setModalVocab} />
+              ))}
             </AnimatePresence>
             {filtered.length > 50 && (
               <p className="text-center text-sm text-muted-foreground py-4">
@@ -278,6 +270,13 @@ export default function VocabularyPage() {
           onSelect={setSelectedCategory}
         />
       )}
+
+      {/* Pop-up Vocabulary Detail Learning Modal */}
+      <VocabularyDetailModal
+        vocab={modalVocab}
+        isOpen={Boolean(modalVocab)}
+        onClose={() => setModalVocab(null)}
+      />
     </div>
   )
 }
