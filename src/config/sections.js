@@ -11,7 +11,7 @@
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
   RefreshCw, MessageCircle, Mic, Medal,
-  Trophy, Settings, Sparkles, BookA, User,
+  Trophy, Settings, Sparkles, BookA, User, Users,
 } from 'lucide-react'
 
 // ── Tint palette ─────────────────────────────────────────────
@@ -263,6 +263,16 @@ export const SECTIONS = [
     tint: 'cyan',
     group: 'journey',
     description: 'Your learning stats, personal records & avatar',
+  },
+  {
+    id: 'people',
+    label: 'Learners',
+    shortLabel: 'People',
+    path: '/people',
+    icon: Users,
+    tint: 'indigo',
+    group: 'journey',
+    description: 'Find learners worldwide & follow friends',
   },
   {
     id: 'league',

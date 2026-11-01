@@ -218,6 +218,50 @@ export const userReadingProgress = mysqlTable('user_reading_progress', {
   userReadingIdx: index('user_reading_idx').on(table.userId, table.status),
 }));
 
+// ─── Social graph ────────────────────────────────────────────────────────────
+// Directed "follow" edges: follower_id follows following_id (no approval step).
+export const userFollows = mysqlTable('user_follows', {
+  followerId: varchar('follower_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  followingId: varchar('following_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  pk: primaryKey({ columns: [table.followerId, table.followingId] }),
+  followingIdx: index('user_follows_following_idx').on(table.followingId, table.createdAt),
+  followerIdx: index('user_follows_follower_idx').on(table.followerId, table.createdAt),
+}));
+
+// ─── Learning attempts ───────────────────────────────────────────────────────
+// One row per answered item (SRS review, quiz answer...). Powers the adaptive
+// "learning insights" (services/learningInsights.ts). Append-only.
+export const learningAttempts = mysqlTable('learning_attempts', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  itemType: varchar('item_type', { length: 20 }).notNull(), // kanji | vocabulary | grammar | reading | kana
+  itemId: varchar('item_id', { length: 100 }).notNull(),
+  correct: boolean('correct').notNull(),
+  quality: int('quality'), // 0-5 self/auto grade when available
+  responseMs: int('response_ms'),
+  modality: varchar('modality', { length: 20 }).default('recall').notNull(), // recall | recognition | listening | writing | reading
+  localHour: int('local_hour'), // 0-23 in the learner's timezone
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  userTimeIdx: index('learning_attempts_user_time_idx').on(table.userId, table.createdAt),
+  userItemIdx: index('learning_attempts_user_item_idx').on(table.userId, table.itemType, table.itemId),
+}));
+
+// ─── Peer study alerts (canned messages only; no free text) ──────────────────
+export const userAlerts = mysqlTable('user_alerts', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  recipientId: varchar('recipient_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  senderId: varchar('sender_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  alertType: varchar('alert_type', { length: 20 }).notNull(), // study | streak | cheer | league
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  readAt: timestamp('read_at'),
+}, (table) => ({
+  inboxIdx: index('user_alerts_inbox_idx').on(table.recipientId, table.readAt, table.createdAt),
+  senderIdx: index('user_alerts_sender_idx').on(table.senderId, table.createdAt),
+}));
+
 // ─── Relations ───────────────────────────────────────────────────────────────
 export const usersRelations = relations(users, ({ many }) => ({
   lessonProgress: many(userLessonProgress),

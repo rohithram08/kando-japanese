@@ -46,6 +46,10 @@ const envSchema = z.object({
   GOOGLE_CLIENT_SECRET: z.string().optional(),
   GOOGLE_CALLBACK_URL: z.string().optional(),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
+
+  // Transactional email (password reset). Optional in development; required in production for resets to work.
+  RESEND_API_KEY: z.string().optional(),
+  EMAIL_FROM: z.string().default('Kando Japanese <onboarding@resend.dev>'),
 });
 
 const parsed = envSchema.safeParse(process.env);

@@ -2,7 +2,7 @@
 // Production Spaced Repetition (SRS) Review Engine
 // Integrates SM-2 backend queue with resolved vocabulary and kanji data.
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuthStore } from '../../store/authStore';
@@ -27,6 +27,7 @@ export default function SRSReview() {
 
   const [cards, setCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cardShownAt = useRef(0); // when the current card appeared (response-time telemetry)
   const [revealed, setRevealed] = useState(false);
   const [loading, setLoading] = useState(true);
   const [sessionXP, setSessionXP] = useState(0);
@@ -100,6 +101,10 @@ export default function SRSReview() {
     loadCards();
   }, [loadCards]);
 
+  useEffect(() => {
+    cardShownAt.current = Date.now();
+  }, [currentIndex, cards]);
+
   const handleQuality = useCallback(
     async (quality) => {
       const card = cards[currentIndex];
@@ -111,7 +116,8 @@ export default function SRSReview() {
         let xpGained = calculateSRSReviewXP(quality);
 
         if (user?.id) {
-          const result = await reviewCard(card.id, { quality, intervalMode: srsIntervalMode });
+          const responseMs = cardShownAt.current ? Math.min(Date.now() - cardShownAt.current, 600000) : undefined;
+          const result = await reviewCard(card.id, { quality, intervalMode: srsIntervalMode, responseMs, modality: 'recall' });
           isMastered = result?.card?.isMastered || false;
 
           // Consume xpResult directly from reviewCard response to prevent duplicate XP awards

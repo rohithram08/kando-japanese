@@ -19,6 +19,7 @@ import StreakCard from './StreakCard'
 import ProgressChart from './ProgressChart'
 import DailyGoal from './DailyGoal'
 import StudyProgressAnalytics from './StudyProgressAnalytics'
+import LearningInsightsCard from './LearningInsightsCard'
 import { useStudyLevel } from '../../hooks/useStudyLevel'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
@@ -389,6 +390,7 @@ export default function Dashboard() {
       </div>
 
       {/* ── Comprehensive Study Progress & Skills Analytics ── */}
+      <LearningInsightsCard />
       <StudyProgressAnalytics />
 
       {/* ── Level Progress Chart ── */}

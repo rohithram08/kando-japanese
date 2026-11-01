@@ -45,3 +45,17 @@ function extractBearerToken(header?: string): string | null {
   if (!header || !header.startsWith('Bearer ')) return null;
   return header.slice(7);
 }
+
+/**
+ * Like requireAuth but never rejects: attaches req.user when a valid token is present and
+ * continues anonymously otherwise. For endpoints that are public but personalise for members.
+ */
+export function optionalAuth(req: Request, _res: Response, next: NextFunction): void {
+  try {
+    const token = req.cookies?.token || extractBearerToken(req.headers.authorization);
+    if (token) req.user = jwt.verify(token, env.JWT_SECRET) as AuthPayload;
+  } catch {
+    // invalid / expired token: treat as anonymous
+  }
+  next();
+}

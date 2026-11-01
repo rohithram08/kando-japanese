@@ -24,3 +24,12 @@ export const aiLimiter = rateLimit({
   legacyHeaders: false,
   message: { error: { message: 'AI rate limit reached, please wait', code: 'AI_RATE_LIMITED' } },
 });
+
+/** Follow / unfollow / directory browsing: generous for humans, tight for scripts. */
+export const socialLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: env.NODE_ENV === 'production' ? 60 : 1000,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: { message: 'Too many requests, slow down a little', code: 'SOCIAL_RATE_LIMITED' } },
+});

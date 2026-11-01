@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2, Sparkles, Shield, Send, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2, Sparkles, Shield, Send, CheckCircle2, Users } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { getUserProfile, sendUserAlert } from '../api/users'
 import { useAuthStore } from '../store/authStore'
 import { useI18n } from '../i18n'
+import UserAvatar from '../components/common/UserAvatar'
+import FollowButton from '../components/social/FollowButton'
 
 const ALERT_OPTIONS = [
   {
@@ -38,16 +40,6 @@ const ALERT_OPTIONS = [
   },
 ]
 
-// Fallback mock directory for legacy demo links
-const ALL_USERS = {
-  'user-1': { id: 'user-1', name: 'Sakura_Chan', emoji: '🌸', bg: 'from-pink-400 to-pink-600', level: 'N4', xp: 2400, streak: 12, joined: 'March 2025', lessons: 24, kanji: 45, vocab: 90 },
-  'user-2': { id: 'user-2', name: 'KanjiMaster', emoji: '🐉', bg: 'from-green-500 to-emerald-700', level: 'N3', xp: 5200, streak: 30, joined: 'January 2025', lessons: 52, kanji: 120, vocab: 250 },
-  'user-3': { id: 'user-3', name: 'TokyoDrifter', emoji: '⛩️', bg: 'from-orange-400 to-red-500', level: 'N5', xp: 800, streak: 5, joined: 'May 2025', lessons: 8, kanji: 15, vocab: 40 },
-  'user-4': { id: 'user-4', name: 'NihonGoGo', emoji: '🗻', bg: 'from-blue-400 to-indigo-600', level: 'N4', xp: 1900, streak: 8, joined: 'April 2025', lessons: 18, kanji: 35, vocab: 75 },
-  'user-5': { id: 'user-5', name: 'SenseiMode', emoji: '🥷', bg: 'from-gray-700 to-gray-900', level: 'N2', xp: 8100, streak: 45, joined: 'December 2024', lessons: 78, kanji: 210, vocab: 450 },
-  'user-6': { id: 'user-6', name: 'SushiLover', emoji: '🍣', bg: 'from-amber-400 to-orange-500', level: 'N5', xp: 450, streak: 3, joined: 'June 2025', lessons: 5, kanji: 8, vocab: 25 },
-}
-
 export default function UserProfilePage() {
   const { userId } = useParams()
   const navigate = useNavigate()
@@ -58,6 +50,7 @@ export default function UserProfilePage() {
   const [error, setError] = useState(null)
   const [sendingAlert, setSendingAlert] = useState(null)
   const [sentAlerts, setSentAlerts] = useState({})
+  const [followerCount, setFollowerCount] = useState(0)
 
   const currentUser = useAuthStore((s) => s.user)
   const isSelf = Boolean(currentUser?.id && profile?.id && currentUser.id === profile.id)
@@ -67,10 +60,10 @@ export default function UserProfilePage() {
     setSendingAlert(alertType)
     try {
       const res = await sendUserAlert(profile.id, alertType)
-      toast.success(res.alert?.text ? `Alert sent: "${res.alert.text}"` : (res.message || 'Alert sent! 🚀'))
+      toast.success(res.alert?.text ? `${t('user_profile.alert_sent', 'Alert sent')}: "${res.alert.text}"` : (res.message || t('user_profile.alert_sent', 'Alert sent')))
       setSentAlerts((prev) => ({ ...prev, [alertType]: Date.now() }))
     } catch (err) {
-      toast.error(err?.message || 'Could not send alert')
+      toast.error(err?.message || t('user_profile.alert_failed', 'Could not send alert'))
     } finally {
       setSendingAlert(null)
     }
@@ -93,28 +86,28 @@ export default function UserProfilePage() {
         setProfile({
           id: data.id,
           name: data.username,
-          emoji: data.avatarId || (data.avatarUrl ? null : '🌸'),
+          avatarId: data.avatarId,
           avatarUrl: data.avatarUrl,
-          bg: 'from-purple-500 to-indigo-600',
+          avatarConfig: data.avatarConfig,
+          followers: data.followersCount ?? 0,
+          following: data.followingCount ?? 0,
+          isFollowing: Boolean(data.isFollowing),
+          isSelfProfile: Boolean(data.isSelf),
           level: data.currentLevel || 'N5',
           xp: data.xpPoints || 0,
           streak: data.streakDays || 0,
-          joined: data.createdAt ? new Date(data.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'Recently',
+          joined: data.createdAt ? new Date(data.createdAt).toLocaleDateString(undefined, { month: 'long', year: 'numeric' }) : t('user_profile.recently', 'Recently'),
           lessons: data.lessonsCount || 0,
           kanji: data.kanjiCount || 0,
           vocab: data.vocabCount || 0,
         })
+        setFollowerCount(data.followersCount ?? 0)
         setLoading(false)
       })
       .catch((err) => {
         if (!isMounted) return
-        if (ALL_USERS[userId]) {
-          setProfile(ALL_USERS[userId])
-          setLoading(false)
-        } else {
-          setError(err?.message || t('user_profile.not_found', 'User not found'))
-          setLoading(false)
-        }
+        setError(err?.status === 404 ? t('user_profile.not_found', 'User not found') : (err?.message || t('user_profile.load_failed', 'Could not load this profile.')))
+        setLoading(false)
       })
 
     return () => {
@@ -193,12 +186,8 @@ export default function UserProfilePage() {
         <div className="relative px-6 -mt-14 pb-6">
           <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5">
             {/* Avatar */}
-            <div className={`w-28 h-28 rounded-2xl border-4 shadow-xl overflow-hidden flex items-center justify-center text-5xl bg-gradient-to-br ${profile.bg} border-surface bg-surface`}>
-              {profile.avatarUrl ? (
-                <img src={profile.avatarUrl} alt={profile.name} className="w-full h-full object-cover" />
-              ) : (
-                <span>{profile.emoji || '🌸'}</span>
-              )}
+            <div className="rounded-2xl border-4 border-surface shadow-xl overflow-hidden bg-surface">
+              <UserAvatar avatarConfig={profile.avatarConfig} avatarId={profile.avatarId} avatarUrl={profile.avatarUrl} username={profile.name} size="2xl" rounded="rounded-xl" />
             </div>
 
             {/* Info */}
@@ -224,6 +213,24 @@ export default function UserProfilePage() {
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border dark:border-emerald-500/20">
                   ⭐ {profile.xp.toLocaleString()} XP
                 </span>
+              </div>
+
+              {/* Social: counts + follow */}
+              <div className="flex items-center justify-center sm:justify-start gap-4 mt-4 flex-wrap">
+                <Link to="/people" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">
+                  <Users className="w-4 h-4" />
+                  <span><strong className="text-foreground">{followerCount}</strong> {t('people.followers', 'followers')}</span>
+                  <span aria-hidden>·</span>
+                  <span><strong className="text-foreground">{profile.following}</strong> {t('people.following_count', 'following')}</span>
+                </Link>
+                {!isSelf && currentUser && (
+                  <FollowButton
+                    userId={profile.id}
+                    username={profile.name}
+                    initialFollowing={profile.isFollowing}
+                    onChange={(r) => setFollowerCount(r.followers)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -310,15 +317,15 @@ export default function UserProfilePage() {
             <div>
               <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-amber-500" />
-                <span>Send a Study Motivation Alert</span>
+                <span>{t('user_profile.alert_title', 'Send a Study Motivation Alert')}</span>
               </h3>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Encourage {profile.name} with a friendly Japanese study ping!
+                {t('user_profile.alert_desc', { name: profile.name }, `Encourage ${profile.name} with a friendly Japanese study ping!`)}
               </p>
             </div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-medium self-start sm:self-auto">
               <Shield className="w-3 h-3" />
-              <span>Safe & Confidential</span>
+              <span>{t('user_profile.safe', 'Safe & Confidential')}</span>
             </div>
           </div>
 
@@ -344,7 +351,7 @@ export default function UserProfilePage() {
                       </span>
                       {isRecent ? (
                         <span className="inline-flex items-center gap-0.5 text-[10px] text-emerald-500 font-semibold shrink-0">
-                          <CheckCircle2 className="w-3 h-3" /> Sent
+                          <CheckCircle2 className="w-3 h-3" /> {t('user_profile.sent', 'Sent')}
                         </span>
                       ) : (
                         <Send className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
@@ -362,7 +369,7 @@ export default function UserProfilePage() {
           <div className="p-3 rounded-xl bg-muted/40 border border-border/50 text-[11px] text-muted-foreground flex items-center gap-2">
             <span className="text-xs">🔒</span>
             <span>
-              <strong>Privacy Protection:</strong> Direct free-text chat and personal contact information are kept strictly confidential to protect all learners.
+              <strong>{t('user_profile.privacy_title', 'Privacy Protection:')}</strong> {t('user_profile.privacy_body', 'Direct free-text chat and personal contact information are kept strictly confidential to protect all learners.')}
             </span>
           </div>
         </motion.div>

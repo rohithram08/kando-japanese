@@ -7,6 +7,7 @@ import Navbar from './Navbar'
 import MobileNav from './MobileNav'
 import CelebrationPortal from '../celebration/CelebrationPortal'
 import { useNotificationEngine } from '../../hooks/useNotificationEngine'
+import { useAlertInbox } from '../../hooks/useAlertInbox'
 const SenseiCompanion = React.lazy(() => import('../sensei/SenseiCompanion'))
 
 const MOBILE_BREAKPOINT = 768
@@ -18,6 +19,8 @@ const Layout = () => {
   // Watches real app state (SRS due, streaks, badges, level, daily goals)
   // and generates real notifications — runs for the whole authenticated app.
   useNotificationEngine()
+  // Study alerts other learners sent me -> notification bell.
+  useAlertInbox()
 
   const [collapsed, setCollapsed] = useState(() => {
     try {

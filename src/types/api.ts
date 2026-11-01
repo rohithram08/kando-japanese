@@ -76,8 +76,6 @@ export interface ResetPasswordRequestPayload {
 
 export interface ResetPasswordRequestResponse {
   message: string;
-  token?: string;
-  resetUrl?: string;
 }
 
 export interface ResetPasswordPayload {
@@ -232,6 +230,9 @@ export interface AddSRSCardResponse {
 export interface ReviewSRSCardRequest {
   quality: SRSQuality;
   intervalMode?: SRSIntervalMode;
+  /** Time from card shown to answer, for adaptive insights. */
+  responseMs?: number;
+  modality?: 'recall' | 'recognition' | 'listening' | 'writing' | 'reading';
 }
 
 export interface ReviewSRSCardResponse extends SRSReviewResult {}

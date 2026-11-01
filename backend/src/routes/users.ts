@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { db } from '../db/index.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, optionalAuth } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 import { users, userLessonProgress, userKanjiProgress, userVocabularyProgress } from '../db/schema.js';
 import { eq, sql } from 'drizzle-orm';
@@ -9,6 +9,8 @@ import { AppError } from '../middleware/errorHandler.js';
 import { computeLevelStatus, getStudyLevel } from '../services/levelService.js';
 import { avatarConfigSchema, parseAvatarConfig, serializeAvatarConfig, type AvatarConfig } from '../services/avatarConfig.js';
 import { serializeProfile } from '../services/userSerializer.js';
+import { getFollowCounts, isFollowing } from '../services/socialService.js';
+import { createAlert, getInbox, markRead, STUDY_ALERT_TYPES, type StudyAlertType } from '../services/alertService.js';
 
 export const usersRouter = Router();
 
@@ -263,29 +265,45 @@ usersRouter.post(
   }
 );
 
-usersRouter.get('/:userId', async (req, res, next) => {
+/** GET /api/users/alerts/inbox - alerts other learners sent me. Declared before '/:userId'. */
+usersRouter.get('/alerts/inbox', requireAuth, async (req, res, next) => {
+  try {
+    res.json(await getInbox(req.user!.userId));
+  } catch (err) {
+    next(err);
+  }
+});
+
+const markReadSchema = z.object({ body: z.object({ ids: z.array(z.string().uuid()).max(100).optional() }) });
+
+/** POST /api/users/alerts/read { ids? } - mark some (or all) alerts as read. */
+usersRouter.post('/alerts/read', requireAuth, validate(markReadSchema), async (req, res, next) => {
+  try {
+    await markRead(req.user!.userId, req.body.ids);
+    res.json({ success: true });
+  } catch (err) {
+    next(err);
+  }
+});
+
+usersRouter.get('/:userId', optionalAuth, async (req, res, next) => {
   try {
     const { userId } = req.params;
+    const viewerId = req.user?.userId ?? null;
     const user = await db.query.users.findFirst({
       where: eq(users.id, userId),
     });
 
-    if (!user) throw new AppError(404, 'User not found');
+    // Learners who opted out of leagues/leaderboards are private: indistinguishable from missing.
+    if (!user || (user.leagueOptOut && user.id !== viewerId)) throw new AppError(404, 'User not found', 'USER_NOT_FOUND');
 
-    const [lessonCountResult] = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(userLessonProgress)
-      .where(eq(userLessonProgress.userId, user.id));
-
-    const [kanjiCountResult] = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(userKanjiProgress)
-      .where(eq(userKanjiProgress.userId, user.id));
-
-    const [vocabCountResult] = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(userVocabularyProgress)
-      .where(eq(userVocabularyProgress.userId, user.id));
+    const [[lessonCountResult], [kanjiCountResult], [vocabCountResult], counts, following] = await Promise.all([
+      db.select({ count: sql<number>`count(*)` }).from(userLessonProgress).where(eq(userLessonProgress.userId, user.id)),
+      db.select({ count: sql<number>`count(*)` }).from(userKanjiProgress).where(eq(userKanjiProgress.userId, user.id)),
+      db.select({ count: sql<number>`count(*)` }).from(userVocabularyProgress).where(eq(userVocabularyProgress.userId, user.id)),
+      getFollowCounts(user.id),
+      viewerId && viewerId !== user.id ? isFollowing(viewerId, user.id) : Promise.resolve(false),
+    ]);
 
     res.json({
       id: user.id,
@@ -301,51 +319,24 @@ usersRouter.get('/:userId', async (req, res, next) => {
       lessonsCount: Number(lessonCountResult?.count || 0),
       kanjiCount: Number(kanjiCountResult?.count || 0),
       vocabCount: Number(vocabCountResult?.count || 0),
+      followersCount: counts.followers,
+      followingCount: counts.following,
+      isFollowing: following,
+      isSelf: viewerId === user.id,
     });
   } catch (err) {
     next(err);
   }
 });
 
-// ─── Predefined Study Alerts (Confidential & Harassment-Free) ────────────────
-export const STUDY_ALERT_TYPES = {
-  study: {
-    type: 'study',
-    label: "Let's start studying!",
-    text: "Let's start studying! 📚",
-    icon: '📚',
-  },
-  streak: {
-    type: 'streak',
-    label: 'Keep your streak alive!',
-    text: 'Keep your streak alive today! 🔥',
-    icon: '🔥',
-  },
-  cheer: {
-    type: 'cheer',
-    label: 'Ganbatte! You can do it!',
-    text: 'Ganbatte! You can do it! 🌸',
-    icon: '🌸',
-  },
-  league: {
-    type: 'league',
-    label: 'Great job in the league!',
-    text: 'Great job in the league! Keep climbing! 🏆',
-    icon: '🏆',
-  },
-} as const;
-
-export type StudyAlertType = keyof typeof STUDY_ALERT_TYPES;
+// ─── Peer study alerts ───────────────────────────────────────────────────────
+export { STUDY_ALERT_TYPES, type StudyAlertType };
 
 export const sendAlertSchema = z.object({
   body: z.object({
     alertType: z.enum(['study', 'streak', 'cheer', 'league']),
   }),
 });
-
-// Cooldown tracker: `${senderId}:${targetUserId}:${alertType}` -> timestamp
-export const alertCooldowns = new Map<string, number>();
-export const ALERT_COOLDOWN_MS = 60_000; // 1 minute cooldown per pair
 
 usersRouter.post('/:userId/alert', requireAuth, validate(sendAlertSchema), async (req, res, next) => {
   try {
@@ -357,32 +348,14 @@ usersRouter.post('/:userId/alert', requireAuth, validate(sendAlertSchema), async
       throw new AppError(400, 'Cannot send a study alert to yourself', 'SELF_ALERT_FORBIDDEN');
     }
 
-    const targetUser = await db.query.users.findFirst({
-      where: eq(users.id, targetUserId),
-    });
-
-    if (!targetUser) {
+    const targetUser = await db.query.users.findFirst({ where: eq(users.id, targetUserId) });
+    // Opted-out learners are private: they cannot be messaged either.
+    if (!targetUser || targetUser.leagueOptOut) {
       throw new AppError(404, 'User not found');
     }
 
-    const cooldownKey = `${senderId}:${targetUserId}:${alertType}`;
-    const lastSent = alertCooldowns.get(cooldownKey);
-    const now = Date.now();
-    if (lastSent && now - lastSent < ALERT_COOLDOWN_MS) {
-      const waitSeconds = Math.ceil((ALERT_COOLDOWN_MS - (now - lastSent)) / 1000);
-      throw new AppError(
-        429,
-        `Please wait ${waitSeconds}s before sending this alert again`,
-        'ALERT_COOLDOWN'
-      );
-    }
-
-    alertCooldowns.set(cooldownKey, now);
-
-    const sender = await db.query.users.findFirst({
-      where: eq(users.id, senderId),
-    });
-
+    const { sentAt } = await createAlert(senderId, targetUserId, alertType as StudyAlertType);
+    const sender = await db.query.users.findFirst({ where: eq(users.id, senderId) });
     const template = STUDY_ALERT_TYPES[alertType as StudyAlertType];
 
     res.json({
@@ -395,7 +368,7 @@ usersRouter.post('/:userId/alert', requireAuth, validate(sendAlertSchema), async
         icon: template.icon,
         senderName: sender?.username || 'A fellow learner',
         recipientId: targetUser.id,
-        sentAt: new Date().toISOString(),
+        sentAt,
       },
     });
   } catch (err) {

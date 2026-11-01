@@ -90,9 +90,8 @@ export default function LevelPlacementModal({
         toast.success(`🎉 ${t('placement.qualified', `Qualified for JLPT ${test.level}!`)}`);
         onQualified?.(test.level);
       } catch (err) {
-        console.warn('Placement qualification sync note:', err);
-        useSettingsStore.getState().updateSettings({ jlptLevel: test.level });
-        onQualified?.(test.level);
+        // Do NOT pretend the level was unlocked when the server did not confirm it.
+        toast.error(err?.message || t('placement.save_failed', 'Could not save your result. Please try again.'));
       } finally {
         setSubmitting(false);
       }

@@ -3,10 +3,20 @@ import {
   usersRouter,
   updateProfileSchema,
   sendAlertSchema,
-  alertCooldowns,
 } from '../users.js';
 import { db } from '../../db/index.js';
 import { AppError } from '../../middleware/errorHandler.js';
+
+vi.mock('../../services/alertService.js', async (orig) => ({
+  ...(await orig<typeof import('../../services/alertService.js')>()),
+  createAlert: vi.fn().mockResolvedValue({ id: 'a1', sentAt: '2026-11-01T00:00:00.000Z' }),
+}));
+import { createAlert } from '../../services/alertService.js';
+
+vi.mock('../../services/socialService.js', () => ({
+  getFollowCounts: vi.fn().mockResolvedValue({ followers: 3, following: 2 }),
+  isFollowing: vi.fn().mockResolvedValue(true),
+}));
 
 // Mock DB
 vi.mock('../../db/index.js', () => ({
@@ -298,6 +308,35 @@ describe('Users Routes — Backend API', () => {
       expect(jsonResult.passwordHash).toBeUndefined();
       expect(jsonResult.email).toBeUndefined();
       expect(jsonResult.googleId).toBeUndefined();
+      expect(jsonResult).toMatchObject({ followersCount: 3, followingCount: 2, isFollowing: false, isSelf: false });
+    });
+
+    it('reports isFollowing for a signed-in viewer', async () => {
+      const handler = getRouteHandler('/:userId', 'get');
+      const req: any = { params: { userId: 'u-123' }, user: { userId: 'viewer-1' } };
+      let jsonResult: any = null;
+      const res: any = { json: (d: any) => { jsonResult = d; } };
+      vi.mocked(db.query.users.findFirst).mockResolvedValue({ id: 'u-123', username: 'Kenji', leagueOptOut: false, createdAt: new Date() } as any);
+      await handler(req, res, vi.fn());
+      expect(jsonResult.isFollowing).toBe(true);
+    });
+
+    it('hides opted-out (private) learners from everyone but themselves', async () => {
+      const handler = getRouteHandler('/:userId', 'get');
+      const priv = { id: 'u-private', username: 'Hidden', leagueOptOut: true, createdAt: new Date() } as any;
+
+      vi.mocked(db.query.users.findFirst).mockResolvedValue(priv);
+      const nextOther = vi.fn();
+      await handler({ params: { userId: 'u-private' }, user: { userId: 'someone-else' } }, { json: vi.fn() }, nextOther);
+      expect(nextOther.mock.calls[0][0]).toMatchObject({ statusCode: 404 });
+
+      const nextAnon = vi.fn();
+      await handler({ params: { userId: 'u-private' } }, { json: vi.fn() }, nextAnon);
+      expect(nextAnon.mock.calls[0][0]).toMatchObject({ statusCode: 404 });
+
+      let own: any = null;
+      await handler({ params: { userId: 'u-private' }, user: { userId: 'u-private' } }, { json: (d: any) => { own = d; } }, vi.fn());
+      expect(own).toMatchObject({ id: 'u-private', isSelf: true });
     });
 
     it('returns AppError 404 when user is not found', async () => {
@@ -380,7 +419,6 @@ describe('Users Routes — Backend API', () => {
 
     it('sends canned alert with sender username and predefined text', async () => {
       const handler = getRouteHandler('/:userId/alert', 'post');
-      alertCooldowns.clear();
       const req: any = {
         user: { userId: 'u-sender' },
         params: { userId: 'u-target' },
@@ -409,32 +447,28 @@ describe('Users Routes — Backend API', () => {
       expect(jsonResult.alert.recipientId).toBe('u-target');
     });
 
-    it('enforces cooldown on rapid duplicate alerts to the same user', async () => {
+    it('propagates the durable cooldown error (429) from the alert service', async () => {
       const handler = getRouteHandler('/:userId/alert', 'post');
-      alertCooldowns.clear();
-      const req: any = {
-        user: { userId: 'u-sender-rate' },
-        params: { userId: 'u-target-rate' },
-        body: { alertType: 'study' },
-      };
-      const res: any = { json: vi.fn() };
+      const req: any = { user: { userId: 'u-sender-rate' }, params: { userId: 'u-target-rate' }, body: { alertType: 'study' } };
       const next = vi.fn();
+      vi.mocked(db.query.users.findFirst).mockResolvedValue({ id: 'u-target-rate', username: 'Target' } as any);
+      vi.mocked(createAlert).mockRejectedValueOnce(new AppError(429, 'wait', 'ALERT_COOLDOWN'));
 
-      vi.mocked(db.query.users.findFirst)
-        .mockResolvedValue({ id: 'u-target-rate', username: 'Target' } as any);
+      await handler(req, { json: vi.fn() }, next);
 
-      // First call succeeds
-      await handler(req, res, next);
-      expect(res.json).toHaveBeenCalled();
-
-      // Second immediate call must be rate limited (429)
-      const next2 = vi.fn();
-      await handler(req, res, next2);
-      expect(next2).toHaveBeenCalledTimes(1);
-      const err = next2.mock.calls[0][0];
+      const err = next.mock.calls[0][0];
       expect(err).toBeInstanceOf(AppError);
       expect(err.statusCode).toBe(429);
       expect(err.code).toBe('ALERT_COOLDOWN');
+    });
+
+    it('does not allow alerts to opted-out (private) learners', async () => {
+      const handler = getRouteHandler('/:userId/alert', 'post');
+      const next = vi.fn();
+      vi.mocked(db.query.users.findFirst).mockResolvedValue({ id: 'u-priv', username: 'P', leagueOptOut: true } as any);
+      await handler({ user: { userId: 'u-1' }, params: { userId: 'u-priv' }, body: { alertType: 'cheer' } }, { json: vi.fn() }, next);
+      expect(next.mock.calls[0][0]).toMatchObject({ statusCode: 404 });
+      expect(createAlert).not.toHaveBeenCalledWith('u-1', 'u-priv', 'cheer');
     });
   });
 });

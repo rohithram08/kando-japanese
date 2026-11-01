@@ -219,6 +219,9 @@ interface LoadedCurriculumWord {
   exampleHi?: string;
 }
 
+import { fileURLToPath } from 'node:url';
+const here = path.dirname(fileURLToPath(import.meta.url));
+
 let curriculumWordsCache: LoadedCurriculumWord[] | null = null;
 
 function loadCurriculumWords(): LoadedCurriculumWord[] {
@@ -228,6 +231,7 @@ function loadCurriculumWords(): LoadedCurriculumWord[] {
   const root = process.cwd();
 
   const possibleContentDirs = [
+    path.resolve(here, '../content'), // compiled / serverless build (scripts/copy-assets.js)
     path.resolve(root, 'content'),
     path.resolve(root, '../content'),
     path.resolve(root, '../../content'),

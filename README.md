@@ -9,7 +9,7 @@
 
 [![Platform Version](https://img.shields.io/badge/version-2.1.16-blue?style=flat-square&logo=semver)](package.json)
 [![Build Status](https://img.shields.io/badge/Vite%20Build-Passing-emerald?style=flat-square&logo=vite)](https://vitejs.dev/)
-[![Test Suite](https://img.shields.io/badge/Vitest-78%20Files%20%2F%201605%20Tests%20Passing-brightgreen?style=flat-square&logo=vitest)](https://vitest.dev/)
+[![Test Suite](https://img.shields.io/badge/Vitest-81%20Files%20%2F%201625%20Tests%20Passing-brightgreen?style=flat-square&logo=vitest)](https://vitest.dev/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb?style=flat-square&logo=react)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [![Three.js](https://img.shields.io/badge/Three.js-3D%20VRM%20Sensei-black?style=flat-square&logo=three.js)](https://threejs.org/)
@@ -71,7 +71,15 @@ Whether starting from zero with Hiragana and Katakana in the **Kana Studio**, ad
 - **Level Gating & Placement Tests**: Automatic level qualification tests ensuring learners enter at their appropriate JLPT level while keeping profiles secure.
 - **Custom Avatar Studio**: Generate custom avatars with diverse styles powered by DiceBear.
 
-### 🌐 9. Multilingual Learning Support
+### 👥 9. Community: Follow Friends (`/people`)
+- Global learner directory with name search, ranked by XP; follow / unfollow any learner from the directory or their profile (`/profile/:id`).
+- Followers / following lists with counts. Learners who opt out of leagues in Settings are hidden everywhere (directory, lists, public profile).
+
+### 🧠 10. Evidence-Based Learning Insights (Dashboard)
+- Not a "learning style" quiz: matching teaching to a self-reported style is not supported by controlled research (Pashler et al., 2008).
+- Instead the platform *measures* what works for you from your own answers (accuracy by item type, modality and time of day, items that keep failing) and sizes your daily plan to stay near the productive ~85% accuracy zone (Wilson et al., 2019). Reviews come first (retrieval + spaced practice: Dunlosky et al., 2013; Cepeda et al., 2006). Claims only appear once there is enough data, and the sources are shown in the card.
+
+### 🌐 11. Multilingual Learning Support
 - Localized vocabulary and curriculum definitions in **English (`en`)**, **Tamil (`ta`)**, **Hindi (`hi`)**, and **Japanese (`ja`)**.
 - Instant language switching across all pages.
 
@@ -95,7 +103,8 @@ Whether starting from zero with Hiragana and Katakana in the **Kana Studio**, ad
 ## 📂 Project Architecture
 
 ```
-nihongo-master/
+kando-japanese/
+├── backend/                    # Express + Drizzle (TiDB/MySQL) API; deploys as its own Vercel project
 ├── content/                    # Curated JLPT curriculum data
 │   ├── kanji/                  # N5 - N1 kanji with examples & stroke counts
 │   ├── vocabulary/             # N5 - N1 vocabulary words with readings
@@ -154,6 +163,12 @@ nihongo-master/
 
 ---
 
+## 🚀 Deployment
+
+See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for the two-project Vercel setup (frontend + API), environment variables and database migrations.
+
+---
+
 ## 🧪 Testing & Quality Assurance
 
 Kando Japanese maintains a strict testing bar with automated verification for curriculum parity, level gating, audio playback, and stroke accuracy:
@@ -173,7 +188,7 @@ npm run build
 ```
 
 **Test Coverage Summary**:
-- **78 test files / 1,605+ automated tests passing**
+- **81 test files / 1,625+ frontend tests, plus 175+ backend tests**
 - 100% stroke order parity across all N5 and N4 kanji
 - Level gating and placement security tests
 - Multilingual translation key coverage across all supported locales

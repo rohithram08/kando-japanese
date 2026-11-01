@@ -51,6 +51,11 @@ const upload = multer({
 
 uploadRouter.post('/avatar', requireAuth, upload.single('avatar'), async (req, res, next) => {
   try {
+    // Serverless filesystems are read-only/ephemeral: a "successful" upload would disappear on the next
+    // cold start. Fail loudly instead of faking success. Preset and cartoon avatars still work.
+    if (process.env.VERCEL) {
+      throw new AppError(501, 'Photo uploads are not available on this deployment yet. Please choose a preset or custom cartoon avatar.', 'UPLOAD_UNAVAILABLE');
+    }
     if (!req.file) {
       throw new AppError(400, 'No file provided', 'NO_FILE');
     }

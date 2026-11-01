@@ -7,6 +7,7 @@ import { validate } from '../middleware/validate.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { db } from '../db/index.js';
 import { recordXpEvent } from '../services/xpLedger.js';
+import { recordAttempts } from '../services/attemptService.js';
 import { srsCards, users, userKanjiProgress, userVocabularyProgress } from '../db/schema.js';
 import { calculateSRSReviewXP, getUserLevel } from '../services/progressCalculator.js';
 import { calculateStreak, recordActivity, getLocalDateString, resolveTimezone } from '../services/streakService.js';
@@ -17,9 +18,11 @@ export const srsRouter = Router();
 srsRouter.get('/due', requireAuth, async (req, res, next) => {
   try {
     const userId = req.user!.userId;
-    const limit = req.query.limit ? Math.min(Number(req.query.limit), 100) : 20;
-    const todayStr = new Date().toISOString().split('T')[0];
-    const today = new Date(todayStr);
+    const requested = Number(req.query.limit);
+    const limit = Number.isFinite(requested) && requested > 0 ? Math.min(Math.floor(requested), 100) : 20;
+    // "Today" is the learner's local calendar day, not the server's UTC day.
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const today = new Date(getLocalDateString(new Date(), tz));
 
     const cards = await db.query.srsCards.findMany({
       where: and(
@@ -54,8 +57,8 @@ srsRouter.get('/cards', requireAuth, async (req, res, next) => {
 srsRouter.get('/due/count', requireAuth, async (req, res, next) => {
   try {
     const userId = req.user!.userId;
-    const todayStr = new Date().toISOString().split('T')[0];
-    const today = new Date(todayStr);
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const today = new Date(getLocalDateString(new Date(), tz));
 
     const result = await db.select({ count: sql<number>`cast(count(*) as unsigned)` })
       .from(srsCards)
@@ -129,6 +132,9 @@ const reviewSchema = z.object({
   body: z.object({
     quality: z.number().min(0).max(5),
     intervalMode: z.enum(['relaxed', 'balanced', 'intense']).optional(),
+    // Optional telemetry for the adaptive insights (how long the answer took, which way it was tested).
+    responseMs: z.number().int().min(0).max(600_000).optional(),
+    modality: z.enum(['recall', 'recognition', 'listening', 'writing', 'reading']).optional(),
   }),
 });
 
@@ -136,7 +142,7 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
   try {
     const userId = req.user!.userId;
     const { id } = req.params;
-    const { quality, intervalMode = 'balanced' } = req.body;
+    const { quality, intervalMode = 'balanced', responseMs, modality } = req.body;
 
     const card = await db.query.srsCards.findFirst({
       where: and(
@@ -198,6 +204,11 @@ srsRouter.put('/cards/:id/review', requireAuth, validate(reviewSchema), async (r
     const updated = await db.query.srsCards.findFirst({
       where: eq(srsCards.id, id),
     });
+
+    // Analytics only: a logging failure must never fail the review itself.
+    recordAttempts(userId, [{
+      itemType: card.cardType, itemId: card.cardRefId, correct: quality >= 3, quality, responseMs, modality: modality ?? 'recall',
+    }], tz).catch((e) => console.debug('learning attempt log failed:', e));
 
     // Increment review count in userKanjiProgress or userVocabularyProgress
     if (card.cardType === 'kanji') {

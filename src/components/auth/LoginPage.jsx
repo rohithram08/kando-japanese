@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft, Key } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
 import { authApi }       from '../../api'
 import { useI18n }         from '../../i18n'
@@ -22,7 +22,6 @@ export default function LoginPage() {
   const [forgotEmail, setForgotEmail]       = useState('')
   const [forgotLoading, setForgotLoading]   = useState(false)
   const [forgotErrors, setForgotErrors]     = useState({})
-  const [resetUrl, setResetUrl]             = useState('')
 
   const { signIn, signInWithGoogle } = useAuthStore()
   const { t }                        = useI18n()
@@ -84,11 +83,9 @@ export default function LoginPage() {
 
     setForgotLoading(true)
     try {
-      const res = await authApi.requestPasswordReset({ email: forgotEmail })
-      toast.success(t('auth.reset_link_sent', 'Reset link ready! 🔑'))
-      if (res?.resetUrl) {
-        setResetUrl(res.resetUrl)
-      }
+      await authApi.requestPasswordReset({ email: forgotEmail })
+      // The server never reveals whether the account exists or hands back the link: it is emailed.
+      toast.success(t('auth.reset_link_sent', 'If that email has an account, a reset link is on its way.'))
       setForgotStep(2)
     } catch (err) {
       setForgotErrors({ forgotEmail: err?.message || t('auth.reset_link_failed', 'Failed to send reset email') })
@@ -104,7 +101,6 @@ export default function LoginPage() {
     setForgotEmail('')
     setForgotErrors({})
     setForgotLoading(false)
-    setResetUrl('')
   }
 
   // ── Field classes ─────────────────────────────────────────
@@ -266,20 +262,6 @@ export default function LoginPage() {
                       </div>
                     </motion.div>
 
-                    {resetUrl && (
-                      <div className="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700/50 rounded-xl text-center space-y-2">
-                        <p className="text-xs text-amber-800 dark:text-amber-200 font-medium">
-                          ⚡ Direct Reset Link (Ready to use):
-                        </p>
-                        <Link
-                          to={resetUrl}
-                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold shadow transition-colors"
-                        >
-                          <Key className="w-3.5 h-3.5" />
-                          Set New Password Now 🔑
-                        </Link>
-                      </div>
-                    )}
 
                     <motion.button
                       onClick={resetForgotState}

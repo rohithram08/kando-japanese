@@ -84,3 +84,23 @@ export interface SendAlertResponse {
 export function sendUserAlert(userId: string, alertType: StudyAlertType): Promise<SendAlertResponse> {
   return post<SendAlertResponse>(`/users/${encodeURIComponent(userId)}/alert`, { alertType });
 }
+
+export interface InboxAlert {
+  id: string;
+  type: StudyAlertType;
+  icon: string;
+  text: string;
+  createdAt: string;
+  read: boolean;
+  sender: { id: string; name: string };
+}
+
+/** Study alerts other learners sent me. */
+export function getAlertInbox(): Promise<{ alerts: InboxAlert[]; unread: number }> {
+  return get<{ alerts: InboxAlert[]; unread: number }>('/users/alerts/inbox');
+}
+
+/** Mark alerts read (all when ids is omitted). */
+export function markAlertsRead(ids?: string[]): Promise<{ success: boolean }> {
+  return post<{ success: boolean }>('/users/alerts/read', ids ? { ids } : {});
+}

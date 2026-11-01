@@ -17,6 +17,10 @@ import { senseiRouter } from './routes/sensei.js';
 
 const app = express();
 
+// Behind Vercel / any reverse proxy the real client IP arrives in X-Forwarded-For. Without this every
+// visitor shares the proxy's IP (one global rate-limit bucket) and express-rate-limit throws.
+app.set('trust proxy', 1);
+
 // ─── Security ────────────────────────────────────────────────────────────────
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
@@ -48,8 +52,9 @@ app.get('/api/health', (_req, res) => {
 import { uploadRouter } from './routes/upload.js';
 import { readingRouter } from './routes/reading.js';
 import { leagueRouter } from './routes/league.js';
-import { settleDueWeeks } from './services/leagueService.js';
 import { dictionaryRouter } from './routes/dictionary.js';
+import { socialRouter } from './routes/social.js';
+import { learningRouter } from './routes/learning.js';
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
@@ -63,14 +68,20 @@ app.use('/api/sensei', senseiRouter);
 app.use('/api/reading', readingRouter);
 app.use('/api/dictionary', dictionaryRouter);
 app.use('/api/league', leagueRouter);
+app.use('/api/social', socialRouter);
+app.use('/api/learning', learningRouter);
 
 // ─── Error Handler ───────────────────────────────────────────────────────────
 app.use(errorHandler);
 
 // ─── Start ───────────────────────────────────────────────────────────────────
-app.listen(env.PORT, () => {
-  console.log(`🚀 Nihongo API running on http://localhost:${env.PORT}`);
-  console.log(`   Environment: ${env.NODE_ENV}`);
-});
+// On Vercel the platform invokes the exported app per request (see ../api/index.ts); only bind a
+// port when running as a long-lived server (local dev, Docker, Render, Fly, ...).
+if (!process.env.VERCEL) {
+  app.listen(env.PORT, () => {
+    console.log(`🚀 Kando API running on http://localhost:${env.PORT}`);
+    console.log(`   Environment: ${env.NODE_ENV}`);
+  });
+}
 
 export default app;
