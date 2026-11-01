@@ -4,4 +4,5 @@ dist
 *.d.ts
 *.js.map
 *.d.ts.map
+!scripts/**/*.js
 !drizzle.config.ts
