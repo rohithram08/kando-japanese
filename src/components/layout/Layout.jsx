@@ -11,7 +11,7 @@ import { useAlertInbox } from '../../hooks/useAlertInbox'
 const SenseiCompanion = React.lazy(() => import('../sensei/SenseiCompanion'))
 
 const MOBILE_BREAKPOINT = 768
-const SIDEBAR_OPEN_WIDTH = 240
+const SIDEBAR_OPEN_WIDTH = 256
 const SIDEBAR_CLOSED_WIDTH = 72
 const COLLAPSE_STORAGE_KEY = 'nihongo-sidebar-collapsed'
 

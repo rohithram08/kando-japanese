@@ -91,28 +91,34 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
       `}
     >
       {/* ── Logo / Brand (seamless top bar integration without jarring divider line) ── */}
-      <div className="h-16 flex items-center gap-3 px-4 border-b border-border/40 shrink-0">
-        <KandoSlimeLogo size={32} animated className="shrink-0" />
-        <AnimatePresence>
-          {!effectiveCollapsed && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="overflow-hidden"
-            >
-              <p className="font-bold text-sm leading-tight text-foreground flex items-center gap-1.5">
-                Kando Japanese <span className="text-xs font-normal text-primary">感動</span>
-              </p>
-              <p className="text-xs text-muted-foreground">JLPT Mastery Platform</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div className="h-16 flex items-center justify-between gap-2.5 px-4 border-b border-border/40 shrink-0">
+        <NavLink
+          to="/dashboard"
+          className="flex items-center gap-2.5 min-w-0 flex-1 hover:opacity-90 transition-opacity"
+        >
+          <KandoSlimeLogo size={32} animated className="shrink-0" />
+          <AnimatePresence>
+            {!effectiveCollapsed && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="overflow-hidden min-w-0"
+              >
+                <div className="font-bold text-sm leading-tight text-foreground whitespace-nowrap flex items-center gap-1.5">
+                  <span>Kando Japanese</span>
+                  <span className="text-xs font-medium text-primary shrink-0">感動</span>
+                </div>
+                <p className="text-xs text-muted-foreground whitespace-nowrap truncate">JLPT Mastery Platform</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </NavLink>
 
         {isMobileDrawer ? (
           <button
             onClick={onClose}
-            className="ml-auto p-1.5 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            className="p-1.5 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors shrink-0"
             aria-label="Close menu"
           >
             <X className="w-4 h-4" />
@@ -120,7 +126,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
         ) : (
           <button
             onClick={onToggleCollapse}
-            className="ml-auto p-1 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            className="p-1 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-colors shrink-0"
             aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             <motion.div animate={{ rotate: collapsed ? 180 : 0 }}>
