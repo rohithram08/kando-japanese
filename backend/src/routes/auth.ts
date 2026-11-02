@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { eq, sql } from 'drizzle-orm';
-import { createHash, randomBytes } from 'node:crypto';
+import { createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 import { db } from '../db/index.js';
 import { users } from '../db/schema.js';
 import { env } from '../config/env.js';
@@ -212,6 +212,42 @@ authRouter.post('/reset-password', authLimiter, validate(resetSchema), async (re
   }
 });
 
+// ─── Google OAuth Helpers ───────────────────────────────────────────────────
+interface OAuthStateData {
+  nonce: string;
+  timestamp: number;
+  origin?: string;
+}
+
+function generateOAuthState(origin?: string): string {
+  const nonce = randomBytes(16).toString('hex');
+  const timestamp = Date.now();
+  const rawOrigin = origin || '';
+  const payload = Buffer.from(JSON.stringify({ nonce, timestamp, origin: rawOrigin })).toString('base64url');
+  const signature = createHmac('sha256', env.JWT_SECRET).update(payload).digest('base64url');
+  return `${payload}.${signature}`;
+}
+
+function verifyOAuthState(stateStr: string): { valid: boolean; origin?: string } {
+  if (!stateStr || typeof stateStr !== 'string') return { valid: false };
+  const parts = stateStr.split('.');
+  if (parts.length !== 2) return { valid: false };
+  const [payload, signature] = parts;
+  const expectedSig = createHmac('sha256', env.JWT_SECRET).update(payload).digest('base64url');
+
+  if (signature.length !== expectedSig.length) return { valid: false };
+  if (!timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSig))) return { valid: false };
+
+  try {
+    const data: OAuthStateData = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    // State must be younger than 15 minutes
+    if (Date.now() - data.timestamp > 15 * 60 * 1000) return { valid: false };
+    return { valid: true, origin: data.origin };
+  } catch {
+    return { valid: false };
+  }
+}
+
 // Google OAuth
 authRouter.get('/google', (req, res, next) => {
   try {
@@ -219,8 +255,28 @@ authRouter.get('/google', (req, res, next) => {
       throw new AppError(501, 'Google OAuth is not configured', 'NOT_IMPLEMENTED');
     }
 
-    const state = randomBytes(16).toString('hex');
-    res.cookie('oauth_state', state, { ...cookieBase, maxAge: 10 * 60 * 1000 });
+    // Capture caller origin (localhost vs production) to support multiple environments
+    const queryOrigin = (req.query.origin as string) || '';
+    const referer = req.headers.referer || '';
+    let frontendOrigin = env.FRONTEND_URL;
+    if (queryOrigin.startsWith('http://localhost:') || queryOrigin === 'https://kando-japanese.vercel.app') {
+      frontendOrigin = queryOrigin;
+    } else if (referer.startsWith('http://localhost:')) {
+      try {
+        frontendOrigin = new URL(referer).origin;
+      } catch {
+        // fallback
+      }
+    }
+
+    const state = generateOAuthState(frontendOrigin);
+    res.cookie('oauth_state', state, {
+      ...cookieBase,
+      sameSite: env.NODE_ENV === 'production' ? ('none' as const) : ('lax' as const),
+      secure: env.NODE_ENV === 'production',
+      maxAge: 15 * 60 * 1000,
+    });
+
     const params = new URLSearchParams({
       state,
       client_id: env.GOOGLE_CLIENT_ID,
@@ -228,7 +284,7 @@ authRouter.get('/google', (req, res, next) => {
       response_type: 'code',
       scope: 'openid email profile',
       access_type: 'offline',
-      prompt: 'consent'
+      prompt: 'consent',
     });
 
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`);
@@ -243,9 +299,15 @@ authRouter.get('/google/callback', async (req, res, next) => {
     if (!code) {
       throw new AppError(400, 'No code provided', 'INVALID_REQUEST');
     }
-    // CSRF protection: the state we issued must come back unchanged.
-    const expectedState = req.cookies?.oauth_state;
-    if (!expectedState || expectedState !== req.query.state) {
+
+    const stateParam = req.query.state as string;
+    if (!stateParam) {
+      throw new AppError(400, 'No state provided', 'INVALID_REQUEST');
+    }
+
+    // Cryptographically verify state signature and expiry
+    const { valid, origin } = verifyOAuthState(stateParam);
+    if (!valid) {
       throw new AppError(400, 'Invalid OAuth state', 'INVALID_STATE');
     }
     res.clearCookie('oauth_state', cookieBase);
@@ -314,7 +376,12 @@ authRouter.get('/google/callback', async (req, res, next) => {
 
     setSessionCookie(res, signSession(user.id, user.email));
 
-    res.redirect(env.FRONTEND_URL);
+    let targetUrl = env.FRONTEND_URL;
+    if (origin && (origin === env.FRONTEND_URL || origin.startsWith('http://localhost:'))) {
+      targetUrl = origin;
+    }
+    const redirectUrl = targetUrl.endsWith('/') ? `${targetUrl}dashboard` : `${targetUrl}/dashboard`;
+    res.redirect(redirectUrl);
   } catch (err) {
     next(err);
   }
