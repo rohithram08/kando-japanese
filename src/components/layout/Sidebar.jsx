@@ -91,10 +91,10 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
       `}
     >
       {/* ── Logo / Brand (seamless top bar integration without jarring divider line) ── */}
-      <div className="h-16 flex items-center justify-between gap-2.5 px-4 border-b border-border/40 shrink-0">
+      <div className="h-16 flex items-center justify-between gap-3 px-4 border-b border-border/40 shrink-0">
         <NavLink
           to="/dashboard"
-          className="flex items-center gap-2.5 min-w-0 flex-1 hover:opacity-90 transition-opacity"
+          className="flex items-center gap-3 min-w-0 flex-1 hover:opacity-90 transition-opacity"
         >
           <KandoSlimeLogo size={32} animated className="shrink-0" />
           <AnimatePresence>
@@ -105,11 +105,12 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                 exit={{ opacity: 0 }}
                 className="overflow-hidden min-w-0"
               >
-                <div className="font-bold text-sm leading-tight text-foreground whitespace-nowrap flex items-center gap-1.5">
-                  <span>Kando Japanese</span>
-                  <span className="text-xs font-medium text-primary shrink-0">感動</span>
-                </div>
-                <p className="text-xs text-muted-foreground whitespace-nowrap truncate">JLPT Mastery Platform</p>
+                <p className="font-bold text-sm leading-tight text-foreground whitespace-nowrap">
+                  Kando Japanese
+                </p>
+                <p className="text-xs text-muted-foreground whitespace-nowrap truncate">
+                  JLPT Mastery Platform
+                </p>
               </motion.div>
             )}
           </AnimatePresence>
