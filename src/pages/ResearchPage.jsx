@@ -68,7 +68,7 @@ export default function ResearchPage() {
             Kando (感動): A Cognitive-Load-Aware, Multilingual Architecture for Spaced Retrieval and Immersion-Driven Japanese Language Acquisition
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground font-medium mb-2">
-            <strong>Rohith Ram H S</strong> · Lead Architect & Researcher
+            <strong>Rohith Ram H</strong> · Lead Architect & Researcher
           </p>
           <p className="text-xs text-muted-foreground/80 font-mono">
             Version 2.1.16 · November 2026 · Antigravity Computational Linguistics

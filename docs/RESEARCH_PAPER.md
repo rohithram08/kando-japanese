@@ -1,6 +1,6 @@
 # Kando (感動): A Cognitive-Load-Aware, Multilingual Architecture for Spaced Retrieval and Immersion-Driven Japanese Language Acquisition
 
-**Rohith Ram H S**  
+**Rohith Ram H**  
 *Lead Architect & Researcher, Kando Japanese Project*  
 **Date:** November 2026 | **Platform Version:** 2.1.16 | **Status:** Production & Deployed
 

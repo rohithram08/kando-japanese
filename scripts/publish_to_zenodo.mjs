@@ -46,7 +46,7 @@ const metadata = {
     description: 'Second-language acquisition (SLA) for non-cognate logographic languages—specifically Japanese across JLPT N5 through N1—suffers from historically high learner attrition. Kando Japanese (感動) introduces a full-stack, distributed pedagogical architecture synthesizing Krashen\'s Comprehensible Input (i+1) with a 250-story tiered Graded Reader (Tadoku), an interactive SVG vector-decomposition Kanji stroke engine (831 Joyo Kanji), a timezone-normalized SuperMemo SM-2 spaced repetition algorithm with intensity scheduling, and a contextual multi-LLM pedagogical companion (Sensei 3D) with deterministic semantic guardrails across 12 UI locales including Tamil and Hindi.',
     creators: [
       {
-        name: 'Ram, Rohith',
+        name: 'Rohith Ram H',
         affiliation: 'Kando Japanese Project'
       }
     ],
