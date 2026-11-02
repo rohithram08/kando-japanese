@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you cite or use this platform or research in your academic work, please cite it as below."
+authors:
+  - family-names: "Ram"
+    given-names: "Rohith"
+    affiliation: "Kando Japanese Project"
+title: "Kando (感動): A Cognitive-Load-Aware, Multilingual Architecture for Spaced Retrieval and Immersion-Driven Japanese Language Acquisition"
+version: 2.1.16
+date-released: 2026-11-02
+url: "https://kando-japanese.vercel.app"
+repository-code: "https://github.com/rohithram08/kando-japanese"
+keywords:
+  - "Japanese Language Acquisition"
+  - "Spaced Repetition System"
+  - "SuperMemo SM-2"
+  - "Graded Reader"
+  - "Tadoku"
+  - "Kanji Stroke Vector Decomposition"
+  - "Cognitive Load Theory"
+  - "Multilingual CALL"
+  - "Large Language Models"
+  - "Tamil-Japanese Syntactic Transfer"
+  - "Hindi-Japanese Syntactic Transfer"
+license: "MIT"
+type: "software"
+preferred-citation:
+  type: "article"
+  authors:
+    - family-names: "Ram"
+      given-names: "Rohith"
+  title: "Kando (感動): A Cognitive-Load-Aware, Multilingual Architecture for Spaced Retrieval and Immersion-Driven Japanese Language Acquisition"
+  journal: "Antigravity Computational Linguistics & Educational Systems Repository"
+  year: 2026
+  volume: 2
+  issue: 1
+  url: "https://kando-japanese.vercel.app"

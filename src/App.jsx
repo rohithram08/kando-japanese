@@ -55,6 +55,7 @@ const LeaguePage       = lazyWithRetry(() => import('./pages/LeaguePage'))
 const KanaPage          = lazyWithRetry(() => import('./pages/KanaPage'))
 const DictionaryPage    = lazyWithRetry(() => import('./pages/DictionaryPage.jsx'))
 const LandingPage       = lazyWithRetry(() => import('./pages/LandingPage'))
+const ResearchPage      = lazyWithRetry(() => import('./pages/ResearchPage'))
 const ConversationPracticePage = lazyWithRetry(() => import('./pages/ConversationPracticePage'))
 
 function LazyRoute({ Component, message = 'Loading section...' }) {
@@ -81,6 +82,8 @@ export default function App() {
     <Routes>
       {/* ── Public auth & landing routes ── */}
       <Route path="/"               element={<LazyRoute Component={LandingPage} message="Loading Kando Japanese..." />} />
+      <Route path="/research"       element={<LazyRoute Component={ResearchPage} message="Loading research paper..." />} />
+      <Route path="/whitepaper"     element={<Navigate to="/research" replace />} />
       <Route element={<AuthGuard requireAuth={false} />}>
         <Route path="/login"          element={<LazyRoute Component={LoginPage} message="Loading sign-in..." />} />
         <Route path="/register"       element={<LazyRoute Component={RegisterPage} message="Loading registration..." />} />
