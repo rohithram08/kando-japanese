@@ -81,6 +81,8 @@ const metadata = {
   }
 };
 
+const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
+
 async function run() {
   console.log(`Connecting to Zenodo (${isSandbox ? 'Sandbox' : 'Production'})...`);
 
@@ -88,6 +90,7 @@ async function run() {
   const createRes = await fetch(`${baseUrl}/deposit/depositions`, {
     method: 'POST',
     headers: {
+      'User-Agent': userAgent,
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     },
@@ -111,8 +114,9 @@ async function run() {
   const uploadPdfRes = await fetch(`${bucketUrl}/kando_japanese_research_paper.pdf`, {
     method: 'PUT',
     headers: {
+      'User-Agent': userAgent,
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/pdf'
+      'Content-Type': 'application/octet-stream'
     },
     body: pdfBytes
   });
@@ -128,8 +132,9 @@ async function run() {
   const uploadMdRes = await fetch(`${bucketUrl}/RESEARCH_PAPER.md`, {
     method: 'PUT',
     headers: {
+      'User-Agent': userAgent,
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'text/markdown'
+      'Content-Type': 'application/octet-stream'
     },
     body: mdBytes
   });
@@ -144,6 +149,7 @@ async function run() {
   const metaRes = await fetch(`${baseUrl}/deposit/depositions/${depositionId}`, {
     method: 'PUT',
     headers: {
+      'User-Agent': userAgent,
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     },
@@ -161,6 +167,7 @@ async function run() {
     const pubRes = await fetch(`${baseUrl}/deposit/depositions/${depositionId}/actions/publish`, {
       method: 'POST',
       headers: {
+        'User-Agent': userAgent,
         'Authorization': `Bearer ${token}`
       }
     });
