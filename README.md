@@ -14,6 +14,8 @@
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [![Three.js](https://img.shields.io/badge/Three.js-3D%20VRM%20Sensei-black?style=flat-square&logo=three.js)](https://threejs.org/)
 [![JLPT Levels](https://img.shields.io/badge/JLPT-N5%20|%20N4%20|%20N3%20|%20N2%20|%20N1-orange?style=flat-square)](#curriculum-levels)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23891582.svg)](https://doi.org/10.5281/zenodo.23891582)
+[![Research Paper](https://img.shields.io/badge/Research%20Paper-CERN%20Zenodo-purple?style=flat-square&logo=academia)](https://kando-japanese.vercel.app/research)
 [![License](https://img.shields.io/badge/License-Proprietary-blue?style=flat-square)](#)
 
 </div>

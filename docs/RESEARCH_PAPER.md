@@ -2,7 +2,7 @@
 
 **Rohith Ram H**  
 *Lead Architect & Researcher, Kando Japanese Project*  
-**Date:** November 2026 | **Platform Version:** 2.1.16 | **Status:** Production & Deployed
+**Date:** November 2026 | **Platform Version:** 2.1.16 | **Status:** Production & Deployed | **Permanent DOI:** [10.5281/zenodo.23891582](https://doi.org/10.5281/zenodo.23891582)
 
 ---
 

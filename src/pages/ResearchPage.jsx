@@ -73,6 +73,11 @@ export default function ResearchPage() {
           <p className="text-xs text-muted-foreground/80 font-mono">
             Version 2.1.16 · November 2026 · Antigravity Computational Linguistics
           </p>
+          <div className="flex justify-center mt-3">
+            <a href="https://doi.org/10.5281/zenodo.23891582" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23891582.svg" alt="DOI: 10.5281/zenodo.23891582" className="inline-block" />
+            </a>
+          </div>
         </div>
 
         {/* Abstract Card */}
