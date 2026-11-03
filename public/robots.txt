@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kando-japanese.vercel.app/sitemap.xml
+Sitemap: https://kandojapanese.vercel.app/sitemap.xml
