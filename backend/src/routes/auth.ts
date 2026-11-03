@@ -259,7 +259,7 @@ authRouter.get('/google', (req, res, next) => {
     const queryOrigin = (req.query.origin as string) || '';
     const referer = req.headers.referer || '';
     let frontendOrigin = env.FRONTEND_URL;
-    if (queryOrigin.startsWith('http://localhost:') || queryOrigin === 'https://kando-japanese.vercel.app') {
+    if (queryOrigin.startsWith('http://localhost:') || queryOrigin === 'https://kando-japanese.vercel.app' || queryOrigin === 'https://kandojapanese.vercel.app') {
       frontendOrigin = queryOrigin;
     } else if (referer.startsWith('http://localhost:')) {
       try {
