@@ -30,6 +30,9 @@ export default function SRSReview() {
   const cardShownAt = useRef(0); // when the current card appeared (response-time telemetry)
   const [revealed, setRevealed] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submittingRef = useRef(false);
+  const processedCardsRef = useRef(new Set());
   const [sessionXP, setSessionXP] = useState(0);
   const [sessionStats, setSessionStats] = useState({
     total: 0,
@@ -107,8 +110,18 @@ export default function SRSReview() {
 
   const handleQuality = useCallback(
     async (quality) => {
+      // Synchronous ref lock and state guard to block rapid multiple clicks
+      if (submittingRef.current || isSubmitting) return;
+
       const card = cards[currentIndex];
       if (!card) return;
+
+      const cardKey = card.id || `card_idx_${currentIndex}`;
+      if (processedCardsRef.current.has(cardKey)) return;
+
+      submittingRef.current = true;
+      setIsSubmitting(true);
+      processedCardsRef.current.add(cardKey);
 
       try {
         const srsIntervalMode = useSettingsStore.getState().srsInterval || 'balanced';
@@ -171,16 +184,21 @@ export default function SRSReview() {
         }
       } catch (err) {
         console.error('Error submitting SRS review:', err);
+        // Allow retry on failure
+        processedCardsRef.current.delete(cardKey);
         toast.error('Failed to record review');
+      } finally {
+        submittingRef.current = false;
+        setIsSubmitting(false);
       }
     },
-    [cards, currentIndex, user?.id, awardSRSReviewXP, incrementCards, addReview, incrementMastered, sessionXP]
+    [cards, currentIndex, user?.id, awardSRSReviewXP, incrementCards, addReview, incrementMastered, sessionXP, isSubmitting]
   );
 
   // Keyboard navigation: Space/Enter reveals; 1, 2, 3, 4 grades quality
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (sessionComplete || cards.length === 0) return;
+      if (sessionComplete || cards.length === 0 || isSubmitting || submittingRef.current) return;
 
       if (!revealed) {
         if (e.code === 'Space' || e.code === 'Enter') {
@@ -198,7 +216,7 @@ export default function SRSReview() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [revealed, sessionComplete, cards.length, handleQuality]);
+  }, [revealed, sessionComplete, cards.length, handleQuality, isSubmitting]);
 
   const getLangMeaning = (item) => {
     return getCurriculumMeaning(item, locale) || item.meaning || '';
@@ -334,10 +352,14 @@ export default function SRSReview() {
 
   // ── Session Complete Summary ──
   if (sessionComplete) {
-    const accuracy =
-      sessionStats.total > 0
-        ? Math.round((sessionStats.correct / sessionStats.total) * 100)
-        : 0;
+    const totalReviewed = Math.max(sessionStats.completed, sessionStats.total, 1);
+    const accuracy = Math.min(
+      100,
+      Math.max(0, Math.round((sessionStats.correct / totalReviewed) * 100))
+    );
+    const displayedCount = sessionStats.total > 0
+      ? Math.min(sessionStats.completed, sessionStats.total)
+      : sessionStats.completed;
 
     return (
       <motion.div
@@ -350,7 +372,7 @@ export default function SRSReview() {
         </div>
         <h2 className="text-2xl font-bold mb-1 text-foreground">{t('srs.session_complete', 'Session Complete!')}</h2>
         <p className="text-sm text-muted-foreground mb-6">
-          {t('srs.cards_reviewed', { count: sessionStats.completed }, `Reviewed ${sessionStats.completed} cards today`)}
+          {t('srs.cards_reviewed', { count: displayedCount }, `Reviewed ${displayedCount} cards today`)}
         </p>
 
         {/* XP Earned */}
@@ -362,13 +384,13 @@ export default function SRSReview() {
         <div className="grid grid-cols-3 gap-3 mb-6">
           <div className="rounded-2xl p-3 bg-green-50 dark:bg-green-500/10">
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-              {sessionStats.correct}
+              {Math.min(sessionStats.correct, displayedCount)}
             </div>
             <div className="text-xs text-green-500">{t('quiz.correct_label', 'Correct')}</div>
           </div>
           <div className="rounded-2xl p-3 bg-red-50 dark:bg-red-500/10">
             <div className="text-2xl font-bold text-red-600 dark:text-red-400">
-              {sessionStats.wrong}
+              {Math.min(sessionStats.wrong, displayedCount)}
             </div>
             <div className="text-xs text-red-500">{t('quiz.incorrect_label', 'Wrong')}</div>
           </div>
@@ -387,6 +409,9 @@ export default function SRSReview() {
               setCurrentIndex(0);
               setRevealed(false);
               setSessionXP(0);
+              processedCardsRef.current.clear();
+              submittingRef.current = false;
+              setIsSubmitting(false);
               setSessionStats({ total: 0, correct: 0, wrong: 0, completed: 0 });
               loadCards();
             }}
@@ -472,8 +497,11 @@ export default function SRSReview() {
               return (
                 <button
                   key={quality}
+                  disabled={isSubmitting}
                   onClick={() => handleQuality(quality)}
-                  className={`${color} text-white rounded-2xl py-3 px-1 font-semibold text-xs shadow-md active:scale-95 transition-all flex flex-col items-center gap-1`}
+                  className={`${color} text-white rounded-2xl py-3 px-1 font-semibold text-xs shadow-md transition-all flex flex-col items-center gap-1 ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed pointer-events-none' : 'active:scale-95 cursor-pointer'
+                  }`}
                 >
                   <span className="text-xl">{emoji}</span>
                   <span>{label}</span>
