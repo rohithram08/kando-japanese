@@ -106,13 +106,7 @@ export default function NotificationCenter({ isOpen, onClose }) {
   const handleSnooze = (id) => {
     snooze(id, 2)
     toast.success('Slime will remind you in 2 hours! ⏰', {
-      icon: '🟢',
-      style: {
-        borderRadius: '16px',
-        background: '#1a2419',
-        color: '#bef264',
-        border: '1px solid rgba(190, 242, 100, 0.2)',
-      },
+      icon: '⏰',
     })
   }
 
@@ -121,13 +115,7 @@ export default function NotificationCenter({ isOpen, onClose }) {
     setBrowserPerm(res)
     if (res === 'granted') {
       toast.success('Desktop study alerts enabled! 🔔', {
-        icon: '✨',
-        style: {
-          borderRadius: '16px',
-          background: '#1a2419',
-          color: '#bef264',
-          border: '1px solid rgba(190, 242, 100, 0.2)',
-        },
+        icon: '🔔',
       })
     } else if (res === 'denied') {
       toast('Notifications blocked in browser settings', { icon: 'ℹ️' })
@@ -223,10 +211,10 @@ export default function NotificationCenter({ isOpen, onClose }) {
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all whitespace-nowrap ${
+                className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all whitespace-nowrap ${
                   activeCategory === cat.id
-                    ? 'bg-lime-400/20 text-lime-300 border border-lime-400/40 shadow-sm'
-                    : 'bg-white/5 text-neutral-400 hover:text-neutral-200 border border-transparent'
+                    ? 'bg-primary/15 text-primary border border-primary/30 shadow-sm'
+                    : 'bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground border border-transparent'
                 }`}
               >
                 {cat.label}

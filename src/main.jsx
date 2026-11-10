@@ -48,25 +48,33 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Toaster
           position="top-center"
           toastOptions={{
-            duration: 3000,
+            duration: 3400,
+            className: 'kando-modern-toast',
             style: {
-              borderRadius: '12px',
-              background: '#1f2937',
-              color: '#fff',
-              fontSize: '14px',
-              fontWeight: '500',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
+              borderRadius: '16px',
+              background: 'hsl(var(--surface) / 0.92)',
+              color: 'hsl(var(--foreground))',
+              border: '1px solid hsl(var(--border) / 0.85)',
+              backdropFilter: 'blur(18px)',
+              WebkitBackdropFilter: 'blur(18px)',
+              fontSize: '13.5px',
+              fontWeight: '600',
+              padding: '12px 18px',
+              boxShadow: '0 16px 38px -6px rgba(0, 0, 0, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06)',
+              letterSpacing: '-0.01em',
             },
             success: {
+              duration: 3200,
               iconTheme: {
-                primary: '#4ade80',
-                secondary: '#1f2937',
+                primary: '#22c55e',
+                secondary: '#ffffff',
               },
             },
             error: {
+              duration: 4000,
               iconTheme: {
-                primary: '#f87171',
-                secondary: '#1f2937',
+                primary: '#ef4444',
+                secondary: '#ffffff',
               },
             },
           }}
