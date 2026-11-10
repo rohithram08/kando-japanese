@@ -117,7 +117,7 @@ export default function NotificationCard({
             <div className="kando-duo-content-grid">
               {/* Left Column: Expressive Slime Mascot */}
               <div className="kando-duo-mascot-col" aria-hidden="true">
-                <SlimeNotificationMascot mood={slimeMood} size={62} />
+                <SlimeNotificationMascot mood={slimeMood} size={48} />
               </div>
 
               {/* Right Column: Greeting + Body */}

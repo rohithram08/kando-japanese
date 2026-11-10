@@ -11,10 +11,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   flex: 0 0 auto;
-  border-radius: 12px;
+  border-radius: 11px;
   color: hsl(var(--foreground));
   background: hsl(var(--surface));
   border: 1px solid hsl(var(--border));
@@ -48,9 +48,9 @@
   position: absolute;
   right: -4px;
   top: -4px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
   border-radius: 999px;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@
   color: hsl(var(--primary-foreground, #ffffff));
   background: hsl(var(--primary));
   border: 2px solid hsl(var(--surface));
-  font-size: 10px;
+  font-size: 9.5px;
   line-height: 1;
   font-weight: 800;
   box-shadow: 0 2px 8px hsl(var(--primary) / 0.35);
@@ -72,8 +72,8 @@
 
 .kando-notification-spark {
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 2.5px;
+  right: 2.5px;
   display: flex;
   color: hsl(var(--primary) / 0.7);
 }
@@ -82,10 +82,10 @@
 .kando-notification-panel {
   position: absolute;
   z-index: 100;
-  top: calc(100% + 12px);
+  top: calc(100% + 10px);
   right: 0;
-  width: min(420px, calc(100vw - 24px));
-  max-height: min(660px, calc(100dvh - 86px));
+  width: min(356px, calc(100vw - 20px));
+  max-height: min(520px, calc(100dvh - 84px));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -94,8 +94,8 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid hsl(var(--border));
-  border-radius: 24px;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.28), 0 8px 24px -4px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.25), 0 6px 20px -2px rgba(0, 0, 0, 0.1);
   isolation: isolate;
 }
 
@@ -103,12 +103,12 @@
   content: '';
   position: absolute;
   z-index: -1;
-  top: -70px;
-  right: -40px;
-  width: 200px;
-  height: 160px;
+  top: -60px;
+  right: -30px;
+  width: 160px;
+  height: 130px;
   border-radius: 50%;
-  background: radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 70%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -116,8 +116,8 @@
 .kando-notification-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 18px 14px;
+  gap: 10px;
+  padding: 12px 14px 10px;
   border-bottom: 1px solid hsl(var(--border) / 0.7);
   background: hsl(var(--surface) / 0.85);
   backdrop-filter: blur(12px);
@@ -126,10 +126,10 @@
 .kando-notification-heading-icon {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   flex: 0 0 auto;
-  border-radius: 12px;
+  border-radius: 10px;
   background: hsl(var(--primary) / 0.1);
   border: 1px solid hsl(var(--primary) / 0.2);
 }
@@ -142,32 +142,32 @@
 .kando-notification-heading-copy h2 {
   margin: 0;
   color: hsl(var(--foreground));
-  font-size: 15px;
-  line-height: 1.3;
+  font-size: 14px;
+  line-height: 1.25;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .kando-notification-heading-copy p {
-  margin: 2px 0 0;
+  margin: 1.5px 0 0;
   color: hsl(var(--muted-foreground));
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .kando-notification-header-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .kando-notification-icon-action {
   display: grid;
   place-items: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border: 0;
-  border-radius: 9px;
+  border-radius: 8px;
   color: hsl(var(--muted-foreground));
   background: hsl(var(--surface-muted) / 0.8);
   cursor: pointer;
@@ -183,21 +183,21 @@
 .kando-notification-summary {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px 8px;
+  gap: 7px;
+  padding: 8px 14px 6px;
   color: hsl(var(--muted-foreground));
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .kando-notification-live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #22c55e;
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.16);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
   animation: kando-pulse-dot 2.2s infinite;
 }
 
@@ -208,15 +208,15 @@
 
 .kando-notification-summary-count {
   margin-left: auto;
-  min-width: 22px;
-  height: 22px;
+  min-width: 20px;
+  height: 20px;
   display: grid;
   place-items: center;
-  border-radius: 7px;
+  border-radius: 6px;
   color: hsl(var(--foreground));
   background: hsl(var(--surface-muted));
   border: 1px solid hsl(var(--border) / 0.8);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 750;
   letter-spacing: 0;
 }
@@ -226,13 +226,13 @@
   flex: 1;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 10px 14px 14px;
+  padding: 8px 10px 10px;
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--border)) transparent;
 }
 
 .kando-notification-list::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 .kando-notification-list::-webkit-scrollbar-thumb {
   background: hsl(var(--border));
@@ -240,17 +240,17 @@
 }
 
 /* ==========================================================================
-   TACTILE NOTIFICATION CARD
+   TACTILE NOTIFICATION CARD (COMPACT)
    ========================================================================== */
 .kando-duo-notification-card {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 15px;
   background: hsl(var(--surface));
   border: 1px solid hsl(var(--border));
-  padding: 13px 15px;
+  padding: 10px 12px;
   color: inherit;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.04);
   cursor: pointer;
   position: relative;
   transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
@@ -262,8 +262,8 @@
 .kando-duo-notification-card:hover {
   background: hsl(var(--surface-muted) / 0.6);
   border-color: hsl(var(--border) / 0.9);
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
-  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.07);
+  transform: translateY(-1px);
 }
 
 .kando-duo-notification-card:active {
@@ -273,17 +273,17 @@
 .kando-duo-notification-card.is-unread {
   border-color: hsl(var(--primary) / 0.35);
   background: hsl(var(--surface-muted) / 0.85);
-  box-shadow: 0 4px 16px -2px hsl(var(--primary) / 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px -2px hsl(var(--primary) / 0.08);
 }
 
 .kando-duo-notification-card.is-unread::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 14px;
-  bottom: 14px;
-  width: 3.5px;
-  border-radius: 0 4px 4px 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
   background: hsl(var(--primary));
 }
 
@@ -292,23 +292,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 9px;
-  padding-bottom: 8px;
+  gap: 7px;
+  margin-bottom: 7px;
+  padding-bottom: 6px;
   border-bottom: 1px solid hsl(var(--border) / 0.6);
 }
 
 .kando-duo-app-badge {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
 }
 
 .kando-duo-app-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
   display: grid;
   place-items: center;
   background: hsl(var(--primary) / 0.12);
@@ -317,43 +317,43 @@
 
 .kando-duo-app-name {
   color: hsl(var(--muted-foreground));
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 750;
   letter-spacing: -0.01em;
 }
 
 .kando-duo-dot {
   color: hsl(var(--muted-foreground) / 0.5);
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .kando-duo-time {
   color: hsl(var(--muted-foreground));
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 550;
 }
 
 .kando-duo-header-controls {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .kando-duo-unread-badge {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: hsl(var(--primary));
-  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2);
+  box-shadow: 0 0 0 2.5px hsl(var(--primary) / 0.2);
 }
 
 .kando-duo-expand-btn {
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border: 0;
-  border-radius: 7px;
+  border-radius: 6px;
   color: hsl(var(--muted-foreground));
   background: hsl(var(--surface-muted));
   cursor: pointer;
@@ -369,22 +369,22 @@
 .kando-duo-expanded-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 9px;
 }
 
 .kando-duo-content-grid {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 11px;
 }
 
 .kando-duo-mascot-col {
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 50px;
+  height: 50px;
+  border-radius: 13px;
   background: radial-gradient(circle at 50% 40%, hsl(var(--primary) / 0.14), hsl(var(--surface-muted)) 75%);
   border: 1px solid hsl(var(--border) / 0.6);
 }
@@ -394,13 +394,13 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2.5px;
 }
 
 .kando-duo-greeting {
   margin: 0;
   color: hsl(var(--foreground));
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.015em;
@@ -409,29 +409,29 @@
 .kando-duo-subhead {
   margin: 0;
   color: hsl(var(--primary));
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .kando-duo-message {
   margin: 0;
   color: hsl(var(--muted-foreground));
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 11.5px;
+  line-height: 1.45;
   overflow-wrap: anywhere;
 }
 
 /* ── Collapsed Preview ──────────────────────────────────────────────────── */
 .kando-duo-collapsed-body {
-  padding: 2px 0;
+  padding: 1px 0;
 }
 
 .kando-duo-collapsed-text {
   margin: 0;
   color: hsl(var(--muted-foreground));
-  font-size: 12px;
-  line-height: 1.45;
+  font-size: 11.5px;
+  line-height: 1.4;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -447,19 +447,19 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
-  padding-top: 4px;
+  gap: 8px;
+  padding-top: 2px;
 }
 
 .kando-duo-action-secondary {
   border: 0;
   background: transparent;
   color: hsl(var(--muted-foreground));
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 9px;
+  padding: 4px 8px;
+  border-radius: 8px;
   transition: all 0.16s ease;
 }
 
@@ -471,14 +471,14 @@
 .kando-duo-action-primary {
   display: inline-flex;
   align-items: center;
-  padding: 6px 15px;
+  padding: 5px 12px;
   border-radius: 999px;
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.88));
   color: hsl(var(--primary-foreground, #ffffff));
   border: 1px solid hsl(var(--primary) / 0.4);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 800;
-  box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
+  box-shadow: 0 2px 7px hsl(var(--primary) / 0.28);
   cursor: pointer;
   transition: all 0.14s ease;
 }
@@ -486,7 +486,7 @@
 .kando-duo-action-primary:hover {
   filter: brightness(1.08);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px hsl(var(--primary) / 0.4);
+  box-shadow: 0 3px 10px hsl(var(--primary) / 0.35);
 }
 
 .kando-duo-action-primary:active {
@@ -498,17 +498,17 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 36px 24px 40px;
+  padding: 24px 16px 26px;
   text-align: center;
 }
 
 .kando-empty-slime {
   display: grid;
   place-items: center;
-  width: 88px;
-  height: 88px;
-  margin-bottom: 14px;
-  border-radius: 28px;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 10px;
+  border-radius: 20px;
   background: radial-gradient(circle at 50% 38%, hsl(var(--primary) / 0.14), hsl(var(--surface-muted)) 75%);
   border: 1px solid hsl(var(--border) / 0.6);
   animation: kando-slime-float 3.4s ease-in-out infinite;
@@ -517,16 +517,16 @@
 .kando-notification-empty h3 {
   margin: 0;
   color: hsl(var(--foreground));
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 800;
 }
 
 .kando-notification-empty p {
-  max-width: 270px;
-  margin: 8px 0 0;
+  max-width: 240px;
+  margin: 6px 0 0;
   color: hsl(var(--muted-foreground));
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 /* ── Panel Footer ───────────────────────────────────────────────────────── */
@@ -534,21 +534,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 18px;
+  gap: 10px;
+  padding: 9px 14px;
   border-top: 1px solid hsl(var(--border) / 0.7);
   background: hsl(var(--surface) / 0.9);
   color: hsl(var(--muted-foreground));
-  font-size: 11.5px;
+  font-size: 10.5px;
 }
 
 .kando-notification-footer button {
-  padding: 6px 12px;
+  padding: 4px 9px;
   border: 1px solid hsl(var(--border));
-  border-radius: 9px;
+  border-radius: 7px;
   color: hsl(var(--muted-foreground));
   background: hsl(var(--surface-muted) / 0.8);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 750;
   cursor: pointer;
   white-space: nowrap;
@@ -563,45 +563,45 @@
 
 @keyframes kando-slime-float {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-5px) rotate(2deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
 }
 
 /* ── Mobile Responsive Rules ────────────────────────────────────────────── */
 @media (max-width: 540px) {
   .kando-notification-panel {
     position: fixed;
-    top: calc(env(safe-area-inset-top, 0px) + 68px);
+    top: calc(env(safe-area-inset-top, 0px) + 64px);
     right: 8px;
     left: 8px;
     width: auto;
-    max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 86px);
-    border-radius: 22px;
+    max-height: calc(100dvh - env(safe-area-inset-top, 0px) - 80px);
+    border-radius: 18px;
   }
 
   .kando-notification-header {
-    padding: 14px 15px 12px;
+    padding: 11px 12px 9px;
   }
 
   .kando-notification-list {
-    padding: 8px 10px 12px;
+    padding: 6px 8px 10px;
   }
 
   .kando-duo-notification-card {
-    padding: 12px 12px;
-    border-radius: 16px;
+    padding: 10px 10px;
+    border-radius: 14px;
   }
 
   .kando-duo-mascot-col {
-    width: 54px;
-    height: 54px;
+    width: 44px;
+    height: 44px;
   }
 
   .kando-duo-greeting {
-    font-size: 12.5px;
+    font-size: 12px;
   }
 
   .kando-duo-message {
-    font-size: 11.5px;
+    font-size: 11px;
   }
 }
 

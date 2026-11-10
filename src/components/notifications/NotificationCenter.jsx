@@ -140,7 +140,7 @@ export default function NotificationCenter({ isOpen, onClose }) {
         {/* ── HEADER ── */}
         <header className="kando-notification-header">
           <div className="kando-notification-heading-icon" aria-hidden="true">
-            <KandoSlimeLogo size={32} animated />
+            <KandoSlimeLogo size={26} animated />
           </div>
 
           <div className="kando-notification-heading-copy">
@@ -237,7 +237,7 @@ export default function NotificationCenter({ isOpen, onClose }) {
           {filteredNotifications.length === 0 ? (
             <div className="kando-notification-empty">
               <div className="kando-empty-slime" aria-hidden="true">
-                <SlimeNotificationMascot mood="achievement" size={72} />
+                <SlimeNotificationMascot mood="achievement" size={56} />
               </div>
               <h3>All squished up to date!</h3>
               <p>
