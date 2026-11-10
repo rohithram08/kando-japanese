@@ -16,6 +16,8 @@ import {
   Compass,
   MessageCircle,
   HelpCircle,
+  History,
+  Trash2,
   User as UserIcon
 } from 'lucide-react';
 
@@ -33,11 +35,11 @@ import { useSettingsStore } from '../store/settingsStore';
 import { useI18n } from '../i18n';
 
 const QUICK_PROMPTS = [
+  "What did we talk about last session?",
+  "What are my current weak spots?",
   "Teach me the difference between は and が",
-  "How do I remember Kanji stroke orders?",
   "What is my study recommendation today?",
-  "Can we practice polite Japanese greetings?",
-  "How do I order food politely in Japanese?"
+  "Can we practice polite Japanese greetings?"
 ];
 
 export default function SenseiPage() {
@@ -47,6 +49,9 @@ export default function SenseiPage() {
 
   const {
     messages,
+    historyArchive,
+    learnerMemory,
+    startFreshSession,
     isTyping,
     speechEnabled,
     toggleSpeech,
@@ -182,13 +187,13 @@ export default function SenseiPage() {
   return (
     <div className="h-[calc(100dvh-10.25rem)] min-h-[420px] md:h-[calc(100vh-5.5rem)] md:min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       
-      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Sound/Stop, Camera) ─── */}
+      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Fresh Session, History, Sound/Stop, Camera) ─── */}
       <header className="absolute top-2 left-2 right-2 sm:left-auto sm:top-4 sm:right-4 z-20 flex items-center justify-end pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
+        <div className="pointer-events-auto flex items-center gap-1.5 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
           {/* Greet */}
           <button
             onClick={() => greet()}
-            className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center gap-1.5 active:scale-95"
+            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center gap-1.5 active:scale-95"
             title="Greet Hana-sensei"
             aria-label="Greet Hana-sensei"
           >
@@ -198,21 +203,31 @@ export default function SenseiPage() {
           {/* Celebrate */}
           <button
             onClick={() => triggerCelebration()}
-            className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-all flex items-center gap-1.5 active:scale-95"
+            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-all flex items-center gap-1.5 active:scale-95"
             title="Celebrate Progress"
             aria-label="Celebrate Progress"
           >
             <Sparkles className="w-3.5 h-3.5" /><span className="hidden sm:inline">Celebrate</span>
           </button>
 
-          {/* New Topic / Clear */}
+          {/* Fresh Session */}
           <button
-            onClick={() => clearHistory()}
-            className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-muted/70 hover:bg-muted text-muted-foreground hover:text-foreground transition-all flex items-center gap-1.5 active:scale-95"
-            title="Start fresh conversation"
-            aria-label="Start fresh conversation"
+            onClick={() => startFreshSession({ speak: true })}
+            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/20 transition-all flex items-center gap-1.5 active:scale-95"
+            title="Start fresh session (starts clean while preserving Hana's memory)"
+            aria-label="Start fresh session"
           >
-            <RotateCcw className="w-3.5 h-3.5" /><span className="hidden sm:inline">New Topic</span>
+            <RotateCcw className="w-3.5 h-3.5" /><span className="hidden sm:inline">Fresh Session</span>
+          </button>
+
+          {/* View Past History Archive */}
+          <button
+            onClick={() => setShowHistory(true)}
+            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-muted/70 hover:bg-muted text-muted-foreground hover:text-foreground transition-all flex items-center gap-1.5 active:scale-95"
+            title="View past conversation archive"
+            aria-label="View past conversation archive"
+          >
+            <History className="w-3.5 h-3.5 text-primary" /><span className="hidden sm:inline">History</span>
           </button>
 
           {/* Live Speech Stop / Mute Action Button */}
@@ -299,9 +314,13 @@ export default function SenseiPage() {
             className="absolute top-0 right-0 bottom-0 w-[88vw] max-w-sm sm:w-96 bg-card/95 backdrop-blur-2xl border-l border-border/80 z-30 shadow-2xl flex flex-col overflow-hidden"
           >
             <div className="p-4 border-b border-border flex items-center justify-between">
-              <h3 className="font-bold text-sm text-foreground flex items-center gap-2">
-                <MessageCircle className="w-4 h-4 text-primary" /> Dialogue History
-              </h3>
+              <div className="flex items-center gap-2">
+                <History className="w-4 h-4 text-primary" />
+                <h3 className="font-bold text-sm text-foreground">Dialogue Archive</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary font-semibold">
+                  {historyArchive.length} messages
+                </span>
+              </div>
               <button
                 onClick={() => setShowHistory(false)}
                 className="p-1.5 hover:bg-muted rounded-xl text-muted-foreground hover:text-foreground"
@@ -311,27 +330,55 @@ export default function SenseiPage() {
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
-              {messages.map((m, i) => (
-                <div
-                  key={m.id || i}
-                  className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}
-                >
-                  <span className="text-[10px] text-muted-foreground mb-1">
-                    {m.role === 'user' ? 'You' : 'Hana-sensei'}
-                  </span>
-                  <div
-                    className={`p-3 rounded-2xl text-xs max-w-[90%] leading-relaxed ${
-                      m.role === 'user'
-                        ? 'bg-primary text-primary-foreground rounded-tr-xs'
-                        : 'bg-muted/80 text-foreground border border-border/40 rounded-tl-xs'
-                    }`}
-                  >
-                    {m.role === 'user' ? m.content : <SenseiMarkdown content={m.content} />}
+              {historyArchive.length === 0 ? (
+                <div className="h-full flex flex-col items-center justify-center text-center p-6 text-muted-foreground space-y-2">
+                  <div className="w-12 h-12 rounded-2xl bg-muted/50 flex items-center justify-center text-xl">
+                    📜
                   </div>
+                  <p className="font-medium text-xs text-foreground">No past history yet</p>
+                  <p className="text-[11px] leading-relaxed">
+                    Conversations you have with Hana-sensei are automatically remembered here.
+                  </p>
                 </div>
-              ))}
+              ) : (
+                historyArchive.map((m, i) => (
+                  <div
+                    key={m.id || i}
+                    className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}
+                  >
+                    <span className="text-[10px] text-muted-foreground mb-1">
+                      {m.role === 'user' ? 'You' : 'Hana-sensei'}
+                    </span>
+                    <div
+                      className={`p-3 rounded-2xl text-xs max-w-[90%] leading-relaxed ${
+                        m.role === 'user'
+                          ? 'bg-primary text-primary-foreground rounded-tr-xs'
+                          : 'bg-muted/80 text-foreground border border-border/40 rounded-tl-xs'
+                      }`}
+                    >
+                      {m.role === 'user' ? m.content : <SenseiMarkdown content={m.content} />}
+                    </div>
+                  </div>
+                ))
+              )}
               <div ref={messagesEndRef} />
             </div>
+
+            {historyArchive.length > 0 && (
+              <div className="p-3 border-t border-border bg-muted/20 flex items-center justify-between">
+                <span className="text-[10.5px] text-muted-foreground">Persistent Memory Active</span>
+                <button
+                  onClick={() => {
+                    if (window.confirm("Are you sure you want to completely clear your historical conversation logs?")) {
+                      clearHistory();
+                    }
+                  }}
+                  className="px-2.5 py-1 text-[11px] rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 font-medium flex items-center gap-1.5 transition-colors"
+                >
+                  <Trash2 className="w-3 h-3" /> Clear Archive
+                </button>
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

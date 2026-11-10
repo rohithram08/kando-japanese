@@ -46,3 +46,27 @@ export interface SenseiDailyGuidance {
 export const getDailyGuidance = () =>
   get<SenseiDailyGuidance>('/sensei/guidance');
 
+export interface SenseiMemoryResponse {
+  memory: {
+    userName: string;
+    jlptLevel: string;
+    studyLevel: string;
+    nativeLanguage: string;
+    streak: number;
+    totalXP: number;
+    recentLessons: Array<{ id: string; title: string; type: string }>;
+    recentGrammar: Array<{ id: string; title: string; type: string }>;
+    recentVocab: string[];
+    weakSpots: Array<{ id: string; title: string; type: string; reason?: string }>;
+    dueReviewsCount: number;
+    pastConversationSummary: string;
+    hoursSinceLastChat: number | null;
+    isReturningStudent: boolean;
+  };
+  freshGreeting: string;
+}
+
+export const getLearnerMemory = (lang?: string) =>
+  get<SenseiMemoryResponse>(lang ? `/sensei/memory?lang=${encodeURIComponent(lang)}` : '/sensei/memory');
+
+

@@ -40,6 +40,20 @@ senseiRouter.get('/history', async (req, res, next) => {
 });
 
 /**
+ * Get learner hidden memory profile & fresh session greeting
+ * GET /api/sensei/memory
+ */
+senseiRouter.get('/memory', async (req, res, next) => {
+  try {
+    const lang = req.query.lang as string | undefined;
+    const memory = await senseiService.getLearnerMemory(req.user!.userId, lang);
+    res.json(memory);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
  * Clear chat history
  * POST /api/sensei/clear
  */

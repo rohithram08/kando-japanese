@@ -104,13 +104,22 @@ export class SenseiService {
     else if (containsGerman) activeLang = 'de';
 
     const safeContext = {
+      userName: uContext?.userName || 'Student',
       jlptLevel: uContext?.jlptLevel || 'N5',
+      studyLevel: uContext?.studyLevel || uContext?.jlptLevel || 'N5',
       nativeLanguage: uContext?.nativeLanguage || 'English',
       explanationLanguage: activeLang || requestContext?.displayLanguage || uContext?.nativeLanguage || 'English',
       streak: uContext?.streak || 0,
       totalXP: uContext?.totalXP || 0,
       recentLessonIds: uContext?.recentLessonIds || [],
       recentVocabIds: uContext?.recentVocabIds || [],
+      recentLessons: uContext?.recentLessons || [],
+      recentGrammar: uContext?.recentGrammar || [],
+      recentVocab: uContext?.recentVocab || [],
+      weakSpots: uContext?.weakSpots || [],
+      dueReviewsCount: uContext?.dueReviewsCount || 0,
+      pastConversationSummary: uContext?.pastConversationSummary || '',
+      hoursSinceLastChat: uContext?.hoursSinceLastChat ?? null,
     };
 
     // Check if input is a conversational greeting
@@ -220,35 +229,43 @@ export class SenseiService {
       }
     ];
 
-    // Contextual recent history (last 4 turns)
+    // Contextual recent history for the active session (within 2 hours, or passed turns)
     let recentTurns: any[] = [];
     try {
-      const historyRows = await db.query.senseiConversations.findMany({
-        where: eq(senseiConversations.userId, userId),
-        orderBy: [desc(senseiConversations.createdAt)],
-        limit: 8,
-      });
+      const isExplicitNewSession = Boolean(requestContext?.sessionStart);
 
-      const currentLangCode = (safeContext.explanationLanguage || 'en').toLowerCase().slice(0, 2);
+      if (!isExplicitNewSession) {
+        const historyRows = await db.query.senseiConversations.findMany({
+          where: eq(senseiConversations.userId, userId),
+          orderBy: [desc(senseiConversations.createdAt)],
+          limit: 8,
+        });
 
-      // Filter recent turns to prevent cross-language dialogue inertia:
-      // If student is currently learning in Hindi, drop turns that contain Tamil script.
-      // If student is currently learning in Tamil, drop turns that contain Devanagari script.
-      const compatibleRows = historyRows.filter(r => {
-        if (!r.content) return false;
-        if (currentLangCode === 'hi' && /[\u0B80-\u0BFF]/.test(r.content)) return false;
-        if (currentLangCode === 'ta' && /[\u0900-\u097F]/.test(r.content)) return false;
-        return true;
-      });
+        // If the latest message was more than 2 hours ago, treat this turn as a fresh session
+        const latestTime = historyRows[0]?.createdAt ? new Date(historyRows[0].createdAt).getTime() : 0;
+        const isSessionStale = latestTime > 0 && (Date.now() - latestTime > 2 * 60 * 60 * 1000);
 
-      recentTurns = compatibleRows
-        .reverse()
-        .filter(r => r.content && r.content !== cleanInput)
-        .slice(-4)
-        .map(r => ({
-          role: r.role === 'assistant' ? 'assistant' : 'user',
-          content: r.content
-        }));
+        if (!isSessionStale && historyRows.length > 0) {
+          const currentLangCode = (safeContext.explanationLanguage || 'en').toLowerCase().slice(0, 2);
+
+          // Filter recent turns to prevent cross-language dialogue inertia:
+          const compatibleRows = historyRows.filter(r => {
+            if (!r.content) return false;
+            if (currentLangCode === 'hi' && /[\u0B80-\u0BFF]/.test(r.content)) return false;
+            if (currentLangCode === 'ta' && /[\u0900-\u097F]/.test(r.content)) return false;
+            return true;
+          });
+
+          recentTurns = compatibleRows
+            .reverse()
+            .filter(r => r.content && r.content !== cleanInput)
+            .slice(-4)
+            .map(r => ({
+              role: r.role === 'assistant' ? 'assistant' : 'user',
+              content: r.content
+            }));
+        }
+      }
     } catch (e) {
       // ignore
     }
@@ -574,6 +591,20 @@ The student's designated explanation language for this response is: ${targetLang
       });
 
     return { success: true, skipped: true };
+  }
+
+  /**
+   * Get hidden learner memory profile and fresh session greeting
+   */
+  async getLearnerMemory(userId: string, explanationLanguage?: string) {
+    const userCtx = await senseiContext.getUserContext(userId);
+    const safeLang = explanationLanguage || userCtx?.nativeLanguage || 'en';
+    const freshGreeting = senseiContext.generateFreshGreeting(userCtx, safeLang);
+
+    return {
+      memory: userCtx,
+      freshGreeting,
+    };
   }
 
   /**

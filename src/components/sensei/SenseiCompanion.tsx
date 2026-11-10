@@ -9,6 +9,7 @@ import {
   Square,
   Mic,
   MicOff,
+  RotateCcw,
   ExternalLink
 } from 'lucide-react';
 import { useSenseiStore } from '../../store/senseiStore';
@@ -34,6 +35,7 @@ export default function SenseiCompanion() {
     toggleOpen,
     setOpen,
     messages,
+    startFreshSession,
     isTyping,
     speechEnabled,
     toggleSpeech,
@@ -226,6 +228,16 @@ export default function SenseiCompanion() {
                     title="Enter Full 3D Studio Stage"
                   >
                     <ExternalLink className="w-4 h-4" />
+                  </button>
+
+                  {/* Fresh Session */}
+                  <button
+                    onClick={() => startFreshSession({ speak: false })}
+                    className="p-1.5 hover:bg-muted text-muted-foreground hover:text-foreground rounded-xl transition-colors"
+                    aria-label="Start Fresh Session"
+                    title="Fresh Session"
+                  >
+                    <RotateCcw className="w-4 h-4" />
                   </button>
 
                   {/* Stop Speech */}

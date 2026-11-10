@@ -41,6 +41,9 @@ interface SenseiState {
   speechState: SenseiSpeechState;
   animationState: SenseiAnimationState;
   messages: SenseiMessage[];
+  historyArchive: SenseiMessage[];
+  learnerMemory: any | null;
+  sessionStartedAt: number;
   tourProgress: any | null;
   speechEnabled: boolean;
   position: { x: number; y: number };
@@ -64,6 +67,7 @@ interface SenseiState {
   toggleSpeech: () => void;
   stopSpeech: () => void;
   fetchHistory: () => Promise<void>;
+  startFreshSession: (options?: { forceGreeting?: boolean; speak?: boolean }) => Promise<void>;
   sendMessage: (message: string, options?: { skipAutoSpeak?: boolean }) => Promise<any>;
   startTour: (force?: boolean) => Promise<void>;
   completeTour: () => Promise<void>;
@@ -149,6 +153,9 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   speechState: 'idle',
   animationState: 'idle',
   messages: [],
+  historyArchive: [],
+  learnerMemory: null,
+  sessionStartedAt: Date.now(),
   tourProgress: null,
   tourCompleted: typeof window !== 'undefined' && localStorage.getItem('nihongo-sensei-tour-completed') === '1',
   tourSkipped: typeof window !== 'undefined' && localStorage.getItem('nihongo-sensei-tour-skipped') === '1',
@@ -227,9 +234,74 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   fetchHistory: async () => {
     try {
       const history = await senseiApi.getHistory();
-      set({ messages: history.reverse() || [] });
+      const reversed = history.reverse() || [];
+      set({ historyArchive: reversed });
+
+      // If active session is empty, start a clean fresh session rather than displaying 50 old messages!
+      if (get().messages.length === 0) {
+        await get().startFreshSession({ speak: false });
+      }
     } catch (err) {
       console.error('Failed to fetch sensei history:', err);
+      if (get().messages.length === 0) {
+        await get().startFreshSession({ speak: false });
+      }
+    }
+  },
+
+  startFreshSession: async (options?: { forceGreeting?: boolean; speak?: boolean }) => {
+    try {
+      const explanationLanguage = useSettingsStore.getState().explanationLanguage || useSettingsStore.getState().displayLanguage || 'en';
+      const memoryRes = await senseiApi.getLearnerMemory(explanationLanguage);
+
+      const greetingContent = memoryRes?.freshGreeting || "こんにちは！(Konnichiwa!) Welcome back to class! 🌸 Ready for today's Japanese practice? What would you like to master today? ✨";
+
+      const freshMsg: SenseiMessage = {
+        id: `fresh-session-${Date.now()}`,
+        role: 'assistant',
+        content: greetingContent,
+        emotion: 'happy'
+      };
+
+      set({
+        messages: [freshMsg],
+        learnerMemory: memoryRes?.memory || null,
+        sessionStartedAt: Date.now(),
+        speechState: 'waving',
+        animationState: 'waving'
+      });
+
+      // Briefly wave, then transition to idle
+      setTimeout(() => {
+        if (get().animationState === 'waving') {
+          set({ animationState: 'idle', speechState: 'idle' });
+        }
+      }, 1500);
+
+      // Auto-speak greeting if speech is enabled and requested
+      if (get().speechEnabled && options?.speak) {
+        get().stopSpeech();
+        set({ speechState: 'speaking', animationState: 'speaking' });
+        audioService.speak(greetingContent, {
+          onStart: () => set({ speechState: 'speaking', animationState: 'speaking' }),
+          onEnd: () => set({ speechState: 'idle', animationState: 'idle' }),
+          onError: () => set({ speechState: 'idle', animationState: 'idle' })
+        });
+      }
+    } catch (err) {
+      console.error('Failed to start fresh session:', err);
+      const fallbackMsg: SenseiMessage = {
+        id: `fresh-session-${Date.now()}`,
+        role: 'assistant',
+        content: "こんにちは！(Konnichiwa!) Welcome back to class! 🌸 What Japanese topic shall we explore today?",
+        emotion: 'happy'
+      };
+      set({
+        messages: [fallbackMsg],
+        sessionStartedAt: Date.now(),
+        speechState: 'idle',
+        animationState: 'idle'
+      });
     }
   },
 
@@ -239,16 +311,19 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
     } catch (err) {
       console.error('Failed to clear sensei history:', err);
     }
-    set({ messages: [], speechState: 'idle', animationState: 'idle' });
-    get().greet();
+    set({ messages: [], historyArchive: [], speechState: 'idle', animationState: 'idle' });
+    await get().startFreshSession({ speak: false });
   },
 
   sendMessage: async (message: string, options?: { skipAutoSpeak?: boolean }) => {
     if (!message.trim()) return null;
 
     const tempId = Date.now().toString();
+    const userMsg: SenseiMessage = { id: tempId, role: 'user', content: message };
+
     set(state => ({
-      messages: [...state.messages, { id: tempId, role: 'user', content: message }],
+      messages: [...state.messages, userMsg],
+      historyArchive: [...state.historyArchive, userMsg],
       isTyping: true,
       speechState: 'thinking',
       animationState: 'thinking'
@@ -256,6 +331,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
 
     try {
       const explanationLanguage = useSettingsStore.getState().explanationLanguage || useSettingsStore.getState().displayLanguage || 'en';
+      const isSessionStart = get().messages.length <= 2;
       const res = await senseiApi.chat(message, explanationLanguage);
       const { message: reply, emotion, animation, action } = res;
 
@@ -267,14 +343,17 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
         emotion === 'encouraging' ? 'encouraging' :
         emotion === 'thinking' ? 'thinking' : 'idle');
 
+      const assistantMsg: SenseiMessage = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: reply,
+        emotion,
+        action
+      };
+
       set(state => ({
-        messages: [...state.messages, {
-          id: Date.now().toString(),
-          role: 'assistant',
-          content: reply,
-          emotion,
-          action
-        }],
+        messages: [...state.messages, assistantMsg],
+        historyArchive: [...state.historyArchive, assistantMsg],
         isTyping: false,
         speechState: nextAnim,
         animationState: nextAnim,
@@ -309,13 +388,15 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
       return res;
     } catch (err) {
       console.error('Failed to send sensei message:', err);
+      const errorMsg: SenseiMessage = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: 'Sorry, my connection is a bit fuzzy right now! 🌸',
+        emotion: 'sad'
+      };
       set(state => ({
-        messages: [...state.messages, {
-          id: Date.now().toString(),
-          role: 'assistant',
-          content: 'Sorry, my connection is a bit fuzzy right now! 🌸',
-          emotion: 'sad'
-        }],
+        messages: [...state.messages, errorMsg],
+        historyArchive: [...state.historyArchive, errorMsg],
         isTyping: false,
         speechState: 'error',
         animationState: 'error'
@@ -409,6 +490,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
 
     set(state => ({
       messages: [...state.messages, greetMessage],
+      historyArchive: [...state.historyArchive, greetMessage],
       animationState: 'waving',
       speechState: 'waving'
     }));
@@ -443,6 +525,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
 
     set(state => ({
       messages: [...state.messages, celebMessage],
+      historyArchive: [...state.historyArchive, celebMessage],
       companionMode: 'celebration',
       animationState: 'celebrating',
       speechState: 'celebrating'

@@ -17,6 +17,7 @@ export interface KnowledgeItem {
 
 class SenseiKnowledgeService {
   private knowledge: KnowledgeItem[] = [];
+  private idMap: Map<string, KnowledgeItem> = new Map();
 
   constructor() {
     this.loadKnowledge();
@@ -27,10 +28,24 @@ class SenseiKnowledgeService {
       const dataPath = path.resolve(__dirname, '../../data/platformKnowledge.json');
       const fileData = fs.readFileSync(dataPath, 'utf-8');
       this.knowledge = JSON.parse(fileData);
-      console.log(`[SenseiKnowledge] Loaded ${this.knowledge.length} items.`);
+      this.idMap.clear();
+      for (const item of this.knowledge) {
+        if (item.id) {
+          this.idMap.set(item.id.toLowerCase(), item);
+          const normalized = item.id.replace(/_/g, '').toLowerCase();
+          this.idMap.set(normalized, item);
+        }
+      }
+      console.log(`[SenseiKnowledge] Loaded ${this.knowledge.length} items (${this.idMap.size} index keys).`);
     } catch (err) {
       console.error('[SenseiKnowledge] Failed to load platformKnowledge.json', err);
     }
+  }
+
+  public getItemById(id: string): KnowledgeItem | undefined {
+    if (!id) return undefined;
+    const lower = id.toLowerCase();
+    return this.idMap.get(lower) || this.idMap.get(lower.replace(/_/g, ''));
   }
 
   /**
