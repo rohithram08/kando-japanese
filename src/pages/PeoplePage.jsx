@@ -6,6 +6,7 @@ import { searchPeople, getFollowing, getFollowers, getFollowSummary } from '../a
 import UserAvatar from '../components/common/UserAvatar'
 import FollowButton from '../components/social/FollowButton'
 import { useI18n } from '../i18n'
+import SEO from '../components/common/SEO'
 
 const PAGE = 20
 const TABS = ['discover', 'following', 'followers']
@@ -119,6 +120,11 @@ export default function PeoplePage() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-5 pb-12 px-4 sm:px-0">
+      <SEO
+        title="Community & Learners Directory"
+        description="Connect with Japanese language learners worldwide. Follow fellow learners, view study streaks, and share motivation on Kando Japanese."
+        path="/people"
+      />
       <header className="flex items-center gap-3">
         <div className="w-11 h-11 rounded-2xl bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center">
           <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />

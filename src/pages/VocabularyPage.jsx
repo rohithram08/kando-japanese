@@ -16,6 +16,7 @@ import { VOCAB_CATEGORIES, categorizeItems, getCategoryDefs } from '../data/cate
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
 import VocabularyDetailModal from '../components/curriculum/VocabularyDetailModal'
+import SEO from '../components/common/SEO'
 
 // ── Single vocab card ─────────────────────────────────────────
 // (LEVEL_META carries precomputed light/dark class pairs, so this one
@@ -189,6 +190,11 @@ export default function VocabularyPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
+      <SEO
+        title={`JLPT ${selectedLevel} Vocabulary`}
+        description={`Learn JLPT ${selectedLevel} Japanese vocabulary words with audio pronunciation, pitch accent contours, contextual example sentences, and SRS spaced repetition.`}
+        path="/vocabulary"
+      />
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

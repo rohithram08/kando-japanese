@@ -13,6 +13,7 @@ import { useLeague, useLeagueHistory } from '../hooks/useLeague'
 import { LEAGUES, getRungDetails } from '../utils/league'
 import LeagueBadge from '../components/league/LeagueBadge'
 import SlimeSticker from '../components/mascot/SlimeSticker'
+import SEO from '../components/common/SEO'
 
 // ─── Authentic Competitive League Ladder (Wakaba, Take, Ume, Sakura, Fuji) ───
 export const LEAGUE_TIERS = LEAGUES.map((l, idx) => ({
@@ -447,7 +448,11 @@ export default function AchievementsPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-16 px-4 md:px-6">
-
+      <SEO
+        title="Personal Records & Achievements"
+        description="Track your Japanese learning milestones, streaks, league tiers, and unlockable Slime Sticker awards on Kando Japanese."
+        path="/achievements"
+      />
       {/* ── Hero Banner ── */}
       <motion.div
         initial={{ opacity: 0, y: -16 }}

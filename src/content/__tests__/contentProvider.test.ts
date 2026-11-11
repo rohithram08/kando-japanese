@@ -74,7 +74,7 @@ describe('ContentProvider Architecture Suite', () => {
 
     it('retrieves N1 Joyo Kanji characters with high fidelity', () => {
       const n1Kanji = contentProvider.getKanji('N1', 'en');
-      expect(n1Kanji.length).toBe(40);
+      expect(n1Kanji.length).toBe(960);
       
       const yuu = n1Kanji.find(k => k.kanji === '憂');
       expect(yuu).toBeDefined();
@@ -103,7 +103,7 @@ describe('ContentProvider Architecture Suite', () => {
 
     it('retrieves advanced N1/N2 grammar points with multiline formations', () => {
       const n1Grammar = contentProvider.getGrammar('N1', 'en');
-      expect(n1Grammar.length).toBe(25);
+      expect(n1Grammar.length).toBe(170);
       
       const item = n1Grammar.find(g => g.id === 'n1g001');
       expect(item).toBeDefined();

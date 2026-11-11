@@ -22,6 +22,7 @@ import { GRAMMAR_CATEGORIES, categorizeItems } from '../data/categories'
 import CategoryGrid from '../components/curriculum/CategoryGrid'
 import CategoryView from '../components/curriculum/CategoryView'
 import GrammarDetailModal from '../components/curriculum/GrammarDetailModal'
+import SEO from '../components/common/SEO'
 
 // ── Single grammar card ───────────────────────────────────────
 // LEVEL_META carries separate light/dark class strings (one literal pair
@@ -239,6 +240,11 @@ export default function GrammarPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
+      <SEO
+        title={`JLPT ${level} Grammar Patterns`}
+        description={`Master JLPT ${level} Japanese grammar patterns with formation rules, sentence examples, particle explanations, and interactive progress tracking.`}
+        path="/grammar"
+      />
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

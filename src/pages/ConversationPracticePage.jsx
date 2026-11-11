@@ -23,6 +23,7 @@ import CoachPanel from '../components/conversation/CoachPanel'
 import { normalizeProfile } from '../utils/userIdentity'
 import { readSavedConversations } from '../utils/conversationHelpers'
 import { useI18n } from '../i18n'
+import SEO from '../components/common/SEO'
 import toast from 'react-hot-toast'
 
 
@@ -587,6 +588,11 @@ CRITICAL RULES:
   if (view === 'hub') {
     return (
       <div className="mx-auto w-full min-w-0 max-w-6xl">
+        <SEO
+          title="Japanese Conversation Practice & AI Roleplay"
+          description="Practice conversational Japanese with AI Hana-sensei across 49 real-world scenarios, dining, travel, business keigo, and open free talk."
+          path="/conversation"
+        />
         <ConversationHub
           username={identity.username}
           level={identity.jlptLevel}
@@ -614,6 +620,11 @@ CRITICAL RULES:
 
   return (
     <div className={`flex flex-col overflow-hidden bg-background text-foreground ${shell}`} data-testid="conversation-chat">
+      <SEO
+        title={isScenario ? `${selectedScenario.title} - Conversation Practice` : 'Free Talk Conversation Practice'}
+        description={isScenario ? `Practice Japanese conversation in the scenario: ${selectedScenario.title} (${selectedScenario.jlptLevel || 'All levels'}).` : 'Interactive Japanese open conversation practice with AI Hana-sensei.'}
+        path="/conversation"
+      />
       <ChatTopBar
         mode={activeMode}
         title={isScenario ? selectedScenario.title : t('conversation.free_title', 'Free talk with Hana-sensei (花先生)')}

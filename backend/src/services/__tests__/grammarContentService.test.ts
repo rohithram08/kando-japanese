@@ -53,10 +53,10 @@ describe('grammarContentService', () => {
 
   it('reports canonical grammar count and list', () => {
     const count = getCanonicalGrammarCount();
-    expect(count).toBe(479);
+    expect(count).toBe(769);
     const list = getAllCanonicalGrammarIds();
-    expect(list).toHaveLength(479);
-    expect(new Set(list).size).toBe(479);
+    expect(list).toHaveLength(769);
+    expect(new Set(list).size).toBe(769);
     expect(list).toContain('n5_g001');
     expect(list).toContain('n1g001');
   });

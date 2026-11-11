@@ -33,6 +33,7 @@ import { SenseiEmotion } from '../components/sensei/controllers/SenseiExpression
 import { useSpeechToText } from '../hooks/useSpeechToText';
 import { useSettingsStore } from '../store/settingsStore';
 import { useI18n } from '../i18n';
+import SEO from '../components/common/SEO';
 
 const QUICK_PROMPTS = [
   "What did we talk about last session?",
@@ -186,7 +187,11 @@ export default function SenseiPage() {
 
   return (
     <div className="h-[calc(100dvh-10.25rem)] min-h-[420px] md:h-[calc(100vh-5.5rem)] md:min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      
+      <SEO
+        title="AI Sensei 3D Studio - Hana-sensei"
+        description="Interactive 3D AI Japanese tutor Hana-sensei. Voice-enabled conversational practice, grammar explanations, custom study plans, and live corrections."
+        path="/sensei"
+      />
       {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Fresh Session, History, Sound/Stop, Camera) ─── */}
       <header className="absolute top-2 left-2 right-2 sm:left-auto sm:top-4 sm:right-4 z-20 flex items-center justify-end pointer-events-none">
         <div className="pointer-events-auto flex items-center gap-1.5 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">

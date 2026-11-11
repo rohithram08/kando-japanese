@@ -15,6 +15,7 @@ import StoryReader from '../components/reading/StoryReader';
 import { useI18n } from '../i18n';
 import { useStudyLevel } from '../hooks/useStudyLevel';
 import { unlockedRangeLabel } from '../utils/levelAccess';
+import SEO from '../components/common/SEO';
 
 const STORIES_PER_PAGE = 12;
 
@@ -146,12 +147,19 @@ export default function ReadingPage() {
     };
 
     return (
-      <StoryReader
-        story={story}
-        initialProgress={storyProgress}
-        initialShowQuiz={initialShowQuiz}
-        onBack={() => navigate('/reading')}
-      />
+      <>
+        <SEO
+          title={story ? `${story.title} (${story.level}) - Graded Reader` : 'Graded Reader Story'}
+          description={story ? (story.description || `Read "${story.title}" (${story.level}) in Japanese with native audio, furigana, and comprehension checks.`) : 'Read Japanese stories.'}
+          path={`/reading/${storyId}`}
+        />
+        <StoryReader
+          story={story}
+          initialProgress={storyProgress}
+          initialShowQuiz={initialShowQuiz}
+          onBack={() => navigate('/reading')}
+        />
+      </>
     );
   }
 
@@ -164,6 +172,11 @@ export default function ReadingPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
+      <SEO
+        title="Japanese Graded Readers (多読 Tadoku)"
+        description="Read 250+ curated Japanese graded stories from JLPT N5 to N1 with toggleable furigana, pitch accent audio, vocabulary lookups, and comprehension quizzes."
+        path="/reading"
+      />
       {/* ── Page Header ── */}
       <div className="mb-5 sm:mb-8">
         <div className="flex items-center space-x-2 text-teal-600 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-2">

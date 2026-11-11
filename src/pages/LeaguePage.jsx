@@ -17,6 +17,7 @@ import { formatCountdown, ordinal, leagueStatusMessage } from '../utils/league'
 import LeagueBadge from '../components/league/LeagueBadge'
 import StandingsList from '../components/league/StandingsList'
 import UserAvatar from '../components/common/UserAvatar'
+import SEO from '../components/common/SEO'
 
 const TONE = {
   good: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300',
@@ -37,6 +38,11 @@ function SignedOut() {
   const { t } = useI18n()
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
+      <SEO
+        title="Weekly Japanese Leagues & Leaderboards"
+        description="Compete in weekly Japanese study leagues, climb the ranks from Wakaba to Fuji, earn XP, and stay motivated with learners worldwide."
+        path="/league"
+      />
       <Trophy className="mx-auto mb-4 h-12 w-12 text-primary" aria-hidden />
       <h1 className="text-2xl font-extrabold text-foreground">{t('league.signed_out_title', 'Compete with other learners')}</h1>
       <p className="mt-2 text-sm text-muted-foreground">
@@ -112,6 +118,11 @@ export default function LeaguePage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-5 px-4 py-6">
+      <SEO
+        title="Weekly Japanese Leagues & Leaderboards"
+        description="Compete in weekly Japanese study leagues, climb the ranks from Wakaba to Fuji, earn XP, and stay motivated with learners worldwide."
+        path="/league"
+      />
       {/* Header */}
       <section className="rounded-3xl border border-border bg-surface p-5">
         <div className="flex items-center gap-4">

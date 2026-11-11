@@ -29,6 +29,7 @@ import { searchDictionary } from '../api/dictionary';
 import { detectSearchQuery } from '../utils/japaneseDetector';
 import FuriganaText from '../components/common/FuriganaText';
 import JellyStreakSlime from '../components/mascot/JellyStreakSlime';
+import SEO from '../components/common/SEO';
 import toast from 'react-hot-toast';
 
 const POPULAR_SEARCHES = [
@@ -245,6 +246,11 @@ export default function DictionaryPage() {
 
   return (
     <div className="min-h-screen bg-background pb-16">
+      <SEO
+        title="Japanese Dictionary & Word Lookup"
+        description="Search Japanese kanji, words, and phrases with readings, English, Tamil, and Hindi meanings, stroke counts, and audio pronunciation."
+        path="/dictionary"
+      />
       {/* ── HERO BANNER ────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-cyan-500/10 via-emerald-500/5 to-transparent border-b border-border/50 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto relative z-10">

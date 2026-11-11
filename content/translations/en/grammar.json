@@ -2393,5 +2393,1455 @@
     "meaning": "by all means; definitely",
     "explanation": "Used to add heartfelt emphasis to an invitation or strong personal wish.",
     "example": "ぜひ遊びに来てください。"
+  },
+  "n2g026": {
+    "meaning": "〜わけにはいかない (obligation, restriction)",
+    "explanation": "Grammar pattern 〜わけにはいかない. Formation: Verb (dictionary form) + わけにはいかない",
+    "example": ""
+  },
+  "n2g027": {
+    "meaning": "〜ないわけにはいかない (obligation, must)",
+    "explanation": "Grammar pattern 〜ないわけにはいかない. Formation: Verb (ない-form) + わけにはいかない",
+    "example": ""
+  },
+  "n2g028": {
+    "meaning": "〜わけがない (impossibility, conviction)",
+    "explanation": "Grammar pattern 〜わけがない. Formation: Verb/Adj/Noun (plain form) + わけがない (Noun + な/である)",
+    "example": ""
+  },
+  "n2g029": {
+    "meaning": "〜わけだ (conclusion, explanation)",
+    "explanation": "Grammar pattern 〜わけだ. Formation: Verb/Adj/Noun (plain form) + わけだ (Noun + な/である)",
+    "example": ""
+  },
+  "n2g030": {
+    "meaning": "〜わけではない (partial-negation, nuance)",
+    "explanation": "Grammar pattern 〜わけではない. Formation: Verb/Adj/Noun (plain form) + わけではない (Noun + な/である)",
+    "example": ""
+  },
+  "n2g031": {
+    "meaning": "〜どころか (contrast, emphasis)",
+    "explanation": "Grammar pattern 〜どころか. Formation: Noun / Verb (plain form) / Adj + どころか",
+    "example": ""
+  },
+  "n2g032": {
+    "meaning": "〜どころではない (impossibility, circumstance)",
+    "explanation": "Grammar pattern 〜どころではない. Formation: Noun / Verb (plain form) + どころではない",
+    "example": ""
+  },
+  "n2g033": {
+    "meaning": "〜一方（で） (contrast, parallel)",
+    "explanation": "Grammar pattern 〜一方（で）. Formation: Verb / Adj / Noun + である + 一方（で）",
+    "example": ""
+  },
+  "n2g034": {
+    "meaning": "〜反面 (contrast, two-sided)",
+    "explanation": "Grammar pattern 〜反面. Formation: Verb / Adj / Noun + である + 反面",
+    "example": ""
+  },
+  "n2g035": {
+    "meaning": "〜ばかりか (addition, emphasis)",
+    "explanation": "Grammar pattern 〜ばかりか. Formation: Noun / Verb / Adj (plain form) + ばかりか (Noun + である)",
+    "example": ""
+  },
+  "n2g036": {
+    "meaning": "〜ばかりに (cause, regret)",
+    "explanation": "Grammar pattern 〜ばかりに. Formation: Verb (た-form) / Adj / Noun + である + ばかりに",
+    "example": ""
+  },
+  "n2g037": {
+    "meaning": "〜ばかりだ (change, tendency)",
+    "explanation": "Grammar pattern 〜ばかりだ. Formation: Verb (dictionary form) + ばかりだ",
+    "example": ""
+  },
+  "n2g038": {
+    "meaning": "〜のみならず (addition, formal)",
+    "explanation": "Grammar pattern 〜のみならず. Formation: Noun / Verb / Adj (plain form) + のみならず",
+    "example": ""
+  },
+  "n2g039": {
+    "meaning": "〜に限らず (scope, universal)",
+    "explanation": "Grammar pattern 〜に限らず. Formation: Noun + に限らず",
+    "example": ""
+  },
+  "n2g040": {
+    "meaning": "〜に限って (exception, timing)",
+    "explanation": "Grammar pattern 〜に限って. Formation: Noun + に限って",
+    "example": ""
+  },
+  "n2g041": {
+    "meaning": "〜限り（は） (condition, limit)",
+    "explanation": "Grammar pattern 〜限り（は）. Formation: Verb / Adj / Noun + である + 限り（は）",
+    "example": ""
+  },
+  "n2g042": {
+    "meaning": "〜限りでは (scope, qualification)",
+    "explanation": "Grammar pattern 〜限りでは. Formation: Verb (dictionary/た form) + 限りでは",
+    "example": ""
+  },
+  "n2g043": {
+    "meaning": "〜とは限らない (partial-negation, uncertainty)",
+    "explanation": "Grammar pattern 〜とは限らない. Formation: Verb/Adj/Noun (plain form) + とは限らない",
+    "example": ""
+  },
+  "n2g044": {
+    "meaning": "〜に限り (restriction, formal)",
+    "explanation": "Grammar pattern 〜に限り. Formation: Noun + に限り",
+    "example": ""
+  },
+  "n2g045": {
+    "meaning": "〜に応じて (proportional, adaptation)",
+    "explanation": "Grammar pattern 〜に応じて. Formation: Noun + に応じて / に応じた + Noun",
+    "example": ""
+  },
+  "n2g046": {
+    "meaning": "〜に応えて (response, expectation)",
+    "explanation": "Grammar pattern 〜に応えて. Formation: Noun + に応えて / に応える + Noun",
+    "example": ""
+  },
+  "n2g047": {
+    "meaning": "〜に基づいて (basis, standard)",
+    "explanation": "Grammar pattern 〜に基づいて. Formation: Noun + に基づいて / に基づく + Noun",
+    "example": ""
+  },
+  "n2g048": {
+    "meaning": "〜のもとで (influence, condition)",
+    "explanation": "Grammar pattern 〜のもとで. Formation: Noun + のもとで / のもとに",
+    "example": ""
+  },
+  "n2g049": {
+    "meaning": "〜をこめて (feeling, devotion)",
+    "explanation": "Grammar pattern 〜をこめて. Formation: Noun + をこめて",
+    "example": ""
+  },
+  "n2g050": {
+    "meaning": "〜を中心に (focus, core)",
+    "explanation": "Grammar pattern 〜を中心に. Formation: Noun + を中心に / を中心として",
+    "example": ""
+  },
+  "n2g051": {
+    "meaning": "〜に沿って (compliance, following)",
+    "explanation": "Grammar pattern 〜に沿って. Formation: Noun + に沿って / に沿う + Noun",
+    "example": ""
+  },
+  "n2g052": {
+    "meaning": "〜にかけては (skill, evaluation)",
+    "explanation": "Grammar pattern 〜にかけては. Formation: Noun + にかけては",
+    "example": ""
+  },
+  "n2g053": {
+    "meaning": "〜から〜にかけて (range, approximate)",
+    "explanation": "Grammar pattern 〜から〜にかけて. Formation: Noun + から + Noun + にかけて",
+    "example": ""
+  },
+  "n2g054": {
+    "meaning": "〜に即して (conformity, realism)",
+    "explanation": "Grammar pattern 〜に即して. Formation: Noun + に即して / に即した + Noun",
+    "example": ""
+  },
+  "n2g055": {
+    "meaning": "〜に先立って (preparation, advance)",
+    "explanation": "Grammar pattern 〜に先立って. Formation: Noun / Verb (dictionary form) + に先立って",
+    "example": ""
+  },
+  "n2g056": {
+    "meaning": "〜とともに (simultaneous, parallel-change)",
+    "explanation": "Grammar pattern 〜とともに. Formation: Noun / Verb (dictionary form) + とともに",
+    "example": ""
+  },
+  "n2g057": {
+    "meaning": "〜につれて (parallel-change, proportional)",
+    "explanation": "Grammar pattern 〜につれて. Formation: Noun / Verb (dictionary form) + につれて",
+    "example": ""
+  },
+  "n2g058": {
+    "meaning": "〜にしたがって (parallel-change, compliance)",
+    "explanation": "Grammar pattern 〜にしたがって. Formation: Noun / Verb (dictionary form) + にしたがって",
+    "example": ""
+  },
+  "n2g059": {
+    "meaning": "〜につけ (whenever, association)",
+    "explanation": "Grammar pattern 〜につけ. Formation: Verb (dictionary form) / Noun + につけ",
+    "example": ""
+  },
+  "n2g060": {
+    "meaning": "〜に関して (topic, formal)",
+    "explanation": "Grammar pattern 〜に関して. Formation: Noun + に関して / に関する + Noun",
+    "example": ""
+  },
+  "n2g061": {
+    "meaning": "〜にかかわらず (regardless, condition)",
+    "explanation": "Grammar pattern 〜にかかわらず. Formation: Noun / Verb (plain dictionary/ない) + にかかわらず",
+    "example": ""
+  },
+  "n2g062": {
+    "meaning": "〜抜きで (exclusion, without)",
+    "explanation": "Grammar pattern 〜抜きで. Formation: Noun + 抜きで / 抜きにして",
+    "example": ""
+  },
+  "n2g063": {
+    "meaning": "〜はともかく (setting-aside, priority)",
+    "explanation": "Grammar pattern 〜はともかく. Formation: Noun + はともかく（として）",
+    "example": ""
+  },
+  "n2g064": {
+    "meaning": "〜はさておき (priority, topic-switch)",
+    "explanation": "Grammar pattern 〜はさておき. Formation: Noun + はさておき",
+    "example": ""
+  },
+  "n2g065": {
+    "meaning": "〜まい (negative-volition, negative-conjecture)",
+    "explanation": "Grammar pattern 〜まい. Formation: Verb (dictionary form / ない-stem) + まい",
+    "example": ""
+  },
+  "n2g066": {
+    "meaning": "〜っこない (impossibility, colloquial)",
+    "explanation": "Grammar pattern 〜っこない. Formation: Verb stem + っこない",
+    "example": ""
+  },
+  "n2g067": {
+    "meaning": "〜気味 (tendency, slight)",
+    "explanation": "Grammar pattern 〜気味. Formation: Verb stem / Noun + 気味",
+    "example": ""
+  },
+  "n2g068": {
+    "meaning": "〜がち (tendency, frequency)",
+    "explanation": "Grammar pattern 〜がち. Formation: Verb stem / Noun + がち",
+    "example": ""
+  },
+  "n2g069": {
+    "meaning": "〜っぽい (nature, character)",
+    "explanation": "Grammar pattern 〜っぽい. Formation: Noun / Verb stem / Adj + っぽい",
+    "example": ""
+  },
+  "n2g070": {
+    "meaning": "〜向き (suitability, target)",
+    "explanation": "Grammar pattern 〜向き. Formation: Noun + 向き",
+    "example": ""
+  },
+  "n2g071": {
+    "meaning": "〜向け (intended-for, design)",
+    "explanation": "Grammar pattern 〜向け. Formation: Noun + 向け",
+    "example": ""
+  },
+  "n2g072": {
+    "meaning": "〜だらけ (excess, unfavorable)",
+    "explanation": "Grammar pattern 〜だらけ. Formation: Noun + だらけ",
+    "example": ""
+  },
+  "n2g073": {
+    "meaning": "〜ずくめ (entirely, filled-with)",
+    "explanation": "Grammar pattern 〜ずくめ. Formation: Noun + ずくめ",
+    "example": ""
+  },
+  "n2g074": {
+    "meaning": "〜まみれ (covered-with, dirty)",
+    "explanation": "Grammar pattern 〜まみれ. Formation: Noun + まみれ",
+    "example": ""
+  },
+  "n2g075": {
+    "meaning": "〜きり (only, state-continuation)",
+    "explanation": "Grammar pattern 〜きり. Formation: Noun / Verb (た-form) + きり",
+    "example": ""
+  },
+  "n2g076": {
+    "meaning": "〜に違いない (certainty, conviction)",
+    "explanation": "Grammar pattern 〜に違いない. Formation: Verb/Adj/Noun (plain form) + に違いない (Noun/な-Adj: だ drops)",
+    "example": ""
+  },
+  "n2g077": {
+    "meaning": "〜に相違ない (certainty, formal)",
+    "explanation": "Grammar pattern 〜に相違ない. Formation: Verb/Adj/Noun (plain form) + に相違ない (Noun/な-Adj: だ drops)",
+    "example": ""
+  },
+  "n2g078": {
+    "meaning": "〜にすぎない (limitation, modesty)",
+    "explanation": "Grammar pattern 〜にすぎない. Formation: Verb (dictionary/plain) / Noun + にすぎない",
+    "example": ""
+  },
+  "n2g079": {
+    "meaning": "〜にほかならない (assertion, reason)",
+    "explanation": "Grammar pattern 〜にほかならない. Formation: Noun / Phrase + からにほかならない",
+    "example": ""
+  },
+  "n2g080": {
+    "meaning": "〜に決まっている (certainty, conviction)",
+    "explanation": "Grammar pattern 〜に決まっている. Formation: Verb/Adj/Noun (plain form) + に決まっている",
+    "example": ""
+  },
+  "n2g081": {
+    "meaning": "〜に越したことはない (preference, advice)",
+    "explanation": "Grammar pattern 〜に越したことはない. Formation: Verb/Adj/Noun (plain form) + に越したことはない",
+    "example": ""
+  },
+  "n2g082": {
+    "meaning": "〜得る / 〜得ない (possibility, potential)",
+    "explanation": "Grammar pattern 〜得る / 〜得ない. Formation: Verb stem + 得る (うる/える) / 得ない (えない)",
+    "example": ""
+  },
+  "n2g083": {
+    "meaning": "〜おそれがある (risk, warning)",
+    "explanation": "Grammar pattern 〜おそれがある. Formation: Verb (dictionary form) / Noun + の + おそれがある",
+    "example": ""
+  },
+  "n2g084": {
+    "meaning": "〜に及ばない (unnecessary, inferior)",
+    "explanation": "Grammar pattern 〜に及ばない. Formation: Verb (dictionary form) / Noun + に及ばない",
+    "example": ""
+  },
+  "n2g085": {
+    "meaning": "〜に値する (worth, value)",
+    "explanation": "Grammar pattern 〜に値する. Formation: Verb (dictionary form) / Noun + に値する",
+    "example": ""
+  },
+  "n2g086": {
+    "meaning": "〜に耐える / 〜に耐えない (evaluation, emotional)",
+    "explanation": "Grammar pattern 〜に耐える / 〜に耐えない. Formation: Verb (dictionary form) / Noun + に耐える / に耐えない",
+    "example": ""
+  },
+  "n2g087": {
+    "meaning": "〜にひきかえ (contrast, comparison)",
+    "explanation": "Grammar pattern 〜にひきかえ. Formation: Noun / Verb/Adj (plain form) + のにひきかえ",
+    "example": ""
+  },
+  "n2g088": {
+    "meaning": "〜にもまして (comparison, degree)",
+    "explanation": "Grammar pattern 〜にもまして. Formation: Noun + にもまして",
+    "example": ""
+  },
+  "n2g089": {
+    "meaning": "〜から見ると / 〜から見て (perspective, judgment)",
+    "explanation": "Grammar pattern 〜から見ると / 〜から見て. Formation: Noun + から見ると / から見れば / から見て",
+    "example": ""
+  },
+  "n2g090": {
+    "meaning": "〜から言うと / 〜から言って (perspective, aspect)",
+    "explanation": "Grammar pattern 〜から言うと / 〜から言って. Formation: Noun + から言うと / から言えば / から言って",
+    "example": ""
+  },
+  "n2g091": {
+    "meaning": "〜からすると / 〜からして (inference, perspective)",
+    "explanation": "Grammar pattern 〜からすると / 〜からして. Formation: Noun + からすると / からすれば / からして",
+    "example": ""
+  },
+  "n2g092": {
+    "meaning": "〜からして (example, emphasis)",
+    "explanation": "Grammar pattern 〜からして. Formation: Noun + からして",
+    "example": ""
+  },
+  "n2g093": {
+    "meaning": "〜からには (resolve, since)",
+    "explanation": "Grammar pattern 〜からには. Formation: Verb / Adj / Noun + である + からには",
+    "example": ""
+  },
+  "n2g094": {
+    "meaning": "〜以上（は） (resolve, duty)",
+    "explanation": "Grammar pattern 〜以上（は）. Formation: Verb / Adj / Noun + である + 以上（は）",
+    "example": ""
+  },
+  "n2g095": {
+    "meaning": "〜上は (resolve, since)",
+    "explanation": "Grammar pattern 〜上は. Formation: Verb (dictionary/た form) + 上は",
+    "example": ""
+  },
+  "n2g096": {
+    "meaning": "〜折に（は） (time, opportunity)",
+    "explanation": "Grammar pattern 〜折に（は）. Formation: Verb (plain form) / Noun + の + 折に（は）",
+    "example": ""
+  },
+  "n2g097": {
+    "meaning": "〜際（に） (time, formal)",
+    "explanation": "Grammar pattern 〜際（に）. Formation: Verb (dictionary/た form) / Noun + の + 際（に）",
+    "example": ""
+  },
+  "n2g098": {
+    "meaning": "〜にあたって (occasion, preparation)",
+    "explanation": "Grammar pattern 〜にあたって. Formation: Verb (dictionary form) / Noun + にあたって / にあたり",
+    "example": ""
+  },
+  "n2g099": {
+    "meaning": "〜最中に (timing, interruption)",
+    "explanation": "Grammar pattern 〜最中に. Formation: Verb (ている-form) / Noun + の + 最中に",
+    "example": ""
+  },
+  "n2g100": {
+    "meaning": "〜うちに (time-frame, opportunity)",
+    "explanation": "Grammar pattern 〜うちに. Formation: Verb (dictionary/ない/ている) / Adj / Noun + の + うちに",
+    "example": ""
+  },
+  "n2g101": {
+    "meaning": "〜つつ（ある） (ongoing-change, formal)",
+    "explanation": "Grammar pattern 〜つつ（ある）. Formation: Verb stem + つつ（ある）",
+    "example": ""
+  },
+  "n2g102": {
+    "meaning": "〜つつも (contrast, concession)",
+    "explanation": "Grammar pattern 〜つつも. Formation: Verb stem + つつも",
+    "example": ""
+  },
+  "n2g103": {
+    "meaning": "〜ながら（も） (concession, contrast)",
+    "explanation": "Grammar pattern 〜ながら（も）. Formation: Verb stem / Adj / Noun + ながら（も）",
+    "example": ""
+  },
+  "n2g104": {
+    "meaning": "〜一方だ (continuous-change, tendency)",
+    "explanation": "Grammar pattern 〜一方だ. Formation: Verb (dictionary form) + 一方だ",
+    "example": ""
+  },
+  "n2g105": {
+    "meaning": "〜て以来 (since, continuation)",
+    "explanation": "Grammar pattern 〜て以来. Formation: Verb (て-form) + 以来",
+    "example": ""
+  },
+  "n2g106": {
+    "meaning": "〜てからでないと (condition, prerequisite)",
+    "explanation": "Grammar pattern 〜てからでないと. Formation: Verb (て-form) + からでないと / からでなければ",
+    "example": ""
+  },
+  "n2g107": {
+    "meaning": "〜てたまらない (emotion, irresistible)",
+    "explanation": "Grammar pattern 〜てたまらない. Formation: Verb (て-form) / い-Adj (くて) / な-Adj (で) + たまらない",
+    "example": ""
+  },
+  "n2g108": {
+    "meaning": "〜てならない (natural-feeling, formal)",
+    "explanation": "Grammar pattern 〜てならない. Formation: Verb (て-form) / い-Adj (くて) / な-Adj (で) + ならない",
+    "example": ""
+  },
+  "n2g109": {
+    "meaning": "〜てしょうがない (emotion, colloquial)",
+    "explanation": "Grammar pattern 〜てしょうがない. Formation: Verb (て-form) / い-Adj (くて) / な-Adj (で) + しょうがない / しかたがない",
+    "example": ""
+  },
+  "n2g110": {
+    "meaning": "〜ないではいられない (impulse, uncontrollable)",
+    "explanation": "Grammar pattern 〜ないではいられない. Formation: Verb (ない-form) + ではいられない / ずにはいられない",
+    "example": ""
+  },
+  "n2g111": {
+    "meaning": "〜ようがない (impossibility, no-method)",
+    "explanation": "Grammar pattern 〜ようがない. Formation: Verb stem + ようがない / ようもない",
+    "example": ""
+  },
+  "n2g112": {
+    "meaning": "〜はずがない (strong-denial, conviction)",
+    "explanation": "Grammar pattern 〜はずがない. Formation: Verb/Adj/Noun (plain form) + はずがない (Noun + の / な-Adj + な)",
+    "example": ""
+  },
+  "n2g113": {
+    "meaning": "〜はずだ (expectation, realization)",
+    "explanation": "Grammar pattern 〜はずだ. Formation: Verb/Adj/Noun (plain form) + はずだ (Noun + の / な-Adj + な)",
+    "example": ""
+  },
+  "n2g114": {
+    "meaning": "〜というものだ (opinion, assertion)",
+    "explanation": "Grammar pattern 〜というものだ. Formation: Verb/Adj/Noun (plain form) + というものだ",
+    "example": ""
+  },
+  "n2g115": {
+    "meaning": "〜というものではない (qualification, nuance)",
+    "explanation": "Grammar pattern 〜というものではない. Formation: Verb/Adj/Noun (plain form) + というものではない",
+    "example": ""
+  },
+  "n2g116": {
+    "meaning": "〜ものだ (general-truth, nostalgia)",
+    "explanation": "Grammar pattern 〜ものだ. Formation: Verb / Adj (plain form) + ものだ",
+    "example": ""
+  },
+  "n2g117": {
+    "meaning": "〜ものではない (prohibition, advice)",
+    "explanation": "Grammar pattern 〜ものではない. Formation: Verb (dictionary form) + ものではない",
+    "example": ""
+  },
+  "n2g118": {
+    "meaning": "〜ものがある (feeling, impressive)",
+    "explanation": "Grammar pattern 〜ものがある. Formation: Verb (dictionary form) / い-Adj / な-Adj + な + ものがある",
+    "example": ""
+  },
+  "n2g119": {
+    "meaning": "〜ことだ (advice, suggestion)",
+    "explanation": "Grammar pattern 〜ことだ. Formation: Verb (dictionary/ない form) + ことだ",
+    "example": ""
+  },
+  "n2g120": {
+    "meaning": "〜ことか (exclamation, emotion)",
+    "explanation": "Grammar pattern 〜ことか. Formation: 疑問詞 (どんなに/どれほど) + Verb/Adj + ことか",
+    "example": ""
+  },
+  "n2g121": {
+    "meaning": "〜ことだから (characteristic, inference)",
+    "explanation": "Grammar pattern 〜ことだから. Formation: Noun + の + ことだから",
+    "example": ""
+  },
+  "n2g122": {
+    "meaning": "〜ことなく (without, formal)",
+    "explanation": "Grammar pattern 〜ことなく. Formation: Verb (dictionary form) + ことなく",
+    "example": ""
+  },
+  "n2g123": {
+    "meaning": "〜ことに（は） (emotion, emphasis)",
+    "explanation": "Grammar pattern 〜ことに（は）. Formation: Verb (た-form) / い-Adj / な-Adj + な + ことに（は）",
+    "example": ""
+  },
+  "n2g124": {
+    "meaning": "〜ないことには〜ない (condition, prerequisite)",
+    "explanation": "Grammar pattern 〜ないことには〜ない. Formation: Verb (ない-form) + ことには + 否定表現",
+    "example": ""
+  },
+  "n2g125": {
+    "meaning": "〜ものなら (hypothetical, wish)",
+    "explanation": "Grammar pattern 〜ものなら. Formation: Verb (可能形 / dictionary form) + ものなら",
+    "example": ""
+  },
+  "n2g126": {
+    "meaning": "〜（よ）うものなら (hypothetical, warning)",
+    "explanation": "Grammar pattern 〜（よ）うものなら. Formation: Verb (意向形) + ものなら",
+    "example": ""
+  },
+  "n2g127": {
+    "meaning": "〜としたら / 〜とすれば (condition, supposition)",
+    "explanation": "Grammar pattern 〜としたら / 〜とすれば. Formation: Verb/Adj/Noun (plain form) + としたら / とすれば",
+    "example": ""
+  },
+  "n2g128": {
+    "meaning": "〜としても (concession, even-if)",
+    "explanation": "Grammar pattern 〜としても. Formation: Verb/Adj/Noun (plain form) + としても",
+    "example": ""
+  },
+  "n2g129": {
+    "meaning": "〜にしては (contrast, unexpected)",
+    "explanation": "Grammar pattern 〜にしては. Formation: Noun / Verb/Adj (plain form) + にしては (Noun + だ drops)",
+    "example": ""
+  },
+  "n2g130": {
+    "meaning": "〜わりに（は） (contrast, proportion)",
+    "explanation": "Grammar pattern 〜わりに（は）. Formation: Noun + の / Verb/Adj (plain form) + わりに（は）",
+    "example": ""
+  },
+  "n2g131": {
+    "meaning": "〜くせに (blame, criticism)",
+    "explanation": "Grammar pattern 〜くせに. Formation: Noun + の / Verb/Adj (plain form) + くせに (な-Adj + な)",
+    "example": ""
+  },
+  "n2g132": {
+    "meaning": "〜かわりに (compensation, substitution)",
+    "explanation": "Grammar pattern 〜かわりに. Formation: Noun + の / Verb (plain form) + かわりに",
+    "example": ""
+  },
+  "n2g133": {
+    "meaning": "〜にかわって (representation, replacement)",
+    "explanation": "Grammar pattern 〜にかわって. Formation: Noun + にかわって / に代わり",
+    "example": ""
+  },
+  "n2g134": {
+    "meaning": "〜たいものだ (desire, wish)",
+    "explanation": "Grammar pattern 〜たいものだ. Formation: Verb stem + たいものだ",
+    "example": ""
+  },
+  "n2g135": {
+    "meaning": "〜だけに (reason, natural-result)",
+    "explanation": "Grammar pattern 〜だけに. Formation: Noun / Verb/Adj (plain form) + だけに (Noun + である)",
+    "example": ""
+  },
+  "n2g136": {
+    "meaning": "〜だけあって (praise, natural-result)",
+    "explanation": "Grammar pattern 〜だけあって. Formation: Noun / Verb/Adj (plain form) + だけあって",
+    "example": ""
+  },
+  "n2g137": {
+    "meaning": "〜だけのことはある (praise, worth)",
+    "explanation": "Grammar pattern 〜だけのことはある. Formation: Noun / Verb/Adj (plain form) + だけのことはある",
+    "example": ""
+  },
+  "n2g138": {
+    "meaning": "〜はもちろん (extent, natural)",
+    "explanation": "Grammar pattern 〜はもちろん. Formation: Noun + はもちろん",
+    "example": ""
+  },
+  "n2g139": {
+    "meaning": "〜はもとより (formal, extent)",
+    "explanation": "Grammar pattern 〜はもとより. Formation: Noun + はもとより",
+    "example": ""
+  },
+  "n2g140": {
+    "meaning": "〜ついでに (coincidental, opportunity)",
+    "explanation": "Grammar pattern 〜ついでに. Formation: Noun + の / Verb (dictionary/た form) + ついでに",
+    "example": ""
+  },
+  "n2g141": {
+    "meaning": "〜を皮切りに（して） (beginning, series)",
+    "explanation": "Grammar pattern 〜を皮切りに（して）. Formation: Noun + を皮切りに（して）",
+    "example": ""
+  },
+  "n2g142": {
+    "meaning": "〜をもとに（して） (material, basis)",
+    "explanation": "Grammar pattern 〜をもとに（して）. Formation: Noun + をもとに（して）",
+    "example": ""
+  },
+  "n2g143": {
+    "meaning": "〜を踏まえて (consideration, basis)",
+    "explanation": "Grammar pattern 〜を踏まえて. Formation: Noun + を踏まえて",
+    "example": ""
+  },
+  "n2g144": {
+    "meaning": "〜に照らして (comparison, standard)",
+    "explanation": "Grammar pattern 〜に照らして. Formation: Noun + に照らして",
+    "example": ""
+  },
+  "n2g145": {
+    "meaning": "〜たところで (concession, futile)",
+    "explanation": "Grammar pattern 〜たところで. Formation: Verb (た-form) + ところで",
+    "example": ""
+  },
+  "n2g146": {
+    "meaning": "〜次第だ (explanation, circumstance)",
+    "explanation": "Grammar pattern 〜次第だ. Formation: Verb (stem / dictionary/た form) + 次第だ",
+    "example": ""
+  },
+  "n2g147": {
+    "meaning": "〜あげく（に） (negative-outcome, exhaustion)",
+    "explanation": "Grammar pattern 〜あげく（に）. Formation: Noun + の / Verb (た-form) + あげく（に）",
+    "example": ""
+  },
+  "n2g148": {
+    "meaning": "〜抜く (thoroughness, perseverance)",
+    "explanation": "Grammar pattern 〜抜く. Formation: Verb stem + 抜く",
+    "example": ""
+  },
+  "n2g149": {
+    "meaning": "〜通す (persistence, continuity)",
+    "explanation": "Grammar pattern 〜通す. Formation: Verb stem + 通す",
+    "example": ""
+  },
+  "n2g150": {
+    "meaning": "〜きる / 〜きれない (completion, exhaustion)",
+    "explanation": "Grammar pattern 〜きる / 〜きれない. Formation: Verb stem + きる / きれる / きれない",
+    "example": ""
+  },
+  "n2g151": {
+    "meaning": "〜かける / 〜かけだ (incompletion, starting)",
+    "explanation": "Grammar pattern 〜かける / 〜かけだ. Formation: Verb stem + かける / かけだ / かけの + Noun",
+    "example": ""
+  },
+  "n2g152": {
+    "meaning": "〜やまない (strong-feeling, continuous)",
+    "explanation": "Grammar pattern 〜やまない. Formation: Verb (て-form) + やまない",
+    "example": ""
+  },
+  "n2g153": {
+    "meaning": "〜禁じ得ない (uncontrollable-emotion, formal)",
+    "explanation": "Grammar pattern 〜禁じ得ない. Formation: Noun + を禁じ得ない",
+    "example": ""
+  },
+  "n2g154": {
+    "meaning": "〜余儀なくされる (forced, unavoidable)",
+    "explanation": "Grammar pattern 〜余儀なくされる. Formation: Noun + を余儀なくされる / を余儀なくさせる",
+    "example": ""
+  },
+  "n2g155": {
+    "meaning": "〜に足る (worthiness, formal)",
+    "explanation": "Grammar pattern 〜に足る. Formation: Verb (dictionary form) / Noun + に足る",
+    "example": ""
+  },
+  "n2g156": {
+    "meaning": "〜てはいられない (urgency, cannot-continue)",
+    "explanation": "Grammar pattern 〜てはいられない. Formation: Verb (て-form) + はいられない",
+    "example": ""
+  },
+  "n2g157": {
+    "meaning": "〜ずにはすまない (social-duty, unavoidable)",
+    "explanation": "Grammar pattern 〜ずにはすまない. Formation: Verb (ない-stem) + ずにはすまない / ないではすまない (する -> せずにはすまない)",
+    "example": ""
+  },
+  "n2g158": {
+    "meaning": "〜そうにない (low-probability, doubt)",
+    "explanation": "Grammar pattern 〜そうにない. Formation: Verb stem + そうにない / そうもない",
+    "example": ""
+  },
+  "n2g159": {
+    "meaning": "〜がたい (difficulty, psychological)",
+    "explanation": "Grammar pattern 〜がたい. Formation: Verb stem + がたい",
+    "example": ""
+  },
+  "n2g160": {
+    "meaning": "〜っぱなし (neglect, continuous-state)",
+    "explanation": "Grammar pattern 〜っぱなし. Formation: Verb stem + っぱなし",
+    "example": ""
+  },
+  "n2g161": {
+    "meaning": "〜げ (appearance, nuance)",
+    "explanation": "Grammar pattern 〜げ. Formation: い-Adj stem / な-Adj stem / Verb stem + げ",
+    "example": ""
+  },
+  "n2g162": {
+    "meaning": "〜めく (showing-signs, nuance)",
+    "explanation": "Grammar pattern 〜めく. Formation: Noun + めく",
+    "example": ""
+  },
+  "n2g163": {
+    "meaning": "〜ぶる (acting-like, affectation)",
+    "explanation": "Grammar pattern 〜ぶる. Formation: Noun / Adj stem + ぶる",
+    "example": ""
+  },
+  "n2g164": {
+    "meaning": "〜かのようだ (metaphor, similarity)",
+    "explanation": "Grammar pattern 〜かのようだ. Formation: Verb/Adj/Noun (plain form) + かのようだ / かのように (Noun + である)",
+    "example": ""
+  },
+  "n2g165": {
+    "meaning": "〜ように言う / 〜ように頼む (indirect-speech, request)",
+    "explanation": "Grammar pattern 〜ように言う / 〜ように頼む. Formation: Verb (dictionary/ない form) + ように言う / 頼む / 伝える",
+    "example": ""
+  },
+  "n2g166": {
+    "meaning": "〜べきだ / 〜べきではない (obligation, opinion)",
+    "explanation": "Grammar pattern 〜べきだ / 〜べきではない. Formation: Verb (dictionary form) + べきだ / べきではない (する -> すべき)",
+    "example": ""
+  },
+  "n2g167": {
+    "meaning": "〜ないものか (strong-wish, desire)",
+    "explanation": "Grammar pattern 〜ないものか. Formation: Verb (ない-form) + ものか / ものだろうか",
+    "example": ""
+  },
+  "n2g168": {
+    "meaning": "〜とはいえ (concession, contrast)",
+    "explanation": "Grammar pattern 〜とはいえ. Formation: Noun / Verb/Adj (plain form) + とはいえ",
+    "example": ""
+  },
+  "n2g169": {
+    "meaning": "〜といっても (qualification, contrast)",
+    "explanation": "Grammar pattern 〜といっても. Formation: Noun / Verb/Adj (plain form) + といっても",
+    "example": ""
+  },
+  "n2g170": {
+    "meaning": "〜くらいなら (comparison, preference)",
+    "explanation": "Grammar pattern 〜くらいなら. Formation: Verb (dictionary form) + くらいなら / ぐらいなら",
+    "example": ""
+  },
+  "n1g026": {
+    "meaning": "〜んばかりに / 〜んばかりだ (manner, classical, literary)",
+    "explanation": "Grammar pattern 〜んばかりに / 〜んばかりだ. Formation: Verb nai-stem + んばかりに / んばかりだ / んばかりの (する becomes せんばかり)",
+    "example": ""
+  },
+  "n1g027": {
+    "meaning": "〜まじき (prohibition, classical, morality)",
+    "explanation": "Grammar pattern 〜まじき. Formation: Verb dictionary form + まじき + Noun (する becomes すまじき or するまじき)",
+    "example": ""
+  },
+  "n1g028": {
+    "meaning": "〜べからざる (classical, prohibition, formal)",
+    "explanation": "Grammar pattern 〜べからざる. Formation: Verb dictionary form + べからざる + Noun (する becomes すべからざる)",
+    "example": ""
+  },
+  "n1g029": {
+    "meaning": "〜の至り (emotion, extreme, formal)",
+    "explanation": "Grammar pattern 〜の至り. Formation: Noun + の至り",
+    "example": ""
+  },
+  "n1g030": {
+    "meaning": "〜極み (extreme, formal, literary)",
+    "explanation": "Grammar pattern 〜極み. Formation: Noun + の極み",
+    "example": ""
+  },
+  "n1g031": {
+    "meaning": "〜なくして（は） (condition, indispensable, formal)",
+    "explanation": "Grammar pattern 〜なくして（は）. Formation: Noun + なくして（は）",
+    "example": ""
+  },
+  "n1g032": {
+    "meaning": "〜なしに（は） (condition, formal)",
+    "explanation": "Grammar pattern 〜なしに（は）. Formation: Noun / Verb dictionary form + ことなしに（は）",
+    "example": ""
+  },
+  "n1g033": {
+    "meaning": "〜をおいて（ほかにない） (unique, emphasis, evaluation)",
+    "explanation": "Grammar pattern 〜をおいて（ほかにない）. Formation: Noun + をおいて",
+    "example": ""
+  },
+  "n1g034": {
+    "meaning": "〜にひきかえ (contrast, comparison)",
+    "explanation": "Grammar pattern 〜にひきかえ. Formation: Noun / Plain form + のにひきかえ (な-adj + なのにひきかえ)",
+    "example": ""
+  },
+  "n1g035": {
+    "meaning": "〜いかんだ / 〜いかんによっては (condition, dependency, formal)",
+    "explanation": "Grammar pattern 〜いかんだ / 〜いかんによっては. Formation: Noun + （の）いかんだ / いかんによって（は）",
+    "example": ""
+  },
+  "n1g036": {
+    "meaning": "〜を禁じ得ない (emotion, spontaneous, formal)",
+    "explanation": "Grammar pattern 〜を禁じ得ない. Formation: Noun + を禁じ得ない",
+    "example": ""
+  },
+  "n1g037": {
+    "meaning": "〜に堪えない (emotion, unbearable, formal)",
+    "explanation": "Grammar pattern 〜に堪えない. Formation: Noun / Verb dictionary form + に堪えない",
+    "example": ""
+  },
+  "n1g038": {
+    "meaning": "〜に耐える / 〜に耐えない (worth, capability, formal)",
+    "explanation": "Grammar pattern 〜に耐える / 〜に耐えない. Formation: Verb dictionary form + に耐える / に耐えない",
+    "example": ""
+  },
+  "n1g039": {
+    "meaning": "〜に忍びない (reluctance, emotion, formal)",
+    "explanation": "Grammar pattern 〜に忍びない. Formation: Verb dictionary form + に忍びない",
+    "example": ""
+  },
+  "n1g040": {
+    "meaning": "〜かぎりだ (emotion, extreme, psychological)",
+    "explanation": "Grammar pattern 〜かぎりだ. Formation: い-adj + かぎりだ / な-adj + なかぎりだ / Noun + のかぎりだ",
+    "example": ""
+  },
+  "n1g041": {
+    "meaning": "〜ずにはすまない / 〜ないではすまない (obligation, inevitability)",
+    "explanation": "Grammar pattern 〜ずにはすまない / 〜ないではすまない. Formation: Verb nai-stem + ずにはすまない (する becomes せずにはすまない) / ないではすまない",
+    "example": ""
+  },
+  "n1g042": {
+    "meaning": "〜ずにはいられない (impulse, uncontrollable)",
+    "explanation": "Grammar pattern 〜ずにはいられない. Formation: Verb nai-stem + ずにはいられない (する becomes せずにはいられない)",
+    "example": ""
+  },
+  "n1g043": {
+    "meaning": "〜ないではおかない (determination, inevitable)",
+    "explanation": "Grammar pattern 〜ないではおかない. Formation: Verb nai form + ではおかない",
+    "example": ""
+  },
+  "n1g044": {
+    "meaning": "〜を余儀なくさせる (force, external-circumstance, formal)",
+    "explanation": "Grammar pattern 〜を余儀なくさせる. Formation: Noun + を余儀なくさせる",
+    "example": ""
+  },
+  "n1g045": {
+    "meaning": "〜ばこそ (emphasis, cause, reason)",
+    "explanation": "Grammar pattern 〜ばこそ. Formation: Verb conditional ば / い-adj ければ / な-adj・Noun であれば + こそ",
+    "example": ""
+  },
+  "n1g046": {
+    "meaning": "〜てからというもの (time, transformation)",
+    "explanation": "Grammar pattern 〜てからというもの. Formation: Verb て form + からというもの",
+    "example": ""
+  },
+  "n1g047": {
+    "meaning": "〜といったらない / 〜といったらありはしない (extreme, emphasis)",
+    "explanation": "Grammar pattern 〜といったらない / 〜といったらありはしない. Formation: Noun / い-adj / な-adj + といったらない / といったらありはしない",
+    "example": ""
+  },
+  "n1g048": {
+    "meaning": "〜ものを (regret, contrary, emotional)",
+    "explanation": "Grammar pattern 〜ものを. Formation: Verb / Adjective plain form (Noun + な) + ものを",
+    "example": ""
+  },
+  "n1g049": {
+    "meaning": "〜と思いきや (surprise, contrary-to-expectation)",
+    "explanation": "Grammar pattern 〜と思いきや. Formation: Plain form + と思いきや",
+    "example": ""
+  },
+  "n1g050": {
+    "meaning": "〜ところを (apology, polite, circumstance)",
+    "explanation": "Grammar pattern 〜ところを. Formation: Noun + のところを / Plain form (な-adj + な) + ところを",
+    "example": ""
+  },
+  "n1g051": {
+    "meaning": "〜こととて (reason, formal, polite-excuse)",
+    "explanation": "Grammar pattern 〜こととて. Formation: Noun + のこととて / Plain form (な-adj + な) + こととて",
+    "example": ""
+  },
+  "n1g052": {
+    "meaning": "〜手前 (social-obligation, reputation)",
+    "explanation": "Grammar pattern 〜手前. Formation: Noun + の手前 / Verb plain form + 手前",
+    "example": ""
+  },
+  "n1g053": {
+    "meaning": "〜とあれば (condition, readiness, formal)",
+    "explanation": "Grammar pattern 〜とあれば. Formation: Noun / Plain form + とあれば",
+    "example": ""
+  },
+  "n1g054": {
+    "meaning": "〜とあっては (condition, obligation, gravity)",
+    "explanation": "Grammar pattern 〜とあっては. Formation: Noun / Plain form + とあっては",
+    "example": ""
+  },
+  "n1g055": {
+    "meaning": "〜あっての (dependence, gratitude, existence)",
+    "explanation": "Grammar pattern 〜あっての. Formation: Noun + あっての + Noun",
+    "example": ""
+  },
+  "n1g056": {
+    "meaning": "〜ならいざしらず (contrast, criticism)",
+    "explanation": "Grammar pattern 〜ならいざしらず. Formation: Noun / Plain form (な-adj + なら) + ならいざしらず",
+    "example": ""
+  },
+  "n1g057": {
+    "meaning": "〜ならまだしも (complaint, compromise, evaluation)",
+    "explanation": "Grammar pattern 〜ならまだしも. Formation: Noun / Plain form (な-adj + なら) + ならまだしも",
+    "example": ""
+  },
+  "n1g058": {
+    "meaning": "〜たら最後 (consequence, irreversible, warning)",
+    "explanation": "Grammar pattern 〜たら最後. Formation: Verb た form + ら最後",
+    "example": ""
+  },
+  "n1g059": {
+    "meaning": "〜ごとき / 〜ごとく (metaphor, humble, literary)",
+    "explanation": "Grammar pattern 〜ごとき / 〜ごとく. Formation: Noun + の + ごとき / ごとく / Verb plain form + がごとき",
+    "example": ""
+  },
+  "n1g060": {
+    "meaning": "〜かのごとく / 〜かのごとき (simile, literary, manner)",
+    "explanation": "Grammar pattern 〜かのごとく / 〜かのごとき. Formation: Noun / Plain form + （である）かのごとく / かのごとき",
+    "example": ""
+  },
+  "n1g061": {
+    "meaning": "〜ごとし (classical, proverb, literary)",
+    "explanation": "Grammar pattern 〜ごとし. Formation: Noun + のごとし / Verb plain form + がごとし",
+    "example": ""
+  },
+  "n1g062": {
+    "meaning": "〜んがため（に） / 〜んがための (purpose, classical, determination)",
+    "explanation": "Grammar pattern 〜んがため（に） / 〜んがための. Formation: Verb nai-stem + んがため（に） (する becomes せんがため)",
+    "example": ""
+  },
+  "n1g063": {
+    "meaning": "〜べく (purpose, formal, written)",
+    "explanation": "Grammar pattern 〜べく. Formation: Verb dictionary form + べく (する becomes すべく or するべく)",
+    "example": ""
+  },
+  "n1g064": {
+    "meaning": "〜べくして (inevitability, formal, destiny)",
+    "explanation": "Grammar pattern 〜べくして. Formation: Verb dictionary form + べくして + Verb past (identical verb)",
+    "example": ""
+  },
+  "n1g065": {
+    "meaning": "〜べくもない (impossibility, formal, literary)",
+    "explanation": "Grammar pattern 〜べくもない. Formation: Verb dictionary form + べくもない (する becomes すべくもない)",
+    "example": ""
+  },
+  "n1g066": {
+    "meaning": "〜てしかるべきだ (obligation, justice, formal)",
+    "explanation": "Grammar pattern 〜てしかるべきだ. Formation: Verb て form + しかるべきだ / しかるべき + Noun",
+    "example": ""
+  },
+  "n1g067": {
+    "meaning": "〜てはかなわない (complaint, intolerable, frustration)",
+    "explanation": "Grammar pattern 〜てはかなわない. Formation: Verb て form / い-adj くて / な-adj で + はかなわない",
+    "example": ""
+  },
+  "n1g068": {
+    "meaning": "〜てはいられない / 〜てばかりはいられない (urgency, resolve)",
+    "explanation": "Grammar pattern 〜てはいられない / 〜てばかりはいられない. Formation: Verb て form + はいられない / ばかりはいられない",
+    "example": ""
+  },
+  "n1g069": {
+    "meaning": "〜しまつだ (negative-outcome, regret)",
+    "explanation": "Grammar pattern 〜しまつだ. Formation: Verb dictionary form / た form + 始末だ (or この/その/あの始末だ)",
+    "example": ""
+  },
+  "n1g070": {
+    "meaning": "〜だに (emphasis, classical, literary)",
+    "explanation": "Grammar pattern 〜だに. Formation: Noun / Verb dictionary form (思い出す/想像する/聞く/考える) + だに",
+    "example": ""
+  },
+  "n1g071": {
+    "meaning": "〜たりとも (emphasis, minimum, absolute-negation)",
+    "explanation": "Grammar pattern 〜たりとも. Formation: Counter (1 + counter) + たりとも",
+    "example": ""
+  },
+  "n1g072": {
+    "meaning": "〜すら / 〜ですら (emphasis, extreme-example, formal)",
+    "explanation": "Grammar pattern 〜すら / 〜ですら. Formation: Noun (+ particle) + すら / ですら",
+    "example": ""
+  },
+  "n1g073": {
+    "meaning": "〜にして (time, status, formal, literary)",
+    "explanation": "Grammar pattern 〜にして. Formation: Noun / Time phrase + にして",
+    "example": ""
+  },
+  "n1g074": {
+    "meaning": "〜にあって (situation, circumstance, formal)",
+    "explanation": "Grammar pattern 〜にあって. Formation: Noun + にあって",
+    "example": ""
+  },
+  "n1g075": {
+    "meaning": "〜に至っては (extreme-case, emphasis, evaluation)",
+    "explanation": "Grammar pattern 〜に至っては. Formation: Noun + に至っては",
+    "example": ""
+  },
+  "n1g076": {
+    "meaning": "〜に至るまで (scope, exhaustive, extent)",
+    "explanation": "Grammar pattern 〜に至るまで. Formation: Noun + に至るまで",
+    "example": ""
+  },
+  "n1g077": {
+    "meaning": "〜に至る (result, culmination, formal)",
+    "explanation": "Grammar pattern 〜に至る. Formation: Noun / Verb dictionary form + に至る",
+    "example": ""
+  },
+  "n1g078": {
+    "meaning": "〜にかかわる (importance, serious-consequence)",
+    "explanation": "Grammar pattern 〜にかかわる. Formation: Noun + にかかわる",
+    "example": ""
+  },
+  "n1g079": {
+    "meaning": "〜に照らして (standard, comparison, formal)",
+    "explanation": "Grammar pattern 〜に照らして. Formation: Noun + に照らして",
+    "example": ""
+  },
+  "n1g080": {
+    "meaning": "〜に則って (compliance, tradition, formal)",
+    "explanation": "Grammar pattern 〜に則って. Formation: Noun + に則って / に則った + Noun",
+    "example": ""
+  },
+  "n1g081": {
+    "meaning": "〜を踏まえて (basis, consideration, formal)",
+    "explanation": "Grammar pattern 〜を踏まえて. Formation: Noun + を踏まえて / を踏まえた + Noun",
+    "example": ""
+  },
+  "n1g082": {
+    "meaning": "〜をもっても / 〜をもってしても (concession, extreme-means, formal)",
+    "explanation": "Grammar pattern 〜をもっても / 〜をもってしても. Formation: Noun + をもっても / をもってしても",
+    "example": ""
+  },
+  "n1g083": {
+    "meaning": "〜を押して / 〜を圧して (determination, defiance, formal)",
+    "explanation": "Grammar pattern 〜を押して / 〜を圧して. Formation: Noun + を押して",
+    "example": ""
+  },
+  "n1g084": {
+    "meaning": "〜をよそに (indifference, disregard, criticism)",
+    "explanation": "Grammar pattern 〜をよそに. Formation: Noun + をよそに",
+    "example": ""
+  },
+  "n1g085": {
+    "meaning": "〜を限りに (deadline, cessation, formal)",
+    "explanation": "Grammar pattern 〜を限りに. Formation: Noun (time/point) + を限りに",
+    "example": ""
+  },
+  "n1g086": {
+    "meaning": "〜を契機に / 〜を契機として (turning-point, opportunity, formal)",
+    "explanation": "Grammar pattern 〜を契機に / 〜を契機として. Formation: Noun + を契機に / を契機として",
+    "example": ""
+  },
+  "n1g087": {
+    "meaning": "〜を機に (timing, turning-point)",
+    "explanation": "Grammar pattern 〜を機に. Formation: Noun + を機に / を機にして",
+    "example": ""
+  },
+  "n1g088": {
+    "meaning": "〜をいいことに (taking-advantage, criticism, negative)",
+    "explanation": "Grammar pattern 〜をいいことに. Formation: Noun + をいいことに / Verb plain form + のをいいことに",
+    "example": ""
+  },
+  "n1g089": {
+    "meaning": "〜にかこつけて (pretext, excuse, criticism)",
+    "explanation": "Grammar pattern 〜にかこつけて. Formation: Noun + にかこつけて",
+    "example": ""
+  },
+  "n1g090": {
+    "meaning": "〜に託して (expression, metaphor, literary)",
+    "explanation": "Grammar pattern 〜に託して. Formation: Noun + に託して",
+    "example": ""
+  },
+  "n1g091": {
+    "meaning": "〜を口実に (excuse, pretense)",
+    "explanation": "Grammar pattern 〜を口実に. Formation: Noun + を口実に / を口実にして",
+    "example": ""
+  },
+  "n1g092": {
+    "meaning": "〜を境に (turning-point, boundary, time)",
+    "explanation": "Grammar pattern 〜を境に. Formation: Noun (time/event) + を境に / を境にして",
+    "example": ""
+  },
+  "n1g093": {
+    "meaning": "〜を前にして (confronting, facing, formal)",
+    "explanation": "Grammar pattern 〜を前にして. Formation: Noun + を前にして",
+    "example": ""
+  },
+  "n1g094": {
+    "meaning": "〜を念頭に（置いて） (objective, consideration, formal)",
+    "explanation": "Grammar pattern 〜を念頭に（置いて）. Formation: Noun + を念頭に / を念頭に置いて",
+    "example": ""
+  },
+  "n1g095": {
+    "meaning": "〜を軸に / 〜を軸として (focus, core, formal)",
+    "explanation": "Grammar pattern 〜を軸に / 〜を軸として. Formation: Noun + を軸に / を軸として",
+    "example": ""
+  },
+  "n1g096": {
+    "meaning": "〜を盾に (pretext, self-defense, criticism)",
+    "explanation": "Grammar pattern 〜を盾に. Formation: Noun + を盾に / を盾にして",
+    "example": ""
+  },
+  "n1g097": {
+    "meaning": "〜を頼りに (reliance, means, guidance)",
+    "explanation": "Grammar pattern 〜を頼りに. Formation: Noun + を頼りに / を頼りにして",
+    "example": ""
+  },
+  "n1g098": {
+    "meaning": "〜に言わせれば / 〜から言わせれば (opinion, perspective, assertion)",
+    "explanation": "Grammar pattern 〜に言わせれば / 〜から言わせれば. Formation: Noun + に言わせれば / から言わせれば",
+    "example": ""
+  },
+  "n1g099": {
+    "meaning": "〜に先駆けて (pioneering, chronology, formal)",
+    "explanation": "Grammar pattern 〜に先駆けて. Formation: Noun + に先駆けて / に先駆けた + Noun",
+    "example": ""
+  },
+  "n1g100": {
+    "meaning": "〜に先立ち / 〜に先立って (preparation, prior-to, formal)",
+    "explanation": "Grammar pattern 〜に先立ち / 〜に先立って. Formation: Noun / Verb dictionary form + こと + に先立ち / に先立って",
+    "example": ""
+  },
+  "n1g101": {
+    "meaning": "〜に及ばない (unnecessary, inferior, formal)",
+    "explanation": "Grammar pattern 〜に及ばない. Formation: Verb dictionary form + に及ばない / Noun + に及ばない",
+    "example": ""
+  },
+  "n1g102": {
+    "meaning": "〜に及ぶ (scale, extent, formal)",
+    "explanation": "Grammar pattern 〜に及ぶ. Formation: Noun (scale/number/event) + に及ぶ",
+    "example": ""
+  },
+  "n1g103": {
+    "meaning": "〜にはあたらない (unwarranted, evaluation, formal)",
+    "explanation": "Grammar pattern 〜にはあたらない. Formation: Verb dictionary form / Noun + にはあたらない",
+    "example": ""
+  },
+  "n1g104": {
+    "meaning": "〜に値する (worth, praise, formal)",
+    "explanation": "Grammar pattern 〜に値する. Formation: Noun / Verb dictionary form + に値する",
+    "example": ""
+  },
+  "n1g105": {
+    "meaning": "〜に恥じない (reputation, living-up-to, honor)",
+    "explanation": "Grammar pattern 〜に恥じない. Formation: Noun + に恥じない + Noun",
+    "example": ""
+  },
+  "n1g106": {
+    "meaning": "〜に難くない (ease, inference, formal, literary)",
+    "explanation": "Grammar pattern 〜に難くない. Formation: Noun / Verb dictionary form (想像する/察する/理解する) + に難くない",
+    "example": ""
+  },
+  "n1g107": {
+    "meaning": "〜に相違ない (certainty, conviction, formal)",
+    "explanation": "Grammar pattern 〜に相違ない. Formation: Noun / Plain form (な-adj stem) + に相違ない",
+    "example": ""
+  },
+  "n1g108": {
+    "meaning": "〜に越したことはない (preference, best-course, advice)",
+    "explanation": "Grammar pattern 〜に越したことはない. Formation: Verb dictionary form / い-adj / な-adj である / Noun である + に越したことはない",
+    "example": ""
+  },
+  "n1g109": {
+    "meaning": "〜にもまして (comparison, exceeding, emphasis)",
+    "explanation": "Grammar pattern 〜にもまして. Formation: Noun / Question word + にもまして",
+    "example": ""
+  },
+  "n1g110": {
+    "meaning": "〜にもほどがある (criticism, excessive, limit)",
+    "explanation": "Grammar pattern 〜にもほどがある. Formation: Noun / Verb dictionary form / い-adj / な-adj + にもほどがある",
+    "example": ""
+  },
+  "n1g111": {
+    "meaning": "〜にしてみれば / 〜にしてみたら (perspective, standpoint, empathy)",
+    "explanation": "Grammar pattern 〜にしてみれば / 〜にしてみたら. Formation: Noun + にしてみれば / にしてみたら",
+    "example": ""
+  },
+  "n1g112": {
+    "meaning": "〜にしたところで / 〜としたところで (concession, even-if, resignation)",
+    "explanation": "Grammar pattern 〜にしたところで / 〜としたところで. Formation: Noun / Plain form + にしたところで / としたところで",
+    "example": ""
+  },
+  "n1g113": {
+    "meaning": "〜とはいえども (concession, formal, literary)",
+    "explanation": "Grammar pattern 〜とはいえども. Formation: Noun / Plain form + とはいえども",
+    "example": ""
+  },
+  "n1g114": {
+    "meaning": "〜とはいえ (concession, contrast, formal)",
+    "explanation": "Grammar pattern 〜とはいえ. Formation: Noun / Plain form + とはいえ",
+    "example": ""
+  },
+  "n1g115": {
+    "meaning": "〜ながらに / 〜ながらの (condition, innate, formal, literary)",
+    "explanation": "Grammar pattern 〜ながらに / 〜ながらの. Formation: Noun / Verb stem + ながらに / ながらにして / ながらの + Noun",
+    "example": ""
+  },
+  "n1g116": {
+    "meaning": "〜はおろか (degree, let-alone, emphasis)",
+    "explanation": "Grammar pattern 〜はおろか. Formation: Noun (+ particle) + はおろか",
+    "example": ""
+  },
+  "n1g117": {
+    "meaning": "〜もさることながら (addition, emphasis, formal)",
+    "explanation": "Grammar pattern 〜もさることながら. Formation: Noun + もさることながら",
+    "example": ""
+  },
+  "n1g118": {
+    "meaning": "〜にとどまらず (scope, expansion, formal)",
+    "explanation": "Grammar pattern 〜にとどまらず. Formation: Noun / Verb dictionary form + にとどまらず",
+    "example": ""
+  },
+  "n1g119": {
+    "meaning": "〜ひとり〜だけでなく / 〜ひとり〜のみならず (scope, formal, literary)",
+    "explanation": "Grammar pattern 〜ひとり〜だけでなく / 〜ひとり〜のみならず. Formation: ひとり + Noun + だけでなく / のみならず",
+    "example": ""
+  },
+  "n1g120": {
+    "meaning": "〜までもない / 〜までもなく (obvious, unnecessary, formal)",
+    "explanation": "Grammar pattern 〜までもない / 〜までもなく. Formation: Verb dictionary form + までもない / までもなく",
+    "example": ""
+  },
+  "n1g121": {
+    "meaning": "〜ないものでもない / 〜ないでもない (possibility, hesitant-affirmation)",
+    "explanation": "Grammar pattern 〜ないものでもない / 〜ないでもない. Formation: Verb nai form + ものでもない / でもない",
+    "example": ""
+  },
+  "n1g122": {
+    "meaning": "〜たるや (emphasis, surprise, literary)",
+    "explanation": "Grammar pattern 〜たるや. Formation: Noun + たるや",
+    "example": ""
+  },
+  "n1g123": {
+    "meaning": "〜きっての (superlative, top, praise)",
+    "explanation": "Grammar pattern 〜きっての. Formation: Noun (organization/group) + きっての + Noun",
+    "example": ""
+  },
+  "n1g124": {
+    "meaning": "〜ともあろう者が (status, criticism, disappointment)",
+    "explanation": "Grammar pattern 〜ともあろう者が. Formation: Noun (status/role) + ともあろう者が / ともあろう人が",
+    "example": ""
+  },
+  "n1g125": {
+    "meaning": "〜が早いか (instantaneous, immediate)",
+    "explanation": "Grammar pattern 〜が早いか. Formation: Verb dictionary form / た form + が早いか",
+    "example": ""
+  },
+  "n1g126": {
+    "meaning": "〜や / 〜や否や (instantaneous, immediate, formal)",
+    "explanation": "Grammar pattern 〜や / 〜や否や. Formation: Verb dictionary form + や / や否や",
+    "example": ""
+  },
+  "n1g127": {
+    "meaning": "〜なり (as soon as) (immediate, sequence, abrupt)",
+    "explanation": "Grammar pattern 〜なり (as soon as). Formation: Verb dictionary form + なり",
+    "example": ""
+  },
+  "n1g128": {
+    "meaning": "〜尻目に (disregard, defiance, manner)",
+    "explanation": "Grammar pattern 〜尻目に. Formation: Noun + を尻目に / Verb dictionary form + のを尻目に",
+    "example": ""
+  },
+  "n1g129": {
+    "meaning": "〜かたがた (dual-purpose, formal, polite)",
+    "explanation": "Grammar pattern 〜かたがた. Formation: Noun + かたがた / Verb stem + かたがた",
+    "example": ""
+  },
+  "n1g130": {
+    "meaning": "〜がてら (simultaneous, convenience)",
+    "explanation": "Grammar pattern 〜がてら. Formation: Noun / Verb stem + がてら",
+    "example": ""
+  },
+  "n1g131": {
+    "meaning": "〜かたわら (simultaneous, side-by-side, formal)",
+    "explanation": "Grammar pattern 〜かたわら. Formation: Noun + のかたわら / Verb dictionary form + かたわら",
+    "example": ""
+  },
+  "n1g132": {
+    "meaning": "〜つ〜つ (alternating, parallel, literary)",
+    "explanation": "Grammar pattern 〜つ〜つ. Formation: Verb stem + つ + Verb stem + つ (paired antonyms)",
+    "example": ""
+  },
+  "n1g133": {
+    "meaning": "〜かれ〜かれ (contrast, proverbial, inevitability)",
+    "explanation": "Grammar pattern 〜かれ〜かれ. Formation: い-adj stem + かれ + い-adj stem + かれ (多かれ少なかれ / 遅かれ早かれ / 良かれ悪しかれ)",
+    "example": ""
+  },
+  "n1g134": {
+    "meaning": "〜なり〜なり (listing-alternatives, suggestion)",
+    "explanation": "Grammar pattern 〜なり〜なり. Formation: Noun / Verb dictionary form + なり (+ Noun / Verb + なり)",
+    "example": ""
+  },
+  "n1g135": {
+    "meaning": "〜であれ〜であれ (comprehensive, regardless, formal)",
+    "explanation": "Grammar pattern 〜であれ〜であれ. Formation: Noun + であれ + Noun + であれ",
+    "example": ""
+  },
+  "n1g136": {
+    "meaning": "〜といい〜といい (listing, evaluation, comprehensive)",
+    "explanation": "Grammar pattern 〜といい〜といい. Formation: Noun + といい + Noun + といい",
+    "example": ""
+  },
+  "n1g137": {
+    "meaning": "〜嫌いがある (きらいがある) (tendency, negative-habit, formal)",
+    "explanation": "Grammar pattern 〜嫌いがある (きらいがある). Formation: Noun + の嫌いがある / Verb dictionary form・nai form + 嫌いがある",
+    "example": ""
+  },
+  "n1g138": {
+    "meaning": "〜めく (atmosphere, sign, literary)",
+    "explanation": "Grammar pattern 〜めく. Formation: Noun + めく / めいた + Noun",
+    "example": ""
+  },
+  "n1g139": {
+    "meaning": "〜びる (appearance, behavior, literary)",
+    "explanation": "Grammar pattern 〜びる. Formation: Noun / な-adj stem + びる / びた + Noun",
+    "example": ""
+  },
+  "n1g140": {
+    "meaning": "〜ぶる (pretension, affectation, criticism)",
+    "explanation": "Grammar pattern 〜ぶる. Formation: Noun / な-adj stem / い-adj stem + ぶる / ぶった + Noun",
+    "example": ""
+  },
+  "n1g141": {
+    "meaning": "〜ずくめ (entirely, filled-with, emphasis)",
+    "explanation": "Grammar pattern 〜ずくめ. Formation: Noun + ずくめ",
+    "example": ""
+  },
+  "n1g142": {
+    "meaning": "〜まみれ (covered-with, unpleasant, negative)",
+    "explanation": "Grammar pattern 〜まみれ. Formation: Noun + まみれ",
+    "example": ""
+  },
+  "n1g143": {
+    "meaning": "〜がらみ (entanglement, involvement, approximate)",
+    "explanation": "Grammar pattern 〜がらみ. Formation: Noun / Number + がらみ",
+    "example": ""
+  },
+  "n1g144": {
+    "meaning": "〜節がある (indication, suspicion, inference)",
+    "explanation": "Grammar pattern 〜節がある. Formation: Noun + の節がある / Verb plain form + 節がある",
+    "example": ""
+  },
+  "n1g145": {
+    "meaning": "〜ともなく / 〜ともなしに (aimless, unconscious, manner)",
+    "explanation": "Grammar pattern 〜ともなく / 〜ともなしに. Formation: Verb dictionary form + ともなく / ともなしに / Question word (+ particle) + ともなく",
+    "example": ""
+  },
+  "n1g146": {
+    "meaning": "〜とばかりに (manner, as-if-saying, literary)",
+    "explanation": "Grammar pattern 〜とばかりに. Formation: Phrase / Plain form / (non-verbal gesture) + とばかりに",
+    "example": ""
+  },
+  "n1g147": {
+    "meaning": "〜といったところだ / 〜というところだ (approximation, estimate, modest)",
+    "explanation": "Grammar pattern 〜といったところだ / 〜というところだ. Formation: Noun / Number + といったところだ / というところだ",
+    "example": ""
+  },
+  "n1g148": {
+    "meaning": "〜といえなくもない (understatement, affirmation, hesitant)",
+    "explanation": "Grammar pattern 〜といえなくもない. Formation: Plain form (な-adj / Noun + だ) + といえなくもない",
+    "example": ""
+  },
+  "n1g149": {
+    "meaning": "〜ずじまい (unaccomplished, regret, completion)",
+    "explanation": "Grammar pattern 〜ずじまい. Formation: Verb nai-stem + ずじまい (する becomes せずじまい)",
+    "example": ""
+  },
+  "n1g150": {
+    "meaning": "〜ようもない / 〜ようがない (impossibility, no-way, helplessness)",
+    "explanation": "Grammar pattern 〜ようもない / 〜ようがない. Formation: Verb stem + ようもない / ようがない",
+    "example": ""
+  },
+  "n1g151": {
+    "meaning": "〜そうにない / 〜そうもない (unlikely, negative-potential, low-probability)",
+    "explanation": "Grammar pattern 〜そうにない / 〜そうもない. Formation: Verb stem + そうにない / そうもない",
+    "example": ""
+  },
+  "n1g152": {
+    "meaning": "〜ないこともない (double-negative, hesitant-positive, possibility)",
+    "explanation": "Grammar pattern 〜ないこともない. Formation: Verb nai form / い-adj くない / な-adj でない + こともない",
+    "example": ""
+  },
+  "n1g153": {
+    "meaning": "〜てやまぬ (persisting, ceaseless, literary)",
+    "explanation": "Grammar pattern 〜てやまぬ. Formation: Verb て form + やまぬ + Noun",
+    "example": ""
+  },
+  "n1g154": {
+    "meaning": "〜ことなしに（は） (condition, indispensable, formal)",
+    "explanation": "Grammar pattern 〜ことなしに（は）. Formation: Verb dictionary form + ことなしに（は）",
+    "example": ""
+  },
+  "n1g155": {
+    "meaning": "〜たる (Noun + たる + Noun) (status, duty, classical, formal)",
+    "explanation": "Grammar pattern 〜たる (Noun + たる + Noun). Formation: Noun + たる + Noun",
+    "example": ""
+  },
+  "n1g156": {
+    "meaning": "〜んとする / 〜んとす (verge-of, attempt, classical, literary)",
+    "explanation": "Grammar pattern 〜んとする / 〜んとす. Formation: Verb nai-stem + んとする / んとす (する becomes せんとする)",
+    "example": ""
+  },
+  "n1g157": {
+    "meaning": "〜てはばからない (audacity, brazen, unhesitating)",
+    "explanation": "Grammar pattern 〜てはばからない. Formation: Verb て form + はばからない",
+    "example": ""
+  },
+  "n1g158": {
+    "meaning": "〜に耐えうる / 〜に堪えうる (capability, durability, formal)",
+    "explanation": "Grammar pattern 〜に耐えうる / 〜に堪えうる. Formation: Noun / Verb stem + に耐えうる / に堪えうる",
+    "example": ""
+  },
+  "n1g159": {
+    "meaning": "〜をもってすれば (capability, means, formal)",
+    "explanation": "Grammar pattern 〜をもってすれば. Formation: Noun + をもってすれば",
+    "example": ""
+  },
+  "n1g160": {
+    "meaning": "〜いわんや（〜をや） (rhetorical, classical, let-alone, literary)",
+    "explanation": "Grammar pattern 〜いわんや（〜をや）. Formation: いわんや + Noun + をや / いわんや + Phrase + においてをや",
+    "example": ""
+  },
+  "n1g161": {
+    "meaning": "〜からある / 〜からの (large-quantity, scale, emphasis)",
+    "explanation": "Grammar pattern 〜からある / 〜からの. Formation: Number / Quantity + からある / からの + Noun (重量・距離・金額・人数)",
+    "example": ""
+  },
+  "n1g162": {
+    "meaning": "〜にして初めて (attainment, time, condition, formal)",
+    "explanation": "Grammar pattern 〜にして初めて. Formation: Noun / Time phrase + にして初めて",
+    "example": ""
+  },
+  "n1g163": {
+    "meaning": "〜ずにはすまされない (social-condemnation, unforgivable)",
+    "explanation": "Grammar pattern 〜ずにはすまされない. Formation: Verb nai-stem + ずにはすまされない (する becomes せずにはすまされない)",
+    "example": ""
+  },
+  "n1g164": {
+    "meaning": "〜にあっては (situation, standpoint, formal)",
+    "explanation": "Grammar pattern 〜にあっては. Formation: Noun + にあっては",
+    "example": ""
+  },
+  "n1g165": {
+    "meaning": "〜にしてからが (even-someone-as, extreme-example, formal)",
+    "explanation": "Grammar pattern 〜にしてからが. Formation: Noun + にしてからが",
+    "example": ""
+  },
+  "n1g166": {
+    "meaning": "〜を兼ねて / 〜も兼ねて (dual-purpose, addition)",
+    "explanation": "Grammar pattern 〜を兼ねて / 〜も兼ねて. Formation: Noun + を兼ねて / も兼ねて",
+    "example": ""
+  },
+  "n1g167": {
+    "meaning": "〜を顧みず / 〜も顧みず (bravery, recklessness, disregard, formal)",
+    "explanation": "Grammar pattern 〜を顧みず / 〜も顧みず. Formation: Noun + を顧みず / も顧みず",
+    "example": ""
+  },
+  "n1g168": {
+    "meaning": "〜たところで (futile, even-if, concession)",
+    "explanation": "Grammar pattern 〜たところで. Formation: Verb た form + ところで",
+    "example": ""
+  },
+  "n1g169": {
+    "meaning": "〜てまで (extreme-extent, criticism, determination)",
+    "explanation": "Grammar pattern 〜てまで. Formation: Verb て form + まで",
+    "example": ""
+  },
+  "n1g170": {
+    "meaning": "〜に足らない / 〜に足りない (insignificant, not-worth, formal)",
+    "explanation": "Grammar pattern 〜に足らない / 〜に足りない. Formation: Verb dictionary form / Noun + に足らない / に足りない",
+    "example": ""
   }
 }

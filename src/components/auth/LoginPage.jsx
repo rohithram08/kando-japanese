@@ -7,6 +7,7 @@ import { authApi }       from '../../api'
 import { useI18n }         from '../../i18n'
 import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
+import SEO from '../common/SEO'
 
 export default function LoginPage() {
   const [email,         setEmail]         = useState('')
@@ -119,6 +120,11 @@ export default function LoginPage() {
       transition-colors duration-300
       bg-gradient-to-br from-red-50 via-white to-red-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
     `}>
+      <SEO
+        title="Sign In - Access Your Japanese Learning Journey"
+        description="Sign in to your Kando Japanese account to continue your JLPT lessons, SRS reviews, streaks, and personalized study progress."
+        path="/login"
+      />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}

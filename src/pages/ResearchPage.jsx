@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, Copy, Check, ExternalLink, BookOpen, Award, Sparkles, Globe } from 'lucide-react';
 import KandoSlimeLogo from '../components/mascot/KandoSlimeLogo';
+import SEO from '../components/common/SEO';
 import toast from 'react-hot-toast';
 
 export default function ResearchPage() {
@@ -28,6 +29,11 @@ export default function ResearchPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <SEO
+        title="Research Paper - Cognitive Architecture for Japanese Acquisition"
+        description="Read the academic research paper on Kando (感動): A Cognitive-Load-Aware, Multilingual Architecture for Spaced Retrieval and Immersion-Driven Japanese Language Acquisition."
+        path="/research"
+      />
       {/* ── Top Bar ── */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">

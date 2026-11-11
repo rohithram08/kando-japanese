@@ -27,6 +27,7 @@ import CategoryView from '../components/curriculum/CategoryView'
 import KanjiDetailModal from '../components/kanji/KanjiDetailModal'
 import { getKanjiStrokes } from '../services/kanjiStrokeService'
 import { evaluateKanjiDrawing } from '../utils/strokeEvaluator'
+import SEO from '../components/common/SEO'
 
 
 // ─────────────────────────────────────────────────────────────────────
@@ -1339,6 +1340,11 @@ export default function KanjiPage() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-5 pb-16">
+      <SEO
+        title={`JLPT ${level} Kanji Study`}
+        description={`Learn JLPT ${level} Japanese kanji with animated stroke orders, on'yomi and kun'yomi readings, vocabulary compounds, drawing canvas, and spaced repetition.`}
+        path="/kanji"
+      />
 
       {/* ── Hero banner ── */}
       <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }}

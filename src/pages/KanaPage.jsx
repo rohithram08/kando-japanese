@@ -23,6 +23,7 @@ import KanaDetailModal from '../components/kana/KanaDetailModal';
 import KanaQuiz from '../components/kana/KanaQuiz';
 import KanaTracingCanvas from '../components/kana/KanaTracingCanvas';
 import KanaSenseiGuide from '../components/kana/KanaSenseiGuide';
+import SEO from '../components/common/SEO';
 import toast from 'react-hot-toast';
 import { useI18n } from '../i18n';
 
@@ -189,6 +190,11 @@ export default function KanaPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <SEO
+        title="Kana Studio - Learn Hiragana & Katakana"
+        description="Master Japanese Hiragana and Katakana charts with interactive stroke orders, pronunciation audio, quizzes, and spaced repetition memory practice."
+        path="/kana"
+      />
       {/* ── Top Header & Script Selector ──────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-border">
         <div>

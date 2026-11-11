@@ -5,6 +5,7 @@ import { User, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle2 } from 'lucide
 import { useAuthStore }  from '../../store/authStore'
 import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
+import SEO from '../common/SEO'
 
 // ── Data ─────────────────────────────────────────────────────
 // English, Tamil and Hindi have curated, human-written translations baked
@@ -126,6 +127,11 @@ export default function RegisterPage() {
       transition-colors duration-300
       bg-gradient-to-br from-red-50 via-white to-red-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
     `}>
+      <SEO
+        title="Create Free Account - Start Learning Japanese"
+        description="Join Kando Japanese for free. Master JLPT N5 through N1 with 250+ interactive lessons, AI Sensei, spaced repetition SRS, and graded readers."
+        path="/register"
+      />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}

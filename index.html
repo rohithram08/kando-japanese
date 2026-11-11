@@ -13,11 +13,18 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://kandojapanese.vercel.app/" />
 
+    <!-- Multilingual Hreflang Tags -->
+    <link rel="alternate" hreflang="x-default" href="https://kandojapanese.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://kandojapanese.vercel.app/" />
+    <link rel="alternate" hreflang="ja" href="https://kandojapanese.vercel.app/" />
+    <link rel="alternate" hreflang="ta" href="https://kandojapanese.vercel.app/" />
+    <link rel="alternate" hreflang="hi" href="https://kandojapanese.vercel.app/" />
+
     <!-- Open Graph -->
     <meta property="og:title" content="Kando Japanese (感動) - Japanese Language Learning & JLPT Mastery" />
     <meta property="og:description" content="Learn Japanese from JLPT N5 to N1 with AI Sensei, 250+ interactive lessons, SRS spaced repetition, and natural multilingual explanations." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/favicon.svg" />
+    <meta property="og:image" content="https://kandojapanese.vercel.app/images/og-cover.png" />
     <meta property="og:url" content="https://kandojapanese.vercel.app/" />
     <meta property="og:site_name" content="Kando Japanese" />
     <meta property="og:locale" content="en_US" />
@@ -26,31 +33,184 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Kando Japanese (感動) - Japanese Language Learning & JLPT Mastery" />
     <meta name="twitter:description" content="Learn Japanese from JLPT N5 to N1 with AI Sensei, 250+ interactive lessons, SRS spaced repetition, and natural multilingual explanations." />
-    <meta name="twitter:image" content="/favicon.svg" />
+    <meta name="twitter:image" content="https://kandojapanese.vercel.app/images/og-cover.png" />
 
     <!-- Schema.org JSON-LD for Google Search -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Kando Japanese",
-        "alternateName": ["感動 Japanese", "Kando Japanese Learning", "Kando Nihongo"],
-        "url": "https://kandojapanese.vercel.app/",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "All",
-        "description": "Comprehensive Japanese language learning platform from JLPT N5 to N1 with AI Sensei, 250+ interactive lessons, spaced repetition SRS, kanji engine, and multilingual explanations.",
-        "genre": "Language Learning",
-        "inLanguage": ["ja", "en", "ta", "hi"],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Rohith Ram H",
-          "sameAs": "https://doi.org/10.5281/zenodo.23891582"
-        }
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "Kando Japanese",
+            "alternateName": ["感動 Japanese", "Kando Japanese Learning", "Kando Nihongo"],
+            "url": "https://kandojapanese.vercel.app/",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "All",
+            "description": "Comprehensive Japanese language learning platform from JLPT N5 to N1 with AI Sensei, 250+ interactive lessons, spaced repetition SRS, kanji engine, and multilingual explanations.",
+            "genre": "Language Learning",
+            "inLanguage": ["ja", "en", "ta", "hi"],
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Rohith Ram H",
+              "sameAs": "https://doi.org/10.5281/zenodo.23891582"
+            }
+          },
+          {
+            "@type": "Course",
+            "name": "JLPT N5 Japanese Course - Absolute Beginner",
+            "description": "Master Japanese fundamentals: Hiragana, Katakana, basic kanji, and foundational N5 grammar patterns.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Kando Japanese",
+              "sameAs": "https://kandojapanese.vercel.app/"
+            },
+            "educationalLevel": "Beginner",
+            "inLanguage": ["en", "ja", "ta", "hi"],
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "Course",
+            "name": "JLPT N4 Japanese Course - Elementary",
+            "description": "Build conversational fluency, intermediate sentence structures, and everyday N4 kanji and vocabulary.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Kando Japanese",
+              "sameAs": "https://kandojapanese.vercel.app/"
+            },
+            "educationalLevel": "Elementary",
+            "inLanguage": ["en", "ja", "ta", "hi"],
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "Course",
+            "name": "JLPT N3 Japanese Course - Intermediate",
+            "description": "Bridge the gap between basic and advanced Japanese with N3 grammar, nuance comprehension, and everyday reading.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Kando Japanese",
+              "sameAs": "https://kandojapanese.vercel.app/"
+            },
+            "educationalLevel": "Intermediate",
+            "inLanguage": ["en", "ja", "ta", "hi"],
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "Course",
+            "name": "JLPT N2 Japanese Course - Pre-Advanced / Business",
+            "description": "Prepare for business, university, and professional Japanese environments with comprehensive N2 grammar and vocabulary.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Kando Japanese",
+              "sameAs": "https://kandojapanese.vercel.app/"
+            },
+            "educationalLevel": "Advanced",
+            "inLanguage": ["en", "ja", "ta", "hi"],
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "Course",
+            "name": "JLPT N1 Japanese Course - Advanced Mastery",
+            "description": "Achieve native-level nuance, literary expressions, formal idioms, and advanced comprehension.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Kando Japanese",
+              "sameAs": "https://kandojapanese.vercel.app/"
+            },
+            "educationalLevel": "Expert",
+            "inLanguage": ["en", "ja", "ta", "hi"],
+            "isAccessibleForFree": true
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How can I start learning Japanese as a complete beginner?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Begin by mastering the two phonetic writing systems: Hiragana and Katakana using Kando's Kana studio. Once comfortable, progress to JLPT N5 vocabulary, basic kanji, and core grammar patterns."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the JLPT and which level should I aim for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The JLPT (Japanese-Language Proficiency Test) has five levels from N5 (beginner) to N1 (advanced). N5 and N4 cover fundamentals, N3 is intermediate, and N2/N1 are recognized for professional work and study in Japan."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does spaced repetition (SRS) help with Japanese kanji and vocabulary?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Spaced Repetition Systems (SRS) schedule flashcard reviews right before you are likely to forget a word or kanji, drastically speeding up long-term retention compared to traditional rote memorization."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I practice conversational Japanese with AI on Kando?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, Kando includes AI Sensei and Conversation Practice where learners can practice natural voice and text conversations, receiving instant feedback on grammar, vocabulary, and pitch accent."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://kandojapanese.vercel.app/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Kana",
+                "item": "https://kandojapanese.vercel.app/kana"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Grammar",
+                "item": "https://kandojapanese.vercel.app/grammar"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Kanji",
+                "item": "https://kandojapanese.vercel.app/kanji"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Vocabulary",
+                "item": "https://kandojapanese.vercel.app/vocabulary"
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "name": "Graded Reader",
+                "item": "https://kandojapanese.vercel.app/reading"
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "name": "Dictionary",
+                "item": "https://kandojapanese.vercel.app/dictionary"
+              }
+            ]
+          }
+        ]
       }
     </script>
 

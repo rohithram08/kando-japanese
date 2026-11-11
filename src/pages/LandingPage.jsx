@@ -21,6 +21,7 @@ import {
   FADE_UP_SPRING,
 } from '../constants/animations'
 import { isSoundEnabled, toggleSound, playPop } from '../utils/soundEffects'
+import SEO from '../components/common/SEO'
 import '../components/landing/landingAnimations.css'
 
 
@@ -130,6 +131,11 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-red-500/20 selection:text-red-500 relative">
+      <SEO
+        title="Kando Japanese (感動) - Learn Japanese & JLPT Mastery"
+        description="Comprehensive Japanese language learning platform from JLPT N5 to N1. Master Japanese with AI Sensei, 250+ interactive lessons, spaced repetition SRS, kanji engine, and graded readers."
+        path="/"
+      />
       
       {/* ── Public Top Navigation Bar ────────────────────────────── */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
