@@ -43,6 +43,8 @@ export default function ListeningPage() {
   const [playbackRate, setPlaybackRate] = useState<number>(0.85);
   const [showFurigana, setShowFurigana] = useState(true);
   const [showEnglishSubtitle, setShowEnglishSubtitle] = useState(true);
+  const [currentTimeSec, setCurrentTimeSec] = useState(0);
+  const [hasEnded, setHasEnded] = useState(false);
 
   // Exam Modal State
   const [isExamModalOpen, setIsExamModalOpen] = useState(false);
@@ -80,6 +82,29 @@ export default function ListeningPage() {
     scenarios[0] ||
     STATIC_LISTENING_SCENARIOS[0];
 
+  // Compute accurate scenario duration dynamically from the dialogue lines
+  const totalDuration = React.useMemo(() => {
+    if (!activeScenario?.dialogue || activeScenario.dialogue.length === 0) {
+      return activeScenario?.durationSeconds || 26;
+    }
+    const last = activeScenario.dialogue[activeScenario.dialogue.length - 1];
+    return Math.max(last.timeOffsetSec + (last.durationSec || 4), activeScenario.durationSeconds || 0);
+  }, [activeScenario]);
+
+  // Live timer tick during playback for smooth continuous scrubber progression
+  useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentTimeSec((curr) => {
+        if (curr >= totalDuration) {
+          return totalDuration;
+        }
+        return Math.min(totalDuration, Number((curr + 0.25).toFixed(2)));
+      });
+    }, 250);
+    return () => clearInterval(timer);
+  }, [isPlaying, totalDuration]);
+
   // Anti-Idle Study Tracker Hook
   const { activeSeconds, formattedTime, isIdle, flush } = useStudyTracker({
     activityType: 'listening',
@@ -92,13 +117,16 @@ export default function ListeningPage() {
   const playDialogueSequence = (startIdx = 0) => {
     if (!activeScenario || !activeScenario.dialogue[startIdx]) {
       setIsPlaying(false);
-      setCurrentLineIndex(0);
+      setCurrentTimeSec(totalDuration);
+      setHasEnded(true);
       return;
     }
 
+    setHasEnded(false);
     const line = activeScenario.dialogue[startIdx];
     setCurrentLineIndex(startIdx);
     setActiveSceneIndex(line.sceneIndex);
+    setCurrentTimeSec(line.timeOffsetSec);
 
     speakJapaneseLine({
       text: line.text,
@@ -109,13 +137,15 @@ export default function ListeningPage() {
         if (startIdx + 1 < activeScenario.dialogue.length) {
           setTimeout(() => {
             playDialogueSequence(startIdx + 1);
-          }, 800);
+          }, 600);
         } else {
+          // Reached end of entire dialogue
           setIsPlaying(false);
-          // Auto record completion of audio
+          setCurrentTimeSec(totalDuration);
+          setHasEnded(true);
           saveListeningProgress({
             scenarioId: activeScenario.id,
-            durationSeconds: activeScenario.durationSeconds,
+            durationSeconds: totalDuration,
             completed: true,
             wordsCheckedCount: verifiedWordsCount,
           }).catch(console.error);
@@ -130,13 +160,24 @@ export default function ListeningPage() {
       stopSpeaking();
       setIsPlaying(false);
     } else {
-      playDialogueSequence(currentLineIndex);
+      if (hasEnded || currentLineIndex >= activeScenario.dialogue.length - 1) {
+        // Reached the end, restart smoothly from beginning
+        setHasEnded(false);
+        setCurrentTimeSec(0);
+        setCurrentLineIndex(0);
+        setActiveSceneIndex(0);
+        playDialogueSequence(0);
+      } else {
+        playDialogueSequence(currentLineIndex);
+      }
     }
   };
 
   const handleRestartDialogue = () => {
     stopSpeaking();
     setIsPlaying(false);
+    setHasEnded(false);
+    setCurrentTimeSec(0);
     setCurrentLineIndex(0);
     setActiveSceneIndex(0);
     playDialogueSequence(0);
@@ -148,23 +189,51 @@ export default function ListeningPage() {
 
   const handlePlaySingleLine = (idx: number) => {
     stopSpeaking();
+    setHasEnded(false);
     setCurrentLineIndex(idx);
     const line = activeScenario.dialogue[idx];
     if (line) {
       setActiveSceneIndex(line.sceneIndex);
+      setCurrentTimeSec(line.timeOffsetSec);
       speakJapaneseLine({
         text: line.text,
         rate: playbackRate,
         gender: line.voiceGender,
         onStart: () => setIsPlaying(true),
-        onEnd: () => setIsPlaying(false),
+        onEnd: () => {
+          setIsPlaying(false);
+          if (idx === activeScenario.dialogue.length - 1) {
+            setHasEnded(true);
+            setCurrentTimeSec(totalDuration);
+          }
+        },
       });
     }
+  };
+
+  const handleSeekToTime = (targetSec: number) => {
+    stopSpeaking();
+    setHasEnded(false);
+    setCurrentTimeSec(targetSec);
+
+    let targetIdx = 0;
+    for (let i = 0; i < activeScenario.dialogue.length; i++) {
+      const line = activeScenario.dialogue[i];
+      const nextLine = activeScenario.dialogue[i + 1];
+      if (targetSec >= line.timeOffsetSec && (!nextLine || targetSec < nextLine.timeOffsetSec)) {
+        targetIdx = i;
+        break;
+      }
+    }
+
+    handlePlaySingleLine(targetIdx);
   };
 
   const handleSelectScenario = (id: string) => {
     stopSpeaking();
     setIsPlaying(false);
+    setHasEnded(false);
+    setCurrentTimeSec(0);
     setCurrentLineIndex(0);
     setActiveSceneIndex(0);
     setSelectedScenarioId(id);
@@ -337,19 +406,23 @@ export default function ListeningPage() {
                   playbackRate={playbackRate}
                   showFurigana={showFurigana}
                   showEnglishSubtitle={showEnglishSubtitle}
+                  currentTimeSec={currentTimeSec}
+                  totalDuration={totalDuration}
+                  hasEnded={hasEnded}
                   onTogglePlay={handleTogglePlay}
                   onRestart={handleRestartDialogue}
                   onPlayLine={handlePlaySingleLine}
                   onSelectScene={(i) => {
                     setActiveSceneIndex(i);
                     const lineIdx = activeScenario.dialogue.findIndex((d) => d.sceneIndex === i);
-                    if (lineIdx !== -1) setCurrentLineIndex(lineIdx);
+                    if (lineIdx !== -1) handlePlaySingleLine(lineIdx);
                   }}
                   onSetPlaybackRate={setPlaybackRate}
                   onToggleFurigana={() => setShowFurigana((v) => !v)}
                   onToggleEnglish={() => setShowEnglishSubtitle((v) => !v)}
                   onPlayChime={handlePlayChime}
                   onOpenExam={() => setIsExamModalOpen(true)}
+                  onSeekToTime={handleSeekToTime}
                 />
               </section>
 

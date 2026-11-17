@@ -31,6 +31,9 @@ interface ListeningCinemaPlayerProps {
   playbackRate: number;
   showFurigana: boolean;
   showEnglishSubtitle: boolean;
+  currentTimeSec?: number;
+  totalDuration?: number;
+  hasEnded?: boolean;
   onTogglePlay: () => void;
   onRestart: () => void;
   onPlayLine: (lineIdx: number) => void;
@@ -40,6 +43,7 @@ interface ListeningCinemaPlayerProps {
   onToggleEnglish: () => void;
   onPlayChime: () => void;
   onOpenExam: () => void;
+  onSeekToTime?: (timeSec: number) => void;
 }
 
 export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
@@ -50,6 +54,9 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
   playbackRate,
   showFurigana,
   showEnglishSubtitle,
+  currentTimeSec,
+  totalDuration: propTotalDuration,
+  hasEnded = false,
   onTogglePlay,
   onRestart,
   onPlayLine,
@@ -59,6 +66,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
   onToggleEnglish,
   onPlayChime,
   onOpenExam,
+  onSeekToTime,
 }) => {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [activeSideTab, setActiveSideTab] = useState<'transcript' | 'scenes'>('transcript');
@@ -80,15 +88,55 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
     }
   }, [currentLineIndex]);
 
-  // Calculate approximate elapsed seconds
-  const totalDuration = scenario.durationSeconds || 45;
-  const elapsedSec = activeLine ? activeLine.timeOffsetSec : 0;
+  // Calculate dynamic scenario duration from dialogue timestamps
+  const totalDuration = React.useMemo(() => {
+    if (propTotalDuration && propTotalDuration > 0) return propTotalDuration;
+    if (!scenario.dialogue || scenario.dialogue.length === 0) return scenario.durationSeconds || 26;
+    const last = scenario.dialogue[scenario.dialogue.length - 1];
+    return Math.max(last.timeOffsetSec + (last.durationSec || 4), scenario.durationSeconds || 0);
+  }, [scenario, propTotalDuration]);
+
+  // Elapsed seconds: continuous live timer or active line time, clamped to 100% on hasEnded
+  const elapsedSec = hasEnded
+    ? totalDuration
+    : typeof currentTimeSec === 'number'
+    ? currentTimeSec
+    : activeLine
+    ? activeLine.timeOffsetSec
+    : 0;
+
   const progressPct = Math.min(100, Math.max(0, (elapsedSec / totalDuration) * 100));
 
   const formatSec = (sec: number) => {
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
+    const rounded = Math.round(sec);
+    const m = Math.floor(rounded / 60);
+    const s = Math.floor(rounded % 60);
     return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  // Interactive scrubber seeking
+  const handleScrubberClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const targetSec = Math.round(ratio * totalDuration);
+
+    if (onSeekToTime) {
+      onSeekToTime(targetSec);
+    } else {
+      // Find matching line
+      let foundIdx = 0;
+      for (let i = 0; i < scenario.dialogue.length; i++) {
+        const line = scenario.dialogue[i];
+        const nextLine = scenario.dialogue[i + 1];
+        if (targetSec >= line.timeOffsetSec && (!nextLine || targetSec < nextLine.timeOffsetSec)) {
+          foundIdx = i;
+          break;
+        }
+      }
+      onPlayLine(foundIdx);
+    }
   };
 
   // Render high-res thematic vector illustration for video screen
@@ -289,14 +337,52 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 </div>
               </div>
 
-              {/* Big Center Glass Play Button when Paused */}
-              {!isPlaying && (
+              {/* Finished / Completion Screen Overlay */}
+              {hasEnded ? (
+                <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+                  <div className="text-center p-6 rounded-3xl bg-slate-900/95 border border-primary/40 shadow-2xl max-w-sm sm:max-w-md mx-auto space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/20 text-primary mx-auto grid place-items-center">
+                      <Sparkles className="w-7 h-7" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-black text-white">会話が完了しました！</h3>
+                      <p className="text-xs text-slate-300 mt-1">
+                        Dialogue completed! Test your understanding with the official JLPT Choukai Exam.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onRestart();
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        <span>Replay Video</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onOpenExam();
+                        }}
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-xs font-black shadow-lg hover:scale-105 active:scale-95 transition-all"
+                      >
+                        <Award className="w-4 h-4" />
+                        <span>Take Choukai Exam</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : !isPlaying ? (
                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none animate-in fade-in zoom-in-95 duration-200">
                   <div className="w-20 h-20 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-2xl backdrop-blur-md border border-white/30 transform transition-transform group-hover:scale-110">
                     <Play className="w-9 h-9 ml-1 fill-current" />
                   </div>
                 </div>
-              )}
+              ) : null}
 
               {/* Live Character Subtitle Cinema Display (Inside the Video Frame) */}
               {activeLine && (
@@ -347,7 +433,11 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
             {/* ── INTEGRATED YOUTUBE PLAYER CONTROLS BAR ── */}
             <div className="bg-slate-900 border-t border-white/10 p-3 sm:p-4 space-y-2.5 select-none">
               {/* Timeline Scrubber Bar with Scene Break Indicators */}
-              <div className="relative w-full group/scrubber cursor-pointer">
+              <div
+                onClick={handleScrubberClick}
+                className="relative w-full group/scrubber cursor-pointer py-1"
+                title="Click anywhere to jump to that moment"
+              >
                 {/* Background Track */}
                 <div className="h-1.5 group-hover/scrubber:h-2.5 w-full rounded-full bg-white/20 transition-all overflow-hidden relative">
                   {/* Progress Fill */}
@@ -374,14 +464,16 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
               {/* Bottom Control Buttons Row */}
               <div className="flex flex-wrap items-center justify-between gap-3 text-white">
                 <div className="flex items-center gap-3">
-                  {/* Play / Pause Toggle */}
+                  {/* Play / Pause / Replay Toggle */}
                   <button
                     type="button"
                     onClick={onTogglePlay}
                     className="w-10 h-10 rounded-xl bg-primary text-primary-foreground grid place-items-center hover:scale-105 active:scale-95 transition-all shadow-md"
-                    title={isPlaying ? 'Pause' : 'Play video'}
+                    title={hasEnded ? 'Replay conversation' : isPlaying ? 'Pause' : 'Play video'}
                   >
-                    {isPlaying ? (
+                    {hasEnded ? (
+                      <RotateCcw className="w-5 h-5" />
+                    ) : isPlaying ? (
                       <Pause className="w-5 h-5 fill-current" />
                     ) : (
                       <Play className="w-5 h-5 ml-0.5 fill-current" />
@@ -398,7 +490,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                     <RotateCcw className="w-4 h-4" />
                   </button>
 
-                  {/* Time Stamp (00:15 / 00:48) */}
+                  {/* Time Stamp (e.g. 00:15 / 00:26) */}
                   <div className="text-xs font-mono font-bold text-white/80">
                     <span className="text-white">{formatSec(elapsedSec)}</span>
                     <span className="mx-1 text-white/40">/</span>

@@ -146,7 +146,7 @@ describe('Listening Components', () => {
       descriptionJa: 'レジでの会話',
       descriptionEn: 'Cashier dialogue',
       audioUrl: '/audio/conbini.mp3',
-      durationSeconds: 48,
+      durationSeconds: 26,
       storyboard: [sampleScene],
       dialogue: [
         {
@@ -158,6 +158,7 @@ describe('Listening Components', () => {
           en: 'Welcome! Would you like this heated up?',
           voiceGender: 'female' as const,
           timeOffsetSec: 0,
+          durationSec: 26,
           sceneIndex: 0,
         },
       ],
@@ -193,7 +194,7 @@ describe('Listening Components', () => {
 
     // Verifies time stamp
     expect(screen.getAllByText('00:00').length).toBe(2);
-    expect(screen.getByText('00:48')).toBeTruthy();
+    expect(screen.getByText('00:26')).toBeTruthy();
 
     // Verifies controls
     fireEvent.click(screen.getByTitle('Play video'));
@@ -203,5 +204,78 @@ describe('Listening Components', () => {
     expect(screen.getByText(/Transcript/i)).toBeTruthy();
     fireEvent.click(screen.getByTitle('Listen to this line'));
     expect(mockPlayLine).toHaveBeenCalledWith(0);
+  });
+
+  it('ListeningCinemaPlayer renders completion end screen when hasEnded is true', () => {
+    const mockRestart = vi.fn();
+    const mockOpenExam = vi.fn();
+
+    const sampleScenario = {
+      id: 'sc-cinema-test-end',
+      level: 'N5' as const,
+      category: 'Daily Life',
+      titleJa: 'コンビニでのお買い物',
+      titleEn: 'Shopping at a Convenience Store',
+      descriptionJa: 'レジでの会話',
+      descriptionEn: 'Cashier dialogue',
+      audioUrl: '/audio/conbini.mp3',
+      durationSeconds: 26,
+      storyboard: [sampleScene],
+      dialogue: [
+        {
+          id: 'd1',
+          speaker: '店員',
+          text: 'いらっしゃいませ！温めますか？',
+          hiragana: 'いらっしゃいませ！あたためますか？',
+          romaji: 'Irasshaimase! Atatamemasu ka?',
+          en: 'Welcome! Would you like this heated up?',
+          voiceGender: 'female' as const,
+          timeOffsetSec: 0,
+          durationSec: 26,
+          sceneIndex: 0,
+        },
+      ],
+      vocabulary: sampleVocab,
+      examQuestions: sampleQuestions,
+    };
+
+    render(
+      <ListeningCinemaPlayer
+        scenario={sampleScenario}
+        isPlaying={false}
+        currentLineIndex={0}
+        activeSceneIndex={0}
+        playbackRate={0.85}
+        showFurigana={true}
+        showEnglishSubtitle={true}
+        currentTimeSec={26}
+        totalDuration={26}
+        hasEnded={true}
+        onTogglePlay={vi.fn()}
+        onRestart={mockRestart}
+        onPlayLine={vi.fn()}
+        onSelectScene={vi.fn()}
+        onSetPlaybackRate={vi.fn()}
+        onToggleFurigana={vi.fn()}
+        onToggleEnglish={vi.fn()}
+        onPlayChime={vi.fn()}
+        onOpenExam={mockOpenExam}
+      />
+    );
+
+    // Verifies completion card is displayed
+    expect(screen.getByText('会話が完了しました！')).toBeTruthy();
+    expect(screen.getByText(/Dialogue completed! Test your understanding/i)).toBeTruthy();
+
+    // Clicking Replay Video
+    fireEvent.click(screen.getByText('Replay Video'));
+    expect(mockRestart).toHaveBeenCalled();
+
+    // Clicking Take Choukai Exam
+    fireEvent.click(screen.getByText('Take Choukai Exam'));
+    expect(mockOpenExam).toHaveBeenCalled();
+
+    // Time stamp says 00:26 / 00:26
+    expect(screen.getAllByText('00:26').length).toBe(2);
   });
 });

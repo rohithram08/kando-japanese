@@ -87,6 +87,9 @@ export function playJlptChime(): Promise<void> {
  * Web Speech API Japanese Text-to-Speech Engine
  */
 let cachedVoices: SpeechSynthesisVoice[] = [];
+let activeUtterance: SpeechSynthesisUtterance | null = null;
+let speechFallbackTimer: ReturnType<typeof setTimeout> | null = null;
+let speechKeepAliveInterval: ReturnType<typeof setInterval> | null = null;
 
 export function getJapaneseVoices(): SpeechSynthesisVoice[] {
   if (typeof window === 'undefined' || !window.speechSynthesis) return [];
@@ -120,10 +123,16 @@ export function speakJapaneseLine({
     return null;
   }
 
-  // Cancel any ongoing speech
-  window.speechSynthesis.cancel();
+  // Clear previous timers & cancel any ongoing speech
+  stopSpeaking();
 
   const utterance = new SpeechSynthesisUtterance(text);
+  activeUtterance = utterance;
+  // Pin to window to prevent V8 GC bug
+  if (typeof window !== 'undefined') {
+    (window as unknown as { __kandoSpeechUtterance: SpeechSynthesisUtterance }).__kandoSpeechUtterance = utterance;
+  }
+
   utterance.lang = 'ja-JP';
   utterance.rate = Math.max(0.6, Math.min(rate, 1.4));
   utterance.pitch = gender === 'female' ? 1.15 : 0.9;
@@ -140,16 +149,83 @@ export function speakJapaneseLine({
     utterance.voice = preferredVoice || voices[0];
   }
 
-  if (onStart) utterance.onstart = () => onStart();
-  if (onEnd) utterance.onend = () => onEnd();
-  if (onError) utterance.onerror = (e) => onError(e);
+  let ended = false;
+  const cleanup = () => {
+    if (speechFallbackTimer) {
+      clearTimeout(speechFallbackTimer);
+      speechFallbackTimer = null;
+    }
+    if (speechKeepAliveInterval) {
+      clearInterval(speechKeepAliveInterval);
+      speechKeepAliveInterval = null;
+    }
+    activeUtterance = null;
+  };
+
+  const handleEnd = () => {
+    if (ended) return;
+    ended = true;
+    cleanup();
+    if (onEnd) onEnd();
+  };
+
+  const handleError = (e: unknown) => {
+    if (ended) return;
+    ended = true;
+    cleanup();
+    if (onError) onError(e);
+    else if (onEnd) onEnd();
+  };
+
+  utterance.onstart = () => {
+    if (onStart) onStart();
+
+    // Chromium anti-pause keepalive: Chromium pauses synthesis after 15s without resume
+    if (speechKeepAliveInterval) clearInterval(speechKeepAliveInterval);
+    speechKeepAliveInterval = setInterval(() => {
+      if (typeof window !== 'undefined' && window.speechSynthesis?.speaking) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 5000);
+  };
+
+  utterance.onend = handleEnd;
+  utterance.onerror = handleError;
+
+  // Fallback safety timeout based on text length: ensures dialogue sequence never hangs indefinitely
+  const estimatedMs = Math.max(2500, (text.length * 480) / utterance.rate) + 1800;
+  speechFallbackTimer = setTimeout(() => {
+    if (!ended) {
+      handleEnd();
+    }
+  }, estimatedMs);
+
+  // Resume context if paused before speaking
+  if (window.speechSynthesis.paused) {
+    window.speechSynthesis.resume();
+  }
 
   window.speechSynthesis.speak(utterance);
   return utterance;
 }
 
 export function stopSpeaking() {
+  if (speechFallbackTimer) {
+    clearTimeout(speechFallbackTimer);
+    speechFallbackTimer = null;
+  }
+  if (speechKeepAliveInterval) {
+    clearInterval(speechKeepAliveInterval);
+    speechKeepAliveInterval = null;
+  }
+  activeUtterance = null;
+
   if (typeof window !== 'undefined' && window.speechSynthesis) {
-    window.speechSynthesis.cancel();
+    try {
+      window.speechSynthesis.cancel();
+    } catch {
+      // ignore
+    }
   }
 }

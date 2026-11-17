@@ -11,7 +11,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Shopping at a Convenience Store',
     descriptionJa: 'レジでの定番のやりとり：お弁当の温めとレジ袋の確認を聞き取ろう！',
     descriptionEn: 'Essential cashier conversation: heating up bentos and deciding on plastic bags!',
-    durationSeconds: 48,
+    durationSeconds: 26,
     audioSpeechRate: 0.82,
     storyboard: [
       {
@@ -226,7 +226,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Buying a Train Ticket at the Station',
     descriptionJa: '新宿駅から渋谷駅までの行き方と切符の買い方を駅員さんに質問！',
     descriptionEn: 'Asking the station attendant for directions and ticket fares from Shinjuku to Shibuya!',
-    durationSeconds: 52,
+    durationSeconds: 20,
     audioSpeechRate: 0.85,
     storyboard: [
       {
@@ -387,7 +387,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Homework Notice in Japanese Class',
     descriptionJa: '先生が週末の宿題と漢字テストの日程を発表します。よく聞きましょう！',
     descriptionEn: 'The teacher announces weekend homework and the date for the kanji quiz. Listen carefully!',
-    durationSeconds: 45,
+    durationSeconds: 22,
     audioSpeechRate: 0.8,
     storyboard: [
       {
@@ -528,7 +528,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Consultation at the Clinic',
     descriptionJa: '風邪を引いた患者さんと医師の会話。薬の飲み方の指示を正確に理解しましょう！',
     descriptionEn: 'Doctor consultation for cold symptoms. Listen carefully to prescription medication instructions!',
-    durationSeconds: 56,
+    durationSeconds: 18,
     audioSpeechRate: 0.9,
     storyboard: [
       {
@@ -645,7 +645,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Project Progress Status Meeting',
     descriptionJa: '締切が迫る新規プロジェクトの担当分けと納期調整のビジネス会話。',
     descriptionEn: 'Business meeting discussing task allocations and approaching project delivery deadlines.',
-    durationSeconds: 58,
+    durationSeconds: 12,
     audioSpeechRate: 0.95,
     storyboard: [
       {
@@ -729,7 +729,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Self-PR in a Formal Job Interview',
     descriptionJa: '敬語・謙譲語を駆使した採用面接。志望動機と強みの論理的説明をキャッチしよう！',
     descriptionEn: 'Formal job interview featuring polite Keigo and Kenjougo. Catch the nuances of motivation and strengths!',
-    durationSeconds: 62,
+    durationSeconds: 15,
     audioSpeechRate: 1.0,
     storyboard: [
       {
@@ -813,7 +813,7 @@ export const STATIC_LISTENING_SCENARIOS: ListeningScenario[] = [
     titleEn: 'Keynote Lecture on Global Sustainability',
     descriptionJa: '学術シンポジウムでの基調講演。高度な論理展開と抽象語彙の把握を試す最高峰リスニング！',
     descriptionEn: 'Academic keynote presentation. Advanced discourse flow and abstract vocabulary comprehension!',
-    durationSeconds: 65,
+    durationSeconds: 10,
     audioSpeechRate: 1.05,
     storyboard: [
       {
