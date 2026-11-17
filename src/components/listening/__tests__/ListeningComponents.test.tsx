@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { StoryboardSceneCard } from '../StoryboardSceneCard';
 import { ListeningDownContainer } from '../ListeningDownContainer';
 import { ChoukaiExamModal } from '../ChoukaiExamModal';
+import { ListeningCinemaPlayer } from '../ListeningCinemaPlayer';
 
 describe('Listening Components', () => {
   const sampleScene = {
@@ -129,5 +130,78 @@ describe('Listening Components', () => {
     expect(screen.getByText('100% Correct')).toBeTruthy();
     expect(screen.getByText('PASSED')).toBeTruthy();
     expect(onComplete).toHaveBeenCalledWith(100);
+  });
+
+  it('ListeningCinemaPlayer renders 16:9 cinema screen, subtitles, controls and transcript', () => {
+    const mockTogglePlay = vi.fn();
+    const mockPlayLine = vi.fn();
+    const mockOpenExam = vi.fn();
+
+    const sampleScenario = {
+      id: 'sc-cinema-test',
+      level: 'N5' as const,
+      category: 'Daily Life',
+      titleJa: 'コンビニでのお買い物',
+      titleEn: 'Shopping at a Convenience Store',
+      descriptionJa: 'レジでの会話',
+      descriptionEn: 'Cashier dialogue',
+      audioUrl: '/audio/conbini.mp3',
+      durationSeconds: 48,
+      storyboard: [sampleScene],
+      dialogue: [
+        {
+          id: 'd1',
+          speaker: '店員',
+          text: 'いらっしゃいませ！温めますか？',
+          hiragana: 'いらっしゃいませ！あたためますか？',
+          romaji: 'Irasshaimase! Atatamemasu ka?',
+          en: 'Welcome! Would you like this heated up?',
+          voiceGender: 'female' as const,
+          timeOffsetSec: 0,
+          sceneIndex: 0,
+        },
+      ],
+      vocabulary: sampleVocab,
+      examQuestions: sampleQuestions,
+    };
+
+    render(
+      <ListeningCinemaPlayer
+        scenario={sampleScenario}
+        isPlaying={false}
+        currentLineIndex={0}
+        activeSceneIndex={0}
+        playbackRate={0.85}
+        showFurigana={true}
+        showEnglishSubtitle={true}
+        onTogglePlay={mockTogglePlay}
+        onRestart={vi.fn()}
+        onPlayLine={mockPlayLine}
+        onSelectScene={vi.fn()}
+        onSetPlaybackRate={vi.fn()}
+        onToggleFurigana={vi.fn()}
+        onToggleEnglish={vi.fn()}
+        onPlayChime={vi.fn()}
+        onOpenExam={mockOpenExam}
+      />
+    );
+
+    // Verifies subtitle in video screen & transcript drawer (both show the line)
+    expect(screen.getAllByText('いらっしゃいませ！温めますか？').length).toBe(2);
+    expect(screen.getAllByText('いらっしゃいませ！あたためますか？').length).toBe(2);
+    expect(screen.getAllByText('Welcome! Would you like this heated up?').length).toBe(2);
+
+    // Verifies time stamp
+    expect(screen.getAllByText('00:00').length).toBe(2);
+    expect(screen.getByText('00:48')).toBeTruthy();
+
+    // Verifies controls
+    fireEvent.click(screen.getByTitle('Play video'));
+    expect(mockTogglePlay).toHaveBeenCalled();
+
+    // Verifies interactive transcript drawer
+    expect(screen.getByText(/Transcript/i)).toBeTruthy();
+    fireEvent.click(screen.getByTitle('Listen to this line'));
+    expect(mockPlayLine).toHaveBeenCalledWith(0);
   });
 });
