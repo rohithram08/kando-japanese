@@ -4,6 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { get, post } from './client';
+import { getStaticScenariosByLevel, STATIC_LISTENING_SCENARIOS } from '../data/listening/scenarios';
 
 export interface StoryboardScene {
   id: string;
@@ -120,19 +121,35 @@ export interface StudySummaryResponse {
 }
 
 export async function getListeningScenarios(level?: string): Promise<ListeningScenario[]> {
-  const query = level && level !== 'ALL' ? `?level=${level}` : '';
-  const response = await get<{ scenarios: ListeningScenario[] }>(`/listening/scenarios${query}`);
-  return response.scenarios;
+  try {
+    const query = level && level !== 'ALL' ? `?level=${level}` : '';
+    const response = await get<{ scenarios: ListeningScenario[] }>(`/listening/scenarios${query}`);
+    if (response?.scenarios && response.scenarios.length > 0) {
+      return response.scenarios;
+    }
+    return getStaticScenariosByLevel(level);
+  } catch (err) {
+    console.warn('[getListeningScenarios] API unreachable, falling back to static curriculum:', err);
+    return getStaticScenariosByLevel(level);
+  }
 }
 
 export async function getListeningScenario(id: string): Promise<{
   scenario: ListeningScenario;
   userProgress: ListeningScenario['userProgress'];
 }> {
-  return get<{
-    scenario: ListeningScenario;
-    userProgress: ListeningScenario['userProgress'];
-  }>(`/listening/scenarios/${id}`);
+  try {
+    return await get<{
+      scenario: ListeningScenario;
+      userProgress: ListeningScenario['userProgress'];
+    }>(`/listening/scenarios/${id}`);
+  } catch (err) {
+    const fallback = STATIC_LISTENING_SCENARIOS.find((s) => s.id === id) || STATIC_LISTENING_SCENARIOS[0];
+    return {
+      scenario: fallback,
+      userProgress: null,
+    };
+  }
 }
 
 export async function saveListeningProgress(payload: {

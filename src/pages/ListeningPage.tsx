@@ -31,14 +31,17 @@ import { ChoukaiExamModal } from '../components/listening/ChoukaiExamModal';
 import { playJlptChime, speakJapaneseLine, stopSpeaking } from '../utils/jlptAudio';
 import { useStudyTracker } from '../hooks/useStudyTracker';
 import SEO from '../components/common/SEO';
+import { getStaticScenariosByLevel, STATIC_LISTENING_SCENARIOS } from '../data/listening/scenarios';
 
 const JLPT_LEVELS = ['ALL', 'N5', 'N4', 'N3', 'N2', 'N1'] as const;
 
 export default function ListeningPage() {
   const [selectedLevel, setSelectedLevel] = useState<string>('N5');
-  const [scenarios, setScenarios] = useState<ListeningScenario[]>([]);
+  const [scenarios, setScenarios] = useState<ListeningScenario[]>(() =>
+    getStaticScenariosByLevel('N5')
+  );
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>('n5_convenience_store');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Audio Playback & Scene State
   const [isPlaying, setIsPlaying] = useState(false);
@@ -52,24 +55,26 @@ export default function ListeningPage() {
   const [isExamModalOpen, setIsExamModalOpen] = useState(false);
   const [verifiedWordsCount, setVerifiedWordsCount] = useState(0);
 
-  // Load scenarios on level change
+  // Load scenarios on level change (instant static switch + async progress merge)
   useEffect(() => {
     let mounted = true;
-    setLoading(true);
+    const initialList = getStaticScenariosByLevel(selectedLevel);
+    setScenarios(initialList);
+
+    if (initialList.length > 0 && !initialList.some((s) => s.id === selectedScenarioId)) {
+      setSelectedScenarioId(initialList[0].id);
+    }
+
     getListeningScenarios(selectedLevel)
       .then((data) => {
-        if (!mounted) return;
+        if (!mounted || !data || data.length === 0) return;
         setScenarios(data);
-        if (data.length > 0) {
-          const match = data.find((s) => s.id === selectedScenarioId);
-          if (!match) {
-            setSelectedScenarioId(data[0].id);
-          }
+        if (!data.some((s) => s.id === selectedScenarioId)) {
+          setSelectedScenarioId(data[0].id);
         }
       })
-      .catch((err) => console.error('Failed to load listening scenarios:', err))
-      .finally(() => {
-        if (mounted) setLoading(false);
+      .catch((err) => {
+        console.warn('[ListeningPage] Using offline static scenarios:', err);
       });
 
     return () => {
@@ -77,7 +82,10 @@ export default function ListeningPage() {
     };
   }, [selectedLevel]);
 
-  const activeScenario = scenarios.find((s) => s.id === selectedScenarioId) || scenarios[0];
+  const activeScenario =
+    scenarios.find((s) => s.id === selectedScenarioId) ||
+    scenarios[0] ||
+    STATIC_LISTENING_SCENARIOS[0];
 
   // Anti-Idle Study Tracker Hook
   const { activeSeconds, formattedTime, isIdle, flush } = useStudyTracker({
@@ -252,50 +260,63 @@ export default function ListeningPage() {
               <Sparkles className="w-3.5 h-3.5 text-primary" /> Select Conversation Scenario
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {scenarios.map((sc) => {
-                const isSelected = sc.id === selectedScenarioId;
-                const isDone = sc.userProgress && sc.userProgress.listenedCount > 0;
+            {scenarios.length === 0 ? (
+              <div className="p-8 text-center rounded-2xl border border-dashed border-border bg-card/60">
+                <p className="text-sm font-bold text-foreground">No audio scenarios found for {selectedLevel}.</p>
+                <button
+                  type="button"
+                  onClick={() => setSelectedLevel('N5')}
+                  className="mt-3 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-bold"
+                >
+                  Switch to JLPT N5 Scenarios
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {scenarios.map((sc) => {
+                  const isSelected = sc.id === selectedScenarioId;
+                  const isDone = sc.userProgress && sc.userProgress.listenedCount > 0;
 
-                return (
-                  <div
-                    key={sc.id}
-                    onClick={() => {
-                      stopSpeaking();
-                      setIsPlaying(false);
-                      setCurrentLineIndex(0);
-                      setActiveSceneIndex(0);
-                      setSelectedScenarioId(sc.id);
-                    }}
-                    className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
-                      isSelected
-                        ? 'border-primary bg-primary/10 shadow-md ring-2 ring-primary/40'
-                        : 'border-border/70 bg-card hover:bg-muted/40'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2 py-0.5 rounded-md bg-primary/20 text-primary text-[10px] font-black">
-                        {sc.level} • {sc.category}
-                      </span>
-                      {isDone && (
-                        <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-500">
-                          <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+                  return (
+                    <div
+                      key={sc.id}
+                      onClick={() => {
+                        stopSpeaking();
+                        setIsPlaying(false);
+                        setCurrentLineIndex(0);
+                        setActiveSceneIndex(0);
+                        setSelectedScenarioId(sc.id);
+                      }}
+                      className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-primary bg-primary/10 shadow-md ring-2 ring-primary/40'
+                          : 'border-border/70 bg-card hover:bg-muted/40'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-primary/20 text-primary text-[10px] font-black">
+                          {sc.level} • {sc.category}
                         </span>
-                      )}
-                    </div>
+                        {isDone && (
+                          <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-500">
+                            <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+                          </span>
+                        )}
+                      </div>
 
-                    <h3 className="font-black text-sm text-foreground mt-2">{sc.titleJa}</h3>
-                    <p className="text-xs text-muted-foreground line-clamp-1">{sc.titleEn}</p>
+                      <h3 className="font-black text-sm text-foreground mt-2">{sc.titleJa}</h3>
+                      <p className="text-xs text-muted-foreground line-clamp-1">{sc.titleEn}</p>
 
-                    <div className="mt-2.5 pt-2 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground">
-                      <span>⏱️ {sc.durationSeconds}s</span>
-                      <span>🖼️ {sc.storyboard.length} Scenes</span>
-                      <span>📝 {sc.examQuestions.length} Questions</span>
+                      <div className="mt-2.5 pt-2 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground">
+                        <span>⏱️ {sc.durationSeconds}s</span>
+                        <span>🖼️ {sc.storyboard.length} Scenes</span>
+                        <span>📝 {sc.examQuestions.length} Questions</span>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </section>
 
           {activeScenario && (
