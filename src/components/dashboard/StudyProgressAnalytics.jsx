@@ -1,14 +1,15 @@
 // src/components/dashboard/StudyProgressAnalytics.jsx
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import {
   TrendingUp, GraduationCap, Activity, Eye, Pen,
   Volume2, MessageCircle, Languages, BookMarked,
   Award, Star, Shield, Medal, Trophy, Crown,
-  Clock
+  Clock, ShieldCheck
 } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useStudyLevel } from '../../hooks/useStudyLevel'
+import { getStudyTimeSummary } from '../../api/listening'
 
 const LEVELS = ['N5', 'N4', 'N3', 'N2', 'N1']
 
@@ -52,6 +53,13 @@ const WEEKLY_HABIT = [
 export default function StudyProgressAnalytics() {
   const progress = useProgressStore()
   const { profile } = useAuthStore()
+
+  const [studyData, setStudyData] = useState(null)
+  useEffect(() => {
+    getStudyTimeSummary()
+      .then((data) => setStudyData(data))
+      .catch(() => {})
+  }, [])
 
   // Access level (user-controlled), not the XP-derived rank, so this card agrees with what is unlocked.
   const { studyLevel: currentLevel } = useStudyLevel()
@@ -250,25 +258,34 @@ export default function StudyProgressAnalytics() {
           <div className="p-3 rounded-xl bg-muted/40 border border-border">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-foreground flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-primary" /> Weekly Study Rhythm
+                <Clock className="w-3.5 h-3.5 text-primary" /> Verified Weekly Study Rhythm
               </span>
-              <span className="text-[11px] font-bold text-primary">~180 mins / week</span>
+              <span className="text-[11px] font-bold text-primary">
+                {studyData?.weekMinutes ? `${studyData.weekMinutes} mins / week` : '~180 mins / week'}
+              </span>
             </div>
             <div className="flex items-center justify-between gap-1.5">
-              {WEEKLY_HABIT.map(({ day, minutes, completed }) => (
-                <div key={day} className="flex-1 flex flex-col items-center">
-                  <div
-                    className={`w-full h-8 rounded-lg flex items-center justify-center text-[10px] font-bold transition-all ${
-                      completed
-                        ? 'bg-primary/20 text-primary border border-primary/40'
-                        : 'bg-muted/70 text-muted-foreground'
-                    }`}
-                  >
-                    {minutes}m
+              {(studyData?.weeklyTrend || WEEKLY_HABIT).map((item) => {
+                const day = item.dayLabel || item.day
+                const minutes = item.totalMinutes !== undefined ? item.totalMinutes : item.minutes
+                const isCompleted = minutes > 0 || item.completed
+
+                return (
+                  <div key={day} className="flex-1 flex flex-col items-center">
+                    <div
+                      className={`w-full h-8 rounded-lg flex items-center justify-center text-[10px] font-bold transition-all ${
+                        isCompleted
+                          ? 'bg-primary/20 text-primary border border-primary/40'
+                          : 'bg-muted/70 text-muted-foreground'
+                      }`}
+                      title={`${day}: ${minutes}m active practice`}
+                    >
+                      {minutes}m
+                    </div>
+                    <span className="text-[10px] font-medium text-muted-foreground mt-1">{day}</span>
                   </div>
-                  <span className="text-[10px] font-medium text-muted-foreground mt-1">{day}</span>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>

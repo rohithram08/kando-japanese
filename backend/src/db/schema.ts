@@ -262,6 +262,38 @@ export const userAlerts = mysqlTable('user_alerts', {
   senderIdx: index('user_alerts_sender_idx').on(table.senderId, table.createdAt),
 }));
 
+// ─── Study Sessions (Verified Active Practice Hours) ─────────────────────────
+export const userStudySessions = mysqlTable('user_study_sessions', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  activityType: varchar('activity_type', { length: 32 }).notNull(), // 'listening' | 'reading' | 'grammar' | 'kanji' | 'conversation'
+  level: varchar('level', { length: 10 }).notNull(), // 'N5' | 'N4' | 'N3' | 'N2' | 'N1'
+  itemId: varchar('item_id', { length: 128 }).notNull(),
+  durationSeconds: int('duration_seconds').default(0).notNull(),
+  completed: boolean('completed').default(false).notNull(),
+  score: int('score'),
+  metadata: text('metadata'), // JSON string
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  userCreatedIdx: index('study_sessions_user_created_idx').on(table.userId, table.createdAt),
+  userActivityIdx: index('study_sessions_user_activity_idx').on(table.userId, table.activityType, table.createdAt),
+}));
+
+// ─── Listening Progress ──────────────────────────────────────────────────────
+export const userListeningProgress = mysqlTable('user_listening_progress', {
+  id: varchar('id', { length: 36 }).primaryKey(),
+  userId: varchar('user_id', { length: 36 }).notNull().references(() => users.id, { onDelete: 'cascade' }),
+  scenarioId: varchar('scenario_id', { length: 64 }).notNull(),
+  level: varchar('level', { length: 10 }).notNull(),
+  listenedCount: int('listened_count').default(1).notNull(),
+  bestScore: int('best_score'),
+  totalSeconds: int('total_seconds').default(0).notNull(),
+  lastListenedAt: timestamp('last_listened_at').defaultNow().notNull(),
+}, (table) => ({
+  userScenarioUnique: uniqueIndex('listening_progress_user_scenario_unique').on(table.userId, table.scenarioId),
+  userLevelIdx: index('listening_progress_user_level_idx').on(table.userId, table.level),
+}));
+
 // ─── Relations ───────────────────────────────────────────────────────────────
 export const usersRelations = relations(users, ({ many }) => ({
   lessonProgress: many(userLessonProgress),
@@ -274,6 +306,8 @@ export const usersRelations = relations(users, ({ many }) => ({
   senseiTourProgress: many(senseiTourProgress),
   readingProgress: many(userReadingProgress),
   grammarProgress: many(userGrammarProgress),
+  studySessions: many(userStudySessions),
+  listeningProgress: many(userListeningProgress),
 }));
 
 export const userGrammarProgressRelations = relations(userGrammarProgress, ({ one }) => ({
@@ -314,4 +348,12 @@ export const senseiConversationsRelations = relations(senseiConversations, ({ on
 
 export const senseiTourProgressRelations = relations(senseiTourProgress, ({ one }) => ({
   user: one(users, { fields: [senseiTourProgress.userId], references: [users.id] }),
+}));
+
+export const userStudySessionsRelations = relations(userStudySessions, ({ one }) => ({
+  user: one(users, { fields: [userStudySessions.userId], references: [users.id] }),
+}));
+
+export const userListeningProgressRelations = relations(userListeningProgress, ({ one }) => ({
+  user: one(users, { fields: [userListeningProgress.userId], references: [users.id] }),
 }));

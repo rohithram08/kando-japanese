@@ -41,6 +41,7 @@ import { isValidLessonId } from '../services/lessonContentService.js';
 import { isValidGrammarId } from '../services/grammarContentService.js';
 import { assertContentUnlocked } from '../services/levelService.js';
 import { recordXpEvent, getRecentXpEvents } from '../services/xpLedger.js';
+import { recordStudySession, getStudyTimeSummary } from '../services/studySessionService.js';
 
 export const progressRouter = Router();
 
@@ -1335,6 +1336,49 @@ progressRouter.get('/xp-history', requireAuth, async (req, res, next) => {
     const limit = Number.parseInt(String(req.query.limit ?? '50'), 10);
     const events = await getRecentXpEvents(req.user!.userId, Number.isFinite(limit) ? limit : 50);
     res.json({ events });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST /api/progress/study-session
+ * Logs an active verified study heartbeat or completed session for anti-idle study hour tracking.
+ */
+const studySessionSchema = z.object({
+  body: z.object({
+    activityType: z.enum(['listening', 'reading', 'grammar', 'kanji', 'conversation']),
+    level: z.string().default('N5'),
+    itemId: z.string().min(1),
+    durationSeconds: z.number().int().min(1).max(3600),
+    completed: z.boolean().optional(),
+    score: z.number().int().min(0).max(100).nullable().optional(),
+    metadata: z.record(z.unknown()).optional(),
+  }),
+});
+
+progressRouter.post('/study-session', requireAuth, validate(studySessionSchema), async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const result = await recordStudySession(userId, req.body);
+    res.json({
+      success: true,
+      ...result,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * GET /api/progress/study-time
+ * Aggregated verified study hours breakdown for learner profile and analytics.
+ */
+progressRouter.get('/study-time', requireAuth, async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const summary = await getStudyTimeSummary(userId);
+    res.json(summary);
   } catch (err) {
     next(err);
   }

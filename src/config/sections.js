@@ -11,7 +11,7 @@
 import {
   LayoutDashboard, BookOpen, BookMarked, Languages, Layers,
   RefreshCw, MessageCircle, Mic, Medal,
-  Trophy, Settings, Sparkles, BookA, User, Users,
+  Trophy, Settings, Sparkles, BookA, User, Users, Headphones,
 } from 'lucide-react'
 
 // ── Tint palette ─────────────────────────────────────────────
@@ -166,6 +166,17 @@ export const SECTIONS = [
     description: 'Learn Japanese naturally through graded stories with vocabulary, grammar, and quizzes',
     statKey: 'lessonsCompleted',
     statLabel: 'completed',
+  },
+  {
+    id: 'listening',
+    label: 'Listening Dojo',
+    shortLabel: 'Listening',
+    path: '/listening',
+    icon: Headphones,
+    tint: 'cyan',
+    group: 'learn',
+    description: 'JLPT audio dialogues, visual storyboards, and Choukai exam simulators',
+    statLabel: 'practiced',
   },
   {
     id: 'grammar',

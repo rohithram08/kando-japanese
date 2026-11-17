@@ -55,6 +55,7 @@ import { leagueRouter } from './routes/league.js';
 import { dictionaryRouter } from './routes/dictionary.js';
 import { socialRouter } from './routes/social.js';
 import { learningRouter } from './routes/learning.js';
+import { listeningRouter } from './routes/listening.js';
 
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
@@ -70,6 +71,7 @@ app.use('/api/dictionary', dictionaryRouter);
 app.use('/api/league', leagueRouter);
 app.use('/api/social', socialRouter);
 app.use('/api/learning', learningRouter);
+app.use('/api/listening', listeningRouter);
 
 // ─── Error Handler ───────────────────────────────────────────────────────────
 app.use(errorHandler);

@@ -205,16 +205,16 @@ export default function NotificationCenter({ isOpen, onClose }) {
 
         {/* ── CATEGORY PILL STRIP ── */}
         {notifications.length > 2 && (
-          <div className="flex items-center gap-1 px-3 pt-2 pb-0.5">
+          <div className="flex items-center gap-1.5 px-3.5 py-2 border-b border-border/40 overflow-x-auto no-scrollbar scroll-smooth">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`flex-1 text-center py-1 px-1 rounded-lg text-[10.5px] font-bold transition-all whitespace-nowrap ${
+                className={`shrink-0 text-center py-1 px-3 rounded-full text-[11px] font-bold transition-all whitespace-nowrap ${
                   activeCategory === cat.id
-                    ? 'bg-primary/15 text-primary border border-primary/30 shadow-sm'
-                    : 'bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground border border-transparent'
+                    ? 'bg-primary/15 text-primary border border-primary/30 shadow-xs'
+                    : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground border border-transparent'
                 }`}
               >
                 {cat.label}

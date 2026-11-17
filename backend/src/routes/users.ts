@@ -11,6 +11,7 @@ import { avatarConfigSchema, parseAvatarConfig, serializeAvatarConfig, type Avat
 import { serializeProfile } from '../services/userSerializer.js';
 import { getFollowCounts, isFollowing } from '../services/socialService.js';
 import { createAlert, getInbox, markRead, STUDY_ALERT_TYPES, type StudyAlertType } from '../services/alertService.js';
+import { getStudentStudySummary } from '../services/studySessionService.js';
 
 export const usersRouter = Router();
 
@@ -297,12 +298,22 @@ usersRouter.get('/:userId', optionalAuth, async (req, res, next) => {
     // Learners who opted out of leagues/leaderboards are private: indistinguishable from missing.
     if (!user || (user.leagueOptOut && user.id !== viewerId)) throw new AppError(404, 'User not found', 'USER_NOT_FOUND');
 
-    const [[lessonCountResult], [kanjiCountResult], [vocabCountResult], counts, following] = await Promise.all([
+    const [[lessonCountResult], [kanjiCountResult], [vocabCountResult], counts, following, verifiedStudyHours] = await Promise.all([
       db.select({ count: sql<number>`count(*)` }).from(userLessonProgress).where(eq(userLessonProgress.userId, user.id)),
       db.select({ count: sql<number>`count(*)` }).from(userKanjiProgress).where(eq(userKanjiProgress.userId, user.id)),
       db.select({ count: sql<number>`count(*)` }).from(userVocabularyProgress).where(eq(userVocabularyProgress.userId, user.id)),
       getFollowCounts(user.id),
       viewerId && viewerId !== user.id ? isFollowing(viewerId, user.id) : Promise.resolve(false),
+      getStudentStudySummary(user.id).catch(() => ({
+        totalHours: 0,
+        listeningHours: 0,
+        readingHours: 0,
+        todayMinutes: 0,
+        weekMinutes: 0,
+        totalSessions: 0,
+        scenariosListened: 0,
+        recentSessions: [],
+      })),
     ]);
 
     res.json({
@@ -323,6 +334,7 @@ usersRouter.get('/:userId', optionalAuth, async (req, res, next) => {
       followingCount: counts.following,
       isFollowing: following,
       isSelf: viewerId === user.id,
+      verifiedStudyHours,
     });
   } catch (err) {
     next(err);

@@ -6,8 +6,9 @@ import {
   Star, Award, Target, BookOpen, TrendingUp,
   BarChart3, GraduationCap, UserPlus, UserCheck, Settings, Zap,
   Eye, Pen, BookMarked, Brain, Shield, Medal, Pencil,
-  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile, Sparkles,
+  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile, Sparkles, Headphones, Clock, ShieldCheck,
 } from 'lucide-react'
+import { getStudyTimeSummary } from '../api/listening'
 import { useAuthStore } from '../store/authStore'
 import { useThemeStore } from '../store/themeStore'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -367,6 +368,15 @@ export default function ProfilePage() {
   const storySummary = useMemo(() => summarizeReadingProgress(readingProgress, allStories), [readingProgress])
   const storiesRead = storySummary.completedCount
 
+  const [studySummary, setStudySummary] = useState(null)
+  useEffect(() => {
+    if (user) {
+      getStudyTimeSummary()
+        .then((data) => setStudySummary(data))
+        .catch(() => {})
+    }
+  }, [user])
+
   const weekly = useMemo(() => buildWeeklyActivity(weeklyRows), [weeklyRows])
 
   // Real achievements (same unlock rules as the Achievements page)
@@ -708,6 +718,52 @@ export default function ProfilePage() {
                   </div>
                 </div>
               </Card>
+
+              {/* Verified Study Hours & Homework Track */}
+              {studySummary && (
+                <Card delay={0.25}>
+                  <div className="p-5 md:p-6 space-y-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                        <h3 className="font-bold text-lg text-foreground">Verified Study Hours</h3>
+                      </div>
+                      <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 self-start sm:self-auto">
+                        🛡️ Anti-Idle Tracking Active
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      <div className="p-3 rounded-xl bg-muted/40 border border-border/60">
+                        <span className="text-[11px] text-muted-foreground block font-medium">Total Time</span>
+                        <span className="text-xl font-black text-foreground mt-0.5 block">{studySummary.totalHours} hrs</span>
+                        <span className="text-[10px] text-muted-foreground">{studySummary.totalSessions} sessions</span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                        <span className="text-[11px] text-cyan-700 dark:text-cyan-300 flex items-center gap-1 font-medium">
+                          <Headphones className="w-3.5 h-3.5" /> Listening
+                        </span>
+                        <span className="text-xl font-black text-cyan-700 dark:text-cyan-300 mt-0.5 block">{studySummary.listeningHours} hrs</span>
+                        <span className="text-[10px] text-muted-foreground">Choukai Practice</span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20">
+                        <span className="text-[11px] text-teal-700 dark:text-teal-300 flex items-center gap-1 font-medium">
+                          <BookOpen className="w-3.5 h-3.5" /> Reading
+                        </span>
+                        <span className="text-xl font-black text-teal-700 dark:text-teal-300 mt-0.5 block">{studySummary.readingHours} hrs</span>
+                        <span className="text-[10px] text-muted-foreground">{storiesRead} stories read</span>
+                      </div>
+                      <div className="p-3 rounded-xl bg-purple-500/10 border border-purple-500/20">
+                        <span className="text-[11px] text-purple-700 dark:text-purple-300 flex items-center gap-1 font-medium">
+                          <Clock className="w-3.5 h-3.5" /> This Week
+                        </span>
+                        <span className="text-xl font-black text-purple-700 dark:text-purple-300 mt-0.5 block">{studySummary.weekMinutes} mins</span>
+                        <span className="text-[10px] text-muted-foreground">Today: {studySummary.todayMinutes}m</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              )}
 
               {/* Level Requirements */}
               <Card delay={0.3}>

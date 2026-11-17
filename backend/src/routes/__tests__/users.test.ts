@@ -18,6 +18,19 @@ vi.mock('../../services/socialService.js', () => ({
   isFollowing: vi.fn().mockResolvedValue(true),
 }));
 
+vi.mock('../../services/studySessionService.js', () => ({
+  getStudentStudySummary: vi.fn().mockResolvedValue({
+    totalHours: 12.5,
+    listeningHours: 5.0,
+    readingHours: 7.5,
+    todayMinutes: 45,
+    weekMinutes: 180,
+    totalSessions: 14,
+    scenariosListened: 6,
+    recentSessions: [],
+  }),
+}));
+
 // Mock DB
 vi.mock('../../db/index.js', () => ({
   db: {

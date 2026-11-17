@@ -92,6 +92,13 @@
       "when": 1792120000000,
       "tag": "0012_user_alerts",
       "breakpoints": false
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1792200000000,
+      "tag": "0013_study_sessions_and_listening",
+      "breakpoints": false
     }
   ]
 }

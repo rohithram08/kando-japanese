@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2, Sparkles, Shield, Send, CheckCircle2, Users } from 'lucide-react'
+import { ArrowLeft, Star, Flame, Trophy, Calendar, Loader2, Sparkles, Shield, Send, CheckCircle2, Users, Clock, Headphones, BookOpen, ShieldCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { getUserProfile, sendUserAlert } from '../api/users'
 import { useAuthStore } from '../store/authStore'
@@ -100,6 +100,7 @@ export default function UserProfilePage() {
           lessons: data.lessonsCount || 0,
           kanji: data.kanjiCount || 0,
           vocab: data.vocabCount || 0,
+          verifiedStudyHours: data.verifiedStudyHours || null,
         })
         setFollowerCount(data.followersCount ?? 0)
         setLoading(false)
@@ -304,6 +305,79 @@ export default function UserProfilePage() {
           ))}
         </div>
       </motion.div>
+
+      {/* ── Verified Active Study Hours & Homework Tracker (Teacher Verification) ── */}
+      {profile.verifiedStudyHours && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.42 }}
+          className="rounded-2xl border p-5 shadow-sm bg-surface border-border space-y-4"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <span>Verified Study Hours & Homework Track</span>
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Anti-idle verified active practice hours for teacher verification and study tracking.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold self-start sm:self-auto">
+              ✓ Anti-Idle Active Verification
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+            <div className="p-3.5 rounded-xl bg-muted/40 border border-border/60">
+              <span className="text-[11px] font-medium text-muted-foreground block">Total Verified</span>
+              <span className="text-xl font-black text-foreground mt-0.5 block">
+                {profile.verifiedStudyHours.totalHours} hrs
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                {profile.verifiedStudyHours.totalSessions} sessions
+              </span>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+              <span className="text-[11px] font-medium text-cyan-700 dark:text-cyan-300 flex items-center gap-1">
+                <Headphones className="w-3.5 h-3.5" /> Listening
+              </span>
+              <span className="text-xl font-black text-cyan-700 dark:text-cyan-300 mt-0.5 block">
+                {profile.verifiedStudyHours.listeningHours} hrs
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                {profile.verifiedStudyHours.scenariosListened} audios
+              </span>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-teal-500/10 border border-teal-500/20">
+              <span className="text-[11px] font-medium text-teal-700 dark:text-teal-300 flex items-center gap-1">
+                <BookOpen className="w-3.5 h-3.5" /> Reading
+              </span>
+              <span className="text-xl font-black text-teal-700 dark:text-teal-300 mt-0.5 block">
+                {profile.verifiedStudyHours.readingHours} hrs
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                {profile.lessons} stories read
+              </span>
+            </div>
+
+            <div className="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/20">
+              <span className="text-[11px] font-medium text-purple-700 dark:text-purple-300 flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5" /> This Week
+              </span>
+              <span className="text-xl font-black text-purple-700 dark:text-purple-300 mt-0.5 block">
+                {profile.verifiedStudyHours.weekMinutes} mins
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                Today: {profile.verifiedStudyHours.todayMinutes}m
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       {/* ── Friendly Study Alert & Nudge System (Confidential & Harassment-Free) ── */}
       {!isSelf && (

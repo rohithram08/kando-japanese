@@ -9,6 +9,26 @@ vi.mock('../../services/xpLedger.js', () => ({
   getRecentXpEvents: vi.fn().mockResolvedValue([]),
 }));
 
+vi.mock('../../services/studySessionService.js', () => ({
+  recordStudySession: vi.fn().mockResolvedValue({
+    sessionId: 'session-456',
+    awardedXp: 15,
+  }),
+  getStudyTimeSummary: vi.fn().mockResolvedValue({
+    totalSeconds: 3600,
+    totalMinutes: 60,
+    totalHours: 1.0,
+    listeningHours: 0.5,
+    readingHours: 0.5,
+    todayMinutes: 30,
+    weekMinutes: 60,
+    totalSessions: 4,
+    byActivity: {},
+    weeklyTrend: [],
+    recentSessions: [],
+  }),
+}));
+
 vi.mock('../../db/index.js', () => ({
   db: {
     query: {
@@ -745,6 +765,48 @@ describe('Progress Routes — Kanji & Vocabulary Progress (F6)', () => {
       expect(next).not.toHaveBeenCalled();
       expect(result).toBeDefined();
       expect(result.xpGained).toBe(6);
+    });
+
+    it('POST /study-session logs active study session heartbeat', async () => {
+      const handler = getRouteHandler('/study-session', 'post');
+      const req: any = {
+        user: { userId: 'user-123' },
+        body: {
+          activityType: 'reading',
+          level: 'N5',
+          itemId: 'story-1',
+          durationSeconds: 90,
+          completed: true,
+        },
+      };
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.success).toBe(true);
+      expect(result.sessionId).toBe('session-456');
+    });
+
+    it('GET /study-time returns aggregated study hours summary', async () => {
+      const handler = getRouteHandler('/study-time', 'get');
+      const req: any = { user: { userId: 'user-123' } };
+
+      let result: any = null;
+      const res: any = { json: (data: any) => { result = data; } };
+      const next = vi.fn();
+
+      await handler(req, res, next);
+
+      expect(next).not.toHaveBeenCalled();
+      expect(result).toBeDefined();
+      expect(result.totalHours).toBe(1.0);
+      expect(result.listeningHours).toBe(0.5);
+      expect(result.readingHours).toBe(0.5);
     });
   });
 });

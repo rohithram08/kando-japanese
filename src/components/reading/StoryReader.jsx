@@ -30,6 +30,7 @@ import ComprehensionQuiz from './ComprehensionQuiz';
 import VocabLookupModal from './VocabLookupModal';
 import StoryAudioPlayer from './StoryAudioPlayer';
 import { useStoryAudio } from '../../hooks/useStoryAudio';
+import { useStudyTracker } from '../../hooks/useStudyTracker';
 import { getSentenceTokens } from '../../utils/readingTokenizer';
 
 function InteractiveSentenceText({
@@ -116,6 +117,13 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
   const { saveProgress } = useReadingStore();
   const { initSRSDeck } = useSRSStore();
   const { t, locale } = useI18n();
+
+  const { activeSeconds, formattedTime, isIdle, flush } = useStudyTracker({
+    activityType: 'reading',
+    level: story?.level || 'N5',
+    itemId: story?.id || 'story',
+    enabled: isAuthenticated,
+  });
 
   const sentences = Array.isArray(story?.sentences) ? story.sentences : [];
   const totalSentences = sentences.length;
@@ -248,6 +256,9 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
     setQuizScore((prev) => Math.max(prev ?? 0, score));
     setCompleted(true);
 
+    // Flush verified reading study session
+    flush(true, score);
+
     return saveProgress(
       {
         storyId: story.id,
@@ -318,6 +329,21 @@ export default function StoryReader({ story, initialProgress, onBack, initialSho
 
         {/* Reading Controls Toolbar */}
         <div className="flex items-center space-x-2 self-end sm:self-center">
+          {/* Verified Study Timer */}
+          {isAuthenticated && (
+            <div
+              className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-bold border transition-colors ${
+                !isIdle
+                  ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 border-gray-200 dark:border-gray-700'
+              }`}
+              title="Active reading time verified by anti-idle tracker"
+            >
+              <span className={`w-2 h-2 rounded-full ${!isIdle ? 'bg-emerald-500 animate-pulse' : 'bg-gray-400'}`} />
+              <span>{formattedTime}</span>
+            </div>
+          )}
+
           {/* Mode toggle */}
           <div className="flex rounded-lg border border-gray-200 dark:border-gray-800 p-0.5 bg-gray-50 dark:bg-gray-800/40">
             <button

@@ -37,6 +37,29 @@ export interface PublicUserProfile {
   lessonsCount: number;
   kanjiCount: number;
   vocabCount: number;
+  followersCount?: number;
+  followingCount?: number;
+  isFollowing?: boolean;
+  isSelf?: boolean;
+  verifiedStudyHours?: {
+    totalHours: number;
+    listeningHours: number;
+    readingHours: number;
+    todayMinutes: number;
+    weekMinutes: number;
+    totalSessions: number;
+    scenariosListened: number;
+    recentSessions: Array<{
+      id: string;
+      activityType: string;
+      level: string;
+      itemId: string;
+      durationSeconds: number;
+      completed: boolean;
+      score: number | null;
+      createdAt: string;
+    }>;
+  };
 }
 
 /**
