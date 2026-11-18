@@ -5,6 +5,7 @@ import { StoryboardSceneCard } from '../StoryboardSceneCard';
 import { ListeningDownContainer } from '../ListeningDownContainer';
 import { ChoukaiExamModal } from '../ChoukaiExamModal';
 import { ListeningCinemaPlayer } from '../ListeningCinemaPlayer';
+import { getStaticScenariosByLevel } from '../../../data/listening/scenarios';
 
 describe('Listening Components', () => {
   const sampleScene = {
@@ -201,7 +202,7 @@ describe('Listening Components', () => {
     expect(mockTogglePlay).toHaveBeenCalled();
 
     // Verifies interactive transcript drawer
-    expect(screen.getByText(/Transcript/i)).toBeTruthy();
+    expect(screen.getAllByText(/Transcript/i).length).toBeGreaterThanOrEqual(1);
     fireEvent.click(screen.getByTitle('Listen to this line'));
     expect(mockPlayLine).toHaveBeenCalledWith(0);
   });
@@ -277,5 +278,19 @@ describe('Listening Components', () => {
 
     // Time stamp says 00:26 / 00:26
     expect(screen.getAllByText('00:26').length).toBe(2);
+  });
+
+  it('getStaticScenariosByLevel provides cumulative level filtering', () => {
+    const n5List = getStaticScenariosByLevel('N5');
+    expect(n5List.every((s) => s.level === 'N5')).toBe(true);
+
+    const n4List = getStaticScenariosByLevel('N4');
+    const n4Levels = new Set(n4List.map((s) => s.level));
+    expect(n4Levels.has('N5')).toBe(true);
+    expect(n4Levels.has('N4')).toBe(true);
+    expect(n4Levels.has('N3')).toBe(false);
+
+    const allList = getStaticScenariosByLevel('ALL');
+    expect(allList.length).toBeGreaterThanOrEqual(7);
   });
 });

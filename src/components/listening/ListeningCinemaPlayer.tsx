@@ -20,6 +20,7 @@ import {
   BookOpen,
   Headphones,
   Sliders,
+  ChevronDown,
 } from 'lucide-react';
 import type { ListeningScenario, DialogueLine, StoryboardScene } from '../../api/listening';
 
@@ -70,6 +71,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
 }) => {
   const [isTheaterMode, setIsTheaterMode] = useState(false);
   const [activeSideTab, setActiveSideTab] = useState<'transcript' | 'scenes'>('transcript');
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
   const transcriptListRef = useRef<HTMLDivElement>(null);
 
   const activeLine: DialogueLine | undefined = scenario.dialogue[currentLineIndex];
@@ -262,6 +264,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
         );
 
       case 'clinic':
+      case 'hospital':
         return (
           <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
             <rect width="800" height="450" fill="#f0fdfa" />
@@ -274,6 +277,276 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
             <path d="M520,110 C520,220 660,220 660,110" fill="none" stroke="#334155" strokeWidth="10" />
             <circle cx="590" cy="280" r="35" fill="#94a3b8" stroke="#475569" strokeWidth="6" />
             <line x1="590" y1="215" x2="590" y2="245" stroke="#334155" strokeWidth="8" />
+          </svg>
+        );
+
+      case 'restaurant':
+      case 'kitchen':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgRestCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#451a03" />
+                <stop offset="50%" stopColor="#78350f" />
+                <stop offset="100%" stopColor="#292524" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgRestCinema)" />
+            {/* Wooden Wall Panels */}
+            <rect x="50" y="30" width="700" height="180" rx="12" fill="#78350f" stroke="#92400e" strokeWidth="4" />
+            {/* Red Lanterns (提灯) */}
+            <circle cx="150" cy="70" r="32" fill="#ef4444" stroke="#991b1b" strokeWidth="3" />
+            <rect x="135" y="45" width="30" height="6" fill="#18181b" rx="2" />
+            <rect x="135" y="89" width="30" height="6" fill="#18181b" rx="2" />
+            <text x="132" y="76" fill="#ffffff" fontSize="15" fontWeight="bold">居酒屋</text>
+            <circle cx="650" cy="70" r="32" fill="#ef4444" stroke="#991b1b" strokeWidth="3" />
+            <rect x="635" y="45" width="30" height="6" fill="#18181b" rx="2" />
+            <rect x="635" y="89" width="30" height="6" fill="#18181b" rx="2" />
+            <text x="636" y="76" fill="#ffffff" fontSize="15" fontWeight="bold">定食</text>
+            {/* Wooden Menu Tags hanging on wall */}
+            <rect x="230" y="55" width="45" height="110" rx="4" fill="#fef3c7" stroke="#b45309" strokeWidth="2" />
+            <text x="252" y="85" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">ラーメン</text>
+            <text x="252" y="145" fill="#b45309" fontSize="11" fontWeight="bold" textAnchor="middle">¥850</text>
+            <rect x="300" y="55" width="45" height="110" rx="4" fill="#fef3c7" stroke="#b45309" strokeWidth="2" />
+            <text x="322" y="85" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">餃子定食</text>
+            <text x="322" y="145" fill="#b45309" fontSize="11" fontWeight="bold" textAnchor="middle">¥780</text>
+            <rect x="370" y="55" width="45" height="110" rx="4" fill="#fef3c7" stroke="#b45309" strokeWidth="2" />
+            <text x="392" y="85" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">生ビール</text>
+            <text x="392" y="145" fill="#b45309" fontSize="11" fontWeight="bold" textAnchor="middle">¥500</text>
+            <rect x="440" y="55" width="45" height="110" rx="4" fill="#fef3c7" stroke="#b45309" strokeWidth="2" />
+            <text x="462" y="85" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">緑茶・水</text>
+            <text x="462" y="145" fill="#b45309" fontSize="11" fontWeight="bold" textAnchor="middle">無料</text>
+            <rect x="510" y="55" width="45" height="110" rx="4" fill="#fef3c7" stroke="#b45309" strokeWidth="2" />
+            <text x="532" y="85" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">日替わり</text>
+            <text x="532" y="145" fill="#b45309" fontSize="11" fontWeight="bold" textAnchor="middle">¥900</text>
+            {/* Dining Table Counter */}
+            <rect x="40" y="240" width="720" height="180" rx="16" fill="#b45309" stroke="#78350f" strokeWidth="6" />
+            {/* Ramen Bowl */}
+            <ellipse cx="260" cy="330" rx="65" ry="35" fill="#dc2626" stroke="#991b1b" strokeWidth="4" />
+            <ellipse cx="260" cy="325" rx="55" ry="25" fill="#fef08a" />
+            {/* Chopsticks and rest */}
+            <line x1="200" y1="380" x2="330" y2="380" stroke="#78350f" strokeWidth="5" strokeLinecap="round" />
+            <rect x="250" y="375" width="20" height="10" rx="3" fill="#cbd5e1" />
+            {/* Water glass */}
+            <rect x="400" y="280" width="45" height="65" rx="6" fill="#67e8f9" opacity="0.8" stroke="#0891b2" strokeWidth="2" />
+            {/* Order Call Bell Button */}
+            <circle cx="560" cy="330" r="28" fill="#e2e8f0" stroke="#64748b" strokeWidth="4" />
+            <circle cx="560" cy="326" r="14" fill="#ef4444" />
+            <text x="500" y="380" fill="#ffffff" fontSize="12" fontWeight="bold">ご注文ボタン 🔔</text>
+          </svg>
+        );
+
+      case 'office':
+      case 'boardroom':
+      case 'meeting_room':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgOfficeCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0f172a" />
+                <stop offset="100%" stopColor="#1e293b" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgOfficeCinema)" />
+            {/* Skyline Window */}
+            <rect x="80" y="30" width="280" height="180" rx="8" fill="#0284c7" opacity="0.25" stroke="#334155" strokeWidth="3" />
+            {/* Tokyo Tower silhouette */}
+            <polygon points="220,170 215,90 225,90" fill="#f43f5e" opacity="0.8" />
+            {/* Whiteboard with Project Gantt Chart */}
+            <rect x="400" y="30" width="330" height="180" rx="10" fill="#f8fafc" stroke="#94a3b8" strokeWidth="4" />
+            <text x="420" y="60" fill="#0f172a" fontSize="15" fontWeight="black">プロジェクト進捗状況 (Weekly Review)</text>
+            <rect x="420" y="75" width="200" height="14" rx="4" fill="#3b82f6" />
+            <rect x="420" y="100" width="270" height="14" rx="4" fill="#10b981" />
+            <rect x="420" y="125" width="140" height="14" rx="4" fill="#f59e0b" />
+            <text x="420" y="165" fill="#64748b" fontSize="11" fontWeight="bold">次回ミーティング: 来週火曜 14:00〜</text>
+            {/* Conference Table */}
+            <rect x="50" y="240" width="700" height="180" rx="20" fill="#334155" stroke="#475569" strokeWidth="4" />
+            {/* Laptop */}
+            <rect x="320" y="270" width="160" height="95" rx="6" fill="#0f172a" stroke="#64748b" strokeWidth="3" />
+            <rect x="330" y="280" width="140" height="75" rx="4" fill="#1e293b" />
+            <circle cx="400" cy="315" r="14" fill="#38bdf8" opacity="0.6" />
+            {/* Notepad and Pen */}
+            <rect x="150" y="280" width="80" height="100" rx="4" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+            <line x1="165" y1="300" x2="215" y2="300" stroke="#94a3b8" strokeWidth="2" />
+            <line x1="165" y1="315" x2="215" y2="315" stroke="#94a3b8" strokeWidth="2" />
+            {/* Coffee Cup */}
+            <circle cx="580" cy="320" r="24" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+            <circle cx="580" cy="320" r="18" fill="#78350f" />
+          </svg>
+        );
+
+      case 'hotel':
+      case 'agency':
+      case 'counter':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgHotelCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#1c1917" />
+                <stop offset="100%" stopColor="#292524" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgHotelCinema)" />
+            {/* Warm Japanese Wooden Screen Lattice */}
+            <rect x="60" y="30" width="680" height="190" rx="12" fill="#44403c" stroke="#78716c" strokeWidth="4" />
+            <text x="400" y="80" fill="#fef08a" fontSize="24" fontWeight="black" letterSpacing="4" textAnchor="middle">フロント (FRONT)</text>
+            <text x="400" y="115" fill="#e7e5e4" fontSize="13" textAnchor="middle">チェックイン / チェックアウト</text>
+            {/* Traditional Japanese Bonsai Tree */}
+            <rect x="120" y="145" width="60" height="25" rx="4" fill="#78350f" />
+            <ellipse cx="150" cy="130" rx="35" ry="25" fill="#15803d" />
+            {/* Hotel Front Counter */}
+            <rect x="50" y="235" width="700" height="190" rx="16" fill="#78350f" stroke="#b45309" strokeWidth="6" />
+            {/* Brass Bell */}
+            <ellipse cx="400" cy="320" rx="30" ry="20" fill="#fbbf24" stroke="#d97706" strokeWidth="3" />
+            <circle cx="400" cy="300" r="6" fill="#78350f" />
+            <text x="400" y="360" fill="#fef3c7" fontSize="11" fontWeight="bold" textAnchor="middle">ご用の方はこちら 🛎️</text>
+            {/* Room Key with Wooden Tag */}
+            <rect x="540" y="300" width="80" height="35" rx="6" fill="#f59e0b" stroke="#b45309" strokeWidth="2" />
+            <text x="580" y="323" fill="#451a03" fontSize="13" fontWeight="black" textAnchor="middle">Room 502</text>
+          </svg>
+        );
+
+      case 'supermarket':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgSuperCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#f0fdf4" />
+                <stop offset="100%" stopColor="#dcfce7" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgSuperCinema)" />
+            {/* Supermarket Banners */}
+            <rect x="80" y="30" width="640" height="60" rx="10" fill="#16a34a" />
+            <text x="400" y="68" fill="#ffffff" fontSize="22" fontWeight="black" letterSpacing="2" textAnchor="middle">フレッシュスーパー 🍎</text>
+            {/* Vegetable & Fruit Shelves */}
+            <rect x="60" y="110" width="310" height="140" rx="10" fill="#ffffff" stroke="#86efac" strokeWidth="3" />
+            <text x="80" y="140" fill="#15803d" fontSize="16" fontWeight="bold">新鮮野菜・果物 コーナー</text>
+            <circle cx="110" cy="180" r="18" fill="#ef4444" />
+            <circle cx="150" cy="180" r="18" fill="#ef4444" />
+            <rect x="190" y="165" width="40" height="30" rx="6" fill="#22c55e" />
+            <circle cx="310" cy="150" r="24" fill="#dc2626" />
+            <text x="310" y="155" fill="#ffffff" fontSize="11" fontWeight="black" textAnchor="middle">30%引</text>
+            {/* Bento & Meat Shelf */}
+            <rect x="420" y="110" width="310" height="140" rx="10" fill="#ffffff" stroke="#fca5a5" strokeWidth="3" />
+            <text x="440" y="140" fill="#b91c1c" fontSize="16" fontWeight="bold">お惣菜・タイムセール 🍱</text>
+            <rect x="445" y="165" width="70" height="35" rx="6" fill="#fbbf24" stroke="#d97706" strokeWidth="2" />
+            {/* Checkout Counter */}
+            <rect x="50" y="270" width="700" height="160" rx="16" fill="#ffffff" stroke="#94a3b8" strokeWidth="4" />
+            <rect x="100" y="300" width="160" height="90" rx="8" fill="#0284c7" />
+            <text x="180" y="340" fill="#ffffff" fontSize="14" fontWeight="bold" textAnchor="middle">バーコード決済</text>
+            <text x="180" y="365" fill="#ffffff" fontSize="12" textAnchor="middle">PayPay / 交通系IC</text>
+          </svg>
+        );
+
+      case 'post_office':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <rect width="800" height="450" fill="#fef2f2" />
+            <rect x="80" y="30" width="640" height="70" rx="12" fill="#dc2626" />
+            <text x="400" y="75" fill="#ffffff" fontSize="26" fontWeight="black" textAnchor="middle">〒 郵便局 (POST)</text>
+            <rect x="70" y="120" width="660" height="130" rx="12" fill="#ffffff" stroke="#f87171" strokeWidth="3" />
+            <text x="100" y="160" fill="#991b1b" fontSize="18" fontWeight="bold">郵便窓口・ゆうパック (Yu-Pack Delivery)</text>
+            <text x="100" y="195" fill="#475569" fontSize="13">切手・はがき販売 / 国内・国際小包受付</text>
+            <rect x="60" y="270" width="680" height="160" rx="16" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="4" />
+            <rect x="120" y="310" width="120" height="60" rx="8" fill="#334155" />
+            <rect x="135" y="325" width="90" height="30" rx="4" fill="#22c55e" />
+            <text x="180" y="346" fill="#0f172a" fontSize="14" fontWeight="black" textAnchor="middle">480 g</text>
+            <rect x="300" y="300" width="130" height="90" rx="8" fill="#d97706" stroke="#b45309" strokeWidth="3" />
+            <text x="365" y="350" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle">〒 ゆうパック</text>
+          </svg>
+        );
+
+      case 'street':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgStreetCinema" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" />
+                <stop offset="60%" stopColor="#e0f2fe" />
+                <stop offset="60%" stopColor="#475569" />
+                <stop offset="100%" stopColor="#1e293b" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgStreetCinema)" />
+            <rect x="60" y="100" width="120" height="170" fill="#94a3b8" />
+            <rect x="200" y="60" width="140" height="210" fill="#64748b" />
+            <rect x="520" y="90" width="130" height="180" fill="#94a3b8" />
+            <rect x="180" y="330" width="70" height="90" fill="#ffffff" />
+            <rect x="290" y="330" width="70" height="90" fill="#ffffff" />
+            <rect x="400" y="330" width="70" height="90" fill="#ffffff" />
+            <rect x="510" y="330" width="70" height="90" fill="#ffffff" />
+            <rect x="350" y="70" width="160" height="90" rx="8" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
+            <text x="430" y="105" fill="#ffffff" fontSize="16" fontWeight="black" textAnchor="middle">← 駅前通り</text>
+            <text x="430" y="135" fill="#fef08a" fontSize="13" fontWeight="bold" textAnchor="middle">市役所 →</text>
+          </svg>
+        );
+
+      case 'phone':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgPhoneCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0f172a" />
+                <stop offset="100%" stopColor="#1e1b4b" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgPhoneCinema)" />
+            <rect x="260" y="30" width="280" height="390" rx="36" fill="#020617" stroke="#475569" strokeWidth="6" />
+            <circle cx="400" cy="140" r="42" fill="#3b82f6" opacity="0.3" />
+            <circle cx="400" cy="140" r="32" fill="#60a5fa" />
+            <text x="400" y="152" fill="#ffffff" fontSize="30" textAnchor="middle">📞</text>
+            <text x="400" y="215" fill="#ffffff" fontSize="18" fontWeight="black" textAnchor="middle">電話での問い合わせ</text>
+            <text x="400" y="240" fill="#10b981" fontSize="13" fontWeight="bold" textAnchor="middle">通話中 (In Call)</text>
+            <circle cx="400" cy="365" r="24" fill="#ef4444" />
+            <text x="400" y="373" fill="#ffffff" fontSize="18" textAnchor="middle">📵</text>
+          </svg>
+        );
+
+      case 'interview':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgInterCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#1e293b" />
+                <stop offset="100%" stopColor="#0f172a" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgInterCinema)" />
+            <rect x="80" y="30" width="640" height="150" rx="12" fill="#0f172a" stroke="#334155" strokeWidth="4" />
+            <circle cx="400" cy="80" r="28" fill="#38bdf8" opacity="0.3" stroke="#38bdf8" strokeWidth="2" />
+            <text x="400" y="130" fill="#ffffff" fontSize="18" fontWeight="black" letterSpacing="3" textAnchor="middle">採用面接室 (Interview)</text>
+            <text x="400" y="155" fill="#94a3b8" fontSize="12" textAnchor="middle">履歴書・志望動機のご確認</text>
+            <rect x="60" y="220" width="680" height="190" rx="16" fill="#334155" stroke="#475569" strokeWidth="4" />
+            <rect x="180" y="260" width="110" height="130" rx="6" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+            <text x="235" y="295" fill="#0f172a" fontSize="14" fontWeight="bold" textAnchor="middle">履歴書</text>
+            <rect x="470" y="280" width="170" height="70" rx="10" fill="#0284c7" />
+            <text x="555" y="310" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle">自己PR / 経験質問</text>
+            <text x="555" y="335" fill="#ffffff" fontSize="11" textAnchor="middle">丁寧な敬語表現 (Keigo)</text>
+          </svg>
+        );
+
+      case 'symposium':
+      case 'lecture_hall':
+      case 'conference':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgSympCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#020617" />
+                <stop offset="100%" stopColor="#0f172a" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgSympCinema)" />
+            <rect x="160" y="25" width="480" height="230" rx="12" fill="#ffffff" stroke="#38bdf8" strokeWidth="4" />
+            <rect x="180" y="45" width="440" height="40" rx="6" fill="#0284c7" />
+            <text x="400" y="72" fill="#ffffff" fontSize="18" fontWeight="black" textAnchor="middle">国際シンポジウム 基調講演</text>
+            <text x="200" y="125" fill="#0f172a" fontSize="16" fontWeight="black">持続可能な社会基盤への移行</text>
+            <text x="200" y="155" fill="#334155" fontSize="13">• 産業構造改革とイノベーションの促進</text>
+            <text x="200" y="180" fill="#334155" fontSize="13">• 資源循環型経済 (Circular Economy) の確立</text>
+            <rect x="80" y="280" width="140" height="150" rx="10" fill="#475569" stroke="#334155" strokeWidth="4" />
+            <path d="M150,280 Q160,240 180,230" fill="none" stroke="#94a3b8" strokeWidth="5" />
+            <circle cx="180" cy="230" r="8" fill="#1e293b" stroke="#64748b" strokeWidth="2" />
           </svg>
         );
 
@@ -570,10 +843,41 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
               </div>
             </div>
           </div>
+          {/* Mobile Transcript / Scenes Accordion Bar */}
+          <div className="lg:hidden">
+            <button
+              type="button"
+              onClick={() => setIsMobileDrawerOpen((prev) => !prev)}
+              className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-card border border-border/80 shadow-xs hover:bg-muted/40 transition-all text-foreground"
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black">
+                  {activeSideTab === 'transcript' ? '📜 Dialogue Transcript' : '🖼️ Storyboard Scenes'}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold">
+                  {activeSideTab === 'transcript'
+                    ? `Line ${currentLineIndex + 1}/${scenario.dialogue.length}`
+                    : `Scene ${activeSceneIndex + 1}/${scenario.storyboard.length}`}
+                </span>
+              </div>
+              <div className="flex items-center gap-1 text-[11px] font-bold text-muted-foreground">
+                <span>{isMobileDrawerOpen ? 'Collapse' : 'Expand'}</span>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isMobileDrawerOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
         </div>
 
         {/* RIGHT 1 COLUMN: YOUTUBE-STYLE INTERACTIVE TRANSCRIPT & CHAPTERS DRAWER */}
-        <div className="rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex flex-col h-[380px] sm:h-[440px] lg:h-[480px]">
+        <div
+          className={`${
+            isMobileDrawerOpen ? 'flex' : 'hidden'
+          } lg:flex rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex-col h-[360px] sm:h-[420px] lg:h-[480px] animate-in fade-in duration-200`}
+        >
           {/* Side Drawer Tabs */}
           <div className="p-3 bg-muted/40 border-b border-border/70 flex items-center justify-between">
             <div className="flex bg-muted/80 p-0.5 rounded-xl text-xs font-bold">

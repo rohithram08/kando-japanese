@@ -86,6 +86,25 @@ describe('Listening Routes & Content API', () => {
     expect(jsonResult.scenarios.every((s: any) => s.level === 'N5')).toBe(true);
   });
 
+  it('GET /scenarios?level=N4 returns cumulative N5 + N4 scenarios', async () => {
+    const handler = getRouteHandler('/scenarios', 'get');
+    const req: any = { query: { level: 'N4' } };
+    let jsonResult: any = null;
+    const res: any = {
+      json: (data: any) => {
+        jsonResult = data;
+      },
+    };
+
+    await handler(req, res, vi.fn());
+
+    expect(jsonResult).toBeDefined();
+    const levels = new Set(jsonResult.scenarios.map((s: any) => s.level));
+    expect(levels.has('N5')).toBe(true);
+    expect(levels.has('N4')).toBe(true);
+    expect(levels.has('N3')).toBe(false);
+  });
+
   it('GET /scenarios/:id returns complete storyboard and Choukai exam', async () => {
     const handler = getRouteHandler('/scenarios/:id', 'get');
     const req: any = { params: { id: 'n5_convenience_store' } };
