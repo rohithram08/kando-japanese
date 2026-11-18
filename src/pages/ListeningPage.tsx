@@ -260,70 +260,71 @@ export default function ListeningPage() {
         path="/listening"
       />
 
-      <div className="min-h-screen bg-background text-foreground pb-20">
-        {/* Top Header Banner - Non-sticky to avoid scroll overlap & clipping */}
-        <header className="border-b border-border/60 bg-card/40">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-primary/15 text-primary grid place-items-center shadow-xs">
-                <Headphones className="w-5 h-5" />
-              </div>
-              <div>
-                <h1 className="text-xl sm:text-2xl font-black text-foreground flex items-center gap-2">
+      <div className="w-full min-w-0 space-y-4">
+        {/* Compact Top Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card/70 border border-border/70 rounded-2xl p-3 sm:px-4 shadow-2xs">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
+              <Headphones className="w-4 h-4" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <h1 className="text-base sm:text-lg font-black text-foreground truncate">
                   JLPT Listening Dojo
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-primary/20 text-primary font-bold">
-                    聴解
-                  </span>
                 </h1>
-                <p className="text-xs text-muted-foreground">
-                  Authentic dialogues, cinema-style synchronized visuals & Choukai exam simulators
-                </p>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold shrink-0">
+                  聴解
+                </span>
               </div>
-            </div>
-
-            {/* Verified Active Study Timer Widget */}
-            <div className="flex items-center gap-3">
-              <div
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-2xl border transition-all ${
-                  !isIdle
-                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
-                    : 'bg-muted border-border/60 text-muted-foreground'
-                }`}
-                title="Active time verified with anti-idle detection for your teacher"
-              >
-                <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                <div className="text-right">
-                  <span className="text-[10px] block font-bold uppercase tracking-wider">
-                    {!isIdle ? 'Verified Study Time' : 'Study Paused (Idle)'}
-                  </span>
-                  <span className="text-sm font-black font-mono leading-none">
-                    {formattedTime}
-                  </span>
-                </div>
-              </div>
+              <p className="text-[11px] text-muted-foreground truncate hidden sm:block">
+                Authentic dialogues, synchronized visuals & Choukai exam simulators
+              </p>
             </div>
           </div>
 
-          {/* Level Tabs Strip */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-3 pt-1 flex items-center gap-2 overflow-x-auto no-scrollbar">
-            {JLPT_LEVELS.map((lvl) => (
-              <button
-                key={lvl}
-                type="button"
-                onClick={() => setSelectedLevel(lvl)}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
-                  selectedLevel === lvl
-                    ? 'bg-primary text-primary-foreground shadow-md'
-                    : 'bg-muted/60 text-muted-foreground hover:bg-muted hover:text-foreground'
-                }`}
-              >
-                {lvl === 'ALL' ? 'All Levels' : `JLPT ${lvl}`}
-              </button>
-            ))}
-          </div>
-        </header>
+          <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
+            {/* Level Tabs */}
+            <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-xl">
+              {JLPT_LEVELS.map((lvl) => (
+                <button
+                  key={lvl}
+                  type="button"
+                  onClick={() => setSelectedLevel(lvl)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
+                    selectedLevel === lvl
+                      ? 'bg-primary text-primary-foreground shadow-xs'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {lvl === 'ALL' ? 'All' : lvl}
+                </button>
+              ))}
+            </div>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-5 space-y-6">
+            {/* Verified Study Timer Badge */}
+            <div
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all ${
+                !isIdle
+                  ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-600 dark:text-emerald-400'
+                  : 'bg-muted border-border/60 text-muted-foreground'
+              }`}
+              title="Active time verified with anti-idle detection for your teacher"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+              <div className="text-right leading-tight">
+                <span className="text-[9px] block uppercase tracking-wider font-semibold opacity-80">
+                  {!isIdle ? 'Verified' : 'Idle'}
+                </span>
+                <span className="text-xs font-black font-mono">
+                  {formattedTime}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Content Area */}
+        <div className="space-y-4">
           {activeScenario ? (
             <>
               {/* ── 1. UNIFIED YOUTUBE-STYLE CINEMA VIDEO PLAYER (TOP PRIORITY) ── */}
@@ -470,7 +471,7 @@ export default function ListeningPage() {
               </button>
             </div>
           )}
-        </main>
+        </div>
 
         {/* JLPT Choukai Exam Simulator Modal */}
         {activeScenario && (

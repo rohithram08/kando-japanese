@@ -565,14 +565,14 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
   return (
     <div className={`space-y-4 ${isTheaterMode ? 'max-w-7xl mx-auto' : ''}`}>
       {/* ── UNIFIED YOUTUBE / THEATER VIDEO PLAYER CONTAINER ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
-        {/* LEFT 2 COLUMNS: CINEMA VIDEO SCREEN & INTEGRATED CONTROLS */}
-        <div className="lg:col-span-2 space-y-3">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start">
+        {/* LEFT 2 COLUMNS ON XL: CINEMA VIDEO SCREEN & INTEGRATED CONTROLS */}
+        <div className="xl:col-span-2 space-y-3 min-w-0">
           <div className="relative rounded-3xl overflow-hidden bg-black border border-border/80 shadow-2xl group">
-            {/* Aspect Video Display (16:9 Cinema Ratio) */}
+            {/* Aspect Video Display (16:9 Cinema Ratio with Max-Height Viewport Fit) */}
             <div
               onClick={onTogglePlay}
-              className="relative aspect-video w-full cursor-pointer overflow-hidden bg-slate-950 flex items-center justify-center"
+              className="relative aspect-video w-full max-h-[340px] sm:max-h-[380px] xl:max-h-[420px] cursor-pointer overflow-hidden bg-slate-950 flex items-center justify-center"
             >
               {/* Dynamic Theme Illustration Canvas */}
               {renderCinemaVisual(activeScene.sceneTheme)}
@@ -659,11 +659,11 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
 
               {/* Live Character Subtitle Cinema Display (Inside the Video Frame) */}
               {activeLine && (
-                <div className="absolute bottom-3 inset-x-4 z-20 pointer-events-none">
-                  <div className="max-w-2xl mx-auto p-3.5 sm:p-4 rounded-2xl bg-black/75 backdrop-blur-xl border border-white/15 text-center shadow-2xl">
+                <div className="absolute bottom-2.5 sm:bottom-3 inset-x-3 sm:inset-x-4 z-20 pointer-events-none">
+                  <div className="max-w-xl mx-auto p-2.5 sm:p-3 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/15 text-center shadow-2xl">
                     {/* Speaker badge & active audio soundwave */}
-                    <div className="flex items-center justify-center gap-2 mb-1.5">
-                      <span className="px-2 py-0.5 rounded-md bg-white/15 text-white text-[11px] font-black">
+                    <div className="flex items-center justify-center gap-2 mb-1">
+                      <span className="px-2 py-0.5 rounded-md bg-white/15 text-white text-[10px] sm:text-[11px] font-black">
                         {activeLine.speaker}
                       </span>
                       {activeLine.voiceGender === 'female' ? (
@@ -673,28 +673,28 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                       )}
                       {isPlaying && (
                         <div className="flex items-center gap-0.5 ml-1">
-                          <span className="w-1 h-3 rounded-full bg-primary animate-pulse" />
-                          <span className="w-1 h-4 rounded-full bg-primary animate-pulse delay-75" />
+                          <span className="w-1 h-2.5 rounded-full bg-primary animate-pulse" />
+                          <span className="w-1 h-3.5 rounded-full bg-primary animate-pulse delay-75" />
                           <span className="w-1 h-2 rounded-full bg-primary animate-pulse delay-150" />
                         </div>
                       )}
                     </div>
 
                     {/* Japanese Subtitle */}
-                    <p className="text-lg sm:text-2xl font-black text-white tracking-wide drop-shadow-md">
+                    <p className="text-base sm:text-xl font-black text-white tracking-wide drop-shadow-md">
                       {activeLine.text}
                     </p>
 
                     {/* Furigana Subtitle */}
                     {showFurigana && (
-                      <p className="text-xs sm:text-sm font-semibold text-primary/95 mt-0.5">
+                      <p className="text-[11px] sm:text-xs font-semibold text-primary/95 mt-0.5">
                         {activeLine.hiragana}
                       </p>
                     )}
 
                     {/* English Translation Subtitle */}
                     {showEnglishSubtitle && (
-                      <p className="text-xs sm:text-sm font-medium text-white/80 mt-1">
+                      <p className="text-[11px] sm:text-xs font-medium text-white/80 mt-0.5">
                         {activeLine.en}
                       </p>
                     )}
@@ -704,7 +704,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
             </div>
 
             {/* ── INTEGRATED YOUTUBE PLAYER CONTROLS BAR ── */}
-            <div className="bg-slate-900 border-t border-white/10 p-3 sm:p-4 space-y-2.5 select-none">
+            <div className="bg-slate-900 border-t border-white/10 p-2.5 sm:p-3 space-y-2 select-none">
               {/* Timeline Scrubber Bar with Scene Break Indicators */}
               <div
                 onClick={handleScrubberClick}
@@ -712,7 +712,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 title="Click anywhere to jump to that moment"
               >
                 {/* Background Track */}
-                <div className="h-1.5 group-hover/scrubber:h-2.5 w-full rounded-full bg-white/20 transition-all overflow-hidden relative">
+                <div className="h-1.5 group-hover/scrubber:h-2 w-full rounded-full bg-white/20 transition-all overflow-hidden relative">
                   {/* Progress Fill */}
                   <div
                     className="h-full bg-primary transition-all duration-300 rounded-full"
@@ -735,21 +735,21 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
               </div>
 
               {/* Bottom Control Buttons Row */}
-              <div className="flex flex-wrap items-center justify-between gap-3 text-white">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-white">
+                <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
                   {/* Play / Pause / Replay Toggle */}
                   <button
                     type="button"
                     onClick={onTogglePlay}
-                    className="w-10 h-10 rounded-xl bg-primary text-primary-foreground grid place-items-center hover:scale-105 active:scale-95 transition-all shadow-md"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-primary text-primary-foreground grid place-items-center hover:scale-105 active:scale-95 transition-all shadow-md shrink-0"
                     title={hasEnded ? 'Replay conversation' : isPlaying ? 'Pause' : 'Play video'}
                   >
                     {hasEnded ? (
-                      <RotateCcw className="w-5 h-5" />
+                      <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
                     ) : isPlaying ? (
-                      <Pause className="w-5 h-5 fill-current" />
+                      <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
                     ) : (
-                      <Play className="w-5 h-5 ml-0.5 fill-current" />
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 ml-0.5 fill-current" />
                     )}
                   </button>
 
@@ -757,14 +757,14 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   <button
                     type="button"
                     onClick={onRestart}
-                    className="p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all"
+                    className="p-1.5 sm:p-2 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all shrink-0"
                     title="Restart from beginning"
                   >
-                    <RotateCcw className="w-4 h-4" />
+                    <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </button>
 
                   {/* Time Stamp (e.g. 00:15 / 00:26) */}
-                  <div className="text-xs font-mono font-bold text-white/80">
+                  <div className="text-[11px] sm:text-xs font-mono font-bold text-white/80 shrink-0">
                     <span className="text-white">{formatSec(elapsedSec)}</span>
                     <span className="mx-1 text-white/40">/</span>
                     <span>{formatSec(totalDuration)}</span>
@@ -774,7 +774,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   <button
                     type="button"
                     onClick={onPlayChime}
-                    className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white/90 transition-all"
+                    className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-white/90 transition-all shrink-0"
                     title="Play iconic JLPT section start chime"
                   >
                     <BellRing className="w-3.5 h-3.5 text-primary" />
@@ -783,15 +783,15 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 </div>
 
                 {/* Right Side Options: Speed, Subtitle toggles, Exam CTA */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                   {/* Playback Speed selector */}
-                  <div className="flex bg-white/10 rounded-lg p-0.5 text-xs font-bold">
+                  <div className="flex bg-white/10 rounded-lg p-0.5 text-xs font-bold shrink-0">
                     {[0.75, 0.85, 1.0, 1.25].map((spd) => (
                       <button
                         key={spd}
                         type="button"
                         onClick={() => onSetPlaybackRate(spd)}
-                        className={`px-2 py-1 rounded-md transition-all ${
+                        className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-[11px] sm:text-xs transition-all ${
                           playbackRate === spd
                             ? 'bg-primary text-primary-foreground shadow-xs'
                             : 'text-white/70 hover:text-white'
@@ -806,7 +806,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   <button
                     type="button"
                     onClick={onToggleFurigana}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all border ${
+                    className={`px-2 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all border shrink-0 ${
                       showFurigana
                         ? 'bg-primary/20 border-primary/50 text-primary'
                         : 'border-white/20 text-white/60 hover:text-white'
@@ -820,7 +820,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   <button
                     type="button"
                     onClick={onToggleEnglish}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all border ${
+                    className={`px-2 py-1 rounded-lg text-[11px] sm:text-xs font-bold transition-all border shrink-0 ${
                       showEnglishSubtitle
                         ? 'bg-primary/20 border-primary/50 text-primary'
                         : 'border-white/20 text-white/60 hover:text-white'
@@ -834,21 +834,21 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   <button
                     type="button"
                     onClick={onOpenExam}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs font-black shadow-md hover:opacity-95 transition-all"
+                    className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs font-black shadow-md hover:opacity-95 transition-all shrink-0"
                   >
                     <Award className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Exam</span>
+                    <span>Exam</span>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          {/* Mobile Transcript / Scenes Accordion Bar */}
-          <div className="lg:hidden">
+          {/* Mobile / Tablet Transcript / Scenes Accordion Bar */}
+          <div className="xl:hidden">
             <button
               type="button"
               onClick={() => setIsMobileDrawerOpen((prev) => !prev)}
-              className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-card border border-border/80 shadow-xs hover:bg-muted/40 transition-all text-foreground"
+              className="w-full flex items-center justify-between p-3 rounded-2xl bg-card border border-border/80 shadow-xs hover:bg-muted/40 transition-all text-foreground"
             >
               <div className="flex items-center gap-2">
                 <span className="text-xs font-black">
@@ -861,7 +861,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 </span>
               </div>
               <div className="flex items-center gap-1 text-[11px] font-bold text-muted-foreground">
-                <span>{isMobileDrawerOpen ? 'Collapse' : 'Expand'}</span>
+                <span>{isMobileDrawerOpen ? 'Collapse' : 'Expand Transcript'}</span>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     isMobileDrawerOpen ? 'rotate-180' : ''
@@ -872,11 +872,11 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
           </div>
         </div>
 
-        {/* RIGHT 1 COLUMN: YOUTUBE-STYLE INTERACTIVE TRANSCRIPT & CHAPTERS DRAWER */}
+        {/* RIGHT 1 COLUMN ON XL: YOUTUBE-STYLE INTERACTIVE TRANSCRIPT & CHAPTERS DRAWER */}
         <div
           className={`${
             isMobileDrawerOpen ? 'flex' : 'hidden'
-          } lg:flex rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex-col h-[360px] sm:h-[420px] lg:h-[480px] animate-in fade-in duration-200`}
+          } xl:flex rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex-col h-[380px] xl:h-[450px] animate-in fade-in duration-200 min-w-0`}
         >
           {/* Side Drawer Tabs */}
           <div className="p-3 bg-muted/40 border-b border-border/70 flex items-center justify-between">

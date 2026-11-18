@@ -61,7 +61,7 @@ const Layout = () => {
   const sidebarWidth = isMobile ? 0 : collapsed ? SIDEBAR_CLOSED_WIDTH : SIDEBAR_OPEN_WIDTH
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-300 overflow-x-hidden">
       {/* ── Desktop sidebar: Full height on desktop, starting from top-0 ── */}
       {!isMobile && (
         <div
@@ -81,14 +81,20 @@ const Layout = () => {
       </div>
 
       {/* ── Body row: main content ── */}
-      <div className="flex flex-1 pt-16">
+      <div className="flex flex-1 pt-16 w-full min-w-0 overflow-x-hidden">
         {/* Main scrollable content — push right by sidebar width */}
         <motion.main
-          animate={{ marginLeft: isMobile ? 0 : sidebarWidth }}
+          animate={{
+            marginLeft: isMobile ? 0 : sidebarWidth,
+            width: isMobile ? '100%' : `calc(100% - ${sidebarWidth}px)`,
+          }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="flex-1 min-h-[calc(100vh-4rem)] pb-20 md:pb-6 w-full"
+          className="flex-1 min-w-0 min-h-[calc(100vh-4rem)] pb-16 md:pb-6 overflow-x-hidden"
+          style={{
+            maxWidth: isMobile ? '100%' : `calc(100% - ${sidebarWidth}px)`,
+          }}
         >
-          <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5 min-w-0">
             <Outlet />
           </div>
         </motion.main>
