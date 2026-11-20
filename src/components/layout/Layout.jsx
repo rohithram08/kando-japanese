@@ -83,21 +83,16 @@ const Layout = () => {
       {/* ── Body row: main content ── */}
       <div className="flex flex-1 pt-16 w-full min-w-0 overflow-x-hidden">
         {/* Main scrollable content — push right by sidebar width */}
-        <motion.main
-          animate={{
-            marginLeft: isMobile ? 0 : sidebarWidth,
-            width: isMobile ? '100%' : `calc(100% - ${sidebarWidth}px)`,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="flex-1 min-w-0 min-h-[calc(100vh-4rem)] pb-16 md:pb-6 overflow-x-hidden"
+        <main
+          className="flex-1 min-w-0 min-h-[calc(100vh-4rem)] pb-16 md:pb-6 overflow-x-hidden transition-[margin-left] duration-300 ease-in-out"
           style={{
-            maxWidth: isMobile ? '100%' : `calc(100% - ${sidebarWidth}px)`,
+            marginLeft: isMobile ? 0 : sidebarWidth,
           }}
         >
           <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-5 min-w-0">
             <Outlet />
           </div>
-        </motion.main>
+        </main>
       </div>
 
       {/* ── Mobile bottom nav ── */}

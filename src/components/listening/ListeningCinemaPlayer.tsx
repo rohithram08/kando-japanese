@@ -572,7 +572,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
             {/* Aspect Video Display (16:9 Cinema Ratio with Max-Height Viewport Fit) */}
             <div
               onClick={onTogglePlay}
-              className="relative aspect-video w-full max-h-[340px] sm:max-h-[380px] xl:max-h-[420px] cursor-pointer overflow-hidden bg-slate-950 flex items-center justify-center"
+              className="relative aspect-video w-full max-h-[280px] sm:max-h-[320px] xl:max-h-[360px] cursor-pointer overflow-hidden bg-slate-950 flex items-center justify-center"
             >
               {/* Dynamic Theme Illustration Canvas */}
               {renderCinemaVisual(activeScene.sceneTheme)}
@@ -659,42 +659,42 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
 
               {/* Live Character Subtitle Cinema Display (Inside the Video Frame) */}
               {activeLine && (
-                <div className="absolute bottom-2.5 sm:bottom-3 inset-x-3 sm:inset-x-4 z-20 pointer-events-none">
-                  <div className="max-w-xl mx-auto p-2.5 sm:p-3 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/15 text-center shadow-2xl">
+                <div className="absolute bottom-2 inset-x-2 sm:inset-x-3 z-20 pointer-events-none">
+                  <div className="max-w-xl mx-auto px-3 py-2 rounded-2xl bg-black/85 backdrop-blur-xl border border-white/15 text-center shadow-2xl">
                     {/* Speaker badge & active audio soundwave */}
-                    <div className="flex items-center justify-center gap-2 mb-1">
-                      <span className="px-2 py-0.5 rounded-md bg-white/15 text-white text-[10px] sm:text-[11px] font-black">
+                    <div className="flex items-center justify-center gap-1.5 mb-0.5">
+                      <span className="px-1.5 py-0.5 rounded text-[9.5px] sm:text-[10px] font-black bg-white/20 text-white">
                         {activeLine.speaker}
                       </span>
                       {activeLine.voiceGender === 'female' ? (
-                        <span className="text-[11px] text-pink-300 font-bold">♀</span>
+                        <span className="text-[10px] text-pink-300 font-bold">♀</span>
                       ) : (
-                        <span className="text-[11px] text-blue-300 font-bold">♂</span>
+                        <span className="text-[10px] text-blue-300 font-bold">♂</span>
                       )}
                       {isPlaying && (
                         <div className="flex items-center gap-0.5 ml-1">
-                          <span className="w-1 h-2.5 rounded-full bg-primary animate-pulse" />
-                          <span className="w-1 h-3.5 rounded-full bg-primary animate-pulse delay-75" />
+                          <span className="w-1 h-2 rounded-full bg-primary animate-pulse" />
+                          <span className="w-1 h-3 rounded-full bg-primary animate-pulse delay-75" />
                           <span className="w-1 h-2 rounded-full bg-primary animate-pulse delay-150" />
                         </div>
                       )}
                     </div>
 
                     {/* Japanese Subtitle */}
-                    <p className="text-base sm:text-xl font-black text-white tracking-wide drop-shadow-md">
+                    <p className="text-sm sm:text-base md:text-lg font-black text-white tracking-wide drop-shadow-md leading-tight">
                       {activeLine.text}
                     </p>
 
                     {/* Furigana Subtitle */}
                     {showFurigana && (
-                      <p className="text-[11px] sm:text-xs font-semibold text-primary/95 mt-0.5">
+                      <p className="text-[10px] sm:text-[11px] font-semibold text-primary/95 mt-0.5 leading-tight">
                         {activeLine.hiragana}
                       </p>
                     )}
 
                     {/* English Translation Subtitle */}
                     {showEnglishSubtitle && (
-                      <p className="text-[11px] sm:text-xs font-medium text-white/80 mt-0.5">
+                      <p className="text-[9.5px] sm:text-[10.5px] font-medium text-white/80 mt-0.5 leading-tight">
                         {activeLine.en}
                       </p>
                     )}
@@ -876,7 +876,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
         <div
           className={`${
             isMobileDrawerOpen ? 'flex' : 'hidden'
-          } xl:flex rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex-col h-[380px] xl:h-[450px] animate-in fade-in duration-200 min-w-0`}
+          } xl:flex rounded-3xl border border-border bg-card/95 backdrop-blur-md shadow-xl overflow-hidden flex-col h-[340px] xl:h-[415px] animate-in fade-in duration-200 min-w-0`}
         >
           {/* Side Drawer Tabs */}
           <div className="p-3 bg-muted/40 border-b border-border/70 flex items-center justify-between">
