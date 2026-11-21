@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   calculateStreakFromDates,
+  resolveStreakWithFreezes,
   getLocalDateString,
   getPreviousDayString,
   getNextDayString,
@@ -139,6 +140,102 @@ describe('Streak Calculation Service', () => {
       expect(resolveTimezone('Asia/Kolkata', 'UTC')).toBe('Asia/Kolkata');
       expect(resolveTimezone('Invalid/Zone', 'Asia/Tokyo')).toBe('Asia/Tokyo');
       expect(resolveTimezone('Invalid/Zone', 'Also/Invalid')).toBe('UTC');
+    });
+  });
+
+  describe('Duolingo Streak Freeze & Midnight Resolution Algorithm', () => {
+    it('maintains streak across missed yesterday when yesterday is in frozenDates', () => {
+      // User active on Aug 21, missed Aug 22 (frozen), today is Aug 23 (not yet practiced)
+      const activeDates = ['2026-08-21'];
+      const frozenDates = ['2026-08-22'];
+      const result = calculateStreakFromDates(activeDates, mockNow, 'UTC', frozenDates);
+
+      expect(result.currentStreak).toBe(2);
+      expect(result.isActiveToday).toBe(false);
+      expect(result.isStreakFrozen).toBe(true);
+      expect(result.streakStatus).toBe('FROZEN_TODAY');
+    });
+
+    it('extends streak from frozen yesterday when user practices today', () => {
+      // User active on Aug 21, frozen Aug 22, active today Aug 23
+      const activeDates = ['2026-08-21', '2026-08-23'];
+      const frozenDates = ['2026-08-22'];
+      const result = calculateStreakFromDates(activeDates, mockNow, 'UTC', frozenDates);
+
+      expect(result.currentStreak).toBe(3);
+      expect(result.isActiveToday).toBe(true);
+      expect(result.streakStatus).toBe('COMPLETED_TODAY');
+    });
+
+    it('resolveStreakWithFreezes auto-consumes 1 freeze when yesterday was missed', () => {
+      // Active Aug 20 and Aug 21 (streak = 2). Missed Aug 22. Reference date is Aug 23.
+      const activeDates = ['2026-08-20', '2026-08-21'];
+      const res = resolveStreakWithFreezes({
+        activeDates,
+        frozenDates: [],
+        freezeInventory: 2,
+        referenceDateOrStr: mockNow,
+        timezone: 'UTC',
+      });
+
+      expect(res.wasSavedByFreeze).toBe(true);
+      expect(res.freezesConsumed).toBe(1);
+      expect(res.remainingFreezes).toBe(1);
+      expect(res.newlyFrozenDates).toEqual(['2026-08-22']);
+      expect(res.currentStreak).toBe(3); // 2 active + 1 frozen
+      expect(res.isStreakFrozen).toBe(true);
+      expect(res.streakStatus).toBe('FROZEN_TODAY');
+    });
+
+    it('resolveStreakWithFreezes breaks streak when freeze inventory is 0', () => {
+      const activeDates = ['2026-08-20', '2026-08-21'];
+      const res = resolveStreakWithFreezes({
+        activeDates,
+        frozenDates: [],
+        freezeInventory: 0,
+        referenceDateOrStr: mockNow,
+        timezone: 'UTC',
+      });
+
+      expect(res.wasSavedByFreeze).toBe(false);
+      expect(res.freezesConsumed).toBe(0);
+      expect(res.currentStreak).toBe(0);
+      expect(res.brokenStreakCount).toBe(2);
+      expect(res.streakStatus).toBe('BROKEN');
+    });
+
+    it('resolveStreakWithFreezes consumes 2 freezes for a 2-day gap if inventory allows', () => {
+      // Active on Aug 20. Missed Aug 21 & Aug 22. Today is Aug 23.
+      const activeDates = ['2026-08-20'];
+      const res = resolveStreakWithFreezes({
+        activeDates,
+        frozenDates: [],
+        freezeInventory: 2,
+        referenceDateOrStr: mockNow,
+        timezone: 'UTC',
+      });
+
+      expect(res.wasSavedByFreeze).toBe(true);
+      expect(res.freezesConsumed).toBe(2);
+      expect(res.remainingFreezes).toBe(0);
+      expect(res.newlyFrozenDates).toEqual(['2026-08-21', '2026-08-22']);
+      expect(res.currentStreak).toBe(3);
+    });
+
+    it('resolveStreakWithFreezes does NOT consume freezes if already active today', () => {
+      const activeDates = ['2026-08-22', '2026-08-23'];
+      const res = resolveStreakWithFreezes({
+        activeDates,
+        frozenDates: [],
+        freezeInventory: 2,
+        referenceDateOrStr: mockNow,
+        timezone: 'UTC',
+      });
+
+      expect(res.freezesConsumed).toBe(0);
+      expect(res.remainingFreezes).toBe(2);
+      expect(res.currentStreak).toBe(2);
+      expect(res.streakStatus).toBe('COMPLETED_TODAY');
     });
   });
 });

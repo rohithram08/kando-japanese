@@ -111,6 +111,27 @@ describe('2D Animation Celebration System', () => {
       expect(screen.getByText(/Day 6/i)).toBeDefined();
       expect(screen.getByText(/Day 7/i)).toBeDefined();
     });
+
+    it('renders Streak Freeze Saved modal when freeze was consumed at midnight', () => {
+      act(() => {
+        useCelebrationStore.getState().triggerStreakFreezeSaved(5, '2026-10-30', 1);
+      });
+
+      render(<CelebrationPortal />);
+      expect(screen.getByText(/STREAK FREEZE ACTIVATED! 連続記録保護/i)).toBeDefined();
+      expect(screen.getByText(/Your Streak Was Saved!/i)).toBeDefined();
+      expect(screen.getByText(/5 Days Safe/i)).toBeDefined();
+    });
+
+    it('renders Streak Thaw modal when completing a lesson after frozen day', () => {
+      act(() => {
+        useCelebrationStore.getState().triggerStreakThaw(5, 6);
+      });
+
+      render(<CelebrationPortal />);
+      expect(screen.getByText(/STREAK THAWED & REIGNITED! 氷解・炎の復活/i)).toBeDefined();
+      expect(screen.getByText(/Your freeze protected your streak yesterday/i)).toBeDefined();
+    });
   });
 
   describe('SidebarWaveXPBox Component', () => {

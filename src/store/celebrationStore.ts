@@ -26,7 +26,7 @@ export const CHEER_TYPES: CheerType[] = [
 
 export interface CelebrationItem {
   id: string;
-  type: 'level_up' | 'xp_gain' | 'streak_claim';
+  type: 'level_up' | 'xp_gain' | 'streak_claim' | 'streak_freeze_saved' | 'streak_thaw';
   data: {
     oldLevel?: number;
     newLevel?: number;
@@ -36,6 +36,8 @@ export interface CelebrationItem {
     oldStreak?: number;
     newStreak?: number;
     reason?: string;
+    savedDate?: string;
+    remainingFreezes?: number;
   };
 }
 
@@ -45,6 +47,8 @@ interface CelebrationState {
   triggerLevelUp: (oldLevel: number, newLevel: number) => void;
   triggerXPGain: (amount: number, currentXP?: number, reason?: string) => void;
   triggerStreakClaim: (oldStreak: number, newStreak: number) => void;
+  triggerStreakFreezeSaved: (streak: number, savedDate: string, remainingFreezes: number) => void;
+  triggerStreakThaw: (oldStreak: number, newStreak: number) => void;
   dismiss: () => void;
   clearAll: () => void;
 }
@@ -100,6 +104,43 @@ export const useCelebrationStore = create<CelebrationState>((set, get) => ({
     const item: CelebrationItem = {
       id: `streak_${Date.now()}_${Math.random()}`,
       type: 'streak_claim',
+      data: {
+        oldStreak,
+        newStreak,
+      },
+    };
+
+    const { activeCelebration, queue } = get();
+    if (!activeCelebration) {
+      set({ activeCelebration: item });
+    } else {
+      set({ queue: [...queue, item] });
+    }
+  },
+
+  triggerStreakFreezeSaved: (streak, savedDate, remainingFreezes) => {
+    const item: CelebrationItem = {
+      id: `freeze_saved_${Date.now()}_${Math.random()}`,
+      type: 'streak_freeze_saved',
+      data: {
+        oldStreak: streak,
+        savedDate,
+        remainingFreezes,
+      },
+    };
+
+    const { activeCelebration, queue } = get();
+    if (!activeCelebration) {
+      set({ activeCelebration: item });
+    } else {
+      set({ queue: [item, ...queue] }); // High priority notification
+    }
+  },
+
+  triggerStreakThaw: (oldStreak, newStreak) => {
+    const item: CelebrationItem = {
+      id: `thaw_${Date.now()}_${Math.random()}`,
+      type: 'streak_thaw',
       data: {
         oldStreak,
         newStreak,

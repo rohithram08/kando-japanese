@@ -110,6 +110,19 @@ export function recordStreakActivity(): Promise<{ streakDays: number }> {
 }
 
 /**
+ * Record a streak freeze for a missed day (Duolingo streak freeze consumption).
+ */
+export function recordStreakFreeze(date?: string): Promise<{
+  success: boolean;
+  streakDays: number;
+  isStreakFrozen: boolean;
+  frozenDates: string[];
+  streakStatus?: string;
+}> {
+  return post('/progress/freeze', { date });
+}
+
+/**
  * Get all earned badges.
  */
 export function getBadges(): Promise<BadgeListResponse> {

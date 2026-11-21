@@ -11,6 +11,7 @@ import { useI18n } from '../../i18n';
 import { useProgressStore } from '../../store/progressStore';
 import JellyStreakSlime from '../mascot/JellyStreakSlime';
 import TreasuryChallengeModal from '../streak/TreasuryChallengeModal';
+import StreakOdometer from '../common/StreakOdometer';
 import {
   isTreasuryChallengeAvailable,
   getTimeUntilTreasuryReset,
@@ -131,17 +132,13 @@ export default function StreakCard({ streak = 0 }) {
           </div>
         </div>
 
-        {/* Days Counter */}
+        {/* Days Counter with Duolingo-style Odometer */}
         <div className="flex items-center gap-2">
           <div className="text-right">
-            <motion.span
-              key={`val-${streak}`}
-              initial={{ y: -8, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+            <StreakOdometer
+              value={streak}
               className="text-2xl font-black block leading-none text-cyan-600 dark:text-cyan-400 font-mono"
-            >
-              {streak}
-            </motion.span>
+            />
             <span className="text-[10px] font-semibold text-muted-foreground">
               {t('dashboard.streak_days', 'days')}
             </span>

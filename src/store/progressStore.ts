@@ -8,6 +8,7 @@ import {
   getGrammarProgress,
   submitXPEvent,
   recordStreakActivity,
+  recordStreakFreeze,
   recordKanjiProgress as apiRecordKanjiProgress,
   recordVocabularyProgress as apiRecordVocabularyProgress,
   recordGrammarProgress as apiRecordGrammarProgress,
@@ -729,6 +730,13 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
           localStorage.setItem('nihongo_frozen_dates', JSON.stringify(updatedFrozen));
         } catch {}
         set({ streakFreezes: remaining, isStreakFrozen: true, frozenDates: updatedFrozen });
+
+        try {
+          useCelebrationStore.getState().triggerStreakFreezeSaved(get().streak, yesterday, remaining);
+        } catch (e) {
+          console.debug('streak freeze celebration error:', e);
+        }
+
         return { streak: get().streak, preservedWithFreeze: true };
       }
     }
@@ -783,9 +791,12 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
 
     if (userId) {
       try {
-        await recordStreakActivity();
+        await recordStreakFreeze(missedDate);
       } catch (err) {
-        console.debug('Failed to sync restored streak with API:', err);
+        console.debug('Failed to sync restored streak with API freeze:', err);
+        try {
+          await recordStreakActivity();
+        } catch {}
       }
     }
 
@@ -820,14 +831,33 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       }
     } catch {}
 
+    const wasFrozen = get().isStreakFrozen;
+
     if (userId) {
       try {
         const res = await recordStreakActivity();
         if (res?.streakDays) {
-          set({ streak: res.streakDays, isActiveToday: true });
+          const oldStreak = get().streak;
+          const newStreak = res.streakDays;
+
+          set({ streak: newStreak, isActiveToday: true, isStreakFrozen: false });
           try {
             localStorage.setItem('nihongo_last_streak_date', today);
+            localStorage.setItem('nihongo_streak_frozen_today', 'false');
           } catch {}
+
+          if (!alreadyRecordedToday && newStreak > oldStreak) {
+            try {
+              if (wasFrozen) {
+                useCelebrationStore.getState().triggerStreakThaw(oldStreak, newStreak);
+              } else {
+                useCelebrationStore.getState().triggerStreakClaim(oldStreak, newStreak);
+              }
+            } catch (e) {
+              console.debug('streak celebration trigger error:', e);
+            }
+          }
+
           return res.streakDays;
         }
       } catch (err) {
@@ -845,12 +875,17 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
 
     try {
       localStorage.setItem('nihongo_last_streak_date', today);
+      localStorage.setItem('nihongo_streak_frozen_today', 'false');
     } catch {}
 
-    set({ streak: newStreak, isActiveToday: true });
+    set({ streak: newStreak, isActiveToday: true, isStreakFrozen: false });
 
     try {
-      useCelebrationStore.getState().triggerStreakClaim(streak, newStreak);
+      if (wasFrozen) {
+        useCelebrationStore.getState().triggerStreakThaw(streak, newStreak);
+      } else {
+        useCelebrationStore.getState().triggerStreakClaim(streak, newStreak);
+      }
     } catch (e) {
       console.debug('streak celebration trigger error:', e);
     }

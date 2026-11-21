@@ -13,6 +13,8 @@ import { useCelebrationStore } from '../../store/celebrationStore';
 import LevelUpCelebrationModal from './LevelUpCelebrationModal';
 import XPGainCelebrationModal from './XPGainCelebrationModal';
 import StreakClaimCelebrationModal from './StreakClaimCelebrationModal';
+import StreakFreezeSavedModal from './StreakFreezeSavedModal';
+import StreakThawCelebrationModal from './StreakThawCelebrationModal';
 
 export default function CelebrationPortal() {
   const activeCelebration = useCelebrationStore((s) => s.activeCelebration);
@@ -47,6 +49,25 @@ export default function CelebrationPortal() {
           key={activeCelebration.id}
           oldStreak={activeCelebration.data.oldStreak ?? 0}
           newStreak={activeCelebration.data.newStreak ?? 1}
+          onDismiss={dismiss}
+        />
+      )}
+
+      {activeCelebration.type === 'streak_freeze_saved' && (
+        <StreakFreezeSavedModal
+          key={activeCelebration.id}
+          streak={activeCelebration.data.oldStreak ?? 1}
+          savedDate={activeCelebration.data.savedDate ?? ''}
+          remainingFreezes={activeCelebration.data.remainingFreezes ?? 1}
+          onDismiss={dismiss}
+        />
+      )}
+
+      {activeCelebration.type === 'streak_thaw' && (
+        <StreakThawCelebrationModal
+          key={activeCelebration.id}
+          oldStreak={activeCelebration.data.oldStreak ?? 1}
+          newStreak={activeCelebration.data.newStreak ?? 2}
           onDismiss={dismiss}
         />
       )}

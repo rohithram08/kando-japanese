@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import StreakOdometer from '../common/StreakOdometer';
 import { playPop } from '../../utils/soundEffects';
 
 export default function StreakClaimCelebrationModal({
@@ -206,11 +207,20 @@ export default function StreakClaimCelebrationModal({
           </motion.div>
         </div>
 
-        {/* Motivational Callout */}
+        {/* Motivational Callout with Rolling Odometer */}
         <div className="p-3.5 rounded-2xl bg-cyan-50/70 dark:bg-cyan-950/30 border border-cyan-400/30 mb-4">
-          <p className="text-sm font-bold text-cyan-800 dark:text-cyan-200">
-            {hasStepped ? `Day ${newStreak} Streak Reached!` : 'Stepping forward...'}
-          </p>
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              Streak:
+            </span>
+            <StreakOdometer
+              value={hasStepped ? newStreak : oldStreak}
+              className="text-2xl font-black font-mono text-cyan-600 dark:text-cyan-400"
+            />
+            <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              Days
+            </span>
+          </div>
           <p className="text-xs text-muted-foreground mt-0.5">
             You took a big step forward on your Japanese journey today. Consistency is your greatest superpower!
           </p>
@@ -219,7 +229,7 @@ export default function StreakClaimCelebrationModal({
         {/* Dismiss Button */}
         <button
           onClick={onDismiss}
-          className="w-full py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 shadow-md shadow-cyan-500/25 transition-all transform active:scale-95"
+          className="w-full btn-3d-success py-3 px-4 rounded-2xl font-black text-xs uppercase tracking-wider cursor-pointer"
         >
           Keep the Momentum Going! (次へ)
         </button>

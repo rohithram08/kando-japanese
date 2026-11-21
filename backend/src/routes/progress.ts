@@ -23,6 +23,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import {
   calculateStreak,
   recordActivity,
+  recordFreezeActivity,
   getLocalDateString,
   getPreviousDayString,
   resolveTimezone,
@@ -1164,7 +1165,7 @@ progressRouter.post('/award-xp', requireAuth, validate(xpEventSchema), handleXPI
 
 /**
  * GET /api/progress/streak
- * Get current streak information.
+ * Get current streak information (with Duolingo status & freeze metadata).
  */
 progressRouter.get('/streak', requireAuth, async (req, res, next) => {
   try {
@@ -1176,6 +1177,9 @@ progressRouter.get('/streak', requireAuth, async (req, res, next) => {
       longestStreak: streakResult.longestStreak,
       lastActivityDate: streakResult.lastActivityDate,
       isActiveToday: streakResult.isActiveToday,
+      isStreakFrozen: streakResult.isStreakFrozen ?? false,
+      frozenDates: streakResult.frozenDates ?? [],
+      streakStatus: streakResult.streakStatus ?? (streakResult.isActiveToday ? 'COMPLETED_TODAY' : streakResult.currentStreak > 0 ? 'PENDING_TODAY' : 'BROKEN'),
     });
   } catch (err) {
     next(err);
@@ -1195,6 +1199,28 @@ progressRouter.post('/streak', requireAuth, async (req, res, next) => {
 
     const streakResult = await calculateStreak(userId, tz);
     res.json({ streakDays: streakResult.currentStreak });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * POST /api/progress/freeze
+ * Record a frozen day in user_streaks (Duolingo streak freeze consumption).
+ */
+progressRouter.post('/freeze', requireAuth, async (req, res, next) => {
+  try {
+    const userId = req.user!.userId;
+    const tz = resolveTimezone(req.headers?.['x-timezone'] as string, undefined);
+    const targetDate = req.body?.date || getLocalDateString(new Date(), tz);
+    const streakResult = await recordFreezeActivity(userId, targetDate, tz);
+    res.json({
+      success: true,
+      streakDays: streakResult.currentStreak,
+      isStreakFrozen: streakResult.isStreakFrozen,
+      frozenDates: streakResult.frozenDates,
+      streakStatus: streakResult.streakStatus,
+    });
   } catch (err) {
     next(err);
   }
@@ -1228,6 +1254,7 @@ progressRouter.get('/streaks', requireAuth, async (req, res, next) => {
       lessonsCompleted: s.lessonsCompleted ?? 0,
       minutesStudied: s.minutesStudied ?? 0,
       xp: s.xp ?? 0,
+      isFrozen: (s.xp ?? 0) === 0 && (s.minutesStudied ?? 0) === 0 && (s.lessonsCompleted ?? 0) === 0,
     }));
 
     res.json({
@@ -1237,6 +1264,9 @@ progressRouter.get('/streaks', requireAuth, async (req, res, next) => {
         longestStreak: streakInfo.longestStreak,
         lastActivityDate: streakInfo.lastActivityDate,
         isActiveToday: streakInfo.isActiveToday,
+        isStreakFrozen: streakInfo.isStreakFrozen ?? false,
+        frozenDates: streakInfo.frozenDates ?? [],
+        streakStatus: streakInfo.streakStatus ?? (streakInfo.isActiveToday ? 'COMPLETED_TODAY' : streakInfo.currentStreak > 0 ? 'PENDING_TODAY' : 'BROKEN'),
       },
     });
   } catch (err) {

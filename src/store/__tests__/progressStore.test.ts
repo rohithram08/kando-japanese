@@ -357,6 +357,12 @@ describe('ProgressStore (Zustand + API layer)', () => {
 
   describe('Streak Freezes & Treasury Repair', () => {
     it('repairs ended streak using 1 Jelly Freeze and restores active streak without incrementing prematurely', async () => {
+      vi.spyOn(progressApi, 'recordStreakFreeze').mockResolvedValueOnce({
+        success: true,
+        streakDays: 7,
+        isStreakFrozen: true,
+        frozenDates: ['2026-10-30'],
+      });
       vi.spyOn(progressApi, 'recordStreakActivity').mockResolvedValueOnce({ streakDays: 7 });
 
       useProgressStore.setState({
@@ -403,6 +409,26 @@ describe('ProgressStore (Zustand + API layer)', () => {
       useProgressStore.getState().claimTreasuryFreezeReward(3);
 
       expect(useProgressStore.getState().streakFreezes).toBe(4);
+    });
+
+    it('checkAndMaintainStreak auto-consumes freeze when 2 days elapsed since last study date', () => {
+      // 2 days ago
+      const twoDaysAgo = new Date(Date.now() - 2 * 86400000).toISOString().split('T')[0];
+      localStorage.setItem('nihongo_last_streak_date', twoDaysAgo);
+
+      useProgressStore.setState({
+        streak: 5,
+        streakFreezes: 2,
+        isStreakFrozen: false,
+        frozenDates: [],
+      });
+
+      const result = useProgressStore.getState().checkAndMaintainStreak();
+
+      expect(result.preservedWithFreeze).toBe(true);
+      expect(result.streak).toBe(5);
+      expect(useProgressStore.getState().streakFreezes).toBe(1);
+      expect(useProgressStore.getState().isStreakFrozen).toBe(true);
     });
   });
 });
