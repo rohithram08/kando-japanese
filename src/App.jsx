@@ -69,6 +69,14 @@ function LazyRoute({ Component, message = 'Loading section...' }) {
   )
 }
 
+function RootLandingRoute() {
+  const { user, loading } = useAuthStore()
+  if (!loading && user) {
+    return <Navigate to="/dashboard" replace />
+  }
+  return <LazyRoute Component={LandingPage} message="Loading Kando Japanese..." />
+}
+
 export default function App() {
   const { initialize } = useAuthStore()
 
@@ -82,7 +90,7 @@ export default function App() {
   return (
     <Routes>
       {/* ── Public auth & landing routes ── */}
-      <Route path="/"               element={<LazyRoute Component={LandingPage} message="Loading Kando Japanese..." />} />
+      <Route path="/"               element={<RootLandingRoute />} />
       <Route path="/research"       element={<LazyRoute Component={ResearchPage} message="Loading research paper..." />} />
       <Route path="/whitepaper"     element={<Navigate to="/research" replace />} />
       <Route element={<AuthGuard requireAuth={false} />}>

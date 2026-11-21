@@ -341,6 +341,73 @@ a {
     box-shadow: 0 2px 0 hsl(var(--border));
   }
 
+  /* Success CTA: Iconic Duolingo Green (#58cc02) Tactile 3D Button */
+  .btn-3d-success {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    user-select: none;
+    cursor: pointer;
+    background: #58cc02;
+    color: #ffffff;
+    border: 1.5px solid #46a302;
+    box-shadow: 0 4px 0 #3e8e02, 0 8px 16px rgba(88, 204, 2, 0.28);
+    transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .btn-3d-success:hover {
+    transform: translateY(-2px);
+    background: #61e002;
+    box-shadow: 0 6px 0 #3e8e02, 0 12px 20px rgba(88, 204, 2, 0.38);
+  }
+
+  .btn-3d-success:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #3e8e02, 0 4px 8px rgba(88, 204, 2, 0.2);
+  }
+
+  /* Duolingo-style springy interactive card hover */
+  .card-duo-interactive {
+    transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .card-duo-interactive:hover {
+    transform: translateY(-3px) scale(1.008);
+  }
+
+  .card-duo-interactive:active {
+    transform: translateY(1px) scale(0.992);
+  }
+
+  /* Duolingo-style glossy progress bar */
+  .progress-duo-track {
+    background: hsl(var(--muted));
+    border-radius: 9999px;
+    height: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-duo-fill {
+    height: 100%;
+    border-radius: 9999px;
+    position: relative;
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .progress-duo-fill::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 4px;
+    right: 4px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 9999px;
+  }
+
   /* Page container */
   .page-container {
     @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6;

@@ -98,6 +98,12 @@ export default function LandingPage() {
   const heroCtaRef = useRef(null)
 
   useEffect(() => {
+    if (user) {
+      navigate('/dashboard', { replace: true })
+    }
+  }, [user, navigate])
+
+  useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver(
       ([entry]) => {
