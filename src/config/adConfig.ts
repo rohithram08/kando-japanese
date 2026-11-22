@@ -8,30 +8,26 @@ export interface AdConfig {
   /** Master switch to enable or disable advertisements across the platform */
   enabled: boolean;
 
-  /** Active ad provider ('ethicalads' for privacy-friendly tech/learning ads, or 'custom' for direct code) */
-  network: 'ethicalads' | 'custom';
+  /** Active ad provider ('adsterra' | 'ethicalads' | 'custom') */
+  network: 'adsterra' | 'ethicalads' | 'custom';
+
+  /** Adsterra configuration for kandojapanese.vercel.app */
+  adsterra: {
+    /** Adsterra Website ID */
+    websiteId: string;
+    /** Direct HTML/JS snippet from Adsterra's 'Get Code' button */
+    codeSnippet: string;
+  };
 
   /** EthicalAds configuration (accepted on .vercel.app, privacy-friendly, zero trackers) */
   ethicalAds: {
-    /**
-     * Your EthicalAds Publisher ID.
-     * Default 'ethicalads' uses test mode so you can see live preview ads immediately.
-     * Once your free account is approved at https://www.ethicalads.io/publishers/,
-     * replace 'ethicalads' with your real publisher ID (e.g. 'kando-japanese').
-     */
     publisher: string;
-
-    /** Ad display type: 'image' (visual banner) or 'text' (clean reading text) */
     type: 'image' | 'text';
-
-    /** Relevant keywords to match relevant Japanese, language learning, and education ads */
     keywords: string;
-
-    /** Test mode flag: true displays test sponsor banners without requiring active billing */
     testMode: boolean;
   };
 
-  /** Custom ad snippet fallback (e.g. Adsterra or Infolinks HTML snippet) */
+  /** Custom ad snippet fallback */
   customAd: {
     html: string;
   };
@@ -39,9 +35,13 @@ export interface AdConfig {
 
 export const AD_CONFIG: AdConfig = {
   enabled: true,
-  network: 'ethicalads',
+  network: 'adsterra',
+  adsterra: {
+    websiteId: '6220158',
+    codeSnippet: '', // Paste the code snippet from Adsterra "Get code" here
+  },
   ethicalAds: {
-    publisher: 'ethicalads', // Test publisher accepted on all domains including .vercel.app
+    publisher: 'ethicalads',
     type: 'image',
     keywords: 'japanese|learning|education|language|books',
     testMode: true,

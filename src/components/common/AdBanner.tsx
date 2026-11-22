@@ -1,12 +1,12 @@
 // src/components/common/AdBanner.tsx
 // ─────────────────────────────────────────────────────────────────────────────
 // Kando Japanese — Non-Intrusive Educational AdBanner
-// Designed for free-subdomain ad networks (EthicalAds, Adsterra, Infolinks)
+// Designed for free-subdomain ad networks (Adsterra, EthicalAds, Custom)
 // Non-tracking, responsive, and collapsible to maintain a respectful study flow.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React, { useEffect, useState, useId } from 'react';
-import { Sparkles, X, Heart, ExternalLink } from 'lucide-react';
+import React, { useEffect, useState, useId, useRef } from 'react';
+import { Sparkles, X, Heart } from 'lucide-react';
 import { AD_CONFIG } from '../../config/adConfig';
 
 declare global {
@@ -37,6 +37,7 @@ export default function AdBanner({
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const uniqueId = useId().replace(/:/g, '');
   const containerId = `ea-ad-${placementId}-${uniqueId}`;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   // 1. Inject EthicalAds client script once if EthicalAds is selected
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function AdBanner({
     }
   }, [isDismissed]);
 
-  // 2. Trigger ad reload when component mounts or script loads
+  // 2. Trigger ad reload for EthicalAds
   useEffect(() => {
     if (!AD_CONFIG.enabled || isDismissed) return;
     if (scriptLoaded && window.ethicalads) {
@@ -73,6 +74,36 @@ export default function AdBanner({
       } catch {}
     }
   }, [scriptLoaded, isDismissed]);
+
+  // 3. Isolated script execution for Adsterra code snippets inside sandboxed iframe
+  useEffect(() => {
+    if (!AD_CONFIG.enabled || isDismissed || AD_CONFIG.network !== 'adsterra') return;
+    if (!iframeRef.current || !AD_CONFIG.adsterra.codeSnippet) return;
+
+    try {
+      const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
+      if (doc) {
+        doc.open();
+        doc.write(`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <style>
+                body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
+              </style>
+            </head>
+            <body>
+              ${AD_CONFIG.adsterra.codeSnippet}
+            </body>
+          </html>
+        `);
+        doc.close();
+      }
+    } catch (err) {
+      console.warn('[AdBanner] Could not inject Adsterra code into iframe:', err);
+    }
+  }, [isDismissed]);
 
   if (!AD_CONFIG.enabled || isDismissed) {
     return null;
@@ -110,7 +141,26 @@ export default function AdBanner({
 
       {/* ── Ad Slot Container ───────────────────────────────────────── */}
       <div className="min-h-[90px] flex items-center justify-center">
-        {AD_CONFIG.network === 'ethicalads' ? (
+        {AD_CONFIG.network === 'adsterra' ? (
+          AD_CONFIG.adsterra.codeSnippet ? (
+            <iframe
+              ref={iframeRef}
+              title="Adsterra Advertisement"
+              className="w-full min-h-[90px] border-0 overflow-hidden"
+              scrolling="no"
+            />
+          ) : (
+            <div className="py-2.5 px-4 rounded-xl bg-muted/40 border border-border/50 text-center max-w-md w-full flex flex-col items-center gap-1">
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                <Sparkles className="w-3.5 h-3.5 text-sky-500" />
+                <span>Adsterra Partner Connected (ID: {AD_CONFIG.adsterra.websiteId})</span>
+              </div>
+              <p className="text-[11px] text-muted-foreground">
+                Website is verified on Adsterra. Paste your ad unit code snippet to start live monetizing!
+              </p>
+            </div>
+          )
+        ) : AD_CONFIG.network === 'ethicalads' ? (
           <div
             id={containerId}
             data-ea-publisher={AD_CONFIG.ethicalAds.publisher}
@@ -119,14 +169,13 @@ export default function AdBanner({
             data-ea-manual="true"
             className="horizontal adaptive w-full flex justify-center text-center text-xs"
           >
-            {/* Fallback preview banner when offline, ad-blocked, or before EthicalAds renders */}
             <div className="py-2 px-3 rounded-xl bg-muted/40 border border-border/50 text-center max-w-md w-full flex flex-col items-center gap-1">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 <span>Kando Japanese Community Sponsor</span>
               </div>
               <p className="text-[11px] text-muted-foreground">
-                Ads delivered through EthicalAds are 100% privacy-respecting and tracker-free. Payouts directly support our TiDB database and server hosting.
+                Ads delivered through our partner network support free server & database hosting.
               </p>
             </div>
           </div>

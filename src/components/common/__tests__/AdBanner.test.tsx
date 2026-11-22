@@ -7,7 +7,8 @@ import { AD_CONFIG } from '../../../config/adConfig';
 afterEach(() => {
   cleanup();
   AD_CONFIG.enabled = true;
-  AD_CONFIG.network = 'ethicalads';
+  AD_CONFIG.network = 'adsterra';
+  AD_CONFIG.adsterra.codeSnippet = '';
 });
 
 describe('AdBanner Component', () => {
@@ -17,6 +18,7 @@ describe('AdBanner Component', () => {
     expect(screen.getByText('Sponsored')).toBeDefined();
     expect(screen.getByText('スポンサー')).toBeDefined();
     expect(screen.getByText(/Supports free Japanese learning/i)).toBeDefined();
+    expect(screen.getByText(/Adsterra Partner Connected/i)).toBeDefined();
   });
 
   it('allows dismissing the ad banner when close button is clicked', () => {
@@ -33,6 +35,16 @@ describe('AdBanner Component', () => {
     const { container } = render(<AdBanner placementId="test-disabled" />);
 
     expect(container.firstChild).toBeNull();
+  });
+
+  it('renders iframe when Adsterra code snippet is provided', () => {
+    AD_CONFIG.network = 'adsterra';
+    AD_CONFIG.adsterra.codeSnippet = '<script>window.atOptions={key:"123"};</script>';
+
+    render(<AdBanner placementId="test-adsterra" />);
+
+    const iframe = screen.getByTitle('Adsterra Advertisement');
+    expect(iframe).toBeDefined();
   });
 
   it('renders custom ad HTML when configured for custom network', () => {
