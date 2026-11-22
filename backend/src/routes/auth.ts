@@ -14,6 +14,7 @@ import { AppError } from '../middleware/errorHandler.js';
 import { authLimiter } from '../middleware/rateLimit.js';
 import { serializeProfile } from '../services/userSerializer.js';
 import { sendEmail } from '../services/emailService.js';
+import { authSecurity } from '../services/authSecurityService.js';
 
 export const authRouter = Router();
 
@@ -43,9 +44,14 @@ const MIN_PASSWORD_LENGTH = 8;
 
 const registerSchema = z.object({
   body: z.object({
-    email: z.string().email(),
-    password: z.string().min(8),
-    username: z.string().min(2).max(100),
+    email: z.string().email().max(254).refine(val => !val.includes('\0'), 'Invalid characters in email'),
+    password: z.string().min(8).max(128),
+    username: z
+      .string()
+      .min(2)
+      .max(40)
+      .regex(/^[a-zA-Z0-9_\-\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF ]+$/, 'Username contains unsupported characters')
+      .refine(val => !val.includes('\0'), 'Username contains invalid characters'),
     // Self-declared starting level from the sign-up wizard; sets the initial study level.
     currentLevel: z.enum(['N5', 'N4', 'N3', 'N2', 'N1']).optional(),
   }),
@@ -89,8 +95,8 @@ authRouter.post('/register', authLimiter, validate(registerSchema), async (req, 
 
 const loginSchema = z.object({
   body: z.object({
-    email: z.string().email(),
-    password: z.string().min(1),
+    email: z.string().email().max(254),
+    password: z.string().min(1).max(128),
   }),
 });
 
@@ -99,19 +105,37 @@ authRouter.post('/login', authLimiter, validate(loginSchema), async (req, res, n
     const { password } = req.body;
     const email = normalizeEmail(req.body.email);
 
+    // 1. Duolingo-Grade Brute-Force & Credential Stuffing Defense (Account Lockout)
+    const lockStatus = authSecurity.isAccountLocked(email);
+    if (lockStatus.locked) {
+      throw new AppError(
+        429,
+        `Account temporarily locked due to multiple failed login attempts. Please retry in ${lockStatus.remainingSeconds} seconds or reset your password.`,
+        'ACCOUNT_LOCKED'
+      );
+    }
+
     const user = await db.query.users.findFirst({
       where: emailEquals(email),
     });
     
     if (!user) {
+      // 2. Duolingo-Grade Timing-Attack Mitigation:
+      // Execute identical dummy hash verification cycle before rejecting,
+      // completely neutralizing user enumeration attacks.
+      await authSecurity.executeDummyHashCompare(password);
+      authSecurity.recordFailedLogin(email);
       throw new AppError(401, 'Invalid credentials', 'INVALID_CREDENTIALS');
     }
     
     const isValid = await bcrypt.compare(password, user.passwordHash);
     if (!isValid) {
+      authSecurity.recordFailedLogin(email);
       throw new AppError(401, 'Invalid credentials', 'INVALID_CREDENTIALS');
     }
     
+    // Successful login: reset failed counters
+    authSecurity.recordSuccessfulLogin(email);
     setSessionCookie(res, signSession(user.id, user.email));
 
     res.json({ message: 'Login successful' });

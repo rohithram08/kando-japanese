@@ -33,9 +33,17 @@ describe('ParticleStudio component', () => {
   it('displays Tamil and Hindi case marker parallels for particles', () => {
     render(<ParticleStudio />)
     // Default selected particle is は
-    expect(screen.getByText(/Tamil Equivalent/i)).toBeDefined()
-    expect(screen.getByText(/Hindi Equivalent/i)).toBeDefined()
-    expect(screen.getByText(/Topic Marker/i)).toBeDefined()
+    expect(screen.getAllByText(/Topic Marker/i)[0]).toBeDefined()
+
+    // Switch to Tamil tab and verify Tamil equivalent
+    const taBtn = screen.getByText('தமிழ்')
+    fireEvent.click(taBtn)
+    expect(screen.getAllByText(/தான்/i)[0]).toBeDefined()
+
+    // Switch to Hindi tab and verify Hindi equivalent
+    const hiBtn = screen.getByText('हिंदी')
+    fireEvent.click(hiBtn)
+    expect(screen.getAllByText(/तो \/ के बारे में/i)[0]).toBeDefined()
   })
 
   it('switches to SOV Parallelism tab and shows 4-language word order comparison', () => {

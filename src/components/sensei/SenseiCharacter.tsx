@@ -9,7 +9,7 @@ import { SenseiBackground, ClassroomContactShadows } from './SenseiBackground';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
 import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter2D';
 import SenseiMarkdown from './SenseiMarkdown';
-import { KandoSlime3D } from './KandoSlime3D';
+import { KandoSlime3D, SlimeAccessory } from './KandoSlime3D';
 import { SlimeMood } from '../mascot/KandoSlime';
 import VirtualLanguageKeyboard from './VirtualLanguageKeyboard';
 import SenseiMobileDock from './SenseiMobileDock';
@@ -19,12 +19,15 @@ export interface SenseiCharacterProps {
   speechState?: SenseiAnimationState;
   state?: SenseiAnimationState;
   reducedMotion?: boolean;
-  mode?: 'compact' | 'full' | 'portrait';
+  mode?: 'compact' | 'full' | 'portrait' | 'teaching';
   targetDirection?: 'left' | 'right' | 'forward' | null;
   stageSide?: 'left' | 'center';
   slimePersona?: 'mr' | 'mrs';
   slimeMood?: SlimeMood;
   showSlime?: boolean;
+  slimeAccessory?: SlimeAccessory;
+  onInteractHana?: () => void;
+  onPokeSlime?: () => void;
   /** true while Hana-sensei's voice is playing (drives Stop/Replay in the phone dock) */
   isSpeaking?: boolean;
 
@@ -217,6 +220,9 @@ export default function SenseiCharacter({
   slimePersona = 'mr',
   slimeMood = 'idle',
   showSlime = true,
+  slimeAccessory = 'auto',
+  onInteractHana,
+  onPokeSlime,
   isSpeaking = false,
 
   // In-Scene 3D Conversation Dialogue Props:
@@ -323,6 +329,11 @@ export default function SenseiCharacter({
     targetPos = [-1.28, 1.25, 0];
     cameraPos = isMobileScreen ? [-1.28, 1.30, 2.4] : [-1.28, 1.30, 2.1];
     cameraFov = isMobileScreen ? 38 : 35;
+  } else if (mode === 'teaching') {
+    // Unity Virtual Camera: Waist & wand gestures focus
+    targetPos = [-1.45, 1.02, 0];
+    cameraPos = isMobileScreen ? [-1.45, 1.10, 2.5] : [-1.45, 1.12, 2.3];
+    cameraFov = 38;
   } else if (!isFull) {
     targetPos = [0, 1.05, 0];
     cameraPos = [0, 1.15, 2.8];
@@ -400,9 +411,18 @@ export default function SenseiCharacter({
         }}
       >
         <Canvas
-          gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+          shadows
+          gl={{
+            alpha: true,
+            antialias: true,
+            powerPreference: 'high-performance',
+            toneMapping: THREE.ACESFilmicToneMapping,
+            toneMappingExposure: 1.18,
+          }}
           camera={{ position: cameraPos, fov: cameraFov }}
           onCreated={({ gl }) => {
+            gl.shadowMap.enabled = true;
+            gl.shadowMap.type = THREE.PCFSoftShadowMap;
             gl.domElement.addEventListener('webglcontextlost', (e) => {
               e.preventDefault();
               setCanvasError(true);
@@ -411,11 +431,20 @@ export default function SenseiCharacter({
         >
           <PerspectiveCamera makeDefault position={cameraPos} fov={cameraFov} />
           
-          {/* General Room Illumination */}
-          <ambientLight intensity={1.4} color="#f5f0fa" />
-          <directionalLight position={[1.8, 2.8, 3.2]} intensity={2.2} color="#ffffff" castShadow />
-          <directionalLight position={[-2.4, 1.4, 1.8]} intensity={1.4} color="#fdf2f4" />
-          <directionalLight position={[0, 2.2, -3.5]} intensity={2.6} color="#e5a93c" />
+          {/* Unity Engine Studio Illumination */}
+          <ambientLight intensity={1.5} color="#f8f4ff" />
+          <directionalLight
+            position={[2.2, 3.8, 3.2]}
+            intensity={2.6}
+            color="#ffffff"
+            castShadow
+            shadow-mapSize={[2048, 2048]}
+            shadow-bias={-0.0001}
+          />
+          {/* High-Contrast Anime Rim/Back Light */}
+          <directionalLight position={[0, 2.6, -3.8]} intensity={3.6} color="#fed7aa" />
+          {/* Cool Fill Light */}
+          <directionalLight position={[-3.2, 1.8, 2.0]} intensity={1.5} color="#e0e7ff" />
 
           {/* ─── COMPLETE 360° JAPANESE CLASSROOM UNIFIED WORLD ─── */}
           {/* The entire Japanese Classroom (Walls, Blackboard, Desk, Floor, Hana, and Slime) rotates together 360° as ONE world! */}
@@ -430,7 +459,8 @@ export default function SenseiCharacter({
               showSlime={isLeft && showSlime}
             />
 
-            {/* 3. Dedicated Wand Specular & Emissive Light for Hana on Left */}
+            {/* 3. Dedicated Face & Wand Specular / Accent Light for Hana on Left */}
+            <pointLight position={[-1.70, 1.35, 0.75]} intensity={2.0} distance={2.4} color="#fff1f2" />
             <pointLight position={[-1.70, 0.78, 0.65]} intensity={2.8} distance={2.5} color="#ffe082" />
             {/* Dedicated Ambient Keylight for 3D Slime on Right */}
             {isLeft && showSlime && (
@@ -449,6 +479,7 @@ export default function SenseiCharacter({
                 state={activeState}
                 targetDirection={targetDirection || (isLeft ? 'right' : null)}
                 position={characterPos}
+                onInteract={onInteractHana}
               />
             </Suspense>
           </ErrorBoundary>
@@ -461,6 +492,8 @@ export default function SenseiCharacter({
                 slimeType={slimePersona}
                 mood={slimeMood}
                 scale={1.08}
+                accessory={slimeAccessory}
+                onPoke={onPokeSlime}
               />
             </Suspense>
           )}

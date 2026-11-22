@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 
 import SenseiCharacter from '../components/sensei/SenseiCharacter';
+import SenseiActionStrip from '../components/sensei/SenseiActionStrip';
+import { SlimeAccessory } from '../components/sensei/KandoSlime3D';
 import SenseiMarkdown from '../components/sensei/SenseiMarkdown';
 import KandoSlime, { SlimeMood } from '../components/mascot/KandoSlime';
 import { audioService, localeToTtsLang } from '../services/audioService';
@@ -76,7 +78,16 @@ export default function SenseiPage() {
 
   const [input, setInput] = useState('');
   const [showHistory, setShowHistory] = useState(false);
+  const [slimeAccessory, setSlimeAccessory] = useState<SlimeAccessory>('auto');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const handleInteractHana = () => {
+    greet();
+  };
+
+  const handlePokeSlime = () => {
+    triggerCelebration('Slime Poke');
+  };
 
   const explanationLang = useSettingsStore(s => s.explanationLanguage || 'en');
   const speechLang = localeToTtsLang(explanationLang);
@@ -260,18 +271,19 @@ export default function SenseiPage() {
             </button>
           )}
 
-          {/* Camera Mode Toggle */}
+          {/* Camera Mode Director Switcher */}
           <button
             onClick={toggleCameraMode}
-            className={`p-2 rounded-xl transition-all ${
-              cameraMode === 'portrait'
+            className={`px-2.5 py-1.5 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 active:scale-95 ${
+              cameraMode !== 'full'
                 ? 'bg-primary text-primary-foreground shadow-xs'
                 : 'hover:bg-muted text-muted-foreground hover:text-foreground'
             }`}
-            title={cameraMode === 'portrait' ? "Full Stage Framing" : "Portrait Focus"}
-            aria-label={cameraMode === 'portrait' ? "Full Stage Framing" : "Portrait Focus"}
+            title={`Current Camera: ${cameraMode.toUpperCase()} (Click to cycle Stage -> Teach -> Portrait)`}
+            aria-label="Cycle 3D camera angles"
           >
-            <Camera className="w-4 h-4" />
+            <Camera className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline capitalize">{cameraMode}</span>
           </button>
         </div>
       </header>
@@ -288,6 +300,9 @@ export default function SenseiPage() {
             slimePersona={slimePersona}
             slimeMood={activeSlimeMood}
             showSlime={true}
+            slimeAccessory={slimeAccessory}
+            onInteractHana={handleInteractHana}
+            onPokeSlime={handlePokeSlime}
             isSpeaking={speechState === 'speaking'}
             latestAssistantMessage={latestAssistantMessage}
             latestUserMessage={latestUserMessage}
@@ -306,6 +321,16 @@ export default function SenseiPage() {
             quickPrompts={QUICK_PROMPTS}
           />
         </div>
+
+        {/* ─── UNITY-STYLE 3D ACTION STUDIO & CAMERA DIRECTOR ─── */}
+        <SenseiActionStrip
+          currentAction={animationState}
+          onSelectAction={(act) => setAnimationState(act)}
+          cameraMode={cameraMode}
+          onSelectCamera={(m) => setCameraMode(m)}
+          slimeAccessory={slimeAccessory}
+          onSelectAccessory={setSlimeAccessory}
+        />
       </main>
 
       {/* ─── OPTIONAL SLIDE-OUT DIALOGUE HISTORY DRAWER ─── */}

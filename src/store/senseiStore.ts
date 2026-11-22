@@ -55,7 +55,7 @@ interface SenseiState {
   dailyGuidance: any | null;
   targetDirection: 'left' | 'right' | 'forward' | null;
   qaMode: boolean;
-  cameraMode: 'full' | 'portrait';
+  cameraMode: 'full' | 'teaching' | 'portrait';
 
   // Actions
   toggleOpen: () => void;
@@ -80,7 +80,7 @@ interface SenseiState {
   setTargetDirection: (dir: 'left' | 'right' | 'forward' | null) => void;
   setQaMode: (val: boolean) => void;
   toggleQaMode: () => void;
-  setCameraMode: (mode: 'full' | 'portrait') => void;
+  setCameraMode: (mode: 'full' | 'teaching' | 'portrait') => void;
   toggleCameraMode: () => void;
   greet: () => void;
   triggerCelebration: (reason?: string) => void;
@@ -173,7 +173,15 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   setQaMode: (val) => set({ qaMode: val }),
   toggleQaMode: () => set(state => ({ qaMode: !state.qaMode })),
   setCameraMode: (mode) => set({ cameraMode: mode }),
-  toggleCameraMode: () => set(state => ({ cameraMode: state.cameraMode === 'full' ? 'portrait' : 'full' })),
+  toggleCameraMode: () =>
+    set(state => ({
+      cameraMode:
+        state.cameraMode === 'full'
+          ? 'teaching'
+          : state.cameraMode === 'teaching'
+          ? 'portrait'
+          : 'full',
+    })),
 
   toggleOpen: () => {
     const nextOpen = !get().isOpen;

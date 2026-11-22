@@ -17,9 +17,15 @@ interface SenseiGLBCharacterProps {
   state: SenseiAnimationState;
   targetDirection?: 'left' | 'right' | 'forward' | null;
   position?: [number, number, number];
+  onInteract?: () => void;
 }
 
-export function SenseiGLBCharacter({ state, targetDirection = null, position = [0, 0, 0] }: SenseiGLBCharacterProps) {
+export function SenseiGLBCharacter({
+  state,
+  targetDirection = null,
+  position = [0, 0, 0],
+  onInteract,
+}: SenseiGLBCharacterProps) {
   const group = useRef<THREE.Group>(null);
   const spineBoneRef = useRef<THREE.Object3D | null>(null);
   const headBoneRef = useRef<THREE.Object3D | null>(null);
@@ -37,17 +43,41 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
   const { scene, animations } = useGLTF(GLB_MODEL_PATH);
   const { actions } = useAnimations(animations, group);
 
-  // Initialize scene into controllers and cache critical bones
+  // Initialize scene into controllers, enable Unity-grade shadows, and cache critical bones
   useEffect(() => {
     if (scene) {
       expressionCtrl.setScene(scene);
 
-      spineBoneRef.current = scene.getObjectByName('J_Bip_C_Spine') || scene.getObjectByName('J_Bip_C_UpperChest') || null;
+      // Unity-grade PBR shadow casting & material response
+      scene.traverse((obj) => {
+        if ((obj as THREE.Mesh).isMesh) {
+          const mesh = obj as THREE.Mesh;
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+          if (mesh.material) {
+            const mat = mesh.material as THREE.MeshStandardMaterial;
+            if (mat.roughness !== undefined) {
+              mat.roughness = Math.min(mat.roughness, 0.65);
+            }
+            mat.needsUpdate = true;
+          }
+        }
+      });
+
+      spineBoneRef.current =
+        scene.getObjectByName('J_Bip_C_Spine') ||
+        scene.getObjectByName('J_Bip_C_UpperChest') ||
+        null;
       headBoneRef.current = scene.getObjectByName('J_Bip_C_Head') || null;
-      wandSocketRef.current = scene.getObjectByName('Socket_Wand_R') || scene.getObjectByName('J_Bip_R_Hand') || null;
+      wandSocketRef.current =
+        scene.getObjectByName('Socket_Wand_R') ||
+        scene.getObjectByName('J_Bip_R_Hand') ||
+        null;
 
       if (import.meta.env.DEV) {
-        console.log(`[HanaSensei] GLB scene loaded: ${scene.children.length} root objects, ${animations.length} animation clips.`);
+        console.log(
+          `[HanaSensei] GLB scene loaded: ${scene.children.length} root objects, ${animations.length} animation clips.`
+        );
       }
     }
   }, [scene, animations, expressionCtrl]);
@@ -71,8 +101,8 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
     // In Three.js: Positive Y rotation turns towards +X (Right, facing Slime),
     // Negative Y rotation turns towards -X (Left).
     let targetRotationY = 0;
-    if (targetDirection === 'left') targetRotationY = -0.65;       // ~37 deg leftwards
-    else if (targetDirection === 'right') targetRotationY = 0.65;  // ~37 deg rightwards towards Slime!
+    if (targetDirection === 'left') targetRotationY = -0.65; // ~37 deg leftwards
+    else if (targetDirection === 'right') targetRotationY = 0.65; // ~37 deg rightwards towards Slime!
 
     if (group.current) {
       group.current.rotation.y = THREE.MathUtils.lerp(
@@ -82,24 +112,28 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
       );
     }
 
-    // 2. Natural subtle procedural micro-motions on idle (breathing & life)
+    // 2. Unity-Grade Procedural Life & Breathing Micro-Motions
+    const t = stateObj.clock.elapsedTime;
     const isIdle = state === 'idle' || !state;
-    if (isIdle) {
-      const t = stateObj.clock.elapsedTime;
-      if (spineBoneRef.current) {
-        // Natural chest expansion/contraction
-        spineBoneRef.current.rotation.x = Math.sin(t * 1.5) * 0.012;
-      }
-      if (headBoneRef.current) {
-        // Turn head towards Slime on the right (+X) with natural life drift
-        const targetHeadY = targetDirection === 'right' ? 0.18 : targetDirection === 'left' ? -0.18 : 0;
-        headBoneRef.current.rotation.y = targetHeadY + Math.sin(t * 0.35) * 0.015;
-        headBoneRef.current.rotation.z = Math.cos(t * 0.4) * 0.01;
-      }
-      if (wandSocketRef.current) {
-        // Subtle wand sparkle float
-        wandSocketRef.current.rotation.z = Math.sin(t * 1.2) * 0.016;
-      }
+
+    if (spineBoneRef.current) {
+      // Natural organic breathing cycle
+      const breathIntensity = isIdle ? 0.014 : 0.007;
+      spineBoneRef.current.rotation.x = Math.sin(t * 1.6) * breathIntensity;
+    }
+
+    if (headBoneRef.current) {
+      // Natural subtle head saccades and target focus
+      const targetHeadY =
+        targetDirection === 'right' ? 0.18 : targetDirection === 'left' ? -0.18 : 0;
+      const microSaccade = Math.sin(t * 0.4) * 0.012;
+      headBoneRef.current.rotation.y = targetHeadY + microSaccade;
+      headBoneRef.current.rotation.z = Math.cos(t * 0.5) * 0.008;
+    }
+
+    if (wandSocketRef.current) {
+      // Subtle magical wand float & sparkle sway
+      wandSocketRef.current.rotation.z = Math.sin(t * 1.3) * 0.018;
     }
   });
 
@@ -117,12 +151,25 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
         action.fadeOut(0.25);
       };
     } else if (import.meta.env.DEV) {
-      console.warn(`[HanaSensei] Animation clip "${clipName}" not found in GLB. Available:`, Object.keys(actions));
+      console.warn(
+        `[HanaSensei] Animation clip "${clipName}" not found in GLB. Available:`,
+        Object.keys(actions)
+      );
     }
   }, [state, actions]);
 
+  const handlePointerDown = (e: any) => {
+    e.stopPropagation();
+    onInteract?.();
+  };
+
   return (
-    <group ref={group} position={position} dispose={null}>
+    <group
+      ref={group}
+      position={position}
+      onPointerDown={handlePointerDown}
+      dispose={null}
+    >
       <primitive object={scene} />
     </group>
   );
@@ -130,5 +177,3 @@ export function SenseiGLBCharacter({ state, targetDirection = null, position = [
 
 // Preload the model
 useGLTF.preload(GLB_MODEL_PATH);
-
-
