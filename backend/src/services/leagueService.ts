@@ -11,7 +11,7 @@
  */
 
 import { randomUUID } from 'node:crypto';
-import { and, asc, count, desc, eq, gt, inArray, isNull, lte, gte, lt, sql } from 'drizzle-orm';
+import { and, asc, count, desc, eq, gt, inArray, isNull, lte, gte, lt, notLike, sql } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { leagueCohorts, leagueEntries, leagueMembership, leagueWeeks, users, xpEvents } from '../db/schema.js';
 import { parseAvatarConfig } from './avatarConfig.js';
@@ -175,7 +175,7 @@ export async function getLeagueView(userId: string, now: Date = new Date()) {
     })
     .from(leagueEntries)
     .innerJoin(users, eq(users.id, leagueEntries.userId))
-    .where(eq(leagueEntries.cohortId, entry.cohortId));
+    .where(and(eq(leagueEntries.cohortId, entry.cohortId), notLike(users.email, '%@example.com')));
 
   const xpMap = await weeklyXpFor(members.map((m) => m.userId), win);
   const real: Participant[] = members.map((m) => ({
@@ -183,7 +183,8 @@ export async function getLeagueView(userId: string, now: Date = new Date()) {
     xp: xpMap.get(m.userId)?.xp ?? 0, reachedAt: xpMap.get(m.userId)?.reachedAt ?? 0,
   }));
   const fraction = (now.getTime() - win.start.getTime()) / (win.end.getTime() - win.start.getTime());
-  const bots = botParticipants(entry.cohortId, entry.rung, botCountFor(real.length), fraction);
+  const botCount = process.env.ENABLE_LEAGUE_BOTS === 'true' ? botCountFor(real.length) : 0;
+  const bots = botParticipants(entry.cohortId, entry.rung, botCount, fraction);
   const ranked = rankParticipants([...real, ...bots]);
   const n = ranked.length;
 
@@ -237,12 +238,12 @@ export async function getHistory(userId: string, limit = 10) {
   return rows.map((r) => ({ ...r, rung: rungInfo(r.rungStart) }));
 }
 
-/** All-time leaderboard by total XP (learners who opted out are never shown). */
+/** All-time leaderboard by total XP (learners who opted out and test accounts are never shown). */
 export async function getGlobalBoard(userId: string, limit = 25) {
   const top = await db
     .select({ userId: users.id, username: users.username, xp: users.xpPoints, avatarConfig: users.avatarConfig, avatarId: users.avatarId, avatarUrl: users.avatarUrl })
     .from(users)
-    .where(eq(users.leagueOptOut, false))
+    .where(and(eq(users.leagueOptOut, false), notLike(users.email, '%@example.com')))
     .orderBy(desc(users.xpPoints), asc(users.createdAt))
     .limit(Math.min(Math.max(1, Math.floor(limit)), 100));
   const entries = top.map((u, i) => ({ rank: i + 1, userId: u.userId, name: u.username, xp: u.xp ?? 0, isYou: u.userId === userId, avatar: toAvatar(u) }));
@@ -314,7 +315,8 @@ export async function settleWeek(weekId: string, now: Date = new Date()): Promis
         key: `user:${e.userId}`, userId: e.userId, isBot: false, name: nameOf.get(e.userId) ?? 'Learner',
         xp: xpMap.get(e.userId)?.xp ?? 0, reachedAt: xpMap.get(e.userId)?.reachedAt ?? 0,
       }));
-      const bots = botParticipants(cohort.id, cohort.rung, botCountFor(real.length), 1);
+      const botCount = process.env.ENABLE_LEAGUE_BOTS === 'true' ? botCountFor(real.length) : 0;
+      const bots = botParticipants(cohort.id, cohort.rung, botCount, 1);
       const ranked = rankParticipants([...real, ...bots]);
       const n = ranked.length;
 

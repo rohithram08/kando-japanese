@@ -151,12 +151,12 @@ export async function listFollowers(userId: string, viewerId: string, limit: num
   return page(await decorate(viewerId, rows.slice(0, limit)), rows.length > limit, offset, limit);
 }
 
-/** Global directory of learners, searchable by name prefix, ranked by total XP. */
+/** Global directory of learners, searchable by name prefix, ranked by total XP (test accounts excluded). */
 export async function searchPeople(viewerId: string, query: string, limit: number, offset: number) {
   const q = query.trim().slice(0, 50);
   const where = q
-    ? and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, sql`${users.username} like ${escapeLike(q) + '%'}`)
-    : and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`);
+    ? and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, sql`${users.email} not like '%@example.com'`, sql`${users.username} like ${escapeLike(q) + '%'}`)
+    : and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, sql`${users.email} not like '%@example.com'`);
   const rows = await db.select(personColumns).from(users)
     .where(where)
     .orderBy(desc(users.xpPoints), asc(users.createdAt))
