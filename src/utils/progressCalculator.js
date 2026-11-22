@@ -96,6 +96,11 @@ export const XP_REWARDS = {
   STORY_QUIZ_COMPLETE: 30,  // Base completion of story quiz
   STORY_QUIZ_BONUS:    30,  // Max score bonus (proportional to score: round(30 * score / 100))
 
+  // Listening Dojo
+  LISTENING_COMPLETE: 15,          // Complete listening scenario dialogue
+  LISTENING_CHECKPOINT_BONUS: 10,  // Correct checkpoint challenge bonus
+  LISTENING_EXAM_PERFECT: 25,      // Score >= 80% on Choukai Exam
+
   // Daily Bonuses
   DAILY_GOAL_COMPLETE: 10,  // All daily goals done
   DAILY_FIRST_LESSON:   3,  // First activity of the day

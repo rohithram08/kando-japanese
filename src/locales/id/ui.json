@@ -422,7 +422,9 @@
     "username_invalid": "Gunakan hanya huruf, angka, \"_\", \".\" atau \"-\" (tanpa spasi)",
     "account_security": "Akun & Keamanan",
     "profile_card_title": "Profil Pembelajar",
-    "platform_version_title": "Versi Platform & Sistem"
+    "platform_version_title": "Versi Platform & Sistem",
+    "language_courses": "Pilihan Bahasa & Kursus",
+    "duo_lang_subtitle": "Pilih bahasa asli Anda untuk penjelasan dan menu"
   },
   "auth": {
     "email_required": "Email wajib diisi",
@@ -760,5 +762,9 @@
     "type_grammar": "tata bahasa",
     "type_reading": "bacaan",
     "type_kana": "kana"
+  },
+  "banner": {
+    "streak_warn": "Selesaikan pelajaran atau dialog Listening Dojo hari ini untuk menjaga rekor belajar Anda!",
+    "league_callout": "Bersaing dengan pelajar bahasa Jepang global. Selesaikan sesi untuk naik peringkat liga!"
   }
 }

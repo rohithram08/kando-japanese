@@ -422,7 +422,9 @@
     "username_invalid": "Utilisez uniquement des lettres, chiffres, « _ », « . » ou « - » (sans espaces)",
     "account_security": "Compte et sécurité",
     "profile_card_title": "Profil d'apprenant",
-    "platform_version_title": "Version de la plateforme et système"
+    "platform_version_title": "Version de la plateforme et système",
+    "language_courses": "Sélecteur de langue et de cours",
+    "duo_lang_subtitle": "Choisissez votre langue maternelle pour les explications et menus"
   },
   "auth": {
     "email_required": "L'e-mail est requis",
@@ -760,5 +762,9 @@
     "type_grammar": "grammaire",
     "type_reading": "lecture",
     "type_kana": "kana"
+  },
+  "banner": {
+    "streak_warn": "Terminez une leçon ou un dialogue du Listening Dojo aujourd'hui pour garder votre série!",
+    "league_callout": "Affrontez des apprenants de japonais du monde entier. Progressez pour monter dans la ligue!"
   }
 }

@@ -23,6 +23,7 @@ export type XpSource =
   | 'grammar'
   | 'reading'
   | 'reading_quiz'
+  | 'listening'
   | 'srs_review'
   | 'event';
 

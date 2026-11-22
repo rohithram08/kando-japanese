@@ -24,6 +24,7 @@ import { useStudyLevel } from '../../hooks/useStudyLevel'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
+import DuolingoBanner from '../common/DuolingoBanner'
 
 function StatValue({ value, loading }) {
   if (loading && value === 0) {
@@ -177,6 +178,9 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
+      {/* ── Duolingo Motivational & Streak Banner ── */}
+      <DuolingoBanner variant="auto" />
+
       {/* ── Greeting Hero (100% Kando Slime Liquid Concept) ── */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

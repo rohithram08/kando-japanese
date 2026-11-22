@@ -422,7 +422,9 @@
     "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
     "account_security": "खाता और सुरक्षा",
     "profile_card_title": "शिक्षार्थी प्रोफ़ाइल",
-    "platform_version_title": "प्लेटफ़ॉर्म संस्करण और प्रणाली"
+    "platform_version_title": "प्लेटफ़ॉर्म संस्करण और प्रणाली",
+    "language_courses": "भाषा और पाठ्यक्रम चयनकर्ता",
+    "duo_lang_subtitle": "स्पष्टीकरण और मेनू के लिए अपनी मातृभाषा चुनें"
   },
   "auth": {
     "email_required": "ईमेल आवश्यक है",
@@ -760,5 +762,9 @@
     "type_grammar": "व्याकरण",
     "type_reading": "पठन",
     "type_kana": "काना"
+  },
+  "banner": {
+    "streak_warn": "अपनी स्ट्रीक लौ को जीवित रखने के लिए आज एक पाठ या लिसनिंग डोजो संवाद पूरा करें!",
+    "league_callout": "वैश्विक जापानी शिक्षार्थियों के साथ प्रतिस्पर्धा करें। रैंक बढ़ाने के लिए सुनने और पढ़ने के सत्र पूरे करें!"
   }
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Check, Globe } from 'lucide-react'
+import { ChevronDown, Check, Globe, Sparkles } from 'lucide-react'
 import { useSettingsStore } from '../../store/settingsStore'
 import { SUPPORTED_LOCALES, normalizeLocale, hasUiTranslations } from '../../i18n'
+import DuolingoLanguageModal from './DuolingoLanguageModal'
 
 // Only offer languages whose interface is actually translated. Listing the rest
 // made the picker look like it worked while the UI silently stayed in English.
@@ -16,6 +17,7 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
   const setExplanationLanguage = useSettingsStore((s) => s.setExplanationLanguage)
   const updateSettings = useSettingsStore((s) => s.updateSettings)
   const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [search, setSearch] = useState('')
   const dropdownRef = useRef(null)
   const searchRef = useRef(null)
@@ -127,9 +129,22 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
                   </button>
                 ))}
               </div>
+              <div className="p-1 border-t border-border/60">
+                <button
+                  onClick={() => {
+                    setIsOpen(false)
+                    setIsModalOpen(true)
+                  }}
+                  className="w-full flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-bold text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                >
+                  <Sparkles className="w-3 h-3" />
+                  All Languages & Courses
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
+        <DuolingoLanguageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     )
   }
@@ -204,9 +219,23 @@ const LanguageSelector = ({ compact = false, onLanguageChange }) => {
                 </div>
               )}
             </div>
+
+            <div className="p-2 border-t border-border/60 bg-muted/20">
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  setIsModalOpen(true)
+                }}
+                className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-primary hover:bg-primary/10 rounded-xl transition-colors"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Explore All Languages & Course Tracks
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
+      <DuolingoLanguageModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

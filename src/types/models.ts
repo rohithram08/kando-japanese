@@ -198,6 +198,8 @@ export type XPEventType =
   | 'vocab_learned'
   | 'kana_learned'
   | 'grammar_studied'
+  | 'listening_completed'
+  | 'reading_completed'
   | 'daily_goal_complete';
 
 // ─── SRS ─────────────────────────────────────────────────────────────────────

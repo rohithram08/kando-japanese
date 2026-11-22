@@ -7,23 +7,21 @@ import toast from 'react-hot-toast'
 import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import SEO from '../common/SEO'
 
-// ── Data ─────────────────────────────────────────────────────
-// English, Tamil and Hindi have curated, human-written translations baked
-// into the lesson data. Every other language is translated live via a
-// free translation service (see src/services/translationService.js) —
-// `curated: false` so the UI can mark these honestly rather than imply
-// they're the same quality as the curated three.
+// ── Supported Native Languages (Duolingo-grade Course Architecture) ────────
 const LANGUAGES = [
-  { code: 'english',    label: 'English',   flag: '🇬🇧', curated: true },
-  { code: 'tamil',      label: 'தமிழ்',     flag: '🇮🇳', curated: true },
-  { code: 'hindi',      label: 'हिंदी',     flag: '🇮🇳', curated: true },
-  { code: 'portuguese', label: 'Português',  flag: '🇧🇷', curated: false },
-  { code: 'chinese',    label: '中文',       flag: '🇨🇳', curated: false },
-  { code: 'korean',     label: '한국어',     flag: '🇰🇷', curated: false },
-  { code: 'russian',    label: 'Русский',    flag: '🇷🇺', curated: false },
-  { code: 'spanish',    label: 'Español',    flag: '🇪🇸', curated: false },
-  { code: 'arabic',     label: 'العربية',   flag: '🇸🇦', curated: false },
-  { code: 'french',     label: 'Français',   flag: '🇫🇷', curated: false },
+  { code: 'en',    label: 'English',    nativeLabel: 'English',          flag: '🇺🇸' },
+  { code: 'es',    label: 'Spanish',    nativeLabel: 'Español',          flag: '🇪🇸' },
+  { code: 'fr',    label: 'French',     nativeLabel: 'Français',         flag: '🇫🇷' },
+  { code: 'de',    label: 'German',     nativeLabel: 'Deutsch',          flag: '🇩🇪' },
+  { code: 'ta',    label: 'Tamil',      nativeLabel: 'தமிழ்',            flag: '🇮🇳' },
+  { code: 'hi',    label: 'Hindi',      nativeLabel: 'हिंदी',            flag: '🇮🇳' },
+  { code: 'pt',    label: 'Portuguese', nativeLabel: 'Português',        flag: '🇧🇷' },
+  { code: 'ko',    label: 'Korean',     nativeLabel: '한국어',           flag: '🇰🇷' },
+  { code: 'zh-CN', label: 'Chinese',    nativeLabel: '简体中文',         flag: '🇨🇳' },
+  { code: 'id',    label: 'Indonesian', nativeLabel: 'Bahasa Indonesia', flag: '🇮🇩' },
+  { code: 'vi',    label: 'Vietnamese', nativeLabel: 'Tiếng Việt',       flag: '🇻🇳' },
+  { code: 'ru',    label: 'Russian',    nativeLabel: 'Русский',          flag: '🇷🇺' },
+  { code: 'ar',    label: 'Arabic',     nativeLabel: 'العربية',          flag: '🇸🇦' },
 ]
 
 const LEVELS = [
@@ -63,7 +61,7 @@ export default function RegisterPage() {
     email:          '',
     password:       '',
     gender:         'male',
-    nativeLanguage: 'english',
+    nativeLanguage: 'en',
     currentLevel:   'N5',
   })
 
@@ -404,22 +402,19 @@ export default function RegisterPage() {
                           }
                         `}
                       >
-                        <span className="text-lg">{lang.flag}</span>
-                        <span className={`text-sm font-medium truncate ${
-                          isSelected
-                            ? 'text-red-500'
-                            : 'text-foreground'
-                        }`}>
-                          {lang.label}
-                        </span>
-                        {!lang.curated && (
-                          <span
-                            title="Translated live via machine translation, not hand-written"
-                            className="text-[9px] font-bold px-1 py-0.5 rounded bg-blue-100 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400 flex-shrink-0"
-                          >
-                            live
+                        <span className="text-xl">{lang.flag}</span>
+                        <div className="flex flex-col min-w-0">
+                          <span className={`text-sm font-bold truncate ${
+                            isSelected
+                              ? 'text-red-500'
+                              : 'text-foreground'
+                          }`}>
+                            {lang.nativeLabel}
                           </span>
-                        )}
+                          <span className="text-[10px] text-muted-foreground truncate">
+                            {lang.label}
+                          </span>
+                        </div>
                         {isSelected && (
                           <CheckCircle2 className="w-4 h-4 text-red-500 ml-auto flex-shrink-0" />
                         )}
@@ -428,9 +423,7 @@ export default function RegisterPage() {
                   })}
                 </div>
                 <p className="text-[11px] text-muted-foreground -mt-3 mb-5">
-                  <span className="font-semibold">English, தமிழ், हिंदी</span> are hand-written by us.
-                  Languages marked <span className="px-1 py-0.5 rounded bg-blue-100 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400 font-bold text-[9px]">live</span> are
-                  translated automatically and may occasionally be imperfect.
+                  Course: <strong>Japanese (日本語)</strong>. Explanations, particle grammar, and translations adapt directly to your native language.
                 </p>
 
                 <div className="flex gap-2">

@@ -422,7 +422,9 @@
     "username_invalid": "Verwende nur Buchstaben, Zahlen, „_“, „.“ oder „-“ (keine Leerzeichen)",
     "account_security": "Konto & Sicherheit",
     "profile_card_title": "Lernenden-Profil",
-    "platform_version_title": "Plattformversion & System"
+    "platform_version_title": "Plattformversion & System",
+    "language_courses": "Sprach- und Kursauswahl",
+    "duo_lang_subtitle": "Wählen Sie Ihre Muttersprache für Erklärungen und Menüs"
   },
   "auth": {
     "email_required": "E-Mail ist erforderlich",
@@ -760,5 +762,9 @@
     "type_grammar": "Grammatik",
     "type_reading": "Lesen",
     "type_kana": "Kana"
+  },
+  "banner": {
+    "streak_warn": "Schließen Sie heute eine Lektion oder einen Hör-Dojo-Dialog ab, um Ihre Serie aufrechtzuerhalten!",
+    "league_callout": "Messen Sie sich mit weltweiten Japanischlernern. Schließen Sie Einheiten ab, um aufzusteigen!"
   }
 }

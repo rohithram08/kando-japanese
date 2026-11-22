@@ -174,7 +174,7 @@ export async function recordStudySession(
       userId,
       awardedXp,
       input.activityType === 'listening'
-        ? 'event'
+        ? 'listening'
         : input.activityType === 'reading'
         ? 'reading'
         : 'lesson',

@@ -422,7 +422,9 @@
     "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
     "account_security": "கணக்கு & பாதுகாப்பு",
     "profile_card_title": "கற்கும் பயனர் சுயவிவரம்",
-    "platform_version_title": "தள பதிப்பு மற்றும் கட்டமைப்பு"
+    "platform_version_title": "தள பதிப்பு மற்றும் கட்டமைப்பு",
+    "language_courses": "மொழி மற்றும் பாடநெறி தெரிவு",
+    "duo_lang_subtitle": "விளக்கங்கள் மற்றும் மெனுக்களுக்கான உங்கள் தாய்மொழியைத் தேர்வுசெய்க"
   },
   "auth": {
     "email_required": "மின்னஞ்சல் தேவை",
@@ -760,5 +762,9 @@
     "type_grammar": "இலக்கணம்",
     "type_reading": "வாசிப்பு",
     "type_kana": "கானா"
+  },
+  "banner": {
+    "streak_warn": "உங்கள் தொடர் சுடரைத் தொடர இன்று ஒரு பாடம் அல்லது கேட்டல் டோஜோ உரையாடலை முடிக்கவும்!",
+    "league_callout": "உலகளாவிய ஜப்பானிய கற்கும் மாணவர்களுடன் போட்டியிடுங்கள். தரவரிசைப்படுத்த கேட்டல் மற்றும் வாசிப்பு அமர்வுகளை முடிக்கவும்!"
   }
 }

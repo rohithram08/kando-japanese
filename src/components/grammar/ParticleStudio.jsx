@@ -9,6 +9,8 @@ import {
 } from 'lucide-react'
 import { audioService } from '../../services/audioService'
 import { playClick } from '../../utils/soundEffects'
+import { useI18n } from '../../i18n'
+import { useSettingsStore } from '../../store/settingsStore'
 
 const PARTICLE_DATA = [
   {
@@ -187,15 +189,17 @@ const SOV_COMPARISON = {
 
 const QUIZ_QUESTIONS = [
   {
+    promptEn: 'I go [__] school. (Target / Destination)',
     promptTa: 'நான் பள்ளிக்கு [__] போகிறேன்। (Target / Destination)',
     promptHi: 'मैं स्कूल [__] जाता हूँ। (Target / Destination)',
     jpSentence: '私 は 学校 [ ? ] 行きます。',
     correct: 'に',
     options: ['に', 'で', 'を', 'は'],
     explanation:
-      'Destination takes に (ni). Tamil uses -க்கு (-kku: பள்ளிக்கு) and Hindi uses को (ko).',
+      'Destination takes に (ni). English uses "to", Tamil uses -க்கு (-kku: பள்ளிக்கு) and Hindi uses को (ko).',
   },
   {
+    promptEn: 'I read [__] a book. (Direct Object)',
     promptTa: 'நான் புத்தகத்தை [__] படிக்கிறேன்। (Direct Object)',
     promptHi: 'मैं किताब [__] पढ़ता हूँ। (Direct Object)',
     jpSentence: '私 は 本 [ ? ] 読みます。',
@@ -205,15 +209,17 @@ const QUIZ_QUESTIONS = [
       'Direct object takes を (o/wo). Tamil uses -ஐ (-ai: புத்தகத்தை) and Hindi uses को (ko).',
   },
   {
+    promptEn: 'I write [__] a pen. (Tool / Instrument)',
     promptTa: 'பேனாவால் [__] எழுதுகிறேன்। (Tool / Instrument)',
     promptHi: 'पेन [__] लिखता हूँ। (Tool / Instrument)',
     jpSentence: 'ペン [ ? ] 書きます。',
     correct: 'で',
     options: ['で', 'に', 'を', 'から'],
     explanation:
-      'Tool or instrument takes で (de). Tamil uses -ஆல் (-aal: பேனாவால்) and Hindi uses से (se).',
+      'Tool or instrument takes で (de). English uses "with", Tamil uses -ஆல் (-aal: பேனாவால்) and Hindi uses से (se).',
   },
   {
+    promptEn: 'I came [__] Tokyo. (Starting Point)',
     promptTa: 'டோக்கியோவிலிருந்து [__] வந்தேன்। (Starting Point)',
     promptHi: 'टोक्यो [__] आया हूँ। (Starting Point)',
     jpSentence: '東京 [ ? ] 来ました。',
@@ -225,7 +231,10 @@ const QUIZ_QUESTIONS = [
 ]
 
 export default function ParticleStudio() {
+  const { t, locale } = useI18n()
+  const displayLanguage = useSettingsStore((s) => s.displayLanguage || s.nativeLanguage || locale || 'en')
   const [activeTab, setActiveTab] = useState('matrix') // 'matrix' | 'sov' | 'quiz'
+  const [activeLangTab, setActiveLangTab] = useState('auto') // 'auto' | 'en' | 'ta' | 'hi'
   const [selectedParticle, setSelectedParticle] = useState(PARTICLE_DATA[0])
   const [quizIndex, setQuizIndex] = useState(0)
   const [selectedOption, setSelectedOption] = useState(null)
@@ -382,27 +391,88 @@ export default function ParticleStudio() {
             {/* Isomorphism breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
               <div className="bg-surface/80 border border-border/80 rounded-xl p-3.5 space-y-1">
-                <span className="text-[11px] font-bold text-emerald-500 uppercase tracking-wide">
-                  Tamil Equivalent (வேற்றுமை)
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-primary uppercase tracking-wide">
+                    Grammatical Role
+                  </span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                    Core Function
+                  </span>
+                </div>
                 <p className="text-sm font-semibold text-foreground">
-                  {selectedParticle.tamil}
+                  {selectedParticle.english}
                 </p>
                 <p className="text-xs text-muted-foreground font-serif">
-                  {selectedParticle.exampleTa}
+                  {selectedParticle.exampleEn}
                 </p>
               </div>
 
               <div className="bg-surface/80 border border-border/80 rounded-xl p-3.5 space-y-1">
-                <span className="text-[11px] font-bold text-amber-500 uppercase tracking-wide">
-                  Hindi Equivalent (कारक)
-                </span>
-                <p className="text-sm font-semibold text-foreground">
-                  {selectedParticle.hindi}
-                </p>
-                <p className="text-xs text-muted-foreground font-serif">
-                  {selectedParticle.exampleHi}
-                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-emerald-500 uppercase tracking-wide">
+                    SOV Isomorphism Alignment
+                  </span>
+                  <div className="flex items-center gap-1 text-[10px]">
+                    <button
+                      onClick={() => setActiveLangTab('ta')}
+                      className={`px-1.5 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                        (activeLangTab === 'ta' || (activeLangTab === 'auto' && displayLanguage === 'ta'))
+                          ? 'bg-emerald-500 text-white'
+                          : 'bg-muted text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      தமிழ்
+                    </button>
+                    <button
+                      onClick={() => setActiveLangTab('hi')}
+                      className={`px-1.5 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                        (activeLangTab === 'hi' || (activeLangTab === 'auto' && displayLanguage === 'hi'))
+                          ? 'bg-amber-500 text-white'
+                          : 'bg-muted text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      हिंदी
+                    </button>
+                    <button
+                      onClick={() => setActiveLangTab('en')}
+                      className={`px-1.5 py-0.5 rounded font-bold transition-colors cursor-pointer ${
+                        activeLangTab === 'en' || (activeLangTab === 'auto' && displayLanguage !== 'ta' && displayLanguage !== 'hi')
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-muted text-muted-foreground hover:text-foreground'
+                      }`}
+                    >
+                      EN
+                    </button>
+                  </div>
+                </div>
+                {(activeLangTab === 'ta' || (activeLangTab === 'auto' && displayLanguage === 'ta')) ? (
+                  <>
+                    <p className="text-sm font-semibold text-foreground">
+                      {selectedParticle.tamil}
+                    </p>
+                    <p className="text-xs text-muted-foreground font-serif">
+                      {selectedParticle.exampleTa}
+                    </p>
+                  </>
+                ) : (activeLangTab === 'hi' || (activeLangTab === 'auto' && displayLanguage === 'hi')) ? (
+                  <>
+                    <p className="text-sm font-semibold text-foreground">
+                      {selectedParticle.hindi}
+                    </p>
+                    <p className="text-xs text-muted-foreground font-serif">
+                      {selectedParticle.exampleHi}
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm font-semibold text-foreground">
+                      {selectedParticle.role}
+                    </p>
+                    <p className="text-xs text-muted-foreground font-serif">
+                      Direct SOV alignment: Japanese particles attach to the preceding noun identically to postpositions.
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 
@@ -568,21 +638,50 @@ export default function ParticleStudio() {
               {/* Question Card */}
               <div className="rounded-2xl border border-border bg-surface p-5 space-y-4">
                 <div className="space-y-2">
-                  <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl px-3.5 py-2">
-                    <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide block">
-                      Tamil Prompt
-                    </span>
+                  <div className="bg-primary/10 border border-primary/20 rounded-xl px-3.5 py-2.5">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-bold text-primary uppercase tracking-wide">
+                        Meaning & Context
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setActiveLangTab('en')}
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors ${
+                            activeLangTab === 'en' || (activeLangTab === 'auto' && displayLanguage !== 'ta' && displayLanguage !== 'hi')
+                              ? 'bg-primary text-primary-foreground'
+                              : 'bg-muted text-muted-foreground'
+                          }`}
+                        >
+                          English
+                        </button>
+                        <button
+                          onClick={() => setActiveLangTab('ta')}
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors ${
+                            activeLangTab === 'ta' || (activeLangTab === 'auto' && displayLanguage === 'ta')
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-muted text-muted-foreground'
+                          }`}
+                        >
+                          தமிழ்
+                        </button>
+                        <button
+                          onClick={() => setActiveLangTab('hi')}
+                          className={`text-[9px] px-1.5 py-0.5 rounded font-bold cursor-pointer transition-colors ${
+                            activeLangTab === 'hi' || (activeLangTab === 'auto' && displayLanguage === 'hi')
+                              ? 'bg-amber-600 text-white'
+                              : 'bg-muted text-muted-foreground'
+                          }`}
+                        >
+                          हिंदी
+                        </button>
+                      </div>
+                    </div>
                     <p className="text-sm font-semibold text-foreground font-serif">
-                      {QUIZ_QUESTIONS[quizIndex].promptTa}
-                    </p>
-                  </div>
-
-                  <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl px-3.5 py-2">
-                    <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wide block">
-                      Hindi Prompt
-                    </span>
-                    <p className="text-sm font-semibold text-foreground font-serif">
-                      {QUIZ_QUESTIONS[quizIndex].promptHi}
+                      {(activeLangTab === 'ta' || (activeLangTab === 'auto' && displayLanguage === 'ta'))
+                        ? QUIZ_QUESTIONS[quizIndex].promptTa
+                        : (activeLangTab === 'hi' || (activeLangTab === 'auto' && displayLanguage === 'hi'))
+                        ? QUIZ_QUESTIONS[quizIndex].promptHi
+                        : QUIZ_QUESTIONS[quizIndex].promptEn}
                     </p>
                   </div>
                 </div>

@@ -141,8 +141,12 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
         progressMap: { ...state.progressMap, [storyId]: updated },
       }));
 
-      // In guest mode, do not claim server-side persistence or fake backend XP
-      return { progress: updated, xpAwarded: 0, synced: false };
+      // In guest mode, award local Wave XP so learner gets immediate feedback
+      const guestXp = (isCompleting && existing?.status !== 'completed' ? 40 : 0) + (typeof quizScore === 'number' && quizScore > 0 ? Math.round(30 * (quizScore / 100)) : 0);
+      if (guestXp > 0) {
+        useProgressStore.getState().awardReadingXP(undefined, storyId, quizScore || 100);
+      }
+      return { progress: updated, xpAwarded: guestXp, synced: false };
     }
 
     // Authenticated persistence through backend

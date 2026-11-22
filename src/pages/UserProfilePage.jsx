@@ -8,6 +8,7 @@ import { useAuthStore } from '../store/authStore'
 import { useI18n } from '../i18n'
 import UserAvatar from '../components/common/UserAvatar'
 import FollowButton from '../components/social/FollowButton'
+import ProfileBannerScene from '../components/profile/ProfileBannerScene'
 
 const ALERT_OPTIONS = [
   {
@@ -177,11 +178,8 @@ export default function UserProfilePage() {
         animate={{ opacity: 1, y: 0 }}
         className="relative overflow-hidden rounded-2xl"
       >
-        <div className="relative bg-gradient-to-br from-purple-600 via-purple-500 to-indigo-600 p-6 pb-20 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-white/5 rounded-full blur-2xl" />
-            <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-purple-400/10 rounded-full blur-2xl" />
-          </div>
+        <div className="relative h-44 sm:h-52 overflow-hidden bg-purple-700">
+          <ProfileBannerScene theme={profile.bannerTheme || 'twilight'} />
         </div>
 
         <div className="relative px-6 -mt-14 pb-6">

@@ -29,10 +29,12 @@ import { playSuccess, playError } from '../utils/soundEffects';
 import { useStudyTracker } from '../hooks/useStudyTracker';
 import { useStudyLevel } from '../hooks/useStudyLevel';
 import { useProgressStore } from '../store/progressStore';
+import { useAuthStore } from '../store/authStore';
 import SEO from '../components/common/SEO';
 import { getStaticScenariosByLevel, STATIC_LISTENING_SCENARIOS } from '../data/listening/scenarios';
 
 export default function ListeningPage() {
+  const { user } = useAuthStore();
   const { studyLevel, unlocked } = useStudyLevel();
   const streak = useProgressStore((s) => s.streak || 0);
   const dailyXP = useProgressStore((s) => s.dailyXP || 0);
@@ -214,8 +216,10 @@ export default function ListeningPage() {
           }).catch(console.error);
 
           try {
-            useProgressStore.getState().addXP(25, { reason: 'Listening Dialogue Completed' });
-          } catch {}
+            useProgressStore.getState().awardListeningXP(user?.id, activeScenario.id, checkpointCompleted);
+          } catch (err) {
+            console.error('Failed to award listening XP:', err);
+          }
         }
       },
       onError: () => {
@@ -354,6 +358,12 @@ export default function ListeningPage() {
       score,
       wordsCheckedCount: verifiedWordsCount,
     }).catch(console.error);
+
+    try {
+      useProgressStore.getState().awardListeningXP(user?.id, activeScenario.id, score >= 80);
+    } catch (err) {
+      console.error('Failed to award listening exam XP:', err);
+    }
 
     // Also flush study tracker
     flush(true, score);

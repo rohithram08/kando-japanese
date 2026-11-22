@@ -85,11 +85,21 @@ const Cloud = ({ top, scale, duration, delay }) => (
   </svg>
 )
 
-export default function ProfileBannerScene() {
+const THEME_SKIES = {
+  twilight: 'linear-gradient(120deg,#6d28d9 0%,#7c3aed 25%,#6366f1 55%,#4338ca 80%,#6d28d9 100%)',
+  sakura: 'linear-gradient(120deg,#f472b6 0%,#ec4899 25%,#db2777 55%,#be185d 80%,#f472b6 100%)',
+  fuji_sunrise: 'linear-gradient(120deg,#f97316 0%,#ea580c 25%,#dc2626 55%,#b91c1c 80%,#f97316 100%)',
+  cyber_tokyo: 'linear-gradient(120deg,#06b6d4 0%,#3b82f6 25%,#6366f1 55%,#a855f7 80%,#ec4899 100%)',
+  zen_bamboo: 'linear-gradient(120deg,#059669 0%,#10b981 25%,#14b8a6 55%,#0d9488 80%,#059669 100%)',
+}
+
+export default function ProfileBannerScene({ theme = 'twilight' }) {
+  const activeSky = THEME_SKIES[theme] || THEME_SKIES.twilight
+
   return (
     <div className="pbs-root" aria-hidden="true" data-testid="profile-banner-scene">
       <style>{CSS}</style>
-      <div className="pbs-sky" />
+      <div className="pbs-sky" style={{ background: activeSky }} />
 
       {STARS.map((s, i) => (
         <span key={i} className="pbs-star" style={{ left: `${s.l}%`, top: `${s.t}%`, width: s.s, height: s.s, animationDelay: `${s.d}s` }} />

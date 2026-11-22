@@ -248,7 +248,7 @@ export default function DictionaryPage() {
     <div className="min-h-screen bg-background pb-16">
       <SEO
         title="Japanese Dictionary & Word Lookup"
-        description="Search Japanese kanji, words, and phrases with readings, English, Tamil, and Hindi meanings, stroke counts, and audio pronunciation."
+        description="Search Japanese kanji, words, and phrases with readings, native language meanings, stroke counts, and audio pronunciation."
         path="/dictionary"
       />
       {/* ── HERO BANNER ────────────────────────────────────────────── */}
@@ -498,7 +498,7 @@ export default function DictionaryPage() {
                 </div>
                 <h4 className="text-sm font-bold text-foreground">Multi-Language Meanings</h4>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Search in English, Tamil, Hindi, or your active language to find matching Japanese terms.
+                  Search in your native language or Japanese to find matching terms, readings, and explanations.
                 </p>
               </div>
 

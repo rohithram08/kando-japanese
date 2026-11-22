@@ -84,6 +84,8 @@ export interface ProgressState {
   awardVocabXP: (userId?: string, vocabularyId?: string, masteryLevel?: number, mastered?: boolean) => Promise<any>;
   awardKanaXP: (userId?: string, kanaId?: string, mastered?: boolean) => Promise<any>;
   awardGrammarXP: (userId?: string, grammarId?: string, status?: 'not_started' | 'studied' | 'mastered', mastered?: boolean) => Promise<any>;
+  awardListeningXP: (userId: string | undefined, scenarioId: string, hasBonus?: boolean) => Promise<any>;
+  awardReadingXP: (userId: string | undefined, storyId: string, scorePercent?: number) => Promise<any>;
   awardDailyGoalXP: (userId?: string) => Promise<any>;
   /**
    * Mirror a server-computed reward (Wave XP total, level, Jelly Streak) into the
@@ -506,6 +508,50 @@ export const useProgressStore = create<ProgressState>((set, get) => ({
       return get().recordGrammarProgress(userId, grammarId, status, mastered);
     }
     return get().addXP(XP_REWARDS.GRAMMAR_LEARNED, userId, { event: 'grammar_studied' });
+  },
+
+  awardListeningXP: async (userId, scenarioId, hasBonus = false) => {
+    const xp = hasBonus ? 25 : 15;
+    if (!userId) {
+      const nextDaily = get().dailyXP + xp;
+      const nextTotal = get().totalXP + xp;
+      set({
+        totalXP: nextTotal,
+        dailyXP: nextDaily,
+        isActiveToday: true,
+      });
+      return {
+        xpGained: xp,
+        newTotal: nextTotal,
+        jlptLevel: get().jlptLevel,
+        userLevel: get().userLevel,
+        leveledUp: false,
+      };
+    }
+    return get().addXP(xp, userId, { event: 'listening_completed' as any, lessonId: scenarioId });
+  },
+
+  awardReadingXP: async (userId, storyId, scorePercent = 100) => {
+    const baseStoryXp = 20;
+    const quizXp = Math.round((scorePercent / 100) * 15);
+    const xp = baseStoryXp + quizXp;
+    if (!userId) {
+      const nextDaily = get().dailyXP + xp;
+      const nextTotal = get().totalXP + xp;
+      set({
+        totalXP: nextTotal,
+        dailyXP: nextDaily,
+        isActiveToday: true,
+      });
+      return {
+        xpGained: xp,
+        newTotal: nextTotal,
+        jlptLevel: get().jlptLevel,
+        userLevel: get().userLevel,
+        leveledUp: false,
+      };
+    }
+    return get().addXP(xp, userId, { event: 'reading_completed' as any, lessonId: storyId, score: scorePercent });
   },
 
   loadGrammarProgress: async (userId) => {

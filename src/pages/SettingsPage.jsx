@@ -18,6 +18,8 @@ import { normalizeProfile } from '../utils/userIdentity'
 import { resetAllProgress } from '../api/progress'
 import { normalizeLocale, useI18n, SUPPORTED_LOCALES } from '../i18n'
 import LanguageSelector from '../components/common/LanguageSelector'
+import DuolingoLanguageModal from '../components/common/DuolingoLanguageModal'
+import { Sparkles } from 'lucide-react'
 import { useStudyLevel } from '../hooks/useStudyLevel'
 import { APP_VERSION, APP_NAME, APP_CODENAME, APP_RELEASE_DATE } from '../config/version'
 import toast from 'react-hot-toast'
@@ -158,6 +160,7 @@ export default function SettingsPage() {
   const [showDeleteConfirm, setShowDeleteConfirm]  = useState(false)
   const [showResetConfirm, setShowResetConfirm]    = useState(false)
   const [showResetSettingsConfirm, setShowResetSettingsConfirm] = useState(false)
+  const [showLangModal, setShowLangModal] = useState(false)
 
   const identity = normalizeProfile(profile, user)
   const [nativeLanguage, setNativeLanguage] = useState(
@@ -321,8 +324,33 @@ export default function SettingsPage() {
       case 'general':
         return (
           <div className="space-y-6">
-            <SectionCard title={t('settings.display_lang_title', 'Display & Interface Language')} emoji="🌐">
-              <p className="text-xs text-muted-foreground mb-3 -mt-2">
+            <SectionCard title={t('settings.display_lang_title', 'Course & Interface Language')} emoji="🌐">
+              <div className="p-4 rounded-2xl bg-muted/30 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">🇯🇵</span>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-bold text-foreground">Target Course: Japanese (日本語)</p>
+                      <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-red-500 text-white shadow-xs">
+                        {studyLevel}
+                      </span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      JLPT curriculum with full SOV alignment to your chosen native language.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowLangModal(true)}
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-primary text-white hover:opacity-90 transition-all flex items-center justify-center gap-1.5 shadow-xs shrink-0 cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Choose Language / Course</span>
+                </button>
+              </div>
+
+              <p className="text-xs text-muted-foreground mb-3">
                 {t('settings.display_lang_desc', 'Language used for platform interface labels and menus.')}
               </p>
               <LanguageSelector onLanguageChange={(code) => setDisplayLanguage(code)} />
@@ -775,6 +803,9 @@ export default function SettingsPage() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Duolingo Language & Course Modal */}
+      <DuolingoLanguageModal isOpen={showLangModal} onClose={() => setShowLangModal(false)} />
     </div>
   )
 }

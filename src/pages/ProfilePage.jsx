@@ -6,7 +6,7 @@ import {
   Star, Award, Target, BookOpen, TrendingUp,
   BarChart3, GraduationCap, UserPlus, UserCheck, Settings, Zap,
   Eye, Pen, BookMarked, Brain, Shield, Medal, Pencil,
-  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile, Sparkles, Headphones, Clock, ShieldCheck,
+  Crown, Lock, ChevronDown, ChevronUp, CheckCircle2, ArrowLeft, Smile, Sparkles, Headphones, Clock, ShieldCheck, Palette,
 } from 'lucide-react'
 import { getStudyTimeSummary } from '../api/listening'
 import { useAuthStore } from '../store/authStore'
@@ -23,6 +23,8 @@ import UserAvatar from '../components/common/UserAvatar'
 // Lazy: pulls in DiceBear only when someone opens the creator.
 const AvatarCreator = lazy(() => import('../components/avatar/AvatarCreator'))
 import ProfileBannerScene from '../components/profile/ProfileBannerScene'
+import BannerThemeModal from '../components/profile/BannerThemeModal'
+import DuolingoBanner from '../components/common/DuolingoBanner'
 import { normalizeProfile, validateUsername, USERNAME_MAX } from '../utils/userIdentity'
 import { buildWeeklyActivity, buildSkillProgress } from '../utils/profileStats'
 import { summarizeReadingProgress } from '../utils/storyProgress'
@@ -234,6 +236,22 @@ export default function ProfilePage() {
 
   const [uploadLoading, setUploadLoading]     = useState(false)
   const [showAvatarPicker, setShowAvatarPicker] = useState(false)
+  const [showBannerThemeModal, setShowBannerThemeModal] = useState(false)
+  const [bannerTheme, setBannerTheme] = useState(() => {
+    try {
+      return profile?.bannerTheme || localStorage.getItem('kando_banner_theme') || 'twilight'
+    } catch {
+      return 'twilight'
+    }
+  })
+
+  const handleSelectBannerTheme = (themeId) => {
+    setBannerTheme(themeId)
+    try {
+      localStorage.setItem('kando_banner_theme', themeId)
+    } catch {}
+    updateProfile({ bannerTheme: themeId }).catch(() => {})
+  }
   const identity = normalizeProfile(profile, user)
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
 
@@ -482,18 +500,31 @@ export default function ProfilePage() {
           <ArrowLeft className="w-4 h-4" /> {t('profile.back', 'Back')}
         </motion.button>
 
+        {/* ── DUOLINGO MOTIVATIONAL & STREAK BANNER ──────────────── */}
+        <DuolingoBanner variant="auto" />
+
         {/* ── HERO BANNER ──────────────────────────────── */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="relative overflow-hidden rounded-3xl">
           {/* Animated 2D banner */}
           <div className="relative h-44 sm:h-52 overflow-hidden bg-purple-700">
-            <ProfileBannerScene />
+            <ProfileBannerScene theme={bannerTheme} />
             <div className="relative z-10 flex items-center justify-end gap-2 p-4">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setShowBannerThemeModal(true)}
+                aria-label="Customize Banner Theme"
+                className="px-3.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center gap-1.5 backdrop-blur-md transition-all shadow-sm border border-white/25 cursor-pointer"
+              >
+                <Palette className="w-3.5 h-3.5" />
+                <span>Banner Theme</span>
+              </motion.button>
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setShowEditProfileModal(true)}
                 aria-label={t('profile.edit_profile', 'Edit Profile')}
-                className="px-3.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center gap-1.5 backdrop-blur-md transition-all shadow-sm border border-white/25"
+                className="px-3.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center gap-1.5 backdrop-blur-md transition-all shadow-sm border border-white/25 cursor-pointer"
               >
                 <Pencil className="w-3.5 h-3.5" />
                 <span>{t('profile.edit_profile', 'Edit Profile')}</span>
@@ -503,7 +534,7 @@ export default function ProfilePage() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate('/settings')}
                 aria-label={t('nav.settings', 'Settings')}
-                className="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white/90 hover:text-white transition-colors backdrop-blur-md border border-white/20"
+                className="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white/90 hover:text-white transition-colors backdrop-blur-md border border-white/20 cursor-pointer"
               >
                 <Settings className="w-4 h-4" />
               </motion.button>
@@ -1122,6 +1153,14 @@ export default function ProfilePage() {
           setShowPlacementModal(false)
           if (refreshProfile) await refreshProfile()
         }}
+      />
+
+      {/* Duolingo-Grade Profile Banner Theme Modal */}
+      <BannerThemeModal
+        isOpen={showBannerThemeModal}
+        activeThemeId={bannerTheme}
+        onSelectTheme={handleSelectBannerTheme}
+        onClose={() => setShowBannerThemeModal(false)}
       />
     </div>
   )

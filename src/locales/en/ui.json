@@ -422,7 +422,9 @@
     "username_invalid": "Use letters, numbers, \"_\", \".\" or \"-\" only (no spaces)",
     "study_level": "Study Level",
     "study_level_desc": "Lessons, Grammar, Vocabulary, Kanji and Graded Reader show content up to this level. Higher levels unlock when you move up; lower levels always stay available.",
-    "platform_version_title": "Platform Version & System"
+    "platform_version_title": "Platform Version & System",
+    "language_courses": "Language & Course Selector",
+    "duo_lang_subtitle": "Choose your native language for explanations and menus"
   },
   "auth": {
     "email_required": "Email is required",
@@ -760,5 +762,9 @@
     "type_grammar": "grammar",
     "type_reading": "reading",
     "type_kana": "kana"
+  },
+  "banner": {
+    "streak_warn": "Complete a lesson or Listening Dojo dialogue today to keep your streak flame alive!",
+    "league_callout": "Compete with global Japanese learners. Finish listening and reading sessions to rank up!"
   }
 }

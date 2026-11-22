@@ -422,7 +422,9 @@
     "username_invalid": "仅使用字母、数字、“_”、“.”或“-”（不能有空格）",
     "account_security": "账号与安全",
     "profile_card_title": "学员个人档案",
-    "platform_version_title": "平台版本与系统"
+    "platform_version_title": "平台版本与系统",
+    "language_courses": "语言与课程选择器",
+    "duo_lang_subtitle": "选择用于解释和菜单的母语"
   },
   "auth": {
     "email_required": "请输入电子邮箱",
@@ -760,5 +762,9 @@
     "type_grammar": "语法",
     "type_reading": "阅读",
     "type_kana": "假名"
+  },
+  "banner": {
+    "streak_warn": "今天完成一堂课或听力道场对话，保持打卡连胜！",
+    "league_callout": "与全球日语学习者一较高下。完成练习提升联赛排名！"
   }
 }
