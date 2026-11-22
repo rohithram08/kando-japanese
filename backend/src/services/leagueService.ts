@@ -156,6 +156,52 @@ export const LEAGUE_RULES = {
 
 export const LADDER = LEAGUES.map((l, i) => ({ ...l, order: i, rungs: [3, 2, 1].map((stage, s) => ({ stage, index: i * 3 + s })) }));
 
+async function enrollActiveLearnersIntoCohort(cohortId: string, weekId: string, rung: number) {
+  try {
+    const activeLearners = await db
+      .select({ id: users.id })
+      .from(users)
+      .where(
+        and(
+          eq(users.leagueOptOut, false),
+          notLike(users.email, '%@example.com'),
+          notLike(users.email, '%@nihongo.local'),
+          notLike(users.username, 'auditor_%'),
+          notLike(users.username, 'smoke_%'),
+          notLike(users.username, 'func_tester_%')
+        )
+      );
+
+    const existingEntries = await db
+      .select({ userId: leagueEntries.userId })
+      .from(leagueEntries)
+      .where(eq(leagueEntries.weekId, weekId));
+
+    const enrolledSet = new Set(existingEntries.map((e) => e.userId));
+
+    for (const u of activeLearners) {
+      if (!enrolledSet.has(u.id)) {
+        await ensureMembership(u.id);
+        try {
+          await db.insert(leagueEntries).values({
+            id: randomUUID(),
+            cohortId,
+            weekId,
+            userId: u.id,
+            rungStart: rung,
+            xp: 0,
+          });
+          enrolledSet.add(u.id);
+        } catch {
+          // Ignore duplicate / race condition
+        }
+      }
+    }
+  } catch (err) {
+    // Non-blocking
+  }
+}
+
 export async function getLeagueView(userId: string, now: Date = new Date()) {
   await settleDueWeeks(now);
 
@@ -169,13 +215,24 @@ export async function getLeagueView(userId: string, now: Date = new Date()) {
   const entry = await touchLeague(userId, now);
   if (!entry) return { ...base, optedOut: true, week: weekInfo, rung: rungInfo(0), board: null };
 
+  await enrollActiveLearnersIntoCohort(entry.cohortId, win.id, entry.rung);
+
   const members = await db
     .select({
       userId: users.id, username: users.username, avatarConfig: users.avatarConfig, avatarId: users.avatarId, avatarUrl: users.avatarUrl,
     })
     .from(leagueEntries)
     .innerJoin(users, eq(users.id, leagueEntries.userId))
-    .where(and(eq(leagueEntries.cohortId, entry.cohortId), notLike(users.email, '%@example.com')));
+    .where(
+      and(
+        eq(leagueEntries.cohortId, entry.cohortId),
+        notLike(users.email, '%@example.com'),
+        notLike(users.email, '%@nihongo.local'),
+        notLike(users.username, 'auditor_%'),
+        notLike(users.username, 'smoke_%'),
+        notLike(users.username, 'func_tester_%')
+      )
+    );
 
   const xpMap = await weeklyXpFor(members.map((m) => m.userId), win);
   const real: Participant[] = members.map((m) => ({
@@ -243,7 +300,16 @@ export async function getGlobalBoard(userId: string, limit = 25) {
   const top = await db
     .select({ userId: users.id, username: users.username, xp: users.xpPoints, avatarConfig: users.avatarConfig, avatarId: users.avatarId, avatarUrl: users.avatarUrl })
     .from(users)
-    .where(and(eq(users.leagueOptOut, false), notLike(users.email, '%@example.com')))
+    .where(
+      and(
+        eq(users.leagueOptOut, false),
+        notLike(users.email, '%@example.com'),
+        notLike(users.email, '%@nihongo.local'),
+        notLike(users.username, 'auditor_%'),
+        notLike(users.username, 'smoke_%'),
+        notLike(users.username, 'func_tester_%')
+      )
+    )
     .orderBy(desc(users.xpPoints), asc(users.createdAt))
     .limit(Math.min(Math.max(1, Math.floor(limit)), 100));
   const entries = top.map((u, i) => ({ rank: i + 1, userId: u.userId, name: u.username, xp: u.xp ?? 0, isYou: u.userId === userId, avatar: toAvatar(u) }));

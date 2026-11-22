@@ -154,9 +154,10 @@ export async function listFollowers(userId: string, viewerId: string, limit: num
 /** Global directory of learners, searchable by name prefix, ranked by total XP (test accounts excluded). */
 export async function searchPeople(viewerId: string, query: string, limit: number, offset: number) {
   const q = query.trim().slice(0, 50);
+  const testAccountFilter = sql`${users.email} not like '%@example.com' and ${users.email} not like '%@nihongo.local' and ${users.username} not like 'auditor_%' and ${users.username} not like 'smoke_%' and ${users.username} not like 'func_tester_%'`;
   const where = q
-    ? and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, sql`${users.email} not like '%@example.com'`, sql`${users.username} like ${escapeLike(q) + '%'}`)
-    : and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, sql`${users.email} not like '%@example.com'`);
+    ? and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, testAccountFilter, sql`${users.username} like ${escapeLike(q) + '%'}`)
+    : and(eq(users.leagueOptOut, false), sql`${users.id} <> ${viewerId}`, testAccountFilter);
   const rows = await db.select(personColumns).from(users)
     .where(where)
     .orderBy(desc(users.xpPoints), asc(users.createdAt))
