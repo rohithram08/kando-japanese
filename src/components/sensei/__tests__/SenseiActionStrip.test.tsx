@@ -17,7 +17,7 @@ describe('SenseiActionStrip', () => {
 
   it('renders quick action buttons', () => {
     render(<SenseiActionStrip {...defaultProps} />);
-    expect(screen.getByText('3D Actions')).toBeDefined();
+    expect(screen.getByText('Actions')).toBeDefined();
   });
 
   it('triggers onSelectAction when an action is clicked', () => {
@@ -50,7 +50,7 @@ describe('SenseiActionStrip', () => {
     render(<SenseiActionStrip {...defaultProps} onSelectAccessory={onSelectAccessory} />);
 
     // Expand drawer
-    const expandButton = screen.getByTitle(/Expand Unity Action Studio/i);
+    const expandButton = screen.getByTitle(/Expand 3D Action Studio/i);
     fireEvent.click(expandButton);
 
     expect(screen.getByText('Hana-Sensei Actions')).toBeDefined();
@@ -59,5 +59,33 @@ describe('SenseiActionStrip', () => {
     const capButton = screen.getByTitle('Sensei Cap');
     fireEvent.click(capButton);
     expect(onSelectAccessory).toHaveBeenCalledWith('sensei_hat');
+  });
+
+  it('triggers classroom diorama rotation callbacks', () => {
+    const onRotateLeft = vi.fn();
+    const onRotateRight = vi.fn();
+    const onResetRotation = vi.fn();
+
+    render(
+      <SenseiActionStrip
+        {...defaultProps}
+        dioramaRotation={0.5}
+        onRotateLeft={onRotateLeft}
+        onRotateRight={onRotateRight}
+        onResetRotation={onResetRotation}
+      />
+    );
+
+    const leftBtn = screen.getByTitle(/Rotate Classroom Left/i);
+    fireEvent.click(leftBtn);
+    expect(onRotateLeft).toHaveBeenCalledTimes(1);
+
+    const rightBtn = screen.getByTitle(/Rotate Classroom Right/i);
+    fireEvent.click(rightBtn);
+    expect(onRotateRight).toHaveBeenCalledTimes(1);
+
+    const resetBtn = screen.getByTitle(/Reset 360° View/i);
+    fireEvent.click(resetBtn);
+    expect(onResetRotation).toHaveBeenCalledTimes(1);
   });
 });

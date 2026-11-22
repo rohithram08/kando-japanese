@@ -56,6 +56,7 @@ interface SenseiState {
   targetDirection: 'left' | 'right' | 'forward' | null;
   qaMode: boolean;
   cameraMode: 'full' | 'teaching' | 'portrait';
+  dioramaRotation: number;
 
   // Actions
   toggleOpen: () => void;
@@ -82,6 +83,10 @@ interface SenseiState {
   toggleQaMode: () => void;
   setCameraMode: (mode: 'full' | 'teaching' | 'portrait') => void;
   toggleCameraMode: () => void;
+  setDioramaRotation: (val: number) => void;
+  rotateLeft: () => void;
+  rotateRight: () => void;
+  resetRotation: () => void;
   greet: () => void;
   triggerCelebration: (reason?: string) => void;
   clearHistory: () => Promise<void>;
@@ -167,6 +172,7 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
   targetDirection: null,
   qaMode: isQaModeInit,
   cameraMode: 'full',
+  dioramaRotation: 0,
   emotion: null,
 
   setTargetDirection: (dir) => set({ targetDirection: dir }),
@@ -182,6 +188,10 @@ export const useSenseiStore = create<SenseiState>((set, get) => ({
           ? 'portrait'
           : 'full',
     })),
+  setDioramaRotation: (val) => set({ dioramaRotation: val }),
+  rotateLeft: () => set(state => ({ dioramaRotation: state.dioramaRotation - Math.PI / 8 })),
+  rotateRight: () => set(state => ({ dioramaRotation: state.dioramaRotation + Math.PI / 8 })),
+  resetRotation: () => set({ dioramaRotation: 0 }),
 
   toggleOpen: () => {
     const nextOpen = !get().isOpen;

@@ -73,7 +73,11 @@ export default function SenseiPage() {
     qaMode,
     toggleQaMode,
     cameraMode,
-    toggleCameraMode
+    toggleCameraMode,
+    dioramaRotation,
+    rotateLeft,
+    rotateRight,
+    resetRotation
   } = useSenseiStore();
 
   const [input, setInput] = useState('');
@@ -330,6 +334,10 @@ export default function SenseiPage() {
           onSelectCamera={(m) => setCameraMode(m)}
           slimeAccessory={slimeAccessory}
           onSelectAccessory={setSlimeAccessory}
+          dioramaRotation={dioramaRotation}
+          onRotateLeft={rotateLeft}
+          onRotateRight={rotateRight}
+          onResetRotation={resetRotation}
         />
       </main>
 

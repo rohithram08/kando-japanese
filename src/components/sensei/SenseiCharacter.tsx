@@ -1,11 +1,12 @@
-import React, { useState, Suspense, useEffect } from 'react';
+import React, { useState, Suspense, useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { Canvas, useThree } from '@react-three/fiber';
-import { PerspectiveCamera, OrbitControls, Html, Billboard } from '@react-three/drei';
+import { Canvas, useThree, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera, Html, Billboard } from '@react-three/drei';
 import { RotateCcw, Send, Mic, MicOff, Keyboard, Square } from 'lucide-react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { SenseiGLBCharacter } from './SenseiGLBLoader';
 import { SenseiBackground, ClassroomContactShadows } from './SenseiBackground';
+import { SakuraParticles } from './SakuraParticles';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
 import HanaSenseiCharacter2D, { HanaAnimationState } from './HanaSenseiCharacter2D';
 import SenseiMarkdown from './SenseiMarkdown';
@@ -14,6 +15,7 @@ import { SlimeMood } from '../mascot/KandoSlime';
 import VirtualLanguageKeyboard from './VirtualLanguageKeyboard';
 import SenseiMobileDock from './SenseiMobileDock';
 import { useSettingsStore } from '../../store/settingsStore';
+import { useSenseiStore } from '../../store/senseiStore';
 
 export interface SenseiCharacterProps {
   speechState?: SenseiAnimationState;
@@ -168,8 +170,8 @@ function Dom2DView({
   );
 }
 
-// ─── Synchronized Camera & Controls Controller ──────────────────────────────
-function CameraController({
+// ─── Unity Cinemachine Virtual Camera Director ─────────────────────────────
+function CinemachineCameraController({
   target,
   cameraPos,
   cameraFov,
@@ -179,34 +181,37 @@ function CameraController({
   cameraFov: number;
 }) {
   const { camera } = useThree();
-  const controlsRef = React.useRef<any>(null);
+  const currentLookAt = useRef(new THREE.Vector3(...target));
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (camera instanceof THREE.PerspectiveCamera) {
-      camera.fov = cameraFov;
+    if (!initialized.current && camera instanceof THREE.PerspectiveCamera) {
       camera.position.set(cameraPos[0], cameraPos[1], cameraPos[2]);
+      camera.fov = cameraFov;
       camera.updateProjectionMatrix();
+      camera.lookAt(target[0], target[1], target[2]);
+      currentLookAt.current.set(target[0], target[1], target[2]);
+      initialized.current = true;
     }
-    if (controlsRef.current) {
-      controlsRef.current.target.set(target[0], target[1], target[2]);
-      controlsRef.current.update();
-    }
-  }, [target, cameraPos, cameraFov, camera]);
+  }, [camera, cameraPos, cameraFov, target]);
 
-  return (
-    <OrbitControls
-      ref={controlsRef}
-      target={target}
-      enableRotate={false}
-      enablePan={false}
-      enableZoom={true}
-      minDistance={1.8}
-      maxDistance={5.2}
-      minPolarAngle={Math.PI / 4.2}
-      maxPolarAngle={Math.PI / 1.82}
-      autoRotate={false}
-    />
-  );
+  useFrame((_, delta) => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+
+    // Smooth Unity-grade exponential glide damping (5.5x speed)
+    const t = Math.min(1, delta * 5.5);
+    camera.position.lerp(new THREE.Vector3(...cameraPos), t);
+
+    // Smooth FOV zoom
+    camera.fov = THREE.MathUtils.lerp(camera.fov, cameraFov, t);
+    camera.updateProjectionMatrix();
+
+    // Smooth target lookAt
+    currentLookAt.current.lerp(new THREE.Vector3(...target), t);
+    camera.lookAt(currentLookAt.current);
+  });
+
+  return null;
 }
 
 // ─── Main Sensei Character Export ───────────────────────────────────────────
@@ -259,7 +264,8 @@ export default function SenseiCharacter({
   const [webGLSupported, setWebGLSupported] = useState<boolean>(() => isWebGLAvailable());
   const [canvasError, setCanvasError] = useState<boolean>(false);
   const [showKeyboard, setShowKeyboard] = useState<boolean>(false);
-  const [dioramaRotation, setDioramaRotation] = useState<number>(0);
+  const dioramaRotation = useSenseiStore((s) => s.dioramaRotation);
+  const setDioramaRotation = useSenseiStore((s) => s.setDioramaRotation);
   const isDraggingRef = React.useRef(false);
   const prevXRef = React.useRef(0);
   const currentExplLang = useSettingsStore((s) => s.explanationLanguage || 'ta');
@@ -280,7 +286,7 @@ export default function SenseiCharacter({
     if (!isDraggingRef.current) return;
     const deltaX = e.clientX - prevXRef.current;
     prevXRef.current = e.clientX;
-    setDioramaRotation((prev) => prev + deltaX * 0.009);
+    setDioramaRotation(dioramaRotation + deltaX * 0.009);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
@@ -294,7 +300,7 @@ export default function SenseiCharacter({
     if (isPortrait) {
       setDioramaRotation(0);
     }
-  }, [isPortrait]);
+  }, [isPortrait, setDioramaRotation]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -311,29 +317,33 @@ export default function SenseiCharacter({
   const characterPos: [number, number, number] = isLeft ? [-1.70, 0, 0] : [0, 0, 0];
   const slimePos: [number, number, number] = [1.70, 0, 0];
 
-  // Camera framing:
-  // - Full stage: captures both Hana on far left and 3D Slime on far right inside the 3D Classroom
-  // - Portrait: zooms directly in on Hana-sensei and her speech bubble
-  // - Compact: upper body for minimized floating widget
+  // Unity-Grade Camera Framing Presets:
+  // - Stage ('full'): captures both Hana on far left and 3D Slime on far right inside the 3D Classroom
+  // - Teach ('teaching'): zooms in on Hana-sensei's upper torso, hands, and wand gestures
+  // - Portrait ('portrait'): zooms directly in on Hana-sensei's face, expressions, and speech bubble
 
   let targetPos: [number, number, number] = isLeft ? [0, 0.90, 0] : [0, 0.74, 0];
   let cameraPos: [number, number, number] = isLeft
-    ? isMobileScreen ? [0, 0.85, 3.2] : [0, 1.0, 3.45]
+    ? isMobileScreen ? [0, 0.85, 3.2] : [0, 1.05, 3.45]
     : isMobileScreen
     ? [0, 0.76, 2.7]
     : [0, 0.76, 2.3];
-  let cameraFov = isLeft ? 46 : isMobileScreen ? 46 : 41;
+  let cameraFov = isLeft ? 45 : isMobileScreen ? 46 : 41;
 
   if (isPortrait) {
-    // Zoom directly in on Hana-sensei and her speech bubble (centered at -1.28m)
-    targetPos = [-1.28, 1.25, 0];
-    cameraPos = isMobileScreen ? [-1.28, 1.30, 2.4] : [-1.28, 1.30, 2.1];
-    cameraFov = isMobileScreen ? 38 : 35;
+    // Cinematic Portrait Focus: focused directly on Hana's head, face, and eyes
+    targetPos = isLeft ? [-1.70, 1.34, 0] : [0, 1.34, 0];
+    cameraPos = isLeft
+      ? isMobileScreen ? [-1.70, 1.36, 2.1] : [-1.70, 1.36, 1.72]
+      : isMobileScreen ? [0, 1.36, 2.1] : [0, 1.36, 1.72];
+    cameraFov = isMobileScreen ? 35 : 30;
   } else if (mode === 'teaching') {
-    // Unity Virtual Camera: Waist & wand gestures focus
-    targetPos = [-1.45, 1.02, 0];
-    cameraPos = isMobileScreen ? [-1.45, 1.10, 2.5] : [-1.45, 1.12, 2.3];
-    cameraFov = 38;
+    // Teaching Gesture Focus: focused on Hana's upper body, torso, and magic wand flourish
+    targetPos = isLeft ? [-1.65, 1.02, 0] : [0, 1.02, 0];
+    cameraPos = isLeft
+      ? isMobileScreen ? [-1.65, 1.12, 2.6] : [-1.65, 1.15, 2.30]
+      : isMobileScreen ? [0, 1.12, 2.6] : [0, 1.15, 2.30];
+    cameraFov = isMobileScreen ? 40 : 36;
   } else if (!isFull) {
     targetPos = [0, 1.05, 0];
     cameraPos = [0, 1.15, 2.8];
@@ -452,7 +462,10 @@ export default function SenseiCharacter({
             {/* 1. Complete 3D Japanese Classroom Environment */}
             <SenseiBackground />
 
-            {/* 2. Grounding Contact Shadows pinned under Hana and Slime */}
+            {/* 2. Soft Floating Japanese Sakura Petals in Sunlight */}
+            <SakuraParticles count={24} />
+
+            {/* 3. Grounding Contact Shadows pinned under Hana and Slime */}
             <ClassroomContactShadows
               characterPos={characterPos}
               slimePos={slimePos}
@@ -716,50 +729,14 @@ export default function SenseiCharacter({
           )}
           </group>
 
-          {/* Synchronized Camera Controller & OrbitControls */}
-          <CameraController
+          {/* Unity Cinemachine Virtual Camera Director */}
+          <CinemachineCameraController
             target={targetPos}
             cameraPos={cameraPos}
             cameraFov={cameraFov}
           />
         </Canvas>
       </ErrorBoundary>
-
-      {/* 360° Classroom Turntable Controls (Available in full mode) */}
-      {!isPortrait && isLeft && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-3 py-1 bg-slate-900/85 backdrop-blur-md rounded-full border border-slate-700/70 shadow-xl text-slate-300 pointer-events-auto">
-          <button
-            type="button"
-            onClick={() => setDioramaRotation((r) => r - Math.PI / 8)}
-            className="p-1 hover:text-white hover:bg-slate-800 rounded-full transition-colors active:scale-95"
-            title="Rotate Left 22.5°"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-          </button>
-          <span className="text-[11px] font-medium tracking-wide text-slate-300 px-1 select-none flex items-center gap-1.5">
-            <span>360° Classroom</span>
-            <span className="text-[10px] text-pink-400 font-japanese font-semibold">教室</span>
-          </span>
-          <button
-            type="button"
-            onClick={() => setDioramaRotation((r) => r + Math.PI / 8)}
-            className="p-1 hover:text-white hover:bg-slate-800 rounded-full transition-colors active:scale-95"
-            title="Rotate Right 22.5°"
-          >
-            <RotateCcw className="w-3.5 h-3.5 -scale-x-100" />
-          </button>
-          {Math.abs(dioramaRotation) > 0.05 && (
-            <button
-              type="button"
-              onClick={() => setDioramaRotation(0)}
-              className="ml-1 px-2 py-0.5 text-[10px] font-semibold bg-slate-800 hover:bg-slate-700 text-pink-300 hover:text-pink-200 rounded-full transition-colors border border-slate-700"
-              title="Reset View"
-            >
-              Reset
-            </button>
-          )}
-        </div>
-      )}
     </div>
   );
 }

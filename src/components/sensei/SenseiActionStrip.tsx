@@ -10,7 +10,8 @@ import {
   HelpCircle,
   Volume2,
   ChevronUp,
-  ChevronDown
+  ChevronDown,
+  RotateCcw
 } from 'lucide-react';
 import { SenseiAnimationState } from './controllers/SenseiAnimationController';
 import { SlimeAccessory } from './KandoSlime3D';
@@ -84,6 +85,10 @@ export interface SenseiActionStripProps {
   onSelectCamera: (mode: 'full' | 'teaching' | 'portrait') => void;
   slimeAccessory: SlimeAccessory;
   onSelectAccessory: (acc: SlimeAccessory) => void;
+  dioramaRotation?: number;
+  onRotateLeft?: () => void;
+  onRotateRight?: () => void;
+  onResetRotation?: () => void;
 }
 
 export function SenseiActionStrip({
@@ -93,6 +98,10 @@ export function SenseiActionStrip({
   onSelectCamera,
   slimeAccessory,
   onSelectAccessory,
+  dioramaRotation,
+  onRotateLeft,
+  onRotateRight,
+  onResetRotation,
 }: SenseiActionStripProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeToast, setActiveToast] = useState<{ label: string; jp: string } | null>(null);
@@ -117,37 +126,23 @@ export function SenseiActionStrip({
   };
 
   return (
-    <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-20 flex flex-col gap-2 pointer-events-none select-none">
-      {/* ── Action HUD Toast Banner ── */}
-      <AnimatePresence>
-        {activeToast && (
-          <motion.div
-            initial={{ opacity: 0, y: 8, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="self-start px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-xl border border-pink-400/40 text-pink-200 text-xs shadow-lg flex items-center gap-2 pointer-events-auto"
-          >
-            <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
-            <span className="font-bold font-japanese">{activeToast.jp}</span>
-            <span className="text-slate-400 text-[11px]">•</span>
-            <span className="text-slate-300 font-medium">{activeToast.label}</span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ── Action Controls Capsule ── */}
+    <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex flex-col gap-2 pointer-events-none select-none">
+      {/* ── Action Controls Capsule Reframed at Top-Left ── */}
       <div className="pointer-events-auto flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-950/85 backdrop-blur-xl border border-slate-700/70 shadow-2xl ring-1 ring-primary/20">
         {/* Toggle drawer button */}
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
-          className="px-2.5 py-1.5 rounded-xl bg-primary/15 hover:bg-primary/25 text-primary text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 border border-primary/25"
-          title={isExpanded ? 'Collapse Action Studio' : 'Expand Unity Action Studio'}
+          className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 border ${
+            isExpanded
+              ? 'bg-primary text-primary-foreground border-primary shadow-xs'
+              : 'bg-primary/15 hover:bg-primary/25 text-primary border-primary/25'
+          }`}
+          title={isExpanded ? 'Collapse 3D Action Studio' : 'Expand 3D Action Studio'}
         >
-          <Sparkles className="w-3.5 h-3.5 text-primary" />
-          <span className="hidden sm:inline font-sans">3D Actions</span>
-          {isExpanded ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
+          <Sparkles className="w-3.5 h-3.5" />
+          <span className="font-sans">Actions</span>
+          {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
         </button>
 
         {/* Quick 1-click action buttons strip */}
@@ -173,57 +168,117 @@ export function SenseiActionStrip({
           })}
         </div>
 
-        {/* Camera Director Switcher */}
-        <div className="hidden sm:flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
+        {/* Unity Cinemachine Virtual Camera Switcher */}
+        <div className="flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
           <button
             type="button"
             onClick={() => handleCameraClick('full')}
-            className={`p-1.5 rounded-xl text-[11px] transition-all flex items-center gap-1 ${
+            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
               cameraMode === 'full'
-                ? 'bg-primary/25 text-primary border border-primary/40 font-semibold'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
-            title="Full Stage: 360° Classroom framing"
+            title="Full Stage: 360° Classroom director angle"
           >
             <Layers className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">Stage</span>
+            <span className="hidden sm:inline">Stage</span>
           </button>
           <button
             type="button"
             onClick={() => handleCameraClick('teaching')}
-            className={`p-1.5 rounded-xl text-[11px] transition-all flex items-center gap-1 ${
+            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
               cameraMode === 'teaching'
-                ? 'bg-primary/25 text-primary border border-primary/40 font-semibold'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
             title="Teaching Focus: Medium shot focusing on gestures and wand"
           >
             <Wand2 className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">Teach</span>
+            <span className="hidden sm:inline">Teach</span>
           </button>
           <button
             type="button"
             onClick={() => handleCameraClick('portrait')}
-            className={`p-1.5 rounded-xl text-[11px] transition-all flex items-center gap-1 ${
+            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
               cameraMode === 'portrait'
-                ? 'bg-primary/25 text-primary border border-primary/40 font-semibold'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
             }`}
             title="Portrait Close-Up: Facial expressions and eye tracking"
           >
             <Camera className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">Portrait</span>
+            <span className="hidden sm:inline">Portrait</span>
           </button>
         </div>
+
+        {/* 360° Classroom Turntable Controls */}
+        {onRotateLeft && onRotateRight && (
+          <div className="hidden lg:flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
+            <button
+              type="button"
+              onClick={() => {
+                playPop();
+                onRotateLeft();
+              }}
+              className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
+              title="Rotate Classroom Left 22.5°"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-[10px] text-slate-400 font-medium px-0.5">360°</span>
+            <button
+              type="button"
+              onClick={() => {
+                playPop();
+                onRotateRight();
+              }}
+              className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
+              title="Rotate Classroom Right 22.5°"
+            >
+              <RotateCcw className="w-3.5 h-3.5 -scale-x-100" />
+            </button>
+            {dioramaRotation !== undefined && Math.abs(dioramaRotation) > 0.05 && onResetRotation && (
+              <button
+                type="button"
+                onClick={() => {
+                  playPop();
+                  onResetRotation();
+                }}
+                className="px-1.5 py-0.5 text-[9px] font-semibold bg-slate-800 text-pink-300 hover:bg-slate-700 rounded-md border border-slate-700"
+                title="Reset 360° View"
+              >
+                Reset
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* ── Expanded Drawer for Full Action Suite & Slime Wardrobe ── */}
+      {/* ── Action HUD Toast Banner ── */}
+      <AnimatePresence>
+        {activeToast && (
+          <motion.div
+            initial={{ opacity: 0, y: -6, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="self-start px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-xl border border-pink-400/40 text-pink-200 text-xs shadow-lg flex items-center gap-2 pointer-events-auto"
+          >
+            <span className="w-2 h-2 rounded-full bg-pink-400 animate-ping" />
+            <span className="font-bold font-japanese">{activeToast.jp}</span>
+            <span className="text-slate-400 text-[11px]">•</span>
+            <span className="text-slate-300 font-medium">{activeToast.label}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Expanded Drawer Drops Down from Top-Left without Covering Floor or Desk ── */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             className="pointer-events-auto p-3.5 rounded-2xl bg-slate-950/95 backdrop-blur-2xl border border-slate-700/80 shadow-2xl ring-1 ring-primary/20 flex flex-col gap-3 w-[290px] sm:w-[340px]"
           >
@@ -305,7 +360,9 @@ export function SenseiActionStrip({
                   type="button"
                   onClick={() => handleCameraClick('full')}
                   className={`py-1 rounded-lg text-[10px] font-medium ${
-                    cameraMode === 'full' ? 'bg-primary text-primary-foreground' : 'bg-slate-900 text-slate-400'
+                    cameraMode === 'full'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-slate-900 text-slate-400'
                   }`}
                 >
                   Stage
@@ -314,7 +371,9 @@ export function SenseiActionStrip({
                   type="button"
                   onClick={() => handleCameraClick('teaching')}
                   className={`py-1 rounded-lg text-[10px] font-medium ${
-                    cameraMode === 'teaching' ? 'bg-primary text-primary-foreground' : 'bg-slate-900 text-slate-400'
+                    cameraMode === 'teaching'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-slate-900 text-slate-400'
                   }`}
                 >
                   Teach
@@ -323,7 +382,9 @@ export function SenseiActionStrip({
                   type="button"
                   onClick={() => handleCameraClick('portrait')}
                   className={`py-1 rounded-lg text-[10px] font-medium ${
-                    cameraMode === 'portrait' ? 'bg-primary text-primary-foreground' : 'bg-slate-900 text-slate-400'
+                    cameraMode === 'portrait'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-slate-900 text-slate-400'
                   }`}
                 >
                   Portrait

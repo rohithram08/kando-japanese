@@ -92,14 +92,27 @@ export function SenseiGLBCharacter({
     expressionCtrl.setSpeaking(isSpeaking);
   }, [isSpeaking, lipSyncCtrl, expressionCtrl]);
 
-  // Frame update loop: lip-sync, expressions, procedural micro-motions, and target turning
+  // Duolingo-grade cartoon squash & stretch bounce spring physics
+  const squashY = useRef(1);
+  const squashVelY = useRef(0);
+  const squashX = useRef(1);
+  const squashVelX = useRef(0);
+  const prevStateRef = useRef(state);
+
+  useEffect(() => {
+    if (prevStateRef.current !== state && state !== 'idle') {
+      squashVelY.current = -0.52;
+      squashVelX.current = 0.26;
+    }
+    prevStateRef.current = state;
+  }, [state]);
+
+  // Frame update loop: lip-sync, expressions, procedural micro-motions, squash/stretch and target turning
   useFrame((stateObj, delta) => {
     lipSyncCtrl.update(delta);
     expressionCtrl.update(delta);
 
     // 1. Dynamic target-based turning
-    // In Three.js: Positive Y rotation turns towards +X (Right, facing Slime),
-    // Negative Y rotation turns towards -X (Left).
     let targetRotationY = 0;
     if (targetDirection === 'left') targetRotationY = -0.65; // ~37 deg leftwards
     else if (targetDirection === 'right') targetRotationY = 0.65; // ~37 deg rightwards towards Slime!
@@ -112,13 +125,27 @@ export function SenseiGLBCharacter({
       );
     }
 
-    // 2. Unity-Grade Procedural Life & Breathing Micro-Motions
+    // 2. Duolingo Cartoon Squash & Stretch Harmonic Spring
+    const springK = 65;
+    const springD = 7.5;
+    const forceY = -springK * (squashY.current - 1) - springD * squashVelY.current;
+    const forceX = -springK * (squashX.current - 1) - springD * squashVelX.current;
+    squashVelY.current += forceY * delta;
+    squashVelX.current += forceX * delta;
+    squashY.current += squashVelY.current * delta;
+    squashX.current += squashVelX.current * delta;
+
+    if (group.current) {
+      group.current.scale.set(squashX.current, squashY.current, squashX.current);
+    }
+
+    // 3. Unity-Grade Procedural Life & Breathing Micro-Motions
     const t = stateObj.clock.elapsedTime;
     const isIdle = state === 'idle' || !state;
 
     if (spineBoneRef.current) {
       // Natural organic breathing cycle
-      const breathIntensity = isIdle ? 0.014 : 0.007;
+      const breathIntensity = isIdle ? 0.016 : 0.008;
       spineBoneRef.current.rotation.x = Math.sin(t * 1.6) * breathIntensity;
     }
 
@@ -126,7 +153,7 @@ export function SenseiGLBCharacter({
       // Natural subtle head saccades and target focus
       const targetHeadY =
         targetDirection === 'right' ? 0.18 : targetDirection === 'left' ? -0.18 : 0;
-      const microSaccade = Math.sin(t * 0.4) * 0.012;
+      const microSaccade = Math.sin(t * 0.4) * 0.014;
       headBoneRef.current.rotation.y = targetHeadY + microSaccade;
       headBoneRef.current.rotation.z = Math.cos(t * 0.5) * 0.008;
     }
@@ -145,10 +172,10 @@ export function SenseiGLBCharacter({
     const action = actions[clipName] || actions['idle'];
 
     if (action) {
-      action.reset().fadeIn(0.25).play();
+      action.reset().fadeIn(0.22).play();
 
       return () => {
-        action.fadeOut(0.25);
+        action.fadeOut(0.22);
       };
     } else if (import.meta.env.DEV) {
       console.warn(
@@ -160,6 +187,9 @@ export function SenseiGLBCharacter({
 
   const handlePointerDown = (e: any) => {
     e.stopPropagation();
+    // Bouncy cartoon reaction on click
+    squashVelY.current = -0.58;
+    squashVelX.current = 0.28;
     onInteract?.();
   };
 
