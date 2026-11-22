@@ -23,6 +23,7 @@ import KanaDetailModal from '../components/kana/KanaDetailModal';
 import KanaQuiz from '../components/kana/KanaQuiz';
 import KanaTracingCanvas from '../components/kana/KanaTracingCanvas';
 import KanaSenseiGuide from '../components/kana/KanaSenseiGuide';
+import AdBanner from '../components/common/AdBanner';
 import SEO from '../components/common/SEO';
 import toast from 'react-hot-toast';
 import { useI18n } from '../i18n';
@@ -384,6 +385,9 @@ export default function KanaPage() {
               masteryMap={masteryMap}
               isDark={isDark}
             />
+
+            {/* Non-intrusive Educational Sponsor Banner */}
+            <AdBanner placementId="kana" className="mt-8" />
           </motion.div>
         )}
 
