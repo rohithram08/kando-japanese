@@ -5,6 +5,7 @@ import { StoryboardSceneCard } from '../StoryboardSceneCard';
 import { ListeningDownContainer } from '../ListeningDownContainer';
 import { ChoukaiExamModal } from '../ChoukaiExamModal';
 import { ListeningCinemaPlayer } from '../ListeningCinemaPlayer';
+import { ListeningSessionEndModal } from '../ListeningSessionEndModal';
 import { getStaticScenariosByLevel } from '../../../data/listening/scenarios';
 
 describe('Listening Components', () => {
@@ -292,5 +293,136 @@ describe('Listening Components', () => {
 
     const allList = getStaticScenariosByLevel('ALL');
     expect(allList.length).toBeGreaterThanOrEqual(7);
+  });
+
+  it('ListeningSessionEndModal renders Duolingo-style celebration, XP tally, streak pill, and continue CTA', () => {
+    const mockContinue = vi.fn();
+    const mockReplay = vi.fn();
+    const mockOpenExam = vi.fn();
+
+    const sampleScenario = {
+      id: 'sc-modal-test',
+      level: 'N5' as const,
+      category: 'Daily Life',
+      titleJa: 'コンビニでのお買い物',
+      titleEn: 'Shopping at a Convenience Store',
+      descriptionJa: 'レジでの会話',
+      descriptionEn: 'Cashier dialogue',
+      audioUrl: '/audio/conbini.mp3',
+      durationSeconds: 26,
+      storyboard: [sampleScene],
+      dialogue: [],
+      vocabulary: sampleVocab,
+      examQuestions: sampleQuestions,
+    };
+
+    render(
+      <ListeningSessionEndModal
+        isOpen={true}
+        scenario={sampleScenario}
+        baseXP={15}
+        accuracyBonus={10}
+        currentStreak={7}
+        dailyGoalTarget={50}
+        dailyGoalCurrent={25}
+        onContinue={mockContinue}
+        onReplay={mockReplay}
+        onOpenExam={mockOpenExam}
+      />
+    );
+
+    expect(screen.getByText('聴解トレーニング完了！')).toBeTruthy();
+    expect(screen.getByText('N5 • コンビニでのお買い物')).toBeTruthy();
+    expect(screen.getByText('Total XP')).toBeTruthy();
+    expect(screen.getByText('Streak')).toBeTruthy();
+    expect(screen.getByText(/7/)).toBeTruthy();
+    expect(screen.getByText(/Extended for today!/i)).toBeTruthy();
+
+    fireEvent.click(screen.getByText(/Continue \(次へ\)/i));
+    expect(mockContinue).toHaveBeenCalled();
+
+    fireEvent.click(screen.getByText('Replay Video'));
+    expect(mockReplay).toHaveBeenCalled();
+
+    fireEvent.click(screen.getByText(/Take Exam/i));
+    expect(mockOpenExam).toHaveBeenCalled();
+  });
+
+  it('ListeningCinemaPlayer renders Duolingo turtle speed toggle and in-dialogue checkpoint overlay', () => {
+    const mockRate = vi.fn();
+    const mockAnswerCheckpoint = vi.fn();
+    const mockSkipCheckpoint = vi.fn();
+
+    const sampleScenario = {
+      id: 'sc-checkpoint-test',
+      level: 'N5' as const,
+      category: 'Daily Life',
+      titleJa: 'コンビニでのお買い物',
+      titleEn: 'Shopping at a Convenience Store',
+      descriptionJa: 'レジでの会話',
+      descriptionEn: 'Cashier dialogue',
+      audioUrl: '/audio/conbini.mp3',
+      durationSeconds: 26,
+      storyboard: [sampleScene],
+      dialogue: [
+        {
+          id: 'd1',
+          speaker: '店員',
+          text: 'いらっしゃいませ！温めますか？',
+          hiragana: 'いらっしゃいませ！あたためますか？',
+          romaji: 'Irasshaimase! Atatamemasu ka?',
+          en: 'Welcome! Would you like this heated up?',
+          voiceGender: 'female' as const,
+          timeOffsetSec: 0,
+          durationSec: 26,
+          sceneIndex: 0,
+        },
+      ],
+      vocabulary: sampleVocab,
+      examQuestions: sampleQuestions,
+    };
+
+    render(
+      <ListeningCinemaPlayer
+        scenario={sampleScenario}
+        isPlaying={false}
+        currentLineIndex={0}
+        activeSceneIndex={0}
+        playbackRate={0.85}
+        showFurigana={true}
+        showEnglishSubtitle={true}
+        activeCheckpoint={sampleQuestions[0]}
+        onAnswerCheckpoint={mockAnswerCheckpoint}
+        onSkipCheckpoint={mockSkipCheckpoint}
+        onTogglePlay={vi.fn()}
+        onRestart={vi.fn()}
+        onPlayLine={vi.fn()}
+        onSelectScene={vi.fn()}
+        onSetPlaybackRate={mockRate}
+        onToggleFurigana={vi.fn()}
+        onToggleEnglish={vi.fn()}
+        onPlayChime={vi.fn()}
+        onOpenExam={vi.fn()}
+      />
+    );
+
+    // Verifies Duolingo Radio checkpoint overlay
+    expect(screen.getByText(/Radio Checkpoint/i)).toBeTruthy();
+    expect(screen.getByText('女の人は何をしますか。')).toBeTruthy();
+    expect(screen.getByText('エコバッグを出します。')).toBeTruthy();
+
+    // Answering checkpoint
+    fireEvent.click(screen.getByText('エコバッグを出します。'));
+    expect(mockAnswerCheckpoint).toHaveBeenCalledWith(0);
+
+    // Skipping checkpoint
+    fireEvent.click(screen.getByText(/Skip →/i));
+    expect(mockSkipCheckpoint).toHaveBeenCalled();
+
+    // Turtle Speed Toggle
+    const turtleBtn = screen.getByTitle(/Switch to slow 0.75x turtle speed/i);
+    expect(turtleBtn).toBeTruthy();
+    fireEvent.click(turtleBtn);
+    expect(mockRate).toHaveBeenCalledWith(0.75);
   });
 });

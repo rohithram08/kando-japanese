@@ -4,7 +4,7 @@
 // Unified YouTube-Style Cinema Player + Interactive Transcripts & Down Container
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Sparkles,
   Headphones,
@@ -18,21 +18,50 @@ import {
   getListeningScenarios,
   saveListeningProgress,
   type ListeningScenario,
+  type ChoukaiQuestion,
 } from '../api/listening';
 import { ListeningCinemaPlayer } from '../components/listening/ListeningCinemaPlayer';
 import { ListeningDownContainer } from '../components/listening/ListeningDownContainer';
 import { ChoukaiExamModal } from '../components/listening/ChoukaiExamModal';
+import { ListeningSessionEndModal } from '../components/listening/ListeningSessionEndModal';
 import { playJlptChime, speakJapaneseLine, stopSpeaking } from '../utils/jlptAudio';
+import { playSuccess, playError } from '../utils/soundEffects';
 import { useStudyTracker } from '../hooks/useStudyTracker';
+import { useStudyLevel } from '../hooks/useStudyLevel';
+import { useProgressStore } from '../store/progressStore';
 import SEO from '../components/common/SEO';
 import { getStaticScenariosByLevel, STATIC_LISTENING_SCENARIOS } from '../data/listening/scenarios';
 
-const JLPT_LEVELS = ['ALL', 'N5', 'N4', 'N3', 'N2', 'N1'] as const;
-
 export default function ListeningPage() {
-  const [selectedLevel, setSelectedLevel] = useState<string>('N5');
+  const { studyLevel, unlocked } = useStudyLevel();
+  const streak = useProgressStore((s) => s.streak || 0);
+  const dailyXP = useProgressStore((s) => s.dailyXP || 0);
+
+  // Available level tabs: strictly determined by user's unlocked levels
+  // If user only unlocked N5: only show ['N5']
+  // If user unlocked N5 + N4: show ['ALL', 'N5', 'N4']
+  const availableTabs = useMemo(() => {
+    return unlocked.length > 1 ? (['ALL', ...unlocked] as const) : unlocked;
+  }, [unlocked]);
+
+  const [selectedLevel, setSelectedLevel] = useState<string>(() => unlocked[0] || 'N5');
+
+  // Clamp selectedLevel if user's study level changes
+  useEffect(() => {
+    if (selectedLevel !== 'ALL' && !unlocked.includes(selectedLevel as any)) {
+      setSelectedLevel(unlocked[0] || 'N5');
+    }
+  }, [unlocked, selectedLevel]);
+
+  const effectiveLevel =
+    selectedLevel === 'ALL' && unlocked.length > 1
+      ? 'ALL'
+      : unlocked.includes(selectedLevel as any)
+      ? selectedLevel
+      : unlocked[0] || 'N5';
+
   const [scenarios, setScenarios] = useState<ListeningScenario[]>(() =>
-    getStaticScenariosByLevel('N5')
+    getStaticScenariosByLevel(effectiveLevel).filter((s) => unlocked.includes(s.level))
   );
   const [selectedScenarioId, setSelectedScenarioId] = useState<string>('n5_convenience_store');
 
@@ -46,26 +75,34 @@ export default function ListeningPage() {
   const [currentTimeSec, setCurrentTimeSec] = useState(0);
   const [hasEnded, setHasEnded] = useState(false);
 
+  // Duolingo Radio Checkpoint & Celebration State
+  const [activeCheckpoint, setActiveCheckpoint] = useState<ChoukaiQuestion | null>(null);
+  const [checkpointCompleted, setCheckpointCompleted] = useState(false);
+  const [isSessionEndModalOpen, setIsSessionEndModalOpen] = useState(false);
+
   // Exam Modal State
   const [isExamModalOpen, setIsExamModalOpen] = useState(false);
   const [verifiedWordsCount, setVerifiedWordsCount] = useState(0);
 
-  // Load scenarios on level change (instant static switch + async progress merge)
+  // Load scenarios on level change (instant static switch + async progress merge, strictly level-gated)
   useEffect(() => {
     let mounted = true;
-    const initialList = getStaticScenariosByLevel(selectedLevel);
+    const initialList = getStaticScenariosByLevel(effectiveLevel).filter((s) =>
+      unlocked.includes(s.level)
+    );
     setScenarios(initialList);
 
     if (initialList.length > 0 && !initialList.some((s) => s.id === selectedScenarioId)) {
       setSelectedScenarioId(initialList[0].id);
     }
 
-    getListeningScenarios(selectedLevel)
+    getListeningScenarios(effectiveLevel)
       .then((data) => {
         if (!mounted || !data || data.length === 0) return;
-        setScenarios(data);
-        if (!data.some((s) => s.id === selectedScenarioId)) {
-          setSelectedScenarioId(data[0].id);
+        const levelFiltered = data.filter((s) => unlocked.includes(s.level));
+        setScenarios(levelFiltered);
+        if (!levelFiltered.some((s) => s.id === selectedScenarioId)) {
+          setSelectedScenarioId(levelFiltered[0].id);
         }
       })
       .catch((err) => {
@@ -75,20 +112,30 @@ export default function ListeningPage() {
     return () => {
       mounted = false;
     };
-  }, [selectedLevel]);
+  }, [effectiveLevel, unlocked]);
+
+  const filteredScenarios = useMemo(() => {
+    return scenarios.filter((s) => {
+      if (!unlocked.includes(s.level)) return false;
+      if (effectiveLevel === 'ALL') return true;
+      return s.level === effectiveLevel;
+    });
+  }, [scenarios, unlocked, effectiveLevel]);
 
   const activeScenario =
-    scenarios.find((s) => s.id === selectedScenarioId) ||
+    filteredScenarios.find((s) => s.id === selectedScenarioId) ||
+    filteredScenarios[0] ||
+    scenarios.find((s) => unlocked.includes(s.level)) ||
     scenarios[0] ||
     STATIC_LISTENING_SCENARIOS[0];
 
   // Compute accurate scenario duration dynamically from the dialogue lines
-  const totalDuration = React.useMemo(() => {
+  const totalDuration = useMemo(() => {
     if (!activeScenario?.dialogue || activeScenario.dialogue.length === 0) {
       return activeScenario?.durationSeconds || 26;
     }
     const last = activeScenario.dialogue[activeScenario.dialogue.length - 1];
-    return Math.max(last.timeOffsetSec + (last.durationSec || 4), activeScenario.durationSeconds || 0);
+    return last.timeOffsetSec + (last.durationSec || 4);
   }, [activeScenario]);
 
   // Live timer tick during playback for smooth continuous scrubber progression
@@ -113,12 +160,27 @@ export default function ListeningPage() {
     enabled: true,
   });
 
-  // Play line-by-line dialogue sequence
+  // Play line-by-line dialogue sequence with Duolingo checkpoint integration
   const playDialogueSequence = (startIdx = 0) => {
     if (!activeScenario || !activeScenario.dialogue[startIdx]) {
       setIsPlaying(false);
       setCurrentTimeSec(totalDuration);
       setHasEnded(true);
+      setIsSessionEndModalOpen(true);
+      return;
+    }
+
+    // Mid-dialogue comprehension checkpoint (Duolingo Radio mechanism)
+    const checkpointLine = Math.floor(activeScenario.dialogue.length / 2);
+    if (
+      startIdx === checkpointLine &&
+      !checkpointCompleted &&
+      activeScenario.examQuestions &&
+      activeScenario.examQuestions.length > 0
+    ) {
+      stopSpeaking();
+      setIsPlaying(false);
+      setActiveCheckpoint(activeScenario.examQuestions[0]);
       return;
     }
 
@@ -143,15 +205,29 @@ export default function ListeningPage() {
           setIsPlaying(false);
           setCurrentTimeSec(totalDuration);
           setHasEnded(true);
+          setIsSessionEndModalOpen(true);
           saveListeningProgress({
             scenarioId: activeScenario.id,
             durationSeconds: totalDuration,
             completed: true,
             wordsCheckedCount: verifiedWordsCount,
           }).catch(console.error);
+
+          try {
+            useProgressStore.getState().addXP(25, { reason: 'Listening Dialogue Completed' });
+          } catch {}
         }
       },
-      onError: () => setIsPlaying(false),
+      onError: () => {
+        if (startIdx >= activeScenario.dialogue.length - 1) {
+          setIsPlaying(false);
+          setCurrentTimeSec(totalDuration);
+          setHasEnded(true);
+          setIsSessionEndModalOpen(true);
+        } else {
+          setIsPlaying(false);
+        }
+      },
     });
   };
 
@@ -163,6 +239,8 @@ export default function ListeningPage() {
       if (hasEnded || currentLineIndex >= activeScenario.dialogue.length - 1) {
         // Reached the end, restart smoothly from beginning
         setHasEnded(false);
+        setCheckpointCompleted(false);
+        setActiveCheckpoint(null);
         setCurrentTimeSec(0);
         setCurrentLineIndex(0);
         setActiveSceneIndex(0);
@@ -177,6 +255,9 @@ export default function ListeningPage() {
     stopSpeaking();
     setIsPlaying(false);
     setHasEnded(false);
+    setCheckpointCompleted(false);
+    setActiveCheckpoint(null);
+    setIsSessionEndModalOpen(false);
     setCurrentTimeSec(0);
     setCurrentLineIndex(0);
     setActiveSceneIndex(0);
@@ -185,6 +266,29 @@ export default function ListeningPage() {
 
   const handlePlayChime = () => {
     playJlptChime();
+  };
+
+  const handleAnswerCheckpoint = (optionIndex: number) => {
+    if (!activeCheckpoint) return;
+    if (optionIndex === activeCheckpoint.correctIndex) {
+      playSuccess();
+      setCheckpointCompleted(true);
+      setActiveCheckpoint(null);
+      try {
+        useProgressStore.getState().addXP(10, { reason: 'Checkpoint Question Correct' });
+      } catch {}
+      setTimeout(() => {
+        playDialogueSequence(currentLineIndex + 1);
+      }, 700);
+    } else {
+      playError();
+    }
+  };
+
+  const handleSkipCheckpoint = () => {
+    setCheckpointCompleted(true);
+    setActiveCheckpoint(null);
+    playDialogueSequence(currentLineIndex + 1);
   };
 
   const handlePlaySingleLine = (idx: number) => {
@@ -233,6 +337,9 @@ export default function ListeningPage() {
     stopSpeaking();
     setIsPlaying(false);
     setHasEnded(false);
+    setCheckpointCompleted(false);
+    setActiveCheckpoint(null);
+    setIsSessionEndModalOpen(false);
     setCurrentTimeSec(0);
     setCurrentLineIndex(0);
     setActiveSceneIndex(0);
@@ -260,9 +367,9 @@ export default function ListeningPage() {
         path="/listening"
       />
 
-      <div className="w-full min-w-0 space-y-4">
+      <div className="w-full max-w-full min-w-0 overflow-x-hidden space-y-4">
         {/* Compact Top Header Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card/70 border border-border/70 rounded-2xl p-3 sm:px-4 shadow-2xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card/70 border border-border/70 rounded-2xl p-3 sm:px-4 shadow-2xs w-full min-w-0">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-9 h-9 rounded-xl bg-primary/15 text-primary grid place-items-center shrink-0">
               <Headphones className="w-4 h-4" />
@@ -283,20 +390,20 @@ export default function ListeningPage() {
           </div>
 
           <div className="flex items-center justify-between sm:justify-end gap-2 shrink-0">
-            {/* Level Tabs */}
+            {/* Strict Level Tabs: Only shows levels unlocked by user */}
             <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-xl">
-              {JLPT_LEVELS.map((lvl) => (
+              {availableTabs.map((lvl) => (
                 <button
                   key={lvl}
                   type="button"
                   onClick={() => setSelectedLevel(lvl)}
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
-                    selectedLevel === lvl
+                    effectiveLevel === lvl
                       ? 'bg-primary text-primary-foreground shadow-xs'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  {lvl === 'ALL' ? 'All' : lvl}
+                  {lvl === 'ALL' ? 'All Unlocked' : lvl}
                 </button>
               ))}
             </div>
@@ -324,11 +431,11 @@ export default function ListeningPage() {
         </div>
 
         {/* Content Area */}
-        <div className="space-y-4">
+        <div className="space-y-4 w-full min-w-0">
           {activeScenario ? (
             <>
               {/* ── 1. UNIFIED YOUTUBE-STYLE CINEMA VIDEO PLAYER (TOP PRIORITY) ── */}
-              <section className="animate-in fade-in duration-300">
+              <section className="animate-in fade-in duration-300 w-full min-w-0 overflow-hidden">
                 <ListeningCinemaPlayer
                   scenario={activeScenario}
                   isPlaying={isPlaying}
@@ -340,6 +447,9 @@ export default function ListeningPage() {
                   currentTimeSec={currentTimeSec}
                   totalDuration={totalDuration}
                   hasEnded={hasEnded}
+                  activeCheckpoint={activeCheckpoint}
+                  onAnswerCheckpoint={handleAnswerCheckpoint}
+                  onSkipCheckpoint={handleSkipCheckpoint}
                   onTogglePlay={handleTogglePlay}
                   onRestart={handleRestartDialogue}
                   onPlayLine={handlePlaySingleLine}
@@ -358,24 +468,24 @@ export default function ListeningPage() {
               </section>
 
               {/* ── 2. SCENARIO SELECTOR STRIP (COMPACT HORIZONTAL EPISODE PILLS) ── */}
-              <section className="bg-card/70 border border-border/80 rounded-2xl p-3.5 sm:p-4 shadow-xs">
+              <section className="bg-card/70 border border-border/80 rounded-2xl p-3.5 sm:p-4 shadow-xs w-full max-w-full min-w-0 overflow-hidden">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-primary" />
-                    <h2 className="text-xs font-black uppercase tracking-wider text-foreground">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <Sparkles className="w-4 h-4 text-primary shrink-0" />
+                    <h2 className="text-xs font-black uppercase tracking-wider text-foreground truncate">
                       Select Conversation Scenario
                     </h2>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold">
-                      {scenarios.length} Available
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/20 text-primary font-bold shrink-0">
+                      {filteredScenarios.length} Available
                     </span>
                   </div>
-                  <span className="text-xs text-muted-foreground font-medium hidden sm:inline">
+                  <span className="text-xs text-muted-foreground font-medium hidden sm:inline shrink-0">
                     Click to switch scenario
                   </span>
                 </div>
 
-                <div className="flex items-stretch gap-2.5 overflow-x-auto pb-1 scrollbar-thin">
-                  {scenarios.map((sc) => {
+                <div className="flex items-stretch gap-2.5 overflow-x-auto pb-1 scrollbar-thin w-full max-w-full min-w-0">
+                  {filteredScenarios.map((sc) => {
                     const isSelected = sc.id === selectedScenarioId;
                     const isDone = sc.userProgress && sc.userProgress.listenedCount > 0;
 
@@ -384,7 +494,7 @@ export default function ListeningPage() {
                         key={sc.id}
                         type="button"
                         onClick={() => handleSelectScenario(sc.id)}
-                        className={`text-left shrink-0 min-w-[210px] max-w-[260px] p-2.5 sm:p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+                        className={`text-left shrink-0 w-[220px] sm:w-[250px] p-2.5 sm:p-3 rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
                           isSelected
                             ? 'border-primary bg-primary/10 shadow-sm ring-2 ring-primary/40'
                             : 'border-border/70 bg-background/60 hover:bg-muted/50 hover:border-border'
@@ -421,7 +531,7 @@ export default function ListeningPage() {
               </section>
 
               {/* ── 3. SCENARIO CONTEXT & JLPT EXAM TRIGGER BAR ── */}
-              <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-card border border-border/80 shadow-xs">
+              <div className="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-card border border-border/80 shadow-xs w-full min-w-0">
                 <div className="min-w-0 max-w-2xl">
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 rounded-md bg-primary text-primary-foreground font-black text-xs">
@@ -450,7 +560,7 @@ export default function ListeningPage() {
               </div>
 
               {/* ── 4. DOWN CONTAINER FOR WORDS / HEARING CHECK ── */}
-              <section>
+              <section className="w-full min-w-0">
                 <ListeningDownContainer
                   vocabulary={activeScenario.vocabulary}
                   onWordVerified={() => setVerifiedWordsCount((c) => c + 1)}
@@ -464,10 +574,10 @@ export default function ListeningPage() {
               </p>
               <button
                 type="button"
-                onClick={() => setSelectedLevel('N5')}
+                onClick={() => setSelectedLevel(unlocked[0] || 'N5')}
                 className="mt-4 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold shadow-md hover:opacity-95"
               >
-                Switch to JLPT N5 Scenarios
+                Switch to {unlocked[0] || 'N5'} Scenarios
               </button>
             </div>
           )}
@@ -482,6 +592,28 @@ export default function ListeningPage() {
             scenarioTitle={activeScenario.titleJa}
             questions={activeScenario.examQuestions}
             onCompleteExam={handleCompleteExam}
+          />
+        )}
+
+        {/* Duolingo-Grade Session End XP Celebration Modal */}
+        {activeScenario && (
+          <ListeningSessionEndModal
+            isOpen={isSessionEndModalOpen}
+            scenario={activeScenario}
+            baseXP={15}
+            accuracyBonus={checkpointCompleted ? 10 : 5}
+            currentStreak={streak || 1}
+            dailyGoalCurrent={dailyXP || 25}
+            dailyGoalTarget={50}
+            onContinue={() => setIsSessionEndModalOpen(false)}
+            onReplay={() => {
+              setIsSessionEndModalOpen(false);
+              handleRestartDialogue();
+            }}
+            onOpenExam={() => {
+              setIsSessionEndModalOpen(false);
+              setIsExamModalOpen(true);
+            }}
           />
         )}
       </div>

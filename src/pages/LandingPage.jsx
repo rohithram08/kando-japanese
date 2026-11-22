@@ -1,6 +1,6 @@
 // src/pages/LandingPage.jsx
 import React, { useState, useRef, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   Sparkles, BookOpen, MessageCircle, RefreshCw, Languages,
@@ -91,6 +91,12 @@ const FEATURES = [
 export default function LandingPage() {
   const { user } = useAuthStore()
   const navigate = useNavigate()
+
+  // Instant redirect if user is already logged in (never flash landing hero)
+  if (user) {
+    return <Navigate to="/dashboard" replace />
+  }
+
   const [selectedLevel, setSelectedLevel] = useState('N5')
   const [isPlayingAudio, setIsPlayingAudio] = useState(false)
   const [_heroCtaVisible, setHeroCtaVisible] = useState(true)

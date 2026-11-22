@@ -15,6 +15,7 @@ import { useNotificationStore } from '../store/notificationStore'
 import { useSettingsStore } from '../store/settingsStore'
 import { getBadges, getJLPTLevel } from '../utils/progressCalculator'
 import { sendBrowserNotification } from '../services/browserNotificationService'
+import { getLeague } from '../api/league'
 
 const STREAK_MILESTONES = [3, 7, 14, 30, 100, 365]
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000
@@ -299,6 +300,48 @@ export function useNotificationEngine() {
     check()
     return () => clearInterval(interval)
   }, [settings.dailyReminder, settings.reminderTime, displayName])
+
+  // ── 10. League Demotion & Promotion Zone Alerts (Duolingo Style) ──────────
+  useEffect(() => {
+    if (!user) return
+    let active = true
+
+    getLeague()
+      .then((data) => {
+        if (!active || !data || !data.board || !data.board.you) return
+        const you = data.board.you
+        if (you.zone === 'demotion') {
+          upsert({
+            id: `league-demotion-${todayKey()}`,
+            type: 'league_demotion',
+            category: 'reminders',
+            slimeMood: 'streak',
+            greeting: 'League Demotion Alert! ⚠️',
+            title: "You're in the Demotion Zone!",
+            text: `Rank #${you.rank} in ${data.rung?.label || 'your league'}. Complete a Japanese lesson today to climb to safety!`,
+            link: '/league',
+            primaryAction: { label: 'Defend Rank', link: '/league' },
+          })
+        } else if (you.zone === 'promotion') {
+          upsert({
+            id: `league-promotion-${todayKey()}`,
+            type: 'league_promotion',
+            category: 'milestones',
+            slimeMood: 'achievement',
+            greeting: 'Promotion Zone! 🏆',
+            title: "You're in the Promotion Zone!",
+            text: `Rank #${you.rank} in ${data.rung?.label || 'your league'}. You're on track to advance to the next league!`,
+            link: '/league',
+            primaryAction: { label: 'View Standings', link: '/league' },
+          })
+        }
+      })
+      .catch(() => {})
+
+    return () => {
+      active = false
+    }
+  }, [user, upsert])
 }
 
 export default useNotificationEngine

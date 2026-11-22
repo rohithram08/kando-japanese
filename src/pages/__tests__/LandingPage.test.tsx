@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import React from 'react'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import LandingPage from '../LandingPage'
 
 const mockUser = { id: 'u1', username: 'TestLearner', email: 'test@example.com' }
@@ -89,16 +89,19 @@ describe('LandingPage Component', () => {
     expect(kanaLinks.length).toBeGreaterThan(0)
   })
 
-  it('renders dashboard redirect button when user is logged in', () => {
+  it('redirects directly to dashboard when user is logged in', () => {
     currentMockUser = mockUser
     render(
-      <MemoryRouter>
-        <LandingPage />
+      <MemoryRouter initialEntries={['/']}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<div>Dashboard Redirect Target</div>} />
+        </Routes>
       </MemoryRouter>
     )
 
-    const dashBtns = screen.getAllByRole('button', { name: /Dashboard/i })
-    expect(dashBtns.length).toBeGreaterThan(0)
+    expect(screen.getByText('Dashboard Redirect Target')).toBeDefined()
+    expect(screen.queryByRole('button', { name: /Dashboard/i })).toBeNull()
   })
 
   it('allows switching between JLPT levels and updates sample sentences', () => {

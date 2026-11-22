@@ -3571,6 +3571,355 @@ export const LISTENING_SCENARIOS: ListeningScenario[] = [
         "explanation": "証人は「閲覧はいたしましたが、私的持ち出しや複製の意図は断じてございませんでした」と証言しました。"
       }
     ]
+  },
+  {
+    "id": "n5_bakery_cafe",
+    "level": "N5",
+    "category": "Food & Dining",
+    "titleJa": "焼きたてパンと朝カフェ",
+    "titleEn": "Fresh Bakery & Morning Coffee",
+    "descriptionJa": "朝のベーカリーカフェでメロンパンとアイスコーヒーを注文する定番のやりとり",
+    "descriptionEn": "Ordering fresh bakery melon pan and an iced coffee with milk and heating options",
+    "durationSeconds": 24,
+    "storyboard": [
+      {
+        "id": "sc_bakery_1",
+        "order": 1,
+        "title": "Bakery Display & Counter",
+        "description": "Customer brings melon pan to counter and orders morning coffee.",
+        "sceneTheme": "cafe",
+        "captionJa": "焼きたてのメロンパンをレジに持っていきます。",
+        "captionEn": "Bringing freshly baked melon pan to the register."
+      },
+      {
+        "id": "sc_bakery_2",
+        "order": 2,
+        "title": "Drink Order & Dining In",
+        "description": "Clerk asks if dining in or taking out, and whether milk is needed.",
+        "sceneTheme": "cafe",
+        "captionJa": "店内でお召し上がりかお持ち帰りか確認します。",
+        "captionEn": "Confirming whether dining in or taking out."
+      }
+    ],
+    "dialogue": [
+      {
+        "id": "d_bc1",
+        "speaker": "店員 (Clerk)",
+        "speakerRole": "clerk",
+        "voiceGender": "female",
+        "text": "いらっしゃいませ！こちらのメロンパンをおひとつですね。",
+        "hiragana": "いらっしゃいませ！こちらのめろんぱんをおひとつですね。",
+        "romaji": "Irasshaimase! Kochira no meronpan o o-hitotsu desu ne.",
+        "en": "Welcome! Just one of these melon pans, right?",
+        "sceneIndex": 0,
+        "timeOffsetSec": 0,
+        "durationSec": 4
+      },
+      {
+        "id": "d_bc2",
+        "speaker": "客 (Customer)",
+        "speakerRole": "customer",
+        "voiceGender": "male",
+        "text": "はい。あと、アイスコーヒーのMサイズをお願いします。",
+        "hiragana": "はい。あと、あいすこーひーのえむさいずをおねがいします。",
+        "romaji": "Hai. Ato, aisu koohii no emu-saizu o onegaishimasu.",
+        "en": "Yes. Also, please give me a medium iced coffee.",
+        "sceneIndex": 0,
+        "timeOffsetSec": 5,
+        "durationSec": 4
+      },
+      {
+        "id": "d_bc3",
+        "speaker": "店員 (Clerk)",
+        "speakerRole": "clerk",
+        "voiceGender": "female",
+        "text": "かしこまりました。店内でお召し上がりですか？",
+        "hiragana": "かしこまりました。てんないでおめしあがりですか？",
+        "romaji": "Kashikomarimashita. Tennai de o-meshiagari desu ka?",
+        "en": "Certainly. Will you be having that in the cafe?",
+        "sceneIndex": 1,
+        "timeOffsetSec": 10,
+        "durationSec": 3
+      },
+      {
+        "id": "d_bc4",
+        "speaker": "客 (Customer)",
+        "speakerRole": "customer",
+        "voiceGender": "male",
+        "text": "はい、店内で食べます。",
+        "hiragana": "はい、てんないでたべます。",
+        "romaji": "Hai, tennai de tabemasu.",
+        "en": "Yes, I will eat here inside.",
+        "sceneIndex": 1,
+        "timeOffsetSec": 14,
+        "durationSec": 2
+      },
+      {
+        "id": "d_bc5",
+        "speaker": "店員 (Clerk)",
+        "speakerRole": "clerk",
+        "voiceGender": "female",
+        "text": "メロンパンは少し温めますか？",
+        "hiragana": "めろんぱんはすこしあたためますか？",
+        "romaji": "Meronpan wa sukoshi atatamemasu ka?",
+        "en": "Would you like the melon pan lightly warmed up?",
+        "sceneIndex": 1,
+        "timeOffsetSec": 17,
+        "durationSec": 3
+      },
+      {
+        "id": "d_bc6",
+        "speaker": "客 (Customer)",
+        "speakerRole": "customer",
+        "voiceGender": "male",
+        "text": "いいえ、そのままで大丈夫です。ありがとうございます。",
+        "hiragana": "いいえ、そのままでだいじょうぶです。ありがとうございます。",
+        "romaji": "Iie, sono mama de daijoubu desu. Arigatou gozaimasu.",
+        "en": "No, as-is is fine. Thank you very much.",
+        "sceneIndex": 1,
+        "timeOffsetSec": 21,
+        "durationSec": 4
+      }
+    ],
+    "vocabulary": [
+      {
+        "id": "w_meronpan",
+        "word": "メロンパン",
+        "reading": "めろんぱん",
+        "romaji": "meronpan",
+        "meaning": "melon pan (sweet bread)",
+        "partOfSpeech": "noun",
+        "pitchAccent": "③ 中高 (Nakadaka)",
+        "exampleSentenceJa": "メロンパンが焼きたてです。",
+        "exampleSentenceEn": "The melon pan is freshly baked."
+      },
+      {
+        "id": "w_tennai",
+        "word": "店内",
+        "reading": "てんない",
+        "romaji": "tennai",
+        "meaning": "inside the shop / dining in",
+        "partOfSpeech": "noun",
+        "pitchAccent": "① 頭高 (Atamadaka)",
+        "exampleSentenceJa": "店内でお召し上がりですか。",
+        "exampleSentenceEn": "Will you be eating inside the shop?"
+      },
+      {
+        "id": "w_sonomama",
+        "word": "そのまま",
+        "reading": "そのまま",
+        "romaji": "sono mama",
+        "meaning": "as it is / without change",
+        "partOfSpeech": "adverb / noun",
+        "pitchAccent": "◎ 平板 (Heiban)",
+        "exampleSentenceJa": "そのままで大丈夫です。",
+        "exampleSentenceEn": "It is fine as is."
+      }
+    ],
+    "examQuestions": [
+      {
+        "id": "q_bc_1",
+        "mondaiType": 1,
+        "mondaiLabel": "第1部分: 課題理解 (Task Comprehension)",
+        "instructionJa": "男の人はメロンパンをどうしますか。",
+        "instructionEn": "What does the man decide about the melon pan?",
+        "questionJa": "店員に聞かれたあと、男の人はどう答えますか。",
+        "questionEn": "How does the man answer the clerk's question?",
+        "options": [
+          { "id": 1, "textJa": "温めないでそのまま店内で食べます。", "textEn": "Eat it inside without warming it up." },
+          { "id": 2, "textJa": "温めてから持ち帰ります。", "textEn": "Have it warmed and take it home." },
+          { "id": 3, "textJa": "別のパンに変えてもらいます。", "textEn": "Ask to change to a different bread." },
+          { "id": 4, "textJa": "持ち帰りの袋に入れてもらいます。", "textEn": "Ask to have it put into a takeout bag." }
+        ],
+        "correctIndex": 0,
+        "explanation": "男の人は「店内で食べます」「そのままで大丈夫です」と答えているため、温めずにそのまま店内で食べます。"
+      },
+      {
+        "id": "q_bc_2",
+        "mondaiType": 2,
+        "mondaiLabel": "第2部分: ポイント理解 (Point Comprehension)",
+        "instructionJa": "男の人が注文した飲み物は何ですか。",
+        "instructionEn": "What drink did the man order?",
+        "questionJa": "男の人はどの飲み物を頼みましたか。",
+        "questionEn": "Which drink did the customer order?",
+        "options": [
+          { "id": 1, "textJa": "ホットコーヒーのSサイズ", "textEn": "Small hot coffee" },
+          { "id": 2, "textJa": "アイスコーヒーのMサイズ", "textEn": "Medium iced coffee" },
+          { "id": 3, "textJa": "アイスティーのLサイズ", "textEn": "Large iced tea" },
+          { "id": 4, "textJa": "オレンジジュース", "textEn": "Orange juice" }
+        ],
+        "correctIndex": 1,
+        "explanation": "男の人は「アイスコーヒーのMサイズをお願いします」とはっきり注文しています。"
+      }
+    ]
+  },
+  {
+    "id": "n4_train_delay",
+    "level": "N4",
+    "category": "Travel & Commuting",
+    "titleJa": "駅の運転見合わせと振替輸送",
+    "titleEn": "Train Signal Trouble & Alternate Route",
+    "descriptionJa": "信号機トラブルによる列車の運転見合わせと地下鉄線への振替輸送案内アナウンス",
+    "descriptionEn": "Station public announcement regarding signal failure and alternate subway transfer vouchers",
+    "durationSeconds": 24,
+    "storyboard": [
+      {
+        "id": "sc_delay_1",
+        "order": 1,
+        "title": "Station Platform & Signboard",
+        "description": "Departure board flashes delay notice due to signal malfunction.",
+        "sceneTheme": "train_station",
+        "captionJa": "電光掲示板に運転見合わせの案内が表示されています。",
+        "captionEn": "Departure board indicates train suspension."
+      },
+      {
+        "id": "sc_delay_2",
+        "order": 2,
+        "title": "Subway Transfer Gate",
+        "description": "Station staff explains how to use alternate subway route.",
+        "sceneTheme": "train_station",
+        "captionJa": "地下鉄への振替輸送について駅員に確認します。",
+        "captionEn": "Confirming subway transfer ticket with station attendant."
+      }
+    ],
+    "dialogue": [
+      {
+        "id": "d_td1",
+        "speaker": "駅アナウンス (Announcement)",
+        "speakerRole": "announcer",
+        "voiceGender": "female",
+        "text": "お客様にお知らせいたします。ただいま信号機故障のため、全線で運転を見合わせております。",
+        "hiragana": "おきゃくさまにおしらせいたします。ただいましんごうきこしょうのため、ぜんせんでうんてんをみあわせております。",
+        "romaji": "O-kyaku-sama ni o-shirase itashimasu. Tadaima shingouki koshou no tame, zensen de unten o miawasete orimasu.",
+        "en": "Attention passengers. Due to a signal malfunction, operations are currently suspended on all lines.",
+        "sceneIndex": 0,
+        "timeOffsetSec": 0,
+        "durationSec": 5
+      },
+      {
+        "id": "d_td2",
+        "speaker": "乗客 (Passenger)",
+        "speakerRole": "customer",
+        "voiceGender": "male",
+        "text": "すみません、新宿へ急いでいるのですが、いつ動きそうですか？",
+        "hiragana": "すみません、しんじゅくへいそいでいるのですが、いつうごきそうですか？",
+        "romaji": "Sumimasen, Shinjuku e isoide iru no desu ga, itsu ugokisou desu ka?",
+        "en": "Excuse me, I'm in a rush to get to Shinjuku. When is it expected to resume?",
+        "sceneIndex": 1,
+        "timeOffsetSec": 6,
+        "durationSec": 4
+      },
+      {
+        "id": "d_td3",
+        "speaker": "駅員 (Station Staff)",
+        "speakerRole": "clerk",
+        "voiceGender": "male",
+        "text": "復旧まであと30分ほどかかる見込みです。お急ぎの方は地下鉄をご利用ください。",
+        "hiragana": "ふっきゅうまであとさんじっぷんほどかかるみこみです。おいそぎのかたはちかてつをごりようください。",
+        "romaji": "Fukkyuu made ato sanjippun hodo kakaru mikomi desu. O-isogi no kata wa chikatetsu o go-riyou kudasai.",
+        "en": "Recovery is expected to take around 30 minutes. If you are in a rush, please take the subway.",
+        "sceneIndex": 1,
+        "timeOffsetSec": 11,
+        "durationSec": 5
+      },
+      {
+        "id": "d_td4",
+        "speaker": "乗客 (Passenger)",
+        "speakerRole": "customer",
+        "voiceGender": "male",
+        "text": "このJRの定期券で地下鉄に乗れますか？",
+        "hiragana": "このじぇいあーるのていきけんでちかてつにのれますか？",
+        "romaji": "Kono Jei-Aaru no teikiken de chikatetsu ni noremasu ka?",
+        "en": "Can I ride the subway using this JR commuter pass?",
+        "sceneIndex": 1,
+        "timeOffsetSec": 17,
+        "durationSec": 3
+      },
+      {
+        "id": "d_td5",
+        "speaker": "駅員 (Station Staff)",
+        "speakerRole": "clerk",
+        "voiceGender": "male",
+        "text": "はい、改札口で振替票をお配りしておりますので、そちらをお持ちください。",
+        "hiragana": "はい、かいさつぐちでふりかえひょうをおくばりしておりますので、そちらをおもちください。",
+        "romaji": "Hai, kaisatsuguchi de furikae-hyou o o-kubari shite orimasu no de, sochira o o-mochi kudasai.",
+        "en": "Yes, we are distributing transfer tickets at the ticket gate, so please take one with you.",
+        "sceneIndex": 1,
+        "timeOffsetSec": 21,
+        "durationSec": 4
+      }
+    ],
+    "vocabulary": [
+      {
+        "id": "w_unten_miawase",
+        "word": "運転見合わせ",
+        "reading": "うんてんみあわせ",
+        "romaji": "unten miawase",
+        "meaning": "service suspension (temporary)",
+        "partOfSpeech": "noun",
+        "pitchAccent": "⑤ 尾高 / 中高",
+        "exampleSentenceJa": "全線で運転を見合わせています。",
+        "exampleSentenceEn": "Operations are suspended across all lines."
+      },
+      {
+        "id": "w_fukkyuu",
+        "word": "復旧",
+        "reading": "ふっきゅう",
+        "romaji": "fukkyuu",
+        "meaning": "restoration / recovery",
+        "partOfSpeech": "noun / suru-verb",
+        "pitchAccent": "◎ 平板 (Heiban)",
+        "exampleSentenceJa": "復旧まで30分かかります。",
+        "exampleSentenceEn": "It will take 30 minutes until service is restored."
+      },
+      {
+        "id": "w_furikae",
+        "word": "振替輸送",
+        "reading": "ふりかえゆそう",
+        "romaji": "furikae yusou",
+        "meaning": "alternative transportation transfer",
+        "partOfSpeech": "noun",
+        "pitchAccent": "④ 中高 (Nakadaka)",
+        "exampleSentenceJa": "地下鉄への振替輸送をご利用ください。",
+        "exampleSentenceEn": "Please use the alternate subway transfer."
+      }
+    ],
+    "examQuestions": [
+      {
+        "id": "q_td_1",
+        "mondaiType": 1,
+        "mondaiLabel": "第1部分: 課題理解 (Task Comprehension)",
+        "instructionJa": "新宿へ急ぐ乗客はこのあとまず何をしなければなりませんか。",
+        "instructionEn": "What must the hurried passenger do first next?",
+        "questionJa": "地下鉄に乗るために、乗客は最初に何をしますか。",
+        "questionEn": "What will the passenger do first to take the subway?",
+        "options": [
+          { "id": 1, "textJa": "改札口で振替票をもらって地下鉄へ向かう。", "textEn": "Get a transfer ticket at the gate and head to the subway." },
+          { "id": 2, "textJa": "JRのホームで30分間待つ。", "textEn": "Wait on the JR platform for 30 minutes." },
+          { "id": 3, "textJa": "新しく地下鉄の定期券を買い直す。", "textEn": "Buy a new subway commuter pass." },
+          { "id": 4, "textJa": "タクシー乗り場へ走る。", "textEn": "Run to the taxi stand." }
+        ],
+        "correctIndex": 0,
+        "explanation": "駅員が「改札口で振替票をお配りしておりますので、そちらをお持ちください」と案内しています。"
+      },
+      {
+        "id": "q_td_2",
+        "mondaiType": 2,
+        "mondaiLabel": "第2部分: ポイント理解 (Point Comprehension)",
+        "instructionJa": "列車の運転が止まった原因は何ですか。",
+        "instructionEn": "What was the cause of the train stoppage?",
+        "questionJa": "なぜ全線で運転を見合わせていますか。",
+        "questionEn": "Why is train operation suspended?",
+        "options": [
+          { "id": 1, "textJa": "大雨と強風のため", "textEn": "Due to heavy rain and strong wind" },
+          { "id": 2, "textJa": "信号機の故障のため", "textEn": "Due to a signal equipment malfunction" },
+          { "id": 3, "textJa": "線路工事のため", "textEn": "Due to track maintenance" },
+          { "id": 4, "textJa": "駅の停電のため", "textEn": "Due to a station power outage" }
+        ],
+        "correctIndex": 1,
+        "explanation": "アナウンスで「ただいま信号機故障のため、全線で運転を見合わせております」と放送されています。"
+      }
+    ]
   }
 ];
 

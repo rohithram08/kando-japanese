@@ -70,9 +70,12 @@ function LazyRoute({ Component, message = 'Loading section...' }) {
 }
 
 function RootLandingRoute() {
-  const { user, loading } = useAuthStore()
-  if (!loading && user) {
+  const { user, loading, initialized } = useAuthStore()
+  if (user) {
     return <Navigate to="/dashboard" replace />
+  }
+  if (loading && !initialized) {
+    return <RouteLoadingFallback message="Loading Kando Japanese..." />
   }
   return <LazyRoute Component={LandingPage} message="Loading Kando Japanese..." />
 }

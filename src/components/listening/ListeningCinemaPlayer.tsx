@@ -22,7 +22,7 @@ import {
   Sliders,
   ChevronDown,
 } from 'lucide-react';
-import type { ListeningScenario, DialogueLine, StoryboardScene } from '../../api/listening';
+import type { ListeningScenario, DialogueLine, StoryboardScene, ChoukaiQuestion } from '../../api/listening';
 
 interface ListeningCinemaPlayerProps {
   scenario: ListeningScenario;
@@ -35,6 +35,9 @@ interface ListeningCinemaPlayerProps {
   currentTimeSec?: number;
   totalDuration?: number;
   hasEnded?: boolean;
+  activeCheckpoint?: ChoukaiQuestion | null;
+  onAnswerCheckpoint?: (optionIndex: number) => void;
+  onSkipCheckpoint?: () => void;
   onTogglePlay: () => void;
   onRestart: () => void;
   onPlayLine: (lineIdx: number) => void;
@@ -58,6 +61,9 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
   currentTimeSec,
   totalDuration: propTotalDuration,
   hasEnded = false,
+  activeCheckpoint = null,
+  onAnswerCheckpoint,
+  onSkipCheckpoint,
   onTogglePlay,
   onRestart,
   onPlayLine,
@@ -92,10 +98,16 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
 
   // Calculate dynamic scenario duration from dialogue timestamps
   const totalDuration = React.useMemo(() => {
-    if (propTotalDuration && propTotalDuration > 0) return propTotalDuration;
-    if (!scenario.dialogue || scenario.dialogue.length === 0) return scenario.durationSeconds || 26;
+    if (!scenario.dialogue || scenario.dialogue.length === 0) {
+      return propTotalDuration || scenario.durationSeconds || 26;
+    }
     const last = scenario.dialogue[scenario.dialogue.length - 1];
-    return Math.max(last.timeOffsetSec + (last.durationSec || 4), scenario.durationSeconds || 0);
+    const dialogueEndSec = last.timeOffsetSec + (last.durationSec || 4);
+    // If prop was passed and is within range of dialogue end, prefer it
+    if (propTotalDuration && propTotalDuration > 0 && Math.abs(propTotalDuration - dialogueEndSec) <= 4) {
+      return propTotalDuration;
+    }
+    return dialogueEndSec;
   }, [scenario, propTotalDuration]);
 
   // Elapsed seconds: continuous live timer or active line time, clamped to 100% on hasEnded
@@ -406,6 +418,46 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
           </svg>
         );
 
+      case 'cafe':
+      case 'bakery':
+        return (
+          <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
+            <defs>
+              <linearGradient id="bgCafeCinema" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#fffbeb" />
+                <stop offset="50%" stopColor="#fef3c7" />
+                <stop offset="100%" stopColor="#fde68a" />
+              </linearGradient>
+            </defs>
+            <rect width="800" height="450" fill="url(#bgCafeCinema)" />
+            {/* Wooden Wall Lattice & Cafe Chalkboard */}
+            <rect x="80" y="30" width="640" height="150" rx="12" fill="#78350f" stroke="#92400e" strokeWidth="4" />
+            <text x="400" y="70" fill="#fef08a" fontSize="24" fontWeight="black" letterSpacing="3" textAnchor="middle">
+              BAKERY & CAFE ☕ 焼きたてパン
+            </text>
+            <text x="400" y="105" fill="#ffffff" fontSize="13" textAnchor="middle">
+              本日のおすすめ: メロンパン ¥220 / アイスコーヒー ¥350
+            </text>
+            <text x="400" y="135" fill="#fde68a" fontSize="12" fontStyle="italic" textAnchor="middle">
+              店内席あり (Wi-Fi & 電源完備)
+            </text>
+            {/* Bakery Counter */}
+            <rect x="50" y="210" width="700" height="200" rx="16" fill="#b45309" stroke="#78350f" strokeWidth="6" />
+            {/* Fresh Bread Basket */}
+            <rect x="100" y="235" width="220" height="110" rx="10" fill="#fef3c7" stroke="#d97706" strokeWidth="3" />
+            <ellipse cx="160" cy="285" rx="35" ry="22" fill="#d97706" />
+            <ellipse cx="240" cy="285" rx="32" ry="20" fill="#ea580c" />
+            <text x="210" y="325" fill="#78350f" fontSize="12" fontWeight="black" textAnchor="middle">焼きたてパン 🥐</text>
+            {/* Coffee Espresso Machine & Cups */}
+            <rect x="420" y="230" width="260" height="130" rx="12" fill="#1e293b" stroke="#475569" strokeWidth="4" />
+            <rect x="440" y="250" width="90" height="80" rx="6" fill="#0284c7" />
+            <circle cx="485" cy="290" r="14" fill="#ffffff" />
+            <circle cx="610" cy="300" r="22" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+            <circle cx="610" cy="300" r="16" fill="#451a03" />
+            <text x="550" y="390" fill="#fef3c7" fontSize="12" fontWeight="bold">お会計はこちら ☕</text>
+          </svg>
+        );
+
       case 'supermarket':
         return (
           <svg viewBox="0 0 800 450" className="w-full h-full object-cover select-none" aria-hidden="true">
@@ -563,12 +615,12 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
   };
 
   return (
-    <div className={`space-y-4 ${isTheaterMode ? 'max-w-7xl mx-auto' : ''}`}>
+    <div className={`w-full max-w-full min-w-0 overflow-hidden space-y-4 ${isTheaterMode ? 'max-w-7xl mx-auto' : ''}`}>
       {/* ── UNIFIED YOUTUBE / THEATER VIDEO PLAYER CONTAINER ── */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-start w-full min-w-0">
         {/* LEFT 2 COLUMNS ON XL: CINEMA VIDEO SCREEN & INTEGRATED CONTROLS */}
-        <div className="xl:col-span-2 space-y-3 min-w-0">
-          <div className="relative rounded-3xl overflow-hidden bg-black border border-border/80 shadow-2xl group">
+        <div className="xl:col-span-2 space-y-3 min-w-0 w-full max-w-full overflow-hidden">
+          <div className="relative rounded-3xl overflow-hidden bg-black border border-border/80 shadow-2xl group w-full min-w-0">
             {/* Aspect Video Display (16:9 Cinema Ratio with Max-Height Viewport Fit) */}
             <div
               onClick={onTogglePlay}
@@ -610,6 +662,63 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 </div>
               </div>
 
+              {/* Duolingo Radio-style In-Dialogue Checkpoint Challenge */}
+              {activeCheckpoint && !hasEnded && (
+                <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/85 backdrop-blur-md p-3 sm:p-4 animate-in fade-in zoom-in-95 duration-200">
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    className="w-full max-w-sm sm:max-w-md bg-slate-900/95 border-2 border-primary/50 rounded-2xl p-4 sm:p-5 shadow-2xl text-left space-y-3"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-wider">
+                        <span>💬 Radio Checkpoint</span>
+                      </div>
+                      {onSkipCheckpoint && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSkipCheckpoint();
+                          }}
+                          className="text-[11px] font-bold text-slate-400 hover:text-white transition-colors"
+                        >
+                          Skip →
+                        </button>
+                      )}
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-300">
+                        {activeCheckpoint.instructionJa}
+                      </h4>
+                      <p className="text-sm font-black text-white mt-1">
+                        {activeCheckpoint.questionJa}
+                      </p>
+                    </div>
+
+                    {/* Options */}
+                    <div className="space-y-1.5 pt-1">
+                      {activeCheckpoint.options.slice(0, 3).map((opt, optIdx) => (
+                        <button
+                          key={opt.id}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onAnswerCheckpoint?.(optIdx);
+                          }}
+                          className="w-full p-2.5 sm:p-3 rounded-xl border border-white/20 bg-white/5 hover:bg-primary/20 hover:border-primary text-left text-xs font-bold text-white transition-all flex items-center justify-between group cursor-pointer"
+                        >
+                          <span>{opt.textJa}</span>
+                          <span className="w-5 h-5 rounded-full border border-white/30 grid place-items-center text-[10px] text-white/60 group-hover:border-primary group-hover:text-primary">
+                            {optIdx + 1}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               {/* Finished / Completion Screen Overlay */}
               {hasEnded ? (
                 <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-in fade-in duration-300">
@@ -649,7 +758,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                     </div>
                   </div>
                 </div>
-              ) : !isPlaying ? (
+              ) : !isPlaying && !activeCheckpoint ? (
                 <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none animate-in fade-in zoom-in-95 duration-200">
                   <div className="w-20 h-20 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center shadow-2xl backdrop-blur-md border border-white/30 transform transition-transform group-hover:scale-110">
                     <Play className="w-9 h-9 ml-1 fill-current" />
@@ -704,7 +813,7 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
             </div>
 
             {/* ── INTEGRATED YOUTUBE PLAYER CONTROLS BAR ── */}
-            <div className="bg-slate-900 border-t border-white/10 p-2.5 sm:p-3 space-y-2 select-none">
+            <div className="bg-slate-900 border-t border-white/10 p-2.5 sm:p-3 space-y-2 select-none w-full min-w-0">
               {/* Timeline Scrubber Bar with Scene Break Indicators */}
               <div
                 onClick={handleScrubberClick}
@@ -734,9 +843,9 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                 </div>
               </div>
 
-              {/* Bottom Control Buttons Row */}
-              <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-white">
-                <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+              {/* Bottom Control Buttons Row (Fully responsive wrapping layout) */}
+              <div className="flex flex-wrap items-center justify-between gap-2 text-white w-full min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                   {/* Play / Pause / Replay Toggle */}
                   <button
                     type="button"
@@ -782,10 +891,28 @@ export const ListeningCinemaPlayer: React.FC<ListeningCinemaPlayerProps> = ({
                   </button>
                 </div>
 
-                {/* Right Side Options: Speed, Subtitle toggles, Exam CTA */}
-                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                  {/* Playback Speed selector */}
-                  <div className="flex bg-white/10 rounded-lg p-0.5 text-xs font-bold shrink-0">
+                {/* Right Side Options: Duolingo Turtle Speed, Subtitle toggles, Exam CTA */}
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 shrink-0">
+                  {/* Duolingo Turtle Speed Toggle */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const nextRate = playbackRate === 0.75 ? 1.0 : 0.75;
+                      onSetPlaybackRate(nextRate);
+                    }}
+                    className={`flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-bold transition-all border shrink-0 ${
+                      playbackRate === 0.75
+                        ? 'bg-emerald-500/25 border-emerald-400 text-emerald-300 ring-1 ring-emerald-400/50'
+                        : 'border-white/20 text-white/70 hover:text-white'
+                    }`}
+                    title={playbackRate === 0.75 ? 'Switch to normal 1.0x speed' : 'Switch to slow 0.75x turtle speed'}
+                  >
+                    <span>🐢</span>
+                    <span className="text-[11px] font-bold">{playbackRate === 0.75 ? '0.75x' : '1.0x'}</span>
+                  </button>
+
+                  {/* Playback Speed selector pills */}
+                  <div className="hidden md:flex bg-white/10 rounded-lg p-0.5 text-xs font-bold shrink-0">
                     {[0.75, 0.85, 1.0, 1.25].map((spd) => (
                       <button
                         key={spd}
