@@ -78,7 +78,7 @@ export default function AdBanner({
   // 3. Isolated script execution for Adsterra code snippets inside sandboxed iframe
   useEffect(() => {
     if (!AD_CONFIG.enabled || isDismissed || AD_CONFIG.network !== 'adsterra') return;
-    if (!iframeRef.current || !AD_CONFIG.adsterra.codeSnippet) return;
+    if (!iframeRef.current || !AD_CONFIG.adsterra.nativeBannerSnippet) return;
 
     try {
       const doc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
@@ -89,12 +89,14 @@ export default function AdBanner({
           <html>
             <head>
               <meta charset="utf-8">
+              <base target="_blank">
               <style>
                 body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; background: transparent; overflow: hidden; }
+                #container-0a542e9b5e6f732e9fac65470027589a { width: 100%; display: flex; justify-content: center; }
               </style>
             </head>
             <body>
-              ${AD_CONFIG.adsterra.codeSnippet}
+              ${AD_CONFIG.adsterra.nativeBannerSnippet}
             </body>
           </html>
         `);
@@ -142,7 +144,7 @@ export default function AdBanner({
       {/* ── Ad Slot Container ───────────────────────────────────────── */}
       <div className="min-h-[90px] flex items-center justify-center">
         {AD_CONFIG.network === 'adsterra' ? (
-          AD_CONFIG.adsterra.codeSnippet ? (
+          AD_CONFIG.adsterra.nativeBannerSnippet && AD_CONFIG.adsterra.enableNativeBanner ? (
             <iframe
               ref={iframeRef}
               title="Adsterra Advertisement"
