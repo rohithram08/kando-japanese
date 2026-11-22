@@ -9,6 +9,9 @@ import {
   Smile,
   HelpCircle,
   Volume2,
+  VolumeX,
+  Square,
+  History,
   ChevronUp,
   ChevronDown,
   RotateCcw
@@ -89,6 +92,13 @@ export interface SenseiActionStripProps {
   onRotateLeft?: () => void;
   onRotateRight?: () => void;
   onResetRotation?: () => void;
+  // Unified Session Tools (prevents top-bar collisions)
+  onFreshSession?: () => void;
+  onShowHistory?: () => void;
+  speechState?: 'idle' | 'speaking' | 'listening';
+  speechEnabled?: boolean;
+  onToggleSpeech?: () => void;
+  onStopSpeech?: () => void;
 }
 
 export function SenseiActionStrip({
@@ -102,6 +112,12 @@ export function SenseiActionStrip({
   onRotateLeft,
   onRotateRight,
   onResetRotation,
+  onFreshSession,
+  onShowHistory,
+  speechState = 'idle',
+  speechEnabled = true,
+  onToggleSpeech,
+  onStopSpeech,
 }: SenseiActionStripProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeToast, setActiveToast] = useState<{ label: string; jp: string } | null>(null);
@@ -126,132 +142,194 @@ export function SenseiActionStrip({
   };
 
   return (
-    <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-20 flex flex-col gap-2 pointer-events-none select-none">
-      {/* ── Action Controls Capsule Reframed at Top-Left ── */}
-      <div className="pointer-events-auto flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-950/85 backdrop-blur-xl border border-slate-700/70 shadow-2xl ring-1 ring-primary/20">
-        {/* Toggle drawer button */}
-        <button
-          type="button"
-          onClick={() => setIsExpanded(!isExpanded)}
-          className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 border ${
-            isExpanded
-              ? 'bg-primary text-primary-foreground border-primary shadow-xs'
-              : 'bg-primary/15 hover:bg-primary/25 text-primary border-primary/25'
-          }`}
-          title={isExpanded ? 'Collapse 3D Action Studio' : 'Expand 3D Action Studio'}
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          <span className="font-sans">Actions</span>
-          {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-        </button>
-
-        {/* Quick 1-click action buttons strip */}
-        <div className="flex items-center gap-1">
-          {HANA_ACTIONS.slice(0, 4).map((act) => {
-            const isActive = currentAction === act.id;
-            return (
-              <button
-                key={act.id}
-                type="button"
-                onClick={() => handleActionClick(act)}
-                className={`px-2 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1 transition-all active:scale-95 ${
-                  isActive
-                    ? 'bg-gradient-to-r from-pink-500/30 to-purple-500/30 text-pink-200 border border-pink-400/50 shadow-sm'
-                    : 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50'
-                }`}
-                title={`${act.japanese} (${act.label}) - ${act.description}`}
-              >
-                <span>{act.icon}</span>
-                <span className="hidden md:inline text-[11px] font-japanese">{act.japanese}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Unity Cinemachine Virtual Camera Switcher */}
-        <div className="flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
+    <div className="absolute top-2 left-2 right-2 sm:top-3 sm:left-3 sm:right-3 z-20 flex flex-col gap-2 pointer-events-none select-none">
+      {/* ── Single Unified Studio Header Capsule across the entire top ── */}
+      <div className="pointer-events-auto flex items-center justify-between gap-1.5 p-1.5 rounded-2xl bg-slate-950/85 backdrop-blur-xl border border-slate-700/70 shadow-2xl ring-1 ring-primary/20">
+        {/* Left Side: 3D Action Studio & Camera Director */}
+        <div className="flex items-center gap-1.5 min-w-0">
+          {/* Actions Drawer Toggle */}
           <button
             type="button"
-            onClick={() => handleCameraClick('full')}
-            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
-              cameraMode === 'full'
-                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
+            onClick={() => setIsExpanded(!isExpanded)}
+            className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 border shrink-0 ${
+              isExpanded
+                ? 'bg-primary text-primary-foreground border-primary shadow-xs'
+                : 'bg-primary/15 hover:bg-primary/25 text-primary border-primary/25'
             }`}
-            title="Full Stage: 360° Classroom director angle"
+            title={isExpanded ? 'Collapse 3D Action Studio' : 'Expand 3D Action Studio'}
           >
-            <Layers className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Stage</span>
+            <Sparkles className="w-3.5 h-3.5" />
+            <span className="font-sans">Actions</span>
+            {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
           </button>
-          <button
-            type="button"
-            onClick={() => handleCameraClick('teaching')}
-            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
-              cameraMode === 'teaching'
-                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
-            }`}
-            title="Teaching Focus: Medium shot focusing on gestures and wand"
-          >
-            <Wand2 className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Teach</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => handleCameraClick('portrait')}
-            className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
-              cameraMode === 'portrait'
-                ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
-            }`}
-            title="Portrait Close-Up: Facial expressions and eye tracking"
-          >
-            <Camera className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Portrait</span>
-          </button>
-        </div>
 
-        {/* 360° Classroom Turntable Controls */}
-        {onRotateLeft && onRotateRight && (
-          <div className="hidden lg:flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
+          {/* Quick 1-click action buttons strip (responsive: icons always visible, text on lg+) */}
+          <div className="hidden sm:flex items-center gap-1">
+            {HANA_ACTIONS.slice(0, 4).map((act) => {
+              const isActive = currentAction === act.id;
+              return (
+                <button
+                  key={act.id}
+                  type="button"
+                  onClick={() => handleActionClick(act)}
+                  className={`px-2 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1 transition-all active:scale-95 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-pink-500/30 to-purple-500/30 text-pink-200 border border-pink-400/50 shadow-sm'
+                      : 'bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50'
+                  }`}
+                  title={`${act.japanese} (${act.label}) - ${act.description}`}
+                >
+                  <span>{act.icon}</span>
+                  <span className="hidden lg:inline text-[11px] font-japanese">{act.japanese}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Unity Cinemachine Virtual Camera Switcher */}
+          <div className="flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
             <button
               type="button"
-              onClick={() => {
-                playPop();
-                onRotateLeft();
-              }}
-              className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
-              title="Rotate Classroom Left 22.5°"
+              onClick={() => handleCameraClick('full')}
+              className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
+                cameraMode === 'full'
+                  ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
+              }`}
+              title="Full Stage: 360° Classroom director angle"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <Layers className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">Stage</span>
             </button>
-            <span className="text-[10px] text-slate-400 font-medium px-0.5">360°</span>
             <button
               type="button"
-              onClick={() => {
-                playPop();
-                onRotateRight();
-              }}
-              className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
-              title="Rotate Classroom Right 22.5°"
+              onClick={() => handleCameraClick('teaching')}
+              className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
+                cameraMode === 'teaching'
+                  ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
+              }`}
+              title="Teaching Focus: Medium shot focusing on gestures and wand"
             >
-              <RotateCcw className="w-3.5 h-3.5 -scale-x-100" />
+              <Wand2 className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">Teach</span>
             </button>
-            {dioramaRotation !== undefined && Math.abs(dioramaRotation) > 0.05 && onResetRotation && (
+            <button
+              type="button"
+              onClick={() => handleCameraClick('portrait')}
+              className={`px-2 py-1 rounded-xl text-[11px] font-semibold transition-all flex items-center gap-1 active:scale-95 ${
+                cameraMode === 'portrait'
+                  ? 'bg-gradient-to-r from-pink-500/35 to-rose-500/35 text-pink-200 border border-pink-400/60 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent'
+              }`}
+              title="Portrait Close-Up: Facial expressions and eye tracking"
+            >
+              <Camera className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">Portrait</span>
+            </button>
+          </div>
+
+          {/* 360° Classroom Turntable Controls */}
+          {onRotateLeft && onRotateRight && (
+            <div className="hidden xl:flex items-center gap-1 pl-1 ml-1 border-l border-slate-700/60">
               <button
                 type="button"
                 onClick={() => {
                   playPop();
-                  onResetRotation();
+                  onRotateLeft();
                 }}
-                className="px-1.5 py-0.5 text-[9px] font-semibold bg-slate-800 text-pink-300 hover:bg-slate-700 rounded-md border border-slate-700"
-                title="Reset 360° View"
+                className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
+                title="Rotate Classroom Left 22.5°"
               >
-                Reset
+                <RotateCcw className="w-3.5 h-3.5" />
               </button>
-            )}
-          </div>
-        )}
+              <span className="text-[10px] text-slate-400 font-medium px-0.5">360°</span>
+              <button
+                type="button"
+                onClick={() => {
+                  playPop();
+                  onRotateRight();
+                }}
+                className="p-1 hover:text-white hover:bg-slate-800 text-slate-400 rounded-lg transition-colors active:scale-95"
+                title="Rotate Classroom Right 22.5°"
+              >
+                <RotateCcw className="w-3.5 h-3.5 -scale-x-100" />
+              </button>
+              {dioramaRotation !== undefined && Math.abs(dioramaRotation) > 0.05 && onResetRotation && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    playPop();
+                    onResetRotation();
+                  }}
+                  className="px-1.5 py-0.5 text-[9px] font-semibold bg-slate-800 text-pink-300 hover:bg-slate-700 rounded-md border border-slate-700"
+                  title="Reset 360° View"
+                >
+                  Reset
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Right Side: Session Controls (Fresh Session, History, Audio/Stop) */}
+        <div className="flex items-center gap-1.5 shrink-0 pl-1.5 ml-1 border-l border-slate-800/80">
+          {/* Fresh Session */}
+          {onFreshSession && (
+            <button
+              type="button"
+              onClick={onFreshSession}
+              className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 transition-all flex items-center gap-1.5 active:scale-95"
+              title="Start fresh session (starts clean while preserving Hana's memory)"
+              aria-label="Start fresh session"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">Fresh Session</span>
+            </button>
+          )}
+
+          {/* History */}
+          {onShowHistory && (
+            <button
+              type="button"
+              onClick={onShowHistory}
+              className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-800/60 hover:bg-slate-800 text-slate-300 border border-slate-700/50 transition-all flex items-center gap-1.5 active:scale-95"
+              title="View past conversation archive"
+              aria-label="View past conversation archive"
+            >
+              <History className="w-3.5 h-3.5 text-primary" />
+              <span className="hidden md:inline">History</span>
+            </button>
+          )}
+
+          {/* Voice Speech Control / Stop */}
+          {speechState === 'speaking' ? (
+            <button
+              type="button"
+              onClick={onStopSpeech}
+              className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 transition-all flex items-center gap-1.5 active:scale-95 animate-pulse"
+              title="Stop Hana-sensei speaking"
+              aria-label="Stop Hana-sensei speaking"
+            >
+              <Square className="w-3.5 h-3.5 fill-current" />
+              <span className="hidden sm:inline">Stop</span>
+            </button>
+          ) : onToggleSpeech ? (
+            <button
+              type="button"
+              onClick={onToggleSpeech}
+              className={`p-1.5 rounded-xl transition-all border ${
+                speechEnabled
+                  ? 'text-primary bg-primary/15 border-primary/30 hover:bg-primary/25'
+                  : 'text-slate-400 bg-slate-800/60 border-slate-700/50 hover:bg-slate-800'
+              }`}
+              title={speechEnabled ? 'Mute Voice Speech' : 'Unmute Voice Speech'}
+              aria-label={speechEnabled ? 'Mute Voice Speech' : 'Unmute Voice Speech'}
+            >
+              {speechEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+            </button>
+          ) : null}
+        </div>
       </div>
 
       {/* ── Action HUD Toast Banner ── */}

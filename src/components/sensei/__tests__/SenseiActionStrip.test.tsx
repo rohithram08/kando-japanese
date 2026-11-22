@@ -88,4 +88,32 @@ describe('SenseiActionStrip', () => {
     fireEvent.click(resetBtn);
     expect(onResetRotation).toHaveBeenCalledTimes(1);
   });
+
+  it('triggers onFreshSession, onShowHistory, and voice audio controls without overlapping', () => {
+    const onFreshSession = vi.fn();
+    const onShowHistory = vi.fn();
+    const onToggleSpeech = vi.fn();
+
+    render(
+      <SenseiActionStrip
+        {...defaultProps}
+        onFreshSession={onFreshSession}
+        onShowHistory={onShowHistory}
+        speechEnabled={true}
+        onToggleSpeech={onToggleSpeech}
+      />
+    );
+
+    const freshBtn = screen.getByTitle(/Start fresh session/i);
+    fireEvent.click(freshBtn);
+    expect(onFreshSession).toHaveBeenCalledTimes(1);
+
+    const historyBtn = screen.getByTitle(/View past conversation archive/i);
+    fireEvent.click(historyBtn);
+    expect(onShowHistory).toHaveBeenCalledTimes(1);
+
+    const muteBtn = screen.getByTitle(/Mute Voice Speech/i);
+    fireEvent.click(muteBtn);
+    expect(onToggleSpeech).toHaveBeenCalledTimes(1);
+  });
 });

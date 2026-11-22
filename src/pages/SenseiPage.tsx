@@ -207,91 +207,6 @@ export default function SenseiPage() {
         description="Interactive 3D AI Japanese tutor Hana-sensei. Voice-enabled conversational practice, grammar explanations, custom study plans, and live corrections."
         path="/sensei"
       />
-      {/* ─── TOP RIGHT FLOATING GLASS TOOLBAR (Greet, Celebrate, Fresh Session, History, Sound/Stop, Camera) ─── */}
-      <header className="absolute top-2 left-2 right-2 sm:left-auto sm:top-4 sm:right-4 z-20 flex items-center justify-end pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-1.5 bg-card/85 backdrop-blur-xl border border-border/80 p-1.5 rounded-2xl shadow-lg ring-1 ring-primary/20">
-          {/* Greet */}
-          <button
-            onClick={() => greet()}
-            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-primary/10 hover:bg-primary/20 text-primary transition-all flex items-center gap-1.5 active:scale-95"
-            title="Greet Hana-sensei"
-            aria-label="Greet Hana-sensei"
-          >
-            <span>👋</span><span className="hidden sm:inline">Greet</span>
-          </button>
-
-          {/* Celebrate */}
-          <button
-            onClick={() => triggerCelebration()}
-            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 transition-all flex items-center gap-1.5 active:scale-95"
-            title="Celebrate Progress"
-            aria-label="Celebrate Progress"
-          >
-            <Sparkles className="w-3.5 h-3.5" /><span className="hidden sm:inline">Celebrate</span>
-          </button>
-
-          {/* Fresh Session */}
-          <button
-            onClick={() => startFreshSession({ speak: true })}
-            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/20 transition-all flex items-center gap-1.5 active:scale-95"
-            title="Start fresh session (starts clean while preserving Hana's memory)"
-            aria-label="Start fresh session"
-          >
-            <RotateCcw className="w-3.5 h-3.5" /><span className="hidden sm:inline">Fresh Session</span>
-          </button>
-
-          {/* View Past History Archive */}
-          <button
-            onClick={() => setShowHistory(true)}
-            className="px-2.5 py-1.5 text-xs font-semibold rounded-xl bg-muted/70 hover:bg-muted text-muted-foreground hover:text-foreground transition-all flex items-center gap-1.5 active:scale-95"
-            title="View past conversation archive"
-            aria-label="View past conversation archive"
-          >
-            <History className="w-3.5 h-3.5 text-primary" /><span className="hidden sm:inline">History</span>
-          </button>
-
-          {/* Live Speech Stop / Mute Action Button */}
-          {speechState === 'speaking' ? (
-            <button
-              onClick={() => stopSpeech()}
-              className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-rose-500/25 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40 transition-all flex items-center gap-1.5 active:scale-95 animate-pulse"
-              title="Stop Hana-sensei speaking"
-            aria-label="Stop Hana-sensei speaking"
-            >
-              <Square className="w-3.5 h-3.5 fill-current" /><span className="hidden sm:inline">Stop</span>
-            </button>
-          ) : (
-            <button
-              onClick={() => toggleSpeech()}
-              className={`p-2 rounded-xl transition-all ${
-                speechEnabled
-                  ? 'text-primary hover:bg-muted'
-                  : 'text-muted-foreground hover:bg-muted'
-              }`}
-              title={speechEnabled ? "Mute Voice Speech" : "Unmute Voice Speech"}
-              aria-label={speechEnabled ? "Mute Voice Speech" : "Unmute Voice Speech"}
-            >
-              {speechEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-            </button>
-          )}
-
-          {/* Camera Mode Director Switcher */}
-          <button
-            onClick={toggleCameraMode}
-            className={`px-2.5 py-1.5 text-xs font-semibold rounded-xl transition-all flex items-center gap-1.5 active:scale-95 ${
-              cameraMode !== 'full'
-                ? 'bg-primary text-primary-foreground shadow-xs'
-                : 'hover:bg-muted text-muted-foreground hover:text-foreground'
-            }`}
-            title={`Current Camera: ${cameraMode.toUpperCase()} (Click to cycle Stage -> Teach -> Portrait)`}
-            aria-label="Cycle 3D camera angles"
-          >
-            <Camera className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline capitalize">{cameraMode}</span>
-          </button>
-        </div>
-      </header>
-
       {/* ─── FULL 3D CHARACTER STAGE CANVAS & 2-WAY CLASSROOM ─── */}
       <main className="flex-1 w-full h-full relative overflow-hidden" aria-label="3D Hana-sensei Stage">
         {/* Full-bleed 3D Character Canvas (Hana-sensei on the LEFT, 3D Kando Slime on the RIGHT, Dialogue INSIDE 3D) */}
@@ -326,7 +241,7 @@ export default function SenseiPage() {
           />
         </div>
 
-        {/* ─── UNITY-STYLE 3D ACTION STUDIO & CAMERA DIRECTOR ─── */}
+        {/* ─── SINGLE UNIFIED 3D ACTION STUDIO & SESSION CONTROLLER (ZERO OVERLAP) ─── */}
         <SenseiActionStrip
           currentAction={animationState}
           onSelectAction={(act) => setAnimationState(act)}
@@ -338,6 +253,12 @@ export default function SenseiPage() {
           onRotateLeft={rotateLeft}
           onRotateRight={rotateRight}
           onResetRotation={resetRotation}
+          onFreshSession={() => startFreshSession({ speak: true })}
+          onShowHistory={() => setShowHistory(true)}
+          speechState={speechState}
+          speechEnabled={speechEnabled}
+          onToggleSpeech={toggleSpeech}
+          onStopSpeech={stopSpeech}
         />
       </main>
 
