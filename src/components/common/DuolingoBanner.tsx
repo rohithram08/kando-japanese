@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Flame, Trophy, Zap, Target, ArrowRight, X, ShieldAlert, Sparkles } from 'lucide-react';
+import { Flame, Trophy, Target, ArrowRight, X, Snowflake } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useProgressStore } from '../../store/progressStore';
-import { useAuthStore } from '../../store/authStore';
 import { useI18n } from '../../i18n';
 
 export interface DuolingoBannerProps {
@@ -20,7 +19,6 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
   const isStreakFrozen = useProgressStore((s) => s.isStreakFrozen);
   const streakFreezes = useProgressStore((s) => s.streakFreezes || 0);
   const dailyXP = useProgressStore((s) => s.dailyXP || 0);
-  const { user } = useAuthStore();
 
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -38,33 +36,33 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
     }
   }
 
-  // Render Streak Danger / Celebration Banner
+  // Render Streak Danger / Celebration Status Bar
   if (activeType === 'streak') {
     return (
       <AnimatePresence>
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          className={`relative overflow-hidden rounded-2xl border-2 border-orange-500/40 bg-linear-to-r from-orange-500/15 via-amber-500/10 to-red-500/10 p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 ${className}`}
+          exit={{ opacity: 0, y: -6 }}
+          className={`relative overflow-hidden rounded-xl border border-orange-500/25 bg-surface px-4 py-3 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${className}`}
         >
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-2xl bg-orange-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-orange-500/20">
-              <Flame className="w-5 h-5 fill-white animate-pulse" />
+            <div className="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20 flex items-center justify-center shrink-0">
+              <Flame className="w-4 h-4" />
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-black uppercase tracking-wider text-orange-600 dark:text-orange-400">
-                  {streak}-Day Streak At Risk!
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-semibold text-orange-600 dark:text-orange-400 tabular-nums">
+                  {streak}-Day Streak Pending Today
                 </span>
                 {isStreakFrozen && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-bold border border-cyan-500/30">
-                    ❄️ Freeze Protected ({streakFreezes})
+                  <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 font-medium border border-sky-500/20 tabular-nums">
+                    <Snowflake className="w-2.5 h-2.5" /> Freeze Protected ({streakFreezes})
                   </span>
                 )}
               </div>
-              <p className="text-xs font-semibold text-foreground/90 truncate">
-                {t('banner.streak_warn', 'Complete a lesson or Listening Dojo dialogue today to keep your streak flame alive!')}
+              <p className="text-xs text-muted-foreground truncate mt-0.5">
+                {t('banner.streak_warn', 'Complete a story lesson or Listening Dojo dialogue today to keep your streak active.')}
               </p>
             </div>
           </div>
@@ -75,17 +73,17 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
                 if (onAction) onAction();
                 else navigate('/listening');
               }}
-              className="px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 active:scale-95 text-white text-xs font-black flex items-center gap-1.5 shadow-md shadow-orange-500/30 transition-all cursor-pointer"
+              className="btn-3d-secondary px-3 py-1.5 rounded-lg text-xs gap-1.5"
             >
               <span>Practice Now</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setIsDismissed(true)}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Dismiss banner"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </button>
           </div>
         </motion.div>
@@ -93,7 +91,7 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
     );
   }
 
-  // Render Daily Quest / Goal Banner
+  // Render Daily Quest / Goal Status Bar
   if (activeType === 'quest') {
     const goalTarget = 50;
     const progressPercent = Math.min(100, Math.round((dailyXP / goalTarget) * 100));
@@ -101,28 +99,28 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
     return (
       <AnimatePresence>
         <motion.div
-          initial={{ opacity: 0, y: -8 }}
+          initial={{ opacity: 0, y: -6 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          className={`relative overflow-hidden rounded-2xl border-2 border-emerald-500/40 bg-linear-to-r from-emerald-500/15 via-teal-500/10 to-green-500/10 p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 ${className}`}
+          exit={{ opacity: 0, y: -6 }}
+          className={`relative overflow-hidden rounded-xl border border-border bg-surface px-4 py-3 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${className}`}
         >
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-500/20">
-              <Target className="w-5 h-5" />
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center shrink-0">
+              <Target className="w-4 h-4" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                <span className="text-xs font-semibold text-foreground tabular-nums">
                   Daily Goal Progress: {dailyXP} / {goalTarget} XP
                 </span>
-                <span className="text-[10px] font-bold text-muted-foreground">
-                  ({progressPercent}%)
+                <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400 tabular-nums">
+                  {progressPercent}%
                 </span>
               </div>
-              <p className="text-xs font-semibold text-foreground/90 truncate">
+              <p className="text-xs text-muted-foreground truncate mt-0.5 tabular-nums">
                 {dailyXP >= goalTarget
-                  ? '🎉 Daily goal accomplished! Keep learning to climb the weekly League.'
-                  : `Earn ${goalTarget - dailyXP} more XP today in Graded Reader or Listening Dojo!`}
+                  ? 'Daily goal accomplished! Keep studying to climb the weekly League.'
+                  : `Earn ${goalTarget - dailyXP} more XP today in Graded Reader or Listening Dojo.`}
               </p>
             </div>
           </div>
@@ -133,17 +131,17 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
                 if (onAction) onAction();
                 else navigate('/reading');
               }}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-black flex items-center gap-1.5 shadow-md shadow-emerald-500/30 transition-all cursor-pointer"
+              className="btn-3d-secondary px-3 py-1.5 rounded-lg text-xs gap-1.5"
             >
               <span>Explore Stories</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setIsDismissed(true)}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Dismiss banner"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </button>
           </div>
         </motion.div>
@@ -151,30 +149,30 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
     );
   }
 
-  // Render League Promotion / Standings Banner
+  // Render League Standings Status Bar
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: -8 }}
+        initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -8 }}
-        className={`relative overflow-hidden rounded-2xl border-2 border-indigo-500/40 bg-linear-to-r from-indigo-500/15 via-purple-500/10 to-blue-500/10 p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 ${className}`}
+        exit={{ opacity: 0, y: -6 }}
+        className={`relative overflow-hidden rounded-xl border border-border bg-surface px-4 py-3 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${className}`}
       >
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-500/20">
-            <Trophy className="w-5 h-5" />
+          <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center justify-center shrink-0">
+            <Trophy className="w-4 h-4" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+              <span className="text-xs font-semibold text-foreground">
                 Weekly League Leaderboard Active
               </span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-bold border border-indigo-500/30">
-                Top 10 Advance
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-surface-muted text-muted-foreground font-medium border border-border">
+                Top Cohort Ranks Advance
               </span>
             </div>
-            <p className="text-xs font-semibold text-foreground/90 truncate">
-              {t('banner.league_callout', 'Compete with global Japanese learners. Finish listening and reading sessions to rank up!')}
+            <p className="text-xs text-muted-foreground truncate mt-0.5">
+              {t('banner.league_callout', 'Study alongside classmates and earn XP through listening and reading sessions.')}
             </p>
           </div>
         </div>
@@ -185,17 +183,17 @@ export default function DuolingoBanner({ variant = 'auto', onAction, className =
               if (onAction) onAction();
               else navigate('/league');
             }}
-            className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-black flex items-center gap-1.5 shadow-md shadow-indigo-500/30 transition-all cursor-pointer"
+            className="btn-3d-secondary px-3 py-1.5 rounded-lg text-xs gap-1.5"
           >
             <span>View Standings</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => setIsDismissed(true)}
-            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             aria-label="Dismiss banner"
           >
-            <X className="w-4 h-4" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
       </motion.div>

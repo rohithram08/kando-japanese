@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import {
   Sparkles, BookOpen, MessageCircle, RefreshCw,
-  ArrowRight, Bot, Compass
+  ArrowRight, Bot
 } from 'lucide-react'
 import { playPop } from '../../utils/soundEffects'
 import KanaMiniDemo from './demos/KanaMiniDemo'
@@ -160,7 +160,7 @@ function JourneyStepCard({ step, idx, prefersReducedMotion }) {
           ? { duration: 0.25 }
           : { type: 'spring', stiffness: 280, damping: 26, delay: 0.05 }
       }
-      className="card p-6 sm:p-8 lg:p-10 rounded-3xl border border-border hover:border-primary/30 transition-all duration-300 shadow-lg bg-surface/90 backdrop-blur-sm relative overflow-hidden group"
+      className="card p-6 sm:p-8 lg:p-10 rounded-2xl border border-border hover:border-foreground/20 transition-all duration-200 shadow-card hover:shadow-card-md bg-surface relative overflow-hidden group"
     >
       {/* Parallax numeral watermark */}
       <motion.div
@@ -271,26 +271,19 @@ export default function LearningJourneyPath() {
       ref={containerRef}
       className="py-20 md:py-28 bg-surface/30 border-t border-border relative overflow-hidden"
     >
-      {/* Decorative background ambient glow */}
-      <div
-        className="absolute top-1/3 right-0 w-[450px] h-[450px] bg-red-500/5 blur-[130px] rounded-full pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3 border border-primary/20">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Structured Fluency Roadmap</span>
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-xs font-semibold uppercase tracking-widest text-primary mb-2.5">
+            Structured Fluency Roadmap
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
             A Complete Learning Journey,{' '}
-            <span className="bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 bg-clip-text text-transparent">
+            <span className="text-primary">
               Step by Step
             </span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base mt-3 max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
             Not just isolated flashcards or drills. Kando Japanese connects
             comprehension, conversation, and memory into an unbroken learning
             continuum.
@@ -305,14 +298,14 @@ export default function LearningJourneyPath() {
           {/* Subtle background track */}
           <div className="w-0.5 h-full mx-auto bg-border/60 dark:bg-border/40" />
 
-          {/* Animated active progress indicator */}
+          {/* Clean primary progress indicator */}
           {!prefersReducedMotion && (
             <motion.div
               style={{
                 scaleY: spineScaleY,
                 transformOrigin: 'top center',
               }}
-              className="absolute inset-x-0 top-0 w-1 mx-auto h-full bg-gradient-to-b from-rose-500 via-teal-500 via-cyan-500 via-amber-500 to-purple-600 rounded-full shadow-[0_0_12px_rgba(99,102,241,0.5)]"
+              className="absolute inset-x-0 top-0 w-0.5 mx-auto h-full bg-primary rounded-full"
             />
           )}
         </div>

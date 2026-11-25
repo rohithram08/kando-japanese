@@ -70,14 +70,6 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-.kando-notification-spark {
-  position: absolute;
-  bottom: 2.5px;
-  right: 2.5px;
-  display: flex;
-  color: hsl(var(--primary) / 0.7);
-}
-
 /* ── Notification Center Panel (Popover / Drawer) ───────────────────────── */
 .kando-notification-panel {
   position: absolute;

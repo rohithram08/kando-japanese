@@ -111,57 +111,42 @@ export default function RegisterPage() {
   // ── Shared classes ────────────────────────────────────────
   const fieldBase = `
     w-full px-4 py-3 rounded-xl border text-sm
-    focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent
-    transition-all duration-200
-    bg-white border-gray-200 text-gray-900 placeholder-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-500
+    focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/60
+    transition-all duration-150
+    bg-background border-input text-foreground placeholder:text-muted-foreground/70
   `
 
   const pwStrength = formData.password ? getPasswordStrength(formData.password) : null
 
   // ─────────────────────────────────────────────────────────
   return (
-    <div className={`
-      min-h-screen flex items-center justify-center p-4
-      transition-colors duration-300
-      bg-gradient-to-br from-red-50 via-white to-red-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
-    `}>
+    <div className="min-h-screen flex items-center justify-center p-4 transition-colors duration-200 bg-background">
       <SEO
         title="Create Free Account - Start Learning Japanese"
-        description="Join Kando Japanese for free. Master JLPT N5 through N1 with 250+ interactive lessons, AI Sensei, spaced repetition SRS, and graded readers."
+        description="Join Kando Japanese for free. Master JLPT N5 through N1 with 250+ interactive lessons, Hana-sensei, spaced repetition SRS, and graded readers."
         path="/register"
       />
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
         className="w-full max-w-md"
       >
         {/* Logo */}
         <div className="text-center mb-7">
-          <motion.div
-            animate={{
-              scale: [1, 1.08, 0.96, 1],
-              y: [0, -6, 1, 0],
-            }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-            className="mb-2 inline-block"
-          >
-            <KandoSlimeLogo size={68} animated showBlossom />
-          </motion.div>
-          <h1 className={`text-3xl font-bold text-foreground`}>
+          <div className="mb-3 inline-block">
+            <KandoSlimeLogo size={60} showBlossom />
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Kando Japanese
           </h1>
-          <p className={`text-sm mt-1 font-jp text-muted-foreground`}>
+          <p className="text-sm mt-1 font-jp text-muted-foreground">
             日本語を学ぼう
           </p>
         </div>
 
         {/* Card */}
-        <div className={`
-          rounded-2xl shadow-xl p-7
-          transition-colors duration-300
-          bg-white dark:bg-gray-900 dark:border dark:border-gray-700/60
-        `}>
+        <div className="rounded-2xl shadow-card-lg p-7 sm:p-8 border border-border bg-surface transition-colors">
 
           {/* ── Step indicator ── */}
           <div className="flex items-center justify-center gap-2 mb-7">

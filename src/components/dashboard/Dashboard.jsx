@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import {
   RefreshCw, GraduationCap, ChevronRight,
-  Sparkles, ArrowRight, BookOpen, Languages, Layers, BookMarked,
+  ArrowRight, BookOpen, Languages, Layers, BookMarked,
+  Sunrise, Sun, Moon,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useProgressStore } from '../../store/progressStore'
@@ -33,9 +34,9 @@ function StatValue({ value, loading }) {
   return (
     <motion.span
       key={value}
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      className="text-2xl font-bold text-foreground"
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
+      className="text-2xl font-bold text-foreground tabular-nums"
     >
       {value}
     </motion.span>
@@ -52,29 +53,26 @@ function SectionTile({ section, index, stats, displayLanguage }) {
 
   return (
     <motion.button
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.05 * index }}
-      whileHover={{ y: -3, transition: { duration: 0.2 } }}
-      whileTap={{ scale: 0.98 }}
+      transition={{ delay: 0.03 * index }}
       onClick={() => navigate(section.path)}
-      className={`card text-left p-4 flex flex-col gap-3 transition-all group ${tint.hoverBorder} hover:shadow-card-md`}
+      className="card text-left p-4 flex flex-col gap-3 transition-all group hover:border-foreground/20 hover:shadow-card-md cursor-pointer"
     >
       <div className="flex items-start justify-between">
-        <div className={`icon-badge w-11 h-11 ${tint.iconBg} transition-transform group-hover:scale-110`}>
+        <div className={`icon-badge w-10 h-10 ${tint.iconBg}`}>
           <Icon className={`w-5 h-5 ${tint.iconText}`} />
         </div>
-        <ChevronRight className="w-4 h-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
+        <ChevronRight className="w-4 h-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all mt-1" />
       </div>
       <div>
         <p className="text-sm font-semibold text-foreground">{label}</p>
         <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">{section.description}</p>
       </div>
       {statValue !== undefined && (
-        <span className={`inline-flex items-center gap-1 self-start text-[11px] font-bold px-2 py-1 rounded-full ${
-          isUrgent ? 'bg-orange-500/10 text-orange-600 dark:text-orange-400' : `${tint.iconBg} ${tint.iconText}`
+        <span className={`inline-flex items-center gap-1.5 self-start text-[11px] font-semibold px-2.5 py-0.5 rounded-full tabular-nums ${
+          isUrgent ? 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20' : `${tint.iconBg} ${tint.iconText}`
         }`}>
-          {isUrgent && <Sparkles className="w-3 h-3" />}
           {statValue} {section.statLabel}
         </span>
       )}
@@ -145,24 +143,25 @@ export default function Dashboard() {
       return {
         text: 'おはようございます',
         sub: t('dashboard.greeting_morning', displayLanguage, 'Good Morning'),
-        emoji: '🌅',
+        Icon: Sunrise,
       }
     }
     if (hour < 18) {
       return {
         text: 'こんにちは',
         sub: t('dashboard.greeting_afternoon', displayLanguage, 'Good Afternoon'),
-        emoji: '☀️',
+        Icon: Sun,
       }
     }
     return {
       text: 'こんばんは',
       sub: t('dashboard.greeting_evening', displayLanguage, 'Good Evening'),
-      emoji: '🌙',
+      Icon: Moon,
     }
   }
 
   const greeting = getTimeGreeting()
+  const GreetingIcon = greeting.Icon
   // Stories replaced Lessons: this stat now reflects real, persisted story completions.
   const stats = { lessonsCompleted: completedStories, kanjiLearned, vocabLearned, srsReviewsDue }
 
@@ -178,99 +177,93 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      {/* ── Duolingo Motivational & Streak Banner ── */}
-      <DuolingoBanner variant="auto" />
-
-      {/* ── Greeting Hero (100% Kando Slime Liquid Concept) ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
+      {/* ── Architectural Workspace Greeting Header ── */}
+      <motion.section
+        initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden bg-gradient-to-r from-sky-500 via-cyan-600 to-blue-700 rounded-3xl p-6 text-white shadow-xl shadow-cyan-500/15 border border-cyan-400/30"
+        transition={{ duration: 0.25 }}
+        className="relative overflow-hidden bg-surface rounded-2xl p-6 border border-border border-t-2 border-t-primary shadow-card"
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-16 -right-16 w-56 h-56 bg-cyan-300/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-blue-400/20 rounded-full blur-2xl" />
-          <motion.div
-            animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-3 right-6 opacity-70 select-none drop-shadow-lg"
-          >
-            <KandoSlimeLogo size={68} showBlossom animated />
-          </motion.div>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-            className="absolute bottom-4 right-28 text-3xl opacity-15 select-none"
-          >⛩️</motion.div>
-        </div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-1.5">
+              <GreetingIcon className="w-3.5 h-3.5 text-primary shrink-0" />
+              <span className="font-jp tracking-wide text-foreground/80">{greeting.text}</span>
+              <span className="text-border" aria-hidden="true">/</span>
+              <span>{greeting.sub}</span>
+            </div>
 
-        <div className="relative">
-          <p className="text-cyan-100 text-sm mb-0.5">{greeting.emoji} {greeting.text}</p>
-          <p className="text-cyan-200/80 text-xs mb-1 font-medium">{greeting.sub}</p>
-          <h1 className="text-2xl font-bold tracking-tight">
-            {displayName}!
-          </h1>
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground truncate">
+              {displayName}!
+            </h1>
 
-          <div className="flex items-center gap-2 mt-3 flex-wrap">
-            <span className="bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/20 text-white shadow-xs">
-              <GraduationCap className="w-3.5 h-3.5 text-white" />
-              {currentLevel} · Lv.{levelProgress.level}
-            </span>
+            <div className="flex items-center gap-2 mt-3.5 flex-wrap">
+              <span className="bg-surface-muted px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-border text-foreground tabular-nums">
+                <GraduationCap className="w-3.5 h-3.5 text-primary" />
+                {currentLevel} · Lv.{levelProgress.level}
+              </span>
 
-            {/* Jelly Streak (2D Animated Slime) */}
-            <JellyStreakBadge
-              streak={currentStreak}
-              isFrozen={isStreakFrozen}
-              size="sm"
-              variant="glass"
-            />
+              {/* Jelly Streak */}
+              <JellyStreakBadge
+                streak={currentStreak}
+                isFrozen={isStreakFrozen}
+                size="sm"
+              />
 
-            {/* Wave XP (2D Animated Liquid Wave) */}
-            <WaveXPBadge
-              xp={currentXP}
-              size="sm"
-              variant="glass"
-            />
+              {/* Wave XP */}
+              <WaveXPBadge
+                xp={currentXP}
+                size="sm"
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 mt-5">
+              <button
+                type="button"
+                onClick={() => navigate('/reading')}
+                className="btn-3d-primary rounded-xl py-2.5 px-4 text-sm gap-2"
+              >
+                <BookOpen className="w-4 h-4 shrink-0" />
+                <span className="truncate">{t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}</span>
+                <ArrowRight className="w-3.5 h-3.5 opacity-80 shrink-0" />
+              </button>
+
+              {srsReviewsDue > 0 ? (
+                <button
+                  type="button"
+                  onClick={() => navigate('/review')}
+                  className="btn-3d-secondary rounded-xl py-2.5 px-4 text-sm gap-2"
+                >
+                  <RefreshCw className="w-4 h-4 text-orange-500 shrink-0" />
+                  <span className="tabular-nums">
+                    {t('dashboard.reviews_due', displayLanguage, { count: srsReviewsDue }, `${srsReviewsDue} Reviews Due`)}
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-60 shrink-0" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => navigate('/grammar')}
+                  className="btn-3d-secondary rounded-xl py-2.5 px-4 text-sm gap-2"
+                >
+                  <BookMarked className="w-4 h-4 text-muted-foreground shrink-0" />
+                  <span className="truncate">{t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}</span>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-60 shrink-0" />
+                </button>
+              )}
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-            <motion.button
-              whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-              onClick={() => navigate('/reading')}
-              className="bg-white text-cyan-700 hover:bg-cyan-50 rounded-xl py-3 px-4 font-bold
-                         transition-all text-sm flex items-center gap-2 shadow-lg shadow-cyan-950/20"
-            >
-              <BookOpen className="w-4 h-4 text-cyan-600" />
-              <span className="min-w-0 truncate">{t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
-            </motion.button>
-
-            {srsReviewsDue > 0 ? (
-              <motion.button
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                onClick={() => navigate('/review')}
-                className="bg-white/20 backdrop-blur-md text-white rounded-xl py-3 px-4 font-semibold
-                           hover:bg-white/30 transition-all text-sm flex items-center gap-2 border border-white/20"
-              >
-                <RefreshCw className="w-4 h-4" />
-                {t('dashboard.reviews_due', displayLanguage, { count: srsReviewsDue }, `${srsReviewsDue} Reviews Due`)}
-                <Sparkles className="w-3.5 h-3.5 ml-auto opacity-60" />
-              </motion.button>
-            ) : (
-              <motion.button
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                onClick={() => navigate('/grammar')}
-                className="bg-white/20 backdrop-blur-md text-white rounded-xl py-3 px-4 font-semibold
-                           hover:bg-white/30 transition-all text-sm flex items-center gap-2 border border-white/20"
-              >
-                <BookMarked className="w-4 h-4" />
-                <span className="min-w-0 truncate">{t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-auto opacity-60" />
-              </motion.button>
-            )}
+          <div className="hidden md:flex items-center justify-center shrink-0 pr-2">
+            <div className="w-20 h-20 rounded-2xl bg-surface-muted/70 border border-border/80 flex items-center justify-center">
+              <KandoSlimeLogo size={54} showBlossom />
+            </div>
           </div>
         </div>
-      </motion.div>
+      </motion.section>
+
+      {/* ── Contextual Study Notice Bar ── */}
+      <DuolingoBanner variant="auto" />
 
       {/* ── Stats Grid ── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -280,20 +273,18 @@ export default function Dashboard() {
           return (
             <motion.div
               key={stat.key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.08 + i * 0.06 }}
-              whileHover={{ y: -2, transition: { duration: 0.2 } }}
-              className="card relative p-4 overflow-hidden group cursor-default"
+              transition={{ delay: 0.04 + i * 0.04 }}
+              className="card p-4 cursor-default"
             >
-              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${tint.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
               <div className="flex flex-col gap-3">
-                <div className={`icon-badge w-10 h-10 ${tint.iconBg}`}>
-                  <stat.icon className={`w-5 h-5 ${tint.iconText}`} />
+                <div className={`icon-badge w-9 h-9 ${tint.iconBg}`}>
+                  <stat.icon className={`w-4 h-4 ${tint.iconText}`} />
                 </div>
                 <div>
                   <StatValue value={value} loading={loading} />
-                  <div className="text-[11px] font-medium mt-0.5 text-muted-foreground">{stat.label}</div>
+                  <div className="text-xs font-medium mt-0.5 text-muted-foreground">{stat.label}</div>
                 </div>
               </div>
             </motion.div>

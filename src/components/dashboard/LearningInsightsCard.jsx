@@ -3,7 +3,7 @@
 // retrieval + spaced practice at ~85% accuracy is (Dunlosky 2013, Cepeda 2006, Wilson 2019).
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Brain, Target, AlertTriangle, ChevronDown } from 'lucide-react'
+import { Brain, Target, AlertTriangle, ChevronDown, Lightbulb } from 'lucide-react'
 import { getInsights } from '../../api/learning'
 import { useI18n } from '../../i18n'
 
@@ -88,7 +88,10 @@ export default function LearningInsightsCard() {
       {suggestions.length > 0 && (
         <ul className="mt-4 space-y-2">
           {suggestions.map(({ s, text }) => (
-            <li key={s.code} className="text-sm text-foreground/90 flex gap-2"><span aria-hidden>💡</span><span>{text}</span></li>
+            <li key={s.code} className="text-sm text-foreground/90 flex items-start gap-2.5">
+              <Lightbulb className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" aria-hidden />
+              <span>{text}</span>
+            </li>
           ))}
         </ul>
       )}

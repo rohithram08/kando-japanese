@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react'
+import { Eye, EyeOff, Mail, Lock, AlertCircle, ArrowLeft, KeyRound } from 'lucide-react'
 import { useAuthStore }  from '../../store/authStore'
 import { authApi }       from '../../api'
 import { useI18n }         from '../../i18n'
@@ -107,56 +107,41 @@ export default function LoginPage() {
   // ── Field classes ─────────────────────────────────────────
   const fieldBase = `
     w-full px-4 py-3 rounded-xl border text-sm
-    focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent
-    transition-all duration-200
-    bg-white border-gray-200 text-gray-900 placeholder-gray-400 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-500
+    focus:outline-none focus:ring-2 focus:ring-primary/25 focus:border-primary/60
+    transition-all duration-150
+    bg-background border-input text-foreground placeholder:text-muted-foreground/70
   `
-  const fieldError = 'border-red-400 focus:ring-red-400'
+  const fieldError = 'border-destructive focus:ring-destructive/30'
 
   // ─────────────────────────────────────────────────────────
   return (
-    <div className={`
-      min-h-screen flex items-center justify-center p-4
-      transition-colors duration-300
-      bg-gradient-to-br from-red-50 via-white to-red-50 dark:bg-gradient-to-br dark:from-gray-950 dark:via-gray-900 dark:to-gray-950
-    `}>
+    <div className="min-h-screen flex items-center justify-center p-4 transition-colors duration-200 bg-background">
       <SEO
         title="Sign In - Access Your Japanese Learning Journey"
         description="Sign in to your Kando Japanese account to continue your JLPT lessons, SRS reviews, streaks, and personalized study progress."
         path="/login"
       />
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
         className="w-full max-w-md"
       >
         {/* Logo */}
-        <div className="text-center mb-8">
-          <motion.div
-            animate={{
-              scale: [1, 1.08, 0.96, 1],
-              y: [0, -6, 1, 0],
-            }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-            className="mb-2 inline-block"
-          >
-            <KandoSlimeLogo size={68} animated />
-          </motion.div>
-          <h1 className={`text-3xl font-bold text-foreground`}>
+        <div className="text-center mb-7">
+          <div className="mb-3 inline-block">
+            <KandoSlimeLogo size={60} />
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Kando Japanese
           </h1>
-          <p className={`mt-1 font-jp text-muted-foreground`}>
+          <p className="mt-1 text-sm font-jp text-muted-foreground">
             日本語を学ぼう
           </p>
         </div>
 
         {/* Card */}
-        <div className={`
-          rounded-2xl shadow-xl p-8
-          transition-colors duration-300
-          bg-white dark:bg-gray-900 dark:border dark:border-gray-700/60
-        `}>
+        <div className="rounded-2xl shadow-card-lg p-7 sm:p-8 border border-border bg-surface transition-colors">
 
           <AnimatePresence mode="wait">
             {/* ════════════════════════════════════════════════ */}
@@ -165,15 +150,15 @@ export default function LoginPage() {
             {forgotMode ? (
               <motion.div
                 key="forgot"
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.25 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.2 }}
               >
                 {/* Back button */}
                 <button
                   onClick={resetForgotState}
-                  className={`flex items-center gap-1.5 text-sm mb-4 transition-colors text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white`}
+                  className="flex items-center gap-1.5 text-sm mb-5 transition-colors text-muted-foreground hover:text-foreground"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to sign in
@@ -183,11 +168,13 @@ export default function LoginPage() {
                 {forgotStep === 1 && (
                   <div className="space-y-4">
                     <div className="text-center mb-2">
-                      <div className="text-4xl mb-2">🔑</div>
-                      <h2 className={`text-xl font-bold text-foreground`}>
+                      <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center mx-auto mb-3">
+                        <KeyRound className="w-5 h-5" />
+                      </div>
+                      <h2 className="text-xl font-bold text-foreground">
                         Reset Password
                       </h2>
-                      <p className={`text-sm mt-1 text-muted-foreground`}>
+                      <p className="text-sm mt-1 text-muted-foreground">
                         Enter your email and we&apos;ll send you a reset link
                       </p>
                     </div>

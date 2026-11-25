@@ -1,7 +1,7 @@
 // src/components/landing/JLPTLevelPicker.jsx
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Volume2, ArrowRight, Compass, Check } from 'lucide-react'
+import { Volume2, ArrowRight, Check } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { playPop } from '../../utils/soundEffects'
 import { triggerRateLimitedConfetti } from '../../utils/confettiHelper'
@@ -114,88 +114,85 @@ export default function JLPTLevelPicker({
     <section id="curriculum" className="py-16 md:py-24 bg-surface/40 border-y border-border">
       <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3 border border-primary/20">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Structured Progression</span>
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs font-semibold uppercase tracking-widest text-primary mb-2.5">
+            Structured Progression
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
             Designed for Every Step of Your Journey
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base mt-3">
+          <p className="text-muted-foreground text-sm sm:text-base mt-3 leading-relaxed">
             Select your starting proficiency level to explore curriculum benchmarks, vocabulary goals,
             and authentic Japanese sentences.
           </p>
         </div>
 
-        {/* Chunky 3D Level Selector Cards ("I want to learn..." pattern) */}
-        <div className="max-w-4xl mx-auto mb-10">
-          <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider text-center sm:text-left mb-3">
+        {/* Clean Level Selector Cards */}
+        <div className="max-w-4xl mx-auto mb-8">
+          <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider text-center sm:text-left mb-3">
             I want to start at:
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
             {JLPT_DETAILS.map((item) => {
               const isSelected = item.level === selectedLevel
               return (
-                <motion.button
+                <button
                   key={item.level}
                   type="button"
-                  whileHover={{ y: -3 }}
-                  whileTap={{ y: 2, scale: 0.98 }}
                   onClick={() => handleCardClick(item.level)}
                   aria-label={`Select JLPT level ${item.level} ${item.title}`}
-                  className={`p-3.5 sm:p-4 rounded-2xl text-left border-2 border-b-4 transition-all duration-150 cursor-pointer relative shadow-sm ${
+                  className={`p-3.5 sm:p-4 rounded-xl text-left border transition-all duration-150 cursor-pointer relative ${
                     isSelected
-                      ? 'bg-primary/10 border-primary border-b-primary shadow-md ring-2 ring-primary/20 text-primary'
-                      : 'bg-surface border-border text-foreground hover:border-primary/50 hover:bg-surface/90'
+                      ? 'bg-primary/10 border-primary shadow-xs ring-1 ring-primary/25 text-primary'
+                      : 'bg-surface border-border text-foreground hover:border-foreground/25 hover:bg-surface-muted/40'
                   }`}
                 >
                   {/* Selected check badge */}
                   {isSelected && (
-                    <div className="absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-sm">
-                      <Check className="w-3 h-3 stroke-[3]" />
+                    <div className="absolute top-2.5 right-2.5 w-4 h-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
                     </div>
                   )}
 
-                  <div className="text-xl sm:text-2xl font-black font-jp mb-0.5">
+                  <div className="text-xl sm:text-2xl font-bold font-jp mb-0.5 tabular-nums">
                     {item.level}
                   </div>
-                  <div className="text-xs font-bold truncate">
+                  <div className="text-xs font-semibold truncate">
                     {item.title.split(' ')[0]}
                   </div>
-                  <div className="text-[10px] text-muted-foreground font-mono mt-1">
+                  <div className="text-[11px] text-muted-foreground font-mono mt-1 tabular-nums">
                     {item.kanji}
                   </div>
-                </motion.button>
+                </button>
               )
             })}
           </div>
         </div>
 
-        {/* Active Level Detail Card with Smooth Transition */}
-        <div className="card p-6 sm:p-8 rounded-3xl border border-border shadow-lg bg-surface max-w-4xl mx-auto overflow-hidden">
+        {/* Active Level Detail Card */}
+        <div className="card p-6 sm:p-8 rounded-2xl border border-border shadow-card-md bg-surface max-w-4xl mx-auto overflow-hidden">
           <AnimatePresence>
             <motion.div
               key={activeLevelData.level}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
               className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
             >
               {/* Level Summary */}
               <div className="md:col-span-5 flex flex-col items-start text-left border-b md:border-b-0 md:border-r border-border pb-6 md:pb-0 md:pr-6">
                 <div className="flex items-center gap-3 mb-3">
                   <span
-                    className={`text-2xl font-black px-3 py-1 rounded-xl bg-gradient-to-r ${activeLevelData.badgeColor} text-white shadow-sm`}
+                    className={`text-xl font-bold px-3 py-1.5 rounded-xl border ${activeLevelData.bgColor} ${activeLevelData.textColor} border-current/20 font-mono tabular-nums`}
                   >
                     {activeLevelData.level}
                   </span>
                   <div>
-                    <h3 className="font-extrabold text-lg text-foreground">
+                    <h3 className="font-bold text-lg text-foreground">
                       {activeLevelData.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground tabular-nums">
                       <span>{activeLevelData.kanji}</span>
                       <span>•</span>
                       <span>{activeLevelData.vocab}</span>

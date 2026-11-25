@@ -157,7 +157,7 @@ const STATIC_COMMANDS: CommandItem[] = [
     description: 'Weekly cohort leaderboards from Wakaba to Fuji League',
     category: 'community',
     icon: Trophy,
-    path: '/leagues',
+    path: '/league',
     badge: 'Leaderboard',
     keywords: ['league', 'rank', 'leaderboard', 'competition', 'weekly', 'cohort'],
   },

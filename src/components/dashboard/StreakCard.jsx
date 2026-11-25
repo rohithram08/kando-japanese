@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Snowflake, Gift, AlertTriangle } from 'lucide-react';
+import { Shield, Snowflake, Gift, AlertTriangle, Droplets, Flame, Sparkles, Crown, Trophy } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { useProgressStore } from '../../store/progressStore';
 import JellyStreakSlime from '../mascot/JellyStreakSlime';
@@ -69,48 +69,49 @@ export default function StreakCard({ streak = 0 }) {
     if (!hasStudiedToday && val > 0) {
       return {
         text: t('dashboard.study_today_to_keep_streak', { count: val }, `Study a story or quiz today to keep your ${val}-day streak alive!`),
-        emoji: '🔥',
+        Icon: Flame,
         color: 'text-amber-600 dark:text-amber-400',
       };
     }
     if (val === 0) {
       return {
         text: t('dashboard.start_streak', 'Start your Jelly Streak today!'),
-        emoji: '💧',
+        Icon: Droplets,
         color: 'text-muted-foreground',
       };
     }
     if (val < 7) {
       return {
         text: t('dashboard.week_streak_target', { count: 7 - val }, `${7 - val} more days to weekly Jelly milestone!`),
-        emoji: '✨',
+        Icon: Sparkles,
         color: 'text-cyan-600 dark:text-cyan-400',
       };
     }
     if (val < 30) {
       return {
         text: t('dashboard.month_streak_target', { count: 30 - val }, `${30 - val} days to monthly King Jelly badge!`),
-        emoji: '👑',
+        Icon: Crown,
         color: 'text-blue-600 dark:text-blue-400',
       };
     }
     return {
       text: t('dashboard.legend_streak', "Incredible dedication! You're a Jelly Legend!"),
-      emoji: '🏆',
+      Icon: Trophy,
       color: 'text-amber-500 dark:text-amber-400',
     };
   };
 
   const motivation = getMotivation(streak);
+  const MotivationIcon = motivation.Icon;
   const slimeMood = isStreakFrozen ? 'frozen' : streak >= 7 ? 'celebrating' : streak > 0 ? 'active' : 'sleepy';
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="card border border-cyan-500/20 dark:border-cyan-500/30 overflow-hidden"
+      className="card overflow-hidden"
     >
-      <div className="card-header pb-3 border-b border-border/50">
+      <div className="card-header pb-3 border-b border-border/60">
         <div className="flex items-center gap-3 flex-1">
           {/* 2D Jelly Slime Mascot */}
           <JellyStreakSlime size="sm" mood={slimeMood} animated />
@@ -121,7 +122,7 @@ export default function StreakCard({ streak = 0 }) {
                 {t('dashboard.streak_title', 'Jelly Streak')}
               </h3>
               {isStreakFrozen && (
-                <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-100 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-700">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
                   <Snowflake className="w-2.5 h-2.5" /> Frozen Shield
                 </span>
               )}
@@ -132,14 +133,14 @@ export default function StreakCard({ streak = 0 }) {
           </div>
         </div>
 
-        {/* Days Counter with Duolingo-style Odometer */}
+        {/* Days Counter with Odometer */}
         <div className="flex items-center gap-2">
           <div className="text-right">
             <StreakOdometer
               value={streak}
-              className="text-2xl font-black block leading-none text-cyan-600 dark:text-cyan-400 font-mono"
+              className="text-2xl font-bold block leading-none text-foreground font-mono tabular-nums"
             />
-            <span className="text-[10px] font-semibold text-muted-foreground">
+            <span className="text-[10px] font-medium text-muted-foreground">
               {t('dashboard.streak_days', 'days')}
             </span>
           </div>
@@ -147,7 +148,7 @@ export default function StreakCard({ streak = 0 }) {
       </div>
 
       <div className="card-body pt-4 space-y-4">
-        {/* ── 7-Day Jelly Drop Track ── */}
+        {/* ── 7-Day Track ── */}
         <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
           {WEEK_DAYS.map((day, i) => {
             const isToday = i === todayIndex;
@@ -165,48 +166,32 @@ export default function StreakCard({ streak = 0 }) {
 
             return (
               <div key={day} className="flex flex-col items-center gap-1.5">
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: i * 0.04, type: 'spring', stiffness: 320 }}
-                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center transition-all ${
+                <div
+                  className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-colors ${
                     isDayFrozen
-                      ? 'bg-gradient-to-br from-sky-400 to-cyan-500 text-white shadow-xs shadow-sky-500/25 border border-sky-300 dark:border-sky-600'
+                      ? 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30'
                       : isStudied
-                      ? 'bg-gradient-to-br from-cyan-400 to-blue-500 text-white shadow-xs shadow-cyan-500/25'
+                      ? 'bg-cyan-500 text-white shadow-2xs border border-cyan-600/30'
                       : isToday
-                      ? 'border-2 border-dashed border-cyan-400 bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 animate-pulse'
-                      : 'border border-border/80 bg-muted/40 text-muted-foreground/60'
+                      ? 'border border-dashed border-primary/50 bg-primary/5 text-primary'
+                      : 'border border-border bg-surface-muted/60 text-muted-foreground/50'
                   }`}
-                  title={`${day}: ${isDayFrozen ? 'Frozen with Jelly Freeze ❄️' : isStudied ? 'Jelly Streak recorded! 💧' : isToday ? 'Read a story or quiz today!' : 'Pending'}`}
+                  title={`${day}: ${isDayFrozen ? 'Frozen with Jelly Freeze' : isStudied ? 'Streak recorded' : isToday ? 'Complete a lesson or quiz today' : 'Pending'}`}
                 >
                   {isDayFrozen ? (
-                    <motion.div
-                      animate={{ scale: [1, 1.08, 1] }}
-                      transition={{ repeat: Infinity, duration: 2.8 }}
-                      className="text-center"
-                    >
-                      <span className="text-base select-none">❄️</span>
-                    </motion.div>
+                    <Snowflake className="w-4 h-4" />
                   ) : isStudied ? (
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ repeat: Infinity, duration: 2.5 }}
-                      className="text-center"
-                    >
-                      <span className="text-base select-none">💧</span>
-                    </motion.div>
+                    <Droplets className="w-4 h-4 fill-current" />
                   ) : isToday ? (
-                    <span className="text-xs font-bold font-mono">Today</span>
+                    <span className="text-[10px] font-semibold font-mono">Today</span>
                   ) : (
-                    <span className="w-2 h-2 rounded-full bg-border" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-border" />
                   )}
-                </motion.div>
+                </div>
 
                 <span
-                  className={`text-[11px] font-semibold ${
-                    isToday ? 'text-cyan-600 dark:text-cyan-400 font-bold' : 'text-muted-foreground'
+                  className={`text-[11px] font-medium ${
+                    isToday ? 'text-primary font-semibold' : 'text-muted-foreground'
                   }`}
                 >
                   {day}
@@ -217,12 +202,12 @@ export default function StreakCard({ streak = 0 }) {
         </div>
 
         {/* ── Motivation Banner ── */}
-        <div className="flex items-center justify-between gap-3 p-3 rounded-2xl bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-500/20 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="text-base">{motivation.emoji}</span>
-            <span className={`font-semibold ${motivation.color}`}>{motivation.text}</span>
+        <div className="flex items-center justify-between gap-3 p-3 rounded-xl bg-surface-muted/60 border border-border text-xs">
+          <div className="flex items-center gap-2 min-w-0">
+            <MotivationIcon className={`w-4 h-4 shrink-0 ${motivation.color}`} />
+            <span className={`font-medium truncate ${motivation.color}`}>{motivation.text}</span>
           </div>
-          <span className="text-[11px] font-bold text-cyan-700 dark:text-cyan-300 font-mono">
+          <span className="text-[11px] font-semibold text-muted-foreground font-mono tabular-nums shrink-0">
             +{streak * 5 + 10} Wave XP
           </span>
         </div>
@@ -281,9 +266,9 @@ export default function StreakCard({ streak = 0 }) {
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => setIsTreasuryOpen(true)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
                 isAvailableThisWeek
-                  ? 'text-amber-950 dark:text-amber-100 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 border border-amber-300 dark:border-amber-600 animate-pulse'
+                  ? 'text-amber-700 dark:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30'
                   : 'text-muted-foreground bg-muted hover:bg-muted/80 border border-border'
               }`}
               title={
@@ -292,8 +277,8 @@ export default function StreakCard({ streak = 0 }) {
                   : `Opened this week (Resets in ${resetTimer.formatted})`
               }
             >
-              <Gift className="w-3.5 h-3.5 text-amber-900 dark:text-amber-200" />
-              <span>{isAvailableThisWeek ? '🎁 Treasury Box (1x/week)' : '🎁 Treasury (Claimed)'}</span>
+              <Gift className="w-3.5 h-3.5 shrink-0" />
+              <span>{isAvailableThisWeek ? 'Treasury Box (1x/week)' : 'Treasury (Claimed)'}</span>
             </button>
           </div>
         </div>

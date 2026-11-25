@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import {
   Sparkles, BookOpen, MessageCircle, RefreshCw, Languages,
   Award, ArrowRight, CheckCircle2, Volume2, VolumeX,
-  ChevronRight, Flame, Bot
+  ChevronRight, GraduationCap
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
 import ThemeToggle from '../components/ui/ThemeToggle'
@@ -30,8 +30,7 @@ const FEATURES = [
     icon: BookOpen,
     title: 'JLPT Graded Readers',
     titleJp: '多読・多聴',
-    tint: 'teal',
-    color: 'from-teal-500 to-emerald-600',
+    iconClass: 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20',
     desc: 'Six meticulously curated N5 and N4 stories with toggleable furigana, pitch accent contours, sentence-by-sentence native audio, and one-tap dictionary lookup with Add to SRS.',
     link: '/reading',
     badge: 'Public Guest Access',
@@ -39,9 +38,8 @@ const FEATURES = [
   {
     icon: MessageCircle,
     title: 'Conversation Practice',
-    titleJp: '会話練習・AI道場',
-    tint: 'cyan',
-    color: 'from-cyan-500 to-blue-600',
+    titleJp: '会話練習・道場',
+    iconClass: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
     desc: '49 real-world scenarios across dining, travel, shopping, and business keigo, plus an open Free Talk mode with real-time grammar feedback and natural voice pronunciation.',
     link: '/conversation',
     badge: '49 Scenarios + Free Talk',
@@ -50,8 +48,7 @@ const FEATURES = [
     icon: Sparkles,
     title: 'Kana Studio',
     titleJp: '仮名スタジオ',
-    tint: 'rose',
-    color: 'from-rose-500 to-pink-600',
+    iconClass: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
     desc: 'Master Hiragana and Katakana from scratch with stroke order animations, audio pronunciation, mnemonic cards, and interactive rapid-fire quizzes.',
     link: '/kana',
     badge: 'Beginner Ready',
@@ -60,8 +57,7 @@ const FEATURES = [
     icon: RefreshCw,
     title: 'Spaced Repetition System',
     titleJp: 'SRS復習システム',
-    tint: 'orange',
-    color: 'from-orange-500 to-amber-600',
+    iconClass: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20',
     desc: 'Scientifically scheduled review intervals for vocabulary and kanji. Reviews are calculated to lock words into long-term memory right before you forget them.',
     link: '/review',
     badge: 'SM-2 Algorithm',
@@ -70,21 +66,19 @@ const FEATURES = [
     icon: Languages,
     title: 'Kanji & Grammar Guides',
     titleJp: '漢字・文法マスター',
-    tint: 'red',
-    color: 'from-red-500 to-rose-600',
+    iconClass: 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20',
     desc: 'Deep dive into stroke order, radical breakdowns, onyomi/kunyomi readings, and grammatical sentence patterns organized systematically from N5 to N1.',
     link: '/kanji',
     badge: 'N5 to N1 Comprehensive',
   },
   {
-    icon: Bot,
-    title: 'Hana-sensei AI Companion',
-    titleJp: '花先生ガイダンス',
-    tint: 'purple',
-    color: 'from-purple-500 to-indigo-600',
-    desc: 'An encouraging bilingual AI companion who adapts explanations to your current JLPT level, celebrates study streaks, and guides you through complex grammar points.',
+    icon: GraduationCap,
+    title: 'Hana-sensei 3D Studio',
+    titleJp: '花先生 3D教室',
+    iconClass: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+    desc: 'An encouraging bilingual Japanese teacher who adapts explanations to your current JLPT level, celebrates study streaks, and guides you through complex grammar nuances.',
     link: '/sensei',
-    badge: 'Adaptive Learning',
+    badge: 'Adaptive Coaching',
   },
 ]
 
@@ -145,20 +139,20 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-red-500/20 selection:text-red-500 relative">
       <SEO
         title="Kando Japanese (感動) - Learn Japanese & JLPT Mastery"
-        description="Comprehensive Japanese language learning platform from JLPT N5 to N1. Master Japanese with AI Sensei, 250+ interactive lessons, spaced repetition SRS, kanji engine, and graded readers."
+        description="Comprehensive Japanese language learning platform from JLPT N5 to N1. Master Japanese with Hana-sensei, 250+ interactive lessons, spaced repetition SRS, kanji engine, and graded readers."
         path="/"
       />
       
       {/* ── Public Top Navigation Bar ────────────────────────────── */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border transition-colors">
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/85 border-b border-border transition-colors">
         <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl shrink-0">
-            <KandoSlimeLogo size={34} animated showBlossom className="group-hover:scale-110 transition-transform" />
+          <Link to="/" className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl shrink-0">
+            <KandoSlimeLogo size={32} animated showBlossom className="transition-transform group-hover:scale-105" />
             <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 bg-clip-text text-transparent whitespace-nowrap">
+              <span className="font-bold text-base sm:text-lg tracking-tight text-foreground whitespace-nowrap">
                 Kando Japanese
               </span>
-              <span className="text-[10px] text-muted-foreground -mt-1 font-medium tracking-wider whitespace-nowrap">
+              <span className="text-[10px] text-muted-foreground -mt-1 font-medium font-jp tracking-wider whitespace-nowrap">
                 感動 — 日本語学習
               </span>
             </div>
@@ -219,11 +213,11 @@ export default function LandingPage() {
                   <ArrowRight className="w-3 h-3" />
                 </button>
 
-                {/* Desktop/Tablet Slime CTA (always visible and balanced) */}
+                {/* Desktop/Tablet Primary CTA */}
                 <button
                   type="button"
                   onClick={() => { playPop(); navigate('/register') }}
-                  className="hidden sm:inline-flex btn-3d-slime py-2 px-4 text-xs sm:text-sm font-extrabold rounded-xl items-center gap-1.5 shadow-sm"
+                  className="hidden sm:inline-flex btn-3d-primary py-2 px-4 text-xs sm:text-sm font-semibold rounded-xl items-center gap-1.5"
                 >
                   <span>Get Started Free</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -237,22 +231,16 @@ export default function LandingPage() {
       {/* ── Main Content Area ────────────────────────────────────── */}
       <main className="flex-1">
         
-        {/* ── Lively Animated Hero Section with 2D Hana-sensei ─────── */}
-        <section className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28">
+        {/* ── Hero Section ─────── */}
+        <section className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-24">
           
           {/* 2D Sakura Petals Drifting Across the Hero */}
           <SakuraPetals2D />
 
-          {/* Background Ambient Radial Glow */}
-          <div
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-indigo-500/10 dark:bg-indigo-500/5 blur-[130px] rounded-full pointer-events-none"
-            aria-hidden="true"
-          />
-
           <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-20">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
               
-              {/* Left Column: Playful, High-Energy Headline and Action CTAs */}
+              {/* Left Column: High-contrast Typography & Clear CTAs */}
               <div className="lg:col-span-7 flex flex-col items-start text-left">
                 
                 <motion.div
@@ -261,54 +249,53 @@ export default function LandingPage() {
                   variants={HEADLINE_CONTAINER}
                   className="w-full"
                 >
-                  {/* Level badge */}
+                  {/* Structured Eyebrow Tag */}
                   <motion.div
                     variants={HEADLINE_ITEM}
-                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs font-bold mb-5 shadow-sm"
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-muted border border-border text-muted-foreground text-xs font-semibold mb-5"
                   >
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true" />
                     <span>Comprehensive JLPT N5–N1 Learning Platform</span>
                   </motion.div>
 
-                  {/* Primary Headline with Living Language motif */}
+                  {/* Primary Headline */}
                   <h1 className="mb-6">
                     <motion.span
                       variants={HEADLINE_ITEM}
-                      className="block text-xl sm:text-2xl font-bold text-primary tracking-wide mb-2"
+                      className="block text-base sm:text-lg font-semibold text-muted-foreground tracking-wide mb-2"
                     >
                       Master Japanese as a Living Language
                     </motion.span>
                     <motion.span
                       variants={HEADLINE_ITEM}
-                      className="block text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12]"
+                      className="block text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-foreground"
                     >
                       Learn Japanese.{' '}
-                      <span className="bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 bg-clip-text text-transparent">
+                      <span className="text-primary">
                         Live the Language.
                       </span>
                     </motion.span>
                   </h1>
 
-                  {/* Short friendly explanation of the N5–N1 journey */}
+                  {/* Concise Pedagogical Overview */}
                   <motion.p
                     variants={FADE_UP_SPRING}
                     className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl"
                   >
-                    Immerse yourself in authentic graded readers, interactive conversational roleplay,
-                    spaced repetition vocabulary, and personalized guidance from Hana-sensei.
-                    From your very first Hiragana stroke to advanced N1 comprehension.
+                    Immerse yourself in curated graded readers, interactive conversational roleplay,
+                    spaced repetition vocabulary, and structured guidance from Hana-sensei.
+                    From your very first Hiragana stroke to N1 fluency.
                   </motion.p>
                 </motion.div>
 
                 {/* Primary CTA Buttons */}
-                <div ref={heroCtaRef} className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-8">
+                <div ref={heroCtaRef} className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-8">
                   {user ? (
                     <button
                       type="button"
                       onClick={() => { playPop(); navigate('/dashboard') }}
-                      className="btn-3d-primary py-3.5 px-6 rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                      className="btn-3d-primary py-3 px-6 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
                     >
-                      <Sparkles className="w-4 h-4" />
                       <span>Continue to Your Dashboard</span>
                       <ArrowRight className="w-4 h-4 ml-1" />
                     </button>
@@ -318,7 +305,7 @@ export default function LandingPage() {
                         type="button"
                         onClick={() => { playPop(); navigate('/register') }}
                         aria-label="Start Learning Free - Get Started Free"
-                        className="btn-3d-slime py-3.5 px-8 rounded-2xl font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
+                        className="btn-3d-primary py-3 px-7 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
                       >
                         <span>Get Started Free</span>
                         <ArrowRight className="w-4 h-4 ml-1" />
@@ -326,7 +313,7 @@ export default function LandingPage() {
                       <button
                         type="button"
                         onClick={() => { playPop(); navigate('/login') }}
-                        className="btn-3d-secondary py-3.5 px-6 rounded-2xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
+                        className="btn-3d-secondary py-3 px-6 rounded-xl font-semibold text-sm sm:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
                       >
                         <span>Sign In</span>
                       </button>
@@ -384,57 +371,56 @@ export default function LandingPage() {
         {/* ── Feature Highlights Grid ──────────────────────────────── */}
         <section id="features" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-500/10 text-red-500 text-xs font-semibold mb-3">
-                <Flame className="w-3.5 h-3.5" />
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary mb-2.5">
                 <span>Modern Japanese Learning Stack</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
                 Tools to Help You Build Japanese Fluency
               </h2>
-              <p className="text-muted-foreground text-sm sm:text-base mt-3">
+              <p className="text-muted-foreground text-sm sm:text-base mt-3 leading-relaxed">
                 Built from the ground up combining linguistic science, spaced repetition, and modern web performance.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {FEATURES.map((feat, idx) => {
                 const Icon = feat.icon
                 return (
                   <div
                     key={idx}
-                    className="card p-6 rounded-3xl border border-border hover:shadow-xl transition-all flex flex-col justify-between group hover:-translate-y-1"
+                    className="card p-6 rounded-2xl border border-border hover:border-foreground/20 hover:shadow-card-md transition-all flex flex-col justify-between group"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${feat.color} text-white flex items-center justify-center shadow-md transition-transform group-hover:scale-110`}>
-                          <Icon className="w-6 h-6" />
+                        <div className={`w-10 h-10 rounded-xl border ${feat.iconClass} flex items-center justify-center`}>
+                          <Icon className="w-5 h-5" />
                         </div>
-                        <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-muted text-muted-foreground border border-border/50">
+                        <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-surface-muted text-muted-foreground border border-border">
                           {feat.badge}
                         </span>
                       </div>
 
                       <div className="flex items-baseline gap-2 mb-2">
-                        <h3 className="font-extrabold text-lg text-foreground group-hover:text-primary transition-colors">
+                        <h3 className="font-bold text-base text-foreground group-hover:text-primary transition-colors">
                           {feat.title}
                         </h3>
-                        <span className="text-xs text-muted-foreground font-medium">
+                        <span className="text-xs text-muted-foreground font-jp">
                           {feat.titleJp}
                         </span>
                       </div>
 
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                         {feat.desc}
                       </p>
                     </div>
 
                     <Link
                       to={feat.link}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                     >
                       <span>Explore feature</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </div>
                 )
@@ -444,29 +430,29 @@ export default function LandingPage() {
         </section>
 
         {/* ── Ready to Start Learning CTA Banner ───────────────────── */}
-        <section className="py-16 bg-gradient-to-b from-surface to-background border-t border-border">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="card p-8 sm:p-12 rounded-3xl border border-border shadow-2xl relative overflow-hidden bg-surface">
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-500 text-white flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-500/25">
-                  <Award className="w-8 h-8" />
+        <section className="py-16 bg-surface-muted/40 border-t border-border">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="card p-8 sm:p-12 rounded-2xl border border-border shadow-card-md relative overflow-hidden bg-surface">
+              <div className="relative z-10 max-w-xl mx-auto">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center mx-auto mb-5">
+                  <Award className="w-6 h-6" />
                 </div>
 
-                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-3">
                   Start Your Japanese Journey Today
                 </h2>
                 
-                <p className="text-muted-foreground text-sm sm:text-base mb-8">
+                <p className="text-muted-foreground text-sm sm:text-base mb-8 leading-relaxed">
                   Create your free account to track study streaks, save vocabulary to your SRS review deck,
-                  and practice conversation with live AI corrections.
+                  and practice conversation with live contextual guidance.
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center gap-4">
+                <div className="flex flex-wrap items-center justify-center gap-3">
                   {user ? (
                     <button
                       type="button"
                       onClick={() => { playPop(); navigate('/dashboard') }}
-                      className="btn-3d-primary py-3.5 px-8 rounded-2xl font-bold text-base flex items-center gap-2 shadow-lg"
+                      className="btn-3d-primary py-3 px-7 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-2"
                     >
                       <span>Go to Dashboard</span>
                       <ArrowRight className="w-4 h-4" />
@@ -476,7 +462,7 @@ export default function LandingPage() {
                       <button
                         type="button"
                         onClick={() => { playPop(); navigate('/register') }}
-                        className="btn-3d-primary py-3.5 px-8 rounded-2xl font-bold text-base flex items-center gap-2 shadow-lg"
+                        className="btn-3d-primary py-3 px-7 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-2"
                       >
                         <span>Get Started Free</span>
                         <ArrowRight className="w-4 h-4" />
@@ -484,7 +470,7 @@ export default function LandingPage() {
                       <button
                         type="button"
                         onClick={() => { playPop(); navigate('/login') }}
-                        className="btn-3d-secondary py-3.5 px-6 rounded-2xl font-semibold text-base"
+                        className="btn-3d-secondary py-3 px-6 rounded-xl font-semibold text-sm sm:text-base"
                       >
                         Sign In
                       </button>

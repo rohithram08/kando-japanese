@@ -18,8 +18,7 @@ const STAT_ITEMS = [
     titleJp: '基礎仮名',
     description: 'Hiragana & Katakana stroke order with native audio',
     icon: Sparkles,
-    color: 'from-rose-500 to-pink-500',
-    border: 'border-rose-500/20',
+    iconClass: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20',
   },
   {
     target: 6,
@@ -28,8 +27,7 @@ const STAT_ITEMS = [
     titleJp: '多読・多聴',
     description: 'Full native audio, ruby furigana & one-tap SRS intake',
     icon: BookOpen,
-    color: 'from-emerald-500 to-teal-500',
-    border: 'border-emerald-500/20',
+    iconClass: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
   },
   {
     target: 49,
@@ -38,8 +36,7 @@ const STAT_ITEMS = [
     titleJp: '実践会話道場',
     description: 'Real-world dialogues & adaptive grammar corrections',
     icon: MessageCircle,
-    color: 'from-cyan-500 to-blue-500',
-    border: 'border-cyan-500/20',
+    iconClass: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20',
   },
   {
     target: TOTAL_BUNDLED_KANJI,
@@ -49,8 +46,7 @@ const STAT_ITEMS = [
     titleJp: '常用漢字基準',
     description: 'Curated kanji bundled across N5–N1 with radicals, stroke orders, and mnemonics',
     icon: Languages,
-    color: 'from-purple-500 to-indigo-500',
-    border: 'border-purple-500/20',
+    iconClass: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
   },
 ]
 
@@ -96,55 +92,54 @@ function StatItem({ item }) {
   const Icon = item.icon
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      whileHover={{ y: -4, transition: { duration: 0.18 } }}
-      className={`p-5 sm:p-6 rounded-3xl bg-surface border ${item.border} shadow-sm flex flex-col justify-between text-left transition-all hover:shadow-md relative overflow-hidden group`}
+      className="p-5 sm:p-6 rounded-2xl bg-surface border border-border shadow-card flex flex-col justify-between text-left transition-all hover:border-foreground/20 hover:shadow-card-md relative overflow-hidden group"
     >
       <div className="flex items-center justify-between mb-4">
         <div
-          className={`w-10 h-10 rounded-2xl bg-gradient-to-tr ${item.color} text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform`}
+          className={`w-10 h-10 rounded-xl border ${item.iconClass} flex items-center justify-center`}
         >
           <Icon className="w-5 h-5" />
         </div>
-        <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest font-jp bg-muted/70 px-2 py-0.5 rounded-full border border-border/50">
+        <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider font-jp bg-surface-muted px-2 py-0.5 rounded-full border border-border">
           {item.titleJp}
         </span>
       </div>
 
       <div>
         <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-3xl sm:text-4xl font-black text-foreground tracking-tight font-mono">
+          <span className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight font-mono tabular-nums">
             {formattedCount}
             {item.suffix}
           </span>
           {item.note && (
-            <span className="text-xs font-semibold text-muted-foreground font-sans">
+            <span className="text-xs font-medium text-muted-foreground font-sans">
               ({item.note})
             </span>
           )}
         </div>
-        <div className="font-extrabold text-sm sm:text-base text-foreground mb-1">
+        <div className="font-bold text-sm sm:text-base text-foreground mb-1">
           {item.title}
         </div>
         <p className="text-xs text-muted-foreground leading-relaxed">
           {item.description}
         </p>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 export default function StatCounters() {
   return (
-    <section className="py-12 bg-background border-t border-border/80">
+    <section className="py-14 bg-background border-t border-border">
       <div className="max-w-[1440px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 text-left">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-2.5 border border-primary/20">
-              <span>Authentic Curriculum Benchmarks</span>
+            <div className="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+              Authentic Curriculum Benchmarks
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
               Built on Real Japanese Content
             </h3>
           </div>

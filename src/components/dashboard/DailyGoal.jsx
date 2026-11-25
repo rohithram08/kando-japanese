@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Target, Check, Sparkles, TrendingUp } from 'lucide-react'
+import { Target, Check, TrendingUp, BookOpen, RefreshCw, MessageSquare, CheckCircle2 } from 'lucide-react'
 import { useDailyGoalsStore, GOAL_THRESHOLDS } from '../../store/dailyGoalsStore'
 import { useProgressStore } from '../../store/progressStore'
 import { useSettingsStore } from '../../store/settingsStore'
@@ -22,28 +22,28 @@ export default function DailyGoal() {
     {
       id: 'lesson',
       label: t('dashboard.goal_lesson', 'Complete a story lesson'),
-      emoji: '📚',
+      Icon: BookOpen,
       xp: 15,
       category: t('nav.reading', 'Story Lessons'),
     },
     {
       id: 'review',
       label: t('dashboard.goal_review', { count: GOAL_THRESHOLDS.review }, `SRS Review (${GOAL_THRESHOLDS.review} cards)`),
-      emoji: '🔄',
+      Icon: RefreshCw,
       xp: 20,
       category: t('nav.srs', 'Review'),
     },
     {
       id: 'kanji',
       label: t('dashboard.goal_kanji', { count: GOAL_THRESHOLDS.kanji }, `Study ${GOAL_THRESHOLDS.kanji} Kanji`),
-      emoji: '漢',
+      kanjiGlyph: '漢',
       xp: 8,
       category: t('nav.kanji', 'Kanji'),
     },
     {
       id: 'chat',
       label: t('dashboard.goal_chat', 'Practice conversation'),
-      emoji: '💬',
+      Icon: MessageSquare,
       xp: 10,
       category: t('nav.conversation', 'Speaking'),
     },
@@ -72,16 +72,16 @@ export default function DailyGoal() {
         localStorage.setItem('nihongo_daily_goal_claimed', today)
         awardDailyGoalXP(user?.id)
         playFanfare()
-        toast.success(t('toast.daily_goal_bonus', 'Daily Goals Complete! Bonus +50 Wave XP! 🎯'), { icon: '🌟' })
+        toast.success(t('toast.daily_goal_bonus', 'Daily Goals Complete! Bonus +50 Wave XP!'))
       }
     } catch {}
   }, [allDone, awardDailyGoalXP, user?.id, t])
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
+      transition={{ delay: 0.05 }}
       className="card"
     >
       <div className="card-header">
@@ -96,28 +96,28 @@ export default function DailyGoal() {
             {t('dashboard.daily_goals_desc', 'Complete tasks to earn Wave XP')}
           </p>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/20">
-          <AnimatedLiquidWaveIcon size={16} />
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-surface-muted text-foreground border border-border tabular-nums">
+          <AnimatedLiquidWaveIcon size={15} />
           {earnedXP}/{totalXP} Wave XP
         </div>
       </div>
 
       <div className="card-body">
-        {/* Daily Wave XP Goal (from Settings → Study Preferences) */}
+        {/* Daily Wave XP Goal */}
         <div className={`flex items-center gap-3 mb-5 p-3 rounded-xl border ${
           xpGoalHit
-            ? 'bg-green-50 dark:bg-green-500/10 border-green-100 dark:border-green-500/20'
-            : 'bg-muted/60 border-border'
+            ? 'bg-emerald-500/10 border-emerald-500/25'
+            : 'bg-surface-muted/60 border-border'
         }`}>
           <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-            xpGoalHit ? 'bg-green-500 text-white' : 'bg-red-500/10 text-red-500 dark:text-red-400'
+            xpGoalHit ? 'bg-emerald-500 text-white' : 'bg-primary/10 text-primary'
           }`}>
             <TrendingUp className="w-4 h-4" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-foreground">Daily Wave XP Goal</span>
-              <span className={`text-xs font-bold ${xpGoalHit ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`}>
+              <span className={`text-xs font-semibold tabular-nums ${xpGoalHit ? 'text-emerald-600 dark:text-emerald-400' : 'text-muted-foreground'}`}>
                 {dailyXP}/{xpGoal} Wave XP
               </span>
             </div>
@@ -125,8 +125,8 @@ export default function DailyGoal() {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${xpGoalPct}%` }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className={`h-full rounded-full ${xpGoalHit ? 'bg-green-500' : 'bg-red-500'}`}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className={`h-full rounded-full ${xpGoalHit ? 'bg-emerald-500' : 'bg-primary'}`}
               />
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function DailyGoal() {
 
         {/* Progress Ring + Summary */}
         <div className="flex items-center gap-5 mb-5">
-          <div className="relative w-[72px] h-[72px] flex-shrink-0">
+          <div className="relative w-[70px] h-[70px] flex-shrink-0">
             <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
               <circle cx="18" cy="18" r={radius} fill="none" strokeWidth="3" className="stroke-muted" />
               <motion.circle
@@ -142,32 +142,30 @@ export default function DailyGoal() {
                 fill="none"
                 strokeWidth="3"
                 strokeLinecap="round"
-                className={allDone ? 'stroke-green-500' : 'stroke-red-500'}
+                className={allDone ? 'stroke-emerald-500' : 'stroke-primary'}
                 initial={{ strokeDasharray: `0 ${circumference}` }}
                 animate={{
                   strokeDasharray: `${(pct / 100) * circumference} ${circumference - (pct / 100) * circumference}`,
                 }}
-                transition={{ duration: 1, ease: 'easeOut' }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
               />
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
               {allDone ? (
-                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 400, damping: 15 }}>
-                  <Sparkles className="w-5 h-5 text-green-500 dark:text-green-400" />
-                </motion.div>
+                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
               ) : (
-                <span className="text-sm font-bold text-foreground">{completed.length}/{dailyGoals.length}</span>
+                <span className="text-sm font-bold text-foreground tabular-nums">{completed.length}/{dailyGoals.length}</span>
               )}
             </div>
           </div>
 
           <div className="flex-1">
             <p className="font-semibold text-sm text-foreground">
-              {completed.length === 0 && "Let's start today! 💪"}
-              {completed.length > 0 && completed.length < dailyGoals.length && "Keep going! You're doing great!"}
-              {allDone && t('dashboard.all_goals_done', 'All goals completed! 🎉')}
+              {completed.length === 0 && "Let's start today's study session"}
+              {completed.length > 0 && completed.length < dailyGoals.length && 'Great momentum — keep going'}
+              {allDone && t('dashboard.all_goals_done', 'All goals completed!')}
             </p>
-            <p className="text-xs mt-1 text-muted-foreground">
+            <p className="text-xs mt-1 text-muted-foreground tabular-nums">
               {allDone
                 ? 'Come back tomorrow for new goals'
                 : `${dailyGoals.length - completed.length} remaining today`}
@@ -177,8 +175,8 @@ export default function DailyGoal() {
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${(earnedXP / totalXP) * 100}%` }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className={`h-full rounded-full bg-gradient-to-r ${allDone ? 'from-green-400 to-emerald-500' : 'from-red-400 to-red-500'}`}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className={`h-full rounded-full ${allDone ? 'bg-emerald-500' : 'bg-primary'}`}
               />
             </div>
           </div>
@@ -186,45 +184,43 @@ export default function DailyGoal() {
 
         {/* Goals List */}
         <div className="space-y-2">
-          {dailyGoals.map((goal, i) => {
+          {dailyGoals.map((goal) => {
             const isDone = completed.includes(goal.id)
+            const GoalIcon = goal.Icon
             return (
-              <motion.div
+              <div
                 key={goal.id}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className={`flex items-center gap-3 p-3 rounded-xl transition-all border ${
+                className={`flex items-center gap-3 p-3 rounded-xl transition-colors border ${
                   isDone
-                    ? 'bg-green-50 dark:bg-green-500/10 border-green-100 dark:border-green-500/20'
-                    : 'bg-muted/60 border-border hover:bg-muted'
+                    ? 'bg-emerald-500/10 border-emerald-500/20'
+                    : 'bg-surface-muted/50 border-border hover:bg-surface-muted'
                 }`}
               >
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                  isDone ? 'bg-green-500 text-white' : 'bg-muted-foreground/15 text-muted-foreground'
+                  isDone ? 'bg-emerald-500 text-white' : 'bg-muted text-muted-foreground border border-border/60'
                 }`}>
                   {isDone ? (
-                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 400 }}>
-                      <Check className="w-4 h-4" />
-                    </motion.div>
+                    <Check className="w-4 h-4" />
+                  ) : GoalIcon ? (
+                    <GoalIcon className="w-4 h-4" />
                   ) : (
-                    <span className="text-sm">{goal.emoji}</span>
+                    <span className="text-xs font-bold font-jp">{goal.kanjiGlyph}</span>
                   )}
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <span className={`text-sm font-medium block ${isDone ? 'text-green-600 dark:text-green-400 line-through opacity-70' : 'text-foreground'}`}>
+                  <span className={`text-sm font-medium block ${isDone ? 'text-emerald-700 dark:text-emerald-400 line-through opacity-75' : 'text-foreground'}`}>
                     {goal.label}
                   </span>
                   <span className="text-[10px] text-muted-foreground">{goal.category}</span>
                 </div>
 
-                <div className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold flex-shrink-0 ${
-                  isDone ? 'bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-muted text-muted-foreground'
+                <div className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold flex-shrink-0 tabular-nums ${
+                  isDone ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400' : 'bg-muted text-muted-foreground'
                 }`}>
                   {isDone ? <><Check className="w-3 h-3" />{t('common.complete', 'Done')}</> : <>+{goal.xp} Wave XP</>}
                 </div>
-              </motion.div>
+              </div>
             )
           })}
         </div>

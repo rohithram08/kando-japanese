@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, X } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
-import { useThemeStore } from '../../store/themeStore'
 import { useSettingsStore } from '../../store/settingsStore'
 import { t } from '../../i18n'
 import { LEVEL_META } from '../../data/levels'
@@ -73,9 +72,7 @@ function NavItem({ section, collapsed }) {
  */
 export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileDrawer = false, onClose }) {
   const { profile } = useAuthStore()
-  const { resolvedTheme } = useThemeStore()
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
-  const isDark = resolvedTheme === 'dark'
   const { totalXP, jlptLevel, streak, userLevel, isStreakFrozen } = useProgressStore()
 
   const levelMeta = LEVEL_META[jlptLevel] || LEVEL_META.N5
@@ -171,27 +168,14 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
           })}
         </nav>
 
-        {/* ── Replaced Bottom User & Wave XP Card ── */}
+        {/* ── Bottom User & Wave XP Card ── */}
         {!effectiveCollapsed ? (
-          <div className="p-3 border-t border-border/40 bg-surface/40">
+          <div className="p-3 border-t border-border/50 bg-surface">
             <NavLink
               to="/profile"
-              className={`block p-2.5 rounded-xl border relative overflow-hidden transition-all hover:scale-[1.01] active:scale-[0.99] group ${
-                isDark
-                  ? 'bg-slate-900/60 border-cyan-500/25 hover:border-cyan-400/50 shadow-xs'
-                  : 'bg-white border-cyan-400/30 hover:border-cyan-400/60 shadow-xs'
-              }`}
+              className="block p-2.5 rounded-xl border border-border bg-surface-muted/60 hover:bg-surface-muted hover:border-foreground/20 transition-all group"
               title="View your profile & achievements"
             >
-              {/* Subtle ambient cyan liquid shimmer */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-25">
-                <motion.div
-                  animate={{ x: [-80, 0] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
-                  className="absolute -bottom-1 -left-6 w-[180%] h-5 bg-gradient-to-t from-cyan-500/30 to-transparent blur-xs"
-                />
-              </div>
-
               {/* Row 1: User Avatar + JLPT badge + Name + Streak Pill */}
               <div className="relative flex items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2 min-w-0">
@@ -200,19 +184,19 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                       profile={profile}
                       size="sm"
                       rounded="rounded-lg"
-                      className="w-8 h-8 ring-1 ring-border shadow-xs"
+                      className="w-8 h-8 ring-1 ring-border shadow-2xs"
                     />
                     <span
-                      className={`absolute -bottom-1 -right-1 px-1 rounded text-[8px] font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs leading-tight`}
+                      className={`absolute -bottom-1 -right-1 px-1 rounded text-[8px] font-bold bg-gradient-to-br ${levelMeta.gradient} text-white shadow-2xs leading-tight`}
                     >
                       {jlptLevel}
                     </span>
                   </div>
                   <div className="min-w-0">
-                    <p className={`text-xs font-bold truncate leading-tight group-hover:text-primary transition-colors ${isDark ? levelMeta.darkText : levelMeta.lightText}`}>
+                    <p className="text-xs font-semibold text-foreground truncate leading-tight group-hover:text-primary transition-colors">
                       {profile?.display_name || profile?.username || 'Student'}
                     </p>
-                    <p className="text-[10px] text-muted-foreground font-medium leading-none mt-0.5">
+                    <p className="text-[10px] text-muted-foreground font-medium leading-none mt-0.5 tabular-nums">
                       Lv.{userLevel} Adventurer
                     </p>
                   </div>
@@ -228,50 +212,44 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                 )}
               </div>
 
-              {/* Row 2: Animated Wave Icon + XP + Progress Bar */}
-              <div className="relative pt-1.5 border-t border-border/40">
-                <div className="flex items-center justify-between gap-1 text-[11px] mb-1">
+              {/* Row 2: Wave Icon + XP + Progress Bar */}
+              <div className="relative pt-2 border-t border-border/50">
+                <div className="flex items-center justify-between gap-1 text-[11px] mb-1.5">
                   <div className="flex items-center gap-1.5 min-w-0">
-                    <AnimatedLiquidWaveIcon size={16} className="ring-1 ring-cyan-400/40 shrink-0" />
-                    <span className="font-extrabold font-mono text-cyan-600 dark:text-cyan-300 tracking-tight text-[11px]">
+                    <AnimatedLiquidWaveIcon size={15} className="ring-1 ring-border shrink-0" />
+                    <span className="font-bold font-mono tabular-nums text-foreground tracking-tight text-[11px]">
                       {totalXP.toLocaleString()}
                     </span>
-                    <span className="text-[9px] font-bold uppercase text-cyan-700/80 dark:text-cyan-400/80">
+                    <span className="text-[9px] font-semibold uppercase text-muted-foreground">
                       Wave XP
                     </span>
                   </div>
-                  <span className="text-[10px] font-bold text-muted-foreground shrink-0 font-mono">
+                  <span className="text-[10px] font-semibold text-muted-foreground shrink-0 font-mono tabular-nums">
                     {levelProgress.percent}%
                   </span>
                 </div>
 
-                {/* Slim Animated Liquid Wave Bar */}
-                <div className="h-1.5 w-full rounded-full bg-cyan-950/20 dark:bg-cyan-900/40 overflow-hidden border border-cyan-500/20">
+                {/* Clean Progress Bar */}
+                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 relative"
+                    className="h-full rounded-full bg-primary"
                     initial={{ width: 0 }}
                     animate={{ width: `${Math.max(5, levelProgress.percent)}%` }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
-                  >
-                    <motion.div
-                      animate={{ x: ['-100%', '200%'] }}
-                      transition={{ repeat: Infinity, duration: 2.2, ease: 'linear' }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-6"
-                    />
-                  </motion.div>
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                  />
                 </div>
               </div>
             </NavLink>
           </div>
         ) : (
-          <div className="p-2 border-t border-border/40 flex justify-center">
+          <div className="p-2 border-t border-border/50 flex justify-center">
             <NavLink
               to="/profile"
-              className="relative w-9 h-9 rounded-xl flex items-center justify-center shadow-xs hover:scale-105 transition-transform"
+              className="relative w-9 h-9 rounded-xl flex items-center justify-center border border-border hover:border-foreground/30 transition-colors"
               title={`${profile?.display_name || profile?.username || 'Student'} · Lv.${userLevel} (${totalXP} Wave XP)`}
             >
               <UserAvatar profile={profile} size="sm" rounded="rounded-xl" className="w-9 h-9" />
-              <span className={`absolute -bottom-1 -right-1 px-1 rounded text-[7px] font-black bg-gradient-to-br ${levelMeta.gradient} text-white shadow-xs leading-tight`}>
+              <span className={`absolute -bottom-1 -right-1 px-1 rounded text-[7px] font-bold bg-gradient-to-br ${levelMeta.gradient} text-white shadow-2xs leading-tight`}>
                 {jlptLevel}
               </span>
             </NavLink>

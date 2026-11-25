@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, Star, Menu, LogOut, Sparkles, Search, Keyboard } from 'lucide-react'
+import { Bell, Star, Menu, LogOut, Search, Keyboard, User, Trophy, Settings } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useNotificationStore } from '../../store/notificationStore'
@@ -18,15 +18,6 @@ import WaveXPBadge from '../common/WaveXPBadge'
 import NotificationCenter from '../notifications/NotificationCenter'
 import CommandPalette from '../common/CommandPalette'
 import KeyboardShortcutsModal from '../common/KeyboardShortcutsModal'
-
-function getLevelColor(lvl) {
-  if (lvl < 5) return 'from-gray-400 to-gray-600'
-  if (lvl < 10) return 'from-green-400 to-emerald-600'
-  if (lvl < 20) return 'from-blue-400 to-blue-600'
-  if (lvl < 30) return 'from-purple-400 to-purple-600'
-  if (lvl < 50) return 'from-orange-400 to-red-500'
-  return 'from-yellow-400 to-amber-500'
-}
 
 const Navbar = ({ onMobileMenuToggle }) => {
   const location = useLocation()
@@ -179,14 +170,13 @@ const Navbar = ({ onMobileMenuToggle }) => {
           />
 
           {/* Level */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
+          <div
             title={`User Level: Lv.${userLevel}`}
-            className={`hidden md:flex items-center gap-1.5 bg-gradient-to-r ${getLevelColor(userLevel)} rounded-full px-3 py-1.5 shadow-md cursor-default`}
+            className="hidden md:flex items-center gap-1.5 bg-surface-muted border border-border rounded-full px-2.5 py-1 shadow-2xs cursor-default"
           >
-            <Star className="w-3.5 h-3.5 text-white" />
-            <span className="text-white font-bold text-xs">Lv.{userLevel}</span>
-          </motion.div>
+            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500/20" />
+            <span className="text-foreground font-semibold text-xs tabular-nums">Lv.{userLevel}</span>
+          </div>
 
           {/* Language */}
           <div className="flex items-center">
@@ -198,11 +188,10 @@ const Navbar = ({ onMobileMenuToggle }) => {
             <ThemeToggle variant="cycle" />
           </div>
 
-          {/* ── Kando Slime Notification Center ───────── */}
+          {/* ── Notification Center ───────── */}
           <div className="relative" data-menu>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.94 }}
+            <button
+              type="button"
               onClick={() => {
                 setShowNotifications(!showNotifications)
                 setShowProfileMenu(false)
@@ -212,21 +201,18 @@ const Navbar = ({ onMobileMenuToggle }) => {
               aria-expanded={showNotifications}
               aria-haspopup="dialog"
             >
-              <Bell className="w-[18px] h-[18px]" />
+              <Bell className="w-[17px] h-[17px]" />
               {unreadCount > 0 && (
                 <motion.span
                   key={unreadCount}
-                  initial={{ scale: 0.6 }}
+                  initial={{ scale: 0.7 }}
                   animate={{ scale: 1 }}
-                  className="kando-notification-count"
+                  className="kando-notification-count tabular-nums"
                 >
                   {unreadCount > 99 ? '99+' : unreadCount}
                 </motion.span>
               )}
-              <span className="kando-notification-spark" aria-hidden="true">
-                <Sparkles size={11} />
-              </span>
-            </motion.button>
+            </button>
 
             <NotificationCenter
               isOpen={showNotifications}
@@ -236,32 +222,31 @@ const Navbar = ({ onMobileMenuToggle }) => {
 
           {/* ── Profile Avatar with Dropdown ─────────── */}
           <div className="relative" data-menu>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <button
+              type="button"
               onClick={() => { setShowProfileMenu(!showProfileMenu); setShowNotifications(false) }}
-              className="relative w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0 border-2 border-transparent hover:border-primary/40 transition-all"
+              className="relative w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center flex-shrink-0 border border-border hover:border-foreground/30 transition-colors cursor-pointer"
               aria-label={t('nav.profile_menu', displayLanguage, 'Profile menu')}
             >
               <UserAvatar profile={identity} size="sm" className="!w-full !h-full" label={displayName} />
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-surface" />
-            </motion.button>
+              <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-surface" />
+            </button>
 
             <AnimatePresence>
               {showProfileMenu && (
                 <motion.div
-                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  initial={{ opacity: 0, y: -6, scale: 0.97 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-64 rounded-2xl shadow-2xl overflow-hidden border border-border bg-surface z-50"
+                  exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                  transition={{ duration: 0.14 }}
+                  className="absolute right-0 mt-2 w-64 rounded-2xl shadow-card-lg overflow-hidden border border-border bg-surface z-50"
                 >
                   <div className="p-4 border-b border-border">
                     <div className="flex items-center gap-3">
                       <UserAvatar profile={identity} size="md" className="!w-11 !h-11" label={displayName} />
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-sm truncate text-foreground" data-testid="profile-menu-username">{displayName}</p>
-                        <p className="text-xs truncate text-muted-foreground" data-testid="profile-menu-level">
+                        <p className="text-xs truncate text-muted-foreground tabular-nums" data-testid="profile-menu-level">
                           {identity.jlptLevel} · {t('common.level', displayLanguage, 'Level')} {userLevel}
                         </p>
                       </div>
@@ -270,24 +255,24 @@ const Navbar = ({ onMobileMenuToggle }) => {
 
                   <div className="p-2">
                     {[
-                      { label: t('nav.my_profile', displayLanguage, 'My Profile'), emoji: '👤', path: '/profile' },
-                      { label: t('nav.achievements', displayLanguage, 'Achievements'), emoji: '🏆', path: '/achievements' },
-                      { label: t('nav.settings', displayLanguage, 'Settings'), emoji: '⚙️', path: '/settings' },
-                    ].map((item) => (
+                      { label: t('nav.my_profile', displayLanguage, 'My Profile'), Icon: User, path: '/profile' },
+                      { label: t('nav.achievements', displayLanguage, 'Achievements'), Icon: Trophy, path: '/achievements' },
+                      { label: t('nav.settings', displayLanguage, 'Settings'), Icon: Settings, path: '/settings' },
+                    ].map(({ label, Icon, path }) => (
                       <button
-                        key={item.path}
+                        key={path}
                         onClick={() => {
                           setShowProfileMenu(false)
-                          navigate(item.path)
+                          navigate(path)
                         }}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                          location.pathname === item.path
+                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-colors ${
+                          location.pathname === path
                             ? 'bg-primary/10 text-primary'
                             : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                         }`}
                       >
-                        <span className="text-base">{item.emoji}</span>
-                        {item.label}
+                        <Icon className="w-4 h-4 shrink-0" />
+                        {label}
                       </button>
                     ))}
                     <button
@@ -296,10 +281,10 @@ const Navbar = ({ onMobileMenuToggle }) => {
                         setShowProfileMenu(false)
                         setShortcutsModalOpen(true)
                       }}
-                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-base">⌨️</span>
+                        <Keyboard className="w-4 h-4 shrink-0" />
                         <span>Keyboard Shortcuts</span>
                       </div>
                       <kbd className="font-mono text-[10px] bg-muted px-1.5 py-0.5 rounded border border-border">?</kbd>
