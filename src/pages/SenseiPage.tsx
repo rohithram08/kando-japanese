@@ -203,8 +203,8 @@ export default function SenseiPage() {
   return (
     <div className="h-[calc(100dvh-10.25rem)] min-h-[420px] md:h-[calc(100vh-5.5rem)] md:min-h-[580px] flex flex-col relative rounded-3xl overflow-hidden border border-border/70 shadow-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       <SEO
-        title="AI Sensei 3D Studio - Hana-sensei"
-        description="Interactive 3D AI Japanese tutor Hana-sensei. Voice-enabled conversational practice, grammar explanations, custom study plans, and live corrections."
+        title="Hana-sensei 3D Studio - 花先生"
+        description="Interactive 3D Japanese teacher Hana-sensei. Voice-enabled conversational practice, grammar explanations, custom study plans, and live corrections."
         path="/sensei"
       />
       {/* ─── FULL 3D CHARACTER STAGE CANVAS & 2-WAY CLASSROOM ─── */}

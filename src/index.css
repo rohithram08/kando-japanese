@@ -115,7 +115,10 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -129,6 +132,18 @@ body {
   /* Driven by the design tokens above: white in light mode, deep navy in dark. */
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+}
+
+/* Ensure Japanese text renders with authentic Japanese typeface glyphs */
+:lang(ja), .font-japanese, .font-jp {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Tabular numbers utility for counters, streaks, timers, levels */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
 }
 
 #root {

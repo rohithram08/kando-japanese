@@ -6,6 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Search,
@@ -54,6 +55,7 @@ const POS_FILTERS = [
 const LOCAL_STORAGE_HISTORY_KEY = 'kando_dictionary_recent_v2';
 
 export default function DictionaryPage() {
+  const [searchParams] = useSearchParams();
   const { locale, displayLanguage, t } = useI18n();
   const effectiveLocale = displayLanguage || locale || 'en';
 
@@ -178,6 +180,17 @@ export default function DictionaryPage() {
       performSearch(debouncedQuery);
     }
   }, [debouncedQuery, performSearch]);
+
+  // Deep-link query param support (e.g. from Command Palette or external link: /dictionary?q=taberu)
+  useEffect(() => {
+    const initialQ = searchParams.get('q');
+    if (initialQ && initialQ.trim()) {
+      const trimmed = initialQ.trim();
+      setQuery(trimmed);
+      setDebouncedQuery(trimmed);
+      performSearch(trimmed);
+    }
+  }, [searchParams, performSearch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -778,7 +791,7 @@ export default function DictionaryPage() {
 
             {/* Bottom Credits */}
             <p className="text-center text-[11px] text-muted-foreground/70 pt-6">
-              Online Japanese definitions and readings provided by Jisho.org & JMdict. Localized into {currentLangName} by Kando AI.
+              Japanese definitions, readings, and example sentences referenced from JMdict & Jisho.org. Localized into {currentLangName}.
             </p>
           </div>
         )}

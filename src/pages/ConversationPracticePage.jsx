@@ -589,8 +589,8 @@ CRITICAL RULES:
     return (
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         <SEO
-          title="Japanese Conversation Practice & AI Roleplay"
-          description="Practice conversational Japanese with AI Hana-sensei across 49 real-world scenarios, dining, travel, business keigo, and open free talk."
+          title="Japanese Conversation Practice & Dialogue Dojo"
+          description="Practice conversational Japanese with Hana-sensei across 49 real-world scenarios, dining, travel, business keigo, and open free talk."
           path="/conversation"
         />
         <ConversationHub
@@ -622,7 +622,7 @@ CRITICAL RULES:
     <div className={`flex flex-col overflow-hidden bg-background text-foreground ${shell}`} data-testid="conversation-chat">
       <SEO
         title={isScenario ? `${selectedScenario.title} - Conversation Practice` : 'Free Talk Conversation Practice'}
-        description={isScenario ? `Practice Japanese conversation in the scenario: ${selectedScenario.title} (${selectedScenario.jlptLevel || 'All levels'}).` : 'Interactive Japanese open conversation practice with AI Hana-sensei.'}
+        description={isScenario ? `Practice Japanese conversation in the scenario: ${selectedScenario.title} (${selectedScenario.jlptLevel || 'All levels'}).` : 'Interactive Japanese open conversation practice with Hana-sensei.'}
         path="/conversation"
       />
       <ChatTopBar

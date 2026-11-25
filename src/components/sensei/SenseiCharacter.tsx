@@ -545,7 +545,7 @@ export default function SenseiCharacter({
                         <span className="text-xs font-bold text-pink-300 flex items-center gap-1.5 font-japanese">
                           <span>花先生</span>
                           <span className="text-[10px] font-normal text-slate-400 font-sans">
-                            {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'AI Sensei'}
+                            {speechState === 'speaking' ? 'Speaking...' : isTyping ? 'Thinking...' : 'Hana-sensei'}
                           </span>
                         </span>
                       </div>

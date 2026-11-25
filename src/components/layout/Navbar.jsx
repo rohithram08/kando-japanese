@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, Star, Menu, LogOut, Sparkles } from 'lucide-react'
+import { Bell, Star, Menu, LogOut, Sparkles, Search, Keyboard } from 'lucide-react'
 import { useProgressStore } from '../../store/progressStore'
 import { useAuthStore } from '../../store/authStore'
 import { useNotificationStore } from '../../store/notificationStore'
@@ -16,6 +16,8 @@ import KandoSlimeLogo from '../mascot/KandoSlimeLogo'
 import JellyStreakBadge from '../streak/JellyStreakBadge'
 import WaveXPBadge from '../common/WaveXPBadge'
 import NotificationCenter from '../notifications/NotificationCenter'
+import CommandPalette from '../common/CommandPalette'
+import KeyboardShortcutsModal from '../common/KeyboardShortcutsModal'
 
 function getLevelColor(lvl) {
   if (lvl < 5) return 'from-gray-400 to-gray-600'
@@ -36,6 +38,40 @@ const Navbar = ({ onMobileMenuToggle }) => {
 
   const [showNotifications, setShowNotifications] = useState(false)
   const [showProfileMenu, setShowProfileMenu] = useState(false)
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false)
+  const [shortcutsModalOpen, setShortcutsModalOpen] = useState(false)
+
+  // Global Keyboard Shortcuts (⌘K, Ctrl+K, /, ?)
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      const target = e.target
+      const isInput =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target?.isContentEditable
+
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setCommandPaletteOpen((prev) => !prev)
+        return
+      }
+
+      if (e.key === '?' && !isInput) {
+        e.preventDefault()
+        setShortcutsModalOpen((prev) => !prev)
+        return
+      }
+
+      if (e.key === '/' && !isInput) {
+        e.preventDefault()
+        setCommandPaletteOpen(true)
+        return
+      }
+    }
+
+    window.addEventListener('keydown', handleGlobalKeyDown)
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown)
+  }, [])
 
   const notifications = useNotificationStore((s) => s.notifications)
   const unreadCount = notifications.filter((n) => n.unread).length
@@ -77,8 +113,8 @@ const Navbar = ({ onMobileMenuToggle }) => {
   return (
     <nav className="w-full h-16 bg-surface/95 backdrop-blur-md border-b border-border/60 shadow-sm transition-colors duration-300">
       <div className="h-full px-4 sm:px-6 flex items-center justify-between gap-3">
-        {/* ── LEFT (Mobile hamburger menu only — clean & minimal on desktop) ── */}
-        <div className="flex items-center gap-3">
+        {/* ── LEFT (Search / Command Palette & Mobile Menu) ── */}
+        <div className="flex items-center gap-2.5">
           {onMobileMenuToggle && (
             <div className="flex items-center gap-2 shrink-0 md:hidden">
               <button
@@ -93,6 +129,36 @@ const Navbar = ({ onMobileMenuToggle }) => {
               <KandoSlimeLogo size={28} animated />
             </div>
           )}
+
+          {/* Desktop Search / Command Palette Pill */}
+          <button
+            type="button"
+            onClick={() => setCommandPaletteOpen(true)}
+            className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl border border-border/80
+                       bg-surface-muted/60 hover:bg-muted/80 text-muted-foreground hover:text-foreground
+                       text-xs font-medium transition-all shadow-2xs hover:border-primary/30 group cursor-pointer"
+            title="Search sections, kanji, grammar, or vocabulary (Ctrl+K or ⌘K)"
+            aria-label="Search or jump to"
+          >
+            <Search className="w-3.5 h-3.5 text-muted-foreground/70 group-hover:text-primary transition-colors" />
+            <span className="text-muted-foreground/80 group-hover:text-foreground">Search or jump to...</span>
+            <kbd className="ml-1.5 font-mono text-[10px] bg-surface border border-border/80 px-1.5 py-0.5 rounded shadow-2xs text-muted-foreground">
+              {typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.userAgent) ? '⌘K' : 'Ctrl K'}
+            </kbd>
+          </button>
+
+          {/* Mobile Search Button */}
+          <button
+            type="button"
+            onClick={() => setCommandPaletteOpen(true)}
+            className="w-9 h-9 rounded-xl flex md:hidden items-center justify-center border border-border
+                       bg-muted hover:bg-muted/70 text-muted-foreground hover:text-foreground
+                       transition-colors flex-shrink-0"
+            title="Search or jump to (Ctrl+K)"
+            aria-label="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
         </div>
 
         {/* ── RIGHT (Essential controls: Streak, XP, Level, Translate, Theme, Notification, Profile) ── */}
@@ -224,6 +290,20 @@ const Navbar = ({ onMobileMenuToggle }) => {
                         {item.label}
                       </button>
                     ))}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowProfileMenu(false)
+                        setShortcutsModalOpen(true)
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-base">⌨️</span>
+                        <span>Keyboard Shortcuts</span>
+                      </div>
+                      <kbd className="font-mono text-[10px] bg-muted px-1.5 py-0.5 rounded border border-border">?</kbd>
+                    </button>
                   </div>
 
                   <div className="p-2 border-t border-border">
@@ -241,6 +321,17 @@ const Navbar = ({ onMobileMenuToggle }) => {
           </div>
         </div>
       </div>
+
+      {/* ── Senior-grade Command Palette & Shortcuts Modals ── */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+        onOpenShortcuts={() => setShortcutsModalOpen(true)}
+      />
+      <KeyboardShortcutsModal
+        isOpen={shortcutsModalOpen}
+        onClose={() => setShortcutsModalOpen(false)}
+      />
     </nav>
   )
 }

@@ -414,7 +414,7 @@ CRITICAL RULES — follow these EXACTLY:
       desc: 'Instant feedback',
       action: () => {
         toast(
-          'Write in Japanese and AI Sensei will correct your grammar, spelling, and word choice in real time.',
+          'Write in Japanese and Hana-sensei will guide your grammar, spelling, and phrasing in real time.',
           { icon: '✏️', duration: 3500 }
         )
       },
@@ -495,7 +495,7 @@ CRITICAL RULES — follow these EXACTLY:
             <div>
               <div className="flex items-center gap-2">
                 <h2 className={`font-bold text-sm text-foreground`}>
-                  AI Sensei
+                  Hana-sensei (花先生)
                 </h2>
                 {scenario && (
                   <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-50 text-blue-600 border border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border dark:border-blue-500/20`}>
@@ -569,8 +569,8 @@ CRITICAL RULES — follow these EXACTLY:
               </h3>
               <p className={`text-sm max-w-sm mx-auto text-muted-foreground`}>
                 {showScenarios
-                  ? 'Pick a conversation scenario to start practicing Japanese with your AI tutor'
-                  : 'Your AI sensei is preparing the conversation…'}
+                  ? 'Pick a conversation scenario to start practicing Japanese dialogue'
+                  : 'Hana-sensei is preparing the conversation…'}
               </p>
 
               {showScenarios && (

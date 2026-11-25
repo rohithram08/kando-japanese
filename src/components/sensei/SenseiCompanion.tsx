@@ -210,7 +210,7 @@ export default function SenseiCompanion() {
                       ) : isTyping ? (
                         <span className="text-amber-500 font-medium">Composing reply...</span>
                       ) : (
-                        <span>AI Japanese Tutor • Chat Mode</span>
+                        <span>Interactive Japanese Tutor • Dialogue Mode</span>
                       )}
                     </p>
                   </div>
