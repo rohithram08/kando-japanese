@@ -29,7 +29,6 @@ import { searchDictionary } from '../api/dictionary';
 import { detectSearchQuery } from '../utils/japaneseDetector';
 import FuriganaText from '../components/common/FuriganaText';
 import JellyStreakSlime from '../components/mascot/JellyStreakSlime';
-import AdBanner from '../components/common/AdBanner';
 import SEO from '../components/common/SEO';
 import toast from 'react-hot-toast';
 
@@ -776,9 +775,6 @@ export default function DictionaryPage() {
                 })}
               </div>
             )}
-
-            {/* Non-intrusive Educational Sponsor Banner */}
-            <AdBanner placementId="dictionary" className="mt-6" />
 
             {/* Bottom Credits */}
             <p className="text-center text-[11px] text-muted-foreground/70 pt-6">

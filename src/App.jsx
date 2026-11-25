@@ -3,7 +3,6 @@ import React, { useEffect, Suspense, lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useAuthStore } from './store/authStore'
-import { initializeGlobalAds } from './services/adService'
 import AuthGuard from './components/auth/AuthGuard'
 import Layout from './components/layout/Layout'
 import { RouteErrorFallback, RouteLoadingFallback } from './components/common/RouteErrorBoundary'
@@ -86,7 +85,6 @@ export default function App() {
 
   useEffect(() => {
     initialize()
-    initializeGlobalAds()
     if (typeof window.__dismissLoader === 'function') {
       window.__dismissLoader()
     }
