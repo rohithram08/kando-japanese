@@ -55,8 +55,8 @@ function syncUserSettings(user: User | null) {
       patch.displayLanguage = code;
       patch.explanationLanguage = code;
     }
-    if (user.currentLevel) {
-      patch.jlptLevel = user.currentLevel;
+    if (user.studyLevel || user.currentLevel) {
+      patch.jlptLevel = user.studyLevel || user.currentLevel;
     }
     if (Object.keys(patch).length > 0) {
       useSettingsStore.getState().updateSettings(patch);

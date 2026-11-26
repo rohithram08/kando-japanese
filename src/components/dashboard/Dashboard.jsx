@@ -114,7 +114,7 @@ export default function Dashboard() {
 
   const [loading, setLoading] = useState(true)
 
-  const currentLevel = jlptLevel || profile?.currentLevel || profile?.current_level || 'N5'
+  const currentLevel = profile?.studyLevel || jlptLevel || profile?.currentLevel || profile?.current_level || 'N5'
   const currentStreak = streak ?? profile?.streakDays ?? profile?.streak_days ?? 0
   const currentXP = totalXP ?? profile?.xpPoints ?? profile?.xp_points ?? 0
   const displayName = profile?.displayName || profile?.display_name || profile?.username || 'Learner'

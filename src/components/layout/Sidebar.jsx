@@ -75,7 +75,8 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
   const displayLanguage = useSettingsStore((s) => s.displayLanguage)
   const { totalXP, jlptLevel, streak, userLevel, isStreakFrozen } = useProgressStore()
 
-  const levelMeta = LEVEL_META[jlptLevel] || LEVEL_META.N5
+  const displayLevel = profile?.studyLevel || jlptLevel || 'N5'
+  const levelMeta = LEVEL_META[displayLevel] || LEVEL_META.N5
   const effectiveCollapsed = isMobileDrawer ? false : collapsed
 
   const levelProgress = getUserLevelProgress(totalXP)
@@ -197,7 +198,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                     <span
                       className={`absolute -bottom-1 -right-1 px-1 rounded text-[8px] font-bold bg-gradient-to-br ${levelMeta.gradient} text-white shadow-2xs leading-tight`}
                     >
-                      {jlptLevel}
+                      {displayLevel}
                     </span>
                   </div>
                   <div className="min-w-0">
@@ -264,7 +265,7 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
             >
               <UserAvatar profile={profile} size="sm" rounded="rounded-xl" className="w-9 h-9" />
               <span className={`absolute -bottom-1 -right-1 px-1 rounded text-[7px] font-bold bg-gradient-to-br ${levelMeta.gradient} text-white shadow-2xs leading-tight`}>
-                {jlptLevel}
+                {displayLevel}
               </span>
             </NavLink>
           </div>

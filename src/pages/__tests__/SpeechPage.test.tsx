@@ -3,15 +3,22 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import SpeechPage from '../SpeechPage'
+import { useAuthStore } from '../../store/authStore'
+import { useSettingsStore } from '../../store/settingsStore'
 import {
   getAllLevelWordCounts,
   getDailyRandomWords,
   getLevelWordPool,
 } from '../../data/speech/speechCorpus'
 
+const setStudyLevel = (studyLevel: string) =>
+  useAuthStore.setState({ user: null, profile: { id: 'p', username: 't', currentLevel: 'N5', studyLevel } as never })
+
 describe('speechCorpus & SpeechPage', () => {
   beforeEach(() => {
     localStorage.clear()
+    setStudyLevel('N5')
+    useSettingsStore.setState({ jlptLevel: 'N5' } as never)
   })
 
   it('exposes 1,000+ curriculum words for every JLPT level (N5 through N1)', () => {
@@ -39,7 +46,21 @@ describe('speechCorpus & SpeechPage', () => {
     expect(getLevelWordPool('N4', 'en').length).toBeGreaterThanOrEqual(1000)
   })
 
-  it('renders Daily 10 words, supports shuffling, marking practiced, switching JLPT level, and 1,000+ Explorer', () => {
+  it('N5 account only sees N5 content and never exposes N4-N1 buttons', () => {
+    render(
+      <MemoryRouter>
+        <SpeechPage />
+      </MemoryRouter>
+    )
+
+    expect(screen.getByText(/Today's N5 Random 10/i)).toBeDefined()
+    for (const lockedLvl of ['N4', 'N3', 'N2', 'N1']) {
+      expect(screen.queryByRole('button', { name: new RegExp(`^${lockedLvl}\\b`, 'i') })).toBeNull()
+    }
+  })
+
+  it('N4 account defaults to N4, shows only N5 and N4 levels, supports Daily 10 and 1,000+ Explorer', () => {
+    setStudyLevel('N4')
     render(
       <MemoryRouter>
         <SpeechPage />
@@ -48,7 +69,14 @@ describe('speechCorpus & SpeechPage', () => {
 
     expect(screen.getByRole('heading', { level: 1, name: /Speech Lab/i })).toBeDefined()
     expect(screen.getByText(/0 \/ 10 Done/i)).toBeDefined()
-    expect(screen.getByText(/Today's N5 Random 10/i)).toBeDefined()
+    expect(screen.getByText(/Today's N4 Random 10/i)).toBeDefined()
+
+    // Only N5 and N4 are unlocked
+    expect(screen.getByRole('button', { name: /^N5\b/i })).toBeDefined()
+    expect(screen.getByRole('button', { name: /^N4\b/i })).toBeDefined()
+    for (const lockedLvl of ['N3', 'N2', 'N1']) {
+      expect(screen.queryByRole('button', { name: new RegExp(`^${lockedLvl}\\b`, 'i') })).toBeNull()
+    }
 
     // Mark first word practiced
     fireEvent.click(screen.getByRole('button', { name: /Mark Practiced/i }))
@@ -58,12 +86,11 @@ describe('speechCorpus & SpeechPage', () => {
     fireEvent.click(screen.getByRole('button', { name: /Shuffle 10 New/i }))
     expect(screen.getByText(/0 \/ 10 Done/i)).toBeDefined()
 
-    // Switch level to N3 (1,682 words)
-    fireEvent.click(screen.getByRole('button', { name: /^N3\b/i }))
-    expect(screen.getByText(/Today's N3 Random 10/i)).toBeDefined()
+    // Switch back to unlocked N5 and open 1,000+ Word Explorer
+    fireEvent.click(screen.getByRole('button', { name: /^N5\b/i }))
+    expect(screen.getByText(/Today's N5 Random 10/i)).toBeDefined()
 
-    // Switch to 1,000+ Word Explorer tab
     fireEvent.click(screen.getByRole('tab', { name: /1,000\+ Word Explorer/i }))
-    expect(screen.getByPlaceholderText(/Filter 1,682 N3 words/i)).toBeDefined()
+    expect(screen.getByPlaceholderText(/Filter 1,570 N5 words/i)).toBeDefined()
   })
 })

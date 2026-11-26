@@ -25,7 +25,6 @@ import {
   Check,
   Search,
   Dices,
-  Sparkles,
 } from 'lucide-react'
 import { useI18n } from '../i18n'
 import { useStudyLevel } from '../hooks/useStudyLevel'
@@ -34,10 +33,9 @@ import { useProgressStore } from '../store/progressStore'
 import PitchContourVisualizer from '../components/pitch/PitchContourVisualizer'
 import { getPitchAccent, segmentMorae } from '../data/pitch/pitchData'
 import {
-  SPEECH_LEVELS,
   SPEECH_TRACK_ORDER,
-  getAllLevelWordCounts,
   getDailyRandomWords,
+  getLevelWordCount,
   getLevelWordPool,
   getLocalDateKey,
   getStaticTrackItems,
@@ -130,7 +128,7 @@ function writeDailyStorage(data) {
 
 export default function SpeechPage() {
   const { t, locale, displayLanguage } = useI18n()
-  const { studyLevel } = useStudyLevel()
+  const { studyLevel, unlocked } = useStudyLevel()
   const userId = useAuthStore((s) => s.user?.id)
   const addXP = useProgressStore((s) => s.addXP)
 
@@ -140,11 +138,19 @@ export default function SpeechPage() {
   }, [displayLanguage, locale])
 
   const todayKey = useMemo(() => getLocalDateKey(), [])
-  const levelCounts = useMemo(() => getAllLevelWordCounts(), [])
-
-  const [selectedLevel, setSelectedLevel] = useState(() =>
-    SPEECH_LEVELS.includes(studyLevel) ? studyLevel : 'N5'
+  const unlockedCounts = useMemo(
+    () =>
+      unlocked.reduce((acc, lvl) => {
+        acc[lvl] = getLevelWordCount(lvl)
+        return acc
+      }, {}),
+    [unlocked]
   )
+
+  const [pickedLevel, setPickedLevel] = useState(studyLevel)
+  const hasPickedLevelRef = useRef(false)
+  const selectedLevel = unlocked.includes(pickedLevel) ? pickedLevel : studyLevel
+
   const [activeTrack, setActiveTrack] = useState('daily_10')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [dailyBatchOffset, setDailyBatchOffset] = useState(0)
@@ -166,12 +172,12 @@ export default function SpeechPage() {
   )
   const recognitionRef = useRef(null)
 
-  // Keep default level synced when studyLevel changes on initial profile load
+  // Keep default level synced to studyLevel until user picks an unlocked tab manually
   useEffect(() => {
-    if (SPEECH_LEVELS.includes(studyLevel)) {
-      setSelectedLevel(studyLevel)
+    if (!hasPickedLevelRef.current || !unlocked.includes(pickedLevel)) {
+      setPickedLevel(studyLevel)
     }
-  }, [studyLevel])
+  }, [studyLevel, unlocked, pickedLevel])
 
   useEffect(() => {
     return () => {
@@ -224,8 +230,8 @@ export default function SpeechPage() {
     if (activeTrack === 'word_bank') {
       return filteredExplorerWords.length > 0 ? filteredExplorerWords : levelWordPool
     }
-    return getStaticTrackItems(activeTrack, selectedLevel)
-  }, [activeTrack, dailyWords, filteredExplorerWords, levelWordPool, selectedLevel])
+    return getStaticTrackItems(activeTrack, selectedLevel, unlocked)
+  }, [activeTrack, dailyWords, filteredExplorerWords, levelWordPool, selectedLevel, unlocked])
 
   const safeIndex = Math.min(currentIndex, Math.max(0, activeItems.length - 1))
   const current = activeItems[safeIndex] || dailyWords[0] || levelWordPool[0]
@@ -271,9 +277,10 @@ export default function SpeechPage() {
   )
 
   const handleSelectLevel = (lvl) => {
-    if (lvl === selectedLevel) return
+    if (!unlocked.includes(lvl) || lvl === selectedLevel) return
+    hasPickedLevelRef.current = true
     playClick()
-    setSelectedLevel(lvl)
+    setPickedLevel(lvl)
     setCurrentIndex(0)
     setDailyBatchOffset(0)
     setExplorerQuery('')
@@ -424,11 +431,7 @@ export default function SpeechPage() {
         <div className="relative z-10 flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300/90">
-                <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{t('speech.studio_kicker', 'Tokyo NHK Pitch & Speech Studio')}</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl font-black tracking-tight mt-1">
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
                 {t('speech.title', 'Speech Lab')}
               </h1>
               <p className="text-xs sm:text-sm text-indigo-100/80 mt-0.5">
@@ -464,15 +467,15 @@ export default function SpeechPage() {
             </div>
           </div>
 
-          {/* JLPT Level Selector (1,500+ words per level) */}
-          <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-white/10">
-            <div className="flex items-center gap-1.5 flex-wrap" role="group" aria-label="JLPT Level">
+          {/* Unlocked JLPT Level Selector */}
+          {unlocked.length > 1 ? (
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-white/10" role="group" aria-label="JLPT Level">
               <span className="text-xs font-semibold text-indigo-200 mr-1">
                 {t('speech.your_level', 'Level')}:
               </span>
-              {SPEECH_LEVELS.map((lvl) => {
+              {unlocked.map((lvl) => {
                 const active = selectedLevel === lvl
-                const count = levelCounts[lvl] || 0
+                const count = unlockedCounts[lvl] || 0
                 return (
                   <button
                     key={lvl}
@@ -497,14 +500,10 @@ export default function SpeechPage() {
                 )
               })}
             </div>
-
-            <span className="text-[11px] font-medium text-indigo-200/80">
-              {levelWordPool.length.toLocaleString()} {selectedLevel} words ready
-            </span>
-          </div>
+          ) : null}
 
           {/* Track Navigation Pills */}
-          <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar" role="tablist" aria-label="Speech Lab Tracks">
+          <div className="flex flex-wrap gap-1.5 pt-1" role="tablist" aria-label="Speech Lab Tracks">
             {SPEECH_TRACK_ORDER.map((track) => {
               const Icon = TRACK_ICONS[track.id] || MessageSquare
               const active = activeTrack === track.id
@@ -515,7 +514,7 @@ export default function SpeechPage() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => handleSelectTrack(track.id)}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                     active
                       ? 'bg-white text-slate-900 shadow-sm'
                       : 'bg-white/10 text-indigo-100 hover:bg-white/20'

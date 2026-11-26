@@ -46,7 +46,7 @@ export const SPEECH_TRACK_ORDER: SpeechTrackMeta[] = [
     titleKey: 'speech.track_daily_10',
     titleDefault: 'Daily 10 Words',
     shortLabel: 'Daily 10',
-    description: '10 fresh random words drawn daily from your JLPT level 1,500+ word bank',
+    description: '10 random daily words at your JLPT level',
     requiresLevelPool: true,
   },
   {
@@ -295,7 +295,8 @@ const LEVEL_RANK: Record<string, number> = { N5: 0, N4: 1, N3: 2, N2: 3, N1: 4 }
 
 export function getStaticTrackItems(
   trackId: SpeechTrackMeta['id'],
-  preferredLevel: JLPTLevel = 'N5'
+  preferredLevel: JLPTLevel = 'N5',
+  allowedLevels: JLPTLevel[] = SPEECH_LEVELS
 ): SpeechPracticeItem[] {
   let base: SpeechPracticeItem[] = []
   if (trackId === 'sentences') base = EVERYDAY_SENTENCES
@@ -304,8 +305,11 @@ export function getStaticTrackItems(
   else if (trackId === 'shadowing') base = SHADOWING_ITEMS
   else return []
 
+  const allowedSet = new Set(allowedLevels)
+  const gated = base.filter((item) => !item.level || allowedSet.has(item.level as JLPTLevel))
+
   const targetRank = LEVEL_RANK[preferredLevel] ?? 0
-  return [...base].sort((a, b) => {
+  return [...gated].sort((a, b) => {
     const distA = Math.abs((LEVEL_RANK[a.level] ?? 0) - targetRank)
     const distB = Math.abs((LEVEL_RANK[b.level] ?? 0) - targetRank)
     return distA - distB
