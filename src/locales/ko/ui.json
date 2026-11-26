@@ -530,7 +530,16 @@
     "subtitle": "도쿄 억양 곡선, 최소 대립쌍, 발음을 마스터하세요",
     "tap_to_speak": "탭해서 말하고 발음 확인하기",
     "target": "목표",
-    "you_said": "말한 내용"
+    "you_said": "말한 내용",
+    "studio_kicker": "도쿄 NHK 피치 악센트 & 발음 스튜디오",
+    "title": "스피치 랩",
+    "your_level": "레벨",
+    "track_daily_10": "오늘의 단어 10개",
+    "track_word_bank": "1,000+ 단어 탐색기",
+    "track_sentences": "일상 회화 문장",
+    "track_minimal_pairs": "피치 최소 대립쌍",
+    "track_verbs": "동사 및 활용형",
+    "track_shadowing": "쉐도잉 & 잰말놀이"
   },
   "profile": {
     "back": "뒤로",
@@ -643,7 +652,8 @@
     "recent_searches": "최근 검색",
     "search_btn": "검색",
     "subtitle": "일본어(한자, 가나, 로마자) 또는 내 언어의 뜻으로 양방향 검색을 해 보세요.",
-    "title": "일본어 사전"
+    "title": "일본어 사전",
+    "search_placeholder": "한자 (食べる), 가나 (たべる), 로마자 (taberu) 또는 뜻 검색..."
   },
   "skill": {
     "vocab": "학습한 어휘"

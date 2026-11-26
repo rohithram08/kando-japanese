@@ -134,9 +134,16 @@ export default function RegisterPage() {
       >
         {/* Logo */}
         <div className="text-center mb-7">
-          <div className="mb-3 inline-block">
-            <KandoSlimeLogo size={60} showBlossom />
-          </div>
+          <motion.div
+            animate={{
+              scale: [1, 1.05, 0.98, 1],
+              y: [0, -5, 1, 0],
+            }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'easeInOut' }}
+            className="mb-3 inline-block"
+          >
+            <KandoSlimeLogo size={64} animated showBlossom />
+          </motion.div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             Kando Japanese
           </h1>

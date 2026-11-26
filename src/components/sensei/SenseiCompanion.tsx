@@ -10,7 +10,8 @@ import {
   Mic,
   MicOff,
   RotateCcw,
-  ExternalLink
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import { useSenseiStore } from '../../store/senseiStore';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -423,39 +424,42 @@ export default function SenseiCompanion() {
             className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-tr from-purple-600 via-indigo-600 to-amber-400 p-[2px] shadow-2xl relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-primary/30"
           >
             <div className="w-full h-full rounded-full bg-card overflow-hidden flex items-center justify-center relative">
-              {/* 2D Avatar in Minimized Floating Button */}
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
-                <img
-                  src="/images/sensei-avatar-fallback.jpg"
-                  alt="Hana-sensei"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    if (target.nextElementSibling) {
-                      (target.nextElementSibling as HTMLElement).style.display = 'flex';
-                    }
-                  }}
-                />
-                <span className="hidden w-full h-full items-center justify-center text-2xl select-none" aria-hidden="true">
-                  🌸
+              {/* Always-rendered crisp emblem underneath so avatar never appears blank while decoding or on error */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 via-purple-600 to-rose-500 text-white select-none"
+              >
+                <span className="font-japanese text-xl font-black leading-none tracking-tight drop-shadow-sm">
+                  花
                 </span>
               </div>
 
+              {/* 2D Portrait in Minimized Floating Button */}
+              <img
+                src="/images/sensei-avatar-fallback.jpg"
+                alt="Hana-sensei"
+                decoding="async"
+                loading="eager"
+                className="relative z-10 w-full h-full object-cover transition-opacity duration-200"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+
               {/* Active Speech / Thinking Status Ring */}
               {speechState === 'speaking' && (
-                <span className="absolute inset-0 rounded-full border-2 border-primary animate-ping pointer-events-none" />
+                <span className="absolute inset-0 z-20 rounded-full border-2 border-primary animate-ping pointer-events-none" />
               )}
             </div>
 
             {/* Notification Badge / Sparkle */}
             <span
               onClick={handleWandSparkle}
-              className="absolute -top-1 -right-1 w-5 h-5 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-background shadow-sm hover:scale-125 transition-transform"
-              title="Sensei Magic ✨"
+              className="absolute -top-1 -right-1 z-30 w-5 h-5 bg-amber-400 text-slate-900 rounded-full flex items-center justify-center border-2 border-background shadow-sm hover:scale-125 transition-transform"
+              title="Sensei Magic"
               aria-label="Magical wand indicator"
             >
-              ✨
+              <Sparkles className="w-2.5 h-2.5 text-slate-900 stroke-[2.5]" aria-hidden="true" />
             </span>
           </motion.button>
         </div>

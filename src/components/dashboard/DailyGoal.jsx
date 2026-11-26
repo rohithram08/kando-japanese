@@ -184,12 +184,15 @@ export default function DailyGoal() {
 
         {/* Goals List */}
         <div className="space-y-2">
-          {dailyGoals.map((goal) => {
+          {dailyGoals.map((goal, i) => {
             const isDone = completed.includes(goal.id)
             const GoalIcon = goal.Icon
             return (
-              <div
+              <motion.div
                 key={goal.id}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.04 }}
                 className={`flex items-center gap-3 p-3 rounded-xl transition-colors border ${
                   isDone
                     ? 'bg-emerald-500/10 border-emerald-500/20'
@@ -200,7 +203,9 @@ export default function DailyGoal() {
                   isDone ? 'bg-emerald-500 text-white' : 'bg-muted text-muted-foreground border border-border/60'
                 }`}>
                   {isDone ? (
-                    <Check className="w-4 h-4" />
+                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 400 }}>
+                      <Check className="w-4 h-4" />
+                    </motion.div>
                   ) : GoalIcon ? (
                     <GoalIcon className="w-4 h-4" />
                   ) : (
@@ -220,7 +225,7 @@ export default function DailyGoal() {
                 }`}>
                   {isDone ? <><Check className="w-3 h-3" />{t('common.complete', 'Done')}</> : <>+{goal.xp} Wave XP</>}
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>

@@ -166,28 +166,44 @@ export default function StreakCard({ streak = 0 }) {
 
             return (
               <div key={day} className="flex flex-col items-center gap-1.5">
-                <div
+                <motion.div
+                  whileHover={{ scale: 1.12 }}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: i * 0.04, type: 'spring', stiffness: 320 }}
                   className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-colors ${
                     isDayFrozen
-                      ? 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30'
+                      ? 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30 shadow-xs'
                       : isStudied
-                      ? 'bg-cyan-500 text-white shadow-2xs border border-cyan-600/30'
+                      ? 'bg-gradient-to-br from-cyan-400 to-blue-500 text-white shadow-xs shadow-cyan-500/20'
                       : isToday
-                      ? 'border border-dashed border-primary/50 bg-primary/5 text-primary'
+                      ? 'border border-dashed border-primary/60 bg-primary/5 text-primary animate-pulse'
                       : 'border border-border bg-surface-muted/60 text-muted-foreground/50'
                   }`}
                   title={`${day}: ${isDayFrozen ? 'Frozen with Jelly Freeze' : isStudied ? 'Streak recorded' : isToday ? 'Complete a lesson or quiz today' : 'Pending'}`}
                 >
                   {isDayFrozen ? (
-                    <Snowflake className="w-4 h-4" />
+                    <motion.div
+                      animate={{ scale: [1, 1.08, 1] }}
+                      transition={{ repeat: Infinity, duration: 2.8 }}
+                      className="flex items-center justify-center"
+                    >
+                      <Snowflake className="w-4 h-4" />
+                    </motion.div>
                   ) : isStudied ? (
-                    <Droplets className="w-4 h-4 fill-current" />
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ repeat: Infinity, duration: 2.4 }}
+                      className="flex items-center justify-center"
+                    >
+                      <Droplets className="w-4 h-4 fill-current" />
+                    </motion.div>
                   ) : isToday ? (
                     <span className="text-[10px] font-semibold font-mono">Today</span>
                   ) : (
                     <span className="w-1.5 h-1.5 rounded-full bg-border" />
                   )}
-                </div>
+                </motion.div>
 
                 <span
                   className={`text-[11px] font-medium ${

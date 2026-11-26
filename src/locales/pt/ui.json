@@ -530,7 +530,16 @@
     "subtitle": "Domine os contornos do acento tonal de Tóquio, pares mínimos e pronúncia",
     "tap_to_speak": "Toque para falar e verificar a pronúncia",
     "target": "Alvo",
-    "you_said": "Você disse"
+    "you_said": "Você disse",
+    "studio_kicker": "Estúdio de Entonação e Fala de Tóquio",
+    "title": "Laboratório de Fala",
+    "your_level": "Nível",
+    "track_daily_10": "10 Palavras Diárias",
+    "track_word_bank": "Explorador de 1.000+ Palavras",
+    "track_sentences": "Frases do Dia a Dia",
+    "track_minimal_pairs": "Pares Mínimos de Tom",
+    "track_verbs": "Verbos e Formas",
+    "track_shadowing": "Shadowing e Trava-línguas"
   },
   "profile": {
     "back": "Voltar",
@@ -643,7 +652,8 @@
     "recent_searches": "Buscas recentes",
     "search_btn": "Buscar",
     "subtitle": "Busque nos dois sentidos usando japonês (kanji, kana, romaji) ou significados no seu idioma.",
-    "title": "Dicionário de japonês"
+    "title": "Dicionário de japonês",
+    "search_placeholder": "Pesquisar kanji (食べる), kana (たべる), romaji (taberu) ou significado..."
   },
   "skill": {
     "vocab": "Vocabulário aprendido"

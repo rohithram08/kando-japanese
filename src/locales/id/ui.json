@@ -530,7 +530,16 @@
     "subtitle": "Kuasai kontur aksen nada Tokyo, pasangan minimal & pelafalan",
     "tap_to_speak": "Ketuk untuk berbicara & periksa pelafalan",
     "target": "Target",
-    "you_said": "Anda mengatakan"
+    "you_said": "Anda mengatakan",
+    "studio_kicker": "Studio Nada & Pelafalan NHK Tokyo",
+    "title": "Lab Bicara",
+    "your_level": "Level",
+    "track_daily_10": "10 Kata Harian",
+    "track_word_bank": "Penjelajah 1.000+ Kata",
+    "track_sentences": "Kalimat Sehari-hari",
+    "track_minimal_pairs": "Pasangan Minimal Nada",
+    "track_verbs": "Kata Kerja & Bentuk",
+    "track_shadowing": "Shadowing & Pembelit Lidah"
   },
   "profile": {
     "back": "Kembali",
@@ -643,7 +652,8 @@
     "recent_searches": "Pencarian terbaru",
     "search_btn": "Cari",
     "subtitle": "Cari dua arah menggunakan bahasa Jepang (kanji, kana, romaji) atau arti dalam bahasa Anda.",
-    "title": "Kamus bahasa Jepang"
+    "title": "Kamus bahasa Jepang",
+    "search_placeholder": "Cari kanji (食べる), kana (たべる), romaji (taberu), atau arti..."
   },
   "skill": {
     "vocab": "Kosakata dipelajari"

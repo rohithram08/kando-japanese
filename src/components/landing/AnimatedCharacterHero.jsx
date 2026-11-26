@@ -228,9 +228,9 @@ export default function AnimatedCharacterHero({ onSpeak, isSpeaking }) {
       {/* ── Character Center Stage & Satellites ──────── */}
       <div className="relative w-full max-w-[390px] sm:max-w-[460px] h-[350px] sm:h-[390px] flex items-center justify-center select-none">
         
-        {/* Clean Architectural Concentric Ring */}
+        {/* Subtle Animated Concentric Orbit Track */}
         <div
-          className="absolute inset-6 rounded-full border border-border/60 pointer-events-none"
+          className="absolute inset-6 rounded-full border border-dashed border-primary/20 animate-orbit-ring pointer-events-none"
           aria-hidden="true"
         />
 

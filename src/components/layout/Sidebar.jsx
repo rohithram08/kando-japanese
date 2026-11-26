@@ -173,9 +173,17 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
           <div className="p-3 border-t border-border/50 bg-surface">
             <NavLink
               to="/profile"
-              className="block p-2.5 rounded-xl border border-border bg-surface-muted/60 hover:bg-surface-muted hover:border-foreground/20 transition-all group"
+              className="block p-2.5 rounded-xl border border-border bg-surface-muted/60 hover:bg-surface-muted hover:border-primary/30 transition-all relative overflow-hidden hover:scale-[1.01] active:scale-[0.99] group"
               title="View your profile & achievements"
             >
+              {/* Subtle ambient liquid wave shimmer */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+                <motion.div
+                  animate={{ x: [-80, 0] }}
+                  transition={{ repeat: Infinity, duration: 4, ease: 'linear' }}
+                  className="absolute -bottom-1 -left-6 w-[180%] h-5 bg-gradient-to-t from-cyan-500/30 to-transparent blur-xs"
+                />
+              </div>
               {/* Row 1: User Avatar + JLPT badge + Name + Streak Pill */}
               <div className="relative flex items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2 min-w-0">
@@ -229,14 +237,20 @@ export default function Sidebar({ collapsed = false, onToggleCollapse, isMobileD
                   </span>
                 </div>
 
-                {/* Clean Progress Bar */}
+                {/* Animated Liquid Progress Bar */}
                 <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <motion.div
-                    className="h-full rounded-full bg-primary"
+                    className="h-full rounded-full bg-gradient-to-r from-primary via-rose-500 to-cyan-500 relative"
                     initial={{ width: 0 }}
                     animate={{ width: `${Math.max(5, levelProgress.percent)}%` }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                  />
+                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                  >
+                    <motion.div
+                      animate={{ x: ['-100%', '220%'] }}
+                      transition={{ repeat: Infinity, duration: 2.4, ease: 'linear' }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/45 to-transparent w-6"
+                    />
+                  </motion.div>
                 </div>
               </div>
             </NavLink>

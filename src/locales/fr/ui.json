@@ -530,7 +530,16 @@
     "subtitle": "Maîtrisez les contours de l'accent de hauteur de Tokyo, les paires minimales et la prononciation",
     "tap_to_speak": "Touchez pour parler et vérifier la prononciation",
     "target": "Cible",
-    "you_said": "Vous avez dit"
+    "you_said": "Vous avez dit",
+    "studio_kicker": "Studio d’Accent de Hauteur et Parole de Tokyo",
+    "title": "Laboratoire Vocal",
+    "your_level": "Niveau",
+    "track_daily_10": "10 Mots du Jour",
+    "track_word_bank": "Explorateur 1 000+ Mots",
+    "track_sentences": "Phrases du Quotidien",
+    "track_minimal_pairs": "Paires Minimales de Ton",
+    "track_verbs": "Verbes et Formes",
+    "track_shadowing": "Shadowing et Virelangues"
   },
   "profile": {
     "back": "Retour",
@@ -643,7 +652,8 @@
     "recent_searches": "Recherches récentes",
     "search_btn": "Rechercher",
     "subtitle": "Cherchez dans les deux sens avec le japonais (kanji, kana, romaji) ou des significations dans votre langue.",
-    "title": "Dictionnaire japonais"
+    "title": "Dictionnaire japonais",
+    "search_placeholder": "Rechercher kanji (食べる), kana (たべる), rōmaji (taberu) ou sens..."
   },
   "skill": {
     "vocab": "Vocabulaire appris"

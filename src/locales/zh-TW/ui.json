@@ -530,7 +530,16 @@
     "subtitle": "掌握東京音高曲線、最小對立對和發音",
     "tap_to_speak": "點按說話並檢查發音",
     "target": "目標",
-    "you_said": "你說的是"
+    "you_said": "你說的是",
+    "studio_kicker": "東京 NHK 音調與口說工作室",
+    "title": "口說實驗室",
+    "your_level": "級別",
+    "track_daily_10": "每日 10 詞",
+    "track_word_bank": "1,000+ 詞彙探索",
+    "track_sentences": "日常實用句",
+    "track_minimal_pairs": "音調最小對立詞",
+    "track_verbs": "高頻動詞與變化",
+    "track_shadowing": "跟讀與繞口令"
   },
   "profile": {
     "back": "返回",
@@ -643,7 +652,8 @@
     "recent_searches": "最近搜尋",
     "search_btn": "搜尋",
     "subtitle": "可用日語（漢字、假名、羅馬字）或你的語言釋義進行雙向搜尋。",
-    "title": "日語字典"
+    "title": "日語字典",
+    "search_placeholder": "搜尋漢字 (食べる)、假名 (たべる)、羅馬音 (taberu) 或釋義..."
   },
   "skill": {
     "vocab": "已學字彙"

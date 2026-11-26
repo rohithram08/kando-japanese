@@ -530,7 +530,16 @@
     "subtitle": "Meistere Tokyo-Tonhöhenakzent-Verläufe, Minimalpaare und Aussprache",
     "tap_to_speak": "Tippen zum Sprechen und Prüfen der Aussprache",
     "target": "Ziel",
-    "you_said": "Du hast gesagt"
+    "you_said": "Du hast gesagt",
+    "studio_kicker": "Tokio NHK Tonhöhen- & Sprachstudio",
+    "title": "Sprachlabor",
+    "your_level": "Stufe",
+    "track_daily_10": "Tägliche 10 Wörter",
+    "track_word_bank": "1.000+ Wort-Explorer",
+    "track_sentences": "Alltagssätze",
+    "track_minimal_pairs": "Minimalpaare (Tonhöhe)",
+    "track_verbs": "Verben & Formen",
+    "track_shadowing": "Shadowing & Zungenbrecher"
   },
   "profile": {
     "back": "Zurück",
@@ -643,7 +652,8 @@
     "recent_searches": "Letzte Suchen",
     "search_btn": "Suchen",
     "subtitle": "Suche in beide Richtungen mit Japanisch (Kanji, Kana, Romaji) oder Bedeutungen in deiner Sprache.",
-    "title": "Japanisches Wörterbuch"
+    "title": "Japanisches Wörterbuch",
+    "search_placeholder": "Kanji (食べる), Kana (たべる), Romaji (taberu) oder Bedeutung suchen..."
   },
   "skill": {
     "vocab": "Gelernte Vokabeln"

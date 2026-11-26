@@ -530,7 +530,16 @@
     "subtitle": "Làm chủ đường nét trọng âm Tokyo, cặp âm tối thiểu & phát âm",
     "tap_to_speak": "Chạm để nói & kiểm tra phát âm",
     "target": "Mục tiêu",
-    "you_said": "Bạn đã nói"
+    "you_said": "Bạn đã nói",
+    "studio_kicker": "Phòng Luyện Ngữ Điệu & Phát Âm Tokyo NHK",
+    "title": "Phòng Luyện Nói",
+    "your_level": "Cấp độ",
+    "track_daily_10": "10 Từ Mỗi Ngày",
+    "track_word_bank": "Kho 1.000+ Từ Vựng",
+    "track_sentences": "Mẫu Câu Giao Tiếp",
+    "track_minimal_pairs": "Cặp Từ Đối Lập Cao Độ",
+    "track_verbs": "Động Từ & Biến Thể",
+    "track_shadowing": "Shadowing & Nói Nhanh"
   },
   "profile": {
     "back": "Quay lại",
@@ -643,7 +652,8 @@
     "recent_searches": "Tìm kiếm gần đây",
     "search_btn": "Tìm kiếm",
     "subtitle": "Tìm kiếm hai chiều bằng tiếng Nhật (kanji, kana, romaji) hoặc nghĩa trong ngôn ngữ của bạn.",
-    "title": "Từ điển tiếng Nhật"
+    "title": "Từ điển tiếng Nhật",
+    "search_placeholder": "Tìm kanji (食べる), kana (たべる), romaji (taberu) hoặc nghĩa..."
   },
   "skill": {
     "vocab": "Từ vựng đã học"

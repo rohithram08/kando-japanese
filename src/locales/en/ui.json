@@ -471,10 +471,19 @@
     "listen_slow": "Slow Pace",
     "listening": "🎙️ Listening... speak clearly in Japanese",
     "pronunciation_score": "Pronunciation Result",
+    "studio_kicker": "Tokyo NHK Pitch & Speech Studio",
     "subtitle": "Master Tokyo pitch accent contours, minimal pairs & pronunciation",
     "tap_to_speak": "Tap to speak & check pronunciation",
     "target": "Target",
-    "you_said": "You said"
+    "title": "Speech Lab",
+    "track_daily_10": "Daily 10 Words",
+    "track_minimal_pairs": "Pitch Minimal Pairs",
+    "track_sentences": "Everyday Sentences",
+    "track_shadowing": "Shadowing & Twisters",
+    "track_verbs": "Verbs & Forms",
+    "track_word_bank": "1,000+ Word Explorer",
+    "you_said": "You said",
+    "your_level": "Level"
   },
   "profile": {
     "back": "Back",
@@ -642,6 +651,7 @@
     "popular_suggestions": "Popular Words to Explore",
     "recent_searches": "Recent Searches",
     "search_btn": "Search",
+    "search_placeholder": "Search kanji (食べる), kana (たべる), romaji (taberu), or meaning...",
     "subtitle": "Search bidirectionally using Japanese (Kanji, Kana, Romaji) or meanings in your language.",
     "title": "Japanese Dictionary"
   },

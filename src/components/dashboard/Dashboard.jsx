@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import {
   RefreshCw, GraduationCap, ChevronRight,
   ArrowRight, BookOpen, Languages, Layers, BookMarked,
-  Sunrise, Sun, Moon,
+  Sunrise, Sun, Moon, Mic,
 } from 'lucide-react'
 import { useAuthStore } from '../../store/authStore'
 import { useProgressStore } from '../../store/progressStore'
@@ -34,8 +34,9 @@ function StatValue({ value, loading }) {
   return (
     <motion.span
       key={value}
-      initial={{ opacity: 0.5 }}
-      animate={{ opacity: 1 }}
+      initial={{ scale: 0.85, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 320, damping: 22 }}
       className="text-2xl font-bold text-foreground tabular-nums"
     >
       {value}
@@ -53,14 +54,16 @@ function SectionTile({ section, index, stats, displayLanguage }) {
 
   return (
     <motion.button
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.03 * index }}
+      transition={{ delay: 0.04 * index }}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.985 }}
       onClick={() => navigate(section.path)}
-      className="card text-left p-4 flex flex-col gap-3 transition-all group hover:border-foreground/20 hover:shadow-card-md cursor-pointer"
+      className={`card text-left p-4 flex flex-col gap-3 transition-all group ${tint.hoverBorder} hover:shadow-card-md cursor-pointer`}
     >
       <div className="flex items-start justify-between">
-        <div className={`icon-badge w-10 h-10 ${tint.iconBg}`}>
+        <div className={`icon-badge w-10 h-10 ${tint.iconBg} transition-transform duration-200 group-hover:scale-105`}>
           <Icon className={`w-5 h-5 ${tint.iconText}`} />
         </div>
         <ChevronRight className="w-4 h-4 text-muted-foreground/50 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all mt-1" />
@@ -177,86 +180,141 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
-      {/* ── Architectural Workspace Greeting Header ── */}
+      {/* ── Lively Balanced Study Studio Hero ── */}
       <motion.section
-        initial={{ opacity: 0, y: -8 }}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="relative overflow-hidden bg-surface rounded-2xl p-6 border border-border border-t-2 border-t-primary shadow-card"
+        transition={{ duration: 0.35, ease: 'easeOut' }}
+        className="relative overflow-hidden rounded-2xl p-6 sm:p-7 text-white bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 border border-indigo-500/20 shadow-card-lg"
       >
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {/* Subtle Animated Wave Aura */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div
+            animate={{ x: [0, 18, 0], y: [0, -8, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-24 -right-20 w-72 h-72 rounded-full bg-indigo-500/15 blur-3xl"
+          />
+          <motion.div
+            animate={{ x: [0, -14, 0], y: [0, 10, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -bottom-24 left-1/3 w-64 h-64 rounded-full bg-cyan-500/10 blur-3xl"
+          />
+        </div>
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          {/* Left Side: Greeting, Live Status Badges & Primary Actions */}
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-1.5">
-              <GreetingIcon className="w-3.5 h-3.5 text-primary shrink-0" />
-              <span className="font-jp tracking-wide text-foreground/80">{greeting.text}</span>
-              <span className="text-border" aria-hidden="true">/</span>
+            <div className="flex items-center gap-2 text-xs font-medium text-indigo-200/90 mb-1.5">
+              <GreetingIcon className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+              <span className="font-jp tracking-wide text-white/95">{greeting.text}</span>
+              <span className="text-white/30" aria-hidden="true">/</span>
               <span>{greeting.sub}</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground truncate">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white truncate">
               {displayName}!
             </h1>
 
             <div className="flex items-center gap-2 mt-3.5 flex-wrap">
-              <span className="bg-surface-muted px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-border text-foreground tabular-nums">
-                <GraduationCap className="w-3.5 h-3.5 text-primary" />
+              <span className="bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 text-white tabular-nums">
+                <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
                 {currentLevel} · Lv.{levelProgress.level}
               </span>
 
-              {/* Jelly Streak */}
               <JellyStreakBadge
                 streak={currentStreak}
                 isFrozen={isStreakFrozen}
                 size="sm"
+                variant="glass"
               />
 
-              {/* Wave XP */}
               <WaveXPBadge
                 xp={currentXP}
                 size="sm"
+                variant="glass"
               />
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 mt-5">
-              <button
+            <div className="flex flex-wrap items-center gap-2.5 mt-5">
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/reading')}
-                className="btn-3d-primary rounded-xl py-2.5 px-4 text-sm gap-2"
+                className="bg-white text-slate-900 hover:bg-slate-100 rounded-xl py-2.5 px-4 text-sm font-semibold flex items-center gap-2 shadow-sm transition-colors cursor-pointer"
               >
-                <BookOpen className="w-4 h-4 shrink-0" />
+                <BookOpen className="w-4 h-4 text-primary shrink-0" />
                 <span className="truncate">{t('dashboard.continue_lesson', displayLanguage, 'Continue Graded Reader')}</span>
-                <ArrowRight className="w-3.5 h-3.5 opacity-80 shrink-0" />
-              </button>
+                <ArrowRight className="w-3.5 h-3.5 opacity-70 shrink-0" />
+              </motion.button>
 
               {srsReviewsDue > 0 ? (
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => navigate('/review')}
-                  className="btn-3d-secondary rounded-xl py-2.5 px-4 text-sm gap-2"
+                  className="bg-white/15 hover:bg-white/20 backdrop-blur-md text-white rounded-xl py-2.5 px-4 text-sm font-medium flex items-center gap-2 border border-white/20 transition-colors cursor-pointer"
                 >
-                  <RefreshCw className="w-4 h-4 text-orange-500 shrink-0" />
+                  <RefreshCw className="w-4 h-4 text-amber-300 shrink-0" />
                   <span className="tabular-nums">
                     {t('dashboard.reviews_due', displayLanguage, { count: srsReviewsDue }, `${srsReviewsDue} Reviews Due`)}
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-60 shrink-0" />
-                </button>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-70 shrink-0" />
+                </motion.button>
               ) : (
-                <button
+                <motion.button
                   type="button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => navigate('/grammar')}
-                  className="btn-3d-secondary rounded-xl py-2.5 px-4 text-sm gap-2"
+                  className="bg-white/15 hover:bg-white/20 backdrop-blur-md text-white rounded-xl py-2.5 px-4 text-sm font-medium flex items-center gap-2 border border-white/20 transition-colors cursor-pointer"
                 >
-                  <BookMarked className="w-4 h-4 text-muted-foreground shrink-0" />
+                  <BookMarked className="w-4 h-4 text-cyan-300 shrink-0" />
                   <span className="truncate">{t('dashboard.study_grammar', displayLanguage, 'Study Grammar')}</span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-60 shrink-0" />
-                </button>
+                  <ArrowRight className="w-3.5 h-3.5 opacity-70 shrink-0" />
+                </motion.button>
               )}
+
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => navigate('/speech')}
+                className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white/95 rounded-xl py-2.5 px-3.5 text-sm font-medium flex items-center gap-2 border border-white/15 transition-colors cursor-pointer"
+              >
+                <Mic className="w-4 h-4 text-rose-300 shrink-0" />
+                <span>Daily 10 Speech</span>
+              </motion.button>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center justify-center shrink-0 pr-2">
-            <div className="w-20 h-20 rounded-2xl bg-surface-muted/70 border border-border/80 flex items-center justify-center">
-              <KandoSlimeLogo size={54} showBlossom />
+          {/* Right Side: Interactive Companion Stage & Live Level Ring (Eliminates Empty Right Void) */}
+          <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shrink-0 lg:min-w-[270px]">
+            <motion.div
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
+              className="shrink-0"
+            >
+              <KandoSlimeLogo size={64} showBlossom animated />
+            </motion.div>
+
+            <div className="min-w-0 flex-1 space-y-2">
+              <div className="flex items-center justify-between gap-2 text-xs">
+                <span className="font-semibold text-white/95">Level {levelProgress.level} Progress</span>
+                <span className="font-mono font-bold text-cyan-300 tabular-nums">{levelProgress.percent}%</span>
+              </div>
+              <div className="h-2 w-full rounded-full bg-white/15 overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${Math.max(4, levelProgress.percent)}%` }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
+                  className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-sky-300"
+                />
+              </div>
+              <p className="text-[11px] text-indigo-200/90 tabular-nums">
+                {levelProgress.xpToNext} Wave XP to Level {levelProgress.level + 1}
+              </p>
             </div>
           </div>
         </div>
@@ -273,10 +331,11 @@ export default function Dashboard() {
           return (
             <motion.div
               key={stat.key}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.04 + i * 0.04 }}
-              className="card p-4 cursor-default"
+              transition={{ delay: 0.05 + i * 0.04 }}
+              whileHover={{ y: -2 }}
+              className="card p-4 cursor-default transition-shadow hover:shadow-card-md"
             >
               <div className="flex flex-col gap-3">
                 <div className={`icon-badge w-9 h-9 ${tint.iconBg}`}>
